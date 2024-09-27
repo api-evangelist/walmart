@@ -1,0 +1,1092 @@
+---
+openapi: 3.0.1
+info:
+  title: On Request Reports Management
+  description: "The On Request Reports API provides functionality to request reports
+    immediately about items, resulting in faster retrieval of reports. \n\nUsers can
+    request the reports for inventory, item product data, and item configuration data.
+    They can then check the status on the report availability, and download the report
+    URL when the report is ready. Functionality also includes getting a list of all
+    reports requested.\n\n**May 2024**<br>Built: 05/09/2024, 15:16:03\n"
+  version: '1.0'
+servers:
+- url: https://api-gateway.walmart.com
+  description: Production URL
+- url: https://sandbox.walmartapis.com
+  description: Sandbox URL
+paths:
+  "/v3/reports/reportRequests":
+    post:
+      tags:
+      - On Request Reports
+      operationId: createReportRequest
+      summary: Create report request
+      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/reports/reportRequest</p>\n\nThis
+        request creates a new request for a report by specifying the report type and
+        version. \n\nIn the request body, define one or more attributes to include
+        in the report. \nThe attribute must be a valid attribute for the report. \nReference
+        the guide for a list of applicable attributes in each report and definitions.\nSee
+        the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On Request
+        Reports</a> guide for more information. \n"
+      parameters:
+      - in: query
+        name: reportType
+        required: true
+        schema:
+          type: string
+        description: "Specifies the report type for the request. \n\nFor example,
+          `reportType=INVENTORY_DSV` creates an inventory report.\n\nValid values
+          are: \n\n| Value | Meaning |\n| --- | --- |\n| INVENTORY_DSV | Creates an
+          inventory report |\n| ITEM_CONFIGURATION_DATA | Creates an item configuration
+          data report |\n\nExample(s):<br>\nINVENTORY_DSV<br>\nITEM_CONFIGURATION_DATA\n"
+      - in: query
+        name: reportVersion
+        required: true
+        schema:
+          type: string
+        description: "Specifies the version of the created report. \n\nSupported versions
+          for each report type include: \n\n| Report Type | Supported Version |\n|
+          --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA | v1 |\n\nExample(s):<br>\nv1\n"
+      - in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the data type expected in a response sent from the server.
+
+          Valid values are:
+
+          | Value | Meaning |
+          | --- | --- |
+          | application/json | JSON format for data returned in response. |
+        example: application/json
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies an identifier that tracks the consumer request by channel.
+
+          Use the consumer channel type received during onboarding.
+
+          See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
+        example: 0f3e4dd4-0514-4346-b39d-…
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        required: true
+        schema:
+          type: string
+        description: "Specifies an identifier for each API call and is used to track
+          and debug issues.\n\n This may be any value, but cannot be null or omitted.
+          \n"
+        example: 6474-a253
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
+
+          This value is required for token-based authentication.
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
+      requestBody:
+        description: Request fields
+        content:
+          applications/json:
+            schema:
+              type: object
+              properties:
+                rowFilters:
+                  type: array
+                  description: "Specifies an array of objects for row filters.\n\nUse
+                    this object to define what filters are placed on the generated
+                    report. \nFilter records included in the report that meet criteria
+                    set in this object.\n"
+                  items:
+                    type: object
+                    required:
+                    - type
+                    - columnName
+                    properties:
+                      type:
+                        type: string
+                        description: "Specifies the type of row filter.\n\nThis parameter
+                          is required if the user selects `rowFilter`. \nFilters can
+                          be applied to parameters listed in the guide. \nSee the
+                          <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On
+                          Request Reports</a> guide for more information. \n\nValid
+                          values are: \n\n| Value | Meaning |\n| --- | --- |\n| rangeFilter
+                          | Specifies a row filter that returns results within a range
+                          of values. If this filter is selected, the user must define
+                          `from` and/or `to`. |\n| enumFilter | Specifies a row filter
+                          that returns results with a single or multiple specific
+                          values. If this filter is selected, the user must define
+                          `values`. |\n\nExample(s):<br>\nenumFilter<br>\nrangeFilter\n"
+                        example: enumFilter
+                      columnName:
+                        type: string
+                        description: "Specifies the column name of the row filter.
+                          \n\nThis parameter is required if the user selects `rowFilter`.
+                          \n\nExample(s):<br>\nSUPPLY ITEM STATUS CODE<br>\nUnit Cost\n"
+                        example: SUPPLY ITEM STATUS CODE
+                      from:
+                        type: string
+                        description: "Specifies the *from* value for range filter
+                          values.\n\nThis parameter is conditionally required if the
+                          user selects `rangeFilter`. \nIf selected, users must enter
+                          `from` and/or `to` values.\n\nExample(s):<br>\n5.00\n"
+                        example: '5.00'
+                      to:
+                        type: string
+                        description: "Specifies the *to* value for range filter values.
+                          \n\nThis parameter is conditionally required if the user
+                          selects `rangeFilter`. \nIf selected, users must enter `from`
+                          and/or `to` values.\n\nExample(s):<br>\n10.00\n"
+                        example: '10.00'
+                      values:
+                        type: array
+                        description: |
+                          Specifies an array that defines the values for the row filter.
+
+                          The value defined in this parameter must be a valid value for the attributes defined in the filter.
+
+                          Examples:<br>
+                          ["A", "D"]
+                        items:
+                          type: string
+                          example:
+                          - A
+                          - D
+                includeColumns:
+                  type: array
+                  description: "Specifies an array that defines the exact columns
+                    returned in the report. \n\nCertain columns will always be returned
+                    in each report.\nSee the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On
+                    Request Reports</a> guide for more information. \n\nExamples:<br>\n[\"Season
+                    Year\", \"Season Code\", \"Shipping Dimensions\"]\n"
+                  items:
+                    type: string
+                    example:
+                    - Season Year
+                    - Season Code
+                    - Shipping Dimensions
+            examples:
+              Sample 1 - Value Filter:
+                value:
+                  rowFilters:
+                  - type: enumFilter
+                    columnName: SUPPLY ITEM STATUS CODE
+                    values:
+                    - A
+                    - D
+              Sample 2 - Range Filter:
+                value:
+                  rowfilters:
+                  - type: rangeFilter
+                    columnName: Unit Cost
+                    from: '5.00'
+                    to: '10.00'
+              Sample 3 - Column Filter:
+                value:
+                  includeColumns:
+                  - Season Year
+                  - Season Code
+                  - Shipping Dimensions
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                    format: uuid
+                    description: 'Indicates the system-generated identifier associated
+                      with the report request.
+
+                      '
+                    example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+                  requestStatus:
+                    type: string
+                    description: "Indicates the status of the report request. \n\nValid
+                      values include:\n\n| Value | Description |\n| --- | --- |\n|
+                      RECEIVED | Report request has been received |\n| INPROGRESS
+                      | Report request is in progress |\n| READY | Report request
+                      is ready |\n| ERROR | Report request is in an error state |\n"
+                    example: RECEIVED
+                    enum:
+                    - RECEIVED
+                    - INPROGRESS
+                    - READY
+                    - ERROR
+                  requestSubmissionDate:
+                    type: string
+                    description: 'Indicates the date-timestamp at which the report
+                      request was submitted, in ISO 8601 format.
+
+                      '
+                    example: '2023-08-28T13:34:54Z'
+                  reportType:
+                    type: string
+                    description: "Indicates the report type for the request. \n\nFor
+                      example, `reportType=INVENTORY_DSV` creates an inventory report.\n"
+                    enum:
+                    - INVENTORY_DSV
+                    - ITEM_CONFIGURATION_DATA
+                    example: INVENTORY_DSV
+                  reportVersion:
+                    type: string
+                    description: "Indicates the version of the created report. \n\nSupported
+                      versions for each report type include:\n\n| Report Type | Supported
+                      Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA
+                      | v1 |\n"
+                    example: v1
+    get:
+      tags:
+      - On Request Reports
+      operationId: getAllReportRequests
+      summary: Retrieve all report requests
+      description: |
+        <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/reportRequests</p>
+
+        This API request fetches a list of all report requests based on search criteria like `reportType`, `reportVersion`, and `requestStatus`.
+
+        Use the query parameters to define the search and fetch details of report requests created in the last 30 days only.
+      parameters:
+      - in: query
+        name: reportType
+        required: true
+        schema:
+          type: string
+        description: "Specifies the report type for the request. \n\nFor example,
+          `reportType=INVENTORY_DSV` creates an inventory report.\n\nValid values
+          are: \n\n| Value | Meaning |\n| --- | --- |\n| INVENTORY_DSV | Creates an
+          inventory report |\n| ITEM_CONFIGURATION_DATA | Creates an item configuration
+          data report |\n\nExample(s):<br>\nINVENTORY_DSV<br>\nITEM_CONFIGURATION_DATA
+          \n"
+      - in: query
+        name: reportVersion
+        required: false
+        schema:
+          type: string
+        description: "Specifies the version of the created report. \n\nSupported versions
+          for each report type include:\n\n| Report Type | Supported Version |\n|
+          --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA | v1 |\n\nExample(s):<br>\nv1\n"
+      - in: query
+        name: requestStatus
+        required: false
+        schema:
+          type: string
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+        description: "Specifies the status of the report request. \n\nValid values
+          include:\n\n| Value | Description |\n| --- | --- |\n| RECEIVED | Report
+          request has been received |\n| INPROGRESS | Report request is in progress
+          |\n| READY | Report request is ready |\n| ERROR | Report request is in an
+          error state |\n\nExample(s):<br>\nRECEIVED\n"
+      - in: query
+        name: requestSubmissionStartDate
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the report submittal start date-timestamp for the range of reports request, in ISO 8601 format.
+
+          Example(s):<br>
+          2023-08-28T13:34:54Z
+      - in: query
+        name: requestSubmissionEndDate
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the report submittal end date-timestamp for the range of reports request, in ISO 8601 format.
+
+          Example(s):<br>
+          2023-08-28T15:43:54Z
+      - in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the data type expected in a response sent from the server.
+
+          Valid values are:
+
+          | Value | Meaning |
+          | --- | --- |
+          | application/json | JSON format for data returned in response. |
+        example: application/json
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies an identifier that tracks the consumer request by channel.
+
+          Use the consumer channel type received during onboarding.
+
+          See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
+        example: 0f3e4dd4-0514-4346-b39d-…
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        required: true
+        schema:
+          type: string
+        description: "Specifies an identifier for each API call and is used to track
+          and debug issues.\n\n This may be any value, but cannot be null or omitted.
+          \n"
+        example: 6474-a253
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
+
+          This value is required for token-based authentication.
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                    description: "Indicates the numeric value of the current current
+                      page. \n"
+                    format: int32
+                    example: 1
+                  totalCount:
+                    type: integer
+                    format: int64
+                    description: 'Indicates the number of records fetched.
+
+                      '
+                    example: 19
+                  limit:
+                    type: integer
+                    format: int32
+                    default: 10
+                    description: "Indicates the number of records to be returned.
+                      \n"
+                    example: 10
+                  nextCursor:
+                    type: string
+                    description: 'Indicates a value used for paginated results.
+
+                      '
+                    example: reportType=INVENTORY_DSV&page=2&limit=10
+                  requests:
+                    type: array
+                    description: 'Indicates an array of objects defining a list of
+                      requests.
+
+                      '
+                    items:
+                      type: object
+                      properties:
+                        requestId:
+                          type: string
+                          format: uuid
+                          description: 'Indicates the system-generated identifier
+                            associated with the report request.
+
+                            '
+                          example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+                        requestStatus:
+                          type: string
+                          description: "Indicates the status of the report request.
+                            \n\nValid values include:\n\n| Value | Description |\n|
+                            --- | --- |\n| RECEIVED | Report request has been received
+                            |\n| INPROGRESS | Report request is in progress |\n| READY
+                            | Report request is ready |\n| ERROR | Report request
+                            is in an error state |\n"
+                          example: RECEIVED
+                          enum:
+                          - RECEIVED
+                          - INPROGRESS
+                          - READY
+                          - ERROR
+                        requestSubmissionDate:
+                          type: string
+                          description: 'Indicates the date-timestamp at which the
+                            report request was submitted, in ISO 8601 format.
+
+                            '
+                          example: '2023-08-28T13:34:54Z'
+                        reportType:
+                          type: string
+                          description: "Indicates the report type for the request.
+                            \n\nFor example, `reportType=INVENTORY_DSV` creates an
+                            inventory report.\n"
+                          enum:
+                          - INVENTORY_DSV
+                          - ITEM_CONFIGURATION_DATA
+                          example: INVENTORY_DSV
+                        reportVersion:
+                          type: string
+                          description: "Indicates the version of the created report.
+                            \n\nSupported versions for each report type include:\n\n|
+                            Report Type | Supported Version |\n| --- | --- |\n| INVENTORY_DSV
+                            | v1 |\n| ITEM_CONFIGURATION_DATA | v1 |\n"
+                          example: "“v1”"
+                        reportSummary:
+                          type: string
+                          description: 'Indicates the report summary.
+
+                            '
+                          example: reportSummary
+                        reportGenerationDate:
+                          type: string
+                          description: |
+                            Indicates the date-timestamp of report generation, in ISO 8601 format.
+
+                            This response field is available only if the associated report is generated.
+                          example: '2023-08-28T13:41:35Z'
+  "/v3/reports/reportRequests/{requestId}":
+    get:
+      tags:
+      - On Request Reports
+      operationId: retrieveReportRequestStatus
+      summary: Retrieve details on single report
+      description: |
+        <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/reportRequests/{requestId}</p>
+
+        This request fetches the status and other details of a single report request, as queried by the `requestId` path parameter.
+
+        Fetch details of a report request created in the last 30 days only.
+      parameters:
+      - in: path
+        name: requestId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: |
+          Specifies the system-generated identifier associated with the report request.
+
+          Example(s):<br>
+          4406b7c3-674e-41e4-a18a-5fd6f123479f
+      - in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the data type expected in a response sent from the server.
+
+          Valid values are:
+
+          | Value | Meaning |
+          | --- | --- |
+          | application/json | JSON format for data returned in response. |
+        example: application/json
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies an identifier that tracks the consumer request by channel.
+
+          Use the consumer channel type received during onboarding.
+
+          See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
+        example: 0f3e4dd4-0514-4346-b39d-…
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        required: true
+        schema:
+          type: string
+        description: "Specifies an identifier for each API call and is used to track
+          and debug issues.\n\n This may be any value, but cannot be null or omitted.
+          \n"
+        example: 6474-a253
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
+
+          This value is required for token-based authentication.
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                    format: uuid
+                    description: 'Indicates the system-generated identifier associated
+                      with the report request.
+
+                      '
+                    example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+                  requestStatus:
+                    type: string
+                    description: "Indicates the status of the report request. \n\nValid
+                      values include:\n\n| Value | Description |\n| --- | --- |\n|
+                      RECEIVED | Report request has been received |\n| INPROGRESS
+                      | Report request is in progress |\n| READY | Report request
+                      is ready |\n| ERROR | Report request is in an error state |\n"
+                    example: RECEIVED
+                    enum:
+                    - RECEIVED
+                    - INPROGRESS
+                    - READY
+                    - ERROR
+                  requestSubmissionDate:
+                    type: string
+                    description: 'Indicates the date-timestamp at which the report
+                      request was submitted, in ISO 8601 format.
+
+                      '
+                    example: '2023-08-28T13:34:54Z'
+                  reportType:
+                    type: string
+                    description: "Indicates the report type for the request. \n\nFor
+                      example, `reportType=INVENTORY_DSV` creates an inventory report.\n"
+                    enum:
+                    - INVENTORY_DSV
+                    - ITEM_CONFIGURATION_DATA
+                    example: INVENTORY_DSV
+                  reportVersion:
+                    type: string
+                    description: "Indicates the version of the created report. \n\nSupported
+                      versions for each report type include:\n\n| Report Type | Supported
+                      Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA
+                      | v1 |\n"
+                    example: v1
+                  reportSummary:
+                    type: string
+                    description: 'Indicates the report summary.
+
+                      '
+                    example: reportSummary
+                  reportGenerationDate:
+                    type: string
+                    description: |
+                      Indicates the date-timestamp of report generation, in ISO 8601 format.
+
+                      This response field is available only if the associated report is generated.
+                    example: '2023-08-28T13:41:35Z'
+  "/v3/reports/downloadReport":
+    get:
+      tags:
+      - On Request Reports
+      operationId: downloadReportUrl
+      summary: Download report URL
+      description: |
+        <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/downloadReport</p>
+
+        This request fetches the URL to download the generated report.
+      parameters:
+      - in: query
+        name: requestId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: |
+          Specifies the system-generated identifier associated with the report request.
+
+          Example(s):<br>
+          4406b7c3-674e-41e4-a18a-5fd6f123479f
+      - in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the data type expected in a response sent from the server.
+
+          Valid values are:
+
+          | Value | Meaning |
+          | --- | --- |
+          | application/json | JSON format for data returned in response. |
+        example: application/json
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies an identifier that tracks the consumer request by channel.
+
+          Use the consumer channel type received during onboarding.
+
+          See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
+        example: 0f3e4dd4-0514-4346-b39d-…
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        required: true
+        schema:
+          type: string
+        description: "Specifies an identifier for each API call and is used to track
+          and debug issues.\n\n This may be any value, but cannot be null or omitted.
+          \n"
+        example: 6474-a253
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
+
+          This value is required for token-based authentication.
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                    format: uuid
+                    description: 'Indicates the system-generated identifier associated
+                      with the report request.
+
+                      '
+                    example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+                  requestStatus:
+                    type: string
+                    description: "Indicates the status of the report request. \n\nValid
+                      values include:\n\n| Value | Description |\n| --- | --- |\n|
+                      RECEIVED | Report request has been received |\n| INPROGRESS
+                      | Report request is in progress |\n| READY | Report request
+                      is ready |\n| ERROR | Report request is in an error state |\n"
+                    example: RECEIVED
+                    enum:
+                    - RECEIVED
+                    - INPROGRESS
+                    - READY
+                    - ERROR
+                  requestSubmissionDate:
+                    type: string
+                    description: 'Indicates the date-timestamp at which the report
+                      request was submitted, in ISO 8601 format.
+
+                      '
+                    example: '2023-08-28T13:34:54Z'
+                  reportType:
+                    type: string
+                    description: "Indicates the report type for the request. \n\nFor
+                      example, `reportType=INVENTORY_DSV` creates an inventory report.\n"
+                    enum:
+                    - INVENTORY_DSV
+                    - ITEM_CONFIGURATION_DATA
+                    example: INVENTORY_DSV
+                  reportVersion:
+                    type: string
+                    description: "Indicates the version of the created report. \n\nSupported
+                      versions for each report type include:\n\n| Report Type | Supported
+                      Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA
+                      | v1 |\n"
+                    example: v1
+                  reportGenerationDate:
+                    type: string
+                    description: |
+                      Indicates the date-timestamp of report generation, in ISO 8601 format.
+
+                      This response field is available only if the associated report is generated.
+                    example: '2023-08-28T13:41:35Z'
+                  downloadURL:
+                    type: string
+                    description: "Indicates the URL used to download the report. \n"
+                    example: https&#58;//marketplace.walmartapis.com/v3/reports/getReport/inventory-dsv-report/InventoryDSVReport_721555_2023-08-241230948.277000.zip?sv=2021-08-06&se=1233-08-28T11%3A13%3A49Z&sr=b&sp=r&sig=Yj0gCrM%2B%2F6kcO1234jfhsCqxdjgudNZ6gWeM9BYHMmES8%3D
+                  downloadURLExpirationTime:
+                    type: string
+                    description: 'Indicates the expiration date-timestamp of the download
+                      URL, in ISO 8601 format.
+
+                      '
+                    example: '2023-08-28T11:13:49Z'
+              examples:
+                REPORT_INPROGRESS:
+                  value:
+                    requestId: 16cfe1dd-8a28-4da7-1239-141a41f12bc1
+                    requestStatus: RECEIVED
+                    requestSubmissionDate: '2023-08-29T06:58:28Z'
+                    reportType: INVENTORY_DSV
+                    reportVersion: v1
+                REPORT_READY:
+                  value:
+                    requestId: 2ae33c9d-fdf7-40e3-1230-9a73fec09adb
+                    requestStatus: READY
+                    requestSubmissionDate: '2023-08-24T04:09:48Z'
+                    reportType: INVENTORY_DSV
+                    reportVersion: v1
+                    reportGenerationDate: '2023-08-24T04:11:31Z'
+                    downloadURL: https://marketplace.walmartapis.com/v3/reports/getReport/inventory-dsv-report/InventoryDSVReport_721555_2023-08-241230948.277000.zip?sv=2021-08-06&se=1233-08-28T11%3A13%3A49Z&sr=b&sp=r&sig=Yj0gCrM%2B%2F6kcO1234jfhsCqxdjgudNZ6gWeM9BYHMmES8%3D
+                    downloadURLExpirationTime: '2023-08-28T11:13:49Z'
+                REPORT_FAILED:
+                  value:
+                    requestId: a6feb7d4-001a-4442-1235-31d6f67a1046
+                    requestStatus: ERROR
+                    requestSubmissionDate: '2023-08-28T10:47:26Z'
+                    reportType: INVENTORY_DSV
+                    reportVersion: v1
+components:
+  schemas:
+    get-all-report-requests-200-response:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: "Indicates the numeric value of the current current page. \n"
+          format: int32
+          example: 1
+        totalCount:
+          type: integer
+          format: int64
+          description: 'Indicates the number of records fetched.
+
+            '
+          example: 19
+        limit:
+          type: integer
+          format: int32
+          default: 10
+          description: "Indicates the number of records to be returned. \n"
+          example: 10
+        nextCursor:
+          type: string
+          description: 'Indicates a value used for paginated results.
+
+            '
+          example: reportType=INVENTORY_DSV&page=2&limit=10
+        requests:
+          type: array
+          description: 'Indicates an array of objects defining a list of requests.
+
+            '
+          items:
+            type: object
+            properties:
+              requestId:
+                type: string
+                format: uuid
+                description: 'Indicates the system-generated identifier associated
+                  with the report request.
+
+                  '
+                example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+              requestStatus:
+                type: string
+                description: "Indicates the status of the report request. \n\nValid
+                  values include:\n\n| Value | Description |\n| --- | --- |\n| RECEIVED
+                  | Report request has been received |\n| INPROGRESS | Report request
+                  is in progress |\n| READY | Report request is ready |\n| ERROR |
+                  Report request is in an error state |\n"
+                example: RECEIVED
+                enum:
+                - RECEIVED
+                - INPROGRESS
+                - READY
+                - ERROR
+              requestSubmissionDate:
+                type: string
+                description: 'Indicates the date-timestamp at which the report request
+                  was submitted, in ISO 8601 format.
+
+                  '
+                example: '2023-08-28T13:34:54Z'
+              reportType:
+                type: string
+                description: "Indicates the report type for the request. \n\nFor example,
+                  `reportType=INVENTORY_DSV` creates an inventory report.\n"
+                enum:
+                - INVENTORY_DSV
+                - ITEM_CONFIGURATION_DATA
+                example: INVENTORY_DSV
+              reportVersion:
+                type: string
+                description: "Indicates the version of the created report. \n\nSupported
+                  versions for each report type include:\n\n| Report Type | Supported
+                  Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA
+                  | v1 |\n"
+                example: "“v1”"
+              reportSummary:
+                type: string
+                description: 'Indicates the report summary.
+
+                  '
+                example: reportSummary
+              reportGenerationDate:
+                type: string
+                description: |
+                  Indicates the date-timestamp of report generation, in ISO 8601 format.
+
+                  This response field is available only if the associated report is generated.
+                example: '2023-08-28T13:41:35Z'
+    createReport-request:
+      type: object
+      properties:
+        rowFilters:
+          type: array
+          description: "Specifies an array of objects for row filters.\n\nUse this
+            object to define what filters are placed on the generated report. \nFilter
+            records included in the report that meet criteria set in this object.\n"
+          items:
+            type: object
+            required:
+            - type
+            - columnName
+            properties:
+              type:
+                type: string
+                description: "Specifies the type of row filter.\n\nThis parameter
+                  is required if the user selects `rowFilter`. \nFilters can be applied
+                  to parameters listed in the guide. \nSee the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On
+                  Request Reports</a> guide for more information. \n\nValid values
+                  are: \n\n| Value | Meaning |\n| --- | --- |\n| rangeFilter | Specifies
+                  a row filter that returns results within a range of values. If this
+                  filter is selected, the user must define `from` and/or `to`. |\n|
+                  enumFilter | Specifies a row filter that returns results with a
+                  single or multiple specific values. If this filter is selected,
+                  the user must define `values`. |\n\nExample(s):<br>\nenumFilter<br>\nrangeFilter\n"
+                example: enumFilter
+              columnName:
+                type: string
+                description: "Specifies the column name of the row filter. \n\nThis
+                  parameter is required if the user selects `rowFilter`. \n\nExample(s):<br>\nSUPPLY
+                  ITEM STATUS CODE<br>\nUnit Cost\n"
+                example: SUPPLY ITEM STATUS CODE
+              from:
+                type: string
+                description: "Specifies the *from* value for range filter values.\n\nThis
+                  parameter is conditionally required if the user selects `rangeFilter`.
+                  \nIf selected, users must enter `from` and/or `to` values.\n\nExample(s):<br>\n5.00\n"
+                example: '5.00'
+              to:
+                type: string
+                description: "Specifies the *to* value for range filter values. \n\nThis
+                  parameter is conditionally required if the user selects `rangeFilter`.
+                  \nIf selected, users must enter `from` and/or `to` values.\n\nExample(s):<br>\n10.00\n"
+                example: '10.00'
+              values:
+                type: array
+                description: |
+                  Specifies an array that defines the values for the row filter.
+
+                  The value defined in this parameter must be a valid value for the attributes defined in the filter.
+
+                  Examples:<br>
+                  ["A", "D"]
+                items:
+                  type: string
+                  example:
+                  - A
+                  - D
+        includeColumns:
+          type: array
+          description: "Specifies an array that defines the exact columns returned
+            in the report. \n\nCertain columns will always be returned in each report.\nSee
+            the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On Request
+            Reports</a> guide for more information. \n\nExamples:<br>\n[\"Season Year\",
+            \"Season Code\", \"Shipping Dimensions\"]\n"
+          items:
+            type: string
+            example:
+            - Season Year
+            - Season Code
+            - Shipping Dimensions
+    create-report-request-200-response:
+      type: object
+      properties:
+        requestId:
+          type: string
+          format: uuid
+          description: 'Indicates the system-generated identifier associated with
+            the report request.
+
+            '
+          example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+        requestStatus:
+          type: string
+          description: "Indicates the status of the report request. \n\nValid values
+            include:\n\n| Value | Description |\n| --- | --- |\n| RECEIVED | Report
+            request has been received |\n| INPROGRESS | Report request is in progress
+            |\n| READY | Report request is ready |\n| ERROR | Report request is in
+            an error state |\n"
+          example: RECEIVED
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+        requestSubmissionDate:
+          type: string
+          description: 'Indicates the date-timestamp at which the report request was
+            submitted, in ISO 8601 format.
+
+            '
+          example: '2023-08-28T13:34:54Z'
+        reportType:
+          type: string
+          description: "Indicates the report type for the request. \n\nFor example,
+            `reportType=INVENTORY_DSV` creates an inventory report.\n"
+          enum:
+          - INVENTORY_DSV
+          - ITEM_CONFIGURATION_DATA
+          example: INVENTORY_DSV
+        reportVersion:
+          type: string
+          description: "Indicates the version of the created report. \n\nSupported
+            versions for each report type include:\n\n| Report Type | Supported Version
+            |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA |
+            v1 |\n"
+          example: v1
+    retrieve-report-request-status-200-response:
+      type: object
+      properties:
+        requestId:
+          type: string
+          format: uuid
+          description: 'Indicates the system-generated identifier associated with
+            the report request.
+
+            '
+          example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+        requestStatus:
+          type: string
+          description: "Indicates the status of the report request. \n\nValid values
+            include:\n\n| Value | Description |\n| --- | --- |\n| RECEIVED | Report
+            request has been received |\n| INPROGRESS | Report request is in progress
+            |\n| READY | Report request is ready |\n| ERROR | Report request is in
+            an error state |\n"
+          example: RECEIVED
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+        requestSubmissionDate:
+          type: string
+          description: 'Indicates the date-timestamp at which the report request was
+            submitted, in ISO 8601 format.
+
+            '
+          example: '2023-08-28T13:34:54Z'
+        reportType:
+          type: string
+          description: "Indicates the report type for the request. \n\nFor example,
+            `reportType=INVENTORY_DSV` creates an inventory report.\n"
+          enum:
+          - INVENTORY_DSV
+          - ITEM_CONFIGURATION_DATA
+          example: INVENTORY_DSV
+        reportVersion:
+          type: string
+          description: "Indicates the version of the created report. \n\nSupported
+            versions for each report type include:\n\n| Report Type | Supported Version
+            |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA |
+            v1 |\n"
+          example: v1
+        reportSummary:
+          type: string
+          description: 'Indicates the report summary.
+
+            '
+          example: reportSummary
+        reportGenerationDate:
+          type: string
+          description: |
+            Indicates the date-timestamp of report generation, in ISO 8601 format.
+
+            This response field is available only if the associated report is generated.
+          example: '2023-08-28T13:41:35Z'
+    download-report-url-200-response:
+      type: object
+      properties:
+        requestId:
+          type: string
+          format: uuid
+          description: 'Indicates the system-generated identifier associated with
+            the report request.
+
+            '
+          example: 4406b7c3-674e-41e4-a18a-5fd6f123479f
+        requestStatus:
+          type: string
+          description: "Indicates the status of the report request. \n\nValid values
+            include:\n\n| Value | Description |\n| --- | --- |\n| RECEIVED | Report
+            request has been received |\n| INPROGRESS | Report request is in progress
+            |\n| READY | Report request is ready |\n| ERROR | Report request is in
+            an error state |\n"
+          example: RECEIVED
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+        requestSubmissionDate:
+          type: string
+          description: 'Indicates the date-timestamp at which the report request was
+            submitted, in ISO 8601 format.
+
+            '
+          example: '2023-08-28T13:34:54Z'
+        reportType:
+          type: string
+          description: "Indicates the report type for the request. \n\nFor example,
+            `reportType=INVENTORY_DSV` creates an inventory report.\n"
+          enum:
+          - INVENTORY_DSV
+          - ITEM_CONFIGURATION_DATA
+          example: INVENTORY_DSV
+        reportVersion:
+          type: string
+          description: "Indicates the version of the created report. \n\nSupported
+            versions for each report type include:\n\n| Report Type | Supported Version
+            |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA |
+            v1 |\n"
+          example: v1
+        reportGenerationDate:
+          type: string
+          description: |
+            Indicates the date-timestamp of report generation, in ISO 8601 format.
+
+            This response field is available only if the associated report is generated.
+          example: '2023-08-28T13:41:35Z'
+        downloadURL:
+          type: string
+          description: "Indicates the URL used to download the report. \n"
+          example: https&#58;//marketplace.walmartapis.com/v3/reports/getReport/inventory-dsv-report/InventoryDSVReport_721555_2023-08-241230948.277000.zip?sv=2021-08-06&se=1233-08-28T11%3A13%3A49Z&sr=b&sp=r&sig=Yj0gCrM%2B%2F6kcO1234jfhsCqxdjgudNZ6gWeM9BYHMmES8%3D
+        downloadURLExpirationTime:
+          type: string
+          description: 'Indicates the expiration date-timestamp of the download URL,
+            in ISO 8601 format.
+
+            '
+          example: '2023-08-28T11:13:49Z'
+x-tagGroups:
+- name: 1P Suppliers On Request Reports Reference
+  tags:
+  - On Request Reports
