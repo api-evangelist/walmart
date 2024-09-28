@@ -1,0 +1,2331 @@
+---
+openapi: 3.0.1
+info:
+  title: On-request Report Management
+  description: The On-request Reports API allows you to request reports immediately
+    about your items for faster retrieval. You can request the report, check status
+    on the report availability, and then download the report URL when report is ready.
+    You can also get a list of all reports requested.
+servers:
+- url: https://marketplace.walmartapis.com
+  description: Production URL
+- url: https://sandbox.walmartapis.com
+  description: Sandbox URL
+security:
+- basicScheme: []
+paths:
+  "/v3/reports/reportRequests":
+    get:
+      tags:
+      - On-Request Report
+      summary: Get All Report Requests
+      description: |-
+        Fetches a list of all report requests for specified search criteria by using query parameters.
+
+        You can fetch details of report requests created in the last 30 days only.
+      operationId: getRequestsStatus
+      parameters:
+      - name: reportType
+        in: query
+        description: Type of report for which the request is created. Example, ITEM
+          for Item Report.
+        required: true
+        schema:
+          type: string
+          enum:
+          - ITEM
+          - INVENTORY
+          - CANCELLATION
+          - DELIVERY_DEFECT
+          - ITEM_PERFORMANCE
+          - PROMO
+          - RETURN_OVERRIDES
+          - CPA
+          - SHIPPING_CONFIGURATION
+          - SHIPPING_PROGRAM
+          - FITMENT_MISSING_ATTR
+          - FITMENT_ACES_COVERAGE
+          - BUYBOX
+          - ASSORTMENT_RECOMMENDATIONS
+      - name: reportVersion
+        in: query
+        description: Version of report for which the request is created. Example,
+          v1.
+        required: false
+        schema:
+          type: string
+      - name: requestStatus
+        in: query
+        description: Status of report request. Possible values are RECEIVED, INPROGRESS,
+          READY, ERROR.
+        required: false
+        schema:
+          type: string
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+      - name: requestSubmissionStartDate
+        in: query
+        description: 'Report request submittal start date for range of reports requested,
+          in format: YYYY-MM-DDTHH:mm:ssZ'
+        required: false
+        schema:
+          type: string
+      - name: requestSubmissionEndDate
+        in: query
+        description: Report request submittal end date for range of reports requested,
+          in format YYYY-MM-DDTHH:mm:ssZ
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      - in: header
+        name: Accept
+        description: 'Only supported Media Type : application/json'
+        required: true
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                    description: Current page
+                    format: int32
+                  totalCount:
+                    type: integer
+                    description: Number of records fetched.
+                    format: int64
+                  limit:
+                    type: integer
+                    description: Number of records to be returned. Default is 10.
+                    format: int32
+                  nextCursor:
+                    type: string
+                    description: Used for pagination when more than specified limit
+                      (or default 10) records are found. Use this param for next API
+                      call. Just have to use this value as query param. Need to pass
+                      only the cursor value and not the initial API call query params.
+                      For e.g. if ['nextCursor'='reportType=ITEM&requestStatus=ERROR&requestSubmissionStartDate=2021-08-20T10:52:59Z&requestSubmissionEndDate=2021-09-14T10:52:59Z&page=2&limit=1']
+                      then subsequent call to will be [marketplace.walmartapis.com/v3/reports/reportRequests?reportType=ITEM&requestStatus=ERROR&requestSubmissionStartDate=2021-08-20T10:52:59Z&requestSubmissionEndDate=2021-09-14T10:52:59Z&page=2&limit=1].
+                      Just have to use nextCursor value instead of query params
+                  requests:
+                    type: array
+                    description: List of requests
+                    items:
+                      type: object
+                      properties:
+                        requestId:
+                          type: string
+                          description: Automated ID generated by system that uniquely
+                            identifies the report request.
+                          format: uuid
+                        requestStatus:
+                          type: string
+                          description: Status of report request. Possible values are
+                            RECEIVED, INPROGRESS, READY, ERROR.
+                          enum:
+                          - RECEIVED
+                          - INPROGRESS
+                          - READY
+                          - ERROR
+                        requestSubmissionDate:
+                          type: string
+                          description: Date and time on which the report request is
+                            submitted.
+                        reportType:
+                          type: string
+                          description: Type of report for which the request is created.
+                            Example, ITEM for Item Report.
+                          enum:
+                          - ITEM
+                          - INVENTORY
+                          - CANCELLATION
+                          - DELIVERY_DEFECT
+                          - ITEM_PERFORMANCE
+                          - PROMO
+                          - RETURN_OVERRIDES
+                          - CPA
+                          - SHIPPING_CONFIGURATION
+                          - SHIPPING_PROGRAM
+                          - BUYBOX
+                          - ASSORTMENT_RECOMMENDATIONS
+                        reportVersion:
+                          type: string
+                          description: Version of report for which the request is
+                            created. Example, v1.
+                        payload:
+                          type: object
+                          properties:
+                            rowFilters:
+                              type: array
+                              description: Row Level filters
+                              items:
+                                type: object
+                                description: Supertype of all row filters.
+                                anyOf:
+                                - title: EnumFilter
+                                  required:
+                                  - columnName
+                                  - type
+                                  type: object
+                                  properties:
+                                    values:
+                                      type: array
+                                      description: Enum filter values which has to
+                                        be included in report
+                                      items:
+                                        type: string
+                                        description: Enum filter values which has
+                                          to be included in report
+                                    columnName:
+                                      type: string
+                                      description: Column on which filter has to be
+                                        applied
+                                    type:
+                                      type: string
+                                      description: Type of the filter
+                                      enum:
+                                      - rangeFilter
+                                      - enumFilter
+                                      - multiValueFilter
+                                - title: RangeFilter
+                                  required:
+                                  - columnName
+                                  - rowFilterType
+                                  type: object
+                                  properties:
+                                    from:
+                                      type: string
+                                      description: Filter range start
+                                    to:
+                                      type: string
+                                      description: Filter range end
+                                    rowFilterType:
+                                      type: string
+                                      description: Type of the filter
+                                      enum:
+                                      - rangeFilter
+                                      - enumFilter
+                                      - multiValueFilter
+                                    columnName:
+                                      type: string
+                                      description: Column on which filter has to be
+                                        applied
+                                - title: MultiValueFilter
+                                  required:
+                                  - columnName
+                                  - type
+                                  type: object
+                                  properties:
+                                    values:
+                                      type: array
+                                      description: MultiValue filter values which
+                                        has to be included in report
+                                      items:
+                                        type: string
+                                        description: MultiValue filter values which
+                                          has to be included in report
+                                    columnName:
+                                      type: string
+                                      description: Column on which filter has to be
+                                        applied
+                                    type:
+                                      type: string
+                                      description: Type of the filter
+                                      enum:
+                                      - rangeFilter
+                                      - enumFilter
+                                      - multiValueFilter
+                            excludeColumns:
+                              type: array
+                              description: Columns to exclude from report
+                              items:
+                                type: string
+                                description: Columns to exclude from report
+                          description: Request Payload
+                        reportGenerationDate:
+                          type: string
+                          description: Date and time on which the report is generated.
+                            Attribute is available only if report is generated.
+      useCases:
+      - name: Get All Assortment Recommendations Report By Invalid Status
+        value: get_all_assortment_recommendations_report_by_invalid_status
+        sha: f249561076d1ea0466f1b1c62e088dd7c931583c
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_assortment_recommendations_report_by_invalid_status?token=AAAUDV7SMVYTTTKWAVXZHSDGMMJEE
+        case: failure
+      - name: Get All Cancellation Report By Invalid Request Submission Date
+        value: get_all_cancellation_report_by_invalid_request_submission_date
+        sha: 7c12ff15c3b7f779ee1d641a3e144cbaeccba1ca
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_cancellation_report_by_invalid_request_submission_date?token=AAAUDV5VZSI333WD7NZQAK3GMMJEE
+        case: failure
+      - name: Get All Cancellation Report By Invalid Status
+        value: get_all_cancellation_report_by_invalid_status
+        sha: 36952de738e4c73560ca5b27d27832adef9beefb
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_cancellation_report_by_invalid_status?token=AAAUDV6YAMX7MOS4B4TCZILGMMJEE
+        case: failure
+      - name: Get All Cpa Report By Invalid Request Submission Date
+        value: get_all_cpa_report_by_invalid_request_submission_date
+        sha: 3fec58e4e61503943fef725671cb3ef52a28c9df
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_cpa_report_by_invalid_request_submission_date?token=AAAUDV5D6KMQR6QXRO6L45TGMMJEE
+        case: failure
+      - name: Get All Cpa Report By Invalid Status
+        value: get_all_cpa_report_by_invalid_status
+        sha: 27391293279bcc0281a3b62ff5caba0c2e10dafd
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_cpa_report_by_invalid_status?token=AAAUDVYIRLIM763XQG4CZLTGMMJEE
+        case: failure
+      - name: Get All Delivery Defect Report By Invalid Request Submission Date
+        value: get_all_delivery_defect_report_by_invalid_request_submission_date
+        sha: 27eaa6b9ff56859ba4cf4a9812a5060b59ca1c42
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_delivery_defect_report_by_invalid_request_submission_date?token=AAAUDV6XHHTGYJCZLRFGRM3GMMJEE
+        case: failure
+      - name: Get All Delivery Defect Report By Invalid Status
+        value: get_all_delivery_defect_report_by_invalid_status
+        sha: 304c8b4d3e55b84e39b4bcf1822eb7ffec0d6fc4
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_delivery_defect_report_by_invalid_status?token=AAAUDV5RHSDTJDAGQIG75ALGMMJEE
+        case: failure
+      - name: Get All Fitment Aces Coverage Report By Invalid Request Submission Date
+        value: get_all_fitment_aces_coverage_report_by_invalid_request_submission_date
+        sha: fddbea2e7f1d9a07ff211924d3af6eed1fa3b888
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_fitment_aces_coverage_report_by_invalid_request_submission_date?token=AAAUDV5GGCVG5BGRJ7CF45TGMMJEE
+        case: failure
+      - name: Get All Fitment Aces Coverage Report By Invalid Status
+        value: get_all_fitment_aces_coverage_report_by_invalid_status
+        sha: 163f8febfe9442cf9cf1da05e3e8ed542a244100
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_fitment_aces_coverage_report_by_invalid_status?token=AAAUDVYR4RV37NUONDZRH7LGMMJEE
+        case: failure
+      - name: Get All Fitment Missing Attr Report By Invalid Request Submission Date
+        value: get_all_fitment_missing_attr_report_by_invalid_request_submission_date
+        sha: 31c4febc55b19543d5a22bbaa521ab9bc7433197
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_fitment_missing_attr_report_by_invalid_request_submission_date?token=AAAUDV472PNSVLRCMECNM6DGMMJEE
+        case: failure
+      - name: Get All Fitment Missing Attr Report By Invalid Status
+        value: get_all_fitment_missing_attr_report_by_invalid_status
+        sha: a027aef6d19b3ee77c13813199ffe12715c5da5e
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_fitment_missing_attr_report_by_invalid_status?token=AAAUDVZFUZ4I7YYL6BCFPR3GMMJEE
+        case: failure
+      - name: Get All Inventory Report By Invalid Request Submission Date
+        value: get_all_inventory_report_by_invalid_request_submission_date
+        sha: 77949014d5885bc1e9eb6398821c5c70745b5971
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_inventory_report_by_invalid_request_submission_date?token=AAAUDVYQL6OUKDW3AR42LW3GMMJEE
+        case: failure
+      - name: Get All Inventory Report By Invalid Status
+        value: get_all_inventory_report_by_invalid_status
+        sha: 5be2f6395b93a68149d13f62ea1c2815d6a30075
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_inventory_report_by_invalid_status?token=AAAUDV7K2FBRYXKTIWS4YK3GMMJEE
+        case: failure
+      - name: Get All Item Performance Report By Invalid Request Submission Date
+        value: get_all_item_performance_report_by_invalid_request_submission_date
+        sha: 94bc4af1347c5a91ace395c4757035bd7c285cd0
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_item_performance_report_by_invalid_request_submission_date?token=AAAUDV64X6YXUZO2BMYGUCLGMMJEE
+        case: failure
+      - name: Get All Item Performance Report By Invalid Status
+        value: get_all_item_performance_report_by_invalid_status
+        sha: 520fbcfdbc5e3810e569cb6c873dfeea19682242
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_item_performance_report_by_invalid_status?token=AAAUDVZWPTMJC2XKUAJX3LTGMMJEE
+        case: failure
+      - name: Get All Item Report By Invalid Request Submission Date
+        value: get_all_item_report_by_invalid_request_submission_date
+        sha: 2d554d4b8803fde9d16f55bc1b8d82f508e9f3d4
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_item_report_by_invalid_request_submission_date?token=AAAUDV33CVPAUGHXJKSFCGLGMMJEE
+        case: failure
+      - name: Get All Item Report By Invalid Status
+        value: get_all_item_report_by_invalid_status
+        sha: cff44b672ed44fb7b766c514a2281862395b49ae
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_item_report_by_invalid_status?token=AAAUDV6W7GHQOTVSY53USQ3GMMJEE
+        case: failure
+      - name: Get All Promo Report By Invalid Request Submission Date
+        value: get_all_promo_report_by_invalid_request_submission_date
+        sha: f4e0d1cd92720ff6ae349032b291981340841ff2
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_promo_report_by_invalid_request_submission_date?token=AAAUDV667UXNNQXTU57TOGLGMMJEE
+        case: failure
+      - name: Get All Promo Report By Invalid Status
+        value: get_all_promo_report_by_invalid_status
+        sha: 520a2a39ede3e4ad8dbb12141be2700907b2069d
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_promo_report_by_invalid_status?token=AAAUDVZJPOR7IRAST2HX7NLGMMJEE
+        case: failure
+      - name: Get All Return Overrides Report By Invalid Request Submission Date
+        value: get_all_return_overrides_report_by_invalid_request_submission_date
+        sha: 40a46d8ccf40eeda26fe88b0ea2668a165bae9c8
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_return_overrides_report_by_invalid_request_submission_date?token=AAAUDVYBFKDDQ7XAYFAYJALGMMJEE
+        case: failure
+      - name: Get All Return Overrides Report By Invalid Status
+        value: get_all_return_overrides_report_by_invalid_status
+        sha: 6962766165ac77e6100428f96929bb760bc3a05c
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_return_overrides_report_by_invalid_status?token=AAAUDV3SEKRE4RPSPN52AQDGMMJEE
+        case: failure
+      - name: Get All Shipping Configuration Report By Invalid Request Submission
+          Date
+        value: get_all_shipping_configuration_report_by_invalid_request_submission_date
+        sha: 9541a67534776b64345e9cd4f0bcf08266f0e3b6
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_shipping_configuration_report_by_invalid_request_submission_date?token=AAAUDV2PI6II5TORDRZSZTTGMMJEE
+        case: failure
+      - name: Get All Shipping Configuration Report By Invalid Status
+        value: get_all_shipping_configuration_report_by_invalid_status
+        sha: 465422e00e437a6bafd481bcffc382ed42a430b7
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_shipping_configuration_report_by_invalid_status?token=AAAUDVZECOYCDVZU3YVBKR3GMMJEE
+        case: failure
+      - name: Get All Shipping Program Report By Invalid Request Submission Date
+        value: get_all_shipping_program_report_by_invalid_request_submission_date
+        sha: 6b67cf20276bbe926f74af9e4beef61c404b45ee
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_shipping_program_report_by_invalid_request_submission_date?token=AAAUDV4POPUGLXPJN6XMBKDGMMJEE
+        case: failure
+      - name: Get All Shipping Program Report By Invalid Status
+        value: get_all_shipping_program_report_by_invalid_status
+        sha: 575fea589a6d5602fc76e0da8bb7a510325bddfa
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/failure/get_all_shipping_program_report_by_invalid_status?token=AAAUDV43EWDCKWXVH7D34RDGMMJEE
+        case: failure
+      - name: Get All Assortment Recommendations Report
+        value: get_all_assortment_recommendations_report
+        sha: 1910e996a811298d42d5a85d12e86d40b4c75827
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_assortment_recommendations_report?token=AAAUDV6RNXCSVLYOGBFSEILGMMJEE
+        case: success
+      - name: Get All Assortment Recommendations Report By Status
+        value: get_all_assortment_recommendations_report_by_status
+        sha: c3761e4c6f0792de42ce7f7ba68ee5144a7a7c45
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_assortment_recommendations_report_by_status?token=AAAUDV6HDCJDYE55IIHQ6A3GMMJEE
+        case: success
+      - name: Get All Cancellation Report
+        value: get_all_cancellation_report
+        sha: 2a1d894f8ac62c1013f112a8a05453309325bcf1
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_cancellation_report?token=AAAUDV4JXQ6JHVOB4Y5YTMTGMMJEE
+        case: success
+      - name: Get All Cancellation Report By Request Submission Date
+        value: get_all_cancellation_report_by_request_submission_date
+        sha: 885125fabb6534edc228d9f541b714dc73419d1d
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_cancellation_report_by_request_submission_date?token=AAAUDV7RS4ORXXGGJP42XLDGMMJEE
+        case: success
+      - name: Get All Cancellation Report By Status
+        value: get_all_cancellation_report_by_status
+        sha: 6fbf3b362edcd1995d3cb6453773fec887c26e4e
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_cancellation_report_by_status?token=AAAUDV3CYRICEAAYO4CAVADGMMJEE
+        case: success
+      - name: Get All Cpa Report
+        value: get_all_cpa_report
+        sha: a4afccf4162041b4aa627a26b0890a90c3657101
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_cpa_report?token=AAAUDV6UNODGTTTG7WKJJGTGMMJEE
+        case: success
+      - name: Get All Cpa Report By Request Submission Date
+        value: get_all_cpa_report_by_request_submission_date
+        sha: 3dc0da82e20a37c22320ff268ce2ccea0e27a69c
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_cpa_report_by_request_submission_date?token=AAAUDVZU76DFMLH5EPEPWOTGMMJEE
+        case: success
+      - name: Get All Cpa Report By Status
+        value: get_all_cpa_report_by_status
+        sha: dc8cc758c5bb730cff551b6fce1d147dae1ed026
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_cpa_report_by_status?token=AAAUDV3KG3EO2CD2TMO2SLTGMMJEE
+        case: success
+      - name: Get All Delivery Defect Report
+        value: get_all_delivery_defect_report
+        sha: 6e7abed9ba548dfccdc6aef3311c8a5c5baf6d29
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_delivery_defect_report?token=AAAUDV2M7BZEUDRLFR5OQ63GMMJEE
+        case: success
+      - name: Get All Delivery Defect Report By Request Submission Date
+        value: get_all_delivery_defect_report_by_request_submission_date
+        sha: fb16348b1dc65b9cf6d7de846b05df3b8295f865
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_delivery_defect_report_by_request_submission_date?token=AAAUDV4PNO5CMIGXVSCCBHTGMMJEE
+        case: success
+      - name: Get All Delivery Defect Report By Status
+        value: get_all_delivery_defect_report_by_status
+        sha: 52c2a61a0af88781614dc0a407c0080e918be9cd
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_delivery_defect_report_by_status?token=AAAUDV4QRYYPBAX3FX6BR6DGMMJEE
+        case: success
+      - name: Get All Fitment Aces Coverage Report
+        value: get_all_fitment_aces_coverage_report
+        sha: 6e8e28a7fbabd589f394e5e9e62e124ff02198bc
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_fitment_aces_coverage_report?token=AAAUDVZMXIYSA4WQMDHDVNTGMMJEE
+        case: success
+      - name: Get All Fitment Aces Coverage Report By Request Submission Date
+        value: get_all_fitment_aces_coverage_report_by_request_submission_date
+        sha: 67f6de0f050842aadee8bc59f8d5c47dd64a5028
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_fitment_aces_coverage_report_by_request_submission_date?token=AAAUDV25WNIYP5NLWH3BCEDGMMJEE
+        case: success
+      - name: Get All Fitment Aces Coverage Report By Status
+        value: get_all_fitment_aces_coverage_report_by_status
+        sha: 706897469b7e71194fd34900544624769a19cc81
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_fitment_aces_coverage_report_by_status?token=AAAUDVZNGGIKSXLY3GVIZC3GMMJEE
+        case: success
+      - name: Get All Fitment Missing Attr Report
+        value: get_all_fitment_missing_attr_report
+        sha: 78a9638645ea2b2b1eb6e5404aa8ea7c9cce55c8
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_fitment_missing_attr_report?token=AAAUDV27UCTWMRQBC2EC4ILGMMJEE
+        case: success
+      - name: Get All Fitment Missing Attr Report By Request Submission Date
+        value: get_all_fitment_missing_attr_report_by_request_submission_date
+        sha: 9fd0bb385251cf4ce5402a649eed0772691f2429
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_fitment_missing_attr_report_by_request_submission_date?token=AAAUDV57ODKEAZ4DSLPP5K3GMMJEE
+        case: success
+      - name: Get All Fitment Missing Attr Report By Status
+        value: get_all_fitment_missing_attr_report_by_status
+        sha: b0faa1dafeff0fe4ca6d6cd88ded64d285d537f2
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_fitment_missing_attr_report_by_status?token=AAAUDV3GEEOGWMYJKMXRYUTGMMJEE
+        case: success
+      - name: Get All Inventory Report
+        value: get_all_inventory_report
+        sha: 3ef874292e95f078af80d315f513b189345a433a
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_inventory_report?token=AAAUDV37DGWWSS3O4CW5NL3GMMJEE
+        case: success
+      - name: Get All Inventory Report By Request Submission Date
+        value: get_all_inventory_report_by_request_submission_date
+        sha: b47a8d0650276f1024160e0cce6d72391b667841
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_inventory_report_by_request_submission_date?token=AAAUDVZPQKJ6PRSEH5EJMIDGMMJEE
+        case: success
+      - name: Get All Inventory Report By Status
+        value: get_all_inventory_report_by_status
+        sha: 3a1ba210a60b746130308ecabfd9a63a043f83e2
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_inventory_report_by_status?token=AAAUDVYL4SJOEZ5FV4I3WSTGMMJEE
+        case: success
+      - name: Get All Item Performance Report
+        value: get_all_item_performance_report
+        sha: e37bce0f6f66112b4ce0072dd72c1e07e083e2c3
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_performance_report?token=AAAUDVY5T4PYPMEAUMYP6M3GMMJEE
+        case: success
+      - name: Get All Item Performance Report By Request Submission Date
+        value: get_all_item_performance_report_by_request_submission_date
+        sha: 94d9868c5a2fe136d3dfdfa0d34e0422746b6fc0
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_performance_report_by_request_submission_date?token=AAAUDV75LPFI36GQN4NLIQDGMMJEE
+        case: success
+      - name: Get All Item Performance Report By Status
+        value: get_all_item_performance_report_by_status
+        sha: f82c5c6222976903240b199fa78342f27b6a7a58
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_performance_report_by_status?token=AAAUDVYDBDWHFB4SAYDVSBDGMMJEE
+        case: success
+      - name: Get All Item Report By Request Submission Date
+        value: get_all_item_report_by_request_submission_date
+        sha: 3fa05efca8aedeb7a4c4416409afa3f9cb2835e7
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_report_by_request_submission_date?token=AAAUDV7XK7SLOS4WWCWN4VDGMMJEE
+        case: success
+      - name: Get All Item Report By Status
+        value: get_all_item_report_by_status
+        sha: 1e89e85175a8846674b4b0266b1efcff57f98299
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_report_by_status?token=AAAUDV2ZRP7XKTSYD43JEADGMMJEE
+        case: success
+      - name: Get All Item V1 Report
+        value: get_all_item_v1_report
+        sha: 823b160780d5cf8e2e2954e6f769980cc10b2214
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_v1_report?token=AAAUDV6L2M6W3SNHJXCBBZ3GMMJEE
+        case: success
+      - name: Get All Item V2 Report
+        value: get_all_item_v2_report
+        sha: 7adfe5364485848db038026f63fec0418d0b73c6
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_v2_report?token=AAAUDV6KTK25YIPHISQFNI3GMMJEE
+        case: success
+      - name: Get All Item V3 Report
+        value: get_all_item_v3_report
+        sha: 16679c3f4acc5fae255cff86f9bafb17b81526d5
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_v3_report?token=AAAUDVYRDGG3ASHQBXG7GN3GMMJEE
+        case: success
+      - name: Get All Item V4 Report
+        value: get_all_item_v4_report
+        sha: 50dcecb3e879eaf798e226109fc15ac188546863
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_item_v4_report?token=AAAUDV4QJSDUWO4NDC4Q26TGMMJEE
+        case: success
+      - name: Get All Promo Report
+        value: get_all_promo_report
+        sha: f0ad1c666550d57475e866e447ac4c2312471fe1
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_promo_report?token=AAAUDVZ3WMY5TR3DQBZAOF3GMMJEE
+        case: success
+      - name: Get All Promo Report By Request Submission Date
+        value: get_all_promo_report_by_request_submission_date
+        sha: 5547b7683279dec41b53662828cd5a8e324dd21e
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_promo_report_by_request_submission_date?token=AAAUDV2E5IYQMT4FD6LMSGTGMMJEE
+        case: success
+      - name: Get All Promo Report By Status
+        value: get_all_promo_report_by_status
+        sha: c3d22644323841e464bd90b4f7d7a264fc001ca1
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_promo_report_by_status?token=AAAUDV3Y6JGARCCZ55OCE3DGMMJEE
+        case: success
+      - name: Get All Return Overrides Report
+        value: get_all_return_overrides_report
+        sha: badc9abff6e2dc9de3772394c7157a5d7ff22127
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_return_overrides_report?token=AAAUDV4QY2YKLRMBFJSFE2LGMMJEE
+        case: success
+      - name: Get All Return Overrides Report By Request Submission Date
+        value: get_all_return_overrides_report_by_request_submission_date
+        sha: 9b2f616743c0b768d31ab643df607bd8f40df6a6
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_return_overrides_report_by_request_submission_date?token=AAAUDVYS35T3O7CQ2SDUHL3GMMJEE
+        case: success
+      - name: Get All Return Overrides Report By Status
+        value: get_all_return_overrides_report_by_status
+        sha: 2ace9d8b036ab644c7b8901b211a1dde2286126e
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_return_overrides_report_by_status?token=AAAUDV7EGOQNIEC6EHZ37QLGMMJEE
+        case: success
+      - name: Get All Shipping Configuration Report
+        value: get_all_shipping_configuration_report
+        sha: 498d80d53ac08e2d86cd29f8a54b82e7ab0af4cd
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_shipping_configuration_report?token=AAAUDV5DOJRTPMP6F2WUXK3GMMJEE
+        case: success
+      - name: Get All Shipping Configuration Report By Request Submission Date
+        value: get_all_shipping_configuration_report_by_request_submission_date
+        sha: 52c8ab361161462229d6a91c7a9af25d4f3c1aee
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_shipping_configuration_report_by_request_submission_date?token=AAAUDV6Y5A253JJ2LQXNDOLGMMJEE
+        case: success
+      - name: Get All Shipping Configuration Report By Status
+        value: get_all_shipping_configuration_report_by_status
+        sha: cc2c7c51a9789f632079aed7a9447821816c4505
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_shipping_configuration_report_by_status?token=AAAUDV5EF6G4JUQTWNT7TCDGMMJEE
+        case: success
+      - name: Get All Shipping Program Report
+        value: get_all_shipping_program_report
+        sha: 92a92533083bf522c9645ae31c8085516ac01567
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_shipping_program_report?token=AAAUDV33DOGKNKVB3LOOYUTGMMJEE
+        case: success
+      - name: Get All Shipping Program Report By Request Submission Date
+        value: get_all_shipping_program_report_by_request_submission_date
+        sha: d63aef0a5400871ae6d4665e9b19923ae3dcc6a8
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_shipping_program_report_by_request_submission_date?token=AAAUDVYROV5GPIKMJT2HZDLGMMJEE
+        case: success
+      - name: Get All Shipping Program Report By Status
+        value: get_all_shipping_program_report_by_status
+        sha: 7c697526fc39ce011007a43f25e1f8cf5f83fcbf
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getRequestsStatus/success/get_all_shipping_program_report_by_status?token=AAAUDVYNB3O2AJ3MPNJWGOTGMMJEE
+        case: success
+    post:
+      tags:
+      - On-Request Report
+      summary: Create Report Request
+      description: Creates a new request for report by specifying the reportType and
+        reportVersion.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-onrequestreports/#4180"
+      operationId: generateReport
+      parameters:
+      - name: reportType
+        in: query
+        description: Specifies the report type for the request. For example, reportType=ITEM
+          creates an Item Report.
+        required: true
+        schema:
+          type: string
+          enum:
+          - ITEM
+          - INVENTORY
+          - CANCELLATION
+          - DELIVERY_DEFECT
+          - ITEM_PERFORMANCE
+          - PROMO
+          - RETURN_OVERRIDES
+          - CPA
+          - SHIPPING_CONFIGURATION
+          - SHIPPING_PROGRAM
+          - FITMENT_MISSING_ATTR
+          - FITMENT_ACES_COVERAGE
+          - BUYBOX
+          - ASSORTMENT_RECOMMENDATIONS
+      - name: reportVersion
+        in: query
+        description: 'Version of report for which the request is created. Supported
+          versions for each report type are currently ''reportVersion=v1'' for the
+          following reportType(s): INVENTORY, CANCELLATION, DELIVERY_DEFECT, ITEM_PERFORMANCE,
+          PROMO, RETURN_OVERRIDES, CPA, SHIPPING_CONFIGURATION, SHIPPING_PROGRAM,
+          FITMENT_MISSING_ATTR, FITMENT_ACES_COVERAGE, BUYBOX, ASSORTMENT_RECOMMENDATIONS
+          and ''reportVersion=v1'', ''reportVersion=v2'', ''reportVersion=v3'', ''reportVersion=v4''
+          for the following reportType(s): ITEM.'
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      - in: header
+        name: Accept
+        description: 'Only supported Media Type : application/json'
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - in: header
+        name: Content-Type
+        description: 'Only supported Media Type : application/json'
+        required: true
+        schema:
+          type: string
+        example: application/json
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rowFilters:
+                  type: array
+                  description: Row Level filters
+                  items:
+                    type: object
+                    description: Supertype of all row filters.
+                    anyOf:
+                    - title: EnumFilter
+                      required:
+                      - columnName
+                      - type
+                      type: object
+                      properties:
+                        values:
+                          type: array
+                          description: Enum filter values which has to be included
+                            in report
+                          items:
+                            type: string
+                            description: Enum filter values which has to be included
+                              in report
+                        columnName:
+                          type: string
+                          description: Column on which filter has to be applied
+                        type:
+                          type: string
+                          description: Type of the filter
+                          enum:
+                          - rangeFilter
+                          - enumFilter
+                          - multiValueFilter
+                    - title: RangeFilter
+                      required:
+                      - columnName
+                      - rowFilterType
+                      type: object
+                      properties:
+                        from:
+                          type: string
+                          description: Filter range start
+                        to:
+                          type: string
+                          description: Filter range end
+                        rowFilterType:
+                          type: string
+                          description: Type of the filter
+                          enum:
+                          - rangeFilter
+                          - enumFilter
+                          - multiValueFilter
+                        columnName:
+                          type: string
+                          description: Column on which filter has to be applied
+                    - title: MultiValueFilter
+                      required:
+                      - columnName
+                      - type
+                      type: object
+                      properties:
+                        values:
+                          type: array
+                          description: MultiValue filter values which has to be included
+                            in report
+                          items:
+                            type: string
+                            description: MultiValue filter values which has to be
+                              included in report
+                        columnName:
+                          type: string
+                          description: Column on which filter has to be applied
+                        type:
+                          type: string
+                          description: Type of the filter
+                          enum:
+                          - rangeFilter
+                          - enumFilter
+                          - multiValueFilter
+                excludeColumns:
+                  type: array
+                  description: Columns to exclude from report
+                  items:
+                    type: string
+                    description: Columns to exclude from report
+              description: Request Payload
+            example:
+              rowFilters:
+              - type: rangeFilter
+                columnName: Offer Start Date
+                from: '2020-03-16'
+              - type: rangeFilter
+                columnName: Offer End Date
+                to: '2021-06-16'
+              - type: rangeFilter
+                columnName: Price
+                from: '10'
+                to: '100'
+              - type: enumFilter
+                columnName: Publish Status
+                values:
+                - PUBLISHED
+              - type: multiValueFilter
+                columnName: brand
+                values:
+                - FELIX LECHEF
+                - ANEZUS
+              - type: multiValueFilter
+                columnName: category
+                values:
+                - JEWELRY MAKING AND STORAGE
+              excludeColumns:
+              - Average Rating
+              - Shelf Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                    description: Automated ID generated by system that uniquely identifies
+                      the report request.
+                    format: uuid
+                  requestStatus:
+                    type: string
+                    description: Status of report request. Possible values are RECEIVED,
+                      INPROGRESS, READY, ERROR.
+                    enum:
+                    - RECEIVED
+                    - INPROGRESS
+                    - READY
+                    - ERROR
+                  requestSubmissionDate:
+                    type: string
+                    description: Date and time on which the report request is submitted.
+                  reportType:
+                    type: string
+                    description: Type of report for which the request is created.
+                      Example, ITEM for Item Report.
+                    enum:
+                    - ITEM
+                    - INVENTORY
+                    - CANCELLATION
+                    - DELIVERY_DEFECT
+                    - ITEM_PERFORMANCE
+                    - PROMO
+                    - RETURN_OVERRIDES
+                    - CPA
+                    - SHIPPING_CONFIGURATION
+                    - SHIPPING_PROGRAM
+                    - BUYBOX
+                    - ASSORTMENT_RECOMMENDATIONS
+                  reportVersion:
+                    type: string
+                    description: Version of report for which the request is created.
+                      Example, v1.
+                  payload:
+                    type: object
+                    properties:
+                      rowFilters:
+                        type: array
+                        description: Row Level filters
+                        items:
+                          type: object
+                          description: Supertype of all row filters.
+                          anyOf:
+                          - title: EnumFilter
+                            required:
+                            - columnName
+                            - type
+                            type: object
+                            properties:
+                              values:
+                                type: array
+                                description: Enum filter values which has to be included
+                                  in report
+                                items:
+                                  type: string
+                                  description: Enum filter values which has to be
+                                    included in report
+                              columnName:
+                                type: string
+                                description: Column on which filter has to be applied
+                              type:
+                                type: string
+                                description: Type of the filter
+                                enum:
+                                - rangeFilter
+                                - enumFilter
+                                - multiValueFilter
+                          - title: RangeFilter
+                            required:
+                            - columnName
+                            - rowFilterType
+                            type: object
+                            properties:
+                              from:
+                                type: string
+                                description: Filter range start
+                              to:
+                                type: string
+                                description: Filter range end
+                              rowFilterType:
+                                type: string
+                                description: Type of the filter
+                                enum:
+                                - rangeFilter
+                                - enumFilter
+                                - multiValueFilter
+                              columnName:
+                                type: string
+                                description: Column on which filter has to be applied
+                          - title: MultiValueFilter
+                            required:
+                            - columnName
+                            - type
+                            type: object
+                            properties:
+                              values:
+                                type: array
+                                description: MultiValue filter values which has to
+                                  be included in report
+                                items:
+                                  type: string
+                                  description: MultiValue filter values which has
+                                    to be included in report
+                              columnName:
+                                type: string
+                                description: Column on which filter has to be applied
+                              type:
+                                type: string
+                                description: Type of the filter
+                                enum:
+                                - rangeFilter
+                                - enumFilter
+                                - multiValueFilter
+                      excludeColumns:
+                        type: array
+                        description: Columns to exclude from report
+                        items:
+                          type: string
+                          description: Columns to exclude from report
+                    description: Request Payload
+      useCases:
+      - name: Generate Assortment Recommendations Report With Invalid Itemavailability
+          Status
+        value: generate_assortment_recommendations_report_with_invalid_itemavailability_status
+        sha: ee8193a7f7cb6b450c2e6cd35bb931e53426f8c2
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_assortment_recommendations_report_with_invalid_itemavailability_status?token=AAAUDV6V6HUT44XOIATNBRLGMMJEG
+        case: failure
+      - name: Generate Assortment Recommendations Report With Invalid Multivalue Filter
+        value: generate_assortment_recommendations_report_with_invalid_multivalue_filter
+        sha: 81b16b2bd7a9826cfc14ada53f96feaa07ff8d55
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_assortment_recommendations_report_with_invalid_multivalue_filter?token=AAAUDV6WTN5JTZXUR3ZG6NLGMMJEG
+        case: failure
+      - name: Generate Assortment Recommendations Report With Invalid Range Filter
+        value: generate_assortment_recommendations_report_with_invalid_range_filter
+        sha: f119905a079735ed424a17413f5f762f7449de96
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_assortment_recommendations_report_with_invalid_range_filter?token=AAAUDV2FZ5MZLUKRBSQL37DGMMJEG
+        case: failure
+      - name: Generate Assortment Recommendations Report With Invalid Shopping Trends
+        value: generate_assortment_recommendations_report_with_invalid_shopping_trends
+        sha: c73c1fcdb1c96440d2badf145bc5bac8fbd8d200
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_assortment_recommendations_report_with_invalid_shopping_trends?token=AAAUDVYSFKEBIRAA4MQBVHTGMMJEG
+        case: failure
+      - name: Generate Item Report With Invalid Date In Filter
+        value: generate_item_report_with_invalid_date_in_filter
+        sha: b1b2f5d49acc07f0caa6b191534b062858a4c3f6
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_item_report_with_invalid_date_in_filter?token=AAAUDV23G4F66W4QGQCAWSTGMMJEG
+        case: failure
+      - name: Generate Item Report With Invalid Fulfilment Type In Filter
+        value: generate_item_report_with_invalid_fulfilment_type_in_filter
+        sha: e3c205d45543b35ad1f40c1fed36ab395e411446
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_item_report_with_invalid_fulfilment_type_in_filter?token=AAAUDV2RWEQWTEEV2CZDIRDGMMJEG
+        case: failure
+      - name: Generate Item Report With Invalid Lifecycle Status In Filter
+        value: generate_item_report_with_invalid_lifecycle_status_in_filter
+        sha: dea09583bfe6b2b9bf856d13ea8cdfef873cc057
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_item_report_with_invalid_lifecycle_status_in_filter?token=AAAUDV6UYEQJPFY756B7XSLGMMJEG
+        case: failure
+      - name: Generate Item Report With Invalid Number In Filter
+        value: generate_item_report_with_invalid_number_in_filter
+        sha: c945b257fe496f44b55c989b261de9fd68f35637
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_item_report_with_invalid_number_in_filter?token=AAAUDV3VU5MFOTWJSHIAVNTGMMJEG
+        case: failure
+      - name: Generate Item Report With Invalid Publish Status In Filter
+        value: generate_item_report_with_invalid_publish_status_in_filter
+        sha: 90870694e04d9e29c1b5e22419e66550578a1011
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_item_report_with_invalid_publish_status_in_filter?token=AAAUDV4TWS25BZK6HA7A22TGMMJEG
+        case: failure
+      - name: Generate Report For Invalid Report Type
+        value: generate_report_for_invalid_report_type
+        sha: dc189e9d5fda6d4545ad012dc11206384b531f81
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/failure/generate_report_for_invalid_report_type?token=AAAUDV2WN6MN5KKLYCIYBCTGMMJEG
+        case: failure
+      - name: Generate Cpa Report
+        value: generate_CPA_report
+        sha: 1300b2143ee98251a3d69c89f7eb080d4369ee0a
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_CPA_report?token=AAAUDV2KOGBOVPUQNFVXBILGMMJEG
+        case: success
+      - name: Generate Assortment Recommendations Report
+        value: generate_assortment_recommendations_report
+        sha: 7ebace3905c895daf86c804142e4e6106966783e
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_assortment_recommendations_report?token=AAAUDV6TPKYIONZL5YGAMGLGMMJEG
+        case: success
+      - name: Generate Assortment Recommendations Report With Filter
+        value: generate_assortment_recommendations_report_with_filter
+        sha: 11a02c6716af361fb0ec06f1976913b480b9692d
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_assortment_recommendations_report_with_filter?token=AAAUDV2LAPMUZZCMA77DGSTGMMJEG
+        case: success
+      - name: Generate Cancellation Report
+        value: generate_cancellation_report
+        sha: 9f86e1da1e4de0cf47eac65f66c30044beccea64
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_cancellation_report?token=AAAUDV6XBHZUYKF2ZBDLIWDGMMJEG
+        case: success
+      - name: Generate Delivery Defect Report
+        value: generate_delivery_defect_report
+        sha: 76f3d701880e425948d1d521f6b664053e89cbc5
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_delivery_defect_report?token=AAAUDVZBR5IYLL5B34QYB23GMMJEG
+        case: success
+      - name: Generate Fitment Aces Coverage Report
+        value: generate_fitment_aces_coverage_report
+        sha: 1c65e71ab27dd29ed886ae7b94e656787400a141
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_fitment_aces_coverage_report?token=AAAUDVZE3KGH53IO2WEGHFLGMMJEG
+        case: success
+      - name: Generate Fitment Missing Attr Report
+        value: generate_fitment_missing_attr_report
+        sha: 5bac330bf4111aee7d60df0a734e2160b5e63a11
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_fitment_missing_attr_report?token=AAAUDV45KJHKQLPLWHJIC63GMMJEG
+        case: success
+      - name: Generate Inventory Report
+        value: generate_inventory_report
+        sha: 4999bbf72e1171d2406d1ba82d3e28170b31da9f
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_inventory_report?token=AAAUDV436PI4AHPJTV6AX3DGMMJEG
+        case: success
+      - name: Generate Item Performance Report
+        value: generate_item_performance_report
+        sha: aeacea259123249921778173df0fe4fad3086212
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_item_performance_report?token=AAAUDV5Z7VLQLORXRWEKZ5LGMMJEG
+        case: success
+      - name: Generate Item Report With Filter Support
+        value: generate_item_report_with_filter_support
+        sha: 144a9ebd8aacd858e7314ed126332e639fc6756c
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_item_report_with_filter_support?token=AAAUDVYG4JB2QRTLTKNROKLGMMJEG
+        case: success
+      - name: Generate Item V1 Report
+        value: generate_item_v1_report
+        sha: 54f53864bba47566ac1c0b5df083383dea92b446
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_item_v1_report?token=AAAUDV5WRJFRS573BGN6L33GMMJEG
+        case: success
+      - name: Generate Item V2 Report
+        value: generate_item_v2_report
+        sha: 222ed18d58f5dba7f39637268e421d36b78e0d6b
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_item_v2_report?token=AAAUDVYSURIIYQ5CX4MKPFDGMMJEG
+        case: success
+      - name: Generate Item V3 Report
+        value: generate_item_v3_report
+        sha: c4cf6ac8838926cbc77158091ce8bb50a982b35a
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_item_v3_report?token=AAAUDV5US3UQGQJS3DHEHFLGMMJEG
+        case: success
+      - name: Generate Item V4 Report
+        value: generate_item_v4_report
+        sha: cec7ee18bade58baad438fcbdeda68bb4801af9f
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_item_v4_report?token=AAAUDV45SVF2U6DQ236J2BDGMMJEG
+        case: success
+      - name: Generate Promo Report
+        value: generate_promo_report
+        sha: 6f4b42261fac45e606ec4fbc020e416f274263ad
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_promo_report?token=AAAUDV6WYTEINLKSCBNKHDDGMMJEG
+        case: success
+      - name: Generate Return Overrides Report
+        value: generate_return_overrides_report
+        sha: 970da66e0ea8d7baf78f54a3678e3bc574766740
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_return_overrides_report?token=AAAUDV5DLWGGLUF6WSJLUBDGMMJEG
+        case: success
+      - name: Generate Shipping Configuration Report
+        value: generate_shipping_configuration_report
+        sha: f5c09e6a5657d1ae6e9019a421360fef575b56e2
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_shipping_configuration_report?token=AAAUDVZ57Y3RI6IUX4QHRVTGMMJEG
+        case: success
+      - name: Generate Shipping Program Report
+        value: generate_shipping_program_report
+        sha: 40701de0fdce2493b5174e8f76e9fc5fefb3ec30
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/generateReport/success/generate_shipping_program_report?token=AAAUDV43OKUX5MJTB3VDDN3GMMJEG
+        case: success
+  "/v3/reports/reportRequests/{requestId}":
+    get:
+      tags:
+      - On-Request Report
+      summary: Report Request Status
+      description: |-
+        Fetches status and other details of a report request by providing a requestID.
+
+        You can fetch details of report request created in the last 30 days only.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-onrequestreports/#4180"
+      operationId: getSingleRequestStatus
+      parameters:
+      - name: requestId
+        in: path
+        description: Automated ID generated by system that uniquely identifies the
+          report request.
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      - in: header
+        name: Accept
+        description: 'Only supported Media Type : application/json'
+        required: true
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                    description: Automated ID generated by system that uniquely identifies
+                      the report request.
+                    format: uuid
+                  requestStatus:
+                    type: string
+                    description: Status of report request. Possible values are RECEIVED,
+                      INPROGRESS, READY, ERROR.
+                    enum:
+                    - RECEIVED
+                    - INPROGRESS
+                    - READY
+                    - ERROR
+                  requestSubmissionDate:
+                    type: string
+                    description: Date and time on which the report request is submitted.
+                  reportType:
+                    type: string
+                    description: Type of report for which the request is created.
+                      Example, ITEM for Item Report.
+                    enum:
+                    - ITEM
+                    - INVENTORY
+                    - CANCELLATION
+                    - DELIVERY_DEFECT
+                    - ITEM_PERFORMANCE
+                    - PROMO
+                    - RETURN_OVERRIDES
+                    - CPA
+                    - SHIPPING_CONFIGURATION
+                    - SHIPPING_PROGRAM
+                    - BUYBOX
+                    - ASSORTMENT_RECOMMENDATIONS
+                  reportVersion:
+                    type: string
+                    description: Version of report for which the request is created.
+                      Example, v1.
+                  payload:
+                    type: object
+                    properties:
+                      rowFilters:
+                        type: array
+                        description: Row Level filters
+                        items:
+                          type: object
+                          description: Supertype of all row filters.
+                          anyOf:
+                          - title: EnumFilter
+                            required:
+                            - columnName
+                            - type
+                            type: object
+                            properties:
+                              values:
+                                type: array
+                                description: Enum filter values which has to be included
+                                  in report
+                                items:
+                                  type: string
+                                  description: Enum filter values which has to be
+                                    included in report
+                              columnName:
+                                type: string
+                                description: Column on which filter has to be applied
+                              type:
+                                type: string
+                                description: Type of the filter
+                                enum:
+                                - rangeFilter
+                                - enumFilter
+                                - multiValueFilter
+                          - title: RangeFilter
+                            required:
+                            - columnName
+                            - rowFilterType
+                            type: object
+                            properties:
+                              from:
+                                type: string
+                                description: Filter range start
+                              to:
+                                type: string
+                                description: Filter range end
+                              rowFilterType:
+                                type: string
+                                description: Type of the filter
+                                enum:
+                                - rangeFilter
+                                - enumFilter
+                                - multiValueFilter
+                              columnName:
+                                type: string
+                                description: Column on which filter has to be applied
+                          - title: MultiValueFilter
+                            required:
+                            - columnName
+                            - type
+                            type: object
+                            properties:
+                              values:
+                                type: array
+                                description: MultiValue filter values which has to
+                                  be included in report
+                                items:
+                                  type: string
+                                  description: MultiValue filter values which has
+                                    to be included in report
+                              columnName:
+                                type: string
+                                description: Column on which filter has to be applied
+                              type:
+                                type: string
+                                description: Type of the filter
+                                enum:
+                                - rangeFilter
+                                - enumFilter
+                                - multiValueFilter
+                      excludeColumns:
+                        type: array
+                        description: Columns to exclude from report
+                        items:
+                          type: string
+                          description: Columns to exclude from report
+                    description: Request Payload
+                  reportGenerationDate:
+                    type: string
+                    description: Date and time on which the report is generated. Attribute
+                      is available only if report is generated.
+      useCases:
+      - name: Check Status With Invalid Requestid
+        value: check_status_with_invalid_requestid
+        sha: 3914a4e684ae215d64c3138a5b4856fd8af117f6
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/failure/check_status_with_invalid_requestid?token=AAAUDV26N57PDWWRG77IQITGMMJEG
+        case: failure
+      - name: Check Status Of Assortment Recommendations Report
+        value: check_status_of_assortment_recommendations_report
+        sha: 6a0613282878cd4e4cee48e0b741105fe77cd245
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_assortment_recommendations_report?token=AAAUDV3BFJ3KK4CDSB6BCJ3GMMJEG
+        case: success
+      - name: Check Status Of Cancellation Report
+        value: check_status_of_cancellation_report
+        sha: 98e4d643f99b68630a044eb67fb8e2f4f8205c0f
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_cancellation_report?token=AAAUDVYKBEAWYWRPEQJFXE3GMMJEG
+        case: success
+      - name: Check Status Of Cpa Report
+        value: check_status_of_cpa_report
+        sha: 3ce585b45b38bde104f15341ad4da139d02f8d15
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_cpa_report?token=AAAUDV6KO4IHEI6YG7EWBADGMMJEG
+        case: success
+      - name: Check Status Of Delivery Defect Report
+        value: check_status_of_delivery_defect_report
+        sha: f8bbf5b2bf767b3687ad7146098adb1fddc65dcd
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_delivery_defect_report?token=AAAUDV6OMB3S6SPRQOAKOCDGMMJEG
+        case: success
+      - name: Check Status Of Fitment Aces Coverage Report
+        value: check_status_of_fitment_aces_coverage_report
+        sha: 1e8c27d0b3272b71a24724cf7b7ecd0b3b52cbf3
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_fitment_aces_coverage_report?token=AAAUDV7JDCLH2LJFYCEZXILGMMJEG
+        case: success
+      - name: Check Status Of Fitment Missing Attr Report
+        value: check_status_of_fitment_missing_attr_report
+        sha: f16cc185368ded492bb1afa42e9b05d667a09c20
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_fitment_missing_attr_report?token=AAAUDV3KYX6EAN22A22EWDDGMMJEG
+        case: success
+      - name: Check Status Of Inventory Report
+        value: check_status_of_inventory_report
+        sha: 377d0c24713453a72333740a44e0ed8c608554a3
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_inventory_report?token=AAAUDVZ6NBX4RUVH4YFTAELGMMJEG
+        case: success
+      - name: Check Status Of Item Performance Report
+        value: check_status_of_item_performance_report
+        sha: a866f911ccda4e471e4f30cdbd23d9baf8b19edd
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_item_performance_report?token=AAAUDV22CSYKZ47DGNFFKCDGMMJEG
+        case: success
+      - name: Check Status Of Item V1 Report
+        value: check_status_of_item_v1_report
+        sha: 520997a220609c5d7f26c363ad5a60b54ac71b01
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_item_v1_report?token=AAAUDV4HRA6JHULVNCL7OM3GMMJEG
+        case: success
+      - name: Check Status Of Item V2 Report
+        value: check_status_of_item_v2_report
+        sha: 489352775ac4fcfe42f80c616690af13a786c247
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_item_v2_report?token=AAAUDVZGT7W2JHSG7RY6OKLGMMJEG
+        case: success
+      - name: Check Status Of Item V3 Report
+        value: check_status_of_item_v3_report
+        sha: 378b1372da42b151d5901a1807cd38894459cb8b
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_item_v3_report?token=AAAUDVZC6APWVULUZXUC6QDGMMJEG
+        case: success
+      - name: Check Status Of Item V4 Report
+        value: check_status_of_item_v4_report
+        sha: 5fe92140ee11e60710c55716fc61300ae7b4b96e
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_item_v4_report?token=AAAUDVZPPZEKYPHESRI4W53GMMJEG
+        case: success
+      - name: Check Status Of Promo Report
+        value: check_status_of_promo_report
+        sha: e2faf1d8f77c6e4f346ae3d87a901e3ff7b88707
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_promo_report?token=AAAUDV3E22X543NP4NIKFILGMMJEG
+        case: success
+      - name: Check Status Of Return Overrides Report
+        value: check_status_of_return_overrides_report
+        sha: a9dfa3334e86e0b971feb044910e679bbaf4c887
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_return_overrides_report?token=AAAUDV4YVYU27BOLKFGHUTLGMMJEG
+        case: success
+      - name: Check Status Of Shipping Configuration Report
+        value: check_status_of_shipping_configuration_report
+        sha: c84c1ff76959d495a8509b8e8a429e38649a13aa
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_shipping_configuration_report?token=AAAUDV2L2ZSYPUWHPARVVQTGMMJEG
+        case: success
+      - name: Check Status Of Shipping Program Report
+        value: check_status_of_shipping_program_report
+        sha: b08b3aea762a15e859d1e954918a2b3aa01b633b
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/getSingleRequestStatus/success/check_status_of_shipping_program_report?token=AAAUDV4HWPZT6NEJLWLNWVDGMMJEG
+        case: success
+  "/v3/reports/downloadReport":
+    get:
+      tags:
+      - On-Request Report
+      summary: Download Report URL
+      description: Fetches URL to download a generated report.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-onrequestreports/#4180"
+      operationId: downloadReport
+      parameters:
+      - name: requestId
+        in: query
+        description: Automated ID generated by system that uniquely identifies the
+          report request.
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      - in: header
+        name: Accept
+        description: 'Only supported Media Type : application/json'
+        required: true
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  downloadURL:
+                    type: string
+                    description: URL to be used to download the report.
+                  downloadURLExpirationTime:
+                    type: string
+                    description: Time till when the URL to download the report will
+                      be valid.
+                  requestId:
+                    type: string
+                    description: Automated ID generated by system that uniquely identifies
+                      the report request.
+                    format: uuid
+                  requestStatus:
+                    type: string
+                    description: Status of report request. Possible values are RECEIVED,
+                      INPROGRESS, READY, ERROR.
+                    enum:
+                    - RECEIVED
+                    - INPROGRESS
+                    - READY
+                    - ERROR
+                  requestSubmissionDate:
+                    type: string
+                    description: Date and time on which the report request is submitted.
+                  reportType:
+                    type: string
+                    description: Type of report for which the request is created.
+                      Example, ITEM for Item Report.
+                    enum:
+                    - ITEM
+                    - INVENTORY
+                    - CANCELLATION
+                    - DELIVERY_DEFECT
+                    - ITEM_PERFORMANCE
+                    - PROMO
+                    - RETURN_OVERRIDES
+                    - CPA
+                    - SHIPPING_CONFIGURATION
+                    - SHIPPING_PROGRAM
+                    - BUYBOX
+                    - ASSORTMENT_RECOMMENDATIONS
+                  reportVersion:
+                    type: string
+                    description: Version of report for which the request is created.
+                      Example, v1.
+                  reportGenerationDate:
+                    type: string
+                    description: Date and time on which the report is generated. Attribute
+                      is available only if report is generated.
+      useCases:
+      - name: Download Report Not Found
+        value: download_report_not_found
+        sha: 20877a699f52846991047aef3ea1ee49cef13c99
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/failure/download_report_not_found?token=AAAUDVZEAKH6VR5XI72B6WLGMMJEI
+        case: failure
+      - name: Download Cpa Report
+        value: download_CPA_report
+        sha: 117211ad38620b45d26f53b828763d4af238601b
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_CPA_report?token=AAAUDV2HXWNVHJ33RPQS3ETGMMJEI
+        case: success
+      - name: Download Assortment Recommendations Report
+        value: download_assortment_recommendations_report
+        sha: 7f0d3554c12e16c438f86e89727de0ccc384960f
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_assortment_recommendations_report?token=AAAUDV5TYQRNDA35S5KJU5TGMMJEI
+        case: success
+      - name: Download Cancellation Report
+        value: download_cancellation_report
+        sha: d34e8ef403a51f3dcc7a86bd3b5e59a9edd9509f
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_cancellation_report?token=AAAUDV234S73PEG5YKECBUDGMMJEI
+        case: success
+      - name: Download Delivery Defect Report
+        value: download_delivery_defect_report
+        sha: 63636239423fd7c53dd73afc6a9673ab38083113
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_delivery_defect_report?token=AAAUDV7OED5ANBCPLMUS763GMMJEI
+        case: success
+      - name: Download Fitment Aces Coverage Report
+        value: download_fitment_aces_coverage_report
+        sha: 26a66767abcc486acac7898efbb773ff39819b61
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_fitment_aces_coverage_report?token=AAAUDV23AIDHRZF7XXBXLALGMMJEI
+        case: success
+      - name: Download Fitment Missing Attr Report
+        value: download_fitment_missing_attr_report
+        sha: f3c55be37d4a0b3e353b37dade07a5ec332dcfcf
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_fitment_missing_attr_report?token=AAAUDVYBE62JPYER7KBLIJ3GMMJEI
+        case: success
+      - name: Download Inventory Report
+        value: download_inventory_report
+        sha: 16309d6c56f6fe2fb76ce1d18161a61bbaa2080d
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_inventory_report?token=AAAUDV6YY72NHQ6DS5HZPETGMMJEI
+        case: success
+      - name: Download Item Performance Report
+        value: download_item_performance_report
+        sha: 21ef5fc2a007b7beaedb31d8e25503cdc8989dd0
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_item_performance_report?token=AAAUDV3DWCVISSYELFQDDKDGMMJEI
+        case: success
+      - name: Download Item V1 Report
+        value: download_item_v1_report
+        sha: 9930061ac5bdec02469b12571f046183df04a530
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_item_v1_report?token=AAAUDV75DEUVQFCYSKZKQ53GMMJEI
+        case: success
+      - name: Download Item V2 Report
+        value: download_item_v2_report
+        sha: 42c2241a6a9ec6eb80037fe6468a3204e2925e45
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_item_v2_report?token=AAAUDV3QUAGZ4LCWSLBKEI3GMMJEI
+        case: success
+      - name: Download Item V3 Report
+        value: download_item_v3_report
+        sha: 0e8bb5271bbb65d57da727adfea6aa5984074691
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_item_v3_report?token=AAAUDV4VFOKGDQQIPIVZJ4TGMMJEI
+        case: success
+      - name: Download Item V4 Report
+        value: download_item_v4_report
+        sha: c1c3b8b4f8b080fb15cc8837d1ccce7357ec148f
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_item_v4_report?token=AAAUDVYDFQPIS6WPI2GZDUTGMMJEI
+        case: success
+      - name: Download Promo Report
+        value: download_promo_report
+        sha: 402263d900fab8f5ad360085f31786a9e59af1ba
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_promo_report?token=AAAUDV4MERBXNUHNYCYO54TGMMJEI
+        case: success
+      - name: Download Return Overrides Report
+        value: download_return_overrides_report
+        sha: 56f57ab54d7b85e0b95b101c3498291576369104
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_return_overrides_report?token=AAAUDV255TKC6XNXVQ542F3GMMJEI
+        case: success
+      - name: Download Shipping Configuration Report
+        value: download_shipping_configuration_report
+        sha: 22e2b6837116614b2dd92bddcaa004f2953f76c9
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_shipping_configuration_report?token=AAAUDV27TX23VCDYR3GMRMLGMMJEI
+        case: success
+      - name: Download Shipping Program Report
+        value: download_shipping_program_report
+        sha: bfd24a6fce03e19cd9fba31d27dff20a6ac79056
+        download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/onrequestreports/MetaData/downloadReport/success/download_shipping_program_report?token=AAAUDVYU2HYP7WMMPYOUPHLGMMJEI
+        case: success
+components:
+  schemas:
+    EnumFilter:
+      title: EnumFilter
+      required:
+      - columnName
+      - type
+      type: object
+      properties:
+        values:
+          type: array
+          description: Enum filter values which has to be included in report
+          items:
+            type: string
+            description: Enum filter values which has to be included in report
+        columnName:
+          type: string
+          description: Column on which filter has to be applied
+        type:
+          type: string
+          description: Type of the filter
+          enum:
+          - rangeFilter
+          - enumFilter
+          - multiValueFilter
+    GenerateReportPayload:
+      type: object
+      properties:
+        rowFilters:
+          type: array
+          description: Row Level filters
+          items:
+            type: object
+            description: Supertype of all row filters.
+            anyOf:
+            - title: EnumFilter
+              required:
+              - columnName
+              - type
+              type: object
+              properties:
+                values:
+                  type: array
+                  description: Enum filter values which has to be included in report
+                  items:
+                    type: string
+                    description: Enum filter values which has to be included in report
+                columnName:
+                  type: string
+                  description: Column on which filter has to be applied
+                type:
+                  type: string
+                  description: Type of the filter
+                  enum:
+                  - rangeFilter
+                  - enumFilter
+                  - multiValueFilter
+            - title: RangeFilter
+              required:
+              - columnName
+              - rowFilterType
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: Filter range start
+                to:
+                  type: string
+                  description: Filter range end
+                rowFilterType:
+                  type: string
+                  description: Type of the filter
+                  enum:
+                  - rangeFilter
+                  - enumFilter
+                  - multiValueFilter
+                columnName:
+                  type: string
+                  description: Column on which filter has to be applied
+            - title: MultiValueFilter
+              required:
+              - columnName
+              - type
+              type: object
+              properties:
+                values:
+                  type: array
+                  description: MultiValue filter values which has to be included in
+                    report
+                  items:
+                    type: string
+                    description: MultiValue filter values which has to be included
+                      in report
+                columnName:
+                  type: string
+                  description: Column on which filter has to be applied
+                type:
+                  type: string
+                  description: Type of the filter
+                  enum:
+                  - rangeFilter
+                  - enumFilter
+                  - multiValueFilter
+        excludeColumns:
+          type: array
+          description: Columns to exclude from report
+          items:
+            type: string
+            description: Columns to exclude from report
+      description: Request Payload
+    GenerateReportResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Automated ID generated by system that uniquely identifies the
+            report request.
+          format: uuid
+        requestStatus:
+          type: string
+          description: Status of report request. Possible values are RECEIVED, INPROGRESS,
+            READY, ERROR.
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+        requestSubmissionDate:
+          type: string
+          description: Date and time on which the report request is submitted.
+        reportType:
+          type: string
+          description: Type of report for which the request is created. Example, ITEM
+            for Item Report.
+          enum:
+          - ITEM
+          - INVENTORY
+          - CANCELLATION
+          - DELIVERY_DEFECT
+          - ITEM_PERFORMANCE
+          - PROMO
+          - RETURN_OVERRIDES
+          - CPA
+          - SHIPPING_CONFIGURATION
+          - SHIPPING_PROGRAM
+          - BUYBOX
+          - ASSORTMENT_RECOMMENDATIONS
+        reportVersion:
+          type: string
+          description: Version of report for which the request is created. Example,
+            v1.
+        payload:
+          type: object
+          properties:
+            rowFilters:
+              type: array
+              description: Row Level filters
+              items:
+                type: object
+                description: Supertype of all row filters.
+                anyOf:
+                - title: EnumFilter
+                  required:
+                  - columnName
+                  - type
+                  type: object
+                  properties:
+                    values:
+                      type: array
+                      description: Enum filter values which has to be included in
+                        report
+                      items:
+                        type: string
+                        description: Enum filter values which has to be included in
+                          report
+                    columnName:
+                      type: string
+                      description: Column on which filter has to be applied
+                    type:
+                      type: string
+                      description: Type of the filter
+                      enum:
+                      - rangeFilter
+                      - enumFilter
+                      - multiValueFilter
+                - title: RangeFilter
+                  required:
+                  - columnName
+                  - rowFilterType
+                  type: object
+                  properties:
+                    from:
+                      type: string
+                      description: Filter range start
+                    to:
+                      type: string
+                      description: Filter range end
+                    rowFilterType:
+                      type: string
+                      description: Type of the filter
+                      enum:
+                      - rangeFilter
+                      - enumFilter
+                      - multiValueFilter
+                    columnName:
+                      type: string
+                      description: Column on which filter has to be applied
+                - title: MultiValueFilter
+                  required:
+                  - columnName
+                  - type
+                  type: object
+                  properties:
+                    values:
+                      type: array
+                      description: MultiValue filter values which has to be included
+                        in report
+                      items:
+                        type: string
+                        description: MultiValue filter values which has to be included
+                          in report
+                    columnName:
+                      type: string
+                      description: Column on which filter has to be applied
+                    type:
+                      type: string
+                      description: Type of the filter
+                      enum:
+                      - rangeFilter
+                      - enumFilter
+                      - multiValueFilter
+            excludeColumns:
+              type: array
+              description: Columns to exclude from report
+              items:
+                type: string
+                description: Columns to exclude from report
+          description: Request Payload
+    MultiValueFilter:
+      title: MultiValueFilter
+      required:
+      - columnName
+      - type
+      type: object
+      properties:
+        values:
+          type: array
+          description: MultiValue filter values which has to be included in report
+          items:
+            type: string
+            description: MultiValue filter values which has to be included in report
+        columnName:
+          type: string
+          description: Column on which filter has to be applied
+        type:
+          type: string
+          description: Type of the filter
+          enum:
+          - rangeFilter
+          - enumFilter
+          - multiValueFilter
+    RangeFilter:
+      title: RangeFilter
+      required:
+      - columnName
+      - rowFilterType
+      type: object
+      properties:
+        from:
+          type: string
+          description: Filter range start
+        to:
+          type: string
+          description: Filter range end
+        rowFilterType:
+          type: string
+          description: Type of the filter
+          enum:
+          - rangeFilter
+          - enumFilter
+          - multiValueFilter
+        columnName:
+          type: string
+          description: Column on which filter has to be applied
+    RowFilter:
+      type: object
+      description: Supertype of all row filters.
+      anyOf:
+      - title: EnumFilter
+        required:
+        - columnName
+        - type
+        type: object
+        properties:
+          values:
+            type: array
+            description: Enum filter values which has to be included in report
+            items:
+              type: string
+              description: Enum filter values which has to be included in report
+          columnName:
+            type: string
+            description: Column on which filter has to be applied
+          type:
+            type: string
+            description: Type of the filter
+            enum:
+            - rangeFilter
+            - enumFilter
+            - multiValueFilter
+      - title: RangeFilter
+        required:
+        - columnName
+        - rowFilterType
+        type: object
+        properties:
+          from:
+            type: string
+            description: Filter range start
+          to:
+            type: string
+            description: Filter range end
+          rowFilterType:
+            type: string
+            description: Type of the filter
+            enum:
+            - rangeFilter
+            - enumFilter
+            - multiValueFilter
+          columnName:
+            type: string
+            description: Column on which filter has to be applied
+      - title: MultiValueFilter
+        required:
+        - columnName
+        - type
+        type: object
+        properties:
+          values:
+            type: array
+            description: MultiValue filter values which has to be included in report
+            items:
+              type: string
+              description: MultiValue filter values which has to be included in report
+          columnName:
+            type: string
+            description: Column on which filter has to be applied
+          type:
+            type: string
+            description: Type of the filter
+            enum:
+            - rangeFilter
+            - enumFilter
+            - multiValueFilter
+    RequestStatusResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Automated ID generated by system that uniquely identifies the
+            report request.
+          format: uuid
+        requestStatus:
+          type: string
+          description: Status of report request. Possible values are RECEIVED, INPROGRESS,
+            READY, ERROR.
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+        requestSubmissionDate:
+          type: string
+          description: Date and time on which the report request is submitted.
+        reportType:
+          type: string
+          description: Type of report for which the request is created. Example, ITEM
+            for Item Report.
+          enum:
+          - ITEM
+          - INVENTORY
+          - CANCELLATION
+          - DELIVERY_DEFECT
+          - ITEM_PERFORMANCE
+          - PROMO
+          - RETURN_OVERRIDES
+          - CPA
+          - SHIPPING_CONFIGURATION
+          - SHIPPING_PROGRAM
+          - BUYBOX
+          - ASSORTMENT_RECOMMENDATIONS
+        reportVersion:
+          type: string
+          description: Version of report for which the request is created. Example,
+            v1.
+        payload:
+          type: object
+          properties:
+            rowFilters:
+              type: array
+              description: Row Level filters
+              items:
+                type: object
+                description: Supertype of all row filters.
+                anyOf:
+                - title: EnumFilter
+                  required:
+                  - columnName
+                  - type
+                  type: object
+                  properties:
+                    values:
+                      type: array
+                      description: Enum filter values which has to be included in
+                        report
+                      items:
+                        type: string
+                        description: Enum filter values which has to be included in
+                          report
+                    columnName:
+                      type: string
+                      description: Column on which filter has to be applied
+                    type:
+                      type: string
+                      description: Type of the filter
+                      enum:
+                      - rangeFilter
+                      - enumFilter
+                      - multiValueFilter
+                - title: RangeFilter
+                  required:
+                  - columnName
+                  - rowFilterType
+                  type: object
+                  properties:
+                    from:
+                      type: string
+                      description: Filter range start
+                    to:
+                      type: string
+                      description: Filter range end
+                    rowFilterType:
+                      type: string
+                      description: Type of the filter
+                      enum:
+                      - rangeFilter
+                      - enumFilter
+                      - multiValueFilter
+                    columnName:
+                      type: string
+                      description: Column on which filter has to be applied
+                - title: MultiValueFilter
+                  required:
+                  - columnName
+                  - type
+                  type: object
+                  properties:
+                    values:
+                      type: array
+                      description: MultiValue filter values which has to be included
+                        in report
+                      items:
+                        type: string
+                        description: MultiValue filter values which has to be included
+                          in report
+                    columnName:
+                      type: string
+                      description: Column on which filter has to be applied
+                    type:
+                      type: string
+                      description: Type of the filter
+                      enum:
+                      - rangeFilter
+                      - enumFilter
+                      - multiValueFilter
+            excludeColumns:
+              type: array
+              description: Columns to exclude from report
+              items:
+                type: string
+                description: Columns to exclude from report
+          description: Request Payload
+        reportGenerationDate:
+          type: string
+          description: Date and time on which the report is generated. Attribute is
+            available only if report is generated.
+    RequestsStatusResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page
+          format: int32
+        totalCount:
+          type: integer
+          description: Number of records fetched.
+          format: int64
+        limit:
+          type: integer
+          description: Number of records to be returned. Default is 10.
+          format: int32
+        nextCursor:
+          type: string
+          description: Used for pagination when more than specified limit (or default
+            10) records are found. Use this param for next API call. Just have to
+            use this value as query param. Need to pass only the cursor value and
+            not the initial API call query params. For e.g. if ['nextCursor'='reportType=ITEM&requestStatus=ERROR&requestSubmissionStartDate=2021-08-20T10:52:59Z&requestSubmissionEndDate=2021-09-14T10:52:59Z&page=2&limit=1']
+            then subsequent call to will be [marketplace.walmartapis.com/v3/reports/reportRequests?reportType=ITEM&requestStatus=ERROR&requestSubmissionStartDate=2021-08-20T10:52:59Z&requestSubmissionEndDate=2021-09-14T10:52:59Z&page=2&limit=1].
+            Just have to use nextCursor value instead of query params
+        requests:
+          type: array
+          description: List of requests
+          items:
+            type: object
+            properties:
+              requestId:
+                type: string
+                description: Automated ID generated by system that uniquely identifies
+                  the report request.
+                format: uuid
+              requestStatus:
+                type: string
+                description: Status of report request. Possible values are RECEIVED,
+                  INPROGRESS, READY, ERROR.
+                enum:
+                - RECEIVED
+                - INPROGRESS
+                - READY
+                - ERROR
+              requestSubmissionDate:
+                type: string
+                description: Date and time on which the report request is submitted.
+              reportType:
+                type: string
+                description: Type of report for which the request is created. Example,
+                  ITEM for Item Report.
+                enum:
+                - ITEM
+                - INVENTORY
+                - CANCELLATION
+                - DELIVERY_DEFECT
+                - ITEM_PERFORMANCE
+                - PROMO
+                - RETURN_OVERRIDES
+                - CPA
+                - SHIPPING_CONFIGURATION
+                - SHIPPING_PROGRAM
+                - BUYBOX
+                - ASSORTMENT_RECOMMENDATIONS
+              reportVersion:
+                type: string
+                description: Version of report for which the request is created. Example,
+                  v1.
+              payload:
+                type: object
+                properties:
+                  rowFilters:
+                    type: array
+                    description: Row Level filters
+                    items:
+                      type: object
+                      description: Supertype of all row filters.
+                      anyOf:
+                      - title: EnumFilter
+                        required:
+                        - columnName
+                        - type
+                        type: object
+                        properties:
+                          values:
+                            type: array
+                            description: Enum filter values which has to be included
+                              in report
+                            items:
+                              type: string
+                              description: Enum filter values which has to be included
+                                in report
+                          columnName:
+                            type: string
+                            description: Column on which filter has to be applied
+                          type:
+                            type: string
+                            description: Type of the filter
+                            enum:
+                            - rangeFilter
+                            - enumFilter
+                            - multiValueFilter
+                      - title: RangeFilter
+                        required:
+                        - columnName
+                        - rowFilterType
+                        type: object
+                        properties:
+                          from:
+                            type: string
+                            description: Filter range start
+                          to:
+                            type: string
+                            description: Filter range end
+                          rowFilterType:
+                            type: string
+                            description: Type of the filter
+                            enum:
+                            - rangeFilter
+                            - enumFilter
+                            - multiValueFilter
+                          columnName:
+                            type: string
+                            description: Column on which filter has to be applied
+                      - title: MultiValueFilter
+                        required:
+                        - columnName
+                        - type
+                        type: object
+                        properties:
+                          values:
+                            type: array
+                            description: MultiValue filter values which has to be
+                              included in report
+                            items:
+                              type: string
+                              description: MultiValue filter values which has to be
+                                included in report
+                          columnName:
+                            type: string
+                            description: Column on which filter has to be applied
+                          type:
+                            type: string
+                            description: Type of the filter
+                            enum:
+                            - rangeFilter
+                            - enumFilter
+                            - multiValueFilter
+                  excludeColumns:
+                    type: array
+                    description: Columns to exclude from report
+                    items:
+                      type: string
+                      description: Columns to exclude from report
+                description: Request Payload
+              reportGenerationDate:
+                type: string
+                description: Date and time on which the report is generated. Attribute
+                  is available only if report is generated.
+    DownloadReportResponse:
+      type: object
+      properties:
+        downloadURL:
+          type: string
+          description: URL to be used to download the report.
+        downloadURLExpirationTime:
+          type: string
+          description: Time till when the URL to download the report will be valid.
+        requestId:
+          type: string
+          description: Automated ID generated by system that uniquely identifies the
+            report request.
+          format: uuid
+        requestStatus:
+          type: string
+          description: Status of report request. Possible values are RECEIVED, INPROGRESS,
+            READY, ERROR.
+          enum:
+          - RECEIVED
+          - INPROGRESS
+          - READY
+          - ERROR
+        requestSubmissionDate:
+          type: string
+          description: Date and time on which the report request is submitted.
+        reportType:
+          type: string
+          description: Type of report for which the request is created. Example, ITEM
+            for Item Report.
+          enum:
+          - ITEM
+          - INVENTORY
+          - CANCELLATION
+          - DELIVERY_DEFECT
+          - ITEM_PERFORMANCE
+          - PROMO
+          - RETURN_OVERRIDES
+          - CPA
+          - SHIPPING_CONFIGURATION
+          - SHIPPING_PROGRAM
+          - BUYBOX
+          - ASSORTMENT_RECOMMENDATIONS
+        reportVersion:
+          type: string
+          description: Version of report for which the request is created. Example,
+            v1.
+        reportGenerationDate:
+          type: string
+          description: Date and time on which the report is generated. Attribute is
+            available only if report is generated.
+  parameters:
+    authorization:
+      name: Authorization
+      in: header
+      description: Basic authorization header. Base 64 encodes the Client ID and Client
+        Secret retrieved in step two of the integration steps.
+      required: true
+      schema:
+        type: string
+      example: Basic YzcyOTFjNmItNzI5MC00....
+    accessToken:
+      name: WM_SEC.ACCESS_TOKEN
+      in: header
+      description: The access token retrieved in the Token API call
+      required: true
+      schema:
+        type: string
+      example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+    channelType:
+      name: WM_CONSUMER.CHANNEL.TYPE
+      in: header
+      description: A unique ID to track the consumer request by channel. Use the Consumer
+        Channel Type received during onboarding
+      required: false
+      schema:
+        type: string
+    correlationId:
+      name: WM_QOS.CORRELATION_ID
+      in: header
+      description: A unique ID which identifies each API call and used to track and
+        debug issues; use a random generated GUID for this ID
+      required: true
+      schema:
+        type: string
+      example: b3261d2d-028a-4ef7-8602-633c23200af6
+    svcName:
+      name: WM_SVC.NAME
+      in: header
+      description: Walmart Service Name
+      required: true
+      schema:
+        type: string
+      example: Walmart Service Name
+    accept:
+      name: Accept
+      in: header
+      description: 'Only supported Media Type : application/json'
+      required: true
+      schema:
+        type: string
+      example: application/json
+    content-type:
+      name: Content-Type
+      in: header
+      description: 'Only supported Media Type : application/json'
+      required: true
+      schema:
+        type: string
+      example: application/json
