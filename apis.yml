@@ -123,7 +123,7 @@ apis:
     aid: walmart:walmart-promotion-api
   - name: Walmart Orders API
     description: >-
-      The Walmart Order Management APIs help Sellers to manage customer’s Sales
+      The Walmart Order Management APIs help Sellers to manage customer's Sales
       Orders and to stay up-to-date on orders fulfillment, which orders to
       fulfill, and when to fulfill them.
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -220,11 +220,11 @@ apis:
     aid: walmart:walmart-dropship-vendor-costs-api
   - name: Walmart Dropship Vendor Inventory API
     description: >-
-      Walmart’s Inventory Management API provide drop ship vending (DSV)
+      Walmart's Inventory Management API provide drop ship vending (DSV)
       suppliers with mechanisms to update and view current item inventory levels
       at each ship node, also known as fulfillment centers. Suppliers assign
       each item they fulfill drop ship vending (DSV) through one or more ship
-      nodes. Suppliers must accurately maintain the item’s inventory level at
+      nodes. Suppliers must accurately maintain the item's inventory level at
       each ship node to ensure availability for customer orders.
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
@@ -398,7 +398,7 @@ apis:
       Services (WFS), uniquely placed to ensure quality, scale, and efficiency
       for a seller to grow a successful business. The entire assortment of
       inventory, supply chain management and fulfillment capabilities are
-      centralized and managed by Walmart while seller’s items can be listed and
+      centralized and managed by Walmart while seller's items can be listed and
       sold at multiple online platforms and storefronts.
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
@@ -508,7 +508,7 @@ apis:
     description: >-
       Push notifications or Web Hooks trigger alerts to seller applications when
       specific events occur, such as an item is unpublished, a new purchase
-      order is created, an item’s inventory is out of stock, etc. Whenever the
+      order is created, an item's inventory is out of stock, etc. Whenever the
       trigger event occurs, Walmart will send a notification payload with event
       details to the seller-defined destination URL. Web Hooks help to optimize
       integration, automate workflows and reduce the number of times your
@@ -793,4 +793,3 @@ overlays:
   - type: API Evangelist Ratings
     url: overlays/apis-io-search.yml
 aid: walmart
-
