@@ -119,7 +119,6 @@ apis:
         url: https://developer.walmart.com/api/us/mp/promotion
       - type: OpenAPI
         url: openapi/walmart-marketplace-promotions-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-promotion-api
   - name: Walmart Orders API
     description: >-
@@ -144,7 +143,6 @@ apis:
         url: https://developer.walmart.com/api/us/mp/orders
       - type: OpenAPI
         url: openapi/walmart-marketplace-orders-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-order-api
   - name: Walmart Returns API
     description: >-
@@ -169,7 +167,6 @@ apis:
         url: https://developer.walmart.com/api/us/mp/returns
       - type: OpenAPI
         url: openapi/walmart-marketplace-returns-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-returns-api
   - name: Walmart Inventory API
     description: >-
@@ -197,7 +194,6 @@ apis:
         url: https://developer.walmart.com/api/us/mp/inventory
       - type: OpenAPI
         url: openapi/walmart-marketplace-inventory-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-inventory-api
   - name: Walmart Dropship Vendor Costs API
     description: >-
@@ -216,7 +212,6 @@ apis:
         url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
       - type: OpenAPI
         url: openapi/walmart-dropship-vendor-costs-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-dropship-vendor-costs-api
   - name: Walmart Dropship Vendor Inventory API
     description: >-
@@ -246,7 +241,6 @@ apis:
           https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
       - type: OpenAPI
         url: openapi/walmart-dropship-vendor-inventory-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-dropship-vendor-inventory-api
   - name: Walmart Dropship Vendor Items API
     description: >-
@@ -275,7 +269,6 @@ apis:
         url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
       - type: OpenAPI
         url: openapi/walmart-dropship-vendor-items-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-dropship-vendor-items-api
   - name: Walmart Dropship Vendor Lag Time API
     description: >-
@@ -304,7 +297,6 @@ apis:
         url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
       - type: OpenAPI
         url: openapi/walmart-dropship-vendor-lag-time-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-dropship-vendor-lag-time-api
   - name: Walmart Dropship Vendor On-Request Reports API
     description: >-
@@ -326,8 +318,8 @@ apis:
         url: >-
           https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
       - type: OpenAPI
-        url: openapi/walmart-dropship-vendor-on-request-reports-openapi-original.yml
-    overlays: []
+        url: >-
+          openapi/walmart-dropship-vendor-on-request-reports-openapi-original.yml
     aid: walmart:walmart-dropship-vendor-on-request-reports-api
   - name: Walmart Dropship Vendor Orders API
     description: >-
@@ -352,7 +344,6 @@ apis:
         url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
       - type: OpenAPI
         url: openapi/walmart-dropship-vendor-orders-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-dropship-vendor-orders-api
   - name: Walmart Dropship Vendor Orders API
     description: >-
@@ -371,7 +362,6 @@ apis:
       - type: OpenAPI
         url: >-
           openapiwalmart-dropship-vendor-pre-generated-reports-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-dropship-vendor-pre-generated-reports-api
   - name: Walmart Marketplace Authentication API
     description: >-
@@ -389,7 +379,6 @@ apis:
         url: https://developer.walmart.com/api/us/supplier/auth
       - type: OpenAPI
         url: openapi/walmart-marketplace-authentication-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-authentication-api
   - name: Walmart Marketplace Fulfillment API
     description: >-
@@ -446,7 +435,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
       - type: OpenAPI
         url: openapi/walmart-marketplace-fulfillment-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-fulfillment-api
   - name: Walmart Marketplace Insights API
     description: >-
@@ -481,7 +469,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
       - type: OpenAPI
         url: openapi/walmart-marketplace-insights-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-insights-api
   - name: Walmart Marketplace Lag Time API
     description: >-
@@ -501,7 +488,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
       - type: OpenAPI
         url: openapi/walmart-marketplace-lag-time-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-lag-time-api
   - name: Walmart Marketplace Notifications API
     description: >-
@@ -528,7 +514,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
       - type: OpenAPI
         url: openapi/walmart-marketplace-notifications-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-notifications-api
   - name: Walmart Marketplace On-Request Reports API
     description: >-
@@ -549,7 +534,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
       - type: OpenAPI
         url: openapi/walmart-marketplace-on-request-reports-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-on-request-reports-api
   - name: Walmart Marketplace Recommendations API
     description: >-
@@ -574,7 +558,6 @@ apis:
           https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
       - type: OpenAPI
         url: openapi/walmart-marketplace-recommendations-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-recommendations-api
   - name: Walmart Marketplace Reports API
     description: >-
@@ -601,7 +584,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
       - type: OpenAPI
         url: openapi/walmart-marketplace-reports-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-reports-api
   - name: Walmart Marketplace Reviews API
     description: >-
@@ -625,7 +607,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
       - type: OpenAPI
         url: openapi/walmart-marketplace-reviews-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-reviews-api
   - name: Walmart Marketplace Rules API
     description: >-
@@ -663,7 +644,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
       - type: OpenAPI
         url: openapi/walmart-marketplace-rules-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-rules-api
   - name: Walmart Marketplace Settings API
     description: >-
@@ -706,7 +686,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
       - type: OpenAPI
         url: openapi/walmart-marketplace-settings-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-settings-api
   - name: Walmart Marketplace Shipping API
     description: >-
@@ -740,7 +719,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
       - type: OpenAPI
         url: openapi/walmart-marketplace-shipping-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-shipping-api
   - name: Walmart Marketplace Utilities API
     description: >-
@@ -763,7 +741,6 @@ apis:
         url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
       - type: OpenAPI
         url: openapi/walmart-marketplace-utilities-openapi-original.yml
-    overlays: []
     aid: walmart:walmart-marketplace-utilities-api
 common:
   - type: Portal
