@@ -1,0 +1,649 @@
+---
+openapi: 3.0.1
+info:
+  title: Pre-Generated Reports Management
+  description: "This API generates the item report for drop ship vendors (DSV). \nIt
+    returns all the information associated with vendor items that are set up on Walmart's
+    platform.\n\n**May 2024**<br>Built: 05/09/2024, 16:00:37\n"
+  version: '1.0'
+servers:
+- url: https://api-gateway.walmart.com
+  description: Production URL
+- url: https://sandbox.walmartapis.com
+  description: Sandbox URL
+paths:
+  "/v3/getReport":
+    get:
+      tags:
+      - Pre-Generated Reports
+      operationId: getGenerateItemReport
+      summary: Generate an item report
+      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/getReport</p>\n\nThis
+        request generates the item report for drop ship vendors (DSV). \n\nIt returns
+        all the information associated with vendor items that are set up on Walmart's
+        platform.\n"
+      parameters:
+      - in: query
+        name: type
+        required: true
+        schema:
+          type: string
+        description: "Specifies the type of report. \n\nUse `type=vendor_item` to
+          fetch the item report from drop ship vendors (DSV).\n\nExample(s):<br>\nvendor_item\n"
+        example: vendor_item
+      - in: query
+        name: version
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies the version used to get the latest version of the item report for drop ship vendors (DSV).
+
+          Use `version=2` to access the latest version of the item report for drop ship vendors (DSV).
+
+          Example(s):
+          2
+        example: '2'
+      - in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the data type expected in a response sent from the server.
+
+          Valid values are:
+
+          | Value | Meaning |
+          | --- | --- |
+          | application/xml | XML format for data returned in response. |
+          | application/json | JSON format for data returned in response. |
+        example: application/xml
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies an identifier that tracks the consumer request by channel.
+
+          Use the consumer channel type received during onboarding.
+
+          See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
+        example: 0f3e4dd4-0514-4346-b39d-…
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        required: true
+        schema:
+          type: string
+        description: "Specifies an identifier for each API call and is used to track
+          and debug issues.\n\n This may be any value, but cannot be null or omitted.
+          \n"
+        example: 6474-a253
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
+
+          This value is required for token-based authentication.
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
+      - in: header
+        name: Content-Type
+        required: true
+        schema:
+          type: string
+        description: "Specifies the format of request and response body data. \n\nIt
+          specifies if the payload is JSON, XML, form data, or other data type. \nSetting
+          `Content-Type` appropriately is essential when exchanging formatted data
+          with APIs.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n|
+          application/xml | XML format for request and response body data. |\n"
+        example: application/xml
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vendorId:
+                    type: string
+                    description: |
+                      Indicates the vendor identifier.
+
+                      Example(s):<br>
+                      837252
+                    example: '837252'
+                  sku:
+                    type: string
+                    description: |
+                      Indicates the stock keeping unit (SKU) item identifier.
+
+                      This is a product identifier provided by the drop ship vendor (DSV) to identify each item.
+
+                      Example(s):<br>
+                      1487132332472
+                    example: '1487132332472'
+                  productName:
+                    type: string
+                    description: |
+                      Indicates the name of the product associated with the line item.
+
+                      Example(s):<br>
+                      Generic CF1<br>
+                      2086883 Canister Secondary Filter Generic 2 Pack
+                    example: Kenmore CF1
+                  productCategory:
+                    type: string
+                    description: "Indicates the category for the item. \n\nThis value
+                      may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\nGrocery\n"
+                    example: Grocery
+                  shortDescription:
+                    type: string
+                    description: |
+                      Indicates a short description of the item.
+
+                      Example(s):<br>
+                      Frozen beans sourced locally and packed fresh
+                    example: Frozen beans sourced locally and packed fresh
+                  longDescription:
+                    type: string
+                    description: |
+                      Indicates a long description of the item.
+
+                      Example(s):<br>
+                      24oz bag of frozen pinto and brown beans with steam-in-bag option for quick freezer to table meals
+                    example: 24oz bag of frozen pinto and brown beans with steam-in-bag
+                      option for quick freezer to table meals
+                  cost:
+                    type: string
+                    description: |
+                      Indicates the cost of the item.
+
+                      Example(s):<br>
+                      5.99
+                    example: '5.99'
+                  price:
+                    type: string
+                    description: |
+                      Indicates the current price of the item.
+
+                      Example(s):<br>
+                      7.99
+                    example: '7.99'
+                  currency:
+                    type: string
+                    description: "Indicates the currency (in the three-letter ISO
+                      4217 currency code) of the price. \n\nValue values include,
+                      but are not limited to:\n\n| Value\t| Meaning |\n| CAD | Canadian
+                      Dollar |\n| GBP\t| Great Britain Pound |\n| USD\t| United States
+                      Dolllar |\n\nReference the ISO 4217 standard for a complete
+                      listing of three-letter currency codes.\n\nExample(s):<br>\nUSD<br>\nGBP<br>\nCAD\n\nExample(s):<br>\nUSD\n"
+                    example: USD
+                  buyBoxShippingPrice:
+                    type: string
+                    description: "Indicates the Buy Box winner's item price. \n\nExample(s):<br>\n7.99\n"
+                    example: '7.99'
+                  publishStatus:
+                    type: string
+                    description: |
+                      Indicates if the item is published on Walmart.com.
+
+                      Example(s):<br>
+                      true
+                    example: 'true'
+                  lifecycleStatus:
+                    type: string
+                    description: |
+                      Indicates the offer lifecycle status.
+
+                      Example(s):<br>
+                      ACTIVE<br>
+                      RETIRED
+                    example: ACTIVE
+                  availabilityStatus:
+                    type: string
+                    description: |
+                      Indicates the inventory availability status.
+
+                      Example(s):<br>
+                      In stock
+                    example: In stock
+                  shipMethods:
+                    type: string
+                    description: "Indicates the shipping methods available for each
+                      item.\n\nValid values are:\n\n| Value\t| Meaning |\n| --- |
+                      --- |\n| Standard\t| Standard shipping method. |\n| Express\t|
+                      Express shipping method. |\n| OneDay\t| One-day shipping method.
+                      |\n| Freight\t|  Freight shipping method. |\n| WhiteGlove\t|
+                      White glove shipping method. |\n| Value\t| Value shipping method.
+                      |\n\nExample(s):<br>\nStandard<br>\nExpress<br>\nOneDay<br>\nFreight\n"
+                    example: Standard
+                  wpid:
+                    type: string
+                    description: |
+                      Indicates the Walmart product identifier assigned by Walmart to the item when listed on Walmart.com.
+
+                      Example(s):<br>
+                      434K5CFOY8G7ZZZ
+                    example: 434K5CFOY8G7ZZZ
+                  itemId:
+                    type: string
+                    description: |
+                      Indicates the item identifier.
+
+                      Example(s):<br>
+                      CBA-1357
+                    example: CBA-1357
+                  wm:
+                    type: string
+                    description: "Indicates the internal Walmart item number assigned
+                      to a supplier item.\n\nThis number is linked to the item global
+                      trade item number (GTIN). \nThe value represents the configuration
+                      of how a supplier sells, ships, and replenishes merchandise.\n\nExample(s):<br>\n0864213579\n"
+                    example: '0864213579'
+                  gtin:
+                    type: string
+                    description: |
+                      Indicates the global trade item number (GTIN) item identifier.
+
+                      The global trade item number is a 14-digit number, including the check digit, that is used worldwide and identifies the Each. If the user's number is less than 14 digits, add zeros at the beginning.
+
+                      Example(s):
+                      00097531246801
+                    example: '00097531246801'
+                  upc:
+                    type: string
+                    description: "Indicates the Universal Product Code (UPC) of the
+                      item. \n\nThis value may differ from what was suggested when
+                      the item was ingested.\n\nExample(s):<br>\n123456789012\n"
+                    example: '123456789012'
+                  primaryImageUrl:
+                    type: string
+                    description: "Indicates the URL for the primary image. \n\nExample(s):<br>\nwww&#46;genericproductimage.com\n"
+                    example: www.genericproductimage.com
+                  shelfName:
+                    type: string
+                    description: |
+                      Indicates the item shelf name, as assigned by Walmart.
+
+                      Example(s):<br>
+                      B1
+                    example: B1
+                  primaryCatPath:
+                    type: string
+                    description: |
+                      Indicates the primary category path on Walmart.com.
+
+                      Example(s):<br>
+                      General Merchandise
+                    example: General Merchandise
+                  offerStartDate:
+                    type: string
+                    description: |
+                      Indicates the date at which the item becomes visible on Walmart.com.
+
+                      Example(s):<br>
+                      2023-03-16 2023-03-16T10:30:15Z
+                    example: 2023-03-16 2023-03-16T10:30:15Z
+                  offerEndDate:
+                    type: string
+                    description: |
+                      Indicates the date after which the item will not be visible on Walmart.com.
+
+                      Example(s):<br>
+                      2023-03-19 2023-03-19T10:30:15Z
+                    example: 2023-03-19 2023-03-19T10:30:15Z
+                  itemCreationDate:
+                    type: string
+                    description: |
+                      Indicates the system date-timestamp of when an item was created.
+
+                      Example(s):<br>
+                      2023-02-16 2023-03-16T10:30:15Z
+                    example: 2023-02-16 2023-03-16T10:30:15Z
+                  lastUpdationDate:
+                    type: string
+                    description: |
+                      Indicates the system date-timestamp of when an item was updated.
+
+                      Example(s):<br>
+                      2023-02-19 2023-03-19T10:30:15Z
+                    example: 2023-02-19 2023-03-19T10:30:15Z
+                  itemPageUrl:
+                    type: string
+                    description: |
+                      Indicates the item page URL.
+
+                      Example(s):<br>
+                      www&#46;genericitempage.com
+                    example: www.genericitempage.com
+                  reviewCount:
+                    type: string
+                    description: |
+                      Indicates the total number of customer reviews for the item.
+
+                      Example(s):<br>
+                      2400
+                    example: '2400'
+                  averageRating:
+                    type: string
+                    description: |
+                      Indicates the average rating number for the item from customers.
+
+                      Example(s):<br>
+                      7.9
+                    example: '7.9'
+                  productTaxCode:
+                    type: string
+                    description: |
+                      Indicates the seven-digit product tax code that identifies the amount of sales tax that should be collected for individual items.
+
+                      Example(s):<br>
+                      4004000
+                    example: '4004000'
+                  shippingWeight:
+                    type: string
+                    description: |
+                      Indicates the weight of the item when packaged to ship.
+
+                      Example(s):<br>
+                      20
+                    example: '20'
+                  shippingWeightUnit:
+                    type: string
+                    description: |
+                      Indicates the unit of measurement associated with the weight of the item when packaged to ship.
+
+                      Example(s):<br>
+                      LB<br>
+                      OZ
+                    example: LB
+                  statusChangeReason:
+                    type: string
+                    description: "Indicates the reason for the status change. \n\nExample(s):<br>\nIncorrect
+                      information\n"
+                    example: Incorrect information
+                  availableInventoryUnits:
+                    type: string
+                    description: |
+                      Indicates the number of items in stock.
+
+                      Example(s):<br>
+                      2401
+                    example: '2401'
+components:
+  schemas:
+    getItemReport-200-response:
+      type: object
+      properties:
+        vendorId:
+          type: string
+          description: |
+            Indicates the vendor identifier.
+
+            Example(s):<br>
+            837252
+          example: '837252'
+        sku:
+          type: string
+          description: |
+            Indicates the stock keeping unit (SKU) item identifier.
+
+            This is a product identifier provided by the drop ship vendor (DSV) to identify each item.
+
+            Example(s):<br>
+            1487132332472
+          example: '1487132332472'
+        productName:
+          type: string
+          description: |
+            Indicates the name of the product associated with the line item.
+
+            Example(s):<br>
+            Generic CF1<br>
+            2086883 Canister Secondary Filter Generic 2 Pack
+          example: Kenmore CF1
+        productCategory:
+          type: string
+          description: "Indicates the category for the item. \n\nThis value may differ
+            from what was suggested when the item was ingested.\n\nExample(s):<br>\nGrocery\n"
+          example: Grocery
+        shortDescription:
+          type: string
+          description: |
+            Indicates a short description of the item.
+
+            Example(s):<br>
+            Frozen beans sourced locally and packed fresh
+          example: Frozen beans sourced locally and packed fresh
+        longDescription:
+          type: string
+          description: |
+            Indicates a long description of the item.
+
+            Example(s):<br>
+            24oz bag of frozen pinto and brown beans with steam-in-bag option for quick freezer to table meals
+          example: 24oz bag of frozen pinto and brown beans with steam-in-bag option
+            for quick freezer to table meals
+        cost:
+          type: string
+          description: |
+            Indicates the cost of the item.
+
+            Example(s):<br>
+            5.99
+          example: '5.99'
+        price:
+          type: string
+          description: |
+            Indicates the current price of the item.
+
+            Example(s):<br>
+            7.99
+          example: '7.99'
+        currency:
+          type: string
+          description: "Indicates the currency (in the three-letter ISO 4217 currency
+            code) of the price. \n\nValue values include, but are not limited to:\n\n|
+            Value\t| Meaning |\n| CAD | Canadian Dollar |\n| GBP\t| Great Britain
+            Pound |\n| USD\t| United States Dolllar |\n\nReference the ISO 4217 standard
+            for a complete listing of three-letter currency codes.\n\nExample(s):<br>\nUSD<br>\nGBP<br>\nCAD\n\nExample(s):<br>\nUSD\n"
+          example: USD
+        buyBoxShippingPrice:
+          type: string
+          description: "Indicates the Buy Box winner's item price. \n\nExample(s):<br>\n7.99\n"
+          example: '7.99'
+        publishStatus:
+          type: string
+          description: |
+            Indicates if the item is published on Walmart.com.
+
+            Example(s):<br>
+            true
+          example: 'true'
+        lifecycleStatus:
+          type: string
+          description: |
+            Indicates the offer lifecycle status.
+
+            Example(s):<br>
+            ACTIVE<br>
+            RETIRED
+          example: ACTIVE
+        availabilityStatus:
+          type: string
+          description: |
+            Indicates the inventory availability status.
+
+            Example(s):<br>
+            In stock
+          example: In stock
+        shipMethods:
+          type: string
+          description: "Indicates the shipping methods available for each item.\n\nValid
+            values are:\n\n| Value\t| Meaning |\n| --- | --- |\n| Standard\t| Standard
+            shipping method. |\n| Express\t| Express shipping method. |\n| OneDay\t|
+            One-day shipping method. |\n| Freight\t|  Freight shipping method. |\n|
+            WhiteGlove\t| White glove shipping method. |\n| Value\t| Value shipping
+            method. |\n\nExample(s):<br>\nStandard<br>\nExpress<br>\nOneDay<br>\nFreight\n"
+          example: Standard
+        wpid:
+          type: string
+          description: |
+            Indicates the Walmart product identifier assigned by Walmart to the item when listed on Walmart.com.
+
+            Example(s):<br>
+            434K5CFOY8G7ZZZ
+          example: 434K5CFOY8G7ZZZ
+        itemId:
+          type: string
+          description: |
+            Indicates the item identifier.
+
+            Example(s):<br>
+            CBA-1357
+          example: CBA-1357
+        wm:
+          type: string
+          description: "Indicates the internal Walmart item number assigned to a supplier
+            item.\n\nThis number is linked to the item global trade item number (GTIN).
+            \nThe value represents the configuration of how a supplier sells, ships,
+            and replenishes merchandise.\n\nExample(s):<br>\n0864213579\n"
+          example: '0864213579'
+        gtin:
+          type: string
+          description: |
+            Indicates the global trade item number (GTIN) item identifier.
+
+            The global trade item number is a 14-digit number, including the check digit, that is used worldwide and identifies the Each. If the user's number is less than 14 digits, add zeros at the beginning.
+
+            Example(s):
+            00097531246801
+          example: '00097531246801'
+        upc:
+          type: string
+          description: "Indicates the Universal Product Code (UPC) of the item. \n\nThis
+            value may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\n123456789012\n"
+          example: '123456789012'
+        primaryImageUrl:
+          type: string
+          description: "Indicates the URL for the primary image. \n\nExample(s):<br>\nwww&#46;genericproductimage.com\n"
+          example: www.genericproductimage.com
+        shelfName:
+          type: string
+          description: |
+            Indicates the item shelf name, as assigned by Walmart.
+
+            Example(s):<br>
+            B1
+          example: B1
+        primaryCatPath:
+          type: string
+          description: |
+            Indicates the primary category path on Walmart.com.
+
+            Example(s):<br>
+            General Merchandise
+          example: General Merchandise
+        offerStartDate:
+          type: string
+          description: |
+            Indicates the date at which the item becomes visible on Walmart.com.
+
+            Example(s):<br>
+            2023-03-16 2023-03-16T10:30:15Z
+          example: 2023-03-16 2023-03-16T10:30:15Z
+        offerEndDate:
+          type: string
+          description: |
+            Indicates the date after which the item will not be visible on Walmart.com.
+
+            Example(s):<br>
+            2023-03-19 2023-03-19T10:30:15Z
+          example: 2023-03-19 2023-03-19T10:30:15Z
+        itemCreationDate:
+          type: string
+          description: |
+            Indicates the system date-timestamp of when an item was created.
+
+            Example(s):<br>
+            2023-02-16 2023-03-16T10:30:15Z
+          example: 2023-02-16 2023-03-16T10:30:15Z
+        lastUpdationDate:
+          type: string
+          description: |
+            Indicates the system date-timestamp of when an item was updated.
+
+            Example(s):<br>
+            2023-02-19 2023-03-19T10:30:15Z
+          example: 2023-02-19 2023-03-19T10:30:15Z
+        itemPageUrl:
+          type: string
+          description: |
+            Indicates the item page URL.
+
+            Example(s):<br>
+            www&#46;genericitempage.com
+          example: www.genericitempage.com
+        reviewCount:
+          type: string
+          description: |
+            Indicates the total number of customer reviews for the item.
+
+            Example(s):<br>
+            2400
+          example: '2400'
+        averageRating:
+          type: string
+          description: |
+            Indicates the average rating number for the item from customers.
+
+            Example(s):<br>
+            7.9
+          example: '7.9'
+        productTaxCode:
+          type: string
+          description: |
+            Indicates the seven-digit product tax code that identifies the amount of sales tax that should be collected for individual items.
+
+            Example(s):<br>
+            4004000
+          example: '4004000'
+        shippingWeight:
+          type: string
+          description: |
+            Indicates the weight of the item when packaged to ship.
+
+            Example(s):<br>
+            20
+          example: '20'
+        shippingWeightUnit:
+          type: string
+          description: |
+            Indicates the unit of measurement associated with the weight of the item when packaged to ship.
+
+            Example(s):<br>
+            LB<br>
+            OZ
+          example: LB
+        statusChangeReason:
+          type: string
+          description: "Indicates the reason for the status change. \n\nExample(s):<br>\nIncorrect
+            information\n"
+          example: Incorrect information
+        availableInventoryUnits:
+          type: string
+          description: |
+            Indicates the number of items in stock.
+
+            Example(s):<br>
+            2401
+          example: '2401'
+x-tagGroups:
+- name: 1P Suppliers Pre-Generated Reports Reference
+  tags:
+  - Pre-Generated Reports

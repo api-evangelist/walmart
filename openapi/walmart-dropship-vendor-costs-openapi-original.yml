@@ -1,0 +1,361 @@
+---
+openapi: 3.0.1
+info:
+  title: Cost Management
+  description: |
+    This API allows drop ship vendor (DSV) users to update cost for items in bulk.
+
+    **May 2024**<br>Built: 05/09/2024, 13:05:34
+  version: '1.0'
+servers:
+- url: https://api-gateway.walmart.com
+  description: Production URL
+- url: https://sandbox.walmartapis.com
+  description: Sandbox URL
+paths:
+  "/v3/feeds":
+    post:
+      tags:
+      - DSV Cost
+      operationId: postCreateAnAccessToken
+      summary: Update cost for items in bulk
+      description: |
+        <p style="color:red; font-size:larger">POST <walmartAuthServerUrl>/v3/feeds</p>
+
+        This request allows drop ship vendors (DSV) to update cost for items in bulk.
+      parameters:
+      - in: query
+        name: feedType
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies details of each entity in the feed.
+
+          The value defaults to `cost`.
+      - in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies the data type expected in a response sent from the server.
+
+          Valid values are:
+
+          | Value | Meaning |
+          | --- | --- |
+          | application/xml | XML format for data returned in response. |
+          | application/json | JSON format for data returned in response. |
+        example: application/xml
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        required: false
+        schema:
+          type: string
+        description: |
+          Specifies an identifier that tracks the consumer request by channel.
+
+          Use the consumer channel type received during onboarding.
+
+          See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
+        example: 0f3e4dd4-0514-4346-b39d-…
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies an identifier for each API call and is used to track and debug issues.
+
+           This may be any value, but cannot be null or omitted.
+        example: 6474-a253
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        required: true
+        schema:
+          type: string
+        description: |
+          Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
+
+          This value is required for token-based authentication.
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
+      - in: header
+        name: Content-Type
+        required: true
+        schema:
+          type: string
+        description: "Specifies the format of request and response body data. \n\nIt
+          specifies if the payload is JSON, XML, form data, or other data type. \nSetting
+          `Content-Type` appropriately is essential when exchanging formatted data
+          with APIs.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n|
+          application/json | JSON format for request and response body data. |\n|
+          multipart/form-data | Multipart form data format for request and response
+          body data. |\n"
+        example: application/json
+      requestBody:
+        description: Request fields
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                header:
+                  type: object
+                  description: 'Specifies an object for header information.
+
+                    '
+                  properties:
+                    version:
+                      type: string
+                      description: |
+                        Specifies an array of objects for an event.
+
+                        Example(s):<br>
+                        1
+                      example: '1'
+                Cost:
+                  type: array
+                  description: "Specifies an array of objects for cost information.
+                    \n"
+                  items:
+                    type: object
+                    properties:
+                      sku:
+                        type: string
+                        description: |
+                          Specifies the stock keeping unit (SKU) item identifier.
+
+                          This type of identifier is an arbitrary, alphanumeric identifier that is specified by the drop ship vendor (DSV) and used by the vendor in the specification file to refer to each item.
+
+                          The following special characters in the stock keeping unit (SKU) require encoding: ':', '/', '?', '#', '[', ']', '@', '!', '$', '&', "'", '(', ')', '*', '+', ',', ';', '=', ',', '{', and '}'. '%' requires encoding if it is part of the stock keeping unit (SKU). Encode spaces with %20. Other characters do not require encoding.
+
+                          Example(s):<br>
+                          RG-IRAE-79VD
+                        example: RG-IRAE-79VD
+                      shipNode:
+                        type: string
+                        description: "Specifies the distribution facility distributor
+                          identifier.\n\nThis parameter identifies each facility from
+                          which the inventory is requested. The identifier is autogenerated
+                          during drop ship vendor (DSV) account creation. Every time
+                          users add or update a facility in Supplier Center, a new
+                          identifier is generated. Ensure this value is up to date.
+                          \n\nExample(s):<br>\nDSV_Deliver\n"
+                        example: DSV_Deliver
+                      unitCost:
+                        type: object
+                        description: 'Specifies an object for unit cost information.
+
+                          '
+                        properties:
+                          amount:
+                            type: number
+                            description: |
+                              Specifies the numerical value of the cost.
+
+                              Example(s):<br>
+                              9.99
+                            example: 9.99
+                          currency:
+                            type: string
+                            description: "Specifies the currency of the cost. \n\nValid
+                              values include: \n\n| Value | Meaning |\n| --- | ---
+                              |\n| USD | United States dollar |\n| GBP | British pound
+                              sterling |\n\nExample(s):<br>\nUSD\n"
+                            example: USD
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  feedId:
+                    type: string
+                    description: |
+                      Indicates the feed identifier.
+
+                      This value is returned from the <a href= "https://developer.stg.walmart.com/api/us/supplier/items#operation/itemBulkUploads"> POST Bulk Item Upload</a> request and is used to track the feed file.
+
+                      Example(s):
+                      2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+                    example: 2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+                  additionalAttributes:
+                    type: string
+                    description: |
+                      Indicates additional attribute information.
+
+                      Example(s):<br>
+                      string
+                    example: string
+                  error:
+                    type: string
+                    description: |
+                      Indicates error information.
+
+                      Example(s):<br>
+                      string
+                    example: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  feedId:
+                    type: string
+                    description: |
+                      Indicates the feed identifier.
+
+                      This value is returned from the <a href= "https://developer.stg.walmart.com/api/us/supplier/items#operation/itemBulkUploads"> POST Bulk Item Upload</a> request and is used to track the feed file.
+
+                      Example(s):
+                      2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+                    example: 2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+                  additionalAttributes:
+                    type: string
+                    description: |
+                      Indicates additional attribute information.
+
+                      Example(s):<br>
+                      string
+                    example: string
+                  error:
+                    type: string
+                    description: |
+                      Indicates error information.
+
+                      Example(s):<br>
+                      string
+                    example: string
+components:
+  schemas:
+    updateCost-request:
+      type: object
+      properties:
+        header:
+          type: object
+          description: 'Specifies an object for header information.
+
+            '
+          properties:
+            version:
+              type: string
+              description: |
+                Specifies an array of objects for an event.
+
+                Example(s):<br>
+                1
+              example: '1'
+        Cost:
+          type: array
+          description: "Specifies an array of objects for cost information. \n"
+          items:
+            type: object
+            properties:
+              sku:
+                type: string
+                description: |
+                  Specifies the stock keeping unit (SKU) item identifier.
+
+                  This type of identifier is an arbitrary, alphanumeric identifier that is specified by the drop ship vendor (DSV) and used by the vendor in the specification file to refer to each item.
+
+                  The following special characters in the stock keeping unit (SKU) require encoding: ':', '/', '?', '#', '[', ']', '@', '!', '$', '&', "'", '(', ')', '*', '+', ',', ';', '=', ',', '{', and '}'. '%' requires encoding if it is part of the stock keeping unit (SKU). Encode spaces with %20. Other characters do not require encoding.
+
+                  Example(s):<br>
+                  RG-IRAE-79VD
+                example: RG-IRAE-79VD
+              shipNode:
+                type: string
+                description: "Specifies the distribution facility distributor identifier.\n\nThis
+                  parameter identifies each facility from which the inventory is requested.
+                  The identifier is autogenerated during drop ship vendor (DSV) account
+                  creation. Every time users add or update a facility in Supplier
+                  Center, a new identifier is generated. Ensure this value is up to
+                  date. \n\nExample(s):<br>\nDSV_Deliver\n"
+                example: DSV_Deliver
+              unitCost:
+                type: object
+                description: 'Specifies an object for unit cost information.
+
+                  '
+                properties:
+                  amount:
+                    type: number
+                    description: |
+                      Specifies the numerical value of the cost.
+
+                      Example(s):<br>
+                      9.99
+                    example: 9.99
+                  currency:
+                    type: string
+                    description: "Specifies the currency of the cost. \n\nValid values
+                      include: \n\n| Value | Meaning |\n| --- | --- |\n| USD | United
+                      States dollar |\n| GBP | British pound sterling |\n\nExample(s):<br>\nUSD\n"
+                    example: USD
+    updateCost-200-response:
+      type: object
+      properties:
+        feedId:
+          type: string
+          description: |
+            Indicates the feed identifier.
+
+            This value is returned from the <a href= "https://developer.stg.walmart.com/api/us/supplier/items#operation/itemBulkUploads"> POST Bulk Item Upload</a> request and is used to track the feed file.
+
+            Example(s):
+            2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+          example: 2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+        additionalAttributes:
+          type: string
+          description: |
+            Indicates additional attribute information.
+
+            Example(s):<br>
+            string
+          example: string
+        error:
+          type: string
+          description: |
+            Indicates error information.
+
+            Example(s):<br>
+            string
+          example: string
+    updateCost-400-response:
+      type: object
+      properties:
+        feedId:
+          type: string
+          description: |
+            Indicates the feed identifier.
+
+            This value is returned from the <a href= "https://developer.stg.walmart.com/api/us/supplier/items#operation/itemBulkUploads"> POST Bulk Item Upload</a> request and is used to track the feed file.
+
+            Example(s):
+            2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+          example: 2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+        additionalAttributes:
+          type: string
+          description: |
+            Indicates additional attribute information.
+
+            Example(s):<br>
+            string
+          example: string
+        error:
+          type: string
+          description: |
+            Indicates error information.
+
+            Example(s):<br>
+            string
+          example: string
+x-tagGroups:
+- name: 1P Suppliers DSV Cost Reference
+  tags:
+  - DSV Cost

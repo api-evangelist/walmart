@@ -1,0 +1,1804 @@
+---
+openapi: 3.0.1
+info:
+  title: 'Pregenerated Reports retiring on June 30, 2022 :'
+  description: "Please transition ASAP to using onRequest Reports (https://developer.walmart.com/doc/us/us-mp/us-mp-onrequestreports/).
+    On July 29th, all PreGenerated reports other than recon report will be retired
+    and only available onRequest. \nThe Pregenerated Reports API allows you to obtain
+    any pregenerated report that you need, including: item, item performance, buy
+    box, CAP, promotions, reconciliation, return item override, shipping program and
+    shipping configuration."
+servers:
+- url: https://marketplace.walmartapis.com
+  description: Production URL
+- url: https://sandbox.walmartapis.com
+  description: Sandbox URL
+security:
+- basicScheme: []
+paths:
+  "/v3/report/reconreport/reconFile":
+    get:
+      tags:
+      - Reports
+      summary: Recon report(Legacy)
+      description: Seller can download the reconciliation report for a specific date
+        using this API. Dates available to be downloaded can be found by using the Get
+        available reconciliation report dates API.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-reports/#3772"
+      operationId: getReconReport
+      parameters:
+      - name: reportDate
+        in: query
+        description: The date for which the reconcilation file is available
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                description: |-
+                  The data will be streamed in a .CSV file in your folder.
+                  The response to a successful call includes a header as an attachment called Content-Disposition.
+                  The Content-Disposition header contains the name of the report. As an example, attachment: filename=10000000354_2016-01-15T23:09:54.438+0000.zip. The title includes your partner ID (in this case, 10000000354) and the timestamp when the file was generated.
+                  The attachment contains the report in a compressed zip format.
+                  The java code example demonstrates the use of the header and the body when processing the response
+                  The report is regenerated periodically. We recommend that you not retrieve the report more frequently than once every two hours.
+        '400':
+          description: Failure Operation
+          content:
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      required:
+                      - category
+                      - code
+                      - description
+                      - errorIdentifiers
+                      - severity
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          description: Error code
+                        description:
+                          type: string
+                          description: Error description
+                        severity:
+                          type: string
+                          description: Error severity
+                        category:
+                          type: string
+                          description: Error category
+                        errorIdentifiers:
+                          type: string
+                          description: Error Identifiers
+                xml:
+                  name: errors
+  "/v3/report/reconreport/reconFileJson":
+    get:
+      tags:
+      - Reports
+      summary: Recon Report JSON
+      description: This API will get a partner’s transaction details in JSON format
+        for a specific date range (available only for v1 reports). Dates for accessing
+        the report can be found by using the ‘GET Available recon report dates’ API.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-reports/#3772"
+      operationId: getAvailableV1ReconReportAsJson
+      parameters:
+      - name: reportDate
+        in: query
+        description: Date of the settlement report
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: starting number of the bytes, initial value for the offset is
+          zero
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: noOfRecords
+        in: query
+        description: number of records in the report (max limit 1000)
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reportData:
+                    type: array
+                    description: "content of the CSV file in the list format, each
+                      element in the list represents the row in CSV file.\t"
+                    items:
+                      type: object
+                      properties:
+                        empty:
+                          type: boolean
+                      additionalProperties:
+                        type: object
+                        description: "content of the CSV file in the list format,
+                          each element in the list represents the row in CSV file.\t"
+                      description: "content of the CSV file in the list format, each
+                        element in the list represents the row in CSV file.\t"
+                  nextOffset:
+                    type: integer
+                    description: "this field will be used in subsequent calls to fetch
+                      next set of records.\t"
+                    format: int64
+                  totalRecords:
+                    type: integer
+                    description: "records returned in the current response.\t"
+                    format: int32
+                  description:
+                    type: string
+                    description: "total number of lines in the the file.\t"
+              example:
+                reportData:
+                - Period Start Date: 12/11/2025
+                  Period End Date: 12/19/2025
+                  Currency: USD
+                  Transaction Type: PaymentSummary
+                  Total Payable: '0.74'
+                  Transaction Description: Deposited in  account
+                  Transaction Posted Timestamp: 01/02/2025
+                - Shipping Method: Marketplace value
+                  Partner Item Name: MTV Mens Kanji Throwback 90s Logo Short Sleeve
+                    Graphic T-shirt With Music Television up to Size 3XL
+                  'Customer Order line #': '1'
+                  Contract Category: Apparel & Accessories
+                  Transaction Description: Purchase
+                  Product Tax Code: '100'
+                  Period Start Date: '""'
+                  Ship to Zipcode: '72712'
+                  Ship to City: Bentonville
+                  Transaction Key: '2020_12_19_317'
+                  Transaction Posted Timestamp: 12/18/2020
+                  Ship Qty: '1'
+                  Amount: '14.98'
+                  Transaction Type: Sale
+                  Partner GTIN: '05705584961234'
+                  Ship to State: AR
+                  Amount Type: Product Price
+                  Fulfillment Type: Seller Fulfilled
+                  'Customer Order #': '6222001976751'
+                  'Purchase Order #': '1803550130406'
+                  Product Type: Bag Clips
+                  Partner Item Id: sku-123
+                  'Purchase Order line #': '1'
+                nextOffset: 973
+                totalRecords: 1
+                description: 'Number of Lines in file 479             '
+  "/v3/report/reconreport/reconFile?reportVersion=v1":
+    get:
+      tags:
+      - Reports
+      summary: Recon report
+      description: Seller can download the reconciliation report for a specific date
+        using this API. Dates available to be downloaded can be found by using the
+        Get available reconciliation report dates API.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-reports/#3772"
+      operationId: getReconReportV1
+      parameters:
+      - name: reportDate
+        in: query
+        description: The date for which the reconcilation file is available
+        required: true
+        schema:
+          type: string
+      - name: reportVersion
+        in: query
+        description: Report Version
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                description: |-
+                  The data will be streamed in a .CSV file in your folder.
+                  The response to a successful call includes a header as an attachment called Content-Disposition.
+                  The Content-Disposition header contains the name of the report. As an example, attachment: filename=10000000354_2016-01-15T23:09:54.438+0000.zip. The title includes your partner ID (in this case, 10000000354) and the timestamp when the file was generated.
+                  The attachment contains the report in a compressed zip format.
+                  The java code example demonstrates the use of the header and the body when processing the response
+                  The report is regenerated periodically. We recommend that you not retrieve the report more frequently than once every two hours.
+        '400':
+          description: Failure Operation
+          content:
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      required:
+                      - category
+                      - code
+                      - description
+                      - errorIdentifiers
+                      - severity
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          description: Error code
+                        description:
+                          type: string
+                          description: Error description
+                        severity:
+                          type: string
+                          description: Error severity
+                        category:
+                          type: string
+                          description: Error category
+                        errorIdentifiers:
+                          type: string
+                          description: Error Identifiers
+                xml:
+                  name: errors
+  "/v3/report/reconreport/availableReconFiles":
+    get:
+      tags:
+      - Reports
+      summary: Available recon report dates(Legacy)
+      description: This API will list all the available Marketplace reconciliation
+        report dates for the Seller.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-reports/#3772"
+      operationId: getAvailableReconReportDates
+      parameters:
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  availableApReportDates:
+                    type: array
+                    description: "All available report dates are returned\t"
+                    items:
+                      type: string
+                      description: "All available report dates are returned\t"
+              example:
+                availableApReportDates:
+                - '07012018'
+                - '07032018'
+                - '07102018'
+                - '07172018'
+                - '07242018'
+                - '07312018'
+                - '08072018'
+                - '08142018'
+                - '08212018'
+                - '08282018'
+  "/v3/report/reconreport/availableReconFiles?reportVersion=v1":
+    get:
+      tags:
+      - Reports
+      summary: Available recon report dates
+      description: This API will list all the available Marketplace reconciliation
+        report dates for the Seller.
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/us-mp-reports/#3772"
+      operationId: getAvailableV1ReconReportDates
+      parameters:
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  availableApReportDates:
+                    type: array
+                    description: "All available report dates are returned\t"
+                    items:
+                      type: string
+                      description: "All available report dates are returned\t"
+  "/v3/report/payment/statement":
+    get:
+      tags:
+      - Reports
+      summary: Payment Statement Report
+      description: This API will get a partner's current cycle statement
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/payments"
+      operationId: getPartnerStatement
+      parameters:
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    format: int32
+                  status:
+                    type: string
+                  error:
+                    type: string
+                  partnerId:
+                    type: string
+                  payload:
+                    type: object
+                    properties:
+                      outstandingMCABalance:
+                        type: number
+                      sellerInfo:
+                        type: object
+                        properties:
+                          storeFrontUrl:
+                            type: string
+                          sellerStatus:
+                            type: string
+                          paymentStatus:
+                            type: string
+                          tenure:
+                            type: integer
+                            format: int64
+                      accountSummary:
+                        type: object
+                        properties:
+                          openingBalance:
+                            type: number
+                          orderActivity:
+                            type: number
+                          walmartFulfillmentServices:
+                            type: number
+                          otherActivities:
+                            type: number
+                          reserve:
+                            type: number
+                          paidToYou:
+                            type: number
+                          closingBalance:
+                            type: number
+                          scheduledSettlementDate:
+                            type: string
+                          paymentProcessor:
+                            type: string
+                          settleCycle:
+                            type: string
+                          reserveToDate:
+                            type: number
+                          lastUpdatedDate:
+                            type: string
+                          holdAmt:
+                            type: number
+                          holdDates:
+                            type: string
+                      transactionDetails:
+                        type: object
+                        properties:
+                          saleAggregate:
+                            type: object
+                            properties:
+                              productPrice:
+                                type: number
+                              shipping:
+                                type: number
+                              netTaxCollected:
+                                type: number
+                              productTaxCollected:
+                                type: number
+                              shippingTaxCollected:
+                                type: number
+                              netTaxWithheld:
+                                type: number
+                              productTaxWithheld:
+                                type: number
+                              shippingTaxWithheld:
+                                type: number
+                              netFeeCollected:
+                                type: number
+                              netFeeWithheld:
+                                type: number
+                              netComm:
+                                type: number
+                              netPayable:
+                                type: number
+                              aboveCap:
+                                type: number
+                              wfsShipping:
+                                type: number
+                              wfsShipppingTax:
+                                type: number
+                              totalBaseCommission:
+                                type: number
+                              commissionSavings:
+                                type: number
+                          refundDetails:
+                            type: object
+                            properties:
+                              productPrice:
+                                type: number
+                              shipping:
+                                type: number
+                              netTaxCollected:
+                                type: number
+                              productTaxCollected:
+                                type: number
+                              shippingTaxCollected:
+                                type: number
+                              netTaxWithheld:
+                                type: number
+                              productTaxWithheld:
+                                type: number
+                              shippingTaxWithheld:
+                                type: number
+                              netFeeCollected:
+                                type: number
+                              netFeeWithheld:
+                                type: number
+                              netComm:
+                                type: number
+                              netPayable:
+                                type: number
+                              aboveCap:
+                                type: number
+                              wfsShipping:
+                                type: number
+                              wfsShipppingTax:
+                                type: number
+                              totalBaseCommission:
+                                type: number
+                              commissionSavings:
+                                type: number
+                          adjustmentAggregate:
+                            type: object
+                            properties:
+                              netPayable:
+                                type: number
+                              disputeSettlement:
+                                type: number
+                              returnShipServCharge:
+                                type: number
+                              returnHandlingServCharge:
+                                type: number
+                              fwdShippingServiceFee:
+                                type: number
+                          wfs:
+                            type: object
+                            properties:
+                              netPayable:
+                                type: number
+                              wfsFullfillmentFee:
+                                type: number
+                              wfsStorageFee:
+                                type: number
+                              wfsAdjustment:
+                                type: number
+                              wfsFee:
+                                type: number
+                              inventoryRemovalOrder:
+                                type: number
+                              inventoryDisposalOrder:
+                                type: number
+                              wfsPrepServiceFee:
+                                type: number
+                          partnerTxns:
+                            type: object
+                            properties:
+                              netPayable:
+                                type: number
+                              advancePayment:
+                                type: number
+              example:
+                statusCode: 200
+                status: OK
+                error: ''
+                partnerId: '10000003437'
+                payload:
+                  outstandingMCABalance: 0
+                  sellerInfo:
+                    storeFrontUrl: https%3A%2F%2Fwww.walmart.com%2Fseller%2F3346
+                    sellerStatus: ACTIVE
+                    paymentStatus: ACTIVE
+                    tenure: 1673
+                  accountSummary:
+                    openingBalance: 0
+                    orderActivity: 3220.67
+                    walmartFulfillmentServices: -849.8
+                    otherActivities: 0
+                    reserve: 0
+                    paidToYou: 0
+                    closingBalance: 2370.87
+                    scheduledSettlementDate: '2022-10-11'
+                    paymentProcessor: Payoneer
+                    settleCycle: Bi-weekly
+                    reserveToDate: 0
+                    lastUpdatedDate: '2022-10-04'
+                    holdAmt: 0
+                    holdDates: " "
+                  transactionDetails:
+                    saleAggregate:
+                      productPrice: 3866.61
+                      shipping: 36.78
+                      netTaxCollected: 262.51
+                      productTaxCollected: 260.48
+                      shippingTaxCollected: 2.03
+                      netTaxWithheld: -260.48
+                      productTaxWithheld: -260.48
+                      shippingTaxWithheld: 0
+                      netComm: -542.19
+                      netPayable: 3324.42
+                      wfsShipping: -36.78
+                      wfsShipppingTax: -2.03
+                      totalBaseCommission: -572.99
+                      commissionSavings: 30.8
+                    refundDetails:
+                      productPrice: -111.75
+                      shipping: 0
+                      netTaxCollected: -7.06
+                      productTaxCollected: -7.06
+                      shippingTaxCollected: 0
+                      netTaxWithheld: 7.06
+                      productTaxWithheld: 7.06
+                      shippingTaxWithheld: 0
+                      netComm: 11.65
+                      netPayable: -100.1
+                      totalBaseCommission: 0
+                      commissionSavings: 0
+                    adjustmentAggregate:
+                      netPayable: -3.65
+                      returnShipServCharge: -3.65
+                    wfs:
+                      netPayable: -849.8
+                      wfsInventoryRemovalFee: -1.95
+                      wfsStorageFee: -71.25
+                      wfsFullfillmentFee: -750.05
+                      wfsReturnShippingFee: -26.55
+                    partnerTxns: {}
+  "/v3/report/payment/performance":
+    get:
+      tags:
+      - Reports
+      summary: Performance Report
+      description: This API will get a partner's current cycle performance
+      externalDocs:
+        description: View Guide
+        url: "/doc/us/mp/payments"
+      operationId: getPartnerPerformance
+      parameters:
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the
+          Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track
+          and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    format: int32
+                  status:
+                    type: string
+                  error:
+                    type: string
+                  partnerId:
+                    type: string
+                  7DAY:
+                    type: object
+                    properties:
+                      refundRateSellerFault:
+                        type: number
+                      refundRateCustomerFault:
+                        type: number
+                      ots:
+                        type: number
+                      otd:
+                        type: number
+                      vtr:
+                        type: number
+                      cancellationSellerFault:
+                        type: number
+                      cancellationCustomerFault:
+                        type: number
+                  14DAY:
+                    type: object
+                    properties:
+                      refundRateSellerFault:
+                        type: number
+                      refundRateCustomerFault:
+                        type: number
+                      ots:
+                        type: number
+                      otd:
+                        type: number
+                      vtr:
+                        type: number
+                      cancellationSellerFault:
+                        type: number
+                      cancellationCustomerFault:
+                        type: number
+                  30DAY:
+                    type: object
+                    properties:
+                      refundRateSellerFault:
+                        type: number
+                      refundRateCustomerFault:
+                        type: number
+                      ots:
+                        type: number
+                      otd:
+                        type: number
+                      vtr:
+                        type: number
+                      cancellationSellerFault:
+                        type: number
+                      cancellationCustomerFault:
+                        type: number
+                  60DAY:
+                    type: object
+                    properties:
+                      refundRateSellerFault:
+                        type: number
+                      refundRateCustomerFault:
+                        type: number
+                      ots:
+                        type: number
+                      otd:
+                        type: number
+                      vtr:
+                        type: number
+                      cancellationSellerFault:
+                        type: number
+                      cancellationCustomerFault:
+                        type: number
+                  90DAY:
+                    type: object
+                    properties:
+                      refundRateSellerFault:
+                        type: number
+                      refundRateCustomerFault:
+                        type: number
+                      ots:
+                        type: number
+                      otd:
+                        type: number
+                      vtr:
+                        type: number
+                      cancellationSellerFault:
+                        type: number
+                      cancellationCustomerFault:
+                        type: number
+              example:
+                statusCode: 200
+                status: OK
+                error: ''
+                partnerId: '10000003437'
+                payload:
+                  7DAY:
+                    refundRateSellerFault: 2.66
+                    refundRateCustomerFault: 4.85
+                    ots: 100
+                    otd: 100
+                    vtr: 93.3333333
+                    cancellationSellerFault: 0
+                    cancellationCustomerFault: 0.98
+                  14DAY:
+                    refundRateSellerFault: 1.2
+                    refundRateCustomerFault: 2.19
+                    ots: 100
+                    otd: 100
+                    vtr: 96.0784314
+                    cancellationSellerFault: 0
+                    cancellationCustomerFault: 0.52
+                  30DAY:
+                    refundRateSellerFault: 2.13
+                    refundRateCustomerFault: 3.11
+                    ots: 100
+                    otd: 100
+                    vtr: 98.2683983
+                    cancellationSellerFault: 0.22
+                    cancellationCustomerFault: 0.22
+                  60DAY:
+                    refundRateSellerFault: 1.98
+                    refundRateCustomerFault: 3.4
+                    ots: 100
+                    otd: 99.8231653
+                    vtr: 99.2007105
+                    cancellationSellerFault: 0.09
+                    cancellationCustomerFault: 0.45
+                  90DAY:
+                    refundRateSellerFault: 2.42
+                    refundRateCustomerFault: 3.2
+                    ots: 100
+                    otd: 99.7278171
+                    vtr: 99.4983278
+                    cancellationSellerFault: 0.11
+                    cancellationCustomerFault: 0.62
+components:
+  schemas:
+    ReconReportError:
+      type: object
+      properties:
+        error:
+          type: array
+          items:
+            required:
+            - category
+            - code
+            - description
+            - errorIdentifiers
+            - severity
+            type: object
+            properties:
+              code:
+                type: string
+                description: Error code
+              description:
+                type: string
+                description: Error description
+              severity:
+                type: string
+                description: Error severity
+              category:
+                type: string
+                description: Error category
+              errorIdentifiers:
+                type: string
+                description: Error Identifiers
+      xml:
+        name: errors
+    ReportError:
+      required:
+      - category
+      - code
+      - description
+      - errorIdentifiers
+      - severity
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        description:
+          type: string
+          description: Error description
+        severity:
+          type: string
+          description: Error severity
+        category:
+          type: string
+          description: Error category
+        errorIdentifiers:
+          type: string
+          description: Error Identifiers
+    JSONObject:
+      type: object
+      properties:
+        empty:
+          type: boolean
+      additionalProperties:
+        type: object
+        description: "content of the CSV file in the list format, each element in
+          the list represents the row in CSV file.\t"
+      description: "content of the CSV file in the list format, each element in the
+        list represents the row in CSV file.\t"
+    ReconReportV1AsJsonResponse:
+      type: object
+      properties:
+        reportData:
+          type: array
+          description: "content of the CSV file in the list format, each element in
+            the list represents the row in CSV file.\t"
+          items:
+            type: object
+            properties:
+              empty:
+                type: boolean
+            additionalProperties:
+              type: object
+              description: "content of the CSV file in the list format, each element
+                in the list represents the row in CSV file.\t"
+            description: "content of the CSV file in the list format, each element
+              in the list represents the row in CSV file.\t"
+        nextOffset:
+          type: integer
+          description: "this field will be used in subsequent calls to fetch next
+            set of records.\t"
+          format: int64
+        totalRecords:
+          type: integer
+          description: "records returned in the current response.\t"
+          format: int32
+        description:
+          type: string
+          description: "total number of lines in the the file.\t"
+    ReconReportDateResponse:
+      type: object
+      properties:
+        availableApReportDates:
+          type: array
+          description: "All available report dates are returned\t"
+          items:
+            type: string
+            description: "All available report dates are returned\t"
+    AdjustmentAggregate:
+      type: object
+      properties:
+        netPayable:
+          type: number
+        disputeSettlement:
+          type: number
+        returnShipServCharge:
+          type: number
+        returnHandlingServCharge:
+          type: number
+        fwdShippingServiceFee:
+          type: number
+    PartnerProgramAccSummary:
+      type: object
+      properties:
+        openingBalance:
+          type: number
+        orderActivity:
+          type: number
+        walmartFulfillmentServices:
+          type: number
+        otherActivities:
+          type: number
+        reserve:
+          type: number
+        paidToYou:
+          type: number
+        closingBalance:
+          type: number
+        scheduledSettlementDate:
+          type: string
+        paymentProcessor:
+          type: string
+        settleCycle:
+          type: string
+        reserveToDate:
+          type: number
+        lastUpdatedDate:
+          type: string
+        holdAmt:
+          type: number
+        holdDates:
+          type: string
+    PartnerProgramStatementDO:
+      type: object
+      properties:
+        outstandingMCABalance:
+          type: number
+        sellerInfo:
+          type: object
+          properties:
+            storeFrontUrl:
+              type: string
+            sellerStatus:
+              type: string
+            paymentStatus:
+              type: string
+            tenure:
+              type: integer
+              format: int64
+        accountSummary:
+          type: object
+          properties:
+            openingBalance:
+              type: number
+            orderActivity:
+              type: number
+            walmartFulfillmentServices:
+              type: number
+            otherActivities:
+              type: number
+            reserve:
+              type: number
+            paidToYou:
+              type: number
+            closingBalance:
+              type: number
+            scheduledSettlementDate:
+              type: string
+            paymentProcessor:
+              type: string
+            settleCycle:
+              type: string
+            reserveToDate:
+              type: number
+            lastUpdatedDate:
+              type: string
+            holdAmt:
+              type: number
+            holdDates:
+              type: string
+        transactionDetails:
+          type: object
+          properties:
+            saleAggregate:
+              type: object
+              properties:
+                productPrice:
+                  type: number
+                shipping:
+                  type: number
+                netTaxCollected:
+                  type: number
+                productTaxCollected:
+                  type: number
+                shippingTaxCollected:
+                  type: number
+                netTaxWithheld:
+                  type: number
+                productTaxWithheld:
+                  type: number
+                shippingTaxWithheld:
+                  type: number
+                netFeeCollected:
+                  type: number
+                netFeeWithheld:
+                  type: number
+                netComm:
+                  type: number
+                netPayable:
+                  type: number
+                aboveCap:
+                  type: number
+                wfsShipping:
+                  type: number
+                wfsShipppingTax:
+                  type: number
+                totalBaseCommission:
+                  type: number
+                commissionSavings:
+                  type: number
+            refundDetails:
+              type: object
+              properties:
+                productPrice:
+                  type: number
+                shipping:
+                  type: number
+                netTaxCollected:
+                  type: number
+                productTaxCollected:
+                  type: number
+                shippingTaxCollected:
+                  type: number
+                netTaxWithheld:
+                  type: number
+                productTaxWithheld:
+                  type: number
+                shippingTaxWithheld:
+                  type: number
+                netFeeCollected:
+                  type: number
+                netFeeWithheld:
+                  type: number
+                netComm:
+                  type: number
+                netPayable:
+                  type: number
+                aboveCap:
+                  type: number
+                wfsShipping:
+                  type: number
+                wfsShipppingTax:
+                  type: number
+                totalBaseCommission:
+                  type: number
+                commissionSavings:
+                  type: number
+            adjustmentAggregate:
+              type: object
+              properties:
+                netPayable:
+                  type: number
+                disputeSettlement:
+                  type: number
+                returnShipServCharge:
+                  type: number
+                returnHandlingServCharge:
+                  type: number
+                fwdShippingServiceFee:
+                  type: number
+            wfs:
+              type: object
+              properties:
+                netPayable:
+                  type: number
+                wfsFullfillmentFee:
+                  type: number
+                wfsStorageFee:
+                  type: number
+                wfsAdjustment:
+                  type: number
+                wfsFee:
+                  type: number
+                inventoryRemovalOrder:
+                  type: number
+                inventoryDisposalOrder:
+                  type: number
+                wfsPrepServiceFee:
+                  type: number
+            partnerTxns:
+              type: object
+              properties:
+                netPayable:
+                  type: number
+                advancePayment:
+                  type: number
+    PartnerProgramStatementRes:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        status:
+          type: string
+        error:
+          type: string
+        partnerId:
+          type: string
+        payload:
+          type: object
+          properties:
+            outstandingMCABalance:
+              type: number
+            sellerInfo:
+              type: object
+              properties:
+                storeFrontUrl:
+                  type: string
+                sellerStatus:
+                  type: string
+                paymentStatus:
+                  type: string
+                tenure:
+                  type: integer
+                  format: int64
+            accountSummary:
+              type: object
+              properties:
+                openingBalance:
+                  type: number
+                orderActivity:
+                  type: number
+                walmartFulfillmentServices:
+                  type: number
+                otherActivities:
+                  type: number
+                reserve:
+                  type: number
+                paidToYou:
+                  type: number
+                closingBalance:
+                  type: number
+                scheduledSettlementDate:
+                  type: string
+                paymentProcessor:
+                  type: string
+                settleCycle:
+                  type: string
+                reserveToDate:
+                  type: number
+                lastUpdatedDate:
+                  type: string
+                holdAmt:
+                  type: number
+                holdDates:
+                  type: string
+            transactionDetails:
+              type: object
+              properties:
+                saleAggregate:
+                  type: object
+                  properties:
+                    productPrice:
+                      type: number
+                    shipping:
+                      type: number
+                    netTaxCollected:
+                      type: number
+                    productTaxCollected:
+                      type: number
+                    shippingTaxCollected:
+                      type: number
+                    netTaxWithheld:
+                      type: number
+                    productTaxWithheld:
+                      type: number
+                    shippingTaxWithheld:
+                      type: number
+                    netFeeCollected:
+                      type: number
+                    netFeeWithheld:
+                      type: number
+                    netComm:
+                      type: number
+                    netPayable:
+                      type: number
+                    aboveCap:
+                      type: number
+                    wfsShipping:
+                      type: number
+                    wfsShipppingTax:
+                      type: number
+                    totalBaseCommission:
+                      type: number
+                    commissionSavings:
+                      type: number
+                refundDetails:
+                  type: object
+                  properties:
+                    productPrice:
+                      type: number
+                    shipping:
+                      type: number
+                    netTaxCollected:
+                      type: number
+                    productTaxCollected:
+                      type: number
+                    shippingTaxCollected:
+                      type: number
+                    netTaxWithheld:
+                      type: number
+                    productTaxWithheld:
+                      type: number
+                    shippingTaxWithheld:
+                      type: number
+                    netFeeCollected:
+                      type: number
+                    netFeeWithheld:
+                      type: number
+                    netComm:
+                      type: number
+                    netPayable:
+                      type: number
+                    aboveCap:
+                      type: number
+                    wfsShipping:
+                      type: number
+                    wfsShipppingTax:
+                      type: number
+                    totalBaseCommission:
+                      type: number
+                    commissionSavings:
+                      type: number
+                adjustmentAggregate:
+                  type: object
+                  properties:
+                    netPayable:
+                      type: number
+                    disputeSettlement:
+                      type: number
+                    returnShipServCharge:
+                      type: number
+                    returnHandlingServCharge:
+                      type: number
+                    fwdShippingServiceFee:
+                      type: number
+                wfs:
+                  type: object
+                  properties:
+                    netPayable:
+                      type: number
+                    wfsFullfillmentFee:
+                      type: number
+                    wfsStorageFee:
+                      type: number
+                    wfsAdjustment:
+                      type: number
+                    wfsFee:
+                      type: number
+                    inventoryRemovalOrder:
+                      type: number
+                    inventoryDisposalOrder:
+                      type: number
+                    wfsPrepServiceFee:
+                      type: number
+                partnerTxns:
+                  type: object
+                  properties:
+                    netPayable:
+                      type: number
+                    advancePayment:
+                      type: number
+    PartnerProgramTransactionDetails:
+      type: object
+      properties:
+        saleAggregate:
+          type: object
+          properties:
+            productPrice:
+              type: number
+            shipping:
+              type: number
+            netTaxCollected:
+              type: number
+            productTaxCollected:
+              type: number
+            shippingTaxCollected:
+              type: number
+            netTaxWithheld:
+              type: number
+            productTaxWithheld:
+              type: number
+            shippingTaxWithheld:
+              type: number
+            netFeeCollected:
+              type: number
+            netFeeWithheld:
+              type: number
+            netComm:
+              type: number
+            netPayable:
+              type: number
+            aboveCap:
+              type: number
+            wfsShipping:
+              type: number
+            wfsShipppingTax:
+              type: number
+            totalBaseCommission:
+              type: number
+            commissionSavings:
+              type: number
+        refundDetails:
+          type: object
+          properties:
+            productPrice:
+              type: number
+            shipping:
+              type: number
+            netTaxCollected:
+              type: number
+            productTaxCollected:
+              type: number
+            shippingTaxCollected:
+              type: number
+            netTaxWithheld:
+              type: number
+            productTaxWithheld:
+              type: number
+            shippingTaxWithheld:
+              type: number
+            netFeeCollected:
+              type: number
+            netFeeWithheld:
+              type: number
+            netComm:
+              type: number
+            netPayable:
+              type: number
+            aboveCap:
+              type: number
+            wfsShipping:
+              type: number
+            wfsShipppingTax:
+              type: number
+            totalBaseCommission:
+              type: number
+            commissionSavings:
+              type: number
+        adjustmentAggregate:
+          type: object
+          properties:
+            netPayable:
+              type: number
+            disputeSettlement:
+              type: number
+            returnShipServCharge:
+              type: number
+            returnHandlingServCharge:
+              type: number
+            fwdShippingServiceFee:
+              type: number
+        wfs:
+          type: object
+          properties:
+            netPayable:
+              type: number
+            wfsFullfillmentFee:
+              type: number
+            wfsStorageFee:
+              type: number
+            wfsAdjustment:
+              type: number
+            wfsFee:
+              type: number
+            inventoryRemovalOrder:
+              type: number
+            inventoryDisposalOrder:
+              type: number
+            wfsPrepServiceFee:
+              type: number
+        partnerTxns:
+          type: object
+          properties:
+            netPayable:
+              type: number
+            advancePayment:
+              type: number
+    PartnerTxns:
+      type: object
+      properties:
+        netPayable:
+          type: number
+        advancePayment:
+          type: number
+    SaleRefundAggr:
+      type: object
+      properties:
+        productPrice:
+          type: number
+        shipping:
+          type: number
+        netTaxCollected:
+          type: number
+        productTaxCollected:
+          type: number
+        shippingTaxCollected:
+          type: number
+        netTaxWithheld:
+          type: number
+        productTaxWithheld:
+          type: number
+        shippingTaxWithheld:
+          type: number
+        netFeeCollected:
+          type: number
+        netFeeWithheld:
+          type: number
+        netComm:
+          type: number
+        netPayable:
+          type: number
+        aboveCap:
+          type: number
+        wfsShipping:
+          type: number
+        wfsShipppingTax:
+          type: number
+        totalBaseCommission:
+          type: number
+        commissionSavings:
+          type: number
+    SellerInfo:
+      type: object
+      properties:
+        storeFrontUrl:
+          type: string
+        sellerStatus:
+          type: string
+        paymentStatus:
+          type: string
+        tenure:
+          type: integer
+          format: int64
+    WfsAggr:
+      type: object
+      properties:
+        netPayable:
+          type: number
+        wfsFullfillmentFee:
+          type: number
+        wfsStorageFee:
+          type: number
+        wfsAdjustment:
+          type: number
+        wfsFee:
+          type: number
+        inventoryRemovalOrder:
+          type: number
+        inventoryDisposalOrder:
+          type: number
+        wfsPrepServiceFee:
+          type: number
+    PartnerProgramPerformance:
+      type: object
+      properties:
+        refundRateSellerFault:
+          type: number
+        refundRateCustomerFault:
+          type: number
+        ots:
+          type: number
+        otd:
+          type: number
+        vtr:
+          type: number
+        cancellationSellerFault:
+          type: number
+        cancellationCustomerFault:
+          type: number
+    PartnerProgramPerformanceRes:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        status:
+          type: string
+        error:
+          type: string
+        partnerId:
+          type: string
+        7DAY:
+          type: object
+          properties:
+            refundRateSellerFault:
+              type: number
+            refundRateCustomerFault:
+              type: number
+            ots:
+              type: number
+            otd:
+              type: number
+            vtr:
+              type: number
+            cancellationSellerFault:
+              type: number
+            cancellationCustomerFault:
+              type: number
+        14DAY:
+          type: object
+          properties:
+            refundRateSellerFault:
+              type: number
+            refundRateCustomerFault:
+              type: number
+            ots:
+              type: number
+            otd:
+              type: number
+            vtr:
+              type: number
+            cancellationSellerFault:
+              type: number
+            cancellationCustomerFault:
+              type: number
+        30DAY:
+          type: object
+          properties:
+            refundRateSellerFault:
+              type: number
+            refundRateCustomerFault:
+              type: number
+            ots:
+              type: number
+            otd:
+              type: number
+            vtr:
+              type: number
+            cancellationSellerFault:
+              type: number
+            cancellationCustomerFault:
+              type: number
+        60DAY:
+          type: object
+          properties:
+            refundRateSellerFault:
+              type: number
+            refundRateCustomerFault:
+              type: number
+            ots:
+              type: number
+            otd:
+              type: number
+            vtr:
+              type: number
+            cancellationSellerFault:
+              type: number
+            cancellationCustomerFault:
+              type: number
+        90DAY:
+          type: object
+          properties:
+            refundRateSellerFault:
+              type: number
+            refundRateCustomerFault:
+              type: number
+            ots:
+              type: number
+            otd:
+              type: number
+            vtr:
+              type: number
+            cancellationSellerFault:
+              type: number
+            cancellationCustomerFault:
+              type: number
+  parameters:
+    authorization:
+      name: Authorization
+      in: header
+      description: Basic authorization header. Base 64 encodes the Client ID and Client
+        Secret retrieved in step two of the integration steps.
+      required: true
+      schema:
+        type: string
+      example: Basic YzcyOTFjNmItNzI5MC00....
+    accessToken:
+      name: WM_SEC.ACCESS_TOKEN
+      in: header
+      description: The access token retrieved in the Token API call
+      required: true
+      schema:
+        type: string
+      example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+    channelType:
+      name: WM_CONSUMER.CHANNEL.TYPE
+      in: header
+      description: A unique ID to track the consumer request by channel. Use the Consumer
+        Channel Type received during onboarding
+      required: false
+      schema:
+        type: string
+    correlationId:
+      name: WM_QOS.CORRELATION_ID
+      in: header
+      description: A unique ID which identifies each API call and used to track and
+        debug issues; use a random generated GUID for this ID
+      required: true
+      schema:
+        type: string
+      example: b3261d2d-028a-4ef7-8602-633c23200af6
+    svcName:
+      name: WM_SVC.NAME
+      in: header
+      description: Walmart Service Name
+      required: true
+      schema:
+        type: string
+      example: Walmart Service Name
+    accept:
+      name: Accept
+      in: header
+      description: 'Only supported Media Type : application/json'
+      required: true
+      schema:
+        type: string
+      example: application/json
+    content-type:
+      name: Content-Type
+      in: header
+      description: 'Only supported Media Type : application/json'
+      required: true
+      schema:
+        type: string
+      example: application/json
