@@ -755,6 +755,19 @@ common:
     type: Status
   - url: https://developer.walmart.com/faq/terms-and-conditions
     type: Terms of Service
+  - type: Summary
+    data:
+      numberOfAPITags: 2
+      numberOfAPIProperties: 0
+      numberOfAPIPaths: 0
+      numberOfAPIGetMethods: 0
+      numberOfAPIPostMethods: 0
+      numberOfAPIPutMethods: 0
+      numberOfAPIPatchMethods: 0
+      numberOfAPIDeleteMethods: 0
+      numberOfAPIOptionMethods: 0
+      numberOfAPIParameters: 0
+      numberOfAPISchema: 0
 created: 2023/11/15
 modified: '2025-01-04'
 description: >-
