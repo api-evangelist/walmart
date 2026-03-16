@@ -781,10 +781,9 @@ description: >-
   Walmart strives to provide affordable, convenient, and quality products to its
   customers around the world.
 maintainers:
-  - FN: API Evangelist
-    url: http://apievangelist.com
-    email: info@apievangelist.com
-specificationVersion: '0.18'
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+specificationVersion: '0.19'
 type: Contract
 position: Consuming
 access: 3rd-Party
