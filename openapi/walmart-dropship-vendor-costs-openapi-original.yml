@@ -335,3 +335,5 @@ x-tagGroups:
   - name: 1P Suppliers DSV Cost Reference
     tags:
       - DSV Cost
+tags:
+  - name: DSV Cost

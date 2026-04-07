@@ -919,3 +919,5 @@ x-tagGroups:
   - name: 1P Suppliers On Request Reports Reference
     tags:
       - On Request Reports
+tags:
+  - name: On Request Reports

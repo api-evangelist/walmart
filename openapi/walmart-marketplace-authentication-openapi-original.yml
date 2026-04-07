@@ -661,3 +661,5 @@ components:
       name: Authorization
       in: header
       scheme: basic
+tags:
+  - name: Authorization

@@ -599,3 +599,5 @@ x-tagGroups:
   - name: 1P Suppliers Pre-Generated Reports Reference
     tags:
       - Pre-Generated Reports
+tags:
+  - name: Pre-Generated Reports

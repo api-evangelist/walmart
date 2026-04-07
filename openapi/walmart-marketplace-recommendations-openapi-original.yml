@@ -2379,7 +2379,4 @@ components:
         type: string
       example: application/json
 tags:
-  - name: Bulk Download Assortment Recommendations
-    externalDocs:
-      description: On-request Assortment Recommendations Report
-      url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/#15593
+  - name: Assortment Recommendations

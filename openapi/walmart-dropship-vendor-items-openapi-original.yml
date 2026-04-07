@@ -27588,3 +27588,5 @@ x-tagGroups:
   - name: 1P Suppliers Items Reference
     tags:
       - Items
+tags:
+  - name: Items

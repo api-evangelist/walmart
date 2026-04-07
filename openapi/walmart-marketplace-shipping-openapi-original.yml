@@ -13,7 +13,7 @@ paths:
   "/v3/shipping/labels":
     post:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Create label
       description: "This API generates shipping labels with the shipment info passed. The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.\nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type, \n'Accept'='application/json,image/png' as image png media type and 'Accept'='application/json' as json response. Refer request sample4 for India(IN) to United-States(US) shipping"
       operationId: createLabel
@@ -1892,7 +1892,7 @@ paths:
   "/v3/shipping/labels/shipping-estimates":
     post:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Shipping estimates
       description: This API retrieves shipping cost estimates for available shipping services based on address and package (e.g., customer address, packaged weight.)
       operationId: getShippingEstimate
@@ -2907,7 +2907,7 @@ paths:
   "/v3/shipping/labels/purchase-orders/{purchaseOrderId}":
     get:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Labels detail by purchase order id
       description: This API retrieves all label details generated for a purchase order id.
       operationId: getLabel
@@ -3491,7 +3491,7 @@ paths:
   "/v3/shipping/labels/carriers":
     get:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Supported carriers
       description: This API retrieves all carriers supported by Ship With Walmart.
       operationId: getCarriers
@@ -3602,7 +3602,7 @@ paths:
   "/v3/shipping/labels/carriers/{carrierShortName}/trackings/{trackingNo}":
     get:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Download label
       description: |-
         This API retrieves label for a carrier & tracking number combination.The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.
@@ -3670,7 +3670,7 @@ paths:
                 format: binary
     delete:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Discard label
       description: This API marks a generated label as discarded.
       operationId: discardLabel
@@ -3777,7 +3777,7 @@ paths:
   "/v3/shipping/labels/carriers/{carrierShortName}/trackings/{trackingNo}/CI":
     get:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Download Commercial Invoice
       description: "This API retrieves commercialInvoice for a carrier & tracking number combination. This API is applicable only when shipping done from (India)IN to (United-States)US. The response to a successful call contains the commercial invoice in pdf format. \nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type. "
       operationId: getCIForCarrierAndTrackingNumber
@@ -3839,7 +3839,7 @@ paths:
   "/v3/shipping/labels/carriers/{carrierShortName}/package-types":
     get:
       tags:
-        - Ship With Walmart
+        - Ship with Walmart
       summary: Walmart Supported carrier package types
       description: This API retrieves all supported package types for the selected carrier.
       operationId: getCarrierPackageTypes
@@ -9010,3 +9010,5 @@ components:
       schema:
         type: string
       example: application/json
+tags:
+  - name: Ship with Walmart

@@ -500,3 +500,5 @@ x-tagGroups:
   - name: 1P Suppliers Lag Time Reference
     tags:
       - Lag Time
+tags:
+  - name: Lag Time

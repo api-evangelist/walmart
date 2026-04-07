@@ -1759,3 +1759,5 @@ components:
       schema:
         type: string
       example: application/json
+tags:
+  - name: Reports

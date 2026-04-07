@@ -1053,3 +1053,5 @@ x-tagGroups:
   - name: 1P Suppliers Inventory Reference
     tags:
       - Inventory
+tags:
+  - name: Inventory
