@@ -1,81 +1,67 @@
----
 openapi: 3.0.1
 info:
-  title: Assortment Recommendations Overview
-  description: "Assortment recommendations empower sellers understand customer demand
-    in Walmart & market by curating personalised seller recommendations by leveraging
-    demand signals such as \n*   Internal and external search \n*   Best Sellers\n*
-    \  Trending items, and more.\n\nAssortment Recommendations API can be used to
-    viewed, bulk download, filtered, rejected and shortlist the recommendations. These
-    shortlisted items can be set up using the [Item Setup API](https://developer.walmart.com/api/us/mp/items).\nSellers
-    need to provide API access key on [developer portal](https://developer.walmart.com/account/generateKey)
-    for ‘Analytics & Growth’ to solution providers and channel partners to be able
-    to access Assortment Growth APIs."
+  title: Walmart Assortment Recommendations Overview
+  description: "Assortment recommendations empower sellers understand customer demand in Walmart & market by curating personalised seller recommendations by leveraging demand signals such as \n*   Internal and external search \n*   Best Sellers\n*   Trending items, and more.\n\nAssortment Recommendations API can be used to viewed, bulk download, filtered, rejected and shortlist the recommendations. These shortlisted items can be set up using the [Item Setup API](https://developer.walmart.com/api/us/mp/items).\nSellers need to provide API access key on [developer portal](https://developer.walmart.com/account/generateKey) for ‘Analytics & Growth’ to solution providers and channel partners to be able to access Assortment Growth APIs."
 servers:
-- url: https://marketplace.walmartapis.com
-  description: Production URL
-- url: https://sandbox.walmartapis.com
-  description: Sandbox URL
+  - url: https://marketplace.walmartapis.com
+    description: Production URL
+  - url: https://sandbox.walmartapis.com
+    description: Sandbox URL
 security:
-- basicScheme: []
+  - basicScheme: []
 paths:
   "/v3/growth/assortment/recommendations":
     post:
       tags:
-      - Assortment Recommendations
-      summary: Get Recommendations
-      description: "You can fetch the list of recommendations that are recommended
-        for you. \n \nUsing ITEM as a recommendationType,\n*   You can get the list
-        of ITEM recommendations. You can apply filters to fetch selective item recommendations.
-        \n \n\n"
+        - Assortment Recommendations
+      summary: Walmart Get Recommendations
+      description: "You can fetch the list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can get the list of ITEM recommendations. You can apply filters to fetch selective item recommendations. \n \n\n"
       externalDocs:
         description: View Guide
         url: "/doc/us/us-mp/us-mp-assortmentrecommendations/#12957"
       operationId: getAssortmentRecommendations
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
-      - in: header
-        name: Accept
-        description: 'Only supported Media Type : application/json'
-        required: true
-        schema:
-          type: string
-        example: application/json
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
+        - in: header
+          name: Accept
+          description: 'Only supported Media Type : application/json'
+          required: true
+          schema:
+            type: string
+          example: application/json
       requestBody:
         description: Request payload
         content:
           application/json:
             schema:
               required:
-              - recommendationType
+                - recommendationType
               type: object
               properties:
                 recommendationType:
@@ -85,7 +71,7 @@ paths:
                     | --- | ----------- | ------- |
                     | ITEM | To get list of recommended items | string |
                   enum:
-                  - ITEM
+                    - ITEM
                 meta:
                   type: object
                   properties:
@@ -98,10 +84,7 @@ paths:
                       default: 200
                     nextCursor:
                       type: string
-                      description: Used for pagination when more than 200 records
-                        are retrieved. The nextCursor value of the response includes
-                        a marker which needs to be passed in next call which retrieves
-                        the next page of results.
+                      description: Used for pagination when more than 200 records are retrieved. The nextCursor value of the response includes a marker which needs to be passed in next call which retrieves the next page of results.
                   description: Meta information for the request.
                 filterCriteria:
                   type: object
@@ -109,15 +92,13 @@ paths:
                     searchText:
                       minLength: 3
                       type: string
-                      description: 'To filter with a search text having a word that
-                        can be part of the recommended data. '
+                      description: 'To filter with a search text having a word that can be part of the recommended data. '
                     multiValueFilter:
                       type: array
-                      description: "Filters based on multiple values associated with
-                        a specific parameter. \nNo parameter should be repeated."
+                      description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
                       items:
                         required:
-                        - parameter
+                          - parameter
                         type: object
                         properties:
                           parameter:
@@ -128,115 +109,63 @@ paths:
                               | BRAND | To filter based on list of brands which are associated with the assortment recommendations | string |
                               | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations | string |
                             enum:
-                            - BRAND
-                            - CATEGORY
+                              - BRAND
+                              - CATEGORY
                           values:
                             type: array
-                            description: A list of values corresponds to the parameter
-                              in the filter. The values in the list should not be
-                              null or blank. Maximum size of the list should be 7.
+                            description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
                             items:
                               type: string
-                              description: A list of values corresponds to the parameter
-                                in the filter. The values in the list should not be
-                                null or blank. Maximum size of the list should be
-                                7.
-                        description: "Filters based on multiple values associated
-                          with a specific parameter. \nNo parameter should be repeated."
+                              description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
+                        description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
                     enumFilter:
                       type: array
-                      description: "Filter based on preset parameters and their associated
-                        values is possible with EnumFilter.  \nNo parameter should
-                        be repeated."
+                      description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
                       items:
                         type: object
                         properties:
                           parameter:
                             type: string
-                            description: "To apply an enum filter based on the predefined
-                              parameter. \n\n| Attribute | Description | Data Type
-                              |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS
-                              | To filter based on whether the items which are new
-                              to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS
-                              | Indicates the demand types identified in the market
-                              for an item. An item can have more than one value for
-                              this parameter. | string |"
+                            description: "To apply an enum filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether the items which are new to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand types identified in the market for an item. An item can have more than one value for this parameter. | string |"
                             enum:
-                            - ITEM_AVAILABILITY_STATUS
+                              - ITEM_AVAILABILITY_STATUS
                           values:
                             type: array
-                            description: "Values correspond to the parameter for applying
-                              filter on the response. The data in values[] are predefined.
-                              OR operator is used between the values. \n\n| Attribute
-                              | Associated parameter of enumFilter | Description |
-                              Data Type |\n| --- | ----------- | ----------- | -------
-                              |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS
-                              | To filters based on the items which are existing in
-                              Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS
-                              | To filters based on the items which are new to Walmart.
-                              | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS |
-                              Item is most searched for in the market. | string |\n|
-                              BEST_SELLERS | SHOPPING_TRENDS | Item is best seller
-                              in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS
-                              | Item is in demand and is a part of deals in the other
-                              marketplaces. | string |\n"
+                            description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                             items:
                               type: string
-                              description: "Values correspond to the parameter for
-                                applying filter on the response. The data in values[]
-                                are predefined. OR operator is used between the values.
-                                \n\n| Attribute | Associated parameter of enumFilter
-                                | Description | Data Type |\n| --- | ----------- |
-                                ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS
-                                | To filters based on the items which are existing
-                                in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS
-                                | To filters based on the items which are new to Walmart.
-                                | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS
-                                | Item is most searched for in the market. | string
-                                |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best
-                                seller in the market.  | string |\n| DEAL_ITEMS |
-                                SHOPPING_TRENDS | Item is in demand and is a part
-                                of deals in the other marketplaces. | string |\n"
+                              description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                               enum:
+                                - EXISTING_IN_WALMART
+                                - NEW_TO_WALMART
+                                - MOST_SEARCHED_FOR
+                                - BEST_SELLERS
+                                - DEAL_ITEMS
+                            enum:
                               - EXISTING_IN_WALMART
                               - NEW_TO_WALMART
                               - MOST_SEARCHED_FOR
                               - BEST_SELLERS
                               - DEAL_ITEMS
-                            enum:
-                            - EXISTING_IN_WALMART
-                            - NEW_TO_WALMART
-                            - MOST_SEARCHED_FOR
-                            - BEST_SELLERS
-                            - DEAL_ITEMS
-                        description: "Filter based on preset parameters and their
-                          associated values is possible with EnumFilter.  \nNo parameter
-                          should be repeated."
+                        description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
                     rangeFilter:
                       type: array
-                      description: "Filter based on a range with RangeFilter. You
-                        must also pass a parameter along with any of the beginning
-                        or the ending points or both. \nNo parameter should be repeated."
+                      description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
                       items:
                         type: object
                         properties:
                           parameter:
                             type: string
-                            description: "To apply a range filter based on the predefined
-                              parameter. \n\n| Attribute | Description | Data Type
-                              |\n| --- | ----------- | ------- |\n| PRICE | To filter
-                              based on the price. | string |"
+                            description: "To apply a range filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| PRICE | To filter based on the price. | string |"
                             enum:
-                            - PRICE
+                              - PRICE
                           from:
                             type: string
                             description: Filter range start
                           to:
                             type: string
                             description: Filter range end
-                        description: "Filter based on a range with RangeFilter. You
-                          must also pass a parameter along with any of the beginning
-                          or the ending points or both. \nNo parameter should be repeated."
+                        description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
                   description: Different type of filters can be passed in this object.
             examples:
               All item recommendations:
@@ -253,30 +182,30 @@ paths:
                   filterCriteria:
                     searchText: and
                     multiValueFilter:
-                    - parameter: BRAND
-                      values:
-                      - Florida Atlantic University
-                      - maximalpower
-                      - delsit
-                    - parameter: CATEGORY
-                      values:
-                      - TOPS SPORTSWEAR ECOMM MENS
-                      - TODDLER FURNITURE
-                      - FLOORCARE
+                      - parameter: BRAND
+                        values:
+                          - Florida Atlantic University
+                          - maximalpower
+                          - delsit
+                      - parameter: CATEGORY
+                        values:
+                          - TOPS SPORTSWEAR ECOMM MENS
+                          - TODDLER FURNITURE
+                          - FLOORCARE
                     enumFilter:
-                    - parameter: ITEM_AVAILABILITY_STATUS
-                      values:
-                      - NEW_TO_WALMART
-                      - EXISTING_IN_WALMART
-                    - parameter: SHOPPING_TRENDS
-                      values:
-                      - MOST_SEARCHED_FOR
-                      - BEST_SELLERS
-                      - DEAL_ITEMS
+                      - parameter: ITEM_AVAILABILITY_STATUS
+                        values:
+                          - NEW_TO_WALMART
+                          - EXISTING_IN_WALMART
+                      - parameter: SHOPPING_TRENDS
+                        values:
+                          - MOST_SEARCHED_FOR
+                          - BEST_SELLERS
+                          - DEAL_ITEMS
                     rangeFilter:
-                    - parameter: PRICE
-                      from: '10.0'
-                      to: '80.5'
+                      - parameter: PRICE
+                        from: '10.0'
+                        to: '80.5'
         required: true
       responses:
         '200':
@@ -288,7 +217,7 @@ paths:
                 properties:
                   payload:
                     required:
-                    - recommendationType
+                      - recommendationType
                     type: object
                     properties:
                       recommendationType:
@@ -298,14 +227,13 @@ paths:
                           | --- | ----------- | ------- |
                           | ITEM | To get list of recommended items | string |
                         enum:
-                        - ITEM
+                          - ITEM
                       meta:
                         type: object
                         properties:
                           totalRecords:
                             type: integer
-                            description: The total number of records are present for
-                              the requested categorization type along with filters.
+                            description: The total number of records are present for the requested categorization type along with filters.
                             format: int32
                           recordsFetched:
                             type: integer
@@ -320,9 +248,7 @@ paths:
                             default: 200
                           nextCursor:
                             type: string
-                            description: The string returned from the initial API
-                              call to indicate nextCursor. Specify nextCursor value
-                              to retrieve the next set of records.
+                            description: The string returned from the initial API call to indicate nextCursor. Specify nextCursor value to retrieve the next set of records.
                         description: Meta information for the response.
                       records:
                         type: array
@@ -359,48 +285,27 @@ paths:
                                   description: EAN of the recommended item
                                 itemAvailabilityStatus:
                                   type: string
-                                  description: "Item availability status of the recommended
-                                    item. \n\n| Attribute | Description | Data Type
-                                    |\n| --- | ----------- | ------- |\n| EXISTING_IN_WALMART
-                                    | Indicates that item is existing in Walmart.
-                                    | string |\n| NEW_TO_WALMART | Indicates that
-                                    item is new to Walmart. | string |"
+                                  description: "Item availability status of the recommended item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| EXISTING_IN_WALMART | Indicates that item is existing in Walmart. | string |\n| NEW_TO_WALMART | Indicates that item is new to Walmart. | string |"
                                   enum:
-                                  - EXISTING_IN_WALMART
-                                  - NEW_TO_WALMART
+                                    - EXISTING_IN_WALMART
+                                    - NEW_TO_WALMART
                                 potentialSales:
                                   type: string
-                                  description: "Indicates the potential revenue the
-                                    recommended item can bring in over a year. \nThis
-                                    field does not promise the numbers indicated."
+                                  description: "Indicates the potential revenue the recommended item can bring in over a year. \nThis field does not promise the numbers indicated."
                                 shoppingTrends:
                                   type: array
-                                  description: "Indicates the demand type for an item.
-                                    \n\n| Attribute | Description | Data Type |\n|
-                                    --- | ----------- | ------- |\n| MOST_SEARCHED_FOR
-                                    | Item is most searched for in the market. | string
-                                    |\n| BEST_SELLERS | Item is best seller in the
-                                    market. | string |\n| DEAL_ITEMS | Item is in
-                                    demand and is a part of deals in the other marketplaces.
-                                    | string |"
+                                  description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
                                   items:
                                     type: string
-                                    description: "Indicates the demand type for an
-                                      item. \n\n| Attribute | Description | Data Type
-                                      |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR
-                                      | Item is most searched for in the market. |
-                                      string |\n| BEST_SELLERS | Item is best seller
-                                      in the market. | string |\n| DEAL_ITEMS | Item
-                                      is in demand and is a part of deals in the other
-                                      marketplaces. | string |"
+                                    description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
                                     enum:
+                                      - MOST_SEARCHED_FOR
+                                      - BEST_SELLERS
+                                      - DEAL_ITEMS
+                                  enum:
                                     - MOST_SEARCHED_FOR
                                     - BEST_SELLERS
                                     - DEAL_ITEMS
-                                  enum:
-                                  - MOST_SEARCHED_FOR
-                                  - BEST_SELLERS
-                                  - DEAL_ITEMS
                                 walmart:
                                   type: object
                                   properties:
@@ -418,29 +323,23 @@ paths:
                                       properties:
                                         amount:
                                           type: number
-                                          description: 'The numerical amount of the
-                                            price. Example: 9.99'
+                                          description: 'The numerical amount of the price. Example: 9.99'
                                           format: double
                                         currency:
                                           type: string
-                                          description: Currency associated with the
-                                            price of the item recommendation.
-                                      description: Competitor's item shipping price
-                                        details of the item recommendation.
+                                          description: Currency associated with the price of the item recommendation.
+                                      description: Competitor's item shipping price details of the item recommendation.
                                     shippingPrice:
                                       type: object
                                       properties:
                                         amount:
                                           type: number
-                                          description: 'The numerical amount of the
-                                            price. Example: 9.99'
+                                          description: 'The numerical amount of the price. Example: 9.99'
                                           format: double
                                         currency:
                                           type: string
-                                          description: Currency associated with the
-                                            price of the item recommendation.
-                                      description: Competitor's item shipping price
-                                        details of the item recommendation.
+                                          description: Currency associated with the price of the item recommendation.
+                                      description: Competitor's item shipping price details of the item recommendation.
                                   description: Walmart's item information
                                 competitors:
                                   type: array
@@ -459,34 +358,27 @@ paths:
                                         properties:
                                           amount:
                                             type: number
-                                            description: 'The numerical amount of
-                                              the price. Example: 9.99'
+                                            description: 'The numerical amount of the price. Example: 9.99'
                                             format: double
                                           currency:
                                             type: string
-                                            description: Currency associated with
-                                              the price of the item recommendation.
-                                        description: Competitor's item shipping price
-                                          details of the item recommendation.
+                                            description: Currency associated with the price of the item recommendation.
+                                        description: Competitor's item shipping price details of the item recommendation.
                                       shippingPrice:
                                         type: object
                                         properties:
                                           amount:
                                             type: number
-                                            description: 'The numerical amount of
-                                              the price. Example: 9.99'
+                                            description: 'The numerical amount of the price. Example: 9.99'
                                             format: double
                                           currency:
                                             type: string
-                                            description: Currency associated with
-                                              the price of the item recommendation.
-                                        description: Competitor's item shipping price
-                                          details of the item recommendation.
+                                            description: Currency associated with the price of the item recommendation.
+                                        description: Competitor's item shipping price details of the item recommendation.
                                     description: Competitor's item information
                               description: Details of the recommended item.
                           description: Information related to the item recommendations.
-                    description: Payload in the response having the details about
-                      the item recommendations.
+                    description: Payload in the response having the details about the item recommendations.
               examples:
                 All item recommendations:
                   value:
@@ -498,67 +390,65 @@ paths:
                         limit: 2
                         nextCursor: AoRYPgVAkFauFHrhSAU/5cbOnJbgPT04MDZBTkQ4Mjk4MTIyMTMxQU5EQjAxTkNYSkJQOQ==
                       records:
-                      - itemRecommendationUniqueId: 806AND8707224727ANDB06XCG9QPJ
-                        itemDetails:
-                          title: Allurez Heart and Diamond Initials Lariat Pendant
-                            Y-Necklace in 14k Rose Gold
-                          brand: Allurez
-                          category: DIAMOND JEWELRY ECOMM WOMENS
-                          gtin: '06651291438962'
-                          upc: '0665129143896'
-                          itemAvailabilityStatus: EXISTING_IN_WALMART
-                          potentialSales: "$100K+"
-                          shoppingTrends:
-                          - MOST_SEARCHED_FOR
-                          - BEST_SELLERS
-                          walmart:
-                            itemId: '707224727'
-                            url: www.walmart.com/ip/707224727
-                            itemPrice:
-                              amount: 299.99
-                              currency: USD
-                            shippingPrice:
-                              amount: 0
-                              currency: USD
-                          competitors:
-                          - itemId: B06XCG9QPJ
-                            url: www.amazon.com/dp/B06XCG9QPJ
-                            itemPrice:
-                              amount: 1192
-                              currency: USD
-                            shippingPrice:
-                              amount: 0
-                              currency: USD
-                      - itemRecommendationUniqueId: 806AND8298122131ANDB01NCXJBP9
-                        itemDetails:
-                          title: Three-Stone Leverback Diamond Earrings 14k Yellow
-                            Gold (0.50ct)
-                          brand: Allurez
-                          category: DIAMOND JEWELRY ECOMM WOMENS
-                          gtin: '04692981221312'
-                          upc: '0469298122131'
-                          itemAvailabilityStatus: EXISTING_IN_WALMART
-                          potentialSales: "$50K-$100K"
-                          shoppingTrends:
-                          - BEST_SELLERS
-                          walmart:
-                            itemId: '298122131'
-                            url: www.walmart.com/ip/298122131
-                            itemPrice:
-                              amount: 777
-                              currency: USD
-                            shippingPrice:
-                              amount: 0
-                              currency: USD
-                          competitors:
-                          - itemId: B01NCXJBP9
-                            url: www.amazon.com/dp/B01NCXJBP9
-                            itemPrice:
-                              amount: 670
-                              currency: USD
-                            shippingPrice:
-                              amount: 0
-                              currency: USD
+                        - itemRecommendationUniqueId: 806AND8707224727ANDB06XCG9QPJ
+                          itemDetails:
+                            title: Allurez Heart and Diamond Initials Lariat Pendant Y-Necklace in 14k Rose Gold
+                            brand: Allurez
+                            category: DIAMOND JEWELRY ECOMM WOMENS
+                            gtin: '06651291438962'
+                            upc: '0665129143896'
+                            itemAvailabilityStatus: EXISTING_IN_WALMART
+                            potentialSales: "$100K+"
+                            shoppingTrends:
+                              - MOST_SEARCHED_FOR
+                              - BEST_SELLERS
+                            walmart:
+                              itemId: '707224727'
+                              url: www.walmart.com/ip/707224727
+                              itemPrice:
+                                amount: 299.99
+                                currency: USD
+                              shippingPrice:
+                                amount: 0
+                                currency: USD
+                            competitors:
+                              - itemId: B06XCG9QPJ
+                                url: www.amazon.com/dp/B06XCG9QPJ
+                                itemPrice:
+                                  amount: 1192
+                                  currency: USD
+                                shippingPrice:
+                                  amount: 0
+                                  currency: USD
+                        - itemRecommendationUniqueId: 806AND8298122131ANDB01NCXJBP9
+                          itemDetails:
+                            title: Three-Stone Leverback Diamond Earrings 14k Yellow Gold (0.50ct)
+                            brand: Allurez
+                            category: DIAMOND JEWELRY ECOMM WOMENS
+                            gtin: '04692981221312'
+                            upc: '0469298122131'
+                            itemAvailabilityStatus: EXISTING_IN_WALMART
+                            potentialSales: "$50K-$100K"
+                            shoppingTrends:
+                              - BEST_SELLERS
+                            walmart:
+                              itemId: '298122131'
+                              url: www.walmart.com/ip/298122131
+                              itemPrice:
+                                amount: 777
+                                currency: USD
+                              shippingPrice:
+                                amount: 0
+                                currency: USD
+                            competitors:
+                              - itemId: B01NCXJBP9
+                                url: www.amazon.com/dp/B01NCXJBP9
+                                itemPrice:
+                                  amount: 670
+                                  currency: USD
+                                shippingPrice:
+                                  amount: 0
+                                  currency: USD
                 Item recommendations based on filter:
                   value:
                     payload:
@@ -569,119 +459,107 @@ paths:
                         limit: 2
                         nextCursor: AoRYPgVAkFauFHrhSAU/5cbOnJbgPT04MDZBTkQ4Mjk4MTIyMTMxQU5EQjAxTkNYSkJQOQ==
                       records:
-                      - itemRecommendationUniqueId: acca7a9b-07dd-4ba3-970a-6a404e9e8240
-                        itemDetails:
-                          title: MaximalPower Replacement Vacuum Filter For EUREKA
-                            DCF-4 DCF-18 Washable and Reusable Replaces Eureka GE
-                            DCF1 DCF4 DCF18 28608-1 28608B-1 62132 63073 61770 3690
-                            18505 - 2 PACK
-                          brand: maximalpower
-                          category: FLOORCARE
-                          gtin: '00797518364449'
-                          upc: '0072819436444'
-                          ean: '51985410715'
-                          itemAvailabilityStatus: EXISTING_IN_WALMART
-                          potentialSales: "$100K+"
-                          shoppingTrends:
-                          - MOST_SEARCHED_FOR
-                          - BEST_SELLERS
-                          walmart:
-                            itemId: '810058003'
-                            url: www.walmart.com/ip/810058003
-                            itemPrice:
-                              amount: 28.49
-                              currency: USD
-                            shippingPrice:
-                              amount: 0
-                              currency: USD
-                          competitors:
-                          - itemId: B075LXQF2B
-                            url: www.amazon.com/dp/B075LXQF2B
-                            itemPrice:
-                              amount: 15.97
-                              currency: USD
-                            shippingPrice:
-                              amount: 0
-                              currency: USD
-                      - itemRecommendationUniqueId: 660c6344-0106-4412-a993-9ffc93937f9c
-                        itemDetails:
-                          title: Florida Atlantic University Official State Shape
-                            and Unisex Adult Tank Top
-                          brand: Florida Atlantic University
-                          category: TOPS SPORTSWEAR ECOMM MENS
-                          itemAvailabilityStatus: NEW_TO_WALMART
-                          potentialSales: "$50K-$100K"
-                          shoppingTrends:
-                          - BEST_SELLERS
-                          competitors:
-                          - itemId: B0800Y7PSW
-                            url: www.amazon.com/dp/B0800Y7PSW
-                            itemPrice:
-                              amount: 19.99
-                              currency: USD
-                            shippingPrice:
-                              amount: 0
-                              currency: USD
+                        - itemRecommendationUniqueId: acca7a9b-07dd-4ba3-970a-6a404e9e8240
+                          itemDetails:
+                            title: MaximalPower Replacement Vacuum Filter For EUREKA DCF-4 DCF-18 Washable and Reusable Replaces Eureka GE DCF1 DCF4 DCF18 28608-1 28608B-1 62132 63073 61770 3690 18505 - 2 PACK
+                            brand: maximalpower
+                            category: FLOORCARE
+                            gtin: '00797518364449'
+                            upc: '0072819436444'
+                            ean: '51985410715'
+                            itemAvailabilityStatus: EXISTING_IN_WALMART
+                            potentialSales: "$100K+"
+                            shoppingTrends:
+                              - MOST_SEARCHED_FOR
+                              - BEST_SELLERS
+                            walmart:
+                              itemId: '810058003'
+                              url: www.walmart.com/ip/810058003
+                              itemPrice:
+                                amount: 28.49
+                                currency: USD
+                              shippingPrice:
+                                amount: 0
+                                currency: USD
+                            competitors:
+                              - itemId: B075LXQF2B
+                                url: www.amazon.com/dp/B075LXQF2B
+                                itemPrice:
+                                  amount: 15.97
+                                  currency: USD
+                                shippingPrice:
+                                  amount: 0
+                                  currency: USD
+                        - itemRecommendationUniqueId: 660c6344-0106-4412-a993-9ffc93937f9c
+                          itemDetails:
+                            title: Florida Atlantic University Official State Shape and Unisex Adult Tank Top
+                            brand: Florida Atlantic University
+                            category: TOPS SPORTSWEAR ECOMM MENS
+                            itemAvailabilityStatus: NEW_TO_WALMART
+                            potentialSales: "$50K-$100K"
+                            shoppingTrends:
+                              - BEST_SELLERS
+                            competitors:
+                              - itemId: B0800Y7PSW
+                                url: www.amazon.com/dp/B0800Y7PSW
+                                itemPrice:
+                                  amount: 19.99
+                                  currency: USD
+                                shippingPrice:
+                                  amount: 0
+                                  currency: USD
   "/v3/growth/assortment/recommendations/categorization/counts":
     post:
       tags:
-      - Assortment Recommendations
-      summary: Get Categorization
-      description: "You can get the list of brands or categories associated with the
-        items recommendations that are recommended for you.\n \nUsing BRAND as a categorizationType\n*
-        \  You can get the list of brands sorted by the number of item recommendations
-        associated with it. This is then sorted in lexicographic order of brand name.
-        \n \n\nUsing CATEGORY as a categorizationType\n*   You can get the list of
-        categories sorted by the number of item recommendations associated with it.
-        This is then sorted in lexicographic order of category name.  \n \n\n"
+        - Assortment Recommendations
+      summary: Walmart Get Categorization
+      description: "You can get the list of brands or categories associated with the items recommendations that are recommended for you.\n \nUsing BRAND as a categorizationType\n*   You can get the list of brands sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of brand name. \n \n\nUsing CATEGORY as a categorizationType\n*   You can get the list of categories sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of category name.  \n \n\n"
       externalDocs:
         description: View Guide
         url: "/doc/us/us-mp/us-mp-assortmentrecommendations/#12960"
       operationId: getCategorizationDetailsOfAssortmentRecommendations
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
-      - in: header
-        name: Accept
-        description: 'Only supported Media Type : application/json'
-        required: true
-        schema:
-          type: string
-        example: application/json
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
+        - in: header
+          name: Accept
+          description: 'Only supported Media Type : application/json'
+          required: true
+          schema:
+            type: string
+          example: application/json
       requestBody:
         description: Request payload
         content:
           application/json:
             schema:
               required:
-              - categorizationType
+                - categorizationType
               type: object
               properties:
                 categorizationType:
@@ -692,8 +570,8 @@ paths:
                     | BRAND | To get list of brands which are associated with the assortment recommendations | string |
                     | CATEGORY | To get list of categories which are associated with the assortment recommendations | string |
                   enum:
-                  - BRAND
-                  - CATEGORY
+                    - BRAND
+                    - CATEGORY
                 meta:
                   type: object
                   properties:
@@ -706,10 +584,7 @@ paths:
                       default: 200
                     nextCursor:
                       type: string
-                      description: Used for pagination when more than 200 records
-                        are retrieved. The nextCursor value of the response includes
-                        a marker which needs to be passed in next call which retrieves
-                        the next page of results.
+                      description: Used for pagination when more than 200 records are retrieved. The nextCursor value of the response includes a marker which needs to be passed in next call which retrieves the next page of results.
                   description: Meta information for the request.
                 filterCriteria:
                   type: object
@@ -717,15 +592,13 @@ paths:
                     searchText:
                       minLength: 3
                       type: string
-                      description: 'To filter with a search text having a word that
-                        can be part of the categorization data. '
+                      description: 'To filter with a search text having a word that can be part of the categorization data. '
                     multiValueFilter:
                       type: array
-                      description: "Filters based on multiple values associated with
-                        a specific parameter. \nNo parameter should be repeated."
+                      description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
                       items:
                         required:
-                        - parameter
+                          - parameter
                         type: object
                         properties:
                           parameter:
@@ -736,21 +609,15 @@ paths:
                               | BRAND | To filter based on list of brands which are associated with the assortment recommendations. This is allowed when the categorization type is CATEGORY | string |
                               | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations. This is allowed when the categorization type is BRAND | string |
                             enum:
-                            - CATEGORY
-                            - BRAND
+                              - CATEGORY
+                              - BRAND
                           values:
                             type: array
-                            description: A list of values corresponds to the parameter
-                              in the filter. The values in the list should not be
-                              null or blank. Maximum 7 values are allowed in the list.
+                            description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
                             items:
                               type: string
-                              description: A list of values corresponds to the parameter
-                                in the filter. The values in the list should not be
-                                null or blank. Maximum 7 values are allowed in the
-                                list.
-                        description: "Filters based on multiple values associated
-                          with a specific parameter. \nNo parameter should be repeated."
+                              description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
+                        description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
                   description: Different type of filters can be passed in this object.
             examples:
               All brands associated with the item recommendations:
@@ -767,10 +634,10 @@ paths:
                   filterCriteria:
                     searchText: and
                     multiValueFilter:
-                    - parameter: CATEGORY
-                      values:
-                      - FINE GEMSTONE JEWELRY ECOMM WOMENS
-                      - FASHION JEWELRY ECOMM WOMENS
+                      - parameter: CATEGORY
+                        values:
+                          - FINE GEMSTONE JEWELRY ECOMM WOMENS
+                          - FASHION JEWELRY ECOMM WOMENS
               All categories associated with the item recommendations:
                 value:
                   categorizationType: CATEGORY
@@ -785,10 +652,10 @@ paths:
                   filterCriteria:
                     searchText: ecomm
                     multiValueFilter:
-                    - parameter: BRAND
-                      values:
-                      - Swarovsk and Co.
-                      - Kate Spade and Co.
+                      - parameter: BRAND
+                        values:
+                          - Swarovsk and Co.
+                          - Kate Spade and Co.
         required: true
       responses:
         '200':
@@ -809,15 +676,14 @@ paths:
                           | BRAND | To get list of brands which are associated with the assortment recommendations | string |
                           | CATEGORY | To get list of categories which are associated with the assortment recommendations | string |
                         enum:
-                        - BRAND
-                        - CATEGORY
+                          - BRAND
+                          - CATEGORY
                       meta:
                         type: object
                         properties:
                           totalRecords:
                             type: integer
-                            description: The total number of records are present for
-                              the requested categorization type along with filters.
+                            description: The total number of records are present for the requested categorization type along with filters.
                             format: int32
                           recordsFetched:
                             type: integer
@@ -832,29 +698,23 @@ paths:
                             default: 200
                           nextCursor:
                             type: string
-                            description: The string returned from the initial API
-                              call to indicate nextCursor. Specify nextCursor value
-                              to retrieve the next set of records.
+                            description: The string returned from the initial API call to indicate nextCursor. Specify nextCursor value to retrieve the next set of records.
                         description: Meta information for the response.
                       records:
                         type: array
-                        description: Information of item recommendations based on
-                          the categorizationType.
+                        description: Information of item recommendations based on the categorizationType.
                         items:
                           type: object
                           properties:
                             name:
                               type: string
-                              description: Name of the brand or category as per the
-                                categorizationType.
+                              description: Name of the brand or category as per the categorizationType.
                             numberOfItemRecommendations:
                               type: integer
                               description: This attribute is deprecated.
                               format: int64
-                          description: Information of item recommendations based on
-                            the categorizationType.
-                    description: Payload in the response having the categorization
-                      details about the item recommendations.
+                          description: Information of item recommendations based on the categorizationType.
+                    description: Payload in the response having the categorization details about the item recommendations.
               examples:
                 All brands associated with the item recommendations:
                   value:
@@ -866,10 +726,10 @@ paths:
                         limit: 2
                         nextCursor: categorizationType=BRAND&limit=2&offset=2
                       records:
-                      - name: Swarovsk and Co.
-                        numberOfItemRecommendations: -1
-                      - name: Kate Spade and Co.
-                        numberOfItemRecommendations: -1
+                        - name: Swarovsk and Co.
+                          numberOfItemRecommendations: -1
+                        - name: Kate Spade and Co.
+                          numberOfItemRecommendations: -1
                 Brands based on filter associated with the item recommendations:
                   value:
                     payload:
@@ -880,10 +740,10 @@ paths:
                         limit: 2
                         nextCursor: categorizationType=BRAND&limit=2&offset=2
                       records:
-                      - name: Swarovsk and Co.
-                        numberOfItemRecommendations: -1
-                      - name: Kate Spade and Co.
-                        numberOfItemRecommendations: -1
+                        - name: Swarovsk and Co.
+                          numberOfItemRecommendations: -1
+                        - name: Kate Spade and Co.
+                          numberOfItemRecommendations: -1
                 All categories associated with the item recommendations:
                   value:
                     payload:
@@ -894,10 +754,10 @@ paths:
                         limit: 2
                         nextCursor: categorizationType=CATEGORY&limit=2&offset=4
                       records:
-                      - name: FINE GEMSTONE JEWELRY ECOMM WOMENS
-                        numberOfItemRecommendations: -1
-                      - name: FASHION JEWELRY ECOMM WOMENS
-                        numberOfItemRecommendations: -1
+                        - name: FINE GEMSTONE JEWELRY ECOMM WOMENS
+                          numberOfItemRecommendations: -1
+                        - name: FASHION JEWELRY ECOMM WOMENS
+                          numberOfItemRecommendations: -1
                 Categories based on filter associated with the item recommendations:
                   value:
                     payload:
@@ -908,70 +768,63 @@ paths:
                         limit: 2
                         nextCursor: categorizationType=CATEGORY&limit=2&offset=4
                       records:
-                      - name: FINE GEMSTONE JEWELRY ECOMM WOMENS
-                        numberOfItemRecommendations: -1
-                      - name: FASHION JEWELRY ECOMM WOMENS
-                        numberOfItemRecommendations: -1
+                        - name: FINE GEMSTONE JEWELRY ECOMM WOMENS
+                          numberOfItemRecommendations: -1
+                        - name: FASHION JEWELRY ECOMM WOMENS
+                          numberOfItemRecommendations: -1
   "/v3/growth/assortment/recommendations/rejections":
     put:
       tags:
-      - Assortment Recommendations
-      summary: Reject Recommendations
-      description: "You can reject a list of recommendations that are recommended
-        for you. \n \nUsing ITEM as a recommendationType,\n*   You can reject specific
-        item recommendations using the filterCriteria or by providing the list of
-        itemRecommendationUniqueIds. \n*   You will need to provide valid rejection
-        code(s) while submitting the reject request. You are required to send the
-        custom rejection message if the rejection code is OTHER_REASON \n\n\n"
+        - Assortment Recommendations
+      summary: Walmart Reject Recommendations
+      description: "You can reject a list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can reject specific item recommendations using the filterCriteria or by providing the list of itemRecommendationUniqueIds. \n*   You will need to provide valid rejection code(s) while submitting the reject request. You are required to send the custom rejection message if the rejection code is OTHER_REASON \n\n\n"
       externalDocs:
         description: View Guide
         url: "/doc/us/us-mp/us-mp-assortmentrecommendations/#12965"
       operationId: rejectAssortmentRecommendations
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
-      - in: header
-        name: Accept
-        description: 'Only supported Media Type : application/json'
-        required: true
-        schema:
-          type: string
-        example: application/json
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
+        - in: header
+          name: Accept
+          description: 'Only supported Media Type : application/json'
+          required: true
+          schema:
+            type: string
+          example: application/json
       requestBody:
         description: Request payload
         content:
           application/json:
             schema:
               required:
-              - recommendationType
-              - rejectionCodes
+                - recommendationType
+                - rejectionCodes
               type: object
               properties:
                 recommendationType:
@@ -981,22 +834,20 @@ paths:
                     | --- | ----------- | ------- |
                     | ITEM | To reject list of recommended items | string |
                   enum:
-                  - ITEM
+                    - ITEM
                 filterCriteria:
                   type: object
                   properties:
                     searchText:
                       minLength: 3
                       type: string
-                      description: 'To filter with a search text having a word that
-                        can be part of the recommended data. '
+                      description: 'To filter with a search text having a word that can be part of the recommended data. '
                     multiValueFilter:
                       type: array
-                      description: "Filters based on multiple values associated with
-                        a specific parameter. \nNo parameter should be repeated."
+                      description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
                       items:
                         required:
-                        - parameter
+                          - parameter
                         type: object
                         properties:
                           parameter:
@@ -1007,173 +858,93 @@ paths:
                               | BRAND | To filter based on list of brands which are associated with the assortment recommendations | string |
                               | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations | string |
                             enum:
-                            - BRAND
-                            - CATEGORY
+                              - BRAND
+                              - CATEGORY
                           values:
                             type: array
-                            description: A list of values corresponds to the parameter
-                              in the filter. The values in the list should not be
-                              null or blank. Maximum size of the list should be 7.
+                            description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
                             items:
                               type: string
-                              description: A list of values corresponds to the parameter
-                                in the filter. The values in the list should not be
-                                null or blank. Maximum size of the list should be
-                                7.
-                        description: "Filters based on multiple values associated
-                          with a specific parameter. \nNo parameter should be repeated."
+                              description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
+                        description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
                     enumFilter:
                       type: array
-                      description: "Filter based on preset parameters and their associated
-                        values is possible with EnumFilter.  \nNo parameter should
-                        be repeated."
+                      description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
                       items:
                         type: object
                         properties:
                           parameter:
                             type: string
-                            description: "To apply an enum filter based on the predefined
-                              parameter. \n\n| Attribute | Description | Data Type
-                              |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS
-                              | To filter based on whether the items which are new
-                              to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS
-                              | Indicates the demand types identified in the market
-                              for an item. An item can have more than one value for
-                              this parameter. | string |"
+                            description: "To apply an enum filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether the items which are new to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand types identified in the market for an item. An item can have more than one value for this parameter. | string |"
                             enum:
-                            - ITEM_AVAILABILITY_STATUS
+                              - ITEM_AVAILABILITY_STATUS
                           values:
                             type: array
-                            description: "Values correspond to the parameter for applying
-                              filter on the response. The data in values[] are predefined.
-                              OR operator is used between the values. \n\n| Attribute
-                              | Associated parameter of enumFilter | Description |
-                              Data Type |\n| --- | ----------- | ----------- | -------
-                              |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS
-                              | To filters based on the items which are existing in
-                              Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS
-                              | To filters based on the items which are new to Walmart.
-                              | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS |
-                              Item is most searched for in the market. | string |\n|
-                              BEST_SELLERS | SHOPPING_TRENDS | Item is best seller
-                              in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS
-                              | Item is in demand and is a part of deals in the other
-                              marketplaces. | string |\n"
+                            description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                             items:
                               type: string
-                              description: "Values correspond to the parameter for
-                                applying filter on the response. The data in values[]
-                                are predefined. OR operator is used between the values.
-                                \n\n| Attribute | Associated parameter of enumFilter
-                                | Description | Data Type |\n| --- | ----------- |
-                                ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS
-                                | To filters based on the items which are existing
-                                in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS
-                                | To filters based on the items which are new to Walmart.
-                                | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS
-                                | Item is most searched for in the market. | string
-                                |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best
-                                seller in the market.  | string |\n| DEAL_ITEMS |
-                                SHOPPING_TRENDS | Item is in demand and is a part
-                                of deals in the other marketplaces. | string |\n"
+                              description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                               enum:
+                                - EXISTING_IN_WALMART
+                                - NEW_TO_WALMART
+                                - MOST_SEARCHED_FOR
+                                - BEST_SELLERS
+                                - DEAL_ITEMS
+                            enum:
                               - EXISTING_IN_WALMART
                               - NEW_TO_WALMART
                               - MOST_SEARCHED_FOR
                               - BEST_SELLERS
                               - DEAL_ITEMS
-                            enum:
-                            - EXISTING_IN_WALMART
-                            - NEW_TO_WALMART
-                            - MOST_SEARCHED_FOR
-                            - BEST_SELLERS
-                            - DEAL_ITEMS
-                        description: "Filter based on preset parameters and their
-                          associated values is possible with EnumFilter.  \nNo parameter
-                          should be repeated."
+                        description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
                     rangeFilter:
                       type: array
-                      description: "Filter based on a range with RangeFilter. You
-                        must also pass a parameter along with any of the beginning
-                        or the ending points or both. \nNo parameter should be repeated."
+                      description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
                       items:
                         type: object
                         properties:
                           parameter:
                             type: string
-                            description: "To apply a range filter based on the predefined
-                              parameter. \n\n| Attribute | Description | Data Type
-                              |\n| --- | ----------- | ------- |\n| PRICE | To filter
-                              based on the price. | string |"
+                            description: "To apply a range filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| PRICE | To filter based on the price. | string |"
                             enum:
-                            - PRICE
+                              - PRICE
                           from:
                             type: string
                             description: Filter range start
                           to:
                             type: string
                             description: Filter range end
-                        description: "Filter based on a range with RangeFilter. You
-                          must also pass a parameter along with any of the beginning
-                          or the ending points or both. \nNo parameter should be repeated."
+                        description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
                   description: Different type of filters can be passed in this object.
                 itemRecommendationUniqueIds:
                   type: array
-                  description: "List of item recommendation unique ids to reject.
-                    \nThe size of the list should not exceed 100. \nYou cannot add
-                    filter criteria along with the itemRecommendationUniqueIds list"
+                  description: "List of item recommendation unique ids to reject. \nThe size of the list should not exceed 100. \nYou cannot add filter criteria along with the itemRecommendationUniqueIds list"
                   items:
                     type: string
-                    description: "List of item recommendation unique ids to reject.
-                      \nThe size of the list should not exceed 100. \nYou cannot add
-                      filter criteria along with the itemRecommendationUniqueIds list"
+                    description: "List of item recommendation unique ids to reject. \nThe size of the list should not exceed 100. \nYou cannot add filter criteria along with the itemRecommendationUniqueIds list"
                 rejectionCodes:
                   type: array
-                  description: "List of rejection codes \n\n| Attribute | Description
-                    | Data Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS
-                    | As a seller, I don’t intend to sell these items on Walmart  |
-                    string |\n| NOT_SELLING_THESE_BRANDS | As a seller, I don’t intend
-                    to sell these brands on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES
-                    | As a seller, I don’t intend to sell these categories on Walmart
-                    \ | string |\n| LIMITED_TO_OTHER_MARKETPLACE | As a seller, I
-                    intend to sell the rejected items only on other marketplaces  |
-                    string |\n| ALREADY_SELLING_ON_WALMART | I am already selling
-                    these items on Walmart  | string |\n| OTHER_REASON | Other reason
-                    for rejecting the items. customRejectionMessage is mandatory to
-                    pass if rejectionCode is OTHER_REASON.  | string |"
+                  description: "List of rejection codes \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS | As a seller, I don’t intend to sell these items on Walmart  | string |\n| NOT_SELLING_THESE_BRANDS | As a seller, I don’t intend to sell these brands on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES | As a seller, I don’t intend to sell these categories on Walmart  | string |\n| LIMITED_TO_OTHER_MARKETPLACE | As a seller, I intend to sell the rejected items only on other marketplaces  | string |\n| ALREADY_SELLING_ON_WALMART | I am already selling these items on Walmart  | string |\n| OTHER_REASON | Other reason for rejecting the items. customRejectionMessage is mandatory to pass if rejectionCode is OTHER_REASON.  | string |"
                   items:
                     type: string
-                    description: "List of rejection codes \n\n| Attribute | Description
-                      | Data Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS
-                      | As a seller, I don’t intend to sell these items on Walmart
-                      \ | string |\n| NOT_SELLING_THESE_BRANDS | As a seller, I don’t
-                      intend to sell these brands on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES
-                      | As a seller, I don’t intend to sell these categories on Walmart
-                      \ | string |\n| LIMITED_TO_OTHER_MARKETPLACE | As a seller,
-                      I intend to sell the rejected items only on other marketplaces
-                      \ | string |\n| ALREADY_SELLING_ON_WALMART | I am already selling
-                      these items on Walmart  | string |\n| OTHER_REASON | Other reason
-                      for rejecting the items. customRejectionMessage is mandatory
-                      to pass if rejectionCode is OTHER_REASON.  | string |"
+                    description: "List of rejection codes \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS | As a seller, I don’t intend to sell these items on Walmart  | string |\n| NOT_SELLING_THESE_BRANDS | As a seller, I don’t intend to sell these brands on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES | As a seller, I don’t intend to sell these categories on Walmart  | string |\n| LIMITED_TO_OTHER_MARKETPLACE | As a seller, I intend to sell the rejected items only on other marketplaces  | string |\n| ALREADY_SELLING_ON_WALMART | I am already selling these items on Walmart  | string |\n| OTHER_REASON | Other reason for rejecting the items. customRejectionMessage is mandatory to pass if rejectionCode is OTHER_REASON.  | string |"
                     enum:
+                      - NOT_SELLING_THESE_ITEMS
+                      - NOT_SELLING_THESE_BRANDS
+                      - NOT_SELLING_THESE_CATEGORIES
+                      - LIMITED_TO_OTHER_MARKETPLACE
+                      - ALREADY_SELLING_ON_WALMART
+                      - OTHER_REASON
+                  enum:
                     - NOT_SELLING_THESE_ITEMS
                     - NOT_SELLING_THESE_BRANDS
                     - NOT_SELLING_THESE_CATEGORIES
                     - LIMITED_TO_OTHER_MARKETPLACE
                     - ALREADY_SELLING_ON_WALMART
                     - OTHER_REASON
-                  enum:
-                  - NOT_SELLING_THESE_ITEMS
-                  - NOT_SELLING_THESE_BRANDS
-                  - NOT_SELLING_THESE_CATEGORIES
-                  - LIMITED_TO_OTHER_MARKETPLACE
-                  - ALREADY_SELLING_ON_WALMART
-                  - OTHER_REASON
                 customRejectionMessage:
                   type: string
-                  description: Custom rejection message if the rejection code is OTHER_REASON.
-                    This is required only when the rejectionCodes has OTHER_REASON
-                    in the list. Maximum length of the message is 500
+                  description: Custom rejection message if the rejection code is OTHER_REASON. This is required only when the rejectionCodes has OTHER_REASON in the list. Maximum length of the message is 500
             examples:
               Reject item recommendations based on filters:
                 value:
@@ -1181,43 +952,42 @@ paths:
                   filterCriteria:
                     searchText: and
                     multiValueFilter:
-                    - parameter: BRAND
-                      values:
-                      - Florida Atlantic University
-                      - maximalpower
-                      - delsit
-                    - parameter: CATEGORY
-                      values:
-                      - TOPS SPORTSWEAR ECOMM MENS
-                      - TODDLER FURNITURE
-                      - FLOORCARE
+                      - parameter: BRAND
+                        values:
+                          - Florida Atlantic University
+                          - maximalpower
+                          - delsit
+                      - parameter: CATEGORY
+                        values:
+                          - TOPS SPORTSWEAR ECOMM MENS
+                          - TODDLER FURNITURE
+                          - FLOORCARE
                     enumFilter:
-                    - parameter: ITEM_AVAILABILITY_STATUS
-                      values:
-                      - NEW_TO_WALMART
-                      - EXISTING_IN_WALMART
-                    - parameter: SHOPPING_TRENDS
-                      values:
-                      - MOST_SEARCHED_FOR
-                      - BEST_SELLERS
-                      - DEAL_ITEMS
+                      - parameter: ITEM_AVAILABILITY_STATUS
+                        values:
+                          - NEW_TO_WALMART
+                          - EXISTING_IN_WALMART
+                      - parameter: SHOPPING_TRENDS
+                        values:
+                          - MOST_SEARCHED_FOR
+                          - BEST_SELLERS
+                          - DEAL_ITEMS
                     rangeFilter:
-                    - parameter: PRICE
-                      from: '10.0'
-                      to: '80.5'
+                      - parameter: PRICE
+                        from: '10.0'
+                        to: '80.5'
                   rejectionCodes:
-                  - NOT_SELLING_THESE_ITEMS
-                  - OTHER_REASON
-                  customRejectionMessage: Removal of this item from other marketplace
-                    is in progress
+                    - NOT_SELLING_THESE_ITEMS
+                    - OTHER_REASON
+                  customRejectionMessage: Removal of this item from other marketplace is in progress
               Reject item recommendations based on unique identifier:
                 value:
                   recommendationType: ITEM
                   itemRecommendationUniqueIds:
-                  - 000166eb-7e67-4a20-96f0-9242db499q1c
-                  - 47044c4f-ccb0-4b4e-8f05-20d34209fd13
+                    - 000166eb-7e67-4a20-96f0-9242db499q1c
+                    - 47044c4f-ccb0-4b4e-8f05-20d34209fd13
                   rejectionCodes:
-                  - NOT_SELLING_THESE_ITEMS
+                    - NOT_SELLING_THESE_ITEMS
         required: true
       responses:
         '200':
@@ -1261,59 +1031,31 @@ components:
       properties:
         parameter:
           type: string
-          description: "To apply an enum filter based on the predefined parameter.
-            \n\n| Attribute | Description | Data Type |\n| --- | ----------- | -------
-            |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether the items which
-            are new to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS
-            | Indicates the demand types identified in the market for an item. An
-            item can have more than one value for this parameter. | string |"
+          description: "To apply an enum filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether the items which are new to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand types identified in the market for an item. An item can have more than one value for this parameter. | string |"
           enum:
-          - ITEM_AVAILABILITY_STATUS
+            - ITEM_AVAILABILITY_STATUS
         values:
           type: array
-          description: "Values correspond to the parameter for applying filter on
-            the response. The data in values[] are predefined. OR operator is used
-            between the values. \n\n| Attribute | Associated parameter of enumFilter
-            | Description | Data Type |\n| --- | ----------- | ----------- | -------
-            |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based
-            on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART
-            | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new
-            to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is
-            most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS
-            | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS
-            | Item is in demand and is a part of deals in the other marketplaces.
-            | string |\n"
+          description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
           items:
             type: string
-            description: "Values correspond to the parameter for applying filter on
-              the response. The data in values[] are predefined. OR operator is used
-              between the values. \n\n| Attribute | Associated parameter of enumFilter
-              | Description | Data Type |\n| --- | ----------- | ----------- | -------
-              |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based
-              on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART
-              | ITEM_AVAILABILITY_STATUS | To filters based on the items which are
-              new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS |
-              Item is most searched for in the market. | string |\n| BEST_SELLERS
-              | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n|
-              DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals
-              in the other marketplaces. | string |\n"
+            description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
             enum:
+              - EXISTING_IN_WALMART
+              - NEW_TO_WALMART
+              - MOST_SEARCHED_FOR
+              - BEST_SELLERS
+              - DEAL_ITEMS
+          enum:
             - EXISTING_IN_WALMART
             - NEW_TO_WALMART
             - MOST_SEARCHED_FOR
             - BEST_SELLERS
             - DEAL_ITEMS
-          enum:
-          - EXISTING_IN_WALMART
-          - NEW_TO_WALMART
-          - MOST_SEARCHED_FOR
-          - BEST_SELLERS
-          - DEAL_ITEMS
-      description: "Filter based on preset parameters and their associated values
-        is possible with EnumFilter.  \nNo parameter should be repeated."
+      description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
     MultiValueFilterCriteria:
       required:
-      - parameter
+        - parameter
       type: object
       properties:
         parameter:
@@ -1324,54 +1066,43 @@ components:
             | BRAND | To filter based on list of brands which are associated with the assortment recommendations | string |
             | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations | string |
           enum:
-          - BRAND
-          - CATEGORY
+            - BRAND
+            - CATEGORY
         values:
           type: array
-          description: A list of values corresponds to the parameter in the filter.
-            The values in the list should not be null or blank. Maximum size of the
-            list should be 7.
+          description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
           items:
             type: string
-            description: A list of values corresponds to the parameter in the filter.
-              The values in the list should not be null or blank. Maximum size of
-              the list should be 7.
-      description: "Filters based on multiple values associated with a specific parameter.
-        \nNo parameter should be repeated."
+            description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
+      description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
     RangeFilterCriteria:
       type: object
       properties:
         parameter:
           type: string
-          description: "To apply a range filter based on the predefined parameter.
-            \n\n| Attribute | Description | Data Type |\n| --- | ----------- | -------
-            |\n| PRICE | To filter based on the price. | string |"
+          description: "To apply a range filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| PRICE | To filter based on the price. | string |"
           enum:
-          - PRICE
+            - PRICE
         from:
           type: string
           description: Filter range start
         to:
           type: string
           description: Filter range end
-      description: "Filter based on a range with RangeFilter. You must also pass a
-        parameter along with any of the beginning or the ending points or both. \nNo
-        parameter should be repeated."
+      description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
     RecommendationRequestFilter:
       type: object
       properties:
         searchText:
           minLength: 3
           type: string
-          description: 'To filter with a search text having a word that can be part
-            of the recommended data. '
+          description: 'To filter with a search text having a word that can be part of the recommended data. '
         multiValueFilter:
           type: array
-          description: "Filters based on multiple values associated with a specific
-            parameter. \nNo parameter should be repeated."
+          description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
           items:
             required:
-            - parameter
+              - parameter
             type: object
             properties:
               parameter:
@@ -1382,111 +1113,68 @@ components:
                   | BRAND | To filter based on list of brands which are associated with the assortment recommendations | string |
                   | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations | string |
                 enum:
-                - BRAND
-                - CATEGORY
+                  - BRAND
+                  - CATEGORY
               values:
                 type: array
-                description: A list of values corresponds to the parameter in the
-                  filter. The values in the list should not be null or blank. Maximum
-                  size of the list should be 7.
+                description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
                 items:
                   type: string
-                  description: A list of values corresponds to the parameter in the
-                    filter. The values in the list should not be null or blank. Maximum
-                    size of the list should be 7.
-            description: "Filters based on multiple values associated with a specific
-              parameter. \nNo parameter should be repeated."
+                  description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
+            description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
         enumFilter:
           type: array
-          description: "Filter based on preset parameters and their associated values
-            is possible with EnumFilter.  \nNo parameter should be repeated."
+          description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
           items:
             type: object
             properties:
               parameter:
                 type: string
-                description: "To apply an enum filter based on the predefined parameter.
-                  \n\n| Attribute | Description | Data Type |\n| --- | -----------
-                  | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether
-                  the items which are new to Walmart or existing in Walmart. | string
-                  |\n| SHOPPING_TRENDS | Indicates the demand types identified in
-                  the market for an item. An item can have more than one value for
-                  this parameter. | string |"
+                description: "To apply an enum filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether the items which are new to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand types identified in the market for an item. An item can have more than one value for this parameter. | string |"
                 enum:
-                - ITEM_AVAILABILITY_STATUS
+                  - ITEM_AVAILABILITY_STATUS
               values:
                 type: array
-                description: "Values correspond to the parameter for applying filter
-                  on the response. The data in values[] are predefined. OR operator
-                  is used between the values. \n\n| Attribute | Associated parameter
-                  of enumFilter | Description | Data Type |\n| --- | ----------- |
-                  ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS
-                  | To filters based on the items which are existing in Walmart. |
-                  string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters
-                  based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR
-                  | SHOPPING_TRENDS | Item is most searched for in the market. | string
-                  |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the
-                  market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in
-                  demand and is a part of deals in the other marketplaces. | string
-                  |\n"
+                description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                 items:
                   type: string
-                  description: "Values correspond to the parameter for applying filter
-                    on the response. The data in values[] are predefined. OR operator
-                    is used between the values. \n\n| Attribute | Associated parameter
-                    of enumFilter | Description | Data Type |\n| --- | -----------
-                    | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS
-                    | To filters based on the items which are existing in Walmart.
-                    | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters
-                    based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR
-                    | SHOPPING_TRENDS | Item is most searched for in the market. |
-                    string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller
-                    in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item
-                    is in demand and is a part of deals in the other marketplaces.
-                    | string |\n"
+                  description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                   enum:
+                    - EXISTING_IN_WALMART
+                    - NEW_TO_WALMART
+                    - MOST_SEARCHED_FOR
+                    - BEST_SELLERS
+                    - DEAL_ITEMS
+                enum:
                   - EXISTING_IN_WALMART
                   - NEW_TO_WALMART
                   - MOST_SEARCHED_FOR
                   - BEST_SELLERS
                   - DEAL_ITEMS
-                enum:
-                - EXISTING_IN_WALMART
-                - NEW_TO_WALMART
-                - MOST_SEARCHED_FOR
-                - BEST_SELLERS
-                - DEAL_ITEMS
-            description: "Filter based on preset parameters and their associated values
-              is possible with EnumFilter.  \nNo parameter should be repeated."
+            description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
         rangeFilter:
           type: array
-          description: "Filter based on a range with RangeFilter. You must also pass
-            a parameter along with any of the beginning or the ending points or both.
-            \nNo parameter should be repeated."
+          description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
           items:
             type: object
             properties:
               parameter:
                 type: string
-                description: "To apply a range filter based on the predefined parameter.
-                  \n\n| Attribute | Description | Data Type |\n| --- | -----------
-                  | ------- |\n| PRICE | To filter based on the price. | string |"
+                description: "To apply a range filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| PRICE | To filter based on the price. | string |"
                 enum:
-                - PRICE
+                  - PRICE
               from:
                 type: string
                 description: Filter range start
               to:
                 type: string
                 description: Filter range end
-            description: "Filter based on a range with RangeFilter. You must also
-              pass a parameter along with any of the beginning or the ending points
-              or both. \nNo parameter should be repeated."
+            description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
       description: Different type of filters can be passed in this object.
     RejectRecommendationRequest:
       required:
-      - recommendationType
-      - rejectionCodes
+        - recommendationType
+        - rejectionCodes
       type: object
       properties:
         recommendationType:
@@ -1496,22 +1184,20 @@ components:
             | --- | ----------- | ------- |
             | ITEM | To reject list of recommended items | string |
           enum:
-          - ITEM
+            - ITEM
         filterCriteria:
           type: object
           properties:
             searchText:
               minLength: 3
               type: string
-              description: 'To filter with a search text having a word that can be
-                part of the recommended data. '
+              description: 'To filter with a search text having a word that can be part of the recommended data. '
             multiValueFilter:
               type: array
-              description: "Filters based on multiple values associated with a specific
-                parameter. \nNo parameter should be repeated."
+              description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
               items:
                 required:
-                - parameter
+                  - parameter
                 type: object
                 properties:
                   parameter:
@@ -1522,164 +1208,93 @@ components:
                       | BRAND | To filter based on list of brands which are associated with the assortment recommendations | string |
                       | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations | string |
                     enum:
-                    - BRAND
-                    - CATEGORY
+                      - BRAND
+                      - CATEGORY
                   values:
                     type: array
-                    description: A list of values corresponds to the parameter in
-                      the filter. The values in the list should not be null or blank.
-                      Maximum size of the list should be 7.
+                    description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
                     items:
                       type: string
-                      description: A list of values corresponds to the parameter in
-                        the filter. The values in the list should not be null or blank.
-                        Maximum size of the list should be 7.
-                description: "Filters based on multiple values associated with a specific
-                  parameter. \nNo parameter should be repeated."
+                      description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
+                description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
             enumFilter:
               type: array
-              description: "Filter based on preset parameters and their associated
-                values is possible with EnumFilter.  \nNo parameter should be repeated."
+              description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
               items:
                 type: object
                 properties:
                   parameter:
                     type: string
-                    description: "To apply an enum filter based on the predefined
-                      parameter. \n\n| Attribute | Description | Data Type |\n| ---
-                      | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter
-                      based on whether the items which are new to Walmart or existing
-                      in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand
-                      types identified in the market for an item. An item can have
-                      more than one value for this parameter. | string |"
+                    description: "To apply an enum filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether the items which are new to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand types identified in the market for an item. An item can have more than one value for this parameter. | string |"
                     enum:
-                    - ITEM_AVAILABILITY_STATUS
+                      - ITEM_AVAILABILITY_STATUS
                   values:
                     type: array
-                    description: "Values correspond to the parameter for applying
-                      filter on the response. The data in values[] are predefined.
-                      OR operator is used between the values. \n\n| Attribute | Associated
-                      parameter of enumFilter | Description | Data Type |\n| --- |
-                      ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART
-                      | ITEM_AVAILABILITY_STATUS | To filters based on the items which
-                      are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS
-                      | To filters based on the items which are new to Walmart. |
-                      string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most
-                      searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS
-                      | Item is best seller in the market.  | string |\n| DEAL_ITEMS
-                      | SHOPPING_TRENDS | Item is in demand and is a part of deals
-                      in the other marketplaces. | string |\n"
+                    description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                     items:
                       type: string
-                      description: "Values correspond to the parameter for applying
-                        filter on the response. The data in values[] are predefined.
-                        OR operator is used between the values. \n\n| Attribute |
-                        Associated parameter of enumFilter | Description | Data Type
-                        |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART
-                        | ITEM_AVAILABILITY_STATUS | To filters based on the items
-                        which are existing in Walmart. | string |\n| NEW_TO_WALMART
-                        | ITEM_AVAILABILITY_STATUS | To filters based on the items
-                        which are new to Walmart. | string |\n| MOST_SEARCHED_FOR
-                        | SHOPPING_TRENDS | Item is most searched for in the market.
-                        | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best
-                        seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS
-                        | Item is in demand and is a part of deals in the other marketplaces.
-                        | string |\n"
+                      description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                       enum:
+                        - EXISTING_IN_WALMART
+                        - NEW_TO_WALMART
+                        - MOST_SEARCHED_FOR
+                        - BEST_SELLERS
+                        - DEAL_ITEMS
+                    enum:
                       - EXISTING_IN_WALMART
                       - NEW_TO_WALMART
                       - MOST_SEARCHED_FOR
                       - BEST_SELLERS
                       - DEAL_ITEMS
-                    enum:
-                    - EXISTING_IN_WALMART
-                    - NEW_TO_WALMART
-                    - MOST_SEARCHED_FOR
-                    - BEST_SELLERS
-                    - DEAL_ITEMS
-                description: "Filter based on preset parameters and their associated
-                  values is possible with EnumFilter.  \nNo parameter should be repeated."
+                description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
             rangeFilter:
               type: array
-              description: "Filter based on a range with RangeFilter. You must also
-                pass a parameter along with any of the beginning or the ending points
-                or both. \nNo parameter should be repeated."
+              description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
               items:
                 type: object
                 properties:
                   parameter:
                     type: string
-                    description: "To apply a range filter based on the predefined
-                      parameter. \n\n| Attribute | Description | Data Type |\n| ---
-                      | ----------- | ------- |\n| PRICE | To filter based on the
-                      price. | string |"
+                    description: "To apply a range filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| PRICE | To filter based on the price. | string |"
                     enum:
-                    - PRICE
+                      - PRICE
                   from:
                     type: string
                     description: Filter range start
                   to:
                     type: string
                     description: Filter range end
-                description: "Filter based on a range with RangeFilter. You must also
-                  pass a parameter along with any of the beginning or the ending points
-                  or both. \nNo parameter should be repeated."
+                description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
           description: Different type of filters can be passed in this object.
         itemRecommendationUniqueIds:
           type: array
-          description: "List of item recommendation unique ids to reject. \nThe size
-            of the list should not exceed 100. \nYou cannot add filter criteria along
-            with the itemRecommendationUniqueIds list"
+          description: "List of item recommendation unique ids to reject. \nThe size of the list should not exceed 100. \nYou cannot add filter criteria along with the itemRecommendationUniqueIds list"
           items:
             type: string
-            description: "List of item recommendation unique ids to reject. \nThe
-              size of the list should not exceed 100. \nYou cannot add filter criteria
-              along with the itemRecommendationUniqueIds list"
+            description: "List of item recommendation unique ids to reject. \nThe size of the list should not exceed 100. \nYou cannot add filter criteria along with the itemRecommendationUniqueIds list"
         rejectionCodes:
           type: array
-          description: "List of rejection codes \n\n| Attribute | Description | Data
-            Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS | As
-            a seller, I don’t intend to sell these items on Walmart  | string |\n|
-            NOT_SELLING_THESE_BRANDS | As a seller, I don’t intend to sell these brands
-            on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES | As a seller,
-            I don’t intend to sell these categories on Walmart  | string |\n| LIMITED_TO_OTHER_MARKETPLACE
-            | As a seller, I intend to sell the rejected items only on other marketplaces
-            \ | string |\n| ALREADY_SELLING_ON_WALMART | I am already selling these
-            items on Walmart  | string |\n| OTHER_REASON | Other reason for rejecting
-            the items. customRejectionMessage is mandatory to pass if rejectionCode
-            is OTHER_REASON.  | string |"
+          description: "List of rejection codes \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS | As a seller, I don’t intend to sell these items on Walmart  | string |\n| NOT_SELLING_THESE_BRANDS | As a seller, I don’t intend to sell these brands on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES | As a seller, I don’t intend to sell these categories on Walmart  | string |\n| LIMITED_TO_OTHER_MARKETPLACE | As a seller, I intend to sell the rejected items only on other marketplaces  | string |\n| ALREADY_SELLING_ON_WALMART | I am already selling these items on Walmart  | string |\n| OTHER_REASON | Other reason for rejecting the items. customRejectionMessage is mandatory to pass if rejectionCode is OTHER_REASON.  | string |"
           items:
             type: string
-            description: "List of rejection codes \n\n| Attribute | Description |
-              Data Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS
-              | As a seller, I don’t intend to sell these items on Walmart  | string
-              |\n| NOT_SELLING_THESE_BRANDS | As a seller, I don’t intend to sell
-              these brands on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES
-              | As a seller, I don’t intend to sell these categories on Walmart  |
-              string |\n| LIMITED_TO_OTHER_MARKETPLACE | As a seller, I intend to
-              sell the rejected items only on other marketplaces  | string |\n| ALREADY_SELLING_ON_WALMART
-              | I am already selling these items on Walmart  | string |\n| OTHER_REASON
-              | Other reason for rejecting the items. customRejectionMessage is mandatory
-              to pass if rejectionCode is OTHER_REASON.  | string |"
+            description: "List of rejection codes \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| NOT_SELLING_THESE_ITEMS | As a seller, I don’t intend to sell these items on Walmart  | string |\n| NOT_SELLING_THESE_BRANDS | As a seller, I don’t intend to sell these brands on Walmart  | string |\n| NOT_SELLING_THESE_CATEGORIES | As a seller, I don’t intend to sell these categories on Walmart  | string |\n| LIMITED_TO_OTHER_MARKETPLACE | As a seller, I intend to sell the rejected items only on other marketplaces  | string |\n| ALREADY_SELLING_ON_WALMART | I am already selling these items on Walmart  | string |\n| OTHER_REASON | Other reason for rejecting the items. customRejectionMessage is mandatory to pass if rejectionCode is OTHER_REASON.  | string |"
             enum:
+              - NOT_SELLING_THESE_ITEMS
+              - NOT_SELLING_THESE_BRANDS
+              - NOT_SELLING_THESE_CATEGORIES
+              - LIMITED_TO_OTHER_MARKETPLACE
+              - ALREADY_SELLING_ON_WALMART
+              - OTHER_REASON
+          enum:
             - NOT_SELLING_THESE_ITEMS
             - NOT_SELLING_THESE_BRANDS
             - NOT_SELLING_THESE_CATEGORIES
             - LIMITED_TO_OTHER_MARKETPLACE
             - ALREADY_SELLING_ON_WALMART
             - OTHER_REASON
-          enum:
-          - NOT_SELLING_THESE_ITEMS
-          - NOT_SELLING_THESE_BRANDS
-          - NOT_SELLING_THESE_CATEGORIES
-          - LIMITED_TO_OTHER_MARKETPLACE
-          - ALREADY_SELLING_ON_WALMART
-          - OTHER_REASON
         customRejectionMessage:
           type: string
-          description: Custom rejection message if the rejection code is OTHER_REASON.
-            This is required only when the rejectionCodes has OTHER_REASON in the
-            list. Maximum length of the message is 500
+          description: Custom rejection message if the rejection code is OTHER_REASON. This is required only when the rejectionCodes has OTHER_REASON in the list. Maximum length of the message is 500
     CompetitorItemInfo:
       type: object
       properties:
@@ -1738,40 +1353,27 @@ components:
           description: EAN of the recommended item
         itemAvailabilityStatus:
           type: string
-          description: "Item availability status of the recommended item. \n\n| Attribute
-            | Description | Data Type |\n| --- | ----------- | ------- |\n| EXISTING_IN_WALMART
-            | Indicates that item is existing in Walmart. | string |\n| NEW_TO_WALMART
-            | Indicates that item is new to Walmart. | string |"
+          description: "Item availability status of the recommended item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| EXISTING_IN_WALMART | Indicates that item is existing in Walmart. | string |\n| NEW_TO_WALMART | Indicates that item is new to Walmart. | string |"
           enum:
-          - EXISTING_IN_WALMART
-          - NEW_TO_WALMART
+            - EXISTING_IN_WALMART
+            - NEW_TO_WALMART
         potentialSales:
           type: string
-          description: "Indicates the potential revenue the recommended item can bring
-            in over a year. \nThis field does not promise the numbers indicated."
+          description: "Indicates the potential revenue the recommended item can bring in over a year. \nThis field does not promise the numbers indicated."
         shoppingTrends:
           type: array
-          description: "Indicates the demand type for an item. \n\n| Attribute | Description
-            | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR |
-            Item is most searched for in the market. | string |\n| BEST_SELLERS |
-            Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is
-            in demand and is a part of deals in the other marketplaces. | string |"
+          description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
           items:
             type: string
-            description: "Indicates the demand type for an item. \n\n| Attribute |
-              Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR
-              | Item is most searched for in the market. | string |\n| BEST_SELLERS
-              | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item
-              is in demand and is a part of deals in the other marketplaces. | string
-              |"
+            description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
             enum:
+              - MOST_SEARCHED_FOR
+              - BEST_SELLERS
+              - DEAL_ITEMS
+          enum:
             - MOST_SEARCHED_FOR
             - BEST_SELLERS
             - DEAL_ITEMS
-          enum:
-          - MOST_SEARCHED_FOR
-          - BEST_SELLERS
-          - DEAL_ITEMS
         walmart:
           type: object
           properties:
@@ -1829,8 +1431,7 @@ components:
                   currency:
                     type: string
                     description: Currency associated with the price of the item recommendation.
-                description: Competitor's item shipping price details of the item
-                  recommendation.
+                description: Competitor's item shipping price details of the item recommendation.
               shippingPrice:
                 type: object
                 properties:
@@ -1841,8 +1442,7 @@ components:
                   currency:
                     type: string
                     description: Currency associated with the price of the item recommendation.
-                description: Competitor's item shipping price details of the item
-                  recommendation.
+                description: Competitor's item shipping price details of the item recommendation.
             description: Competitor's item information
       description: Details of the recommended item.
     ItemRecommendationPayload:
@@ -1877,42 +1477,27 @@ components:
               description: EAN of the recommended item
             itemAvailabilityStatus:
               type: string
-              description: "Item availability status of the recommended item. \n\n|
-                Attribute | Description | Data Type |\n| --- | ----------- | -------
-                |\n| EXISTING_IN_WALMART | Indicates that item is existing in Walmart.
-                | string |\n| NEW_TO_WALMART | Indicates that item is new to Walmart.
-                | string |"
+              description: "Item availability status of the recommended item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| EXISTING_IN_WALMART | Indicates that item is existing in Walmart. | string |\n| NEW_TO_WALMART | Indicates that item is new to Walmart. | string |"
               enum:
-              - EXISTING_IN_WALMART
-              - NEW_TO_WALMART
+                - EXISTING_IN_WALMART
+                - NEW_TO_WALMART
             potentialSales:
               type: string
-              description: "Indicates the potential revenue the recommended item can
-                bring in over a year. \nThis field does not promise the numbers indicated."
+              description: "Indicates the potential revenue the recommended item can bring in over a year. \nThis field does not promise the numbers indicated."
             shoppingTrends:
               type: array
-              description: "Indicates the demand type for an item. \n\n| Attribute
-                | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR
-                | Item is most searched for in the market. | string |\n| BEST_SELLERS
-                | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item
-                is in demand and is a part of deals in the other marketplaces. | string
-                |"
+              description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
               items:
                 type: string
-                description: "Indicates the demand type for an item. \n\n| Attribute
-                  | Description | Data Type |\n| --- | ----------- | ------- |\n|
-                  MOST_SEARCHED_FOR | Item is most searched for in the market. | string
-                  |\n| BEST_SELLERS | Item is best seller in the market. | string
-                  |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the
-                  other marketplaces. | string |"
+                description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
                 enum:
+                  - MOST_SEARCHED_FOR
+                  - BEST_SELLERS
+                  - DEAL_ITEMS
+              enum:
                 - MOST_SEARCHED_FOR
                 - BEST_SELLERS
                 - DEAL_ITEMS
-              enum:
-              - MOST_SEARCHED_FOR
-              - BEST_SELLERS
-              - DEAL_ITEMS
             walmart:
               type: object
               properties:
@@ -1934,10 +1519,8 @@ components:
                       format: double
                     currency:
                       type: string
-                      description: Currency associated with the price of the item
-                        recommendation.
-                  description: Competitor's item shipping price details of the item
-                    recommendation.
+                      description: Currency associated with the price of the item recommendation.
+                  description: Competitor's item shipping price details of the item recommendation.
                 shippingPrice:
                   type: object
                   properties:
@@ -1947,10 +1530,8 @@ components:
                       format: double
                     currency:
                       type: string
-                      description: Currency associated with the price of the item
-                        recommendation.
-                  description: Competitor's item shipping price details of the item
-                    recommendation.
+                      description: Currency associated with the price of the item recommendation.
+                  description: Competitor's item shipping price details of the item recommendation.
               description: Walmart's item information
             competitors:
               type: array
@@ -1969,29 +1550,23 @@ components:
                     properties:
                       amount:
                         type: number
-                        description: 'The numerical amount of the price. Example:
-                          9.99'
+                        description: 'The numerical amount of the price. Example: 9.99'
                         format: double
                       currency:
                         type: string
-                        description: Currency associated with the price of the item
-                          recommendation.
-                    description: Competitor's item shipping price details of the item
-                      recommendation.
+                        description: Currency associated with the price of the item recommendation.
+                    description: Competitor's item shipping price details of the item recommendation.
                   shippingPrice:
                     type: object
                     properties:
                       amount:
                         type: number
-                        description: 'The numerical amount of the price. Example:
-                          9.99'
+                        description: 'The numerical amount of the price. Example: 9.99'
                         format: double
                       currency:
                         type: string
-                        description: Currency associated with the price of the item
-                          recommendation.
-                    description: Competitor's item shipping price details of the item
-                      recommendation.
+                        description: Currency associated with the price of the item recommendation.
+                    description: Competitor's item shipping price details of the item recommendation.
                 description: Competitor's item information
           description: Details of the recommended item.
       description: Information related to the item recommendations.
@@ -2000,8 +1575,7 @@ components:
       properties:
         totalRecords:
           type: integer
-          description: The total number of records are present for the requested categorization
-            type along with filters.
+          description: The total number of records are present for the requested categorization type along with filters.
           format: int32
         recordsFetched:
           type: integer
@@ -2016,8 +1590,7 @@ components:
           default: 200
         nextCursor:
           type: string
-          description: The string returned from the initial API call to indicate nextCursor.
-            Specify nextCursor value to retrieve the next set of records.
+          description: The string returned from the initial API call to indicate nextCursor. Specify nextCursor value to retrieve the next set of records.
       description: Meta information for the response.
     Price:
       type: object
@@ -2035,7 +1608,7 @@ components:
       properties:
         payload:
           required:
-          - recommendationType
+            - recommendationType
           type: object
           properties:
             recommendationType:
@@ -2045,14 +1618,13 @@ components:
                 | --- | ----------- | ------- |
                 | ITEM | To get list of recommended items | string |
               enum:
-              - ITEM
+                - ITEM
             meta:
               type: object
               properties:
                 totalRecords:
                   type: integer
-                  description: The total number of records are present for the requested
-                    categorization type along with filters.
+                  description: The total number of records are present for the requested categorization type along with filters.
                   format: int32
                 recordsFetched:
                   type: integer
@@ -2067,9 +1639,7 @@ components:
                   default: 200
                 nextCursor:
                   type: string
-                  description: The string returned from the initial API call to indicate
-                    nextCursor. Specify nextCursor value to retrieve the next set
-                    of records.
+                  description: The string returned from the initial API call to indicate nextCursor. Specify nextCursor value to retrieve the next set of records.
               description: Meta information for the response.
             records:
               type: array
@@ -2106,45 +1676,27 @@ components:
                         description: EAN of the recommended item
                       itemAvailabilityStatus:
                         type: string
-                        description: "Item availability status of the recommended
-                          item. \n\n| Attribute | Description | Data Type |\n| ---
-                          | ----------- | ------- |\n| EXISTING_IN_WALMART | Indicates
-                          that item is existing in Walmart. | string |\n| NEW_TO_WALMART
-                          | Indicates that item is new to Walmart. | string |"
+                        description: "Item availability status of the recommended item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| EXISTING_IN_WALMART | Indicates that item is existing in Walmart. | string |\n| NEW_TO_WALMART | Indicates that item is new to Walmart. | string |"
                         enum:
-                        - EXISTING_IN_WALMART
-                        - NEW_TO_WALMART
+                          - EXISTING_IN_WALMART
+                          - NEW_TO_WALMART
                       potentialSales:
                         type: string
-                        description: "Indicates the potential revenue the recommended
-                          item can bring in over a year. \nThis field does not promise
-                          the numbers indicated."
+                        description: "Indicates the potential revenue the recommended item can bring in over a year. \nThis field does not promise the numbers indicated."
                       shoppingTrends:
                         type: array
-                        description: "Indicates the demand type for an item. \n\n|
-                          Attribute | Description | Data Type |\n| --- | -----------
-                          | ------- |\n| MOST_SEARCHED_FOR | Item is most searched
-                          for in the market. | string |\n| BEST_SELLERS | Item is
-                          best seller in the market. | string |\n| DEAL_ITEMS | Item
-                          is in demand and is a part of deals in the other marketplaces.
-                          | string |"
+                        description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
                         items:
                           type: string
-                          description: "Indicates the demand type for an item. \n\n|
-                            Attribute | Description | Data Type |\n| --- | -----------
-                            | ------- |\n| MOST_SEARCHED_FOR | Item is most searched
-                            for in the market. | string |\n| BEST_SELLERS | Item is
-                            best seller in the market. | string |\n| DEAL_ITEMS |
-                            Item is in demand and is a part of deals in the other
-                            marketplaces. | string |"
+                          description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
                           enum:
+                            - MOST_SEARCHED_FOR
+                            - BEST_SELLERS
+                            - DEAL_ITEMS
+                        enum:
                           - MOST_SEARCHED_FOR
                           - BEST_SELLERS
                           - DEAL_ITEMS
-                        enum:
-                        - MOST_SEARCHED_FOR
-                        - BEST_SELLERS
-                        - DEAL_ITEMS
                       walmart:
                         type: object
                         properties:
@@ -2162,29 +1714,23 @@ components:
                             properties:
                               amount:
                                 type: number
-                                description: 'The numerical amount of the price. Example:
-                                  9.99'
+                                description: 'The numerical amount of the price. Example: 9.99'
                                 format: double
                               currency:
                                 type: string
-                                description: Currency associated with the price of
-                                  the item recommendation.
-                            description: Competitor's item shipping price details
-                              of the item recommendation.
+                                description: Currency associated with the price of the item recommendation.
+                            description: Competitor's item shipping price details of the item recommendation.
                           shippingPrice:
                             type: object
                             properties:
                               amount:
                                 type: number
-                                description: 'The numerical amount of the price. Example:
-                                  9.99'
+                                description: 'The numerical amount of the price. Example: 9.99'
                                 format: double
                               currency:
                                 type: string
-                                description: Currency associated with the price of
-                                  the item recommendation.
-                            description: Competitor's item shipping price details
-                              of the item recommendation.
+                                description: Currency associated with the price of the item recommendation.
+                            description: Competitor's item shipping price details of the item recommendation.
                         description: Walmart's item information
                       competitors:
                         type: array
@@ -2203,36 +1749,30 @@ components:
                               properties:
                                 amount:
                                   type: number
-                                  description: 'The numerical amount of the price.
-                                    Example: 9.99'
+                                  description: 'The numerical amount of the price. Example: 9.99'
                                   format: double
                                 currency:
                                   type: string
-                                  description: Currency associated with the price
-                                    of the item recommendation.
-                              description: Competitor's item shipping price details
-                                of the item recommendation.
+                                  description: Currency associated with the price of the item recommendation.
+                              description: Competitor's item shipping price details of the item recommendation.
                             shippingPrice:
                               type: object
                               properties:
                                 amount:
                                   type: number
-                                  description: 'The numerical amount of the price.
-                                    Example: 9.99'
+                                  description: 'The numerical amount of the price. Example: 9.99'
                                   format: double
                                 currency:
                                   type: string
-                                  description: Currency associated with the price
-                                    of the item recommendation.
-                              description: Competitor's item shipping price details
-                                of the item recommendation.
+                                  description: Currency associated with the price of the item recommendation.
+                              description: Competitor's item shipping price details of the item recommendation.
                           description: Competitor's item information
                     description: Details of the recommended item.
                 description: Information related to the item recommendations.
           description: Payload in the response having the details about the item recommendations.
     RecommendationResponsePayload:
       required:
-      - recommendationType
+        - recommendationType
       type: object
       properties:
         recommendationType:
@@ -2242,14 +1782,13 @@ components:
             | --- | ----------- | ------- |
             | ITEM | To get list of recommended items | string |
           enum:
-          - ITEM
+            - ITEM
         meta:
           type: object
           properties:
             totalRecords:
               type: integer
-              description: The total number of records are present for the requested
-                categorization type along with filters.
+              description: The total number of records are present for the requested categorization type along with filters.
               format: int32
             recordsFetched:
               type: integer
@@ -2264,8 +1803,7 @@ components:
               default: 200
             nextCursor:
               type: string
-              description: The string returned from the initial API call to indicate
-                nextCursor. Specify nextCursor value to retrieve the next set of records.
+              description: The string returned from the initial API call to indicate nextCursor. Specify nextCursor value to retrieve the next set of records.
           description: Meta information for the response.
         records:
           type: array
@@ -2302,43 +1840,27 @@ components:
                     description: EAN of the recommended item
                   itemAvailabilityStatus:
                     type: string
-                    description: "Item availability status of the recommended item.
-                      \n\n| Attribute | Description | Data Type |\n| --- | -----------
-                      | ------- |\n| EXISTING_IN_WALMART | Indicates that item is
-                      existing in Walmart. | string |\n| NEW_TO_WALMART | Indicates
-                      that item is new to Walmart. | string |"
+                    description: "Item availability status of the recommended item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| EXISTING_IN_WALMART | Indicates that item is existing in Walmart. | string |\n| NEW_TO_WALMART | Indicates that item is new to Walmart. | string |"
                     enum:
-                    - EXISTING_IN_WALMART
-                    - NEW_TO_WALMART
+                      - EXISTING_IN_WALMART
+                      - NEW_TO_WALMART
                   potentialSales:
                     type: string
-                    description: "Indicates the potential revenue the recommended
-                      item can bring in over a year. \nThis field does not promise
-                      the numbers indicated."
+                    description: "Indicates the potential revenue the recommended item can bring in over a year. \nThis field does not promise the numbers indicated."
                   shoppingTrends:
                     type: array
-                    description: "Indicates the demand type for an item. \n\n| Attribute
-                      | Description | Data Type |\n| --- | ----------- | ------- |\n|
-                      MOST_SEARCHED_FOR | Item is most searched for in the market.
-                      | string |\n| BEST_SELLERS | Item is best seller in the market.
-                      | string |\n| DEAL_ITEMS | Item is in demand and is a part of
-                      deals in the other marketplaces. | string |"
+                    description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
                     items:
                       type: string
-                      description: "Indicates the demand type for an item. \n\n| Attribute
-                        | Description | Data Type |\n| --- | ----------- | -------
-                        |\n| MOST_SEARCHED_FOR | Item is most searched for in the
-                        market. | string |\n| BEST_SELLERS | Item is best seller in
-                        the market. | string |\n| DEAL_ITEMS | Item is in demand and
-                        is a part of deals in the other marketplaces. | string |"
+                      description: "Indicates the demand type for an item. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| MOST_SEARCHED_FOR | Item is most searched for in the market. | string |\n| BEST_SELLERS | Item is best seller in the market. | string |\n| DEAL_ITEMS | Item is in demand and is a part of deals in the other marketplaces. | string |"
                       enum:
+                        - MOST_SEARCHED_FOR
+                        - BEST_SELLERS
+                        - DEAL_ITEMS
+                    enum:
                       - MOST_SEARCHED_FOR
                       - BEST_SELLERS
                       - DEAL_ITEMS
-                    enum:
-                    - MOST_SEARCHED_FOR
-                    - BEST_SELLERS
-                    - DEAL_ITEMS
                   walmart:
                     type: object
                     properties:
@@ -2356,29 +1878,23 @@ components:
                         properties:
                           amount:
                             type: number
-                            description: 'The numerical amount of the price. Example:
-                              9.99'
+                            description: 'The numerical amount of the price. Example: 9.99'
                             format: double
                           currency:
                             type: string
-                            description: Currency associated with the price of the
-                              item recommendation.
-                        description: Competitor's item shipping price details of the
-                          item recommendation.
+                            description: Currency associated with the price of the item recommendation.
+                        description: Competitor's item shipping price details of the item recommendation.
                       shippingPrice:
                         type: object
                         properties:
                           amount:
                             type: number
-                            description: 'The numerical amount of the price. Example:
-                              9.99'
+                            description: 'The numerical amount of the price. Example: 9.99'
                             format: double
                           currency:
                             type: string
-                            description: Currency associated with the price of the
-                              item recommendation.
-                        description: Competitor's item shipping price details of the
-                          item recommendation.
+                            description: Currency associated with the price of the item recommendation.
+                        description: Competitor's item shipping price details of the item recommendation.
                     description: Walmart's item information
                   competitors:
                     type: array
@@ -2397,29 +1913,23 @@ components:
                           properties:
                             amount:
                               type: number
-                              description: 'The numerical amount of the price. Example:
-                                9.99'
+                              description: 'The numerical amount of the price. Example: 9.99'
                               format: double
                             currency:
                               type: string
-                              description: Currency associated with the price of the
-                                item recommendation.
-                          description: Competitor's item shipping price details of
-                            the item recommendation.
+                              description: Currency associated with the price of the item recommendation.
+                          description: Competitor's item shipping price details of the item recommendation.
                         shippingPrice:
                           type: object
                           properties:
                             amount:
                               type: number
-                              description: 'The numerical amount of the price. Example:
-                                9.99'
+                              description: 'The numerical amount of the price. Example: 9.99'
                               format: double
                             currency:
                               type: string
-                              description: Currency associated with the price of the
-                                item recommendation.
-                          description: Competitor's item shipping price details of
-                            the item recommendation.
+                              description: Currency associated with the price of the item recommendation.
+                          description: Competitor's item shipping price details of the item recommendation.
                       description: Competitor's item information
                 description: Details of the recommended item.
             description: Information related to the item recommendations.
@@ -2471,13 +1981,11 @@ components:
           default: 200
         nextCursor:
           type: string
-          description: Used for pagination when more than 200 records are retrieved.
-            The nextCursor value of the response includes a marker which needs to
-            be passed in next call which retrieves the next page of results.
+          description: Used for pagination when more than 200 records are retrieved. The nextCursor value of the response includes a marker which needs to be passed in next call which retrieves the next page of results.
       description: Meta information for the request.
     RecommendationRequest:
       required:
-      - recommendationType
+        - recommendationType
       type: object
       properties:
         recommendationType:
@@ -2487,7 +1995,7 @@ components:
             | --- | ----------- | ------- |
             | ITEM | To get list of recommended items | string |
           enum:
-          - ITEM
+            - ITEM
         meta:
           type: object
           properties:
@@ -2500,9 +2008,7 @@ components:
               default: 200
             nextCursor:
               type: string
-              description: Used for pagination when more than 200 records are retrieved.
-                The nextCursor value of the response includes a marker which needs
-                to be passed in next call which retrieves the next page of results.
+              description: Used for pagination when more than 200 records are retrieved. The nextCursor value of the response includes a marker which needs to be passed in next call which retrieves the next page of results.
           description: Meta information for the request.
         filterCriteria:
           type: object
@@ -2510,15 +2016,13 @@ components:
             searchText:
               minLength: 3
               type: string
-              description: 'To filter with a search text having a word that can be
-                part of the recommended data. '
+              description: 'To filter with a search text having a word that can be part of the recommended data. '
             multiValueFilter:
               type: array
-              description: "Filters based on multiple values associated with a specific
-                parameter. \nNo parameter should be repeated."
+              description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
               items:
                 required:
-                - parameter
+                  - parameter
                 type: object
                 properties:
                   parameter:
@@ -2529,108 +2033,63 @@ components:
                       | BRAND | To filter based on list of brands which are associated with the assortment recommendations | string |
                       | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations | string |
                     enum:
-                    - BRAND
-                    - CATEGORY
+                      - BRAND
+                      - CATEGORY
                   values:
                     type: array
-                    description: A list of values corresponds to the parameter in
-                      the filter. The values in the list should not be null or blank.
-                      Maximum size of the list should be 7.
+                    description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
                     items:
                       type: string
-                      description: A list of values corresponds to the parameter in
-                        the filter. The values in the list should not be null or blank.
-                        Maximum size of the list should be 7.
-                description: "Filters based on multiple values associated with a specific
-                  parameter. \nNo parameter should be repeated."
+                      description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum size of the list should be 7.
+                description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
             enumFilter:
               type: array
-              description: "Filter based on preset parameters and their associated
-                values is possible with EnumFilter.  \nNo parameter should be repeated."
+              description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
               items:
                 type: object
                 properties:
                   parameter:
                     type: string
-                    description: "To apply an enum filter based on the predefined
-                      parameter. \n\n| Attribute | Description | Data Type |\n| ---
-                      | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter
-                      based on whether the items which are new to Walmart or existing
-                      in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand
-                      types identified in the market for an item. An item can have
-                      more than one value for this parameter. | string |"
+                    description: "To apply an enum filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| ITEM_AVAILABILITY_STATUS | To filter based on whether the items which are new to Walmart or existing in Walmart. | string |\n| SHOPPING_TRENDS | Indicates the demand types identified in the market for an item. An item can have more than one value for this parameter. | string |"
                     enum:
-                    - ITEM_AVAILABILITY_STATUS
+                      - ITEM_AVAILABILITY_STATUS
                   values:
                     type: array
-                    description: "Values correspond to the parameter for applying
-                      filter on the response. The data in values[] are predefined.
-                      OR operator is used between the values. \n\n| Attribute | Associated
-                      parameter of enumFilter | Description | Data Type |\n| --- |
-                      ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART
-                      | ITEM_AVAILABILITY_STATUS | To filters based on the items which
-                      are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS
-                      | To filters based on the items which are new to Walmart. |
-                      string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most
-                      searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS
-                      | Item is best seller in the market.  | string |\n| DEAL_ITEMS
-                      | SHOPPING_TRENDS | Item is in demand and is a part of deals
-                      in the other marketplaces. | string |\n"
+                    description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                     items:
                       type: string
-                      description: "Values correspond to the parameter for applying
-                        filter on the response. The data in values[] are predefined.
-                        OR operator is used between the values. \n\n| Attribute |
-                        Associated parameter of enumFilter | Description | Data Type
-                        |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART
-                        | ITEM_AVAILABILITY_STATUS | To filters based on the items
-                        which are existing in Walmart. | string |\n| NEW_TO_WALMART
-                        | ITEM_AVAILABILITY_STATUS | To filters based on the items
-                        which are new to Walmart. | string |\n| MOST_SEARCHED_FOR
-                        | SHOPPING_TRENDS | Item is most searched for in the market.
-                        | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best
-                        seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS
-                        | Item is in demand and is a part of deals in the other marketplaces.
-                        | string |\n"
+                      description: "Values correspond to the parameter for applying filter on the response. The data in values[] are predefined. OR operator is used between the values. \n\n| Attribute | Associated parameter of enumFilter | Description | Data Type |\n| --- | ----------- | ----------- | ------- |\n| EXISTING_IN_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are existing in Walmart. | string |\n| NEW_TO_WALMART | ITEM_AVAILABILITY_STATUS | To filters based on the items which are new to Walmart. | string |\n| MOST_SEARCHED_FOR | SHOPPING_TRENDS | Item is most searched for in the market. | string |\n| BEST_SELLERS | SHOPPING_TRENDS | Item is best seller in the market.  | string |\n| DEAL_ITEMS | SHOPPING_TRENDS | Item is in demand and is a part of deals in the other marketplaces. | string |\n"
                       enum:
+                        - EXISTING_IN_WALMART
+                        - NEW_TO_WALMART
+                        - MOST_SEARCHED_FOR
+                        - BEST_SELLERS
+                        - DEAL_ITEMS
+                    enum:
                       - EXISTING_IN_WALMART
                       - NEW_TO_WALMART
                       - MOST_SEARCHED_FOR
                       - BEST_SELLERS
                       - DEAL_ITEMS
-                    enum:
-                    - EXISTING_IN_WALMART
-                    - NEW_TO_WALMART
-                    - MOST_SEARCHED_FOR
-                    - BEST_SELLERS
-                    - DEAL_ITEMS
-                description: "Filter based on preset parameters and their associated
-                  values is possible with EnumFilter.  \nNo parameter should be repeated."
+                description: "Filter based on preset parameters and their associated values is possible with EnumFilter.  \nNo parameter should be repeated."
             rangeFilter:
               type: array
-              description: "Filter based on a range with RangeFilter. You must also
-                pass a parameter along with any of the beginning or the ending points
-                or both. \nNo parameter should be repeated."
+              description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
               items:
                 type: object
                 properties:
                   parameter:
                     type: string
-                    description: "To apply a range filter based on the predefined
-                      parameter. \n\n| Attribute | Description | Data Type |\n| ---
-                      | ----------- | ------- |\n| PRICE | To filter based on the
-                      price. | string |"
+                    description: "To apply a range filter based on the predefined parameter. \n\n| Attribute | Description | Data Type |\n| --- | ----------- | ------- |\n| PRICE | To filter based on the price. | string |"
                     enum:
-                    - PRICE
+                      - PRICE
                   from:
                     type: string
                     description: Filter range start
                   to:
                     type: string
                     description: Filter range end
-                description: "Filter based on a range with RangeFilter. You must also
-                  pass a parameter along with any of the beginning or the ending points
-                  or both. \nNo parameter should be repeated."
+                description: "Filter based on a range with RangeFilter. You must also pass a parameter along with any of the beginning or the ending points or both. \nNo parameter should be repeated."
           description: Different type of filters can be passed in this object.
     CategorizationFacet:
       type: object
@@ -2640,8 +2099,7 @@ components:
           description: Name of the brand or category as per the categorizationType.
         numberOfItemRecommendations:
           type: integer
-          description: The number of item recommendations associated with the name.
-            The name can be associated with the categorization type.
+          description: The number of item recommendations associated with the name. The name can be associated with the categorization type.
           format: int64
       description: Information of item recommendations based on the categorizationType.
     CategorizationResponse:
@@ -2658,15 +2116,14 @@ components:
                 | BRAND | To get list of brands which are associated with the assortment recommendations | string |
                 | CATEGORY | To get list of categories which are associated with the assortment recommendations | string |
               enum:
-              - BRAND
-              - CATEGORY
+                - BRAND
+                - CATEGORY
             meta:
               type: object
               properties:
                 totalRecords:
                   type: integer
-                  description: The total number of records are present for the requested
-                    categorization type along with filters.
+                  description: The total number of records are present for the requested categorization type along with filters.
                   format: int32
                 recordsFetched:
                   type: integer
@@ -2681,9 +2138,7 @@ components:
                   default: 200
                 nextCursor:
                   type: string
-                  description: The string returned from the initial API call to indicate
-                    nextCursor. Specify nextCursor value to retrieve the next set
-                    of records.
+                  description: The string returned from the initial API call to indicate nextCursor. Specify nextCursor value to retrieve the next set of records.
               description: Meta information for the response.
             records:
               type: array
@@ -2696,13 +2151,10 @@ components:
                     description: Name of the brand or category as per the categorizationType.
                   numberOfItemRecommendations:
                     type: integer
-                    description: The number of item recommendations associated with
-                      the name. The name can be associated with the categorization
-                      type.
+                    description: The number of item recommendations associated with the name. The name can be associated with the categorization type.
                     format: int64
                 description: Information of item recommendations based on the categorizationType.
-          description: Payload in the response having the categorization details about
-            the item recommendations.
+          description: Payload in the response having the categorization details about the item recommendations.
     CategorizationResponsePayload:
       type: object
       properties:
@@ -2714,15 +2166,14 @@ components:
             | BRAND | To get list of brands which are associated with the assortment recommendations | string |
             | CATEGORY | To get list of categories which are associated with the assortment recommendations | string |
           enum:
-          - BRAND
-          - CATEGORY
+            - BRAND
+            - CATEGORY
         meta:
           type: object
           properties:
             totalRecords:
               type: integer
-              description: The total number of records are present for the requested
-                categorization type along with filters.
+              description: The total number of records are present for the requested categorization type along with filters.
               format: int32
             recordsFetched:
               type: integer
@@ -2737,8 +2188,7 @@ components:
               default: 200
             nextCursor:
               type: string
-              description: The string returned from the initial API call to indicate
-                nextCursor. Specify nextCursor value to retrieve the next set of records.
+              description: The string returned from the initial API call to indicate nextCursor. Specify nextCursor value to retrieve the next set of records.
           description: Meta information for the response.
         records:
           type: array
@@ -2751,15 +2201,13 @@ components:
                 description: Name of the brand or category as per the categorizationType.
               numberOfItemRecommendations:
                 type: integer
-                description: The number of item recommendations associated with the
-                  name. The name can be associated with the categorization type.
+                description: The number of item recommendations associated with the name. The name can be associated with the categorization type.
                 format: int64
             description: Information of item recommendations based on the categorizationType.
-      description: Payload in the response having the categorization details about
-        the item recommendations.
+      description: Payload in the response having the categorization details about the item recommendations.
     CategorizationRequest:
       required:
-      - categorizationType
+        - categorizationType
       type: object
       properties:
         categorizationType:
@@ -2770,8 +2218,8 @@ components:
             | BRAND | To get list of brands which are associated with the assortment recommendations | string |
             | CATEGORY | To get list of categories which are associated with the assortment recommendations | string |
           enum:
-          - BRAND
-          - CATEGORY
+            - BRAND
+            - CATEGORY
         meta:
           type: object
           properties:
@@ -2784,9 +2232,7 @@ components:
               default: 200
             nextCursor:
               type: string
-              description: Used for pagination when more than 200 records are retrieved.
-                The nextCursor value of the response includes a marker which needs
-                to be passed in next call which retrieves the next page of results.
+              description: Used for pagination when more than 200 records are retrieved. The nextCursor value of the response includes a marker which needs to be passed in next call which retrieves the next page of results.
           description: Meta information for the request.
         filterCriteria:
           type: object
@@ -2794,15 +2240,13 @@ components:
             searchText:
               minLength: 3
               type: string
-              description: 'To filter with a search text having a word that can be
-                part of the categorization data. '
+              description: 'To filter with a search text having a word that can be part of the categorization data. '
             multiValueFilter:
               type: array
-              description: "Filters based on multiple values associated with a specific
-                parameter. \nNo parameter should be repeated."
+              description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
               items:
                 required:
-                - parameter
+                  - parameter
                 type: object
                 properties:
                   parameter:
@@ -2813,20 +2257,15 @@ components:
                       | BRAND | To filter based on list of brands which are associated with the assortment recommendations. This is allowed when the categorization type is CATEGORY | string |
                       | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations. This is allowed when the categorization type is BRAND | string |
                     enum:
-                    - CATEGORY
-                    - BRAND
+                      - CATEGORY
+                      - BRAND
                   values:
                     type: array
-                    description: A list of values corresponds to the parameter in
-                      the filter. The values in the list should not be null or blank.
-                      Maximum 7 values are allowed in the list.
+                    description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
                     items:
                       type: string
-                      description: A list of values corresponds to the parameter in
-                        the filter. The values in the list should not be null or blank.
-                        Maximum 7 values are allowed in the list.
-                description: "Filters based on multiple values associated with a specific
-                  parameter. \nNo parameter should be repeated."
+                      description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
+                description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
           description: Different type of filters can be passed in this object.
     CategorizationRequestFilter:
       type: object
@@ -2834,15 +2273,13 @@ components:
         searchText:
           minLength: 3
           type: string
-          description: 'To filter with a search text having a word that can be part
-            of the categorization data. '
+          description: 'To filter with a search text having a word that can be part of the categorization data. '
         multiValueFilter:
           type: array
-          description: "Filters based on multiple values associated with a specific
-            parameter. \nNo parameter should be repeated."
+          description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
           items:
             required:
-            - parameter
+              - parameter
             type: object
             properties:
               parameter:
@@ -2853,24 +2290,19 @@ components:
                   | BRAND | To filter based on list of brands which are associated with the assortment recommendations. This is allowed when the categorization type is CATEGORY | string |
                   | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations. This is allowed when the categorization type is BRAND | string |
                 enum:
-                - CATEGORY
-                - BRAND
+                  - CATEGORY
+                  - BRAND
               values:
                 type: array
-                description: A list of values corresponds to the parameter in the
-                  filter. The values in the list should not be null or blank. Maximum
-                  7 values are allowed in the list.
+                description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
                 items:
                   type: string
-                  description: A list of values corresponds to the parameter in the
-                    filter. The values in the list should not be null or blank. Maximum
-                    7 values are allowed in the list.
-            description: "Filters based on multiple values associated with a specific
-              parameter. \nNo parameter should be repeated."
+                  description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
+            description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
       description: Different type of filters can be passed in this object.
     MultiValueFilterCriteriaForCategorization:
       required:
-      - parameter
+        - parameter
       type: object
       properties:
         parameter:
@@ -2881,26 +2313,20 @@ components:
             | BRAND | To filter based on list of brands which are associated with the assortment recommendations. This is allowed when the categorization type is CATEGORY | string |
             | CATEGORY | To filter based on list of categories which are associated with the assortment recommendations. This is allowed when the categorization type is BRAND | string |
           enum:
-          - CATEGORY
-          - BRAND
+            - CATEGORY
+            - BRAND
         values:
           type: array
-          description: A list of values corresponds to the parameter in the filter.
-            The values in the list should not be null or blank. Maximum 7 values are
-            allowed in the list.
+          description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
           items:
             type: string
-            description: A list of values corresponds to the parameter in the filter.
-              The values in the list should not be null or blank. Maximum 7 values
-              are allowed in the list.
-      description: "Filters based on multiple values associated with a specific parameter.
-        \nNo parameter should be repeated."
+            description: A list of values corresponds to the parameter in the filter. The values in the list should not be null or blank. Maximum 7 values are allowed in the list.
+      description: "Filters based on multiple values associated with a specific parameter. \nNo parameter should be repeated."
   parameters:
     authorization:
       name: Authorization
       in: header
-      description: Basic authorization header. Base 64 encodes the Client ID and Client
-        Secret retrieved in step two of the integration steps.
+      description: Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
       required: true
       schema:
         type: string
@@ -2916,16 +2342,14 @@ components:
     channelType:
       name: WM_CONSUMER.CHANNEL.TYPE
       in: header
-      description: A unique ID to track the consumer request by channel. Use the Consumer
-        Channel Type received during onboarding
+      description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
       required: false
       schema:
         type: string
     correlationId:
       name: WM_QOS.CORRELATION_ID
       in: header
-      description: A unique ID which identifies each API call and used to track and
-        debug issues; use a random generated GUID for this ID
+      description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
       required: true
       schema:
         type: string
@@ -2955,7 +2379,7 @@ components:
         type: string
       example: application/json
 tags:
-- name: Bulk Download Assortment Recommendations
-  externalDocs:
-    description: On-request Assortment Recommendations Report
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/#15593
+  - name: Bulk Download Assortment Recommendations
+    externalDocs:
+      description: On-request Assortment Recommendations Report
+      url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/#15593

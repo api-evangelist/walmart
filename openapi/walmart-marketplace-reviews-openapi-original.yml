@@ -1,7 +1,6 @@
----
 openapi: 3.0.1
 info:
-  title: Reviews Acceleration
+  title: Walmart Reviews Acceleration
   description: |
     The Reviews Acceleration API provides sellers with capability to view and enroll items into review accelerator programs:
 
@@ -11,69 +10,66 @@ info:
     *   Sellers can filter the products on the basis of category and price. They can also sort based on item priority and search using product name and SKU
     *   Sellers can enroll a product/multiple products into the program using update item status API
 servers:
-- url: https://marketplace.walmartapis.com
-  description: Production URL
-- url: https://sandbox.walmartapis.com
-  description: Sandbox URL
+  - url: https://marketplace.walmartapis.com
+    description: Production URL
+  - url: https://sandbox.walmartapis.com
+    description: Sandbox URL
 security:
-- basicScheme: []
+  - basicScheme: []
 paths:
   "/v3/growth/reviews-accelerator/items/status":
     put:
       tags:
-      - Reviews
-      summary: Bulk update item status
-      description: To enroll a product in/out of the Reviews acceleration post-purchase
-        program.
+        - Reviews
+      summary: Walmart Bulk update item status
+      description: To enroll a product in/out of the Reviews acceleration post-purchase program.
       externalDocs:
         description: View Guide
         url: "/doc/us/mp/us-mp-reviews/#11535"
       operationId: bulkUpdateItemStatus
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
-      - in: header
-        name: Accept
-        description: 'Only supported Media Type : application/json'
-        required: true
-        schema:
-          type: string
-        example: application/json
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
+        - in: header
+          name: Accept
+          description: 'Only supported Media Type : application/json'
+          required: true
+          schema:
+            type: string
+          example: application/json
       requestBody:
         description: Request fields
         content:
           application/json:
             schema:
               required:
-              - items
-              - status
+                - items
+                - status
               type: object
               properties:
                 status:
@@ -84,14 +80,14 @@ paths:
                     | ENROLL | To enroll items into the program | string |
                     | DISENROLL | To opt out items from the program | string |
                   enum:
-                  - ENROLL
-                  - DISENROLL
+                    - ENROLL
+                    - DISENROLL
                 items:
                   type: array
                   description: Items
                   items:
                     required:
-                    - itemId
+                      - itemId
                     type: object
                     properties:
                       itemId:
@@ -100,8 +96,7 @@ paths:
                         example: '100015964'
                       targetReviews:
                         type: integer
-                        description: Custom target number of reviews requested to
-                          be collected for the item. Default is 5.
+                        description: Custom target number of reviews requested to be collected for the item. Default is 5.
                         format: int32
                         example: 15
                     description: Items
@@ -110,14 +105,14 @@ paths:
                 value:
                   status: ENROLL
                   items:
-                  - itemId: '2719243'
-                  - itemId: '2719255'
+                    - itemId: '2719243'
+                    - itemId: '2719255'
               Dis-Enrol Items:
                 value:
                   status: DISENROLL
                   items:
-                  - itemId: '2719243'
-                  - itemId: '2719255'
+                    - itemId: '2719243'
+                    - itemId: '2719255'
         required: true
       responses:
         '200':
@@ -146,12 +141,10 @@ paths:
                                 itemDescription:
                                   type: string
                                   description: Description of the item.
-                                  example: View-Master Discovery Kids 3D Marine Life
-                                    Toy Viewfinder Reel
+                                  example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
                                 sku:
                                   type: string
-                                  description: Specifies the item identified. This
-                                    value is defined by the seller.
+                                  description: Specifies the item identified. This value is defined by the seller.
                                   example: NK-WHT2XL
                               description: Items.
                         description: Items succeeded.
@@ -175,8 +168,7 @@ paths:
                                 errorDescription:
                                   type: string
                                   description: Error description.
-                                  example: The request payload has an invalid ItemId.
-                                    Check the values and try again.
+                                  example: The request payload has an invalid ItemId. Check the values and try again.
                                 category:
                                   type: string
                                   description: Error category.
@@ -205,8 +197,7 @@ paths:
                         description:
                           type: string
                           description: Error description.
-                          example: The request payload is either invalid or is improperly
-                            formatted. Check the payload values and try again.
+                          example: The request payload is either invalid or is improperly formatted. Check the payload values and try again.
                         category:
                           type: string
                           description: Error category.
@@ -222,99 +213,88 @@ paths:
                     payload:
                       success:
                         items:
-                        - itemId: '2719243'
-                          itemDescription: View-Master Discovery Kids 3D Marine Life
-                            Toy Viewfinder Reel
-                          sku: NK-WHT2XL
+                          - itemId: '2719243'
+                            itemDescription: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
+                            sku: NK-WHT2XL
                       failure:
                         items:
-                        - itemId: '2719255'
-                          errorCode: 400.INVALID_ITEMID.001
-                          errorDescription: Invalid itemId
-                          severity: ERROR
-                          category: DATA
+                          - itemId: '2719255'
+                            errorCode: 400.INVALID_ITEMID.001
+                            errorDescription: Invalid itemId
+                            severity: ERROR
+                            category: DATA
                 Dis-Enrol Items:
                   value:
                     statusCode: 200
                     payload:
                       success:
                         items:
-                        - itemId: '2719243'
-                          itemDescription: View-Master Discovery Kids 3D Marine Life
-                            Toy Viewfinder Reel
-                          sku: NK-WHT2XL
-                        - itemId: '2719255'
-                          itemDescription: Strikeforce Men's Flyer Medium and Wide
-                            Width Bowling Shoe
-                          sku: NK-WHT78S
+                          - itemId: '2719243'
+                            itemDescription: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
+                            sku: NK-WHT2XL
+                          - itemId: '2719255'
+                            itemDescription: Strikeforce Men's Flyer Medium and Wide Width Bowling Shoe
+                            sku: NK-WHT78S
   "/v3/growth/reviews-accelerator/items":
     post:
       tags:
-      - Reviews
-      summary: Get RAP post-purchase items
-      description: " To get all eligible products that can be enrolled into the Reviews
-        accelerator post-purchase program. To get all products that are currently
-        enrolled into the program. To get all products that have attained target reviews
-        after enrolment into the program. Products can be filtered by category and
-        price. Products can be sorted by Walmart-recommended item priorities. Searched
-        using wildcards matching the product name and SKU.\n"
+        - Reviews
+      summary: Walmart Get RAP post-purchase items
+      description: " To get all eligible products that can be enrolled into the Reviews accelerator post-purchase program. To get all products that are currently enrolled into the program. To get all products that have attained target reviews after enrolment into the program. Products can be filtered by category and price. Products can be sorted by Walmart-recommended item priorities. Searched using wildcards matching the product name and SKU.\n"
       externalDocs:
         description: View Guide
         url: "/doc/us/mp/us-mp-reviews/#11533"
       operationId: getIrpItems
       parameters:
-      - name: scrollId
-        in: query
-        description: Optional parameter specifying the scrollId to return the next
-          set of results.
-        required: true
-        allowReserved: true
-        schema:
-          type: string
-          default: "*"
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
-      - in: header
-        name: Accept
-        description: 'Only supported Media Type : application/json'
-        required: true
-        schema:
-          type: string
-        example: application/json
+        - name: scrollId
+          in: query
+          description: Optional parameter specifying the scrollId to return the next set of results.
+          required: true
+          allowReserved: true
+          schema:
+            type: string
+            default: "*"
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
+        - in: header
+          name: Accept
+          description: 'Only supported Media Type : application/json'
+          required: true
+          schema:
+            type: string
+          example: application/json
       requestBody:
         description: Request payload
         content:
           application/json:
             schema:
               required:
-              - filter
+                - filter
               type: object
               properties:
                 search:
@@ -331,14 +311,14 @@ paths:
                           | ITEM_NAME | Product name | string |
                           | SKU | Specifies the item identified. This value is defined by the seller. | string |
                         enum:
-                        - ITEM_NAME
-                        - SKU
+                          - ITEM_NAME
+                          - SKU
                       value:
                         type: string
                     description: Search request.
                 filter:
                   required:
-                  - itemStatus
+                    - itemStatus
                   type: object
                   properties:
                     itemStatus:
@@ -350,18 +330,17 @@ paths:
                         | ENROLLED | To get items which are currently enrolled into the program | string |
                         | COMPLETE | To get items which have attained target reviews through the program | string |
                       enum:
-                      - ELIGIBLE
-                      - ENROLLED
-                      - COMPLETE
+                        - ELIGIBLE
+                        - ENROLLED
+                        - COMPLETE
                     dateRange:
                       type: string
-                      description: Date range to filter impressions, page views and
-                        sales.
+                      description: Date range to filter impressions, page views and sales.
                       default: 7DAYS
                       enum:
-                      - 7DAYS
-                      - 14DAYS
-                      - 30DAYS
+                        - 7DAYS
+                        - 14DAYS
+                        - 30DAYS
                     category:
                       type: string
                       description: Category of the items.
@@ -395,13 +374,13 @@ paths:
                           | ITEM_PRIORITY | Recommended priority of the item by Walmart. | integer |
                           | PRICE | Item price | integer |
                         enum:
-                        - ITEM_PRIORITY
-                        - PRICE
+                          - ITEM_PRIORITY
+                          - PRICE
                       order:
                         type: string
                         enum:
-                        - ASC
-                        - DESC
+                          - ASC
+                          - DESC
                       priority:
                         type: integer
                         description: Sort priority of the specified field.
@@ -427,21 +406,21 @@ paths:
                     itemStatus: ELIGIBLE
                     dateRange: 7DAYS
                     category:
-                    - 32 JEWELRY
-                    - SHOES
+                      - 32 JEWELRY
+                      - SHOES
                     price:
                       minimum: 10
                       maximum: 100
                   search:
-                  - value: kids
-                    field: ITEM_NAME
+                    - value: kids
+                      field: ITEM_NAME
                   sort:
-                  - field: ITEM_PRIORITY
-                    order: ASC
-                    priority: 1
-                  - field: PRICE
-                    order: DESC
-                    priority: 2
+                    - field: ITEM_PRIORITY
+                      order: ASC
+                      priority: 1
+                    - field: PRICE
+                      order: DESC
+                      priority: 2
         required: true
       responses:
         '200':
@@ -466,13 +445,12 @@ paths:
                         example: 200
                       dateRange:
                         type: string
-                        description: Date range to filter impressions, page views
-                          and sales.
+                        description: Date range to filter impressions, page views and sales.
                         default: 7DAYS
                         enum:
-                        - 7DAYS
-                        - 14DAYS
-                        - 30DAYS
+                          - 7DAYS
+                          - 14DAYS
+                          - 30DAYS
                       items:
                         type: array
                         items:
@@ -485,12 +463,10 @@ paths:
                             itemName:
                               type: string
                               description: Name of the item.
-                              example: View-Master Discovery Kids 3D Marine Life Toy
-                                Viewfinder Reel
+                              example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
                             sales:
                               type: integer
-                              description: Units sold during the specified date range.
-                                Defaults range is for last 7 days.
+                              description: Units sold during the specified date range. Defaults range is for last 7 days.
                               format: int32
                               example: 45
                             currentReviews:
@@ -500,45 +476,38 @@ paths:
                               example: 0
                             impressions:
                               type: integer
-                              description: The number of times item showed up in search
-                                results in the requested date range. Defaults to last
-                                7 days.
+                              description: The number of times item showed up in search results in the requested date range. Defaults to last 7 days.
                               format: int32
                               example: 1937
                             currentPageViews:
                               type: integer
-                              description: The number of views on the item page in
-                                the requested date range. Defaults to last 7 days.
+                              description: The number of views on the item page in the requested date range. Defaults to last 7 days.
                               format: int32
                               example: 900
                             reviewsCollected:
                               type: integer
-                              description: The number of reviews collected for the
-                                item through IRP.
+                              description: The number of reviews collected for the item through IRP.
                               format: int32
                               example: 0
                             sku:
                               type: string
-                              description: Specifies the item identified. This value
-                                is defined by the seller.
+                              description: Specifies the item identified. This value is defined by the seller.
                               example: NK-WHT2XL
                             itemStatus:
                               type: string
                               description: Current status of the item in IRP.
                               enum:
-                              - COMPLETE
-                              - ELIGIBLE
-                              - ENROLLED
+                                - COMPLETE
+                                - ELIGIBLE
+                                - ENROLLED
                             itemPriority:
                               type: integer
-                              description: Priority of the item as recommended by
-                                Walmart.
+                              description: Priority of the item as recommended by Walmart.
                               format: int32
                               example: 1
                       scrollId:
                         type: string
-                        description: Specifies the searchId to fetch the subsequent
-                          set of results.
+                        description: Specifies the searchId to fetch the subsequent set of results.
                         example: DXF1ZXJ5QW5kRmV0Y2gBAAAAAACUyUsWamJiNUxwcDJUU0dxbHBObmJvRUF2UQ==
                     description: Response payload.
                   statusCode:
@@ -558,8 +527,7 @@ paths:
                         description:
                           type: string
                           description: Error description.
-                          example: The request payload is either invalid or is improperly
-                            formatted. Check the payload values and try again.
+                          example: The request payload is either invalid or is improperly formatted. Check the payload values and try again.
                         category:
                           type: string
                           description: Error category.
@@ -578,17 +546,16 @@ paths:
                       dateRange: 7DAYS
                       scrollId: DXF1ZXJ5QW5kRmV0Y2gBAAAAAACUyUsWamJiNUxwcDJUU0dxbHBObmJvRUF2UQ==
                       items:
-                      - itemId: '100015964'
-                        itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                          Reel
-                        sales: 231232
-                        currentReviews: 3
-                        impressions: 214231
-                        currentPageViews: 2342
-                        reviewsCollected: 0
-                        sku: NK-WHT2XL
-                        itemStatus: ELIGIBLE
-                        itemPriority: 1
+                        - itemId: '100015964'
+                          itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
+                          sales: 231232
+                          currentReviews: 3
+                          impressions: 214231
+                          currentPageViews: 2342
+                          reviewsCollected: 0
+                          sku: NK-WHT2XL
+                          itemStatus: ELIGIBLE
+                          itemPriority: 1
                 Get Enrolled Items:
                   value:
                     statusCode: 200
@@ -598,17 +565,16 @@ paths:
                       dateRange: 7DAYS
                       scrollId: DXF1ZXJ5QW5kRmV0Y2gBAAAAAACUyUsWamJiNUxwcDJUU0dxbHBObmJvRUF2UQ==
                       items:
-                      - itemId: '100015964'
-                        itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                          Reel
-                        sales: 32
-                        currentReviews: 5
-                        impressions: 214231
-                        currentPageViews: 2342
-                        reviewsCollected: 2
-                        sku: NK-WHT2XL
-                        itemStatus: ENROLLED
-                        itemPriority: 1
+                        - itemId: '100015964'
+                          itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
+                          sales: 32
+                          currentReviews: 5
+                          impressions: 214231
+                          currentPageViews: 2342
+                          reviewsCollected: 2
+                          sku: NK-WHT2XL
+                          itemStatus: ENROLLED
+                          itemPriority: 1
                 Get Complete Items:
                   value:
                     statusCode: 200
@@ -618,17 +584,16 @@ paths:
                       dateRange: 7DAYS
                       scrollId: DXF1ZXJ5QW5kRmV0Y2gBAAAAAACUyUsWamJiNUxwcDJUU0dxbHBObmJvRUF2UQ==
                       items:
-                      - itemId: '100015964'
-                        itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                          Reel
-                        sales: 132
-                        currentReviews: 10
-                        impressions: 2231
-                        currentPageViews: 232
-                        reviewsCollected: 7
-                        sku: NK-WHT2XL
-                        itemStatus: COMPLETE
-                        itemPriority: 1
+                        - itemId: '100015964'
+                          itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
+                          sales: 132
+                          currentReviews: 10
+                          impressions: 2231
+                          currentPageViews: 232
+                          reviewsCollected: 7
+                          sku: NK-WHT2XL
+                          itemStatus: COMPLETE
+                          itemPriority: 1
                 Filter sort and search Items:
                   value:
                     statusCode: 200
@@ -638,65 +603,61 @@ paths:
                       dateRange: 7DAYS
                       scrollId: DXF1ZXJ5QW5kRmV0Y2gBAAAAAACUyUsWamJiNUxwcDJUU0dxbHBObmJvRUF2UQ==
                       items:
-                      - itemId: '100015964'
-                        itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                          Reel
-                        sales: 122
-                        currentReviews: 3
-                        impressions: 81421
-                        currentPageViews: 2342
-                        reviewsCollected: 0
-                        sku: NK-WHT2XL
-                        itemStatus: ELIGIBLE
-                        itemPriority: 1
+                        - itemId: '100015964'
+                          itemName: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
+                          sales: 122
+                          currentReviews: 3
+                          impressions: 81421
+                          currentPageViews: 2342
+                          reviewsCollected: 0
+                          sku: NK-WHT2XL
+                          itemStatus: ELIGIBLE
+                          itemPriority: 1
   "/v3/growth/reviews-accelerator/categories":
     post:
       tags:
-      - Reviews
-      summary: Get categories
-      description: To get the set of categories the RAP post-purchase items belong
-        to.
+        - Reviews
+      summary: Walmart Get categories
+      description: To get the set of categories the RAP post-purchase items belong to.
       externalDocs:
         description: View Guide
         url: "/doc/us/mp/us-mp-reviews/#11539"
       operationId: getIrpCategories
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
-      - in: header
-        name: Accept
-        description: 'Only supported Media Type : application/json'
-        required: true
-        schema:
-          type: string
-        example: application/json
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
+        - in: header
+          name: Accept
+          description: 'Only supported Media Type : application/json'
+          required: true
+          schema:
+            type: string
+          example: application/json
       requestBody:
         description: Request payload
         content:
@@ -711,20 +672,20 @@ paths:
                     type: string
                     description: IRP status of the items.
                     enum:
+                      - ENROLLED
+                      - ELIGIBLE
+                      - COMPLETE
+                  enum:
                     - ENROLLED
                     - ELIGIBLE
                     - COMPLETE
-                  enum:
-                  - ENROLLED
-                  - ELIGIBLE
-                  - COMPLETE
             examples:
               Get categories with status:
                 value:
                   itemStatus:
-                  - ENROLLED
-                  - ELIGIBLE
-                  - COMPLETE
+                    - ENROLLED
+                    - ELIGIBLE
+                    - COMPLETE
         required: true
       responses:
         '200':
@@ -744,13 +705,13 @@ paths:
                           type: string
                           description: IRP status of the items.
                           enum:
+                            - ENROLLED
+                            - ELIGIBLE
+                            - COMPLETE
+                        enum:
                           - ENROLLED
                           - ELIGIBLE
                           - COMPLETE
-                        enum:
-                        - ENROLLED
-                        - ELIGIBLE
-                        - COMPLETE
                       categories:
                         type: array
                         description: Category of the items in requested item status.
@@ -777,8 +738,7 @@ paths:
                         description:
                           type: string
                           description: Error description.
-                          example: The request payload is either invalid or is improperly
-                            formatted. Check the payload values and try again.
+                          example: The request payload is either invalid or is improperly formatted. Check the payload values and try again.
                         category:
                           type: string
                           description: Error category.
@@ -793,13 +753,13 @@ paths:
                     statusCode: 200
                     payload:
                       itemStatus:
-                      - ENROLLED
-                      - ELIGIBLE
-                      - COMPLETE
+                        - ENROLLED
+                        - ELIGIBLE
+                        - COMPLETE
                       categories:
-                      - HARDLINES
-                      - HOME
-                      - APPAREL
+                        - HARDLINES
+                        - HOME
+                        - APPAREL
 components:
   schemas:
     BulkItemStatusUpdateResponsePayload:
@@ -821,12 +781,10 @@ components:
                   itemDescription:
                     type: string
                     description: Description of the item.
-                    example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                      Reel
+                    example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
                   sku:
                     type: string
-                    description: Specifies the item identified. This value is defined
-                      by the seller.
+                    description: Specifies the item identified. This value is defined by the seller.
                     example: NK-WHT2XL
                 description: Items.
           description: Items succeeded.
@@ -850,8 +808,7 @@ components:
                   errorDescription:
                     type: string
                     description: Error description.
-                    example: The request payload has an invalid ItemId. Check the
-                      values and try again.
+                    example: The request payload has an invalid ItemId. Check the values and try again.
                   category:
                     type: string
                     description: Error category.
@@ -885,12 +842,10 @@ components:
                       itemDescription:
                         type: string
                         description: Description of the item.
-                        example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                          Reel
+                        example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
                       sku:
                         type: string
-                        description: Specifies the item identified. This value is
-                          defined by the seller.
+                        description: Specifies the item identified. This value is defined by the seller.
                         example: NK-WHT2XL
                     description: Items.
               description: Items succeeded.
@@ -914,8 +869,7 @@ components:
                       errorDescription:
                         type: string
                         description: Error description.
-                        example: The request payload has an invalid ItemId. Check
-                          the values and try again.
+                        example: The request payload has an invalid ItemId. Check the values and try again.
                       category:
                         type: string
                         description: Error category.
@@ -944,8 +898,7 @@ components:
               description:
                 type: string
                 description: Error description.
-                example: The request payload is either invalid or is improperly formatted.
-                  Check the payload values and try again.
+                example: The request payload is either invalid or is improperly formatted. Check the payload values and try again.
               category:
                 type: string
                 description: Error category.
@@ -964,8 +917,7 @@ components:
         description:
           type: string
           description: Error description.
-          example: The request payload is either invalid or is improperly formatted.
-            Check the payload values and try again.
+          example: The request payload is either invalid or is improperly formatted. Check the payload values and try again.
         category:
           type: string
           description: Error category.
@@ -994,8 +946,7 @@ components:
               errorDescription:
                 type: string
                 description: Error description.
-                example: The request payload has an invalid ItemId. Check the values
-                  and try again.
+                example: The request payload has an invalid ItemId. Check the values and try again.
               category:
                 type: string
                 description: Error category.
@@ -1020,8 +971,7 @@ components:
         errorDescription:
           type: string
           description: Error description.
-          example: The request payload has an invalid ItemId. Check the values and
-            try again.
+          example: The request payload has an invalid ItemId. Check the values and try again.
         category:
           type: string
           description: Error category.
@@ -1044,8 +994,7 @@ components:
           example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
         sku:
           type: string
-          description: Specifies the item identified. This value is defined by the
-            seller.
+          description: Specifies the item identified. This value is defined by the seller.
           example: NK-WHT2XL
       description: Items.
     Success:
@@ -1064,19 +1013,17 @@ components:
               itemDescription:
                 type: string
                 description: Description of the item.
-                example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                  Reel
+                example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
               sku:
                 type: string
-                description: Specifies the item identified. This value is defined
-                  by the seller.
+                description: Specifies the item identified. This value is defined by the seller.
                 example: NK-WHT2XL
             description: Items.
       description: Items succeeded.
     BulkItemStatusUpdateRequest:
       required:
-      - items
-      - status
+        - items
+        - status
       type: object
       properties:
         status:
@@ -1087,14 +1034,14 @@ components:
             | ENROLL | To enroll items into the program | string |
             | DISENROLL | To opt out items from the program | string |
           enum:
-          - ENROLL
-          - DISENROLL
+            - ENROLL
+            - DISENROLL
         items:
           type: array
           description: Items
           items:
             required:
-            - itemId
+              - itemId
             type: object
             properties:
               itemId:
@@ -1103,14 +1050,13 @@ components:
                 example: '100015964'
               targetReviews:
                 type: integer
-                description: Custom target number of reviews requested to be collected
-                  for the item. Default is 5.
+                description: Custom target number of reviews requested to be collected for the item. Default is 5.
                 format: int32
                 example: 15
             description: Items
     ItemsRequest:
       required:
-      - itemId
+        - itemId
       type: object
       properties:
         itemId:
@@ -1119,8 +1065,7 @@ components:
           example: '100015964'
         targetReviews:
           type: integer
-          description: Custom target number of reviews requested to be collected for
-            the item. Default is 5.
+          description: Custom target number of reviews requested to be collected for the item. Default is 5.
           format: int32
           example: 15
       description: Items
@@ -1145,9 +1090,9 @@ components:
               description: Date range to filter impressions, page views and sales.
               default: 7DAYS
               enum:
-              - 7DAYS
-              - 14DAYS
-              - 30DAYS
+                - 7DAYS
+                - 14DAYS
+                - 30DAYS
             items:
               type: array
               items:
@@ -1160,12 +1105,10 @@ components:
                   itemName:
                     type: string
                     description: Name of the item.
-                    example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                      Reel
+                    example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
                   sales:
                     type: integer
-                    description: Units sold during the specified date range. Defaults
-                      range is for last 7 days.
+                    description: Units sold during the specified date range. Defaults range is for last 7 days.
                     format: int32
                     example: 45
                   currentReviews:
@@ -1175,34 +1118,30 @@ components:
                     example: 0
                   impressions:
                     type: integer
-                    description: The number of times item showed up in search results
-                      in the requested date range. Defaults to last 7 days.
+                    description: The number of times item showed up in search results in the requested date range. Defaults to last 7 days.
                     format: int32
                     example: 1937
                   currentPageViews:
                     type: integer
-                    description: The number of views on the item page in the requested
-                      date range. Defaults to last 7 days.
+                    description: The number of views on the item page in the requested date range. Defaults to last 7 days.
                     format: int32
                     example: 900
                   reviewsCollected:
                     type: integer
-                    description: The number of reviews collected for the item through
-                      IRP.
+                    description: The number of reviews collected for the item through IRP.
                     format: int32
                     example: 0
                   sku:
                     type: string
-                    description: Specifies the item identified. This value is defined
-                      by the seller.
+                    description: Specifies the item identified. This value is defined by the seller.
                     example: NK-WHT2XL
                   itemStatus:
                     type: string
                     description: Current status of the item in IRP.
                     enum:
-                    - COMPLETE
-                    - ELIGIBLE
-                    - ENROLLED
+                      - COMPLETE
+                      - ELIGIBLE
+                      - ENROLLED
                   itemPriority:
                     type: integer
                     description: Priority of the item as recommended by Walmart.
@@ -1230,8 +1169,7 @@ components:
               description:
                 type: string
                 description: Error description.
-                example: The request payload is either invalid or is improperly formatted.
-                  Check the payload values and try again.
+                example: The request payload is either invalid or is improperly formatted. Check the payload values and try again.
               category:
                 type: string
                 description: Error category.
@@ -1258,9 +1196,9 @@ components:
           description: Date range to filter impressions, page views and sales.
           default: 7DAYS
           enum:
-          - 7DAYS
-          - 14DAYS
-          - 30DAYS
+            - 7DAYS
+            - 14DAYS
+            - 30DAYS
         items:
           type: array
           items:
@@ -1273,12 +1211,10 @@ components:
               itemName:
                 type: string
                 description: Name of the item.
-                example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder
-                  Reel
+                example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
               sales:
                 type: integer
-                description: Units sold during the specified date range. Defaults
-                  range is for last 7 days.
+                description: Units sold during the specified date range. Defaults range is for last 7 days.
                 format: int32
                 example: 45
               currentReviews:
@@ -1288,34 +1224,30 @@ components:
                 example: 0
               impressions:
                 type: integer
-                description: The number of times item showed up in search results
-                  in the requested date range. Defaults to last 7 days.
+                description: The number of times item showed up in search results in the requested date range. Defaults to last 7 days.
                 format: int32
                 example: 1937
               currentPageViews:
                 type: integer
-                description: The number of views on the item page in the requested
-                  date range. Defaults to last 7 days.
+                description: The number of views on the item page in the requested date range. Defaults to last 7 days.
                 format: int32
                 example: 900
               reviewsCollected:
                 type: integer
-                description: The number of reviews collected for the item through
-                  IRP.
+                description: The number of reviews collected for the item through IRP.
                 format: int32
                 example: 0
               sku:
                 type: string
-                description: Specifies the item identified. This value is defined
-                  by the seller.
+                description: Specifies the item identified. This value is defined by the seller.
                 example: NK-WHT2XL
               itemStatus:
                 type: string
                 description: Current status of the item in IRP.
                 enum:
-                - COMPLETE
-                - ELIGIBLE
-                - ENROLLED
+                  - COMPLETE
+                  - ELIGIBLE
+                  - ENROLLED
               itemPriority:
                 type: integer
                 description: Priority of the item as recommended by Walmart.
@@ -1339,8 +1271,7 @@ components:
           example: View-Master Discovery Kids 3D Marine Life Toy Viewfinder Reel
         sales:
           type: integer
-          description: Units sold during the specified date range. Defaults range
-            is for last 7 days.
+          description: Units sold during the specified date range. Defaults range is for last 7 days.
           format: int32
           example: 45
         currentReviews:
@@ -1350,14 +1281,12 @@ components:
           example: 0
         impressions:
           type: integer
-          description: The number of times item showed up in search results in the
-            requested date range. Defaults to last 7 days.
+          description: The number of times item showed up in search results in the requested date range. Defaults to last 7 days.
           format: int32
           example: 1937
         currentPageViews:
           type: integer
-          description: The number of views on the item page in the requested date
-            range. Defaults to last 7 days.
+          description: The number of views on the item page in the requested date range. Defaults to last 7 days.
           format: int32
           example: 900
         reviewsCollected:
@@ -1367,16 +1296,15 @@ components:
           example: 0
         sku:
           type: string
-          description: Specifies the item identified. This value is defined by the
-            seller.
+          description: Specifies the item identified. This value is defined by the seller.
           example: NK-WHT2XL
         itemStatus:
           type: string
           description: Current status of the item in IRP.
           enum:
-          - COMPLETE
-          - ELIGIBLE
-          - ENROLLED
+            - COMPLETE
+            - ELIGIBLE
+            - ENROLLED
         itemPriority:
           type: integer
           description: Priority of the item as recommended by Walmart.
@@ -1384,7 +1312,7 @@ components:
           example: 1
     FilterRequest:
       required:
-      - itemStatus
+        - itemStatus
       type: object
       properties:
         itemStatus:
@@ -1396,17 +1324,17 @@ components:
             | ENROLLED | To get items which are currently enrolled into the program | string |
             | COMPLETE | To get items which have attained target reviews through the program | string |
           enum:
-          - ELIGIBLE
-          - ENROLLED
-          - COMPLETE
+            - ELIGIBLE
+            - ENROLLED
+            - COMPLETE
         dateRange:
           type: string
           description: Date range to filter impressions, page views and sales.
           default: 7DAYS
           enum:
-          - 7DAYS
-          - 14DAYS
-          - 30DAYS
+            - 7DAYS
+            - 14DAYS
+            - 30DAYS
         category:
           type: string
           description: Category of the items.
@@ -1428,7 +1356,7 @@ components:
       description: Filter request.
     GetIrpItemsRequest:
       required:
-      - filter
+        - filter
       type: object
       properties:
         search:
@@ -1445,14 +1373,14 @@ components:
                   | ITEM_NAME | Product name | string |
                   | SKU | Specifies the item identified. This value is defined by the seller. | string |
                 enum:
-                - ITEM_NAME
-                - SKU
+                  - ITEM_NAME
+                  - SKU
               value:
                 type: string
             description: Search request.
         filter:
           required:
-          - itemStatus
+            - itemStatus
           type: object
           properties:
             itemStatus:
@@ -1464,17 +1392,17 @@ components:
                 | ENROLLED | To get items which are currently enrolled into the program | string |
                 | COMPLETE | To get items which have attained target reviews through the program | string |
               enum:
-              - ELIGIBLE
-              - ENROLLED
-              - COMPLETE
+                - ELIGIBLE
+                - ENROLLED
+                - COMPLETE
             dateRange:
               type: string
               description: Date range to filter impressions, page views and sales.
               default: 7DAYS
               enum:
-              - 7DAYS
-              - 14DAYS
-              - 30DAYS
+                - 7DAYS
+                - 14DAYS
+                - 30DAYS
             category:
               type: string
               description: Category of the items.
@@ -1508,13 +1436,13 @@ components:
                   | ITEM_PRIORITY | Recommended priority of the item by Walmart. | integer |
                   | PRICE | Item price | integer |
                 enum:
-                - ITEM_PRIORITY
-                - PRICE
+                  - ITEM_PRIORITY
+                  - PRICE
               order:
                 type: string
                 enum:
-                - ASC
-                - DESC
+                  - ASC
+                  - DESC
               priority:
                 type: integer
                 description: Sort priority of the specified field.
@@ -1546,8 +1474,8 @@ components:
             | ITEM_NAME | Product name | string |
             | SKU | Specifies the item identified. This value is defined by the seller. | string |
           enum:
-          - ITEM_NAME
-          - SKU
+            - ITEM_NAME
+            - SKU
         value:
           type: string
       description: Search request.
@@ -1562,13 +1490,13 @@ components:
             | ITEM_PRIORITY | Recommended priority of the item by Walmart. | integer |
             | PRICE | Item price | integer |
           enum:
-          - ITEM_PRIORITY
-          - PRICE
+            - ITEM_PRIORITY
+            - PRICE
         order:
           type: string
           enum:
-          - ASC
-          - DESC
+            - ASC
+            - DESC
         priority:
           type: integer
           description: Sort priority of the specified field.
@@ -1588,13 +1516,13 @@ components:
                 type: string
                 description: IRP status of the items.
                 enum:
+                  - ENROLLED
+                  - ELIGIBLE
+                  - COMPLETE
+              enum:
                 - ENROLLED
                 - ELIGIBLE
                 - COMPLETE
-              enum:
-              - ENROLLED
-              - ELIGIBLE
-              - COMPLETE
             categories:
               type: array
               description: Category of the items in requested item status.
@@ -1621,8 +1549,7 @@ components:
               description:
                 type: string
                 description: Error description.
-                example: The request payload is either invalid or is improperly formatted.
-                  Check the payload values and try again.
+                example: The request payload is either invalid or is improperly formatted. Check the payload values and try again.
               category:
                 type: string
                 description: Error category.
@@ -1641,13 +1568,13 @@ components:
             type: string
             description: IRP status of the items.
             enum:
+              - ENROLLED
+              - ELIGIBLE
+              - COMPLETE
+          enum:
             - ENROLLED
             - ELIGIBLE
             - COMPLETE
-          enum:
-          - ENROLLED
-          - ELIGIBLE
-          - COMPLETE
         categories:
           type: array
           description: Category of the items in requested item status.
@@ -1667,19 +1594,18 @@ components:
             type: string
             description: IRP status of the items.
             enum:
+              - ENROLLED
+              - ELIGIBLE
+              - COMPLETE
+          enum:
             - ENROLLED
             - ELIGIBLE
             - COMPLETE
-          enum:
-          - ENROLLED
-          - ELIGIBLE
-          - COMPLETE
   parameters:
     authorization:
       name: Authorization
       in: header
-      description: Basic authorization header. Base 64 encodes the Client ID and Client
-        Secret retrieved in step two of the integration steps.
+      description: Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
       required: true
       schema:
         type: string
@@ -1695,16 +1621,14 @@ components:
     channelType:
       name: WM_CONSUMER.CHANNEL.TYPE
       in: header
-      description: A unique ID to track the consumer request by channel. Use the Consumer
-        Channel Type received during onboarding
+      description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
       required: false
       schema:
         type: string
     correlationId:
       name: WM_QOS.CORRELATION_ID
       in: header
-      description: A unique ID which identifies each API call and used to track and
-        debug issues; use a random generated GUID for this ID
+      description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
       required: true
       schema:
         type: string

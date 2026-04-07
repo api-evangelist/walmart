@@ -1,64 +1,60 @@
----
 openapi: 3.0.1
 info:
-  title: Notifications Management
+  title: Walmart Notifications Management
   description: Notifications Management API
 servers:
-- url: https://marketplace.walmartapis.com
-  description: Production URL
-- url: https://sandbox.walmartapis.com
-  description: Sandbox URL
+  - url: https://marketplace.walmartapis.com
+    description: Production URL
+  - url: https://sandbox.walmartapis.com
+    description: Sandbox URL
 security:
-- basicScheme: []
+  - basicScheme: []
 paths:
   "/v3/webhooks/test":
     post:
       tags:
-      - Notifications
-      summary: Test Notification
-      description: This API can be used to send a test notification to the destination
-        URL with the sample payload.
+        - Notifications
+      summary: Walmart Test Notification
+      description: This API can be used to send a test notification to the destination URL with the sample payload.
       operationId: testNotification
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         description: Request fields
         content:
           application/json:
             schema:
               required:
-              - eventType
-              - eventUrl
-              - eventVersion
-              - resourceName
+                - eventType
+                - eventUrl
+                - eventVersion
+                - resourceName
               type: object
               properties:
                 eventType:
@@ -72,8 +68,7 @@ paths:
                   description: Functional category that event type is mapped to.
                 eventUrl:
                   type: string
-                  description: Destination URL where notification will be received
-                    by seller
+                  description: Destination URL where notification will be received by seller
                 authDetails:
                   type: object
                   properties:
@@ -88,8 +83,7 @@ paths:
                       description: Password to access destination URL
                     authHeaderName:
                       type: string
-                      description: authHeaderName , using which authorization header
-                        will be passed
+                      description: authHeaderName , using which authorization header will be passed
                     authUrl:
                       type: string
                       description: OAUTH URL
@@ -99,8 +93,7 @@ paths:
                     clientId:
                       type: string
                       description: ClientId for OAUTH URL
-                  description: Authentication details for accessing the destination
-                    URL, if URL is protected
+                  description: Authentication details for accessing the destination URL, if URL is protected
                 headers:
                   type: object
                   properties:
@@ -138,68 +131,62 @@ paths:
   "/v3/webhooks/subscriptions":
     get:
       tags:
-      - Notifications
-      summary: 'All subscriptions '
-      description: This API is used to retrieve the details of all subscriptions created
-        using "create subscription" API.
+        - Notifications
+      summary: 'Walmart All subscriptions'
+      description: This API is used to retrieve the details of all subscriptions created using "create subscription" API.
       operationId: getAllSubscriptions
       parameters:
-      - name: subscriptionId
-        in: query
-        description: Use this to get details of a specific subscription
-        required: false
-        schema:
-          type: string
-      - name: eventType
-        in: query
-        description: Use this to get list of all subscriptions for a specific event
-          type. Refer to Events section for list of available eventType.
-        required: false
-        schema:
-          type: string
-      - name: resourceName
-        in: query
-        description: Use this to get list of all subscriptions for a specific resource.
-          Refer to Events section for list of available resourceName.
-        required: false
-        schema:
-          type: string
-      - name: status
-        in: query
-        description: Use this to get list of all subscriptions in ACTIVE or INACTIVE
-          status
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - name: subscriptionId
+          in: query
+          description: Use this to get details of a specific subscription
+          required: false
+          schema:
+            type: string
+        - name: eventType
+          in: query
+          description: Use this to get list of all subscriptions for a specific event type. Refer to Events section for list of available eventType.
+          required: false
+          schema:
+            type: string
+        - name: resourceName
+          in: query
+          description: Use this to get list of all subscriptions for a specific resource. Refer to Events section for list of available resourceName.
+          required: false
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Use this to get list of all subscriptions in ACTIVE or INACTIVE status
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       responses:
         '200':
           description: Successful Operation
@@ -224,28 +211,22 @@ paths:
                                 description: Event for which the subscription is created
                               subscriptionId:
                                 type: string
-                                description: Unique ID for the subscription that can
-                                  be used for fetching details, editing or deleting
-                                  the subscription
+                                description: Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription
                               partnerId:
                                 type: string
-                                description: Partner ID of the seller who created
-                                  the subscription
+                                description: Partner ID of the seller who created the subscription
                               eventVersion:
                                 type: string
-                                description: Version of the event type for which the
-                                  subscription is created
+                                description: Version of the event type for which the subscription is created
                               resourceName:
                                 type: string
-                                description: Delegated access scope that event type
-                                  is mapped to.
+                                description: Delegated access scope that event type is mapped to.
                               status:
                                 type: string
                                 description: ACTIVE or INACTIVE status of the subscription
                               eventUrl:
                                 type: string
-                                description: Destination URL where notification will
-                                  be received by seller
+                                description: Destination URL where notification will be received by seller
                               authDetails:
                                 type: object
                                 properties:
@@ -260,8 +241,7 @@ paths:
                                     description: Password to access destination URL
                                   authHeaderName:
                                     type: string
-                                    description: authHeaderName , using which authorization
-                                      header will be passed
+                                    description: authHeaderName , using which authorization header will be passed
                                   authUrl:
                                     type: string
                                     description: OAUTH URL
@@ -271,111 +251,109 @@ paths:
                                   clientId:
                                     type: string
                                     description: ClientId for OAUTH URL
-                                description: Authentication details for accessing
-                                  the destination URL, if URL is protected
+                                description: Authentication details for accessing the destination URL, if URL is protected
                               headers:
                                 type: object
                                 properties:
                                   content-type:
                                     type: string
-                                description: Headers required for accessing the destination
-                                  URL
+                                description: Headers required for accessing the destination URL
                       description: List of events
               examples:
                 sample1:
                   value:
                     events:
-                    - eventType: OFFER_UNPUBLISHED
-                      subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
-                      partnerId: '10000000359'
-                      eventVersion: V1
-                      resourceName: ITEM
-                      eventUrl: https://example.com/events
-                      headers:
-                        content-type: application/json
-                      authDetails:
-                        authHeaderName: Authorization
-                        authMethod: BASIC_AUTH
-                        userName: abc
-                        password: test
-                      status: INACTIVE
-                    - eventType: PO_CREATED
-                      subscriptionId: 343ba4d0-b322-11ea-b385-0127e9b85538
-                      partnerId: '10000000359'
-                      eventVersion: V1
-                      resourceName: ORDER
-                      eventUrl: https://example.com/orders
-                      headers:
-                        content-type: application/json
-                      authDetails:
-                        authHeaderName: Authorization
-                        authMethod: BASIC_AUTH
-                        userName: abc
-                        password: test
-                      status: ACTIVE
+                      - eventType: OFFER_UNPUBLISHED
+                        subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
+                        partnerId: '10000000359'
+                        eventVersion: V1
+                        resourceName: ITEM
+                        eventUrl: https://example.com/events
+                        headers:
+                          content-type: application/json
+                        authDetails:
+                          authHeaderName: Authorization
+                          authMethod: BASIC_AUTH
+                          userName: abc
+                          password: test
+                        status: INACTIVE
+                      - eventType: PO_CREATED
+                        subscriptionId: 343ba4d0-b322-11ea-b385-0127e9b85538
+                        partnerId: '10000000359'
+                        eventVersion: V1
+                        resourceName: ORDER
+                        eventUrl: https://example.com/orders
+                        headers:
+                          content-type: application/json
+                        authDetails:
+                          authHeaderName: Authorization
+                          authMethod: BASIC_AUTH
+                          userName: abc
+                          password: test
+                        status: ACTIVE
                 sample2:
                   value:
                     events:
-                    - eventType: OFFER_UNPUBLISHED
-                      subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
-                      partnerId: '10000000359'
-                      eventVersion: V1
-                      resourceName: ITEM
-                      eventUrl: https://example.com/events
-                      headers:
-                        content-type: application/json
-                      authDetails:
-                        authHeaderName: Authorization
-                        authMethod: BASIC_AUTH
-                        userName: abc
-                        password: test
-                      status: INACTIVE
-                    - eventType: PO_CREATED
-                      subscriptionId: 343ba4d0-b322-11ea-b385-0127e9b85538
-                      partnerId: '10000000359'
-                      eventVersion: V1
-                      resourceName: ORDER
-                      eventUrl: https://example.com/orders
-                      headers:
-                        content-type: application/json
-                      authDetails:
-                        authHeaderName: Authorization
-                        authMethod: BASIC_AUTH
-                        userName: abc
-                        password: test
-                      status: ACTIVE
-                    - eventType: PO_LINE_AUTOCANCELLED
-                      subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
-                      partnerId: '10000000359'
-                      eventVersion: V1
-                      resourceName: ORDER
-                      eventUrl: https://example.com/events
-                      headers:
-                        content-type: application/json
-                      authDetails:
-                        authHeaderName: Authorization
-                        authMethod: BASIC_AUTH
-                        userName: abc
-                        password: test
-                      status: ACTIVE
-                    - eventType: BUY_BOX_CHANGED
-                      subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
-                      partnerId: '10000000359'
-                      eventVersion: V1
-                      resourceName: PRICE
-                      eventUrl: https://example.com/events
-                      headers:
-                        content-type: application/json
-                      authDetails:
-                        authHeaderName: Authorization
-                        authMethod: BASIC_AUTH
-                        userName: abc
-                        password: test
-                      status: ACTIVE
+                      - eventType: OFFER_UNPUBLISHED
+                        subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
+                        partnerId: '10000000359'
+                        eventVersion: V1
+                        resourceName: ITEM
+                        eventUrl: https://example.com/events
+                        headers:
+                          content-type: application/json
+                        authDetails:
+                          authHeaderName: Authorization
+                          authMethod: BASIC_AUTH
+                          userName: abc
+                          password: test
+                        status: INACTIVE
+                      - eventType: PO_CREATED
+                        subscriptionId: 343ba4d0-b322-11ea-b385-0127e9b85538
+                        partnerId: '10000000359'
+                        eventVersion: V1
+                        resourceName: ORDER
+                        eventUrl: https://example.com/orders
+                        headers:
+                          content-type: application/json
+                        authDetails:
+                          authHeaderName: Authorization
+                          authMethod: BASIC_AUTH
+                          userName: abc
+                          password: test
+                        status: ACTIVE
+                      - eventType: PO_LINE_AUTOCANCELLED
+                        subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
+                        partnerId: '10000000359'
+                        eventVersion: V1
+                        resourceName: ORDER
+                        eventUrl: https://example.com/events
+                        headers:
+                          content-type: application/json
+                        authDetails:
+                          authHeaderName: Authorization
+                          authMethod: BASIC_AUTH
+                          userName: abc
+                          password: test
+                        status: ACTIVE
+                      - eventType: BUY_BOX_CHANGED
+                        subscriptionId: 243ba4d0-b322-11ea-b385-0127e9b85538
+                        partnerId: '10000000359'
+                        eventVersion: V1
+                        resourceName: PRICE
+                        eventUrl: https://example.com/events
+                        headers:
+                          content-type: application/json
+                        authDetails:
+                          authHeaderName: Authorization
+                          authMethod: BASIC_AUTH
+                          userName: abc
+                          password: test
+                        status: ACTIVE
     post:
       tags:
-      - Notifications
-      summary: Create subscription
+        - Notifications
+      summary: Walmart Create subscription
       description: |-
         This API is used to create subscription for notification of an event by selecting an event type, event version, resource name, and providing event URL. One or more than one events can be subscribed for notifications in one subscription request.
 
@@ -394,35 +372,33 @@ paths:
         authURL should return HTTPS status 200 and response should have access_token and expires_in field. While making notification request to endpointUrl, Walmart system will pass access_token in headers with authHeaderName as key and value as Bearer <access_token> along with any other custom headers provided in headers field.
       operationId: createSubscription
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         description: Request fields
         content:
@@ -434,32 +410,25 @@ paths:
                   type: array
                   items:
                     required:
-                    - eventType
-                    - eventUrl
-                    - eventVersion
-                    - resourceName
-                    - status
+                      - eventType
+                      - eventUrl
+                      - eventVersion
+                      - resourceName
+                      - status
                     type: object
                     properties:
                       eventType:
                         type: string
-                        description: Event that you want to subscribe to. For all
-                          allowed eventType(s) see Event Payload section or use GET
-                          Event Types API
+                        description: Event that you want to subscribe to. For all allowed eventType(s) see Event Payload section or use GET Event Types API
                       eventVersion:
                         type: string
-                        description: Version of the specific event type. For all eventVersion(s)
-                          for each eventType, see Event Payload section or use GET
-                          Event Types API
+                        description: Version of the specific event type. For all eventVersion(s) for each eventType, see Event Payload section or use GET Event Types API
                       resourceName:
                         type: string
-                        description: Delegated access scope that event type is mapped
-                          to. For all allowed resourceName(s) for each eventType,
-                          see Event Payload section or use GET Event Types API
+                        description: Delegated access scope that event type is mapped to. For all allowed resourceName(s) for each eventType, see Event Payload section or use GET Event Types API
                       eventUrl:
                         type: string
-                        description: Destination URL where notification will be received
-                          by seller
+                        description: Destination URL where notification will be received by seller
                       authDetails:
                         type: object
                         properties:
@@ -474,8 +443,7 @@ paths:
                             description: Password to access destination URL
                           authHeaderName:
                             type: string
-                            description: authHeaderName , using which authorization
-                              header will be passed
+                            description: authHeaderName , using which authorization header will be passed
                           authUrl:
                             type: string
                             description: OAUTH URL
@@ -485,93 +453,88 @@ paths:
                           clientId:
                             type: string
                             description: ClientId for OAUTH URL
-                        description: Authentication details for accessing the destination
-                          URL, if URL is protected
+                        description: Authentication details for accessing the destination URL, if URL is protected
                       headers:
                         type: object
                         properties:
                           content-type:
                             type: string
-                        description: Headers required for accessing the destination
-                          URL
+                        description: Headers required for accessing the destination URL
                       status:
                         type: string
-                        description: Status of the subscription. Allowed values are
-                          ACTIVE or INACTIVE. To create subscription, use status =
-                          ACTIVE. Notification will be triggered only if subscription
-                          is in ACTIVE status
+                        description: Status of the subscription. Allowed values are ACTIVE or INACTIVE. To create subscription, use status = ACTIVE. Notification will be triggered only if subscription is in ACTIVE status
             examples:
               sample1:
                 value:
                   events:
-                  - eventType: OFFER_UNPUBLISHED
-                    eventVersion: V1
-                    resourceName: ITEM
-                    eventUrl: https://example.com/events
-                    status: ACTIVE
-                  - eventType: PO_CREATED
-                    eventVersion: V1
-                    resourceName: ORDER
-                    eventUrl: https://example.com/orders
-                    status: ACTIVE
+                    - eventType: OFFER_UNPUBLISHED
+                      eventVersion: V1
+                      resourceName: ITEM
+                      eventUrl: https://example.com/events
+                      status: ACTIVE
+                    - eventType: PO_CREATED
+                      eventVersion: V1
+                      resourceName: ORDER
+                      eventUrl: https://example.com/orders
+                      status: ACTIVE
               sample2:
                 value:
                   events:
-                  - eventType: OFFER_UNPUBLISHED
-                    eventVersion: V1
-                    resourceName: ITEM
-                    eventUrl: https://example.com/events
-                    authDetails:
-                      authMethod: BASIC_AUTH
-                      userName: abc
-                      password: test
-                      authHeaderName: Authorization
-                    headers:
-                      content-type: application/json
-                    status: ACTIVE
+                    - eventType: OFFER_UNPUBLISHED
+                      eventVersion: V1
+                      resourceName: ITEM
+                      eventUrl: https://example.com/events
+                      authDetails:
+                        authMethod: BASIC_AUTH
+                        userName: abc
+                        password: test
+                        authHeaderName: Authorization
+                      headers:
+                        content-type: application/json
+                      status: ACTIVE
               sample3:
                 value:
                   events:
-                  - eventType: OFFER_UNPUBLISHED
-                    eventVersion: V1
-                    resourceName: ITEM
-                    eventUrl: https://example.com/events
-                    status: ACTIVE
-                  - eventType: BUY_BOX_CHANGED
-                    eventVersion: V1
-                    resourceName: PRICE
-                    eventUrl: https://example.com/orders
-                    authDetails:
-                      authMethod: BASIC_AUTH
-                      userName: abc
-                      password: test
-                      authHeaderName: Authorization
-                    headers:
-                      content-type: application/json
-                    status: ACTIVE
+                    - eventType: OFFER_UNPUBLISHED
+                      eventVersion: V1
+                      resourceName: ITEM
+                      eventUrl: https://example.com/events
+                      status: ACTIVE
+                    - eventType: BUY_BOX_CHANGED
+                      eventVersion: V1
+                      resourceName: PRICE
+                      eventUrl: https://example.com/orders
+                      authDetails:
+                        authMethod: BASIC_AUTH
+                        userName: abc
+                        password: test
+                        authHeaderName: Authorization
+                      headers:
+                        content-type: application/json
+                      status: ACTIVE
               sample4:
                 value:
                   events:
-                  - eventType: OFFER_UNPUBLISHED
-                    eventVersion: V1
-                    resourceName: ITEM
-                    eventUrl: https://example.com/events
-                    status: ACTIVE
-                  - eventType: BUY_BOX_CHANGED
-                    eventVersion: V1
-                    resourceName: PRICE
-                    eventUrl: https://example.com/orders
-                    status: ACTIVE
-                  - eventType: PO_CREATED
-                    eventVersion: V1
-                    resourceName: ORDER
-                    eventUrl: https://example.com/events
-                    status: ACTIVE
-                  - eventType: PO_LINE_AUTOCANCELLED
-                    eventVersion: V1
-                    resourceName: ORDER
-                    eventUrl: https://example.com/events
-                    status: ACTIVE
+                    - eventType: OFFER_UNPUBLISHED
+                      eventVersion: V1
+                      resourceName: ITEM
+                      eventUrl: https://example.com/events
+                      status: ACTIVE
+                    - eventType: BUY_BOX_CHANGED
+                      eventVersion: V1
+                      resourceName: PRICE
+                      eventUrl: https://example.com/orders
+                      status: ACTIVE
+                    - eventType: PO_CREATED
+                      eventVersion: V1
+                      resourceName: ORDER
+                      eventUrl: https://example.com/events
+                      status: ACTIVE
+                    - eventType: PO_LINE_AUTOCANCELLED
+                      eventVersion: V1
+                      resourceName: ORDER
+                      eventUrl: https://example.com/events
+                      status: ACTIVE
         required: true
       responses:
         '200':
@@ -591,26 +554,22 @@ paths:
                           description: Event for which the subscription is created
                         subscriptionId:
                           type: string
-                          description: Unique ID for the subscription that can be
-                            used for fetching details, editing or deleting the subscription
+                          description: Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription
                         partnerId:
                           type: string
                           description: Partner ID of the seller who created the subscription
                         eventVersion:
                           type: string
-                          description: Version of the event type for which the subscription
-                            is created
+                          description: Version of the event type for which the subscription is created
                         resourceName:
                           type: string
-                          description: Delegated access scope that event type is mapped
-                            to.
+                          description: Delegated access scope that event type is mapped to.
                         status:
                           type: string
                           description: ACTIVE or INACTIVE status of the subscription
                         eventUrl:
                           type: string
-                          description: Destination URL where notification will be
-                            received by seller
+                          description: Destination URL where notification will be received by seller
                         authDetails:
                           type: object
                           properties:
@@ -625,8 +584,7 @@ paths:
                               description: Password to access destination URL
                             authHeaderName:
                               type: string
-                              description: authHeaderName , using which authorization
-                                header will be passed
+                              description: authHeaderName , using which authorization header will be passed
                             authUrl:
                               type: string
                               description: OAUTH URL
@@ -636,68 +594,63 @@ paths:
                             clientId:
                               type: string
                               description: ClientId for OAUTH URL
-                          description: Authentication details for accessing the destination
-                            URL, if URL is protected
+                          description: Authentication details for accessing the destination URL, if URL is protected
                         headers:
                           type: object
                           properties:
                             content-type:
                               type: string
-                          description: Headers required for accessing the destination
-                            URL
+                          description: Headers required for accessing the destination URL
                 description: List of events
               example:
                 events:
-                - eventType: OFFER_UNPUBLISHED
-                  subscriptionId: 620b45a0-b321-11ea-ac13-1f88d6025b7d
-                  partnerId: '12300000359'
-                  eventVersion: V1
-                  resourceName: ITEM
-                  status: ACTIVE
+                  - eventType: OFFER_UNPUBLISHED
+                    subscriptionId: 620b45a0-b321-11ea-ac13-1f88d6025b7d
+                    partnerId: '12300000359'
+                    eventVersion: V1
+                    resourceName: ITEM
+                    status: ACTIVE
   "/v3/webhooks/subscriptions/{subscriptionId}":
     delete:
       tags:
-      - Notifications
-      summary: Delete Subscription
-      description: This API is used to delete the subscription. Once deleted, the
-        subscription cannot be retrieved.
+        - Notifications
+      summary: Walmart Delete Subscription
+      description: This API is used to delete the subscription. Once deleted, the subscription cannot be retrieved.
       operationId: deleteSubscription
       parameters:
-      - name: subscriptionId
-        in: path
-        description: Unique ID for the subscription
-        required: true
-        schema:
-          type: string
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - name: subscriptionId
+          in: path
+          description: Unique ID for the subscription
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       responses:
         '200':
           description: Successful Operation
@@ -711,56 +664,50 @@ paths:
                     description: Subscription Id of the subscription that is deleted
                   message:
                     type: string
-                    description: Message confirming that the subscription has been
-                      deleted
+                    description: Message confirming that the subscription has been deleted
               example:
                 subscriptionId: subscriptionId
                 message: Successfully deleted subscription
     patch:
       tags:
-      - Notifications
-      summary: Update Subscription
-      description: This API is used to update the details of subscriptions. You can
-        update event version, event URL, headers, authentication details of a subscription
-        using this API. You can also disable/enable the subscription by changing the
-        status from ACTIVE to INACTIVE or vice versa .
+        - Notifications
+      summary: Walmart Update Subscription
+      description: This API is used to update the details of subscriptions. You can update event version, event URL, headers, authentication details of a subscription using this API. You can also disable/enable the subscription by changing the status from ACTIVE to INACTIVE or vice versa .
       operationId: updateSubscription
       parameters:
-      - name: subscriptionId
-        in: path
-        description: Unique ID for the subscription
-        required: true
-        schema:
-          type: string
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - name: subscriptionId
+          in: path
+          description: Unique ID for the subscription
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         description: Request fields
         content:
@@ -779,8 +726,7 @@ paths:
                   description: Delegated access scope that event type is mapped to.
                 eventUrl:
                   type: string
-                  description: Destination URL where notification will be received
-                    by seller
+                  description: Destination URL where notification will be received by seller
                 authDetails:
                   type: object
                   properties:
@@ -795,8 +741,7 @@ paths:
                       description: Password to access destination URL
                     authHeaderName:
                       type: string
-                      description: authHeaderName , using which authorization header
-                        will be passed
+                      description: authHeaderName , using which authorization header will be passed
                     authUrl:
                       type: string
                       description: OAUTH URL
@@ -806,8 +751,7 @@ paths:
                     clientId:
                       type: string
                       description: ClientId for OAUTH URL
-                  description: Authentication details for accessing the destination
-                    URL, if URL is protected
+                  description: Authentication details for accessing the destination URL, if URL is protected
                 headers:
                   type: object
                   properties:
@@ -816,8 +760,7 @@ paths:
                   description: Headers required for accessing the destination URL
                 status:
                   type: string
-                  description: Status of the subscription. Allowed values are ACTIVE
-                    or INACTIVE
+                  description: Status of the subscription. Allowed values are ACTIVE or INACTIVE
             examples:
               sample1:
                 value:
@@ -850,26 +793,22 @@ paths:
                           description: Event for which the subscription is created
                         subscriptionId:
                           type: string
-                          description: Unique ID for the subscription that can be
-                            used for fetching details, editing or deleting the subscription
+                          description: Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription
                         partnerId:
                           type: string
                           description: Partner ID of the seller who created the subscription
                         eventVersion:
                           type: string
-                          description: Version of the event type for which the subscription
-                            is created
+                          description: Version of the event type for which the subscription is created
                         resourceName:
                           type: string
-                          description: Delegated access scope that event type is mapped
-                            to.
+                          description: Delegated access scope that event type is mapped to.
                         status:
                           type: string
                           description: ACTIVE or INACTIVE status of the subscription
                         eventUrl:
                           type: string
-                          description: Destination URL where notification will be
-                            received by seller
+                          description: Destination URL where notification will be received by seller
                         authDetails:
                           type: object
                           properties:
@@ -884,8 +823,7 @@ paths:
                               description: Password to access destination URL
                             authHeaderName:
                               type: string
-                              description: authHeaderName , using which authorization
-                                header will be passed
+                              description: authHeaderName , using which authorization header will be passed
                             authUrl:
                               type: string
                               description: OAUTH URL
@@ -895,15 +833,13 @@ paths:
                             clientId:
                               type: string
                               description: ClientId for OAUTH URL
-                          description: Authentication details for accessing the destination
-                            URL, if URL is protected
+                          description: Authentication details for accessing the destination URL, if URL is protected
                         headers:
                           type: object
                           properties:
                             content-type:
                               type: string
-                          description: Headers required for accessing the destination
-                            URL
+                          description: Headers required for accessing the destination URL
                 description: List of events
               example:
                 eventType: OFFER_UNPUBLISHED
@@ -923,8 +859,8 @@ paths:
   "/v3/webhooks/eventTypes":
     get:
       tags:
-      - Notifications
-      summary: Event Types
+        - Notifications
+      summary: Walmart Event Types
       description: |-
         This API provides the list of event types and resource names that you can subscribe to. Notifications will be triggered only for the event types that you subscribe to using Create Subscription API .
 
@@ -933,35 +869,33 @@ paths:
         Resource Names are functional API categories that group similar event types. Resource Names can be Item, Price, Orders, Inventory, etc. The permissions to subscribe to an Event Type is defined by Resource Name which is mapped to permissions in Delegated Access.
       operationId: getEventTypes
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       responses:
         '200':
           description: Successful Operation
@@ -978,8 +912,7 @@ paths:
                       properties:
                         resourceName:
                           type: string
-                          description: Delegated access scope that event type is mapped
-                            to.
+                          description: Delegated access scope that event type is mapped to.
                         eventType:
                           type: string
                           description: Event that you want to subscribe to.
@@ -992,26 +925,26 @@ paths:
                       description: List of event types
               example:
                 events:
-                - resourceName: ITEM
-                  eventType: OFFER_UNPUBLISHED
-                  eventVersion: V1
-                  description: Notification for unpublished offers
-                - resourceName: PRICE
-                  eventType: BUY_BOX_CHANGED
-                  eventVersion: V1
-                  description: Notification for change in buy box
-                - resourceName: ORDER
-                  eventType: PO_CREATED
-                  eventVersion: V1
-                  description: Notification for new purchase order created
-                - resourceName: ORDER
-                  eventType: PO_LINE_AUTOCANCELLED
-                  eventVersion: V1
-                  description: Notification for purchase order line auto-cancelled
-                - resourceName: REPORTS
-                  eventType: REPORT_STATUS
-                  eventVersion: V1
-                  description: Notification for report status
+                  - resourceName: ITEM
+                    eventType: OFFER_UNPUBLISHED
+                    eventVersion: V1
+                    description: Notification for unpublished offers
+                  - resourceName: PRICE
+                    eventType: BUY_BOX_CHANGED
+                    eventVersion: V1
+                    description: Notification for change in buy box
+                  - resourceName: ORDER
+                    eventType: PO_CREATED
+                    eventVersion: V1
+                    description: Notification for new purchase order created
+                  - resourceName: ORDER
+                    eventType: PO_LINE_AUTOCANCELLED
+                    eventVersion: V1
+                    description: Notification for purchase order line auto-cancelled
+                  - resourceName: REPORTS
+                    eventType: REPORT_STATUS
+                    eventVersion: V1
+                    description: Notification for report status
 components:
   schemas:
     TestNotificationResponseDTO:
@@ -1044,8 +977,7 @@ components:
         clientId:
           type: string
           description: ClientId for OAUTH URL
-      description: Authentication details for accessing the destination URL, if URL
-        is protected
+      description: Authentication details for accessing the destination URL, if URL is protected
     Headers:
       type: object
       properties:
@@ -1054,10 +986,10 @@ components:
       description: Headers required for accessing the destination URL
     TestNotificationRequest:
       required:
-      - eventType
-      - eventUrl
-      - eventVersion
-      - resourceName
+        - eventType
+        - eventUrl
+        - eventVersion
+        - resourceName
       type: object
       properties:
         eventType:
@@ -1086,8 +1018,7 @@ components:
               description: Password to access destination URL
             authHeaderName:
               type: string
-              description: authHeaderName , using which authorization header will
-                be passed
+              description: authHeaderName , using which authorization header will be passed
             authUrl:
               type: string
               description: OAUTH URL
@@ -1097,8 +1028,7 @@ components:
             clientId:
               type: string
               description: ClientId for OAUTH URL
-          description: Authentication details for accessing the destination URL, if
-            URL is protected
+          description: Authentication details for accessing the destination URL, if URL is protected
         headers:
           type: object
           properties:
@@ -1118,15 +1048,13 @@ components:
                 description: Event for which the subscription is created
               subscriptionId:
                 type: string
-                description: Unique ID for the subscription that can be used for fetching
-                  details, editing or deleting the subscription
+                description: Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription
               partnerId:
                 type: string
                 description: Partner ID of the seller who created the subscription
               eventVersion:
                 type: string
-                description: Version of the event type for which the subscription
-                  is created
+                description: Version of the event type for which the subscription is created
               resourceName:
                 type: string
                 description: Delegated access scope that event type is mapped to.
@@ -1135,8 +1063,7 @@ components:
                 description: ACTIVE or INACTIVE status of the subscription
               eventUrl:
                 type: string
-                description: Destination URL where notification will be received by
-                  seller
+                description: Destination URL where notification will be received by seller
               authDetails:
                 type: object
                 properties:
@@ -1151,8 +1078,7 @@ components:
                     description: Password to access destination URL
                   authHeaderName:
                     type: string
-                    description: authHeaderName , using which authorization header
-                      will be passed
+                    description: authHeaderName , using which authorization header will be passed
                   authUrl:
                     type: string
                     description: OAUTH URL
@@ -1162,8 +1088,7 @@ components:
                   clientId:
                     type: string
                     description: ClientId for OAUTH URL
-                description: Authentication details for accessing the destination
-                  URL, if URL is protected
+                description: Authentication details for accessing the destination URL, if URL is protected
               headers:
                 type: object
                 properties:
@@ -1179,8 +1104,7 @@ components:
           description: Event for which the subscription is created
         subscriptionId:
           type: string
-          description: Unique ID for the subscription that can be used for fetching
-            details, editing or deleting the subscription
+          description: Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription
         partnerId:
           type: string
           description: Partner ID of the seller who created the subscription
@@ -1210,8 +1134,7 @@ components:
               description: Password to access destination URL
             authHeaderName:
               type: string
-              description: authHeaderName , using which authorization header will
-                be passed
+              description: authHeaderName , using which authorization header will be passed
             authUrl:
               type: string
               description: OAUTH URL
@@ -1221,8 +1144,7 @@ components:
             clientId:
               type: string
               description: ClientId for OAUTH URL
-          description: Authentication details for accessing the destination URL, if
-            URL is protected
+          description: Authentication details for accessing the destination URL, if URL is protected
         headers:
           type: object
           properties:
@@ -1236,31 +1158,25 @@ components:
           type: array
           items:
             required:
-            - eventType
-            - eventUrl
-            - eventVersion
-            - resourceName
-            - status
+              - eventType
+              - eventUrl
+              - eventVersion
+              - resourceName
+              - status
             type: object
             properties:
               eventType:
                 type: string
-                description: Event that you want to subscribe to. For all allowed
-                  eventType(s) see Event Payload section or use GET Event Types API
+                description: Event that you want to subscribe to. For all allowed eventType(s) see Event Payload section or use GET Event Types API
               eventVersion:
                 type: string
-                description: Version of the specific event type. For all eventVersion(s)
-                  for each eventType, see Event Payload section or use GET Event Types
-                  API
+                description: Version of the specific event type. For all eventVersion(s) for each eventType, see Event Payload section or use GET Event Types API
               resourceName:
                 type: string
-                description: Delegated access scope that event type is mapped to.
-                  For all allowed resourceName(s) for each eventType, see Event Payload
-                  section or use GET Event Types API
+                description: Delegated access scope that event type is mapped to. For all allowed resourceName(s) for each eventType, see Event Payload section or use GET Event Types API
               eventUrl:
                 type: string
-                description: Destination URL where notification will be received by
-                  seller
+                description: Destination URL where notification will be received by seller
               authDetails:
                 type: object
                 properties:
@@ -1275,8 +1191,7 @@ components:
                     description: Password to access destination URL
                   authHeaderName:
                     type: string
-                    description: authHeaderName , using which authorization header
-                      will be passed
+                    description: authHeaderName , using which authorization header will be passed
                   authUrl:
                     type: string
                     description: OAUTH URL
@@ -1286,8 +1201,7 @@ components:
                   clientId:
                     type: string
                     description: ClientId for OAUTH URL
-                description: Authentication details for accessing the destination
-                  URL, if URL is protected
+                description: Authentication details for accessing the destination URL, if URL is protected
               headers:
                 type: object
                 properties:
@@ -1296,31 +1210,25 @@ components:
                 description: Headers required for accessing the destination URL
               status:
                 type: string
-                description: Status of the subscription. Allowed values are ACTIVE
-                  or INACTIVE. To create subscription, use status = ACTIVE. Notification
-                  will be triggered only if subscription is in ACTIVE status
+                description: Status of the subscription. Allowed values are ACTIVE or INACTIVE. To create subscription, use status = ACTIVE. Notification will be triggered only if subscription is in ACTIVE status
     CreateSubscriptionRequestRecord:
       required:
-      - eventType
-      - eventUrl
-      - eventVersion
-      - resourceName
-      - status
+        - eventType
+        - eventUrl
+        - eventVersion
+        - resourceName
+        - status
       type: object
       properties:
         eventType:
           type: string
-          description: Event that you want to subscribe to. For all allowed eventType(s)
-            see Event Payload section or use GET Event Types API
+          description: Event that you want to subscribe to. For all allowed eventType(s) see Event Payload section or use GET Event Types API
         eventVersion:
           type: string
-          description: Version of the specific event type. For all eventVersion(s)
-            for each eventType, see Event Payload section or use GET Event Types API
+          description: Version of the specific event type. For all eventVersion(s) for each eventType, see Event Payload section or use GET Event Types API
         resourceName:
           type: string
-          description: Delegated access scope that event type is mapped to. For all
-            allowed resourceName(s) for each eventType, see Event Payload section
-            or use GET Event Types API
+          description: Delegated access scope that event type is mapped to. For all allowed resourceName(s) for each eventType, see Event Payload section or use GET Event Types API
         eventUrl:
           type: string
           description: Destination URL where notification will be received by seller
@@ -1338,8 +1246,7 @@ components:
               description: Password to access destination URL
             authHeaderName:
               type: string
-              description: authHeaderName , using which authorization header will
-                be passed
+              description: authHeaderName , using which authorization header will be passed
             authUrl:
               type: string
               description: OAUTH URL
@@ -1349,8 +1256,7 @@ components:
             clientId:
               type: string
               description: ClientId for OAUTH URL
-          description: Authentication details for accessing the destination URL, if
-            URL is protected
+          description: Authentication details for accessing the destination URL, if URL is protected
         headers:
           type: object
           properties:
@@ -1359,9 +1265,7 @@ components:
           description: Headers required for accessing the destination URL
         status:
           type: string
-          description: Status of the subscription. Allowed values are ACTIVE or INACTIVE.
-            To create subscription, use status = ACTIVE. Notification will be triggered
-            only if subscription is in ACTIVE status
+          description: Status of the subscription. Allowed values are ACTIVE or INACTIVE. To create subscription, use status = ACTIVE. Notification will be triggered only if subscription is in ACTIVE status
     UpdateSubscriptionRequest:
       type: object
       properties:
@@ -1391,8 +1295,7 @@ components:
               description: Password to access destination URL
             authHeaderName:
               type: string
-              description: authHeaderName , using which authorization header will
-                be passed
+              description: authHeaderName , using which authorization header will be passed
             authUrl:
               type: string
               description: OAUTH URL
@@ -1402,8 +1305,7 @@ components:
             clientId:
               type: string
               description: ClientId for OAUTH URL
-          description: Authentication details for accessing the destination URL, if
-            URL is protected
+          description: Authentication details for accessing the destination URL, if URL is protected
         headers:
           type: object
           properties:
@@ -1432,26 +1334,22 @@ components:
                       description: Event for which the subscription is created
                     subscriptionId:
                       type: string
-                      description: Unique ID for the subscription that can be used
-                        for fetching details, editing or deleting the subscription
+                      description: Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription
                     partnerId:
                       type: string
                       description: Partner ID of the seller who created the subscription
                     eventVersion:
                       type: string
-                      description: Version of the event type for which the subscription
-                        is created
+                      description: Version of the event type for which the subscription is created
                     resourceName:
                       type: string
-                      description: Delegated access scope that event type is mapped
-                        to.
+                      description: Delegated access scope that event type is mapped to.
                     status:
                       type: string
                       description: ACTIVE or INACTIVE status of the subscription
                     eventUrl:
                       type: string
-                      description: Destination URL where notification will be received
-                        by seller
+                      description: Destination URL where notification will be received by seller
                     authDetails:
                       type: object
                       properties:
@@ -1466,8 +1364,7 @@ components:
                           description: Password to access destination URL
                         authHeaderName:
                           type: string
-                          description: authHeaderName , using which authorization
-                            header will be passed
+                          description: authHeaderName , using which authorization header will be passed
                         authUrl:
                           type: string
                           description: OAUTH URL
@@ -1477,15 +1374,13 @@ components:
                         clientId:
                           type: string
                           description: ClientId for OAUTH URL
-                      description: Authentication details for accessing the destination
-                        URL, if URL is protected
+                      description: Authentication details for accessing the destination URL, if URL is protected
                     headers:
                       type: object
                       properties:
                         content-type:
                           type: string
-                      description: Headers required for accessing the destination
-                        URL
+                      description: Headers required for accessing the destination URL
             description: List of events
     EventType:
       type: object
@@ -1538,8 +1433,7 @@ components:
     authorization:
       name: Authorization
       in: header
-      description: Basic authorization header. Base 64 encodes the Client ID and Client
-        Secret retrieved in step two of the integration steps.
+      description: Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
       required: true
       schema:
         type: string
@@ -1555,16 +1449,14 @@ components:
     channelType:
       name: WM_CONSUMER.CHANNEL.TYPE
       in: header
-      description: A unique ID to track the consumer request by channel. Use the Consumer
-        Channel Type received during onboarding
+      description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
       required: false
       schema:
         type: string
     correlationId:
       name: WM_QOS.CORRELATION_ID
       in: header
-      description: A unique ID which identifies each API call and used to track and
-        debug issues; use a random generated GUID for this ID
+      description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
       required: true
       schema:
         type: string

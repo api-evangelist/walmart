@@ -11,7 +11,8 @@ apis:
       - Status
       - Errors
       - Reports
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/mp/feeds
     properties:
@@ -45,7 +46,8 @@ apis:
       - Status
       - Retire
       - Sku
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/mp/items
     properties:
@@ -54,10 +56,9 @@ apis:
       - url: https://developer.walmart.com/api/us/mp/items
         type: Documentation
     description: >-
-      The Item Management APIs enable you to set up and manage items on
-      Walmart.com. Once you have completed Registration and have access to your
-      Consumer ID and Private Key, you can get started with the integration
-      process
+      The Item Management APIs enable you to set up and manage items on Walmart.com.
+      Once you have completed Registration and have access to your Consumer ID and
+      Private Key, you can get started with the integration process.
   - aid: walmart:walmart-prices-api
     name: Walmart Marketplace Prices API
     tags:
@@ -78,7 +79,8 @@ apis:
       - SKU
       - Sets
       - Up
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/mp/price
     properties:
@@ -87,9 +89,9 @@ apis:
       - url: openapi/walmart-marketplace-prices-openapi-original.yml
         type: OpenAPI
     description: >-
-      The price is a fundamental building block for your listing on Walmart.com.
-      You can use the price management APIs to set up and manage the price for a
-      given item
+      The price is a fundamental building block for your listing on Walmart.com. You
+      can use the price management APIs to set up and manage the price for a given
+      item.
   - aid: walmart:walmart-promotion-api
     name: Walmart Promotions API
     tags:
@@ -99,7 +101,8 @@ apis:
       - Feeds
       - Promo
       - Sku
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/mp/promotion
     properties:
@@ -108,9 +111,9 @@ apis:
       - url: openapi/walmart-marketplace-promotions-openapi-original.yml
         type: OpenAPI
     description: >-
-      Sellers can set regular or promotional prices for their items. Setting the
-      Promotional prices is an option to create unique pricing for events such
-      as clearance sales or to call out a comparison price
+      Sellers can set regular or promotional prices for their items. Setting the Promotional
+      prices is an option to create unique pricing for events such as clearance sales
+      or to call out a comparison price.
   - aid: walmart:walmart-order-api
     name: Walmart Orders API
     tags:
@@ -123,7 +126,8 @@ apis:
       - Cancel
       - Acknowledge
       - Released
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/mp/orders
     properties:
@@ -145,7 +149,8 @@ apis:
       - Feeds
       - Items
       - Overrides
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/mp/returns
     properties:
@@ -174,7 +179,8 @@ apis:
       - Multiple
       - Fulfillment
       - WFS
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/mp/inventory
     properties:
@@ -193,7 +199,8 @@ apis:
       - Cost
       - Feeds
       - Items
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
     properties:
@@ -217,9 +224,11 @@ apis:
       - Feeds
       - Inventories
       - Specific
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
+    humanURL: 
+      https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
     properties:
       - url: >-
           https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
@@ -250,11 +259,14 @@ apis:
       - Expose
       - Taxonomy
       - Types
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
+    humanURL: 
+      https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
     properties:
-      - url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
+      - url: 
+          https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
         type: Documentation
       - url: openapi/walmart-dropship-vendor-items-openapi-original.yml
         type: OpenAPI
@@ -274,11 +286,14 @@ apis:
       - Lagtime
       - Products
       - Single
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
+    humanURL: 
+      https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
     properties:
-      - url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
+      - url: 
+          https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
         type: Documentation
       - url: openapi/walmart-dropship-vendor-lag-time-openapi-original.yml
         type: OpenAPI
@@ -297,7 +312,8 @@ apis:
       - Single
       - Download
       - URL
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: >-
       https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
@@ -325,11 +341,14 @@ apis:
       - Acknowledge
       - Single
       - Released
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
+    humanURL: 
+      https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
     properties:
-      - url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
+      - url: 
+          https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
         type: Documentation
       - url: openapi/walmart-dropship-vendor-orders-openapi-original.yml
         type: OpenAPI
@@ -342,11 +361,14 @@ apis:
       - Generate
       - Items
       - Reports
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
+    humanURL: 
+      https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
     properties:
-      - url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
+      - url: 
+          https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
         type: Documentation
       - url: >-
           openapiwalmart-dropship-vendor-pre-generated-reports-openapi-original.yml
@@ -359,7 +381,8 @@ apis:
     tags:
       - Tokens
       - Detail
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/api/us/supplier/auth
     properties:
@@ -412,7 +435,8 @@ apis:
       - (deprecated)
       - Logs
       - Errors
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
     properties:
@@ -447,7 +471,8 @@ apis:
       - Scores
       - Count
       - Issues
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-insights/
     properties:
@@ -468,7 +493,8 @@ apis:
       - Lag
       - Time
       - Lagtime
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
     properties:
@@ -489,7 +515,8 @@ apis:
       - Subscriptions
       - Events
       - Types
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
     properties:
@@ -498,14 +525,11 @@ apis:
       - url: openapi/walmart-marketplace-notifications-openapi-original.yml
         type: OpenAPI
     description: >-
-      Push notifications or Web Hooks trigger alerts to seller applications when
-      specific events occur, such as an item is unpublished, a new purchase
-      order is created, an item's inventory is out of stock, etc. Whenever the
-      trigger event occurs, Walmart will send a notification payload with event
-      details to the seller-defined destination URL. Web Hooks help to optimize
-      integration, automate workflows and reduce the number of times your
-      application has to poll Walmart APIs within the throttle limits to
-      determine if an event has occurred.
+      Push notifications or Web Hooks trigger alerts to seller applications when specific
+      events occur, such as an item is unpublished, a new purchase order is created,
+      an item's inventory is out of stock, etc. Whenever the trigger event occurs,
+      Walmart will send a notification payload with event details to the seller-defined
+      destination URL.
   - aid: walmart:walmart-marketplace-on-request-reports-api
     name: Walmart Marketplace On-Request Reports API
     tags:
@@ -513,7 +537,8 @@ apis:
       - Status
       - Download
       - URL
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
     properties:
@@ -536,9 +561,11 @@ apis:
       - Counts
       - Reject
       - Rejections
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
+    humanURL: 
+      https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
     properties:
       - url: >-
           https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
@@ -563,7 +590,8 @@ apis:
       - Reports
       - Statements
       - Versions
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
     properties:
@@ -588,7 +616,8 @@ apis:
       - Post Purchase
       - RAP
       - Categories
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
     properties:
@@ -622,7 +651,8 @@ apis:
       - Subcategories
       - Downloadexceptions
       - Areas
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-rules/
     properties:
@@ -631,11 +661,11 @@ apis:
       - url: openapi/walmart-marketplace-rules-openapi-original.yml
         type: OpenAPI
     description: >-
-      Walmart is making program enhancements to the existing free 2-Day Shipping
-      Program, to enable US marketplace sellers to add multiple fulfillment
-      centers along with capability to manage them and easily configure item
-      assortment setup for 2-Day program. The capability, Item assortment rules
-      for 2-Day program setup, will part of the enhancements:
+      Walmart is making program enhancements to the existing free 2-Day Shipping Program,
+      to enable US marketplace sellers to add multiple fulfillment centers along with
+      capability to manage them and easily configure item assortment setup for 2-Day
+      program. The capability, Item assortment rules for 2-Day program setup, will
+      part of the enhancements:.
   - aid: walmart:walmart-marketplace-settings-api
     name: Walmart Marketplace Settings API
     tags:
@@ -665,7 +695,8 @@ apis:
       - Providers
       - Partnerprofile
       - Partners
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-settings/
     properties:
@@ -674,10 +705,9 @@ apis:
       - url: openapi/walmart-marketplace-settings-openapi-original.yml
         type: OpenAPI
     description: >-
-      The Settings API allows you to configure shipping delivery and fulfillment
-      settings. You can create shipping templates to specify the precise
-      delivery speed for your items. You can specify fulfillment center choices
-      for your items. 
+      The Settings API allows you to configure shipping delivery and fulfillment settings.
+      You can create shipping templates to specify the precise delivery speed for
+      your items. You can specify fulfillment center choices for your items.
   - aid: walmart:walmart-marketplace-shipping-api
     name: Walmart Marketplace Shipping API
     tags:
@@ -699,7 +729,8 @@ apis:
       - Invoices
       - Packages
       - Types
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-sww/
     properties:
@@ -708,9 +739,9 @@ apis:
       - url: openapi/walmart-marketplace-shipping-openapi-original.yml
         type: OpenAPI
     description: >-
-      The Ship With Walmart for US API enables walmart.com sellers to buy
-      shipping at competitively discounted rates directly from Walmart to ship
-      their goods to US customers.  
+      The Ship With Walmart for US API enables walmart.com sellers to buy shipping
+      at competitively discounted rates directly from Walmart to ship their goods
+      to US customers.
   - aid: walmart:walmart-marketplace-utilities-api
     name: Walmart Marketplace Utilities API
     tags:
@@ -721,7 +752,8 @@ apis:
       - Department
       - Platforms
       - Status
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
     properties:
@@ -737,7 +769,8 @@ name: Walmart
 tags:
   - Commerce
   - Retail
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: 
+  https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 common:
   - url: https://developer.walmart.com/
     type: Portal
@@ -771,15 +804,11 @@ common:
 created: 2023/11/15
 modified: '2025-01-04'
 description: >-
-  Walmart is a multinational retail corporation that operates a chain of
-  hypermarkets, discount department stores, and grocery stores. The company is
-  known for offering a wide range of products at competitive prices, attracting
-  customers from all walks of life. Walmart also provides various convenience
-  services, such as pharmacy, optical, and financial services, making it a
-  one-stop shop for many consumers. Additionally, Walmart has a strong presence
-  in e-commerce, offering online shopping and home delivery options. Overall,
-  Walmart strives to provide affordable, convenient, and quality products to its
-  customers around the world.
+  Walmart is a multinational retail corporation that operates a chain of hypermarkets,
+  discount department stores, and grocery stores. The company is known for offering
+  a wide range of products at competitive prices, attracting customers from all walks
+  of life. Walmart also provides various convenience services, such as pharmacy, optical,
+  and financial services, making it a one-stop shop for many consumers.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

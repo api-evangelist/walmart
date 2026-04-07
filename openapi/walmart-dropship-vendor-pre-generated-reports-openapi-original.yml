@@ -1,106 +1,93 @@
----
 openapi: 3.0.1
 info:
-  title: Pre-Generated Reports Management
-  description: "This API generates the item report for drop ship vendors (DSV). \nIt
-    returns all the information associated with vendor items that are set up on Walmart's
-    platform.\n\n**May 2024**<br>Built: 05/09/2024, 16:00:37\n"
+  title: Walmart Pre-Generated Reports Management
+  description: "This API generates the item report for drop ship vendors (DSV). \nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n\n**May 2024**<br>Built: 05/09/2024, 16:00:37\n"
   version: '1.0'
 servers:
-- url: https://api-gateway.walmart.com
-  description: Production URL
-- url: https://sandbox.walmartapis.com
-  description: Sandbox URL
+  - url: https://api-gateway.walmart.com
+    description: Production URL
+  - url: https://sandbox.walmartapis.com
+    description: Sandbox URL
 paths:
   "/v3/getReport":
     get:
       tags:
-      - Pre-Generated Reports
+        - Pre-Generated Reports
       operationId: getGenerateItemReport
-      summary: Generate an item report
-      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/getReport</p>\n\nThis
-        request generates the item report for drop ship vendors (DSV). \n\nIt returns
-        all the information associated with vendor items that are set up on Walmart's
-        platform.\n"
+      summary: Walmart Generate an item report
+      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/getReport</p>\n\nThis request generates the item report for drop ship vendors (DSV). \n\nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n"
       parameters:
-      - in: query
-        name: type
-        required: true
-        schema:
-          type: string
-        description: "Specifies the type of report. \n\nUse `type=vendor_item` to
-          fetch the item report from drop ship vendors (DSV).\n\nExample(s):<br>\nvendor_item\n"
-        example: vendor_item
-      - in: query
-        name: version
-        required: true
-        schema:
-          type: string
-        description: |
-          Specifies the version used to get the latest version of the item report for drop ship vendors (DSV).
+        - in: query
+          name: type
+          required: true
+          schema:
+            type: string
+          description: "Specifies the type of report. \n\nUse `type=vendor_item` to fetch the item report from drop ship vendors (DSV).\n\nExample(s):<br>\nvendor_item\n"
+          example: vendor_item
+        - in: query
+          name: version
+          required: true
+          schema:
+            type: string
+          description: |
+            Specifies the version used to get the latest version of the item report for drop ship vendors (DSV).
 
-          Use `version=2` to access the latest version of the item report for drop ship vendors (DSV).
+            Use `version=2` to access the latest version of the item report for drop ship vendors (DSV).
 
-          Example(s):
-          2
-        example: '2'
-      - in: header
-        name: Accept
-        required: false
-        schema:
-          type: string
-        description: |
-          Specifies the data type expected in a response sent from the server.
+            Example(s):
+            2
+          example: '2'
+        - in: header
+          name: Accept
+          required: false
+          schema:
+            type: string
+          description: |
+            Specifies the data type expected in a response sent from the server.
 
-          Valid values are:
+            Valid values are:
 
-          | Value | Meaning |
-          | --- | --- |
-          | application/xml | XML format for data returned in response. |
-          | application/json | JSON format for data returned in response. |
-        example: application/xml
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        required: false
-        schema:
-          type: string
-        description: |
-          Specifies an identifier that tracks the consumer request by channel.
+            | Value | Meaning |
+            | --- | --- |
+            | application/xml | XML format for data returned in response. |
+            | application/json | JSON format for data returned in response. |
+          example: application/xml
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          required: false
+          schema:
+            type: string
+          description: |
+            Specifies an identifier that tracks the consumer request by channel.
 
-          Use the consumer channel type received during onboarding.
+            Use the consumer channel type received during onboarding.
 
-          See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
-        example: 0f3e4dd4-0514-4346-b39d-…
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        required: true
-        schema:
-          type: string
-        description: "Specifies an identifier for each API call and is used to track
-          and debug issues.\n\n This may be any value, but cannot be null or omitted.
-          \n"
-        example: 6474-a253
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        required: true
-        schema:
-          type: string
-        description: |
-          Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
+            See the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.
+          example: 0f3e4dd4-0514-4346-b39d-…
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          required: true
+          schema:
+            type: string
+          description: "Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n"
+          example: 6474-a253
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          required: true
+          schema:
+            type: string
+          description: |
+            Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create Access Token</a> request.
 
-          This value is required for token-based authentication.
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
-      - in: header
-        name: Content-Type
-        required: true
-        schema:
-          type: string
-        description: "Specifies the format of request and response body data. \n\nIt
-          specifies if the payload is JSON, XML, form data, or other data type. \nSetting
-          `Content-Type` appropriately is essential when exchanging formatted data
-          with APIs.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n|
-          application/xml | XML format for request and response body data. |\n"
-        example: application/xml
+            This value is required for token-based authentication.
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…
+        - in: header
+          name: Content-Type
+          required: true
+          schema:
+            type: string
+          description: "Specifies the format of request and response body data. \n\nIt specifies if the payload is JSON, XML, form data, or other data type. \nSetting `Content-Type` appropriately is essential when exchanging formatted data with APIs.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/xml | XML format for request and response body data. |\n"
+          example: application/xml
       responses:
         '200':
           description: Successful Operation
@@ -138,8 +125,7 @@ paths:
                     example: Kenmore CF1
                   productCategory:
                     type: string
-                    description: "Indicates the category for the item. \n\nThis value
-                      may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\nGrocery\n"
+                    description: "Indicates the category for the item. \n\nThis value may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\nGrocery\n"
                     example: Grocery
                   shortDescription:
                     type: string
@@ -156,8 +142,7 @@ paths:
 
                       Example(s):<br>
                       24oz bag of frozen pinto and brown beans with steam-in-bag option for quick freezer to table meals
-                    example: 24oz bag of frozen pinto and brown beans with steam-in-bag
-                      option for quick freezer to table meals
+                    example: 24oz bag of frozen pinto and brown beans with steam-in-bag option for quick freezer to table meals
                   cost:
                     type: string
                     description: |
@@ -176,12 +161,7 @@ paths:
                     example: '7.99'
                   currency:
                     type: string
-                    description: "Indicates the currency (in the three-letter ISO
-                      4217 currency code) of the price. \n\nValue values include,
-                      but are not limited to:\n\n| Value\t| Meaning |\n| CAD | Canadian
-                      Dollar |\n| GBP\t| Great Britain Pound |\n| USD\t| United States
-                      Dolllar |\n\nReference the ISO 4217 standard for a complete
-                      listing of three-letter currency codes.\n\nExample(s):<br>\nUSD<br>\nGBP<br>\nCAD\n\nExample(s):<br>\nUSD\n"
+                    description: "Indicates the currency (in the three-letter ISO 4217 currency code) of the price. \n\nValue values include, but are not limited to:\n\n| Value\t| Meaning |\n| CAD | Canadian Dollar |\n| GBP\t| Great Britain Pound |\n| USD\t| United States Dolllar |\n\nReference the ISO 4217 standard for a complete listing of three-letter currency codes.\n\nExample(s):<br>\nUSD<br>\nGBP<br>\nCAD\n\nExample(s):<br>\nUSD\n"
                     example: USD
                   buyBoxShippingPrice:
                     type: string
@@ -214,13 +194,7 @@ paths:
                     example: In stock
                   shipMethods:
                     type: string
-                    description: "Indicates the shipping methods available for each
-                      item.\n\nValid values are:\n\n| Value\t| Meaning |\n| --- |
-                      --- |\n| Standard\t| Standard shipping method. |\n| Express\t|
-                      Express shipping method. |\n| OneDay\t| One-day shipping method.
-                      |\n| Freight\t|  Freight shipping method. |\n| WhiteGlove\t|
-                      White glove shipping method. |\n| Value\t| Value shipping method.
-                      |\n\nExample(s):<br>\nStandard<br>\nExpress<br>\nOneDay<br>\nFreight\n"
+                    description: "Indicates the shipping methods available for each item.\n\nValid values are:\n\n| Value\t| Meaning |\n| --- | --- |\n| Standard\t| Standard shipping method. |\n| Express\t| Express shipping method. |\n| OneDay\t| One-day shipping method. |\n| Freight\t|  Freight shipping method. |\n| WhiteGlove\t| White glove shipping method. |\n| Value\t| Value shipping method. |\n\nExample(s):<br>\nStandard<br>\nExpress<br>\nOneDay<br>\nFreight\n"
                     example: Standard
                   wpid:
                     type: string
@@ -240,10 +214,7 @@ paths:
                     example: CBA-1357
                   wm:
                     type: string
-                    description: "Indicates the internal Walmart item number assigned
-                      to a supplier item.\n\nThis number is linked to the item global
-                      trade item number (GTIN). \nThe value represents the configuration
-                      of how a supplier sells, ships, and replenishes merchandise.\n\nExample(s):<br>\n0864213579\n"
+                    description: "Indicates the internal Walmart item number assigned to a supplier item.\n\nThis number is linked to the item global trade item number (GTIN). \nThe value represents the configuration of how a supplier sells, ships, and replenishes merchandise.\n\nExample(s):<br>\n0864213579\n"
                     example: '0864213579'
                   gtin:
                     type: string
@@ -257,9 +228,7 @@ paths:
                     example: '00097531246801'
                   upc:
                     type: string
-                    description: "Indicates the Universal Product Code (UPC) of the
-                      item. \n\nThis value may differ from what was suggested when
-                      the item was ingested.\n\nExample(s):<br>\n123456789012\n"
+                    description: "Indicates the Universal Product Code (UPC) of the item. \n\nThis value may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\n123456789012\n"
                     example: '123456789012'
                   primaryImageUrl:
                     type: string
@@ -364,8 +333,7 @@ paths:
                     example: LB
                   statusChangeReason:
                     type: string
-                    description: "Indicates the reason for the status change. \n\nExample(s):<br>\nIncorrect
-                      information\n"
+                    description: "Indicates the reason for the status change. \n\nExample(s):<br>\nIncorrect information\n"
                     example: Incorrect information
                   availableInventoryUnits:
                     type: string
@@ -409,8 +377,7 @@ components:
           example: Kenmore CF1
         productCategory:
           type: string
-          description: "Indicates the category for the item. \n\nThis value may differ
-            from what was suggested when the item was ingested.\n\nExample(s):<br>\nGrocery\n"
+          description: "Indicates the category for the item. \n\nThis value may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\nGrocery\n"
           example: Grocery
         shortDescription:
           type: string
@@ -427,8 +394,7 @@ components:
 
             Example(s):<br>
             24oz bag of frozen pinto and brown beans with steam-in-bag option for quick freezer to table meals
-          example: 24oz bag of frozen pinto and brown beans with steam-in-bag option
-            for quick freezer to table meals
+          example: 24oz bag of frozen pinto and brown beans with steam-in-bag option for quick freezer to table meals
         cost:
           type: string
           description: |
@@ -447,11 +413,7 @@ components:
           example: '7.99'
         currency:
           type: string
-          description: "Indicates the currency (in the three-letter ISO 4217 currency
-            code) of the price. \n\nValue values include, but are not limited to:\n\n|
-            Value\t| Meaning |\n| CAD | Canadian Dollar |\n| GBP\t| Great Britain
-            Pound |\n| USD\t| United States Dolllar |\n\nReference the ISO 4217 standard
-            for a complete listing of three-letter currency codes.\n\nExample(s):<br>\nUSD<br>\nGBP<br>\nCAD\n\nExample(s):<br>\nUSD\n"
+          description: "Indicates the currency (in the three-letter ISO 4217 currency code) of the price. \n\nValue values include, but are not limited to:\n\n| Value\t| Meaning |\n| CAD | Canadian Dollar |\n| GBP\t| Great Britain Pound |\n| USD\t| United States Dolllar |\n\nReference the ISO 4217 standard for a complete listing of three-letter currency codes.\n\nExample(s):<br>\nUSD<br>\nGBP<br>\nCAD\n\nExample(s):<br>\nUSD\n"
           example: USD
         buyBoxShippingPrice:
           type: string
@@ -484,12 +446,7 @@ components:
           example: In stock
         shipMethods:
           type: string
-          description: "Indicates the shipping methods available for each item.\n\nValid
-            values are:\n\n| Value\t| Meaning |\n| --- | --- |\n| Standard\t| Standard
-            shipping method. |\n| Express\t| Express shipping method. |\n| OneDay\t|
-            One-day shipping method. |\n| Freight\t|  Freight shipping method. |\n|
-            WhiteGlove\t| White glove shipping method. |\n| Value\t| Value shipping
-            method. |\n\nExample(s):<br>\nStandard<br>\nExpress<br>\nOneDay<br>\nFreight\n"
+          description: "Indicates the shipping methods available for each item.\n\nValid values are:\n\n| Value\t| Meaning |\n| --- | --- |\n| Standard\t| Standard shipping method. |\n| Express\t| Express shipping method. |\n| OneDay\t| One-day shipping method. |\n| Freight\t|  Freight shipping method. |\n| WhiteGlove\t| White glove shipping method. |\n| Value\t| Value shipping method. |\n\nExample(s):<br>\nStandard<br>\nExpress<br>\nOneDay<br>\nFreight\n"
           example: Standard
         wpid:
           type: string
@@ -509,10 +466,7 @@ components:
           example: CBA-1357
         wm:
           type: string
-          description: "Indicates the internal Walmart item number assigned to a supplier
-            item.\n\nThis number is linked to the item global trade item number (GTIN).
-            \nThe value represents the configuration of how a supplier sells, ships,
-            and replenishes merchandise.\n\nExample(s):<br>\n0864213579\n"
+          description: "Indicates the internal Walmart item number assigned to a supplier item.\n\nThis number is linked to the item global trade item number (GTIN). \nThe value represents the configuration of how a supplier sells, ships, and replenishes merchandise.\n\nExample(s):<br>\n0864213579\n"
           example: '0864213579'
         gtin:
           type: string
@@ -526,8 +480,7 @@ components:
           example: '00097531246801'
         upc:
           type: string
-          description: "Indicates the Universal Product Code (UPC) of the item. \n\nThis
-            value may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\n123456789012\n"
+          description: "Indicates the Universal Product Code (UPC) of the item. \n\nThis value may differ from what was suggested when the item was ingested.\n\nExample(s):<br>\n123456789012\n"
           example: '123456789012'
         primaryImageUrl:
           type: string
@@ -632,8 +585,7 @@ components:
           example: LB
         statusChangeReason:
           type: string
-          description: "Indicates the reason for the status change. \n\nExample(s):<br>\nIncorrect
-            information\n"
+          description: "Indicates the reason for the status change. \n\nExample(s):<br>\nIncorrect information\n"
           example: Incorrect information
         availableInventoryUnits:
           type: string
@@ -644,6 +596,6 @@ components:
             2401
           example: '2401'
 x-tagGroups:
-- name: 1P Suppliers Pre-Generated Reports Reference
-  tags:
-  - Pre-Generated Reports
+  - name: 1P Suppliers Pre-Generated Reports Reference
+    tags:
+      - Pre-Generated Reports

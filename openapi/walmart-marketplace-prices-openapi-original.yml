@@ -1,55 +1,50 @@
----
 openapi: 3.0.1
 info:
-  title: Price Management
-  description: The price is a fundamental building block for your listing on Walmart.com.
-    You can use the price management APIs to set up and manage the price for a given
-    item
+  title: Walmart Price Management
+  description: The price is a fundamental building block for your listing on Walmart.com. You can use the price management APIs to set up and manage the price for a given item
 servers:
-- url: https://marketplace.walmartapis.com
-  description: Production URL
-- url: https://sandbox.walmartapis.com
-  description: Sandbox URL
+  - url: https://marketplace.walmartapis.com
+    description: Production URL
+  - url: https://sandbox.walmartapis.com
+    description: Sandbox URL
 security:
-- basicScheme: []
+  - basicScheme: []
 paths:
   "/v3/repricer/strategy/{strategyCollectionId}":
     put:
       tags:
-      - Prices
-      summary: Update Repricer Strategy
+        - Prices
+      summary: Walmart Update Repricer Strategy
       description: Updates the existing strategy
       operationId: updateStrategy
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         description: The request body will have the strategy related information
         content:
@@ -82,14 +77,14 @@ paths:
                       strategyType:
                         type: string
                         enum:
-                        - Buy Box Price
-                        - External Price
-                        - Competitive Price
+                          - Buy Box Price
+                          - External Price
+                          - Competitive Price
                       adjustmentType:
                         type: string
                         enum:
-                        - UNIT
-                        - PERCENTAGE
+                          - UNIT
+                          - PERCENTAGE
                       adjustmentValue:
                         type: number
                         format: double
@@ -126,54 +121,52 @@ paths:
                         strategyType:
                           type: string
                           enum:
-                          - Buy Box Price
-                          - External Price
-                          - Competitive Price
+                            - Buy Box Price
+                            - External Price
+                            - Competitive Price
                         adjustmentType:
                           type: string
                           enum:
-                          - UNIT
-                          - PERCENTAGE
+                            - UNIT
+                            - PERCENTAGE
                         adjustmentValue:
                           type: number
                           format: double
                           example: 1.2
     delete:
       tags:
-      - Prices
-      summary: Delete Repricer Strategy
+        - Prices
+      summary: Walmart Delete Repricer Strategy
       description: Deletes the strategy
       operationId: deleteStrategy
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       responses:
         '200':
           description: Successful Operation
@@ -184,77 +177,72 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: 'Strategy with Strategy Collection Id : 41678999-a088-4fd8-9eb4-55f8d8ed4ac8
-                      deleted successfully'
+                    example: 'Strategy with Strategy Collection Id : 41678999-a088-4fd8-9eb4-55f8d8ed4ac8 deleted successfully'
   "/v3/repricer/incentive":
     get:
       tags:
-      - Prices
-      summary: List of Incentive Items
+        - Prices
+      summary: Walmart List of Incentive Items
       description: Get the list of incentive items
       operationId: getRepricerIncentive
       parameters:
-      - name: limit
-        in: query
-        description: Specify number of items to return.
-        required: false
-        schema:
-          type: integer
-          format: int32
-          default: 25
-      - name: offset
-        in: query
-        description: Specify the offset of item list to be returned.
-        required: false
-        schema:
-          type: integer
-          format: int32
-          default: 0
-      - name: sortBy
-        in: query
-        description: Specify the sort criteria for items. Examples of the allowed
-          values are INCENTIVE_END_DATE or INCENTIVE_LIMIT
-        required: false
-        schema:
-          type: string
-          default: INCENTIVE_LIMIT
-      - name: sortOrder
-        in: query
-        description: Specify the sort order for given sort criteria. Examples of the
-          allowed values are ASC or DESC
-        required: false
-        schema:
-          type: string
-          default: DESC
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - name: limit
+          in: query
+          description: Specify number of items to return.
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 25
+        - name: offset
+          in: query
+          description: Specify the offset of item list to be returned.
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: sortBy
+          in: query
+          description: Specify the sort criteria for items. Examples of the allowed values are INCENTIVE_END_DATE or INCENTIVE_LIMIT
+          required: false
+          schema:
+            type: string
+            default: INCENTIVE_LIMIT
+        - name: sortOrder
+          in: query
+          description: Specify the sort order for given sort criteria. Examples of the allowed values are ASC or DESC
+          required: false
+          schema:
+            type: string
+            default: DESC
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       responses:
         '200':
           description: Successful Operation
@@ -313,47 +301,44 @@ paths:
                           example: amazon.com/dp/123
     put:
       tags:
-      - Prices
-      summary: Assign Incentive items to Repricer
-      description: Assigns incentive items to the default price incentives strategy,
-        ‘Match Competitive Price’
+        - Prices
+      summary: Walmart Assign Incentive items to Repricer
+      description: Assigns incentive items to the default price incentives strategy, ‘Match Competitive Price’
       operationId: updateRepricerIncentive
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         content:
           application/json:
             schema:
               required:
-              - skus
+                - skus
               type: object
               properties:
                 skus:
@@ -381,53 +366,50 @@ paths:
                       properties:
                         errorMessage:
                           type: string
-                          example: SKU XX is not eligible for price incentives and
-                            will not be price adjusted
+                          example: SKU XX is not eligible for price incentives and will not be price adjusted
   "/v3/price":
     put:
       tags:
-      - Prices
-      summary: Update a price
+        - Prices
+      summary: Walmart Update a price
       description: Updates the regular price for a given item.
       operationId: updatePrice
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         description: The request body consists of a Feed file attached to the request.
         content:
           application/json:
             schema:
               required:
-              - pricing
-              - sku
+                - pricing
+                - sku
               type: object
               properties:
                 offerId:
@@ -439,14 +421,14 @@ paths:
                   type: string
                   description: This is applicable only for promotions
                   enum:
-                  - 'true'
-                  - 'false'
+                    - 'true'
+                    - 'false'
                 pricing:
                   type: array
                   items:
                     required:
-                    - currentPrice
-                    - currentPriceType
+                      - currentPrice
+                      - currentPriceType
                     type: object
                     properties:
                       effectiveDate:
@@ -464,24 +446,23 @@ paths:
                         type: string
                         description: This is applicable only for promotions
                         enum:
-                        - UPSERT
-                        - DELETE
+                          - UPSERT
+                          - DELETE
                       currentPriceType:
                         type: string
-                        description: This is applicable only for both promotions and
-                          price
+                        description: This is applicable only for both promotions and price
                         enum:
-                        - BASE
-                        - REDUCED
-                        - CLEARANCE
+                          - BASE
+                          - REDUCED
+                          - CLEARANCE
                       currentPrice:
                         type: object
                         properties:
                           currency:
                             type: string
                             enum:
-                            - USD
-                            - CAD
+                              - USD
+                              - CAD
                           amount:
                             type: number
                             format: double
@@ -489,35 +470,34 @@ paths:
                         type: string
                         description: This is applicable only for promotions
                         enum:
-                        - BASE
+                          - BASE
                       comparisonPrice:
                         type: object
                         properties:
                           currency:
                             type: string
                             enum:
-                            - USD
-                            - CAD
+                              - USD
+                              - CAD
                           amount:
                             type: number
                             format: double
                         description: This is applicable only for promotions
                       priceDisplayCodes:
                         type: string
-                        description: Represent promo placement. This is applicable
-                          only for promotions
+                        description: Represent promo placement. This is applicable only for promotions
                         enum:
-                        - CART
-                        - CHECKOUT
+                          - CART
+                          - CHECKOUT
                 definitions:
                   type: object
             example:
               sku: 97964_KFTest
               pricing:
-              - currentPriceType: BASE
-                currentPrice:
-                  currency: USD
-                  amount: 10
+                - currentPriceType: BASE
+                  currentPrice:
+                    currency: USD
+                    amount: 10
         required: true
       responses:
         '200':
@@ -533,7 +513,7 @@ paths:
                       name: error
                     items:
                       required:
-                      - code
+                        - code
                       type: object
                       properties:
                         code:
@@ -547,16 +527,16 @@ paths:
                         severity:
                           type: string
                           enum:
-                          - INFO
-                          - WARN
-                          - ERROR
+                            - INFO
+                            - WARN
+                            - ERROR
                         category:
                           type: string
                           enum:
-                          - APPLICATION
-                          - SYSTEM
-                          - REQUEST
-                          - DATA
+                            - APPLICATION
+                            - SYSTEM
+                            - REQUEST
+                            - DATA
                         causes:
                           type: array
                           xml:
@@ -587,9 +567,9 @@ paths:
                         gatewayErrorCategory:
                           type: string
                           enum:
-                          - INTERNAL_DATA_ERROR
-                          - EXTERNAL_DATA_ERROR
-                          - SYSTEM_ERROR
+                            - INTERNAL_DATA_ERROR
+                            - EXTERNAL_DATA_ERROR
+                            - SYSTEM_ERROR
                       xml:
                         name: GatewayError
                   statusCode:
@@ -602,8 +582,7 @@ paths:
                       namespace: http://walmart.com/
                   sku:
                     type: string
-                    description: An arbitrary alphanumeric unique ID, specified by
-                      the seller, which identifies each item.
+                    description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item.
                     xml:
                       namespace: http://walmart.com/
                   message:
@@ -617,8 +596,7 @@ paths:
               example:
                 ItemPriceResponse:
                   mart: WALMART_US
-                  message: Thank you. Your price has been updated. Please allow up
-                    to five minutes for this change to be reflected on the site.
+                  message: Thank you. Your price has been updated. Please allow up to five minutes for this change to be reflected on the site.
                   sku: 97964_KFTest
             application/xml:
               schema:
@@ -630,7 +608,7 @@ paths:
                       name: error
                     items:
                       required:
-                      - code
+                        - code
                       type: object
                       properties:
                         code:
@@ -644,16 +622,16 @@ paths:
                         severity:
                           type: string
                           enum:
-                          - INFO
-                          - WARN
-                          - ERROR
+                            - INFO
+                            - WARN
+                            - ERROR
                         category:
                           type: string
                           enum:
-                          - APPLICATION
-                          - SYSTEM
-                          - REQUEST
-                          - DATA
+                            - APPLICATION
+                            - SYSTEM
+                            - REQUEST
+                            - DATA
                         causes:
                           type: array
                           xml:
@@ -684,9 +662,9 @@ paths:
                         gatewayErrorCategory:
                           type: string
                           enum:
-                          - INTERNAL_DATA_ERROR
-                          - EXTERNAL_DATA_ERROR
-                          - SYSTEM_ERROR
+                            - INTERNAL_DATA_ERROR
+                            - EXTERNAL_DATA_ERROR
+                            - SYSTEM_ERROR
                       xml:
                         name: GatewayError
                   statusCode:
@@ -699,8 +677,7 @@ paths:
                       namespace: http://walmart.com/
                   sku:
                     type: string
-                    description: An arbitrary alphanumeric unique ID, specified by
-                      the seller, which identifies each item.
+                    description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item.
                     xml:
                       namespace: http://walmart.com/
                   message:
@@ -721,40 +698,38 @@ paths:
   "/v3/repricerFeeds":
     post:
       tags:
-      - Prices
-      summary: Assign/Unassign items to/from Repricer Strategy
+        - Prices
+      summary: Walmart Assign/Unassign items to/from Repricer Strategy
       description: Add/Remove one or more items from a strategy
       operationId: getRepricerFeed
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         content:
           application/json:
@@ -819,40 +794,38 @@ paths:
   "/v3/repricer/strategy":
     post:
       tags:
-      - Prices
-      summary: Create Repricer Strategy
+        - Prices
+      summary: Walmart Create Repricer Strategy
       description: Creates a new strategy for the seller
       operationId: createStrategy
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         description: The request body will have the strategy related information
         content:
@@ -885,14 +858,14 @@ paths:
                       strategyType:
                         type: string
                         enum:
-                        - Buy Box Price
-                        - External Price
-                        - Competitive Price
+                          - Buy Box Price
+                          - External Price
+                          - Competitive Price
                       adjustmentType:
                         type: string
                         enum:
-                        - UNIT
-                        - PERCENTAGE
+                          - UNIT
+                          - PERCENTAGE
                       adjustmentValue:
                         type: number
                         format: double
@@ -929,14 +902,14 @@ paths:
                         strategyType:
                           type: string
                           enum:
-                          - Buy Box Price
-                          - External Price
-                          - Competitive Price
+                            - Buy Box Price
+                            - External Price
+                            - Competitive Price
                         adjustmentType:
                           type: string
                           enum:
-                          - UNIT
-                          - PERCENTAGE
+                            - UNIT
+                            - PERCENTAGE
                         adjustmentValue:
                           type: number
                           format: double
@@ -944,8 +917,8 @@ paths:
   "/v3/feeds":
     post:
       tags:
-      - Prices
-      summary: Update bulk prices (Multiple)
+        - Prices
+      summary: Walmart Update bulk prices (Multiple)
       description: |-
         Updates prices in bulk.
 
@@ -962,52 +935,49 @@ paths:
         If a SKU's price update fails (for example, multiple price updates were sent for the same SKU in a single feed), an error will be returned.
       operationId: priceBulkUploads
       parameters:
-      - name: feedType
-        in: query
-        description: The feed Type
-        required: true
-        schema:
-          type: string
-          enum:
-          - price
-          - CPT_SELLER_ELIGIBILITY
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - name: feedType
+          in: query
+          description: The feed Type
+          required: true
+          schema:
+            type: string
+            enum:
+              - price
+              - CPT_SELLER_ELIGIBILITY
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
-        description: 'The request body consists of a Feed file attached to the request
-          based on the feedType selected '
+        description: 'The request body consists of a Feed file attached to the request based on the feedType selected '
         content:
           multipart/form-data:
             schema:
               required:
-              - file
+                - file
               type: object
               properties:
                 file:
@@ -1020,26 +990,26 @@ paths:
                   PriceHeader:
                     version: '1.7'
                   Price:
-                  - sku: 30348_KFTest
-                    pricing:
-                    - currentPrice:
-                        currency: USD
-                        amount: 3
-                      currentPriceType: REDUCED
-                      comparisonPriceType: BASE
-                      comparisonPrice:
-                        currency: USD
-                        amount: 4.99
-                  - sku: OT-PP7F-QGUG
-                    pricing:
-                    - currentPrice:
-                        currency: USD
-                        amount: 3
-                      currentPriceType: REDUCED
-                      comparisonPriceType: BASE
-                      comparisonPrice:
-                        currency: USD
-                        amount: 4.99
+                    - sku: 30348_KFTest
+                      pricing:
+                        - currentPrice:
+                            currency: USD
+                            amount: 3
+                          currentPriceType: REDUCED
+                          comparisonPriceType: BASE
+                          comparisonPrice:
+                            currency: USD
+                            amount: 4.99
+                    - sku: OT-PP7F-QGUG
+                      pricing:
+                        - currentPrice:
+                            currency: USD
+                            amount: 3
+                          currentPriceType: REDUCED
+                          comparisonPriceType: BASE
+                          comparisonPrice:
+                            currency: USD
+                            amount: 4.99
               xml1:
                 value: |
                   <?xml version="1.0" encoding="UTF-8"?>
@@ -1083,8 +1053,7 @@ paths:
                 properties:
                   feedId:
                     type: string
-                    description: A unique ID, returned from the Bulk Upload API, used
-                      for tracking the feed file
+                    description: A unique ID, returned from the Bulk Upload API, used for tracking the feed file
                   additionalAttributes:
                     type: object
                     nullable: true
@@ -1099,8 +1068,7 @@ paths:
                 properties:
                   feedId:
                     type: string
-                    description: A unique ID, returned from the Bulk Upload API, used
-                      for tracking the feed file
+                    description: A unique ID, returned from the Bulk Upload API, used for tracking the feed file
                   additionalAttributes:
                     type: object
                     nullable: true
@@ -1115,8 +1083,8 @@ paths:
   "/v3/cppreference":
     post:
       tags:
-      - Prices
-      summary: Set up CAP SKU All
+        - Prices
+      summary: Walmart Set up CAP SKU All
       description: |-
         This API helps Sellers to completely opt-in or opt-out from CAP program.
 
@@ -1128,35 +1096,33 @@ paths:
         url: "/doc/us/mp/us-mp-price/#1290"
       operationId: optCapProgramInPrice
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       requestBody:
         description: Request fields
         content:
@@ -1166,12 +1132,10 @@ paths:
               properties:
                 subsidyEnrolled:
                   type: boolean
-                  description: A Boolean parameter that allows all sellers to completely
-                    enroll in or out of the Competitive Price Adjustment program
+                  description: A Boolean parameter that allows all sellers to completely enroll in or out of the Competitive Price Adjustment program
                 subsidyPreference:
                   type: boolean
-                  description: A Boolean parameter that determines whether offer level
-                    subsidy setting override seller level subsidy setting
+                  description: A Boolean parameter that determines whether offer level subsidy setting override seller level subsidy setting
         required: true
       responses:
         '200':
@@ -1189,50 +1153,45 @@ paths:
                     properties:
                       subsidyEnrolled:
                         type: boolean
-                        description: A Boolean parameter that allows all sellers to
-                          completely enroll in or out of the Competitive Price Adjustment
-                          program
+                        description: A Boolean parameter that allows all sellers to completely enroll in or out of the Competitive Price Adjustment program
                       subsidyPreference:
                         type: boolean
-                        description: A Boolean parameter that determines whether offer
-                          level subsidy setting override seller level subsidy setting
+                        description: A Boolean parameter that determines whether offer level subsidy setting override seller level subsidy setting
   "/v3/repricer/strategies":
     get:
       tags:
-      - Prices
-      summary: List of Repricer Strategies
+        - Prices
+      summary: Walmart List of Repricer Strategies
       description: Get the list of strategies
       operationId: getStrategies
       parameters:
-      - in: header
-        name: WM_SEC.ACCESS_TOKEN
-        description: The access token retrieved in the Token API call
-        required: true
-        schema:
-          type: string
-        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
-      - in: header
-        name: WM_CONSUMER.CHANNEL.TYPE
-        description: A unique ID to track the consumer request by channel. Use the
-          Consumer Channel Type received during onboarding
-        required: false
-        schema:
-          type: string
-      - in: header
-        name: WM_QOS.CORRELATION_ID
-        description: A unique ID which identifies each API call and used to track
-          and debug issues; use a random generated GUID for this ID
-        required: true
-        schema:
-          type: string
-        example: b3261d2d-028a-4ef7-8602-633c23200af6
-      - in: header
-        name: WM_SVC.NAME
-        description: Walmart Service Name
-        required: true
-        schema:
-          type: string
-        example: Walmart Service Name
+        - in: header
+          name: WM_SEC.ACCESS_TOKEN
+          description: The access token retrieved in the Token API call
+          required: true
+          schema:
+            type: string
+          example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+        - in: header
+          name: WM_CONSUMER.CHANNEL.TYPE
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: WM_QOS.CORRELATION_ID
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+          required: true
+          schema:
+            type: string
+          example: b3261d2d-028a-4ef7-8602-633c23200af6
+        - in: header
+          name: WM_SVC.NAME
+          description: Walmart Service Name
+          required: true
+          schema:
+            type: string
+          example: Walmart Service Name
       responses:
         '200':
           description: Successful Operation
@@ -1277,14 +1236,14 @@ paths:
                               strategyType:
                                 type: string
                                 enum:
-                                - Buy Box Price
-                                - External Price
-                                - Competitive Price
+                                  - Buy Box Price
+                                  - External Price
+                                  - Competitive Price
                               adjustmentType:
                                 type: string
                                 enum:
-                                - UNIT
-                                - PERCENTAGE
+                                  - UNIT
+                                  - PERCENTAGE
                               adjustmentValue:
                                 type: number
                                 format: double
@@ -1317,14 +1276,14 @@ components:
               strategyType:
                 type: string
                 enum:
-                - Buy Box Price
-                - External Price
-                - Competitive Price
+                  - Buy Box Price
+                  - External Price
+                  - Competitive Price
               adjustmentType:
                 type: string
                 enum:
-                - UNIT
-                - PERCENTAGE
+                  - UNIT
+                  - PERCENTAGE
               adjustmentValue:
                 type: number
                 format: double
@@ -1335,14 +1294,14 @@ components:
         strategyType:
           type: string
           enum:
-          - Buy Box Price
-          - External Price
-          - Competitive Price
+            - Buy Box Price
+            - External Price
+            - Competitive Price
         adjustmentType:
           type: string
           enum:
-          - UNIT
-          - PERCENTAGE
+            - UNIT
+            - PERCENTAGE
         adjustmentValue:
           type: number
           format: double
@@ -1375,14 +1334,14 @@ components:
               strategyType:
                 type: string
                 enum:
-                - Buy Box Price
-                - External Price
-                - Competitive Price
+                  - Buy Box Price
+                  - External Price
+                  - Competitive Price
               adjustmentType:
                 type: string
                 enum:
-                - UNIT
-                - PERCENTAGE
+                  - UNIT
+                  - PERCENTAGE
               adjustmentValue:
                 type: number
                 format: double
@@ -1392,8 +1351,7 @@ components:
       properties:
         errorMessage:
           type: string
-          example: SKU XX is not eligible for price incentives and will not be price
-            adjusted
+          example: SKU XX is not eligible for price incentives and will not be price adjusted
     UpdateRepricerIncentiveResponse:
       type: object
       properties:
@@ -1407,11 +1365,10 @@ components:
             properties:
               errorMessage:
                 type: string
-                example: SKU XX is not eligible for price incentives and will not
-                  be price adjusted
+                example: SKU XX is not eligible for price incentives and will not be price adjusted
     UpdateRepricerIncentiveRequest:
       required:
-      - skus
+        - skus
       type: object
       properties:
         skus:
@@ -1435,7 +1392,7 @@ components:
         name: Cause
     GatewayError:
       required:
-      - code
+        - code
       type: object
       properties:
         code:
@@ -1449,16 +1406,16 @@ components:
         severity:
           type: string
           enum:
-          - INFO
-          - WARN
-          - ERROR
+            - INFO
+            - WARN
+            - ERROR
         category:
           type: string
           enum:
-          - APPLICATION
-          - SYSTEM
-          - REQUEST
-          - DATA
+            - APPLICATION
+            - SYSTEM
+            - REQUEST
+            - DATA
         causes:
           type: array
           xml:
@@ -1489,9 +1446,9 @@ components:
         gatewayErrorCategory:
           type: string
           enum:
-          - INTERNAL_DATA_ERROR
-          - EXTERNAL_DATA_ERROR
-          - SYSTEM_ERROR
+            - INTERNAL_DATA_ERROR
+            - EXTERNAL_DATA_ERROR
+            - SYSTEM_ERROR
       xml:
         name: GatewayError
     ItemPriceResponse:
@@ -1503,7 +1460,7 @@ components:
             name: error
           items:
             required:
-            - code
+              - code
             type: object
             properties:
               code:
@@ -1517,16 +1474,16 @@ components:
               severity:
                 type: string
                 enum:
-                - INFO
-                - WARN
-                - ERROR
+                  - INFO
+                  - WARN
+                  - ERROR
               category:
                 type: string
                 enum:
-                - APPLICATION
-                - SYSTEM
-                - REQUEST
-                - DATA
+                  - APPLICATION
+                  - SYSTEM
+                  - REQUEST
+                  - DATA
               causes:
                 type: array
                 xml:
@@ -1557,9 +1514,9 @@ components:
               gatewayErrorCategory:
                 type: string
                 enum:
-                - INTERNAL_DATA_ERROR
-                - EXTERNAL_DATA_ERROR
-                - SYSTEM_ERROR
+                  - INTERNAL_DATA_ERROR
+                  - EXTERNAL_DATA_ERROR
+                  - SYSTEM_ERROR
             xml:
               name: GatewayError
         statusCode:
@@ -1572,8 +1529,7 @@ components:
             namespace: http://walmart.com/
         sku:
           type: string
-          description: An arbitrary alphanumeric unique ID, specified by the seller,
-            which identifies each item.
+          description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item.
           xml:
             namespace: http://walmart.com/
         message:
@@ -1590,8 +1546,8 @@ components:
         currency:
           type: string
           enum:
-          - USD
-          - CAD
+            - USD
+            - CAD
         amount:
           type: number
           format: double
@@ -1602,15 +1558,15 @@ components:
         currency:
           type: string
           enum:
-          - USD
-          - CAD
+            - USD
+            - CAD
         amount:
           type: number
           format: double
     Price:
       required:
-      - pricing
-      - sku
+        - pricing
+        - sku
       type: object
       properties:
         offerId:
@@ -1622,14 +1578,14 @@ components:
           type: string
           description: This is applicable only for promotions
           enum:
-          - 'true'
-          - 'false'
+            - 'true'
+            - 'false'
         pricing:
           type: array
           items:
             required:
-            - currentPrice
-            - currentPriceType
+              - currentPrice
+              - currentPriceType
             type: object
             properties:
               effectiveDate:
@@ -1647,23 +1603,23 @@ components:
                 type: string
                 description: This is applicable only for promotions
                 enum:
-                - UPSERT
-                - DELETE
+                  - UPSERT
+                  - DELETE
               currentPriceType:
                 type: string
                 description: This is applicable only for both promotions and price
                 enum:
-                - BASE
-                - REDUCED
-                - CLEARANCE
+                  - BASE
+                  - REDUCED
+                  - CLEARANCE
               currentPrice:
                 type: object
                 properties:
                   currency:
                     type: string
                     enum:
-                    - USD
-                    - CAD
+                      - USD
+                      - CAD
                   amount:
                     type: number
                     format: double
@@ -1671,32 +1627,31 @@ components:
                 type: string
                 description: This is applicable only for promotions
                 enum:
-                - BASE
+                  - BASE
               comparisonPrice:
                 type: object
                 properties:
                   currency:
                     type: string
                     enum:
-                    - USD
-                    - CAD
+                      - USD
+                      - CAD
                   amount:
                     type: number
                     format: double
                 description: This is applicable only for promotions
               priceDisplayCodes:
                 type: string
-                description: Represent promo placement. This is applicable only for
-                  promotions
+                description: Represent promo placement. This is applicable only for promotions
                 enum:
-                - CART
-                - CHECKOUT
+                  - CART
+                  - CHECKOUT
         definitions:
           type: object
     Pricing:
       required:
-      - currentPrice
-      - currentPriceType
+        - currentPrice
+        - currentPriceType
       type: object
       properties:
         effectiveDate:
@@ -1714,23 +1669,23 @@ components:
           type: string
           description: This is applicable only for promotions
           enum:
-          - UPSERT
-          - DELETE
+            - UPSERT
+            - DELETE
         currentPriceType:
           type: string
           description: This is applicable only for both promotions and price
           enum:
-          - BASE
-          - REDUCED
-          - CLEARANCE
+            - BASE
+            - REDUCED
+            - CLEARANCE
         currentPrice:
           type: object
           properties:
             currency:
               type: string
               enum:
-              - USD
-              - CAD
+                - USD
+                - CAD
             amount:
               type: number
               format: double
@@ -1738,15 +1693,15 @@ components:
           type: string
           description: This is applicable only for promotions
           enum:
-          - BASE
+            - BASE
         comparisonPrice:
           type: object
           properties:
             currency:
               type: string
               enum:
-              - USD
-              - CAD
+                - USD
+                - CAD
             amount:
               type: number
               format: double
@@ -1755,8 +1710,8 @@ components:
           type: string
           description: Represent promo placement. This is applicable only for promotions
           enum:
-          - CART
-          - CHECKOUT
+            - CART
+            - CHECKOUT
     FeedUploadResponseDTO:
       type: object
       properties:
@@ -1872,8 +1827,7 @@ components:
       properties:
         feedId:
           type: string
-          description: A unique ID, returned from the Bulk Upload API, used for tracking
-            the feed file
+          description: A unique ID, returned from the Bulk Upload API, used for tracking the feed file
         additionalAttributes:
           type: object
           nullable: true
@@ -1891,23 +1845,19 @@ components:
           properties:
             subsidyEnrolled:
               type: boolean
-              description: A Boolean parameter that allows all sellers to completely
-                enroll in or out of the Competitive Price Adjustment program
+              description: A Boolean parameter that allows all sellers to completely enroll in or out of the Competitive Price Adjustment program
             subsidyPreference:
               type: boolean
-              description: A Boolean parameter that determines whether offer level
-                subsidy setting override seller level subsidy setting
+              description: A Boolean parameter that determines whether offer level subsidy setting override seller level subsidy setting
     StatusInfo:
       type: object
       properties:
         subsidyEnrolled:
           type: boolean
-          description: A Boolean parameter that allows all sellers to completely enroll
-            in or out of the Competitive Price Adjustment program
+          description: A Boolean parameter that allows all sellers to completely enroll in or out of the Competitive Price Adjustment program
         subsidyPreference:
           type: boolean
-          description: A Boolean parameter that determines whether offer level subsidy
-            setting override seller level subsidy setting
+          description: A Boolean parameter that determines whether offer level subsidy setting override seller level subsidy setting
     RepricerEntityCollectionResponse:
       type: object
       properties:
@@ -1947,14 +1897,14 @@ components:
                     strategyType:
                       type: string
                       enum:
-                      - Buy Box Price
-                      - External Price
-                      - Competitive Price
+                        - Buy Box Price
+                        - External Price
+                        - Competitive Price
                     adjustmentType:
                       type: string
                       enum:
-                      - UNIT
-                      - PERCENTAGE
+                        - UNIT
+                        - PERCENTAGE
                     adjustmentValue:
                       type: number
                       format: double
@@ -1989,14 +1939,14 @@ components:
               strategyType:
                 type: string
                 enum:
-                - Buy Box Price
-                - External Price
-                - Competitive Price
+                  - Buy Box Price
+                  - External Price
+                  - Competitive Price
               adjustmentType:
                 type: string
                 enum:
-                - UNIT
-                - PERCENTAGE
+                  - UNIT
+                  - PERCENTAGE
               adjustmentValue:
                 type: number
                 format: double
@@ -2099,14 +2049,12 @@ components:
       properties:
         message:
           type: string
-          example: 'Strategy with Strategy Collection Id : 41678999-a088-4fd8-9eb4-55f8d8ed4ac8
-            deleted successfully'
+          example: 'Strategy with Strategy Collection Id : 41678999-a088-4fd8-9eb4-55f8d8ed4ac8 deleted successfully'
   parameters:
     authorization:
       name: Authorization
       in: header
-      description: Basic authorization header. Base 64 encodes the Client ID and Client
-        Secret retrieved in step two of the integration steps.
+      description: Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
       required: true
       schema:
         type: string
@@ -2122,16 +2070,14 @@ components:
     channelType:
       name: WM_CONSUMER.CHANNEL.TYPE
       in: header
-      description: A unique ID to track the consumer request by channel. Use the Consumer
-        Channel Type received during onboarding
+      description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
       required: false
       schema:
         type: string
     correlationId:
       name: WM_QOS.CORRELATION_ID
       in: header
-      description: A unique ID which identifies each API call and used to track and
-        debug issues; use a random generated GUID for this ID
+      description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
       required: true
       schema:
         type: string
