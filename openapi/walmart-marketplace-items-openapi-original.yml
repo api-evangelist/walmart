@@ -908,7 +908,7 @@ paths:
     post:
       tags:
         - Items
-      summary: Walmart Bulk Item Setup (Multiple)
+      summary: Walmart Bulk Item Setup (multiple)
       description: " Use this API for initial item setup and maintenance.\n\nThis API updates items in bulk. You can update 10,000 items at once; updates with more than 10,000 items are not supported. Keep feed sizes below 10 MB, except for FITMENT_ACES and FITMENT_PIES, to ensure optimal feed processing time. For FITMENT_PIES and FITMENT_ACES feeds, files upto 25 MB are supported.\n\nYou can use the Bulk Item Setup API for any of the following item spec versions, just specify the corresponding feed type as a query parameter.\n\n*   Item spec version 4.8 feed type: MP_ITEM\n*   WFS Item spec version 4.3 feed type: MP_WFS_ITEM \n*   WFS Maintenance spec version 4.8 feed type: MP_MAINTENANCE\n*   Set up item by match 4.1 or 4.2 feed type: MP_ITEM_MATCH \n*   Convert an existing item to WFS 4.5 feed type : OMNI_WFS \n*   For Fitment feed type FITMENT_ACES and FITMENT_PIES, zip file needs to be added in the request body. While uploading the fitment feeds, it is mandatory to add boundary parameter in Content-Type header. For example, Content-Type: multipart/form-data;boundary=\"----custom boundary\". Without a boundary parameter, fitment feeds will fail to process. For details refer to the guide link below \n"
       externalDocs:
         description: View Guide
@@ -1365,7 +1365,7 @@ paths:
     get:
       tags:
         - Items
-      summary: Walmart All items
+      summary: Walmart All Items
       description: Displays a list of all items by using either nextCursor or offset and limit query parameters
       externalDocs:
         description: View Guide
@@ -3246,7 +3246,7 @@ paths:
     get:
       tags:
         - Items
-      summary: Walmart An item
+      summary: Walmart an Item
       description: Retrieves an item and displays the item details.
       externalDocs:
         description: View Guide
@@ -4342,7 +4342,7 @@ paths:
     get:
       tags:
         - Items
-      summary: Walmart Get item count by groups
+      summary: Walmart Get Item Count by Groups
       description: Get total count of items based on variant group information
       operationId: getVariantCount
       parameters:
@@ -4431,7 +4431,7 @@ paths:
     get:
       tags:
         - Items
-      summary: Walmart Get items count by status
+      summary: Walmart Get Items Count by Status
       description: Get total count of items based on status
       operationId: getCountByStatus
       parameters:
@@ -4512,7 +4512,7 @@ paths:
     delete:
       tags:
         - Items
-      summary: Walmart Retire an item
+      summary: Walmart Retire an Item
       description: Completely deactivates and un-publishes an item from the site.
       operationId: retireAnItem
       parameters:

@@ -1,0 +1,101 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://marketplace.walmartapis.com/v3/orders",
+    "headers": {
+      "WM_SEC.ACCESS_TOKEN": "YOUR_ACCESS_TOKEN",
+      "WM_CONSUMER.CHANNEL.TYPE": "your-channel-type-id",
+      "WM_QOS.CORRELATION_ID": "b3261d2d-028a-4ef7-8602-633c23200af6",
+      "WM_SVC.NAME": "Walmart Marketplace",
+      "Accept": "application/json"
+    },
+    "params": {
+      "createdStartDate": "2026-04-01",
+      "limit": "100",
+      "productInfo": "false"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "list": {
+        "meta": {
+          "totalCount": 2,
+          "limit": 100,
+          "nextCursor": null
+        },
+        "elements": {
+          "order": [
+            {
+              "purchaseOrderId": "1796277083968",
+              "customerOrderId": "4021604321823",
+              "customerEmailId": "3A26A451ED43434DACB3D0C3EC9E4D0E@relay.walmart.com",
+              "orderDate": 1714608000000,
+              "shippingInfo": {
+                "phone": "2025551234",
+                "estimatedDeliveryDate": 1715040000000,
+                "estimatedShipDate": 1714867200000,
+                "methodCode": "Value",
+                "postalAddress": {
+                  "name": "John Doe",
+                  "address1": "123 Main Street",
+                  "city": "Bentonville",
+                  "state": "AR",
+                  "postalCode": "72712",
+                  "country": "USA",
+                  "addressType": "RESIDENTIAL"
+                }
+              },
+              "orderLines": {
+                "orderLine": [
+                  {
+                    "lineNumber": "1",
+                    "item": {
+                      "productName": "Example Product Name",
+                      "sku": "EXAMPLE-SKU-001"
+                    },
+                    "charges": {
+                      "charge": [
+                        {
+                          "chargeType": "PRODUCT",
+                          "chargeName": "ItemPrice",
+                          "chargeAmount": {
+                            "currency": "USD",
+                            "amount": 29.99
+                          },
+                          "tax": {
+                            "taxName": "Tax1",
+                            "taxAmount": {
+                              "currency": "USD",
+                              "amount": 2.40
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "orderLineQuantity": {
+                      "unitOfMeasurement": "EACH",
+                      "amount": "1"
+                    },
+                    "statusDate": 1714608000000,
+                    "orderLineStatuses": {
+                      "orderLineStatus": [
+                        {
+                          "status": "Created",
+                          "statusQuantity": {
+                            "unitOfMeasurement": "EACH",
+                            "amount": "1"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

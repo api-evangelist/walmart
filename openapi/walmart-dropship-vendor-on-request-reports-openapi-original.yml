@@ -14,7 +14,7 @@ paths:
       tags:
         - On Request Reports
       operationId: createReportRequest
-      summary: Walmart Create report request
+      summary: Walmart Create Report Request
       description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/reports/reportRequest</p>\n\nThis request creates a new request for a report by specifying the report type and version. \n\nIn the request body, define one or more attributes to include in the report. \nThe attribute must be a valid attribute for the report. \nReference the guide for a list of applicable attributes in each report and definitions.\nSee the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On Request Reports</a> guide for more information. \n"
       parameters:
         - in: query
@@ -194,7 +194,7 @@ paths:
       tags:
         - On Request Reports
       operationId: getAllReportRequests
-      summary: Walmart Retrieve all report requests
+      summary: Walmart Retrieve All Report Requests
       description: |
         <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/reportRequests</p>
 
@@ -379,7 +379,7 @@ paths:
       tags:
         - On Request Reports
       operationId: retrieveReportRequestStatus
-      summary: Walmart Retrieve details on single report
+      summary: Walmart Retrieve Details on Single Report
       description: |
         <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/reportRequests/{requestId}</p>
 
@@ -500,7 +500,7 @@ paths:
       tags:
         - On Request Reports
       operationId: downloadReportUrl
-      summary: Walmart Download report URL
+      summary: Walmart Download Report Url
       description: |
         <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/downloadReport</p>
 

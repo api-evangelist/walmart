@@ -14,7 +14,7 @@ paths:
     post:
       tags:
         - Authorization
-      summary: Walmart Token API
+      summary: Walmart Token Api
       description: Get access token by providing Client ID and Client Secret.<br />An access token expires after a certain interval, so you will have to refresh a user's access token. You could use refresh token, obtained from the token API call using authorization code grant type, to get a new access token. Refresh tokens remain valid for a year.<br /><br /> [Guide reference - authorization_code](/doc/us/mp/us-mp-auth2/#606)<br /><br /> [Guide reference - refresh_token](/doc/us/mp/us-mp-auth2/#606)<br /><br /> [Guide reference - client_credentials](/doc/us/mp/us-mp-auth/#606)
       operationId: tokenAPI
       parameters:
@@ -89,17 +89,17 @@ paths:
                   default: APXcIoTpKMH9OQN.....
             examples:
               clientCredentialsReq:
-                summary: Token API - client_credentials
+                summary: Token Api - Client_credentials
                 value:
                   grant_type: client_credentials
               tokenAPIReq:
-                summary: Token API - authorization_code
+                summary: Token Api - Authorization_code
                 value:
                   grant_type: authorization_code
                   code: 65CA5DA313A549D49D15D3119D9AD85D
                   redirect_uri: https://example-client-app.com
               refreshTokenReq:
-                summary: Token API - refresh_token
+                summary: Token Api - Refresh_token
                 value:
                   grant_type: refresh_token
                   refresh_token: APXcIoTpKMH9OQN…….
@@ -135,20 +135,20 @@ paths:
                     default: APXcIoTpKMH9OQN…….
               examples:
                 clientCredentialsRes:
-                  summary: Token API - client_credentials
+                  summary: Token Api - Client_credentials
                   value:
                     access_token: eyJraWQiOiI1MWY3MjM0Ny0wYWY5LTRhZ.....
                     token_type: Bearer
                     expires_in: 900
                 tokenAPIRes:
-                  summary: Token API - authorization_code
+                  summary: Token Api - Authorization_code
                   value:
                     access_token: eyJraWQiOiI1MWY3MjM0Ny0wYWY5LTRhZ.....
                     refresh_token: APXcIoTpKMH9OQN....
                     token_type: Bearer
                     expires_in: 900
                 refreshTokenRes:
-                  summary: Token API - refresh_token
+                  summary: Token Api - Refresh_token
                   value:
                     access_token: eyJraWQiOiI1MWY3MjM0Ny0wYWY5LTRhZ.....
                     token_type: Bearer

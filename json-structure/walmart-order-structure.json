@@ -1,0 +1,55 @@
+{
+  "title": "Walmart Order Structure",
+  "description": "Documentation of Walmart Marketplace order data structure.",
+  "type": "object",
+  "fields": [
+    { "name": "purchaseOrderId", "type": "string", "description": "Walmart purchase order identifier", "required": true },
+    { "name": "customerOrderId", "type": "string", "description": "Customer-facing order number", "required": true },
+    { "name": "customerEmailId", "type": "string", "description": "Customer email (relay anonymized)" },
+    { "name": "orderDate", "type": "integer", "description": "Order creation time (Unix ms)", "required": true },
+    {
+      "name": "shippingInfo",
+      "type": "object",
+      "description": "Shipping and delivery information",
+      "fields": [
+        { "name": "phone", "type": "string", "description": "Customer phone number" },
+        { "name": "estimatedDeliveryDate", "type": "integer", "description": "Estimated delivery timestamp" },
+        { "name": "estimatedShipDate", "type": "integer", "description": "Expected ship date timestamp" },
+        { "name": "methodCode", "type": "string", "description": "Shipping method (Value, Standard, TwoDay, NextDay)" },
+        {
+          "name": "postalAddress",
+          "type": "object",
+          "description": "Shipping destination address",
+          "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "address1", "type": "string" },
+            { "name": "city", "type": "string" },
+            { "name": "state", "type": "string" },
+            { "name": "postalCode", "type": "string" },
+            { "name": "country", "type": "string" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "orderLines",
+      "type": "object",
+      "description": "Ordered items",
+      "fields": [
+        {
+          "name": "orderLine",
+          "type": "array",
+          "description": "List of order line items",
+          "itemType": "object",
+          "fields": [
+            { "name": "lineNumber", "type": "string" },
+            { "name": "item.productName", "type": "string", "description": "Product display name" },
+            { "name": "item.sku", "type": "string", "description": "Seller SKU" },
+            { "name": "orderLineQuantity.amount", "type": "string", "description": "Quantity ordered" },
+            { "name": "status", "type": "string", "description": "Line item status (Created, Acknowledged, Shipped, etc.)" }
+          ]
+        }
+      ]
+    }
+  ]
+}

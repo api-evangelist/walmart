@@ -21,7 +21,7 @@ paths:
     put:
       tags:
         - Reviews
-      summary: Walmart Bulk update item status
+      summary: Walmart Bulk Update Item Status
       description: To enroll a product in/out of the Reviews acceleration post-purchase program.
       externalDocs:
         description: View Guide
@@ -239,7 +239,7 @@ paths:
     post:
       tags:
         - Reviews
-      summary: Walmart Get RAP post-purchase items
+      summary: Walmart Get Rap Post-purchase Items
       description: " To get all eligible products that can be enrolled into the Reviews accelerator post-purchase program. To get all products that are currently enrolled into the program. To get all products that have attained target reviews after enrolment into the program. Products can be filtered by category and price. Products can be sorted by Walmart-recommended item priorities. Searched using wildcards matching the product name and SKU.\n"
       externalDocs:
         description: View Guide
@@ -617,7 +617,7 @@ paths:
     post:
       tags:
         - Reviews
-      summary: Walmart Get categories
+      summary: Walmart Get Categories
       description: To get the set of categories the RAP post-purchase items belong to.
       externalDocs:
         description: View Guide

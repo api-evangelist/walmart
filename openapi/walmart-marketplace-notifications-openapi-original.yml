@@ -132,7 +132,7 @@ paths:
     get:
       tags:
         - Notifications
-      summary: 'Walmart All subscriptions'
+      summary: Walmart All Subscriptions
       description: This API is used to retrieve the details of all subscriptions created using "create subscription" API.
       operationId: getAllSubscriptions
       parameters:
@@ -353,7 +353,7 @@ paths:
     post:
       tags:
         - Notifications
-      summary: Walmart Create subscription
+      summary: Walmart Create Subscription
       description: |-
         This API is used to create subscription for notification of an event by selecting an event type, event version, resource name, and providing event URL. One or more than one events can be subscribed for notifications in one subscription request.
 

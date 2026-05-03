@@ -14,7 +14,7 @@ paths:
     post:
       tags:
         - Ship with Walmart
-      summary: Walmart Create label
+      summary: Walmart Create Label
       description: "This API generates shipping labels with the shipment info passed. The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.\nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type, \n'Accept'='application/json,image/png' as image png media type and 'Accept'='application/json' as json response. Refer request sample4 for India(IN) to United-States(US) shipping"
       operationId: createLabel
       parameters:
@@ -1893,7 +1893,7 @@ paths:
     post:
       tags:
         - Ship with Walmart
-      summary: Walmart Shipping estimates
+      summary: Walmart Shipping Estimates
       description: This API retrieves shipping cost estimates for available shipping services based on address and package (e.g., customer address, packaged weight.)
       operationId: getShippingEstimate
       parameters:
@@ -2908,7 +2908,7 @@ paths:
     get:
       tags:
         - Ship with Walmart
-      summary: Walmart Labels detail by purchase order id
+      summary: Walmart Labels Detail by Purchase Order Id
       description: This API retrieves all label details generated for a purchase order id.
       operationId: getLabel
       parameters:
@@ -3492,7 +3492,7 @@ paths:
     get:
       tags:
         - Ship with Walmart
-      summary: Walmart Supported carriers
+      summary: Walmart Supported Carriers
       description: This API retrieves all carriers supported by Ship With Walmart.
       operationId: getCarriers
       parameters:
@@ -3603,7 +3603,7 @@ paths:
     get:
       tags:
         - Ship with Walmart
-      summary: Walmart Download label
+      summary: Walmart Download Label
       description: |-
         This API retrieves label for a carrier & tracking number combination.The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.
         For eg. 'Accept'='application/json,application/pdf' will result in pdf media type and
@@ -3671,7 +3671,7 @@ paths:
     delete:
       tags:
         - Ship with Walmart
-      summary: Walmart Discard label
+      summary: Walmart Discard Label
       description: This API marks a generated label as discarded.
       operationId: discardLabel
       parameters:
@@ -3840,7 +3840,7 @@ paths:
     get:
       tags:
         - Ship with Walmart
-      summary: Walmart Supported carrier package types
+      summary: Walmart Supported Carrier Package Types
       description: This API retrieves all supported package types for the selected carrier.
       operationId: getCarrierPackageTypes
       parameters:

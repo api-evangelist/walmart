@@ -1316,7 +1316,7 @@ paths:
     get:
       tags:
         - On-Request Report
-      summary: Walmart Download Report URL
+      summary: Walmart Download Report Url
       description: Fetches URL to download a generated report.
       externalDocs:
         description: View Guide

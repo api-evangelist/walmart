@@ -1,22 +1,35 @@
-# Walmart (walmart)
-Walmart is a multinational retail corporation that operates a chain of hypermarkets, discount department stores, and grocery stores. The company is known for offering a wide range of products at competitive prices, attracting customers from all walks of life. Walmart also provides various convenience services, such as pharmacy, optical, and financial services, making it a one-stop shop for many consumers. Additionally, Walmart has a strong presence in e-commerce, offering online shopping and home delivery options. Overall, Walmart strives to provide affordable, convenient, and quality products to its customers around the world.
+# Walmart
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-search/commerce/main/_apis/walmart/apis.md)
+Walmart is a multinational retail corporation that operates a chain of hypermarkets, discount department stores, and grocery stores. The Walmart Marketplace APIs enable third-party sellers to list and sell products, manage orders, inventory, pricing, fulfillment, and reporting on Walmart.com. The platform provides comprehensive APIs for marketplace sellers, dropship vendors, and fulfillment service providers.
 
-## Scope
+- **Developer Portal:** [https://developer.walmart.com/](https://developer.walmart.com/)
+- **Documentation:** [https://developer.walmart.com/home/us-mp/](https://developer.walmart.com/home/us-mp/)
+- **Sandbox:** [https://developer.walmart.com/doc/sandbox/](https://developer.walmart.com/doc/sandbox/)
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+## Artifacts
 
-## Tags:
+### Spectral Rules
+- [walmart-rules.yml](rules/walmart-rules.yml) — Spectral ruleset enforcing Walmart API conventions
 
- - Commerce, Retail
+### Naftiko Capabilities
 
-## Timestamps
+#### Shared Per-API Definitions
+- [capabilities/shared/marketplace-orders.yaml](capabilities/shared/marketplace-orders.yaml) — Orders API
+- [capabilities/shared/marketplace-inventory.yaml](capabilities/shared/marketplace-inventory.yaml) — Inventory API
+- [capabilities/shared/marketplace-items.yaml](capabilities/shared/marketplace-items.yaml) — Items/Catalog API
 
-- **Created:** 2023/11/15 
-- **Modified:** 2025-01-04 
+#### Workflow Capabilities
+- [capabilities/marketplace-seller-operations.yaml](capabilities/marketplace-seller-operations.yaml) — Unified seller operations: orders, inventory, catalog (7 tools)
+
+### JSON Schemas
+- [json-schema/walmart-order-schema.json](json-schema/walmart-order-schema.json) — Order schema
+- [json-schema/walmart-inventory-schema.json](json-schema/walmart-inventory-schema.json) — Inventory schema
+
+### JSON-LD Contexts
+- [json-ld/walmart-context.jsonld](json-ld/walmart-context.jsonld) — JSON-LD context (schema.org aligned)
+
+### Vocabulary
+- [vocabulary/walmart-vocabulary.yml](vocabulary/walmart-vocabulary.yml) — Walmart Marketplace vocabulary
 
 ## APIs
 
@@ -466,7 +479,5 @@ The Utility APIs allow you to search for all Walmart item departments, all categ
 
 ## Maintainers
 
-**FN:** API Evangelist
-
-**Email:** info@apievangelist.com
+**Kin Lane** — [kin@apievangelist.com](mailto:kin@apievangelist.com)
 

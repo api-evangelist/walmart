@@ -17,7 +17,7 @@ paths:
       tags:
         - DSV Cost
       operationId: postCreateAnAccessToken
-      summary: Walmart Update cost for items in bulk
+      summary: Walmart Update Cost for Items in Bulk
       description: |
         <p style="color:red; font-size:larger">POST <walmartAuthServerUrl>/v3/feeds</p>
 

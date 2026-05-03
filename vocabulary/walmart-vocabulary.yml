@@ -1,0 +1,141 @@
+vocabulary:
+  name: Walmart Marketplace API Vocabulary
+  description: >-
+    Core vocabulary and taxonomy for the Walmart Marketplace API platform,
+    covering order management, inventory, items, pricing, fulfillment,
+    and seller operations.
+  version: "1.0.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+terms:
+  # Order Statuses
+  - term: Created
+    label: Created
+    category: Order Status
+    description: Order has been placed by the customer and is awaiting seller acknowledgment.
+
+  - term: Acknowledged
+    label: Acknowledged
+    category: Order Status
+    description: Seller has acknowledged the order and committed to fulfillment.
+
+  - term: Shipped
+    label: Shipped
+    category: Order Status
+    description: Order has been shipped and tracking information provided.
+
+  - term: Delivered
+    label: Delivered
+    category: Order Status
+    description: Order has been delivered to the customer.
+
+  - term: Cancelled
+    label: Cancelled
+    category: Order Status
+    description: Order has been cancelled by the seller or customer.
+
+  # Shipping Methods
+  - term: Value
+    label: Value Shipping
+    category: Shipping Method
+    description: Economy shipping method with longer estimated delivery time.
+
+  - term: Standard
+    label: Standard Shipping
+    category: Shipping Method
+    description: Standard shipping with typical 3-5 day delivery.
+
+  - term: TwoDay
+    label: Two-Day Shipping
+    category: Shipping Method
+    description: Expedited 2-day delivery fulfillment requirement.
+
+  - term: NextDay
+    label: Next-Day Shipping
+    category: Shipping Method
+    description: Overnight express delivery service.
+
+  # Fulfillment Models
+  - term: S2H
+    label: Seller Fulfilled (Ship to Home)
+    category: Fulfillment Type
+    description: Seller ships items directly from their own warehouse to the customer.
+
+  - term: WFS
+    label: Walmart Fulfillment Services
+    category: Fulfillment Type
+    description: >-
+      Walmart stores and ships items on behalf of the seller through its
+      nationwide fulfillment network.
+
+  # Feed Types
+  - term: MP_ITEM
+    label: Marketplace Item Feed
+    category: Feed Type
+    description: Bulk feed for creating or updating item listings on Walmart.com.
+
+  - term: MP_INVENTORY
+    label: Inventory Feed
+    category: Feed Type
+    description: Bulk feed for updating inventory quantities across all items.
+
+  - term: MP_PRICE
+    label: Price Feed
+    category: Feed Type
+    description: Bulk feed for updating item prices on Walmart.com.
+
+  # API Authentication
+  - term: WM_SEC.ACCESS_TOKEN
+    label: Walmart Access Token Header
+    category: Authentication
+    description: >-
+      Required header for all Walmart Marketplace API requests, containing
+      the OAuth 2.0 access token obtained from the Token API.
+
+  - term: WM_QOS.CORRELATION_ID
+    label: Correlation ID Header
+    category: API Convention
+    description: >-
+      Required unique request identifier used for tracing and debugging.
+      Should be a randomly generated GUID for each request.
+
+  - term: WM_SVC.NAME
+    label: Service Name Header
+    category: API Convention
+    description: Header identifying the Walmart service being called.
+
+  # Item Taxonomy
+  - term: EACH
+    label: Each
+    category: Unit of Measurement
+    description: Standard unit of measurement for individual product quantities.
+
+  # Address Types
+  - term: RESIDENTIAL
+    label: Residential
+    category: Address Type
+    description: Delivery address for a residential location.
+
+  - term: OFFICE
+    label: Office
+    category: Address Type
+    description: Delivery address for a business or office location.
+
+categories:
+  - name: Order Status
+    description: Lifecycle states for Walmart Marketplace orders
+  - name: Shipping Method
+    description: Available shipping speed and delivery options
+  - name: Fulfillment Type
+    description: Models for fulfilling customer orders
+  - name: Feed Type
+    description: Bulk operation feed type classifications
+  - name: Authentication
+    description: Authentication and authorization mechanisms
+  - name: API Convention
+    description: Required headers and API usage conventions
+  - name: Unit of Measurement
+    description: Units used for inventory and quantity tracking
+  - name: Address Type
+    description: Classifications for delivery address types

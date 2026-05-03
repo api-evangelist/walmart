@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "walmart": "https://developer.walmart.com/api/#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Order": "schema:Order",
+    "OrderItem": "schema:OrderItem",
+    "Product": "schema:Product",
+    "Offer": "schema:Offer",
+    "PostalAddress": "schema:PostalAddress",
+    "ParcelDelivery": "schema:ParcelDelivery",
+
+    "purchaseOrderId": {
+      "@id": "walmart:purchaseOrderId",
+      "@type": "xsd:string"
+    },
+    "customerOrderId": {
+      "@id": "walmart:customerOrderId",
+      "@type": "xsd:string"
+    },
+    "orderDate": {
+      "@id": "schema:orderDate",
+      "@type": "xsd:dateTime"
+    },
+    "sku": {
+      "@id": "walmart:sku",
+      "@type": "xsd:string"
+    },
+    "productName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "lineNumber": {
+      "@id": "walmart:lineNumber",
+      "@type": "xsd:string"
+    },
+    "orderStatus": {
+      "@id": "schema:orderStatus",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "schema:orderQuantity",
+      "@type": "xsd:integer"
+    },
+    "price": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "currency": {
+      "@id": "schema:priceCurrency",
+      "@type": "xsd:string"
+    },
+    "methodCode": {
+      "@id": "schema:deliveryMethod",
+      "@type": "xsd:string"
+    },
+    "estimatedDeliveryDate": {
+      "@id": "schema:expectedArrivalFrom",
+      "@type": "xsd:dateTime"
+    },
+    "postalCode": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "address1": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    }
+  }
+}

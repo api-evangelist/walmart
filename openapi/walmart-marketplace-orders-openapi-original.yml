@@ -14770,7 +14770,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Walmart All orders
+      summary: Walmart All Orders
       description: |-
         Retrieves the details of all the orders for specified search criteria.
 
@@ -19819,7 +19819,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Walmart An order
+      summary: Walmart an Order
       description: Retrieves an order detail for a specific purchaseOrderId
       operationId: getAnOrder
       parameters:
@@ -23587,7 +23587,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Walmart All released orders
+      summary: Walmart All Released Orders
       description: |-
         Retrieves all the orders with line items that are in the "created" status, that is, these orders have been released from the Walmart Order Management System to the seller for processing. The released orders are the orders that are ready for a seller to fulfill.
 

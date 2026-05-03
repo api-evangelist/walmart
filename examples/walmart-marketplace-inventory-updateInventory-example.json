@@ -1,0 +1,34 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "https://marketplace.walmartapis.com/v3/inventory",
+    "headers": {
+      "WM_SEC.ACCESS_TOKEN": "YOUR_ACCESS_TOKEN",
+      "WM_CONSUMER.CHANNEL.TYPE": "your-channel-type-id",
+      "WM_QOS.CORRELATION_ID": "c4372e3e-139b-5fg8-9713-744d34311bg7",
+      "WM_SVC.NAME": "Walmart Marketplace",
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "params": {
+      "sku": "EXAMPLE-SKU-001"
+    },
+    "body": {
+      "sku": "EXAMPLE-SKU-001",
+      "quantity": {
+        "unit": "EACH",
+        "amount": 150
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "sku": "EXAMPLE-SKU-001",
+      "quantity": {
+        "unit": "EACH",
+        "amount": 150
+      }
+    }
+  }
+}

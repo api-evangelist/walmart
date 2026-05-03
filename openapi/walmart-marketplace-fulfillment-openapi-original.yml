@@ -14,7 +14,7 @@ paths:
     put:
       tags:
         - Fulfillment
-      summary: 'Walmart Update Shipment Quantities'
+      summary: Walmart Update Shipment Quantities
       description: "Seller can modify the shipment quantity before the Shipment arrives at the WFS FCs. Seller cannot modify the shipment quantity when Shipment Status = Receiving in Progress, Closed, and Cancelled. \n Seller will need to provide new quantities for each SKU to update. Seller will only be able to add up to 6 units per SKU but can reduce to 0 units to remove any SKU from a shipment. Seller cannot change all SKUs’ quantity to 0 – they must cancel the entire Inbound Order. "
       externalDocs:
         description: View Guide
@@ -200,7 +200,7 @@ paths:
     post:
       tags:
         - Fulfillment
-      summary: Walmart Hazmat Items On hold
+      summary: Walmart Hazmat Items on Hold
       description: Use this API to see a list of items that are on hold for hazmat compliance review, including items with an In Review, Action Needed, and Prohibited status. Also use this API to review your Action Needed error descriptions and understand how to correct them for further assessment.
       operationId: wercsFeedback
       parameters:
@@ -619,7 +619,7 @@ paths:
     post:
       tags:
         - Fulfillment
-      summary: Walmart Create Inbound Shipment label
+      summary: Walmart Create Inbound Shipment Label
       description: "The purpose of this service is to generate WFS Receiving Labels in various formats for receiving purposes. Please note this is not a carrier label; these labels are required for the FC to identify the Inbound Order and Shipment ID they are receiving against.Receiving labels are customizable: \n1. 3 size and format options are available to choose from through the LabelSize and LabelFormat fields:\n\t - 4 in. x 6 in. (PDF).\n\t - 4 in. x 3 1/3 in. (PDF).\n\t - 4 in. x 6 in. (ZPL).\n2. Provide the type of the label (box or pallet) in the LoadType field and the number of the labels needed in the Count field.\n3. Print the WFS receiving label.\n4. Affix the WFS receiving labels to the boxes/ pallets.\n\nIf none of the above optional inputs are provided, a blank 4 in. x 6 in. PDF format label will be generated. Sellers must work with the warehouse/supplier to provide the required details before sending any Shipments to WFS FCs:\n1. Print the WFS receiving label.\n2. Fill out the FILL OUT section based on the seller’s packing situation. For example, if a seller plans to ship 3 boxes to the WFS fulfillment center, print out 3 labels and fill out BOX 1 of 3, 2 of 3, and 3 of 3 in the FILL OUT section.\n3. Circle one shipment type in the CIRCLE ONE section. For example, if there are different SKUs in the box, circle MIXED SKUS in the CIRCLE ONE section.\n4. Affix the WFS receiving labels to the boxes/ pallets.\n"
       operationId: createInboundShipmentLabelV2
       parameters:
@@ -4217,7 +4217,7 @@ paths:
     post:
       tags:
         - Fulfillment
-      summary: Walmart Convert items for WFS
+      summary: Walmart Convert Items for Wfs
       description: |-
         This API is used for converting existing Marketplace items to be WFS eligible. Once you’ve created a Marketplace item, each item must be converted to WFS by providing additional details that are not required during the item setup process. This item conversion process can be completed by uploading the Convert Spec excel file via Seller Center, or can be completed using the API documented here.
 
@@ -4410,7 +4410,7 @@ paths:
     get:
       tags:
         - Fulfillment
-      summary: Walmart Get WFS Inventory Health Report
+      summary: Walmart Get Wfs Inventory Health Report
       description: Returns all the information associated with Seller's items that are set up on Walmart Fulfillment Services (WFS) platform.
       externalDocs:
         description: View Guide
@@ -4462,7 +4462,7 @@ paths:
     get:
       tags:
         - Fulfillment
-      summary: Walmart Get fulfillment orders status
+      summary: Walmart Get Fulfillment Orders Status
       description: The API provides the list of customer fulfillment orders with corresponding details.
       externalDocs:
         description: View Guide
@@ -4909,7 +4909,7 @@ paths:
     get:
       tags:
         - Fulfillment
-      summary: Walmart Create Inbound Shipment label (deprecated)
+      summary: Walmart Create Inbound Shipment Label (deprecated)
       description: "The purpose of this service is to generate WFS shipping labels in pdf format for receiving purpose. Please note this is not a carrier label; these labels are required for the FC to identify the Inbound Order and Shipment ID they are receiving against. After requesting the shipping label, sellers must work with warehouse/ supplier to follow these steps before sending any Shipments to WFS FCs: \n1. \tPrint the WFS shipping label.\n2. \tFill out the FILL OUT section based on seller’s packing situation. For example, if a seller plans to ship 3 boxes to the WFS fulfillment center, print out 3 labels and fill out BOX 1 of 3, 2 of 3, and 3 of 3 in the FILL OUT section.\n3. \tCircle one shipment type in the CIRCLE ONE section. For example, if there are different SKUs in the box, circle MIXED SKUS in the CIRCLE ONE section.\n4. \tAffix the WFS shipping labels to the boxes/ pallets.\n"
       operationId: createInboundShipmentLabel
       parameters:
@@ -4957,7 +4957,7 @@ paths:
     get:
       tags:
         - Fulfillment
-      summary: Walmart Get Inventory Log for a WFS item
+      summary: Walmart Get Inventory Log for a Wfs Item
       description: Returns activity log for any Seller's item that is stored in Walmart Fulfillment Centers (WFS) platform.
       externalDocs:
         description: View Guide
@@ -5326,7 +5326,7 @@ paths:
     get:
       tags:
         - Fulfillment
-      summary: Walmart Get Inbound Shipment errors
+      summary: Walmart Get Inbound Shipment Errors
       description: "After Sellers request to create an Inbound Order, WFS may return error responses with error codes. Type of errors: \n- \tSKUs not in WFS catalog: Sellers need to make sure all SKUs have already been converted and added to the WFS catalog\n- \tMissing required information; \n- \tInvalid Product ID (incorrect number of digits); \n- \tDuplicated Inbound Order ID: Inbound Order ID has already been used before\n- \tDuplicated Product IDs\nMost of these errors can be prevented with a robust API integration that does not allow the mistakes to be made. Seller should update the request based on the error message and re-submit the request.\nPlease note, once the Inbound Order is created successfully after the re-submission, historical errors under the same Inbound Order ID will be removed and no longer accessible. "
       externalDocs:
         description: View Guide

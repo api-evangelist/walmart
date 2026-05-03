@@ -1769,7 +1769,7 @@ paths:
       tags:
         - Insight
         - Listing Quality
-      summary: Walmart Item count with listing quality issues
+      summary: Walmart Item Count With Listing Quality Issues
       description: Get a list of all item categories that have items with listing quality issues or brands for a seller.
       externalDocs:
         description: View Guide

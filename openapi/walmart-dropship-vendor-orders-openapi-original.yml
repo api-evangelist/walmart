@@ -17,7 +17,7 @@ paths:
       tags:
         - DSV Orders
       operationId: postShipOrderLines
-      summary: Walmart Ship one or more purchase order lines
+      summary: Walmart Ship One or More Purchase Order Lines
       description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/orders/{purchaseOrderId}/shipping</p>\n\nThis request allows consumers to ship one or more purchase order (PO) lines. \n\nFor Site to Store (S2S) orders, package and pallet advance ship notices (ASN) need to be included in the request payload.\n\nChanging the status of order lines to `Shipped` triggers a charge to the customer. \nIn order to avoid underselling, orders must be acknowledged before sending a shipping update. \nOnce an order line is marked as shipped, it cannot be updated.\n\nNote: `shipDateTime` must be in UTC.\n\nThe response to a successful call contains the order with the shipped line item.\n"
       parameters:
         - in: path
@@ -1003,7 +1003,7 @@ paths:
       tags:
         - DSV Orders
       operationId: postCancelOrderLines
-      summary: Walmart Cancel order lines
+      summary: Walmart Cancel Order Lines
       description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/orders/{purchaseOrderId}/cancel</p>\n\nThis request cancels one or more order lines before an order has been fulfilled. \n\nA `purchaseOrderId` must be included to cancel an order line. \nUpdate the inventory after canceling an order.\n\nThe response to a successful call contains the order with the canceled line item.\n\nSupported cancellation reasons include:\n* SUPPLIER_CANCEL_CUSTOMER_REQUEST\n* SUPPLIER_CANCEL_BACKORDER\n* SUPPLIER_CANCEL_DISCONTINUE\n* SUPPLIER_CANCEL_UNRECOGNIZED\n"
       parameters:
         - in: path
@@ -1914,7 +1914,7 @@ paths:
       tags:
         - DSV Orders
       operationId: postAcknowledgeOrders
-      summary: Walmart Acknowledge orders
+      summary: Walmart Acknowledge Orders
       description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/orders/{purchaseOrderId}/acknowledge</p>\n\nThis request allows a drop ship vendor (DSV) to acknowledge an order, including all order lines, preferably within four hours of receipt of the order.\n\nThe response to a successful call contains the acknowledged order. \nAs a good practice, acknowledge orders to avoid underselling.\n\nOnly those orders that are in a `Created` state should be acknowledged. \nOrders that are in an `Acknowledged` state can be re-acknowledged. \nThis is desirable, for example, when resolving an error response from a previous API call. \nOrders with line items that are shipped or canceled should not be re-acknowledged.\n"
       parameters:
         - in: path
@@ -2728,7 +2728,7 @@ paths:
       tags:
         - DSV Orders
       operationId: getAllOrders
-      summary: Walmart Retrieve all orders
+      summary: Walmart Retrieve All Orders
       description: "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/orders</p>\n\nThis request retrieves details of all the orders for specified search criteria.\n\nThe search only retrieves orders created in last 180 days. \nA maximum of 20,000 orders can be fetched at a time. \nAttempting to download more than 20,000 orders will return an error.\n"
       parameters:
         - in: query
@@ -3555,7 +3555,7 @@ paths:
       tags:
         - DSV Orders
       operationId: getAnOrder
-      summary: Walmart Retrieve a single order
+      summary: Walmart Retrieve a Single Order
       description: |
         <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/orders/{purchaseOrderId}</p>
 
@@ -4476,7 +4476,7 @@ paths:
       tags:
         - DSV Orders
       operationId: getAllReleasedOrders
-      summary: Walmart Retrieve all released orders
+      summary: Walmart Retrieve All Released Orders
       description: "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/orders/released</p>\n\nThis request retrieves all the orders with line items in `Created` status.\n\nThese orders have been released from the Walmart Order Management System (OMS) to the supplier for processing. \nReleased orders are ready for supplier fulfillment.\n\nOnly orders created in last 180 days can be fetched, and a maximum of 20,000 orders can be fetched and downloaded at a time. \nAttempting to download more than 20,000 orders will return an error.\n"
       parameters:
         - in: query

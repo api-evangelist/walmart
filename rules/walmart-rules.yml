@@ -1,0 +1,101 @@
+extends: spectral:oas
+rules:
+  walmart-operation-ids-required:
+    description: All operations must have an operationId
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  walmart-operation-summary-title-case:
+    description: Operation summaries must use Title Case
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]*(\\s[A-Za-z0-9]+)*$"
+
+  walmart-operation-tags-required:
+    description: All operations must have at least one tag
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  walmart-required-headers-defined:
+    description: >-
+      Walmart APIs require WM_SEC.ACCESS_TOKEN, WM_QOS.CORRELATION_ID, and
+      WM_SVC.NAME headers on all operations
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].parameters"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            type: object
+            properties:
+              name:
+                enum:
+                  - WM_SEC.ACCESS_TOKEN
+                  - WM_QOS.CORRELATION_ID
+
+  walmart-servers-include-sandbox:
+    description: Walmart APIs should define both production and sandbox server URLs
+    severity: warn
+    given: "$.servers"
+    then:
+      function: length
+      functionOptions:
+        min: 2
+
+  walmart-info-description:
+    description: Info object must have a description
+    severity: error
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+
+  walmart-response-success-defined:
+    description: Operations must define a successful (2xx) response
+    severity: error
+    given: "$.paths[*][*].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["204"]
+
+  walmart-paths-versioned:
+    description: All paths must be versioned with /v3/ prefix for marketplace APIs
+    severity: warn
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^\\/v[0-9]+"
+
+  walmart-json-content-type:
+    description: Request bodies should use application/json content type
+    severity: warn
+    given: "$.paths[*][post,put,patch].requestBody.content"
+    then:
+      field: application/json
+      function: truthy
+
+  walmart-response-schema-reference:
+    description: Successful responses should reference a schema component
+    severity: warn
+    given: "$.paths[*][*].responses['200'].content['application/json']"
+    then:
+      field: schema
+      function: truthy

@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/walmart/blob/main/json-schema/walmart-inventory-schema.json",
+  "title": "Walmart Marketplace Inventory",
+  "description": "Schema for Walmart Marketplace item inventory record.",
+  "type": "object",
+  "properties": {
+    "sku": {
+      "type": "string",
+      "description": "Seller's unique SKU identifier for the item"
+    },
+    "quantity": {
+      "type": "object",
+      "description": "Inventory quantity details",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Unit of measurement",
+          "enum": ["EACH"]
+        },
+        "amount": {
+          "type": "integer",
+          "description": "Inventory quantity",
+          "minimum": 0
+        }
+      },
+      "required": ["unit", "amount"]
+    },
+    "fulfillment": {
+      "type": "object",
+      "description": "Fulfillment center details",
+      "properties": {
+        "fulfillmentType": {
+          "type": "string",
+          "description": "Fulfillment model",
+          "enum": ["S2H", "S2S", "WFS"]
+        },
+        "shipNode": {
+          "type": "object",
+          "properties": {
+            "shipNodeId": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["sku", "quantity"]
+}

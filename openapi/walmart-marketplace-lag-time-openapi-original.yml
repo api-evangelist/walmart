@@ -14,7 +14,7 @@ paths:
     post:
       tags:
         - Lag Time
-      summary: Walmart Update lag time
+      summary: Walmart Update Lag Time
       description: |-
         This API allows the update of lag time for items in bulk.
 

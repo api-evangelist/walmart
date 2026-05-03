@@ -14,7 +14,7 @@ paths:
     post:
       tags:
         - Returns/Refunds
-      summary: Walmart Issue refund
+      summary: Walmart Issue Refund
       description: "This API allows sellers to issue refund against a return order. Multiple return order lines can be refunded in one request.\n\nNote: Sellers can use the Refund Order Lines API for all non-exception category items, including adjustments that seller needs to determine a partial refund amount. Especially for exception category items: HAZMAT, OTHER and FREIGHT that are not eligible for the Marketplace Returns Program. "
       externalDocs:
         description: View Guide

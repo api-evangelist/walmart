@@ -302,7 +302,7 @@ paths:
     put:
       tags:
         - Prices
-      summary: Walmart Assign Incentive items to Repricer
+      summary: Walmart Assign Incentive Items to Repricer
       description: Assigns incentive items to the default price incentives strategy, ‘Match Competitive Price’
       operationId: updateRepricerIncentive
       parameters:
@@ -371,7 +371,7 @@ paths:
     put:
       tags:
         - Prices
-      summary: Walmart Update a price
+      summary: Walmart Update a Price
       description: Updates the regular price for a given item.
       operationId: updatePrice
       parameters:
@@ -699,7 +699,7 @@ paths:
     post:
       tags:
         - Prices
-      summary: Walmart Assign/Unassign items to/from Repricer Strategy
+      summary: Walmart Assign/unassign Items To/from Repricer Strategy
       description: Add/Remove one or more items from a strategy
       operationId: getRepricerFeed
       parameters:
@@ -918,7 +918,7 @@ paths:
     post:
       tags:
         - Prices
-      summary: Walmart Update bulk prices (Multiple)
+      summary: Walmart Update Bulk Prices (multiple)
       description: |-
         Updates prices in bulk.
 
@@ -1084,7 +1084,7 @@ paths:
     post:
       tags:
         - Prices
-      summary: Walmart Set up CAP SKU All
+      summary: Walmart Set up Cap Sku All
       description: |-
         This API helps Sellers to completely opt-in or opt-out from CAP program.
 

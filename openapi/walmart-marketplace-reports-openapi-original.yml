@@ -14,7 +14,7 @@ paths:
     get:
       tags:
         - Reports
-      summary: Walmart Recon report(Legacy)
+      summary: Walmart Recon Report(legacy)
       description: Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API.
       externalDocs:
         description: View Guide
@@ -107,7 +107,7 @@ paths:
     get:
       tags:
         - Reports
-      summary: Walmart Recon Report JSON
+      summary: Walmart Recon Report Json
       description: This API will get a partner’s transaction details in JSON format for a specific date range (available only for v1 reports). Dates for accessing the report can be found by using the ‘GET Available recon report dates’ API.
       externalDocs:
         description: View Guide
@@ -231,7 +231,7 @@ paths:
     get:
       tags:
         - Reports
-      summary: Walmart Recon report
+      summary: Walmart Recon Report
       description: Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API.
       externalDocs:
         description: View Guide
@@ -330,7 +330,7 @@ paths:
     get:
       tags:
         - Reports
-      summary: Walmart Available recon report dates(Legacy)
+      summary: Walmart Available Recon Report Dates(legacy)
       description: This API will list all the available Marketplace reconciliation report dates for the Seller.
       externalDocs:
         description: View Guide
@@ -394,7 +394,7 @@ paths:
     get:
       tags:
         - Reports
-      summary: Walmart Available recon report dates
+      summary: Walmart Available Recon Report Dates
       description: This API will list all the available Marketplace reconciliation report dates for the Seller.
       externalDocs:
         description: View Guide

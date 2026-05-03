@@ -132,7 +132,7 @@ paths:
     put:
       tags:
         - Inventory
-      summary: Walmart Update inventory
+      summary: Walmart Update Inventory
       description: Updates the inventory for a given item.
       operationId: updateInventoryForAnItem
       parameters:
@@ -497,7 +497,7 @@ paths:
     put:
       tags:
         - Inventory
-      summary: Walmart Update Item Inventory per Ship Node
+      summary: Walmart Update Item Inventory Per Ship Node
       description: This API will update the inventory for an item across one or more fulfillment centers, known as ship nodes.
       operationId: updateMultiNodeInventory
       parameters:
@@ -1003,7 +1003,7 @@ paths:
     get:
       tags:
         - Inventory
-      summary: Walmart WFS Inventory
+      summary: Walmart Wfs Inventory
       description: You can use this API to get the current Available to Sell inventory quantities for all WFS items in your catalog. You can also query specific SKUs or filter to only items updated after a specific date in order to reduce the response size.
       operationId: getWFSInventory
       parameters:

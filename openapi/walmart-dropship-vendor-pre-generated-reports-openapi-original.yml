@@ -14,7 +14,7 @@ paths:
       tags:
         - Pre-Generated Reports
       operationId: getGenerateItemReport
-      summary: Walmart Generate an item report
+      summary: Walmart Generate an Item Report
       description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/getReport</p>\n\nThis request generates the item report for drop ship vendors (DSV). \n\nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n"
       parameters:
         - in: query

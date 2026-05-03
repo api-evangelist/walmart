@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/walmart/blob/main/json-schema/walmart-order-schema.json",
+  "title": "Walmart Marketplace Order",
+  "description": "Schema for a Walmart Marketplace seller order.",
+  "type": "object",
+  "properties": {
+    "purchaseOrderId": {
+      "type": "string",
+      "description": "Walmart purchase order identifier"
+    },
+    "customerOrderId": {
+      "type": "string",
+      "description": "Customer-facing order identifier"
+    },
+    "customerEmailId": {
+      "type": "string",
+      "description": "Customer email (may be anonymized relay address)"
+    },
+    "orderDate": {
+      "type": "integer",
+      "description": "Order creation date as Unix timestamp in milliseconds"
+    },
+    "shippingInfo": {
+      "type": "object",
+      "properties": {
+        "phone": { "type": "string" },
+        "estimatedDeliveryDate": { "type": "integer" },
+        "estimatedShipDate": { "type": "integer" },
+        "methodCode": { "type": "string", "enum": ["Value", "Standard", "TwoDay", "NextDay"] },
+        "postalAddress": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "address1": { "type": "string" },
+            "address2": { "type": "string" },
+            "city": { "type": "string" },
+            "state": { "type": "string" },
+            "postalCode": { "type": "string" },
+            "country": { "type": "string" },
+            "addressType": { "type": "string", "enum": ["RESIDENTIAL", "OFFICE"] }
+          }
+        }
+      }
+    },
+    "orderLines": {
+      "type": "object",
+      "properties": {
+        "orderLine": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lineNumber": { "type": "string" },
+              "item": {
+                "type": "object",
+                "properties": {
+                  "productName": { "type": "string" },
+                  "sku": { "type": "string" }
+                }
+              },
+              "orderLineQuantity": {
+                "type": "object",
+                "properties": {
+                  "unitOfMeasurement": { "type": "string" },
+                  "amount": { "type": "string" }
+                }
+              },
+              "orderLineStatuses": {
+                "type": "object",
+                "properties": {
+                  "orderLineStatus": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "status": { "type": "string", "enum": ["Created", "Acknowledged", "Shipped", "Delivered", "Cancelled"] }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["purchaseOrderId", "customerOrderId", "orderDate"]
+}

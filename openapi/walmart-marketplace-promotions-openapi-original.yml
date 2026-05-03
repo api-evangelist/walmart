@@ -14,7 +14,7 @@ paths:
     put:
       tags:
         - Promotions
-      summary: Walmart Update a promotional price
+      summary: Walmart Update a Promotional Price
       description: |-
         Updates the promotional price.
 
@@ -366,7 +366,7 @@ paths:
     post:
       tags:
         - Promotions
-      summary: Walmart Updates bulk promotional prices
+      summary: Walmart Updates Bulk Promotional Prices
       description: Updates or creates promotional prices for multiple specified SKUs
       operationId: updateBulkPromotionalPrice
       parameters:
@@ -447,7 +447,7 @@ paths:
     get:
       tags:
         - Promotions
-      summary: Walmart Promotional prices
+      summary: Walmart Promotional Prices
       description: " Retrieves a list of promotional prices for a single SKU."
       operationId: getPromotionalPrices
       parameters:

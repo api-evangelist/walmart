@@ -14,7 +14,7 @@ paths:
     get:
       tags:
         - Utilities
-      summary: Walmart Taxonomy by spec
+      summary: Walmart Taxonomy by Spec
       description: |-
         The Taxonomy by Item spec API exposes the category taxonomy that Walmart.com uses to categorize items for each Item spec version. It returns a list of all Categories and Sub-categories that are available on Walmart.com for the Item spec version you specify.
         You can specify the feedType and version for these available Item specs. Make sure to specify the corresponding version that is available for that feed type:
@@ -330,7 +330,7 @@ paths:
     get:
       tags:
         - Utilities
-      summary: Walmart API Platform Status
+      summary: Walmart Api Platform Status
       description: Get all marketplace Apis status
       operationId: getApiPlatformStatus
       parameters:

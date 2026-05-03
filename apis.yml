@@ -763,13 +763,28 @@ common:
       numberOfAPIParameters: 0
       numberOfAPISchema: 0
 created: 2023/11/15
-modified: '2025-01-04'
+modified: '2026-05-03'
 description: >-
   Walmart is a multinational retail corporation that operates a chain of hypermarkets,
   discount department stores, and grocery stores. The company is known for offering
   a wide range of products at competitive prices, attracting customers from all walks
   of life. Walmart also provides various convenience services, such as pharmacy, optical,
   and financial services, making it a one-stop shop for many consumers.
+  The Walmart Marketplace APIs enable third-party sellers to list and sell products,
+  manage orders, inventory, pricing, fulfillment, and reporting on Walmart.com.
+artifacts:
+  - url: rules/walmart-rules.yml
+    type: SpectralRules
+  - url: capabilities/marketplace-seller-operations.yaml
+    type: NaftikoCapabilities
+  - url: json-schema/walmart-order-schema.json
+    type: JSONSchema
+  - url: json-schema/walmart-inventory-schema.json
+    type: JSONSchema
+  - url: json-ld/walmart-context.jsonld
+    type: JSONLDContext
+  - url: vocabulary/walmart-vocabulary.yml
+    type: Vocabulary
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -14,7 +14,7 @@ paths:
       tags:
         - Items
       operationId: itemBulkUploads
-      summary: Walmart Maintain items in bulk
+      summary: Walmart Maintain Items in Bulk
       description: "<a id=\"Post_Bulk_Item_Upload\" style=\"color:red; font-size:larger\">POST <baseUrl>/v3/feeds</a>\n\nThis feed request sets up and maintains items in bulk. \n\nUse the relevant feed file type and review the feed file structure overview provided in the <a href=\"https://developer.walmart.com/doc/us/us-supplier/us-supplier-items/\" target=\"_blank\">Items Guide</a>. \n\nOnce the feed file is built, pass the attached file using the **Supplier Feed** request. Select the relevant product type, category, or supply chain item type as part of the submission process. For example, if setting up a Blu-ray disc&trade;, use the **Movies** product type to define all of the required attributes.\n\nThis is an asynhronous (async) request, or a web service where users can carry out multiple requests simultaneously. Receiving a success response does not mean the feed file is processed successfully. Continue to track the status of the feed file by its `feedId` received from the **Feed Status** request.\n"
       parameters:
         - name: feedType
@@ -1306,7 +1306,7 @@ paths:
       tags:
         - Items
       operationId: updateRichMediaOfItem
-      summary: Walmart Add rich media
+      summary: Walmart Add Rich Media
       description: "<a id=\"Post_Rich_Media\" style=\"color:red; font-size:larger\">POST <baseUrl>/v2/feeds</a>\n\nThis request adds rich media, or material such as videos, comparison tables, and item-specific view 360 media, to an item. \n\nExtract the XSDs for the Rich Media API at the following link:\n\n<a href=\"https://developer.walmart.com/image/asdp/us/cp/Rich_Media_XSDs.zip\">Rich Media API XSDs</a>\n\nRich media can be uploaded only as an update for an item which has already been ingested. \n\nNew item uploads containing rich media will cause that item ingestion to fail. To upload rich media, the user must wait for the item ingestion process to complete successfully, then make a POST call with the rich media content for ingested items.\n"
       parameters:
         - name: feedType
@@ -1629,7 +1629,7 @@ paths:
       tags:
         - Items
       operationId: getAllItems
-      summary: Walmart Retrieve all items
+      summary: Walmart Retrieve All Items
       description: "<a id=\"Get_All_Items\" style=\"color:red; font-size:larger\">GET <baseUrl>/v3/items</a>\n\nThis request displays a list of all items. \n\nIf the complete number of items exceeds the limit of items returned in a single request, the full list can be retrieved by subsequent requests using the `nextCursor` pagination mechanism.  \n\nIf a stock keeping unit (SKU) is included in the request as a query parameter, the response will only return the SKU in redefined format.\n"
       parameters:
         - name: nextCursor
@@ -2094,7 +2094,7 @@ paths:
       tags:
         - Items
       operationId: getAnItemV4
-      summary: Walmart Retrieve a single item (v4)
+      summary: Walmart Retrieve a Single Item (v4)
       description: "<a id=\"Get_An_Item_v4\" style=\"color:red; font-size:larger\">GET <baseUrl>/v4/items/{productId}</a>\n\nThis request retrieves one item.\n\n## Example 1\nThis request retrieves one item with the product ID of GTIN-14 *00012345678905*. \nThe additional properties are not being requested, and the product ID is in the default GTIN-14 format.<br><br>\nGET `https://api-gateway.walmart.com/v4/items/00012345678905`<br>\n\n## Example 2\nThis request retrieves one item with the product ID of SKU *XYZ12348*. \nThe additional properties are being requested, and the product ID is in the SKU format that is being used.<br><br>\nGET `https://api-gateway.walmart.com/v4/items/XYZ12348?productIdType=SKU&includeFullItemDetails=YES`\n"
       parameters:
         - name: productId
@@ -4438,7 +4438,7 @@ paths:
       tags:
         - Items
       operationId: getAnItem
-      summary: Walmart Retrieve a single item (v3)
+      summary: Walmart Retrieve a Single Item (v3)
       description: |
         <a id="Get_An_Item_v3" style="color:red; font-size:larger">GET <baseUrl>/v3/items/{sku}</a>
 
@@ -4767,7 +4767,7 @@ paths:
       tags:
         - Items
       operationId: getTaxonomyResponse
-      summary: Walmart Expose product type taxonomy
+      summary: Walmart Expose Product Type Taxonomy
       description: "<a id=\"Get_Taxonomy\" style=\"color:red; font-size:larger\">GET <baseUrl>/v3/items/taxonomy</a>\n\nThis request exposes the product type (PT) taxonomy that Walmart uses to classify items. \n\nThe GET Taxonomy API call provides the user with all product types (PTs) in their respective product type groups (PTGs). \n\nThe product type groups (PTGs) are then organized into categories. \n\nJSON is the only format supported for the **Expose product type taxonomy** request (GET `/v3/items/taxonomy`).\n"
       parameters:
         - name: version

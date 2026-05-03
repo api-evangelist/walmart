@@ -14,7 +14,7 @@ paths:
       tags:
         - Inventory
       operationId: getInventory
-      summary: Walmart Retrieve inventory count for a single item at one ship node
+      summary: Walmart Retrieve Inventory Count for a Single Item at One Ship Node
       description: |
         <p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/inventory</p>
 
@@ -155,7 +155,7 @@ paths:
       tags:
         - Inventory
       operationId: putUpdateInventory
-      summary: Walmart Update inventory count for a single item
+      summary: Walmart Update Inventory Count for a Single Item
       description: |
         <p style="color:red; font-size:larger">PUT <walmartAuthServerUrl>/v3/inventory</p>
 
@@ -336,7 +336,7 @@ paths:
       tags:
         - Inventory
       operationId: postBulkUpdateInventory
-      summary: Walmart Update inventory count for items in bulk
+      summary: Walmart Update Inventory Count for Items in Bulk
       description: |
         <p style="color:red; font-size:larger">POST <walmartAuthServerUrl>/v3/feeds</p>
 
@@ -552,7 +552,7 @@ paths:
       tags:
         - Inventory
       operationId: getSingleItemInventory
-      summary: Walmart Retrieve inventory count for a single item at specific ship nodes
+      summary: Walmart Retrieve Inventory Count for a Single Item at Specific Ship Nodes
       description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/inventories/{id}</p>\n\nThis request retrieves the inventory count for an item across multiple ship nodes or for one specific ship node. \n\nUsers can specify the ship node(s) for which they want to fetch the inventory.\n"
       parameters:
         - in: path

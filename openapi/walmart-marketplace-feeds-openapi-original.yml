@@ -14,7 +14,7 @@ paths:
     get:
       tags:
         - Feeds
-      summary: "Walmart All feed statuses"
+      summary: Walmart All Feed Statuses
       description: Returns the feed statuses for all the specified Feed IDs.
       operationId: getAllFeedStatuses
       parameters:
@@ -2084,7 +2084,7 @@ paths:
     get:
       tags:
         - Feeds
-      summary: Walmart Feed item status
+      summary: Walmart Feed Item Status
       description: Returns the feed and item status for a specified Feed ID.
       operationId: getFeedItemStatus
       parameters:
