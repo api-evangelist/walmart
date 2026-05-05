@@ -1,0 +1,25 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Walmart
+providerId: walmart
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Retail / Marketplace
+  - Enterprise
+description: Walmart API rate limits are negotiated per contract; no public defaults published.
+sources:
+  - https://developer.walmart.com/
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Per-contract
+    scope: account
+    metric: varies
+    limit: negotiated
+    notes: Contact provider sales for quota details.

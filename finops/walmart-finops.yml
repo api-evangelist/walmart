@@ -1,0 +1,54 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Walmart
+providerId: walmart
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Retail / Marketplace
+description: FOCUS-aligned FinOps for Walmart.
+sources:
+  - https://developer.walmart.com/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Walmart
+serviceCategory: Retail / Marketplace
+billingModel:
+  pricingCategory: Custom B2B Contract
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Walmart
+  ServiceCategory: Retail / Marketplace
+  ProviderName: Walmart
+  PublisherName: Walmart
+  BillingCurrency: USD
+meters:
+  - name: transactions
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - product
+  - name: api_calls
+    unit: call
+    aggregation: sum
+  - name: annual_contract
+    unit: year
+    aggregation: max
+principles:
+  - name: Visibility
+    description: Track Walmart consumption monthly.
+  - name: Allocation
+    description: Tag usage to teams/cost centers for chargeback.
+  - name: Optimization
+    description: Right-size; reclaim unused entitlements.
+  - name: Accountability
+    description: Set spend alerts; quarterly review.
