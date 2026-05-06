@@ -1,193 +1,435 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Walmart Marketplace Seller Operations"
-  description: >-
-    Unified workflow for Walmart Marketplace seller operations combining order
-    management, inventory tracking, and item catalog management. Enables sellers
-    to monitor and fulfill orders, manage stock levels, and maintain product
+  label: Walmart Marketplace Seller Operations
+  description: Unified workflow for Walmart Marketplace seller operations combining order management, inventory tracking,
+    and item catalog management. Enables sellers to monitor and fulfill orders, manage stock levels, and maintain product
     listings across the Walmart.com marketplace.
   tags:
-    - Walmart
-    - Marketplace
-    - Orders
-    - Inventory
-    - Catalog
-    - Seller Operations
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Walmart
+  - Marketplace
+  - Orders
+  - Inventory
+  - Catalog
+  - Seller Operations
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      WALMART_ACCESS_TOKEN: WALMART_ACCESS_TOKEN
-      WALMART_CONSUMER_CHANNEL_TYPE: WALMART_CONSUMER_CHANNEL_TYPE
-
+- namespace: env
+  keys:
+    WALMART_ACCESS_TOKEN: WALMART_ACCESS_TOKEN
+    WALMART_CONSUMER_CHANNEL_TYPE: WALMART_CONSUMER_CHANNEL_TYPE
 capability:
   consumes:
-    - import: walmart-orders
-      location: ./shared/marketplace-orders.yaml
-    - import: walmart-inventory
-      location: ./shared/marketplace-inventory.yaml
-    - import: walmart-items
-      location: ./shared/marketplace-items.yaml
-
+  - type: http
+    namespace: walmart-orders
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Marketplace Orders API
+    authentication:
+      type: bearer
+      token: '{{WALMART_ACCESS_TOKEN}}'
+    resources:
+    - name: orders
+      path: /v3/orders
+      description: Order management
+      operations:
+      - name: list-orders
+        method: GET
+        description: List all marketplace orders
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          required: true
+          description: Walmart access token
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          required: true
+          description: Correlation ID for request tracking
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          required: true
+          description: Service name
+        - name: createdStartDate
+          in: query
+          type: string
+          required: false
+          description: Filter orders created after this date
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Number of orders to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-released-orders
+        method: GET
+        description: Get released orders ready for fulfillment
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          required: true
+          description: Walmart access token
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          required: true
+          description: Correlation ID
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          required: true
+          description: Service name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: order-by-id
+      path: /v3/orders/{purchaseOrderId}
+      description: Single order operations
+      operations:
+      - name: get-order
+        method: GET
+        description: Get a specific order by purchase order ID
+        inputParameters:
+        - name: purchaseOrderId
+          in: path
+          type: string
+          required: true
+          description: Purchase order ID
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          required: true
+          description: Walmart access token
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          required: true
+          description: Correlation ID
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          required: true
+          description: Service name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: walmart-inventory
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Marketplace Inventory API
+    authentication:
+      type: bearer
+      token: '{{WALMART_ACCESS_TOKEN}}'
+    resources:
+    - name: inventory
+      path: /v3/inventory
+      description: Item inventory management
+      operations:
+      - name: get-inventory
+        method: GET
+        description: Get inventory count for a single item
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          required: true
+          description: Seller SKU identifier
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          required: true
+          description: Walmart access token
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          required: true
+          description: Correlation ID
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          required: true
+          description: Service name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-inventory
+        method: PUT
+        description: Update inventory count for a single item
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          required: true
+          description: Seller SKU identifier
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          required: true
+          description: Walmart access token
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          required: true
+          description: Correlation ID
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          required: true
+          description: Service name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            sku: '{{tools.sku}}'
+            quantity:
+              unit: EACH
+              amount: '{{tools.amount}}'
+  - type: http
+    namespace: walmart-items
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Marketplace Items API
+    authentication:
+      type: bearer
+      token: '{{WALMART_ACCESS_TOKEN}}'
+    resources:
+    - name: items
+      path: /v3/items
+      description: Item catalog management
+      operations:
+      - name: list-items
+        method: GET
+        description: Get all items in the catalog
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          required: true
+          description: Walmart access token
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          required: true
+          description: Correlation ID
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          required: true
+          description: Service name
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page
+        - name: nextCursor
+          in: query
+          type: string
+          required: false
+          description: Cursor for next page of results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: item-search
+      path: /v3/items/walmart/search
+      description: Walmart catalog search
+      operations:
+      - name: search-catalog
+        method: GET
+        description: Search the Walmart catalog
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+          description: Search query
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          required: true
+          description: Walmart access token
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          required: true
+          description: Correlation ID
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          required: true
+          description: Service name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: walmart-seller-api
-      description: "Unified REST API for Walmart Marketplace seller operations."
-      resources:
-        - path: /v1/orders
-          name: orders
-          description: Customer order management
-          operations:
-            - method: GET
-              name: list-orders
-              description: List all marketplace orders
-              call: "walmart-orders.list-orders"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/orders/{purchaseOrderId}
-          name: order
-          description: Single order operations
-          operations:
-            - method: GET
-              name: get-order
-              description: Get a specific order by purchase order ID
-              call: "walmart-orders.get-order"
-              with:
-                purchaseOrderId: "rest.purchaseOrderId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/inventory
-          name: inventory
-          description: Item inventory management
-          operations:
-            - method: GET
-              name: get-inventory
-              description: Get current inventory for an item
-              call: "walmart-inventory.get-inventory"
-              with:
-                sku: "rest.sku"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: PUT
-              name: update-inventory
-              description: Update inventory count for an item
-              call: "walmart-inventory.update-inventory"
-              with:
-                sku: "rest.sku"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/items
-          name: items
-          description: Item catalog management
-          operations:
-            - method: GET
-              name: list-items
-              description: List all catalog items
-              call: "walmart-items.list-items"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/catalog/search
-          name: catalog-search
-          description: Product catalog search
-          operations:
-            - method: GET
-              name: search-catalog
-              description: Search the Walmart product catalog
-              call: "walmart-items.search-catalog"
-              with:
-                query: "rest.query"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: walmart-seller-mcp
-      transport: http
-      description: "MCP server for AI-assisted Walmart Marketplace seller operations."
-      tools:
-        - name: list-orders
-          description: List all Walmart Marketplace seller orders
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "walmart-orders.list-orders"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-order
-          description: Get full details of a specific Walmart order by purchase order ID
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "walmart-orders.get-order"
-          with:
-            purchaseOrderId: "tools.purchaseOrderId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-released-orders
-          description: Get orders released and ready for fulfillment
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "walmart-orders.get-released-orders"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-inventory
-          description: Get current inventory quantity for a Walmart item by SKU
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "walmart-inventory.get-inventory"
-          with:
-            sku: "tools.sku"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-inventory
-          description: Update the inventory quantity for a Walmart Marketplace item
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: true
-          call: "walmart-inventory.update-inventory"
-          with:
-            sku: "tools.sku"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-items
-          description: List all items in the Walmart Marketplace seller catalog
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "walmart-items.list-items"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: search-catalog
-          description: Search the Walmart product catalog by keyword
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "walmart-items.search-catalog"
-          with:
-            query: "tools.query"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: walmart-seller-api
+    description: Unified REST API for Walmart Marketplace seller operations.
+    resources:
+    - path: /v1/orders
+      name: orders
+      description: Customer order management
+      operations:
+      - method: GET
+        name: list-orders
+        description: List all marketplace orders
+        call: walmart-orders.list-orders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{purchaseOrderId}
+      name: order
+      description: Single order operations
+      operations:
+      - method: GET
+        name: get-order
+        description: Get a specific order by purchase order ID
+        call: walmart-orders.get-order
+        with:
+          purchaseOrderId: rest.purchaseOrderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inventory
+      name: inventory
+      description: Item inventory management
+      operations:
+      - method: GET
+        name: get-inventory
+        description: Get current inventory for an item
+        call: walmart-inventory.get-inventory
+        with:
+          sku: rest.sku
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update-inventory
+        description: Update inventory count for an item
+        call: walmart-inventory.update-inventory
+        with:
+          sku: rest.sku
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/items
+      name: items
+      description: Item catalog management
+      operations:
+      - method: GET
+        name: list-items
+        description: List all catalog items
+        call: walmart-items.list-items
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/catalog/search
+      name: catalog-search
+      description: Product catalog search
+      operations:
+      - method: GET
+        name: search-catalog
+        description: Search the Walmart product catalog
+        call: walmart-items.search-catalog
+        with:
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: walmart-seller-mcp
+    transport: http
+    description: MCP server for AI-assisted Walmart Marketplace seller operations.
+    tools:
+    - name: list-orders
+      description: List all Walmart Marketplace seller orders
+      hints:
+        readOnly: true
+        openWorld: true
+      call: walmart-orders.list-orders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-order
+      description: Get full details of a specific Walmart order by purchase order ID
+      hints:
+        readOnly: true
+        openWorld: false
+      call: walmart-orders.get-order
+      with:
+        purchaseOrderId: tools.purchaseOrderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-released-orders
+      description: Get orders released and ready for fulfillment
+      hints:
+        readOnly: true
+        openWorld: true
+      call: walmart-orders.get-released-orders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-inventory
+      description: Get current inventory quantity for a Walmart item by SKU
+      hints:
+        readOnly: true
+        openWorld: false
+      call: walmart-inventory.get-inventory
+      with:
+        sku: tools.sku
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-inventory
+      description: Update the inventory quantity for a Walmart Marketplace item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: walmart-inventory.update-inventory
+      with:
+        sku: tools.sku
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-items
+      description: List all items in the Walmart Marketplace seller catalog
+      hints:
+        readOnly: true
+        openWorld: false
+      call: walmart-items.list-items
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-catalog
+      description: Search the Walmart product catalog by keyword
+      hints:
+        readOnly: true
+        openWorld: true
+      call: walmart-items.search-catalog
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
