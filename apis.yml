@@ -680,7 +680,7 @@ common:
   - url: https://developer.walmart.com/
     type: Portal
   - url: https://developer.walmart.com/home/us-mp/
-    type: Docs
+    type: Documentation
   - url: https://developer.walmart.com/doc/sandbox/
     type: Sandbox
   - url: https://developer.walmart.com/category/us/whats-new/
@@ -690,9 +690,9 @@ common:
   - url: https://developer.walmart.com/faq/us/
     type: FAQ
   - url: https://developer.walmart.com/apiStatus
-    type: Status
+    type: StatusPage
   - url: https://developer.walmart.com/faq/terms-and-conditions
-    type: Terms of Service
+    type: TermsOfService
   - type: Summary
     data:
       numberOfAPITags: 2
@@ -739,6 +739,6 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 specificationVersion: '0.19'
-type: Contract
+kind: contract
 position: Consuming
 access: 3rd-Party
