@@ -1,0 +1,466 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Notifications Management — Notifications
+  description: 'Walmart Notifications Management — Notifications. 6 operations. Lead operation: Walmart Event Types. Self-contained
+    Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Notifications
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-notifications-notifications
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Notifications Management — Notifications business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-webhooks-eventTypes
+      path: /v3/webhooks/eventTypes
+      operations:
+      - name: geteventtypes
+        method: GET
+        description: Walmart Event Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-webhooks-subscriptions
+      path: /v3/webhooks/subscriptions
+      operations:
+      - name: getallsubscriptions
+        method: GET
+        description: Walmart All Subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subscriptionId
+          in: query
+          type: string
+          description: Use this to get details of a specific subscription
+        - name: eventType
+          in: query
+          type: string
+          description: Use this to get list of all subscriptions for a specific event type. Refer to Events section for list
+            of available eventType.
+        - name: resourceName
+          in: query
+          type: string
+          description: Use this to get list of all subscriptions for a specific resource. Refer to Events section for list
+            of available resourceName.
+        - name: status
+          in: query
+          type: string
+          description: Use this to get list of all subscriptions in ACTIVE or INACTIVE status
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+      - name: createsubscription
+        method: POST
+        description: Walmart Create Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-webhooks-subscriptions-subscriptionId
+      path: /v3/webhooks/subscriptions/{subscriptionId}
+      operations:
+      - name: deletesubscription
+        method: DELETE
+        description: Walmart Delete Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subscriptionId
+          in: path
+          type: string
+          description: Unique ID for the subscription
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+      - name: updatesubscription
+        method: PATCH
+        description: Walmart Update Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subscriptionId
+          in: path
+          type: string
+          description: Unique ID for the subscription
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-webhooks-test
+      path: /v3/webhooks/test
+      operations:
+      - name: testnotification
+        method: POST
+        description: Walmart Test Notification
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-notifications-notifications-rest
+    port: 8080
+    description: REST adapter for Walmart Notifications Management — Notifications. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v3/webhooks/eventtypes
+      name: v3-webhooks-eventtypes
+      description: REST surface for v3-webhooks-eventTypes.
+      operations:
+      - method: GET
+        name: geteventtypes
+        description: Walmart Event Types
+        call: marketplace-notifications-notifications.geteventtypes
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/webhooks/subscriptions
+      name: v3-webhooks-subscriptions
+      description: REST surface for v3-webhooks-subscriptions.
+      operations:
+      - method: GET
+        name: getallsubscriptions
+        description: Walmart All Subscriptions
+        call: marketplace-notifications-notifications.getallsubscriptions
+        with:
+          subscriptionId: rest.subscriptionId
+          eventType: rest.eventType
+          resourceName: rest.resourceName
+          status: rest.status
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsubscription
+        description: Walmart Create Subscription
+        call: marketplace-notifications-notifications.createsubscription
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/webhooks/subscriptions/{subscriptionid}
+      name: v3-webhooks-subscriptions-subscriptionid
+      description: REST surface for v3-webhooks-subscriptions-subscriptionId.
+      operations:
+      - method: DELETE
+        name: deletesubscription
+        description: Walmart Delete Subscription
+        call: marketplace-notifications-notifications.deletesubscription
+        with:
+          subscriptionId: rest.subscriptionId
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesubscription
+        description: Walmart Update Subscription
+        call: marketplace-notifications-notifications.updatesubscription
+        with:
+          subscriptionId: rest.subscriptionId
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/webhooks/test
+      name: v3-webhooks-test
+      description: REST surface for v3-webhooks-test.
+      operations:
+      - method: POST
+        name: testnotification
+        description: Walmart Test Notification
+        call: marketplace-notifications-notifications.testnotification
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-notifications-notifications-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Notifications Management — Notifications. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: walmart-event-types
+      description: Walmart Event Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-notifications-notifications.geteventtypes
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-all-subscriptions
+      description: Walmart All Subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-notifications-notifications.getallsubscriptions
+      with:
+        subscriptionId: tools.subscriptionId
+        eventType: tools.eventType
+        resourceName: tools.resourceName
+        status: tools.status
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-create-subscription
+      description: Walmart Create Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-notifications-notifications.createsubscription
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-delete-subscription
+      description: Walmart Delete Subscription
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: marketplace-notifications-notifications.deletesubscription
+      with:
+        subscriptionId: tools.subscriptionId
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-update-subscription
+      description: Walmart Update Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-notifications-notifications.updatesubscription
+      with:
+        subscriptionId: tools.subscriptionId
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-test-notification
+      description: Walmart Test Notification
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: marketplace-notifications-notifications.testnotification
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

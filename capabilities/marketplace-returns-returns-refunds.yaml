@@ -1,0 +1,322 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Returns Management — Returns/Refunds
+  description: 'Walmart Returns Management — Returns/Refunds. 3 operations. Lead operation: Walmart Return Item Overrides.
+    Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Returns/Refunds
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-returns-returns-refunds
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Returns Management — Returns/Refunds business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-feeds
+      path: /v3/feeds
+      operations:
+      - name: bulkitemoverridefeed
+        method: POST
+        description: Walmart Return Item Overrides
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: Feed Type
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v3-returns
+      path: /v3/returns
+      operations:
+      - name: getreturns
+        method: GET
+        description: Walmart Returns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: returnOrderId
+          in: query
+          type: string
+          description: Return order identifier of the return order object as part of array. This is the same as RMA number.
+        - name: customerOrderId
+          in: query
+          type: string
+          description: A unique ID associated with the sales order for specified customer
+        - name: status
+          in: query
+          type: string
+          description: 'Status may be specified to query the returns with specific status.Valid statuses are: INITIATED, DELIVERED,
+            COMPLETED'
+        - name: replacementInfo
+          in: query
+          type: string
+          description: Provides additional attributes - replacementCustomerOrderID, returnType, rechargeReason, returnCancellationReason
+            - related to Replacement return order, in resp
+        - name: returnType
+          in: query
+          type: string
+          description: Specifies if the return order is a replacement return or a regular (refund) return. Possible values
+            are REPLACEMENT or REFUND.
+        - name: returnCreationStartDate
+          in: query
+          type: string
+          description: 'Start Date for querying all return orders that were created after that date. Use one of the following
+            formats, based on UTC, ISO 8601. Date example: ''2013-08-16'
+        - name: returnCreationEndDate
+          in: query
+          type: string
+          description: 'Limits the query to the return orders that were created before this returnCreationEndDate. Use one
+            of the following formats, based on ISO 8601, are allowed: UTC'
+        - name: returnLastModifiedStartDate
+          in: query
+          type: string
+          description: 'Start Date for querying all return orders that were modified after that date. Use one of the following
+            formats, based on UTC, ISO 8601. Date example: ''2013-08-1'
+        - name: returnLastModifiedEndDate
+          in: query
+          type: string
+          description: 'Limits the query to the return orders that were modified before this date. Use one of the following
+            formats, based on UTC, ISO 8601. Date example: ''2013-08-16'' '
+        - name: limit
+          in: query
+          type: string
+          description: The number of orders to be returned. Cannot be larger than 200
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-returns-returnOrderId-refund
+      path: /v3/returns/{returnOrderId}/refund
+      operations:
+      - name: issuerefund
+        method: POST
+        description: Walmart Issue Refund
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: returnOrderId
+          in: path
+          type: string
+          description: The return order ID
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-returns-returns-refunds-rest
+    port: 8080
+    description: REST adapter for Walmart Returns Management — Returns/Refunds. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v3/feeds
+      name: v3-feeds
+      description: REST surface for v3-feeds.
+      operations:
+      - method: POST
+        name: bulkitemoverridefeed
+        description: Walmart Return Item Overrides
+        call: marketplace-returns-returns-refunds.bulkitemoverridefeed
+        with:
+          feedType: rest.feedType
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/returns
+      name: v3-returns
+      description: REST surface for v3-returns.
+      operations:
+      - method: GET
+        name: getreturns
+        description: Walmart Returns
+        call: marketplace-returns-returns-refunds.getreturns
+        with:
+          returnOrderId: rest.returnOrderId
+          customerOrderId: rest.customerOrderId
+          status: rest.status
+          replacementInfo: rest.replacementInfo
+          returnType: rest.returnType
+          returnCreationStartDate: rest.returnCreationStartDate
+          returnCreationEndDate: rest.returnCreationEndDate
+          returnLastModifiedStartDate: rest.returnLastModifiedStartDate
+          returnLastModifiedEndDate: rest.returnLastModifiedEndDate
+          limit: rest.limit
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/returns/{returnorderid}/refund
+      name: v3-returns-returnorderid-refund
+      description: REST surface for v3-returns-returnOrderId-refund.
+      operations:
+      - method: POST
+        name: issuerefund
+        description: Walmart Issue Refund
+        call: marketplace-returns-returns-refunds.issuerefund
+        with:
+          returnOrderId: rest.returnOrderId
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-returns-returns-refunds-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Returns Management — Returns/Refunds. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: walmart-return-item-overrides
+      description: Walmart Return Item Overrides
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-returns-returns-refunds.bulkitemoverridefeed
+      with:
+        feedType: tools.feedType
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-returns
+      description: Walmart Returns
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-returns-returns-refunds.getreturns
+      with:
+        returnOrderId: tools.returnOrderId
+        customerOrderId: tools.customerOrderId
+        status: tools.status
+        replacementInfo: tools.replacementInfo
+        returnType: tools.returnType
+        returnCreationStartDate: tools.returnCreationStartDate
+        returnCreationEndDate: tools.returnCreationEndDate
+        returnLastModifiedStartDate: tools.returnLastModifiedStartDate
+        returnLastModifiedEndDate: tools.returnLastModifiedEndDate
+        limit: tools.limit
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-issue-refund
+      description: Walmart Issue Refund
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-returns-returns-refunds.issuerefund
+      with:
+        returnOrderId: tools.returnOrderId
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

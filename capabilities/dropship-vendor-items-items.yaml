@@ -1,0 +1,500 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Item Management — Items
+  description: 'Walmart Item Management — Items. 6 operations. Lead operation: Walmart Add Rich Media. Self-contained Naftiko
+    capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Items
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: dropship-vendor-items-items
+    baseUri: https://api-gateway.walmart.com
+    description: Walmart Item Management — Items business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-feeds
+      path: /v2/feeds
+      operations:
+      - name: updaterichmediaofitem
+        method: POST
+        description: Walmart Add Rich Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: 'Specifies the feed file that will be used and the action the user is intending. '
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+        - name: Content-Type
+          in: header
+          type: string
+          description: 'Specifies the format of request and response body data. '
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-feeds
+      path: /v3/feeds
+      operations:
+      - name: itembulkuploads
+        method: POST
+        description: Walmart Maintain Items in Bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: 'Specifies the feed file that will be used and the action the user is intending. '
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+        - name: Content-Type
+          in: header
+          type: string
+          description: 'Specifies the format of request and response body data. '
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v3-items
+      path: /v3/items
+      operations:
+      - name: getallitems
+        method: GET
+        description: Walmart Retrieve All Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nextCursor
+          in: query
+          type: string
+          description: Specifies the value used for paginated results when more than 200 items are retrieved.
+        - name: sku
+          in: query
+          type: string
+          description: 'Specifies the stock keeping unit (SKU) item identifier. '
+        - name: publishedStatus
+          in: query
+          type: string
+          description: Specifies the published status of an item, describing where the item is in the submission process.
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+    - name: v3-items-taxonomy
+      path: /v3/items/taxonomy
+      operations:
+      - name: gettaxonomyresponse
+        method: GET
+        description: Walmart Expose Product Type Taxonomy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: version
+          in: query
+          type: string
+          description: 'Specifies the taxonomy version that has to be provided based on which hierarchy data is retrieved. '
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+    - name: v3-items-sku
+      path: /v3/items/{sku}
+      operations:
+      - name: getanitem
+        method: GET
+        description: Walmart Retrieve a Single Item (v3)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: path
+          type: string
+          description: 'Specifies the stock keeping unit (SKU) item identifier. '
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+    - name: v4-items-productId
+      path: /v4/items/{productId}
+      operations:
+      - name: getanitemv4
+        method: GET
+        description: Walmart Retrieve a Single Item (v4)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: productId
+          in: path
+          type: string
+          description: Specifies the product by `productId`.
+          required: true
+        - name: productIdType
+          in: query
+          type: string
+          description: Specifies the product ID type.
+        - name: includeFullItemDetails
+          in: query
+          type: string
+          description: Specifies to return additional information fields.
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+  exposes:
+  - type: rest
+    namespace: dropship-vendor-items-items-rest
+    port: 8080
+    description: REST adapter for Walmart Item Management — Items. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/feeds
+      name: v2-feeds
+      description: REST surface for v2-feeds.
+      operations:
+      - method: POST
+        name: updaterichmediaofitem
+        description: Walmart Add Rich Media
+        call: dropship-vendor-items-items.updaterichmediaofitem
+        with:
+          feedType: rest.feedType
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          Content-Type: rest.Content-Type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/feeds
+      name: v3-feeds
+      description: REST surface for v3-feeds.
+      operations:
+      - method: POST
+        name: itembulkuploads
+        description: Walmart Maintain Items in Bulk
+        call: dropship-vendor-items-items.itembulkuploads
+        with:
+          feedType: rest.feedType
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          Content-Type: rest.Content-Type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/items
+      name: v3-items
+      description: REST surface for v3-items.
+      operations:
+      - method: GET
+        name: getallitems
+        description: Walmart Retrieve All Items
+        call: dropship-vendor-items-items.getallitems
+        with:
+          nextCursor: rest.nextCursor
+          sku: rest.sku
+          publishedStatus: rest.publishedStatus
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/items/taxonomy
+      name: v3-items-taxonomy
+      description: REST surface for v3-items-taxonomy.
+      operations:
+      - method: GET
+        name: gettaxonomyresponse
+        description: Walmart Expose Product Type Taxonomy
+        call: dropship-vendor-items-items.gettaxonomyresponse
+        with:
+          version: rest.version
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/items/{sku}
+      name: v3-items-sku
+      description: REST surface for v3-items-sku.
+      operations:
+      - method: GET
+        name: getanitem
+        description: Walmart Retrieve a Single Item (v3)
+        call: dropship-vendor-items-items.getanitem
+        with:
+          sku: rest.sku
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v4/items/{productid}
+      name: v4-items-productid
+      description: REST surface for v4-items-productId.
+      operations:
+      - method: GET
+        name: getanitemv4
+        description: Walmart Retrieve a Single Item (v4)
+        call: dropship-vendor-items-items.getanitemv4
+        with:
+          productId: rest.productId
+          productIdType: rest.productIdType
+          includeFullItemDetails: rest.includeFullItemDetails
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: dropship-vendor-items-items-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Item Management — Items. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: walmart-add-rich-media
+      description: Walmart Add Rich Media
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dropship-vendor-items-items.updaterichmediaofitem
+      with:
+        feedType: tools.feedType
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        Content-Type: tools.Content-Type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-maintain-items-bulk
+      description: Walmart Maintain Items in Bulk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dropship-vendor-items-items.itembulkuploads
+      with:
+        feedType: tools.feedType
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        Content-Type: tools.Content-Type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-retrieve-all-items
+      description: Walmart Retrieve All Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-items-items.getallitems
+      with:
+        nextCursor: tools.nextCursor
+        sku: tools.sku
+        publishedStatus: tools.publishedStatus
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-expose-product-type-taxonomy
+      description: Walmart Expose Product Type Taxonomy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-items-items.gettaxonomyresponse
+      with:
+        version: tools.version
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-retrieve-single-item-v3
+      description: Walmart Retrieve a Single Item (v3)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-items-items.getanitem
+      with:
+        sku: tools.sku
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-retrieve-single-item-v4
+      description: Walmart Retrieve a Single Item (v4)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-items-items.getanitemv4
+      with:
+        productId: tools.productId
+        productIdType: tools.productIdType
+        includeFullItemDetails: tools.includeFullItemDetails
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+      outputParameters:
+      - type: object
+        mapping: $.

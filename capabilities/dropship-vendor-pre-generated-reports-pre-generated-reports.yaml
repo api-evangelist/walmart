@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Pre-Generated Reports Management — Pre-Generated Reports
+  description: 'Walmart Pre-Generated Reports Management — Pre-Generated Reports. 1 operations. Lead operation: Walmart Generate
+    an Item Report. Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Pre-Generated Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: dropship-vendor-pre-generated-reports-pre-generated-reports
+    baseUri: https://api-gateway.walmart.com
+    description: Walmart Pre-Generated Reports Management — Pre-Generated Reports business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: v3-getReport
+      path: /v3/getReport
+      operations:
+      - name: getgenerateitemreport
+        method: GET
+        description: Walmart Generate an Item Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          description: 'Specifies the type of report. '
+          required: true
+        - name: version
+          in: query
+          type: string
+          description: Specifies the version used to get the latest version of the item report for drop ship vendors (DSV).
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+        - name: Content-Type
+          in: header
+          type: string
+          description: 'Specifies the format of request and response body data. '
+          required: true
+  exposes:
+  - type: rest
+    namespace: dropship-vendor-pre-generated-reports-pre-generated-reports-rest
+    port: 8080
+    description: REST adapter for Walmart Pre-Generated Reports Management — Pre-Generated Reports. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v3/getreport
+      name: v3-getreport
+      description: REST surface for v3-getReport.
+      operations:
+      - method: GET
+        name: getgenerateitemreport
+        description: Walmart Generate an Item Report
+        call: dropship-vendor-pre-generated-reports-pre-generated-reports.getgenerateitemreport
+        with:
+          type: rest.type
+          version: rest.version
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          Content-Type: rest.Content-Type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: dropship-vendor-pre-generated-reports-pre-generated-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Pre-Generated Reports Management — Pre-Generated Reports. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: walmart-generate-item-report
+      description: Walmart Generate an Item Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-pre-generated-reports-pre-generated-reports.getgenerateitemreport
+      with:
+        type: tools.type
+        version: tools.version
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        Content-Type: tools.Content-Type
+      outputParameters:
+      - type: object
+        mapping: $.

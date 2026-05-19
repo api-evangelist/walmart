@@ -1,0 +1,741 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Price Management — Prices
+  description: 'Walmart Price Management — Prices. 10 operations. Lead operation: Walmart Set up Cap Sku All. Self-contained
+    Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Prices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-prices-prices
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Price Management — Prices business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-cppreference
+      path: /v3/cppreference
+      operations:
+      - name: optcapprograminprice
+        method: POST
+        description: Walmart Set up Cap Sku All
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-feeds
+      path: /v3/feeds
+      operations:
+      - name: pricebulkuploads
+        method: POST
+        description: Walmart Update Bulk Prices (multiple)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: The feed Type
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-price
+      path: /v3/price
+      operations:
+      - name: updateprice
+        method: PUT
+        description: Walmart Update a Price
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-repricer-incentive
+      path: /v3/repricer/incentive
+      operations:
+      - name: getrepricerincentive
+        method: GET
+        description: Walmart List of Incentive Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Specify number of items to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Specify the offset of item list to be returned.
+        - name: sortBy
+          in: query
+          type: string
+          description: Specify the sort criteria for items. Examples of the allowed values are INCENTIVE_END_DATE or INCENTIVE_LIMIT
+        - name: sortOrder
+          in: query
+          type: string
+          description: Specify the sort order for given sort criteria. Examples of the allowed values are ASC or DESC
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+      - name: updaterepricerincentive
+        method: PUT
+        description: Walmart Assign Incentive Items to Repricer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-repricer-strategies
+      path: /v3/repricer/strategies
+      operations:
+      - name: getstrategies
+        method: GET
+        description: Walmart List of Repricer Strategies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-repricer-strategy
+      path: /v3/repricer/strategy
+      operations:
+      - name: createstrategy
+        method: POST
+        description: Walmart Create Repricer Strategy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-repricer-strategy-strategyCollectionId
+      path: /v3/repricer/strategy/{strategyCollectionId}
+      operations:
+      - name: updatestrategy
+        method: PUT
+        description: Walmart Update Repricer Strategy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletestrategy
+        method: DELETE
+        description: Walmart Delete Repricer Strategy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-repricerFeeds
+      path: /v3/repricerFeeds
+      operations:
+      - name: getrepricerfeed
+        method: POST
+        description: Walmart Assign/unassign Items To/from Repricer Strategy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-prices-prices-rest
+    port: 8080
+    description: REST adapter for Walmart Price Management — Prices. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v3/cppreference
+      name: v3-cppreference
+      description: REST surface for v3-cppreference.
+      operations:
+      - method: POST
+        name: optcapprograminprice
+        description: Walmart Set up Cap Sku All
+        call: marketplace-prices-prices.optcapprograminprice
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/feeds
+      name: v3-feeds
+      description: REST surface for v3-feeds.
+      operations:
+      - method: POST
+        name: pricebulkuploads
+        description: Walmart Update Bulk Prices (multiple)
+        call: marketplace-prices-prices.pricebulkuploads
+        with:
+          feedType: rest.feedType
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/price
+      name: v3-price
+      description: REST surface for v3-price.
+      operations:
+      - method: PUT
+        name: updateprice
+        description: Walmart Update a Price
+        call: marketplace-prices-prices.updateprice
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/repricer/incentive
+      name: v3-repricer-incentive
+      description: REST surface for v3-repricer-incentive.
+      operations:
+      - method: GET
+        name: getrepricerincentive
+        description: Walmart List of Incentive Items
+        call: marketplace-prices-prices.getrepricerincentive
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updaterepricerincentive
+        description: Walmart Assign Incentive Items to Repricer
+        call: marketplace-prices-prices.updaterepricerincentive
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/repricer/strategies
+      name: v3-repricer-strategies
+      description: REST surface for v3-repricer-strategies.
+      operations:
+      - method: GET
+        name: getstrategies
+        description: Walmart List of Repricer Strategies
+        call: marketplace-prices-prices.getstrategies
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/repricer/strategy
+      name: v3-repricer-strategy
+      description: REST surface for v3-repricer-strategy.
+      operations:
+      - method: POST
+        name: createstrategy
+        description: Walmart Create Repricer Strategy
+        call: marketplace-prices-prices.createstrategy
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/repricer/strategy/{strategycollectionid}
+      name: v3-repricer-strategy-strategycollectionid
+      description: REST surface for v3-repricer-strategy-strategyCollectionId.
+      operations:
+      - method: PUT
+        name: updatestrategy
+        description: Walmart Update Repricer Strategy
+        call: marketplace-prices-prices.updatestrategy
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletestrategy
+        description: Walmart Delete Repricer Strategy
+        call: marketplace-prices-prices.deletestrategy
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/repricerfeeds
+      name: v3-repricerfeeds
+      description: REST surface for v3-repricerFeeds.
+      operations:
+      - method: POST
+        name: getrepricerfeed
+        description: Walmart Assign/unassign Items To/from Repricer Strategy
+        call: marketplace-prices-prices.getrepricerfeed
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-prices-prices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Price Management — Prices. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: walmart-set-up-cap-sku
+      description: Walmart Set up Cap Sku All
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-prices-prices.optcapprograminprice
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-update-bulk-prices-multiple
+      description: Walmart Update Bulk Prices (multiple)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-prices-prices.pricebulkuploads
+      with:
+        feedType: tools.feedType
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-update-price
+      description: Walmart Update a Price
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-prices-prices.updateprice
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-list-incentive-items
+      description: Walmart List of Incentive Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-prices-prices.getrepricerincentive
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-assign-incentive-items-repricer
+      description: Walmart Assign Incentive Items to Repricer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-prices-prices.updaterepricerincentive
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-list-repricer-strategies
+      description: Walmart List of Repricer Strategies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-prices-prices.getstrategies
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-create-repricer-strategy
+      description: Walmart Create Repricer Strategy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-prices-prices.createstrategy
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-update-repricer-strategy
+      description: Walmart Update Repricer Strategy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-prices-prices.updatestrategy
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-delete-repricer-strategy
+      description: Walmart Delete Repricer Strategy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: marketplace-prices-prices.deletestrategy
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-assign-unassign-items-repricer
+      description: Walmart Assign/unassign Items To/from Repricer Strategy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-prices-prices.getrepricerfeed
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,185 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Lag Time — Lag Time
+  description: 'Walmart Lag Time — Lag Time. 2 operations. Lead operation: Walmart Update Lag Time. Self-contained Naftiko
+    capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Lag Time
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-lag-time-lag-time
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Lag Time — Lag Time business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-feeds
+      path: /v3/feeds
+      operations:
+      - name: updatelagtimebulk
+        method: POST
+        description: Walmart Update Lag Time
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: Use 'lagtime'
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-lagtime
+      path: /v3/lagtime
+      operations:
+      - name: getlagtime
+        method: GET
+        description: Walmart Lag Time
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will
+            be used by the seller in the XSD file to refer to each item.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-lag-time-lag-time-rest
+    port: 8080
+    description: REST adapter for Walmart Lag Time — Lag Time. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v3/feeds
+      name: v3-feeds
+      description: REST surface for v3-feeds.
+      operations:
+      - method: POST
+        name: updatelagtimebulk
+        description: Walmart Update Lag Time
+        call: marketplace-lag-time-lag-time.updatelagtimebulk
+        with:
+          feedType: rest.feedType
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/lagtime
+      name: v3-lagtime
+      description: REST surface for v3-lagtime.
+      operations:
+      - method: GET
+        name: getlagtime
+        description: Walmart Lag Time
+        call: marketplace-lag-time-lag-time.getlagtime
+        with:
+          sku: rest.sku
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-lag-time-lag-time-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Lag Time — Lag Time. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: walmart-update-lag-time
+      description: Walmart Update Lag Time
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-lag-time-lag-time.updatelagtimebulk
+      with:
+        feedType: tools.feedType
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-lag-time
+      description: Walmart Lag Time
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-lag-time-lag-time.getlagtime
+      with:
+        sku: tools.sku
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.

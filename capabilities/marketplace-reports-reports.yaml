@@ -1,0 +1,526 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Walmart Pregenerated Reports retiring on June 30, 2022 : — Reports'
+  description: 'Walmart Pregenerated Reports retiring on June 30, 2022 : — Reports. 7 operations. Lead operation: Walmart
+    Performance Report. Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-reports-reports
+    baseUri: https://marketplace.walmartapis.com
+    description: 'Walmart Pregenerated Reports retiring on June 30, 2022 : — Reports business capability. Self-contained,
+      no shared references.'
+    resources:
+    - name: v3-report-payment-performance
+      path: /v3/report/payment/performance
+      operations:
+      - name: getpartnerperformance
+        method: GET
+        description: Walmart Performance Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-report-payment-statement
+      path: /v3/report/payment/statement
+      operations:
+      - name: getpartnerstatement
+        method: GET
+        description: Walmart Payment Statement Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-report-reconreport-availableReconFiles
+      path: /v3/report/reconreport/availableReconFiles
+      operations:
+      - name: getavailablereconreportdates
+        method: GET
+        description: Walmart Available Recon Report Dates(legacy)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-report-reconreport-availableReconFiles?reportVersion=v1
+      path: /v3/report/reconreport/availableReconFiles?reportVersion=v1
+      operations:
+      - name: getavailablev1reconreportdates
+        method: GET
+        description: Walmart Available Recon Report Dates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-report-reconreport-reconFile
+      path: /v3/report/reconreport/reconFile
+      operations:
+      - name: getreconreport
+        method: GET
+        description: Walmart Recon Report(legacy)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: reportDate
+          in: query
+          type: string
+          description: The date for which the reconcilation file is available
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-report-reconreport-reconFile?reportVersion=v1
+      path: /v3/report/reconreport/reconFile?reportVersion=v1
+      operations:
+      - name: getreconreportv1
+        method: GET
+        description: Walmart Recon Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: reportDate
+          in: query
+          type: string
+          description: The date for which the reconcilation file is available
+          required: true
+        - name: reportVersion
+          in: query
+          type: string
+          description: Report Version
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-report-reconreport-reconFileJson
+      path: /v3/report/reconreport/reconFileJson
+      operations:
+      - name: getavailablev1reconreportasjson
+        method: GET
+        description: Walmart Recon Report Json
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: reportDate
+          in: query
+          type: string
+          description: Date of the settlement report
+          required: true
+        - name: offset
+          in: query
+          type: integer
+          description: starting number of the bytes, initial value for the offset is zero
+          required: true
+        - name: noOfRecords
+          in: query
+          type: integer
+          description: number of records in the report (max limit 1000)
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-reports-reports-rest
+    port: 8080
+    description: 'REST adapter for Walmart Pregenerated Reports retiring on June 30, 2022 : — Reports. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/v3/report/payment/performance
+      name: v3-report-payment-performance
+      description: REST surface for v3-report-payment-performance.
+      operations:
+      - method: GET
+        name: getpartnerperformance
+        description: Walmart Performance Report
+        call: marketplace-reports-reports.getpartnerperformance
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/report/payment/statement
+      name: v3-report-payment-statement
+      description: REST surface for v3-report-payment-statement.
+      operations:
+      - method: GET
+        name: getpartnerstatement
+        description: Walmart Payment Statement Report
+        call: marketplace-reports-reports.getpartnerstatement
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/report/reconreport/availablereconfiles
+      name: v3-report-reconreport-availablereconfiles
+      description: REST surface for v3-report-reconreport-availableReconFiles.
+      operations:
+      - method: GET
+        name: getavailablereconreportdates
+        description: Walmart Available Recon Report Dates(legacy)
+        call: marketplace-reports-reports.getavailablereconreportdates
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/report/reconreport/availablereconfiles-reportversion-v1
+      name: v3-report-reconreport-availablereconfiles-reportversion-v1
+      description: REST surface for v3-report-reconreport-availableReconFiles?reportVersion=v1.
+      operations:
+      - method: GET
+        name: getavailablev1reconreportdates
+        description: Walmart Available Recon Report Dates
+        call: marketplace-reports-reports.getavailablev1reconreportdates
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/report/reconreport/reconfile
+      name: v3-report-reconreport-reconfile
+      description: REST surface for v3-report-reconreport-reconFile.
+      operations:
+      - method: GET
+        name: getreconreport
+        description: Walmart Recon Report(legacy)
+        call: marketplace-reports-reports.getreconreport
+        with:
+          reportDate: rest.reportDate
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/report/reconreport/reconfile-reportversion-v1
+      name: v3-report-reconreport-reconfile-reportversion-v1
+      description: REST surface for v3-report-reconreport-reconFile?reportVersion=v1.
+      operations:
+      - method: GET
+        name: getreconreportv1
+        description: Walmart Recon Report
+        call: marketplace-reports-reports.getreconreportv1
+        with:
+          reportDate: rest.reportDate
+          reportVersion: rest.reportVersion
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/report/reconreport/reconfilejson
+      name: v3-report-reconreport-reconfilejson
+      description: REST surface for v3-report-reconreport-reconFileJson.
+      operations:
+      - method: GET
+        name: getavailablev1reconreportasjson
+        description: Walmart Recon Report Json
+        call: marketplace-reports-reports.getavailablev1reconreportasjson
+        with:
+          reportDate: rest.reportDate
+          offset: rest.offset
+          noOfRecords: rest.noOfRecords
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-reports-reports-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Walmart Pregenerated Reports retiring on June 30, 2022 : — Reports. One tool per consumed
+      operation, routed inline through this capability''s consumes block.'
+    tools:
+    - name: walmart-performance-report
+      description: Walmart Performance Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-reports-reports.getpartnerperformance
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-payment-statement-report
+      description: Walmart Payment Statement Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-reports-reports.getpartnerstatement
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-available-recon-report-dates-legacy
+      description: Walmart Available Recon Report Dates(legacy)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-reports-reports.getavailablereconreportdates
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-available-recon-report-dates
+      description: Walmart Available Recon Report Dates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-reports-reports.getavailablev1reconreportdates
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-recon-report-legacy
+      description: Walmart Recon Report(legacy)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-reports-reports.getreconreport
+      with:
+        reportDate: tools.reportDate
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-recon-report
+      description: Walmart Recon Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-reports-reports.getreconreportv1
+      with:
+        reportDate: tools.reportDate
+        reportVersion: tools.reportVersion
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-recon-report-json
+      description: Walmart Recon Report Json
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-reports-reports.getavailablev1reconreportasjson
+      with:
+        reportDate: tools.reportDate
+        offset: tools.offset
+        noOfRecords: tools.noOfRecords
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,351 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Inventory Management — Inventory
+  description: 'Walmart Inventory Management — Inventory. 4 operations. Lead operation: Walmart Update Inventory Count for
+    Items in Bulk. Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Inventory
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: dropship-vendor-inventory-inventory
+    baseUri: https://api-gateway.walmart.com
+    description: Walmart Inventory Management — Inventory business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-feeds
+      path: /v3/feeds
+      operations:
+      - name: postbulkupdateinventory
+        method: POST
+        description: Walmart Update Inventory Count for Items in Bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: 'Specifies the feed type. '
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+        - name: Content-Type
+          in: header
+          type: string
+          description: 'Specifies the format of request and response body data. '
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v3-inventories-id
+      path: /v3/inventories/{id}
+      operations:
+      - name: getsingleiteminventory
+        method: GET
+        description: Walmart Retrieve Inventory Count for a Single Item at Specific Ship Nodes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Specifies the value of the stock keeping unit (SKU) or global trade item number (GTIN) item identifier.
+          required: true
+        - name: shipNode
+          in: query
+          type: string
+          description: Specifies the distribution facility distributor identifier.
+        - name: productIdType
+          in: query
+          type: string
+          description: Specifies the type of item identifier the user is searching.
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+    - name: v3-inventory
+      path: /v3/inventory
+      operations:
+      - name: getinventory
+        method: GET
+        description: Walmart Retrieve Inventory Count for a Single Item at One Ship Node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          description: Specifies the stock keeping unit (SKU) item identifier.
+        - name: gtin
+          in: query
+          type: string
+          description: Specifies the global trade item number (GTIN) item identifier.
+          required: true
+        - name: shipNode
+          in: query
+          type: string
+          description: Specifies the distribution facility distributor identifier.
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+      - name: putupdateinventory
+        method: PUT
+        description: Walmart Update Inventory Count for a Single Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: shipNode
+          in: query
+          type: string
+          description: Specifies the distribution facility distributor identifier.
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: dropship-vendor-inventory-inventory-rest
+    port: 8080
+    description: REST adapter for Walmart Inventory Management — Inventory. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v3/feeds
+      name: v3-feeds
+      description: REST surface for v3-feeds.
+      operations:
+      - method: POST
+        name: postbulkupdateinventory
+        description: Walmart Update Inventory Count for Items in Bulk
+        call: dropship-vendor-inventory-inventory.postbulkupdateinventory
+        with:
+          feedType: rest.feedType
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          Content-Type: rest.Content-Type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/inventories/{id}
+      name: v3-inventories-id
+      description: REST surface for v3-inventories-id.
+      operations:
+      - method: GET
+        name: getsingleiteminventory
+        description: Walmart Retrieve Inventory Count for a Single Item at Specific Ship Nodes
+        call: dropship-vendor-inventory-inventory.getsingleiteminventory
+        with:
+          id: rest.id
+          shipNode: rest.shipNode
+          productIdType: rest.productIdType
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/inventory
+      name: v3-inventory
+      description: REST surface for v3-inventory.
+      operations:
+      - method: GET
+        name: getinventory
+        description: Walmart Retrieve Inventory Count for a Single Item at One Ship Node
+        call: dropship-vendor-inventory-inventory.getinventory
+        with:
+          sku: rest.sku
+          gtin: rest.gtin
+          shipNode: rest.shipNode
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: putupdateinventory
+        description: Walmart Update Inventory Count for a Single Item
+        call: dropship-vendor-inventory-inventory.putupdateinventory
+        with:
+          shipNode: rest.shipNode
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: dropship-vendor-inventory-inventory-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Inventory Management — Inventory. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: walmart-update-inventory-count-items
+      description: Walmart Update Inventory Count for Items in Bulk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dropship-vendor-inventory-inventory.postbulkupdateinventory
+      with:
+        feedType: tools.feedType
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        Content-Type: tools.Content-Type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-retrieve-inventory-count-single
+      description: Walmart Retrieve Inventory Count for a Single Item at Specific Ship Nodes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-inventory-inventory.getsingleiteminventory
+      with:
+        id: tools.id
+        shipNode: tools.shipNode
+        productIdType: tools.productIdType
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-retrieve-inventory-count-single-2
+      description: Walmart Retrieve Inventory Count for a Single Item at One Ship Node
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-inventory-inventory.getinventory
+      with:
+        sku: tools.sku
+        gtin: tools.gtin
+        shipNode: tools.shipNode
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-update-inventory-count-single
+      description: Walmart Update Inventory Count for a Single Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-inventory-inventory.putupdateinventory
+      with:
+        shipNode: tools.shipNode
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,270 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Assortment Recommendations Overview — Assortment Recommendations
+  description: 'Walmart Assortment Recommendations Overview — Assortment Recommendations. 3 operations. Lead operation: Walmart
+    Get Recommendations. Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Assortment Recommendations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-recommendations-assortment-recommendations
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Assortment Recommendations Overview — Assortment Recommendations business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: v3-growth-assortment-recommendations
+      path: /v3/growth/assortment/recommendations
+      operations:
+      - name: getassortmentrecommendations
+        method: POST
+        description: Walmart Get Recommendations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'Only supported Media Type : application/json'
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-growth-assortment-recommendations-categorization-counts
+      path: /v3/growth/assortment/recommendations/categorization/counts
+      operations:
+      - name: getcategorizationdetailsofassortmentrecommendations
+        method: POST
+        description: Walmart Get Categorization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'Only supported Media Type : application/json'
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-growth-assortment-recommendations-rejections
+      path: /v3/growth/assortment/recommendations/rejections
+      operations:
+      - name: rejectassortmentrecommendations
+        method: PUT
+        description: Walmart Reject Recommendations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'Only supported Media Type : application/json'
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-recommendations-assortment-recommendations-rest
+    port: 8080
+    description: REST adapter for Walmart Assortment Recommendations Overview — Assortment Recommendations. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v3/growth/assortment/recommendations
+      name: v3-growth-assortment-recommendations
+      description: REST surface for v3-growth-assortment-recommendations.
+      operations:
+      - method: POST
+        name: getassortmentrecommendations
+        description: Walmart Get Recommendations
+        call: marketplace-recommendations-assortment-recommendations.getassortmentrecommendations
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          Accept: rest.Accept
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/growth/assortment/recommendations/categorization/counts
+      name: v3-growth-assortment-recommendations-categorization-counts
+      description: REST surface for v3-growth-assortment-recommendations-categorization-counts.
+      operations:
+      - method: POST
+        name: getcategorizationdetailsofassortmentrecommendations
+        description: Walmart Get Categorization
+        call: marketplace-recommendations-assortment-recommendations.getcategorizationdetailsofassortmentrecommendations
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          Accept: rest.Accept
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/growth/assortment/recommendations/rejections
+      name: v3-growth-assortment-recommendations-rejections
+      description: REST surface for v3-growth-assortment-recommendations-rejections.
+      operations:
+      - method: PUT
+        name: rejectassortmentrecommendations
+        description: Walmart Reject Recommendations
+        call: marketplace-recommendations-assortment-recommendations.rejectassortmentrecommendations
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          Accept: rest.Accept
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-recommendations-assortment-recommendations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Assortment Recommendations Overview — Assortment Recommendations. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: walmart-get-recommendations
+      description: Walmart Get Recommendations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: marketplace-recommendations-assortment-recommendations.getassortmentrecommendations
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        Accept: tools.Accept
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-get-categorization
+      description: Walmart Get Categorization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: marketplace-recommendations-assortment-recommendations.getcategorizationdetailsofassortmentrecommendations
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        Accept: tools.Accept
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-reject-recommendations
+      description: Walmart Reject Recommendations
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-recommendations-assortment-recommendations.rejectassortmentrecommendations
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        Accept: tools.Accept
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

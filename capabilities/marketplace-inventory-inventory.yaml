@@ -1,0 +1,605 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Inventory Management — Inventory
+  description: 'Walmart Inventory Management — Inventory. 7 operations. Lead operation: Walmart Bulk Item Inventory Update.
+    Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Inventory
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-inventory-inventory
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Inventory Management — Inventory business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-feeds
+      path: /v3/feeds
+      operations:
+      - name: updatebulkinventory
+        method: POST
+        description: Walmart Bulk Item Inventory Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: The feed Type
+          required: true
+        - name: shipNode
+          in: query
+          type: string
+          description: The shipNode for which the inventory is to be updated. Not required in case of Multi Node Inventory
+            Update Feed (feedType=MP_INVENTORY)
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v3-fulfillment-inventory
+      path: /v3/fulfillment/inventory
+      operations:
+      - name: getwfsinventory
+        method: GET
+        description: Walmart Wfs Inventory
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will
+            be used by the seller in the XSD file to refer to each item.
+        - name: fromModifiedDate
+          in: query
+          type: string
+          description: last inventory modified date - starting range.
+        - name: toModifiedDate
+          in: query
+          type: string
+          description: last inventory modified date - starting range.
+        - name: limit
+          in: query
+          type: string
+          description: Number of Sku to be returned. Cannot be larger than 300.
+        - name: offset
+          in: query
+          type: string
+          description: Offset is the number of records you wish to skip before selecting records.
+        - name: shipNodeType
+          in: query
+          type: string
+          description: 'Currently supported: multichannel. This param is enabled only for multi channel sellers. sku becomes
+            mandatory and other params are ineffective while using this'
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-inventories
+      path: /v3/inventories
+      operations:
+      - name: getmultinodeinventoryforallskuandallshipnodes
+        method: GET
+        description: Walmart Multiple Item Inventory for All Ship Nodes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+          description: The number of items returned. Cannot be more than 50.
+        - name: nextCursor
+          in: query
+          type: string
+          description: String returned from initial API call to indicate pagination. Specify nextCursor value to retrieve
+            the next 50 items.
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    - name: v3-inventories-sku
+      path: /v3/inventories/{sku}
+      operations:
+      - name: getmultinodeinventoryforskuandallshipnodes
+        method: GET
+        description: Walmart Single Item Inventory by Ship Node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: path
+          type: string
+          description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will
+            be used by the seller in the XSD file to refer to each item.
+          required: true
+        - name: shipNode
+          in: query
+          type: string
+          description: ShipNode Id of the ship node for which the inventory is requested
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+      - name: updatemultinodeinventory
+        method: PUT
+        description: Walmart Update Item Inventory Per Ship Node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: path
+          type: string
+          description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will
+            be used by the seller in the XSD file to refer to each item.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-inventory
+      path: /v3/inventory
+      operations:
+      - name: getinventory
+        method: GET
+        description: Walmart Inventory
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will
+            be used by the seller in the XSD file to refer to each item.
+          required: true
+        - name: shipNode
+          in: query
+          type: string
+          description: The shipNode for which the inventory is requested
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+      - name: updateinventoryforanitem
+        method: PUT
+        description: Walmart Update Inventory
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          description: An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will
+            be used by the seller in the XSD file to refer to each item.
+          required: true
+        - name: shipNode
+          in: query
+          type: string
+          description: The shipNode for which the inventory is to be updated.
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-inventory-inventory-rest
+    port: 8080
+    description: REST adapter for Walmart Inventory Management — Inventory. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v3/feeds
+      name: v3-feeds
+      description: REST surface for v3-feeds.
+      operations:
+      - method: POST
+        name: updatebulkinventory
+        description: Walmart Bulk Item Inventory Update
+        call: marketplace-inventory-inventory.updatebulkinventory
+        with:
+          feedType: rest.feedType
+          shipNode: rest.shipNode
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/fulfillment/inventory
+      name: v3-fulfillment-inventory
+      description: REST surface for v3-fulfillment-inventory.
+      operations:
+      - method: GET
+        name: getwfsinventory
+        description: Walmart Wfs Inventory
+        call: marketplace-inventory-inventory.getwfsinventory
+        with:
+          sku: rest.sku
+          fromModifiedDate: rest.fromModifiedDate
+          toModifiedDate: rest.toModifiedDate
+          limit: rest.limit
+          offset: rest.offset
+          shipNodeType: rest.shipNodeType
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/inventories
+      name: v3-inventories
+      description: REST surface for v3-inventories.
+      operations:
+      - method: GET
+        name: getmultinodeinventoryforallskuandallshipnodes
+        description: Walmart Multiple Item Inventory for All Ship Nodes
+        call: marketplace-inventory-inventory.getmultinodeinventoryforallskuandallshipnodes
+        with:
+          limit: rest.limit
+          nextCursor: rest.nextCursor
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/inventories/{sku}
+      name: v3-inventories-sku
+      description: REST surface for v3-inventories-sku.
+      operations:
+      - method: GET
+        name: getmultinodeinventoryforskuandallshipnodes
+        description: Walmart Single Item Inventory by Ship Node
+        call: marketplace-inventory-inventory.getmultinodeinventoryforskuandallshipnodes
+        with:
+          sku: rest.sku
+          shipNode: rest.shipNode
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemultinodeinventory
+        description: Walmart Update Item Inventory Per Ship Node
+        call: marketplace-inventory-inventory.updatemultinodeinventory
+        with:
+          sku: rest.sku
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/inventory
+      name: v3-inventory
+      description: REST surface for v3-inventory.
+      operations:
+      - method: GET
+        name: getinventory
+        description: Walmart Inventory
+        call: marketplace-inventory-inventory.getinventory
+        with:
+          sku: rest.sku
+          shipNode: rest.shipNode
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateinventoryforanitem
+        description: Walmart Update Inventory
+        call: marketplace-inventory-inventory.updateinventoryforanitem
+        with:
+          sku: rest.sku
+          shipNode: rest.shipNode
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-inventory-inventory-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Inventory Management — Inventory. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: walmart-bulk-item-inventory-update
+      description: Walmart Bulk Item Inventory Update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-inventory-inventory.updatebulkinventory
+      with:
+        feedType: tools.feedType
+        shipNode: tools.shipNode
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-wfs-inventory
+      description: Walmart Wfs Inventory
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-inventory-inventory.getwfsinventory
+      with:
+        sku: tools.sku
+        fromModifiedDate: tools.fromModifiedDate
+        toModifiedDate: tools.toModifiedDate
+        limit: tools.limit
+        offset: tools.offset
+        shipNodeType: tools.shipNodeType
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-multiple-item-inventory-all
+      description: Walmart Multiple Item Inventory for All Ship Nodes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-inventory-inventory.getmultinodeinventoryforallskuandallshipnodes
+      with:
+        limit: tools.limit
+        nextCursor: tools.nextCursor
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-single-item-inventory-ship
+      description: Walmart Single Item Inventory by Ship Node
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-inventory-inventory.getmultinodeinventoryforskuandallshipnodes
+      with:
+        sku: tools.sku
+        shipNode: tools.shipNode
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-update-item-inventory-per
+      description: Walmart Update Item Inventory Per Ship Node
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-inventory-inventory.updatemultinodeinventory
+      with:
+        sku: tools.sku
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-inventory
+      description: Walmart Inventory
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-inventory-inventory.getinventory
+      with:
+        sku: tools.sku
+        shipNode: tools.shipNode
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-update-inventory
+      description: Walmart Update Inventory
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-inventory-inventory.updateinventoryforanitem
+      with:
+        sku: tools.sku
+        shipNode: tools.shipNode
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

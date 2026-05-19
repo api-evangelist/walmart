@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Lag Time Management — Lag Time
+  description: 'Walmart Lag Time Management — Lag Time. 2 operations. Lead operation: Walmart Update Lag Time for Items in
+    Bulk. Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Lag Time
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: dropship-vendor-lag-time-lag-time
+    baseUri: https://api-gateway.walmart.com
+    description: Walmart Lag Time Management — Lag Time business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-feeds
+      path: /v3/feeds
+      operations:
+      - name: postcreateanaccesstoken
+        method: POST
+        description: Walmart Update Lag Time for Items in Bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: feedType
+          in: query
+          type: string
+          description: Specifies the type of the feed content.
+          required: true
+        - name: shipNode
+          in: query
+          type: string
+          description: Specifies the distribution facility distributor identifier.
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+        - name: Content-Type
+          in: header
+          type: string
+          description: 'Specifies the format of request and response body data. '
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v3-lagtime
+      path: /v3/lagtime
+      operations:
+      - name: getretrievelagtime
+        method: GET
+        description: Walmart Retrieve Lag Time for a Single Item Based on Product Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sku
+          in: query
+          type: string
+          description: Specifies the stock keeping unit (SKU) item identifier.
+        - name: gtin
+          in: query
+          type: string
+          description: Specifies the global trade item number (GTIN) item identifier.
+        - name: shipNode
+          in: query
+          type: string
+          description: Specifies the distribution facility distributor identifier.
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: Specifies the data type expected in a response sent from the server.
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: Specifies an identifier that tracks the consumer request by channel.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: Specifies an identifier for each API call and is used to track and debug issues.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: Specifies the access token retrieved in the <a href="https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI">Create
+            Access Token</a> request.
+          required: true
+  exposes:
+  - type: rest
+    namespace: dropship-vendor-lag-time-lag-time-rest
+    port: 8080
+    description: REST adapter for Walmart Lag Time Management — Lag Time. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v3/feeds
+      name: v3-feeds
+      description: REST surface for v3-feeds.
+      operations:
+      - method: POST
+        name: postcreateanaccesstoken
+        description: Walmart Update Lag Time for Items in Bulk
+        call: dropship-vendor-lag-time-lag-time.postcreateanaccesstoken
+        with:
+          feedType: rest.feedType
+          shipNode: rest.shipNode
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          Content-Type: rest.Content-Type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/lagtime
+      name: v3-lagtime
+      description: REST surface for v3-lagtime.
+      operations:
+      - method: GET
+        name: getretrievelagtime
+        description: Walmart Retrieve Lag Time for a Single Item Based on Product Id
+        call: dropship-vendor-lag-time-lag-time.getretrievelagtime
+        with:
+          sku: rest.sku
+          gtin: rest.gtin
+          shipNode: rest.shipNode
+          Accept: rest.Accept
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: dropship-vendor-lag-time-lag-time-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Lag Time Management — Lag Time. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: walmart-update-lag-time-items
+      description: Walmart Update Lag Time for Items in Bulk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dropship-vendor-lag-time-lag-time.postcreateanaccesstoken
+      with:
+        feedType: tools.feedType
+        shipNode: tools.shipNode
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        Content-Type: tools.Content-Type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-retrieve-lag-time-single
+      description: Walmart Retrieve Lag Time for a Single Item Based on Product Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dropship-vendor-lag-time-lag-time.getretrievelagtime
+      with:
+        sku: tools.sku
+        gtin: tools.gtin
+        shipNode: tools.shipNode
+        Accept: tools.Accept
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+      outputParameters:
+      - type: object
+        mapping: $.

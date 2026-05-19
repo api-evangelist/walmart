@@ -1,0 +1,276 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Reviews Acceleration — Reviews
+  description: 'Walmart Reviews Acceleration — Reviews. 3 operations. Lead operation: Walmart Get Categories. Self-contained
+    Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Reviews
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-reviews-reviews
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Reviews Acceleration — Reviews business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-growth-reviews-accelerator-categories
+      path: /v3/growth/reviews-accelerator/categories
+      operations:
+      - name: getirpcategories
+        method: POST
+        description: Walmart Get Categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'Only supported Media Type : application/json'
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-growth-reviews-accelerator-items
+      path: /v3/growth/reviews-accelerator/items
+      operations:
+      - name: getirpitems
+        method: POST
+        description: Walmart Get Rap Post-purchase Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: scrollId
+          in: query
+          type: string
+          description: Optional parameter specifying the scrollId to return the next set of results.
+          required: true
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'Only supported Media Type : application/json'
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-growth-reviews-accelerator-items-status
+      path: /v3/growth/reviews-accelerator/items/status
+      operations:
+      - name: bulkupdateitemstatus
+        method: PUT
+        description: Walmart Bulk Update Item Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'Only supported Media Type : application/json'
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: marketplace-reviews-reviews-rest
+    port: 8080
+    description: REST adapter for Walmart Reviews Acceleration — Reviews. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v3/growth/reviews-accelerator/categories
+      name: v3-growth-reviews-accelerator-categories
+      description: REST surface for v3-growth-reviews-accelerator-categories.
+      operations:
+      - method: POST
+        name: getirpcategories
+        description: Walmart Get Categories
+        call: marketplace-reviews-reviews.getirpcategories
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          Accept: rest.Accept
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/growth/reviews-accelerator/items
+      name: v3-growth-reviews-accelerator-items
+      description: REST surface for v3-growth-reviews-accelerator-items.
+      operations:
+      - method: POST
+        name: getirpitems
+        description: Walmart Get Rap Post-purchase Items
+        call: marketplace-reviews-reviews.getirpitems
+        with:
+          scrollId: rest.scrollId
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          Accept: rest.Accept
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/growth/reviews-accelerator/items/status
+      name: v3-growth-reviews-accelerator-items-status
+      description: REST surface for v3-growth-reviews-accelerator-items-status.
+      operations:
+      - method: PUT
+        name: bulkupdateitemstatus
+        description: Walmart Bulk Update Item Status
+        call: marketplace-reviews-reviews.bulkupdateitemstatus
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          Accept: rest.Accept
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-reviews-reviews-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Reviews Acceleration — Reviews. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: walmart-get-categories
+      description: Walmart Get Categories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: marketplace-reviews-reviews.getirpcategories
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        Accept: tools.Accept
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-get-rap-post-purchase
+      description: Walmart Get Rap Post-purchase Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: marketplace-reviews-reviews.getirpitems
+      with:
+        scrollId: tools.scrollId
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        Accept: tools.Accept
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-bulk-update-item-status
+      description: Walmart Bulk Update Item Status
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: marketplace-reviews-reviews.bulkupdateitemstatus
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        Accept: tools.Accept
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Walmart Authentication & Authorization Management — Authorization
+  description: 'Walmart Authentication & Authorization Management — Authorization. 2 operations. Lead operation: Walmart Token
+    Api. Self-contained Naftiko capability covering one Walmart business surface.'
+  tags:
+  - Walmart
+  - Authorization
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WALMART_API_KEY: WALMART_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marketplace-authentication-authorization
+    baseUri: https://marketplace.walmartapis.com
+    description: Walmart Authentication & Authorization Management — Authorization business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: v3-token
+      path: /v3/token
+      operations:
+      - name: tokenapi
+        method: POST
+        description: Walmart Token Api
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_PARTNER.ID
+          in: header
+          type: string
+          description: 'Partner Id registered in Walmart marketplace to identify a seller. <br /> This field is required when
+            **grant_type: authorization_code** and **grant_type: refre'
+        - name: Authorization
+          in: header
+          type: string
+          description: Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of
+            the integration steps.
+          required: true
+        - name: Content-Type
+          in: header
+          type: string
+          description: Content type of the request body.
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-token-detail
+      path: /v3/token/detail
+      operations:
+      - name: gettokendetail
+        method: GET
+        description: Walmart Token Detail
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: WM_SEC.ACCESS_TOKEN
+          in: header
+          type: string
+          description: The access token retrieved in the Token API call
+          required: true
+        - name: Content-Type
+          in: header
+          type: string
+          description: Content type of the request body.
+          required: true
+        - name: WM_CONSUMER.CHANNEL.TYPE
+          in: header
+          type: string
+          description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during
+            onboarding.
+        - name: WM_QOS.CORRELATION_ID
+          in: header
+          type: string
+          description: A unique ID which identifies each API call and used to track and debug issues; use a random generated
+            GUID for this ID
+          required: true
+        - name: WM_SVC.NAME
+          in: header
+          type: string
+          description: Walmart Service Name
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.WALMART_USER}}'
+      password: '{{env.WALMART_PASS}}'
+  exposes:
+  - type: rest
+    namespace: marketplace-authentication-authorization-rest
+    port: 8080
+    description: REST adapter for Walmart Authentication & Authorization Management — Authorization. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v3/token
+      name: v3-token
+      description: REST surface for v3-token.
+      operations:
+      - method: POST
+        name: tokenapi
+        description: Walmart Token Api
+        call: marketplace-authentication-authorization.tokenapi
+        with:
+          WM_PARTNER.ID: rest.WM_PARTNER.ID
+          Authorization: rest.Authorization
+          Content-Type: rest.Content-Type
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/token/detail
+      name: v3-token-detail
+      description: REST surface for v3-token-detail.
+      operations:
+      - method: GET
+        name: gettokendetail
+        description: Walmart Token Detail
+        call: marketplace-authentication-authorization.gettokendetail
+        with:
+          WM_SEC.ACCESS_TOKEN: rest.WM_SEC.ACCESS_TOKEN
+          Content-Type: rest.Content-Type
+          WM_CONSUMER.CHANNEL.TYPE: rest.WM_CONSUMER.CHANNEL.TYPE
+          WM_QOS.CORRELATION_ID: rest.WM_QOS.CORRELATION_ID
+          WM_SVC.NAME: rest.WM_SVC.NAME
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marketplace-authentication-authorization-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Walmart Authentication & Authorization Management — Authorization. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: walmart-token-api
+      description: Walmart Token Api
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: marketplace-authentication-authorization.tokenapi
+      with:
+        WM_PARTNER.ID: tools.WM_PARTNER.ID
+        Authorization: tools.Authorization
+        Content-Type: tools.Content-Type
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: walmart-token-detail
+      description: Walmart Token Detail
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marketplace-authentication-authorization.gettokendetail
+      with:
+        WM_SEC.ACCESS_TOKEN: tools.WM_SEC.ACCESS_TOKEN
+        Content-Type: tools.Content-Type
+        WM_CONSUMER.CHANNEL.TYPE: tools.WM_CONSUMER.CHANNEL.TYPE
+        WM_QOS.CORRELATION_ID: tools.WM_QOS.CORRELATION_ID
+        WM_SVC.NAME: tools.WM_SVC.NAME
+      outputParameters:
+      - type: object
+        mapping: $.
