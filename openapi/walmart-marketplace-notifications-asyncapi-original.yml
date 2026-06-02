@@ -1,0 +1,546 @@
+asyncapi: '2.6.0'
+id: 'urn:com:walmart:marketplace:notifications'
+info:
+  title: Walmart Marketplace Notifications (Webhooks)
+  version: '1.0.0'
+  description: |
+    AsyncAPI 2.6 description of the Walmart Marketplace Notifications surface — also
+    known as Walmart's seller webhooks / push notifications. Walmart POSTs a JSON
+    payload describing an event to a seller-defined destination URL whenever a
+    subscribed event occurs (e.g. a new purchase order is created, an offer is
+    unpublished, the Buy Box winner changes, inventory hits out-of-stock).
+
+    Subscriptions are managed through the companion REST control plane
+    (`walmart-marketplace-notifications-openapi-original.yml`) — `/v3/webhooks/subscriptions`,
+    `/v3/webhooks/eventTypes`, and `/v3/webhooks/test`. This AsyncAPI document
+    describes only the *outbound* delivery channel: what Walmart sends to the
+    seller's `eventUrl`.
+
+    Event types, resource names, and `eventVersion` values reflect the catalog
+    documented at https://developer.walmart.com/doc/us/mp/us-mp-notifications/
+    and the example payloads inside Walmart's published Notifications OpenAPI.
+    Per-event payload schemas beyond the common envelope are gated by Walmart's
+    portal and are intentionally left as open `object` shapes here rather than
+    fabricated.
+  contact:
+    name: Walmart Marketplace Developer Portal
+    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
+  license:
+    name: Walmart Marketplace Developer Agreement
+    url: https://developer.walmart.com/
+
+defaultContentType: application/json
+
+servers:
+  seller-endpoint:
+    url: '{sellerWebhookUrl}'
+    protocol: https
+    description: |
+      The seller-defined HTTPS destination URL registered via the Create
+      Subscription API (`eventUrl` field). Walmart will POST event payloads
+      to this URL. The URL can be protected with BASIC_AUTH, OAUTH, or HMAC,
+      configured per subscription via `authDetails`.
+    variables:
+      sellerWebhookUrl:
+        default: https://example.com/walmart/webhooks
+        description: Fully-qualified HTTPS URL owned by the seller.
+
+channels:
+  offer-published:
+    description: |
+      Delivered when an item offer transitions to the published state and becomes
+      buyable on Walmart.com. Resource: ITEM. Event version: V1.
+    publish:
+      operationId: receiveOfferPublished
+      summary: Walmart -> seller delivery for OFFER_PUBLISHED.
+      message:
+        $ref: '#/components/messages/OfferPublished'
+
+  offer-unpublished:
+    description: |
+      Delivered when an item offer is unpublished (e.g. blocked, stale,
+      out-of-stock thresholds tripped, content quality issues). Resource: ITEM.
+      Event version: V1.
+    publish:
+      operationId: receiveOfferUnpublished
+      summary: Walmart -> seller delivery for OFFER_UNPUBLISHED.
+      message:
+        $ref: '#/components/messages/OfferUnpublished'
+
+  buy-box-changed:
+    description: |
+      Delivered when the Buy Box winner or Buy Box price changes for one of the
+      seller's items. Resource: PRICE. Event version: V1.
+    publish:
+      operationId: receiveBuyBoxChanged
+      summary: Walmart -> seller delivery for BUY_BOX_CHANGED.
+      message:
+        $ref: '#/components/messages/BuyBoxChanged'
+
+  inventory-out-of-stock:
+    description: |
+      Delivered when an item's available inventory drops to zero / out-of-stock.
+      Resource: INVENTORY. Event version: V1.
+    publish:
+      operationId: receiveInventoryOos
+      summary: Walmart -> seller delivery for INVENTORY_OOS.
+      message:
+        $ref: '#/components/messages/InventoryOos'
+
+  purchase-order-created:
+    description: |
+      Delivered when a new purchase order (PO) is created on Walmart for the
+      seller. Resource: ORDER. Event version: V1.
+    publish:
+      operationId: receivePoCreated
+      summary: Walmart -> seller delivery for PO_CREATED.
+      message:
+        $ref: '#/components/messages/PoCreated'
+
+  purchase-order-line-autocancelled:
+    description: |
+      Delivered when one or more lines on an existing PO are automatically
+      cancelled by Walmart (e.g. ship-by deadline missed). Resource: ORDER.
+      Event version: V1.
+    publish:
+      operationId: receivePoLineAutocancelled
+      summary: Walmart -> seller delivery for PO_LINE_AUTOCANCELLED.
+      message:
+        $ref: '#/components/messages/PoLineAutocancelled'
+
+  order-intent-to-cancel:
+    description: |
+      Delivered when a customer (or Walmart) signals an intent to cancel an order
+      and the seller still has a remediation window. Resource: ORDER.
+      Event version: V1 (documented; per-event payload gated on portal).
+    publish:
+      operationId: receiveOrderIntentToCancel
+      summary: Walmart -> seller delivery for ORDER_INTENT_TO_CANCEL.
+      message:
+        $ref: '#/components/messages/OrderIntentToCancel'
+
+  order-management-event:
+    description: |
+      General-purpose order management lifecycle event (refunds, adjustments,
+      and related order-side transitions). Resource: ORDER. Event version: V1.
+    publish:
+      operationId: receiveOrderManagementEvent
+      summary: Walmart -> seller delivery for ORDER_MANAGEMENT_EVENT.
+      message:
+        $ref: '#/components/messages/OrderManagementEvent'
+
+  driver-status-notification:
+    description: |
+      Delivered for last-mile / GoLocal driver status updates tied to a delivery.
+      Resource: SHIPPING. Event version: V1.
+    publish:
+      operationId: receiveDriverStatusNotification
+      summary: Walmart -> seller delivery for DRIVER_STATUS_NOTIFICATION.
+      message:
+        $ref: '#/components/messages/DriverStatusNotification'
+
+  return-notification:
+    description: |
+      Delivered when a return is initiated or its status changes. Resource:
+      RETURNS. Event version: V1.
+    publish:
+      operationId: receiveReturnNotification
+      summary: Walmart -> seller delivery for RETURN_NOTIFICATIONS.
+      message:
+        $ref: '#/components/messages/ReturnNotification'
+
+  report-status:
+    description: |
+      Delivered when a report requested via the On-Request Reports API (or other
+      report-producing surfaces) completes and is ready for download. Resource:
+      REPORTS. Event version: V1.
+    publish:
+      operationId: receiveReportStatus
+      summary: Walmart -> seller delivery for REPORT_STATUS.
+      message:
+        $ref: '#/components/messages/ReportStatus'
+
+  assortment-recommendations:
+    description: |
+      Delivered when new assortment / item growth recommendations are available
+      for the seller. Resource: RECOMMENDATIONS. Event version: V1.
+    publish:
+      operationId: receiveAssortmentRecommendations
+      summary: Walmart -> seller delivery for ASSORTMENT_RECOMMENDATIONS.
+      message:
+        $ref: '#/components/messages/AssortmentRecommendations'
+
+  seller-performance-notifications:
+    description: |
+      Performance webhook stream — daily shipping risk ALARMS and weekly KPI
+      REPORT rollups. Sent as `eventType: SELLER_PERFORMANCE_NOTIFICATIONS`.
+      Documented at https://developer.walmart.com/us-marketplace/docs/performance-webhook.
+    publish:
+      operationId: receiveSellerPerformanceNotification
+      summary: Walmart -> seller delivery for SELLER_PERFORMANCE_NOTIFICATIONS.
+      message:
+        $ref: '#/components/messages/SellerPerformanceNotification'
+
+components:
+  messages:
+    OfferPublished:
+      name: OfferPublished
+      title: Offer Published
+      summary: An item offer has become published / buyable.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: OFFER_PUBLISHED
+            eventVersion: V1
+            resourceName: ITEM
+            partnerId: '12300000359'
+            payload: {}
+
+    OfferUnpublished:
+      name: OfferUnpublished
+      title: Offer Unpublished
+      summary: An item offer has been unpublished.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: OFFER_UNPUBLISHED
+            eventVersion: V1
+            resourceName: ITEM
+            partnerId: '12300000359'
+            payload: {}
+
+    BuyBoxChanged:
+      name: BuyBoxChanged
+      title: Buy Box Changed
+      summary: The Buy Box winner or price has changed.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: BUY_BOX_CHANGED
+            eventVersion: V1
+            resourceName: PRICE
+            partnerId: '12300000359'
+            payload: {}
+
+    InventoryOos:
+      name: InventoryOos
+      title: Inventory Out Of Stock
+      summary: Item inventory has reached zero.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: INVENTORY_OOS
+            eventVersion: V1
+            resourceName: INVENTORY
+            partnerId: '12300000359'
+            payload: {}
+
+    PoCreated:
+      name: PoCreated
+      title: Purchase Order Created
+      summary: A new purchase order has been created.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: PO_CREATED
+            eventVersion: V1
+            resourceName: ORDER
+            partnerId: '12300000359'
+            payload: {}
+
+    PoLineAutocancelled:
+      name: PoLineAutocancelled
+      title: Purchase Order Line Auto-Cancelled
+      summary: One or more PO lines were auto-cancelled by Walmart.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: PO_LINE_AUTOCANCELLED
+            eventVersion: V1
+            resourceName: ORDER
+            partnerId: '12300000359'
+            payload: {}
+
+    OrderIntentToCancel:
+      name: OrderIntentToCancel
+      title: Order Intent To Cancel
+      summary: A customer (or Walmart) signaled intent to cancel an order.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: ORDER_INTENT_TO_CANCEL
+            eventVersion: V1
+            resourceName: ORDER
+            partnerId: '12300000359'
+            payload: {}
+
+    OrderManagementEvent:
+      name: OrderManagementEvent
+      title: Order Management Event
+      summary: General order-side management lifecycle event.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: ORDER_MANAGEMENT_EVENT
+            eventVersion: V1
+            resourceName: ORDER
+            partnerId: '12300000359'
+            payload: {}
+
+    DriverStatusNotification:
+      name: DriverStatusNotification
+      title: Driver Status Notification
+      summary: Last-mile / GoLocal driver status update for a delivery.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: DRIVER_STATUS_NOTIFICATION
+            eventVersion: V1
+            resourceName: SHIPPING
+            partnerId: '12300000359'
+            payload: {}
+
+    ReturnNotification:
+      name: ReturnNotification
+      title: Return Notification
+      summary: A return has been initiated or its status changed.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: RETURN_NOTIFICATIONS
+            eventVersion: V1
+            resourceName: RETURNS
+            partnerId: '12300000359'
+            payload: {}
+
+    ReportStatus:
+      name: ReportStatus
+      title: Report Status
+      summary: A requested report has completed and is ready for download.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: REPORT_STATUS
+            eventVersion: V1
+            resourceName: REPORTS
+            partnerId: '12300000359'
+            payload: {}
+
+    AssortmentRecommendations:
+      name: AssortmentRecommendations
+      title: Assortment Recommendations
+      summary: New assortment / growth recommendations are available.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NotificationEnvelope'
+      examples:
+        - name: minimal
+          payload:
+            eventType: ASSORTMENT_RECOMMENDATIONS
+            eventVersion: V1
+            resourceName: RECOMMENDATIONS
+            partnerId: '12300000359'
+            payload: {}
+
+    SellerPerformanceNotification:
+      name: SellerPerformanceNotification
+      title: Seller Performance Notification
+      summary: |
+        Performance webhook — ALARMS (daily shipping risk) and REPORT (weekly KPI rollup,
+        Mondays 05:00 PT). Distinct envelope from the Notifications API events.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SellerPerformanceEnvelope'
+      examples:
+        - name: alarms-skeleton
+          payload:
+            source:
+              eventType: SELLER_PERFORMANCE_NOTIFICATIONS
+              eventTime: '2026-05-30T12:00:00Z'
+              eventId: 7c4e0b22-2f8a-4f6e-9b41-3a6ad9d1c2c5
+            payload:
+              partnerId: '12300000359'
+              lastRefreshTs: '2026-05-30T11:55:00Z'
+              notificationType: ALARMS
+              moreInfoLink: https://seller.walmart.com/performance
+              enNotification:
+                alarms:
+                  - alarmType: LateOriginScan
+                    orderCount: 12
+                    description: Orders without an origin scan within SLA.
+                    action: Confirm shipment and provide tracking.
+                    poNumbers: []
+
+  schemas:
+    NotificationEnvelope:
+      type: object
+      description: |
+        Envelope wrapping every Walmart Marketplace Notifications event delivered
+        to a seller's webhook URL. Per-event `payload` shape is event-specific and
+        documented on the portal; modelled here as an open object to avoid
+        fabricating fields. Common identifier fields (`eventType`, `eventVersion`,
+        `resourceName`, `partnerId`, `subscriptionId`) mirror those used across
+        Walmart's Notifications OpenAPI examples.
+      properties:
+        eventType:
+          type: string
+          description: The event that triggered the notification.
+          enum:
+            - OFFER_PUBLISHED
+            - OFFER_UNPUBLISHED
+            - BUY_BOX_CHANGED
+            - INVENTORY_OOS
+            - PO_CREATED
+            - PO_LINE_AUTOCANCELLED
+            - ORDER_INTENT_TO_CANCEL
+            - ORDER_MANAGEMENT_EVENT
+            - DRIVER_STATUS_NOTIFICATION
+            - RETURN_NOTIFICATIONS
+            - REPORT_STATUS
+            - ASSORTMENT_RECOMMENDATIONS
+        eventVersion:
+          type: string
+          description: Version of the event type. Currently V1 for all documented events.
+          example: V1
+        resourceName:
+          type: string
+          description: Functional category the event type maps to (drives Delegated Access scope).
+          enum:
+            - ITEM
+            - PRICE
+            - INVENTORY
+            - ORDER
+            - SHIPPING
+            - RETURNS
+            - REPORTS
+            - RECOMMENDATIONS
+        partnerId:
+          type: string
+          description: Walmart seller / partner identifier.
+          example: '12300000359'
+        subscriptionId:
+          type: string
+          description: Subscription ID under which this notification was delivered.
+          example: 243ba4d0-b322-11ea-b385-0127e9b85538
+        eventTime:
+          type: string
+          format: date-time
+          description: Timestamp of the event (ISO 8601). Field name may vary slightly per event.
+        payload:
+          type: object
+          description: Event-specific payload. Shape varies by `eventType`; see Walmart portal for full schema.
+          additionalProperties: true
+      required:
+        - eventType
+        - eventVersion
+        - resourceName
+
+    SellerPerformanceEnvelope:
+      type: object
+      description: |
+        Envelope used by the Seller Performance webhook stream. Distinct from the
+        Notifications API envelope: events are wrapped in a `source` block carrying
+        `eventType`, `eventTime`, and `eventId`; the `payload` block carries either
+        ALARMS or REPORT content.
+      properties:
+        source:
+          type: object
+          properties:
+            eventType:
+              type: string
+              enum:
+                - SELLER_PERFORMANCE_NOTIFICATIONS
+            eventTime:
+              type: string
+              format: date-time
+              description: ISO 8601 timestamp of the event.
+            eventId:
+              type: string
+              description: Unique event identifier for deduplication.
+          required:
+            - eventType
+            - eventTime
+            - eventId
+        payload:
+          type: object
+          properties:
+            partnerId:
+              type: string
+            lastRefreshTs:
+              type: string
+              format: date-time
+              description: When the underlying performance data was last refreshed.
+            notificationType:
+              type: string
+              enum:
+                - ALARMS
+                - REPORT
+              description: ALARMS = daily shipping risk; REPORT = weekly KPI rollup.
+            enNotification:
+              type: object
+              description: English-language notification content.
+              additionalProperties: true
+            supportedLanguages:
+              type: array
+              items:
+                type: string
+            moreInfoLink:
+              type: string
+              format: uri
+          required:
+            - partnerId
+            - notificationType
+      required:
+        - source
+        - payload
+
+  messageTraits:
+    DeliveryHeaders:
+      headers:
+        type: object
+        description: |
+          HTTP request headers Walmart sends on a webhook POST. Per subscription
+          `authDetails.authMethod` (BASIC_AUTH | OAUTH | HMAC) controls which
+          authorization-style header is populated.
+        properties:
+          content-type:
+            type: string
+            const: application/json
+          Authorization:
+            type: string
+            description: |
+              Auth header when subscription uses BASIC_AUTH or OAUTH. Header name
+              is configurable via subscription `authDetails.authHeaderName`.

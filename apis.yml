@@ -486,6 +486,8 @@ apis:
       type: Documentation
     - url: openapi/walmart-marketplace-notifications-openapi-original.yml
       type: OpenAPI
+    - url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
+      type: AsyncAPI
     - type: NaftikoCapability
       url: capabilities/marketplace-notifications-notifications.yaml
     description: Push notifications or Web Hooks trigger alerts to seller applications when specific events occur, such as an
@@ -762,7 +764,7 @@ common:
     - https://developer.walmart.com/
     updated: '2026-05-04'
 created: 2023/11/15
-modified: '2026-05-19'
+modified: '2026-05-30'
 description: Walmart is a multinational retail corporation that operates a chain of hypermarkets, discount department stores,
   and grocery stores. The company is known for offering a wide range of products at competitive prices, attracting customers
   from all walks of life. Walmart also provides various convenience services, such as pharmacy, optical, and financial services,
