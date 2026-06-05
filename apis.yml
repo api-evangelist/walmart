@@ -720,6 +720,7 @@ name: Walmart
 tags:
   - Commerce
   - Retail
+  - Fortune 100
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 common:
   - type: GitHubOrganization
