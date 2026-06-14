@@ -1,0 +1,998 @@
+"""
+Walmart Marketplace GraphQL Schema
+Conceptual schema derived from the Walmart REST APIs available at https://developer.walmart.com/
+Covers Marketplace, Dropship Vendor (DSV), and Walmart Fulfillment Services (WFS) capabilities.
+"""
+
+# -----------------------------------------------------------------------
+# Scalars
+# -----------------------------------------------------------------------
+
+scalar DateTime
+scalar Date
+scalar Decimal
+scalar JSON
+
+# -----------------------------------------------------------------------
+# Enums
+# -----------------------------------------------------------------------
+
+enum ItemCondition {
+  NEW
+  LIKE_NEW
+  GOOD
+  FAIR
+  MANUFACTURER_REFURBISHED
+  SELLER_REFURBISHED
+}
+
+enum ItemStatus {
+  PUBLISHED
+  UNPUBLISHED
+  IN_PROGRESS
+  SYSTEM_PROBLEM
+  STAGE
+  DECLINED
+}
+
+enum FulfillmentType {
+  SELLER_FULFILLED
+  WALMART_FULFILLMENT_SERVICES
+  DROP_SHIP_VENDOR
+  IN_STORE
+  PICKUP_TODAY
+}
+
+enum OrderStatus {
+  CREATED
+  ACKNOWLEDGED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum OrderLineStatus {
+  CREATED
+  ACKNOWLEDGED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUND_REQUESTED
+  REFUNDED
+}
+
+enum RefundStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  PROCESSED
+  CANCELLED
+}
+
+enum ReturnReason {
+  WRONG_ITEM
+  DEFECTIVE
+  NOT_AS_DESCRIBED
+  CHANGED_MIND
+  DAMAGED_IN_SHIPPING
+  MISSING_PARTS
+  OTHER
+}
+
+enum FeedStatus {
+  RECEIVED
+  INPROGRESS
+  PROCESSED
+  ERROR
+}
+
+enum ReportType {
+  ITEM
+  INVENTORY
+  ORDER
+  PAYMENT_RECONCILIATION
+  PERFORMANCE
+  RETURNS
+}
+
+enum WebhookEventType {
+  ITEM_UNPUBLISHED
+  ORDER_CREATED
+  INVENTORY_OUT_OF_STOCK
+  RETURN_INITIATED
+  SHIPMENT_DELIVERED
+  LISTING_QUALITY_CHANGE
+  PRICE_CHANGE
+}
+
+enum ShippingSpeed {
+  STANDARD
+  TWO_DAY
+  NEXT_DAY
+  FREIGHT
+  PICKUP
+}
+
+enum PriceType {
+  RETAIL
+  SALE
+  WAS
+  PROMOTIONAL
+  COMPARISON
+  ROLLBACK
+  CLEARANCE
+  SPECIAL_BUY
+}
+
+enum SellerPerformanceTier {
+  PRO
+  STANDARD
+  DEVELOPING
+  BELOW_STANDARD
+}
+
+# -----------------------------------------------------------------------
+# Item Types
+# -----------------------------------------------------------------------
+
+"""A generic product item in the Walmart catalog."""
+type Item {
+  itemId: ID!
+  sku: String!
+  productName: String!
+  brand: String
+  shortDescription: String
+  longDescription: String
+  condition: ItemCondition!
+  status: ItemStatus!
+  category: ItemCategory
+  subcategory: ItemSubcategory
+  price: Price
+  inventory: Inventory
+  images: [ItemImage!]
+  media: [ItemMedia!]
+  specs: [ItemSpec!]
+  shippingWeight: ShippingWeight
+  offer: Offer
+  publishedDate: DateTime
+  lastUpdated: DateTime
+}
+
+"""Extended Walmart-specific item representation with marketplace attributes."""
+type WalmartItem {
+  walmartItemId: ID!
+  item: Item!
+  mart: String
+  wpid: String
+  upc: String
+  gtin: String
+  productType: String
+  lifecycleStatus: ItemStatus!
+  publishedStatus: String
+  variantGroupId: String
+  primaryImageUrl: String
+  shipsInOriginalPackaging: Boolean
+  offerCount: Int
+  createdDate: DateTime
+  modifiedDate: DateTime
+}
+
+"""A retail product with full catalog metadata."""
+type Product {
+  productId: ID!
+  name: String!
+  brand: String
+  manufacturer: String
+  modelNumber: String
+  upc: String
+  gtin: String
+  mpn: String
+  description: ItemDescription
+  category: ItemCategory
+  attributes: JSON
+  images: [ItemImage!]
+  relatedProducts: [Product!]
+}
+
+"""Rich text description for an item."""
+type ItemDescription {
+  shortDescription: String
+  longDescription: String
+  keyFeatures: [String!]
+  ingredients: String
+  warnings: String
+  directions: String
+}
+
+"""An image associated with an item listing."""
+type ItemImage {
+  imageId: ID!
+  url: String!
+  altText: String
+  rank: Int
+  isPrimary: Boolean!
+  width: Int
+  height: Int
+}
+
+"""Rich media (video, 360 spin, etc.) associated with an item."""
+type ItemMedia {
+  mediaId: ID!
+  mediaType: String!
+  url: String!
+  title: String
+  durationSeconds: Int
+  thumbnailUrl: String
+}
+
+"""Top-level category for item taxonomy."""
+type ItemCategory {
+  categoryId: ID!
+  categoryName: String!
+  departmentId: String
+  departmentName: String
+  subcategories: [ItemSubcategory!]
+}
+
+"""Subcategory within an item category."""
+type ItemSubcategory {
+  subcategoryId: ID!
+  subcategoryName: String!
+  parentCategory: ItemCategory!
+  feedType: String
+  taxonomyPath: String
+}
+
+"""A product specification attribute and its value."""
+type ItemSpec {
+  specName: String!
+  specValue: String!
+  unit: String
+}
+
+"""Shipping weight details for an item."""
+type ShippingWeight {
+  value: Decimal!
+  unit: String!
+}
+
+# -----------------------------------------------------------------------
+# Pricing Types
+# -----------------------------------------------------------------------
+
+"""Current active price for an item."""
+type Price {
+  itemId: ID!
+  sku: String!
+  currency: String!
+  currentPrice: WalmartPrice!
+  priceType: PriceType!
+  minAdvertisedPrice: Decimal
+  processingDate: DateTime
+}
+
+"""Walmart-specific price object with amount and type."""
+type WalmartPrice {
+  amount: Decimal!
+  currency: String!
+  priceType: PriceType
+}
+
+"""Standard retail (everyday) price."""
+type RetailPrice {
+  amount: Decimal!
+  currency: String!
+  effectiveDate: DateTime
+  expirationDate: DateTime
+}
+
+"""A reduced sale price."""
+type SalePrice {
+  amount: Decimal!
+  currency: String!
+  startDate: DateTime!
+  endDate: DateTime!
+  retailPrice: RetailPrice
+}
+
+"""A strikethrough was-price shown for reference."""
+type WasPrice {
+  amount: Decimal!
+  currency: String!
+}
+
+"""A competitor or reference comparison price."""
+type ComparisonPrice {
+  amount: Decimal!
+  currency: String!
+  comparisonDescription: String
+}
+
+"""A promotional price with event context."""
+type PromotionalPrice {
+  promotionId: ID!
+  itemId: ID!
+  sku: String!
+  promotionalPrice: Decimal!
+  currency: String!
+  startDate: DateTime!
+  endDate: DateTime!
+  promotionType: String
+}
+
+"""A promotion campaign (event, banner, etc.)."""
+type Promotion {
+  promotionId: ID!
+  promotionName: String!
+  promotionType: String!
+  startDate: DateTime!
+  endDate: DateTime!
+  items: [Item!]
+  discountPercent: Decimal
+  discountAmount: Decimal
+  minimumPurchase: Decimal
+}
+
+"""A coupon discount applied to an item or order."""
+type Coupon {
+  couponId: ID!
+  couponCode: String
+  discountType: String!
+  discountValue: Decimal!
+  minimumPurchaseAmount: Decimal
+  maxUsesPerCustomer: Int
+  startDate: DateTime
+  expirationDate: DateTime
+}
+
+"""A Walmart Rollback (limited-time price reduction)."""
+type Rollback {
+  rollbackId: ID!
+  itemId: ID!
+  rollbackPrice: Decimal!
+  regularPrice: Decimal!
+  currency: String!
+  startDate: DateTime!
+  endDate: DateTime!
+}
+
+"""A Walmart Special Buy (limited-quantity promotional price)."""
+type SpecialBuy {
+  specialBuyId: ID!
+  itemId: ID!
+  specialBuyPrice: Decimal!
+  regularPrice: Decimal!
+  currency: String!
+  eventName: String
+  startDate: DateTime!
+  endDate: DateTime!
+  quantityLimit: Int
+}
+
+# -----------------------------------------------------------------------
+# Offer and Fulfillment Types
+# -----------------------------------------------------------------------
+
+"""An offer to sell an item on Walmart.com."""
+type Offer {
+  offerId: ID!
+  itemId: ID!
+  sku: String!
+  seller: Seller
+  price: WalmartPrice!
+  fulfillmentType: FulfillmentType!
+  shippingOptions: [ShippingOption!]
+  availableQuantity: Int!
+  condition: ItemCondition!
+  isWalmartSold: Boolean!
+}
+
+"""A third-party seller's offer on an item."""
+type SellerOffer {
+  sellerOfferId: ID!
+  seller: SellerInfo!
+  item: Item!
+  price: WalmartPrice!
+  condition: ItemCondition!
+  fulfillmentType: FulfillmentType!
+  availableQuantity: Int!
+  shippingOptions: [ShippingOption!]
+  pickupAvailable: Boolean!
+  pickupTimes: PickupTimes
+}
+
+"""A shipping option for an offer."""
+type ShippingOption {
+  shippingMethod: String!
+  shippingSpeed: ShippingSpeed!
+  shippingCharge: Decimal!
+  currency: String!
+  estimatedDeliveryDate: Date
+  estimatedDeliveryDays: Int
+  shipNodeId: String
+}
+
+"""Pickup time windows for in-store or curbside pickup."""
+type PickupTimes {
+  storeId: ID!
+  storeName: String
+  availableWindows: [PickupWindow!]
+}
+
+"""A single available pickup window."""
+type PickupWindow {
+  date: Date!
+  startTime: String!
+  endTime: String!
+  available: Boolean!
+}
+
+"""Delivery eligibility for an item at a given location."""
+type DeliveryEligible {
+  itemId: ID!
+  zipCode: String!
+  isEligible: Boolean!
+  estimatedDeliveryDate: Date
+  deliveryType: String
+}
+
+# -----------------------------------------------------------------------
+# Order Types
+# -----------------------------------------------------------------------
+
+"""A customer purchase order on Walmart.com."""
+type Order {
+  orderId: ID!
+  customerOrderId: String!
+  purchaseOrderId: String!
+  orderDate: DateTime!
+  status: OrderStatus!
+  customer: Customer
+  orderLines: [OrderLine!]!
+  totalAmount: Decimal!
+  currency: String!
+  shippingAddress: CustomerAddress
+  estimatedDeliveryDate: Date
+  acknowledgmentStatus: String
+  createdDate: DateTime!
+  modifiedDate: DateTime
+}
+
+"""A Walmart-extended order with marketplace seller context."""
+type WalmartOrder {
+  order: Order!
+  sellerId: String!
+  marketplaceId: String
+  fulfillmentChannel: FulfillmentType
+  shipNodeId: String
+  shipByDate: DateTime
+  deliverByDate: DateTime
+  postalCode: String
+}
+
+"""A single line within a purchase order."""
+type OrderLine {
+  lineNumber: String!
+  item: Item!
+  orderLineQuantity: Int!
+  statusDate: DateTime
+  orderLineStatus: OrderLineStatus!
+  originalCarrierMethodCode: String
+  actualDeliveryDate: DateTime
+  charges: [OrderCharge!]
+  fulfillment: FulfillmentType
+  returnEligible: Boolean
+}
+
+"""A charge associated with an order line."""
+type OrderCharge {
+  chargeType: String!
+  chargeName: String!
+  chargeAmount: Decimal!
+  currency: String!
+  tax: Decimal
+}
+
+"""The status of an order line with timestamp."""
+type OrderLineStatusRecord {
+  orderLine: OrderLine!
+  status: OrderLineStatus!
+  statusDate: DateTime!
+  trackingInfo: TrackingInfo
+}
+
+"""A shipment associated with one or more order lines."""
+type Shipment {
+  shipmentId: ID!
+  orderId: ID!
+  carrier: ShipmentCarrier!
+  trackingNumber: String!
+  shipDateTime: DateTime
+  estimatedDeliveryDate: Date
+  actualDeliveryDate: DateTime
+  shipFromAddress: CustomerAddress
+  shipToAddress: CustomerAddress!
+  orderLines: [OrderLine!]!
+  packageCount: Int
+  packageWeight: ShippingWeight
+}
+
+"""The carrier used for a shipment."""
+type ShipmentCarrier {
+  carrierId: ID!
+  carrierName: String!
+  carrierCode: String!
+  serviceType: String
+  trackingUrl: String
+}
+
+"""Package tracking details for a shipment."""
+type TrackingInfo {
+  trackingNumber: String!
+  carrierCode: String!
+  trackingUrl: String
+  currentStatus: String
+  estimatedDeliveryDate: Date
+  events: [TrackingEvent!]
+}
+
+"""A single event in the tracking history of a shipment."""
+type TrackingEvent {
+  eventDate: DateTime!
+  eventDescription: String!
+  location: String
+  eventCode: String
+}
+
+# -----------------------------------------------------------------------
+# Returns and Refunds
+# -----------------------------------------------------------------------
+
+"""A return request initiated by a customer."""
+type ReturnOrder {
+  returnOrderId: ID!
+  originalOrderId: ID!
+  returnDate: DateTime!
+  returnLines: [ReturnLine!]!
+  refundAmount: RefundAmount
+  refundStatus: RefundStatus!
+  returnShippingLabel: String
+  returnTrackingNumber: String
+  returnReason: ReturnReason
+  customerContact: CustomerContact
+}
+
+"""A single item line within a return order."""
+type ReturnLine {
+  returnLineId: ID!
+  orderLine: OrderLine!
+  returnQuantity: Int!
+  returnReason: ReturnReason!
+  refundAmount: RefundAmount
+  refundStatus: RefundStatus!
+  isHazmat: Boolean
+  isFreight: Boolean
+  sellerLabelRequired: Boolean
+}
+
+"""The monetary amount to be refunded."""
+type RefundAmount {
+  totalRefundAmount: Decimal!
+  itemRefundAmount: Decimal
+  shippingRefundAmount: Decimal
+  taxRefundAmount: Decimal
+  currency: String!
+}
+
+# -----------------------------------------------------------------------
+# Marketplace and Seller Types
+# -----------------------------------------------------------------------
+
+"""Walmart Marketplace context."""
+type Marketplace {
+  marketplaceId: ID!
+  marketplaceName: String!
+  country: String!
+  currency: String!
+  sellers: [Seller!]
+  categories: [ItemCategory!]
+  totalActiveSellers: Int
+}
+
+"""A seller entity on Walmart Marketplace."""
+type Seller {
+  sellerId: ID!
+  sellerName: String!
+  sellerInfo: SellerInfo!
+  performance: SellerPerformance
+  isProSeller: Boolean!
+  walmartPlusSeller: Boolean
+  storeCatalog: StoreCatalog
+  createdDate: DateTime
+}
+
+"""Detailed profile information for a seller."""
+type SellerInfo {
+  sellerId: ID!
+  displayName: String!
+  businessName: String
+  email: String
+  phone: String
+  address: CustomerAddress
+  website: String
+  fulfillmentTypes: [FulfillmentType!]
+  shipNodeIds: [String!]
+  averageRating: Decimal
+  totalReviews: Int
+}
+
+"""Performance metrics for a marketplace seller."""
+type SellerPerformance {
+  sellerId: ID!
+  performanceTier: SellerPerformanceTier!
+  orderDefectRate: Decimal
+  lateShipmentRate: Decimal
+  cancelledOrderRate: Decimal
+  onTimeDeliveryRate: Decimal
+  customerSatisfactionScore: Decimal
+  period: String
+  isProSellerBadgeEligible: Boolean
+}
+
+"""A seller's item catalog view."""
+type StoreCatalog {
+  sellerId: ID!
+  totalItems: Int!
+  publishedItems: Int!
+  unpublishedItems: Int!
+  inProgressItems: Int!
+  lastSyncDate: DateTime
+}
+
+# -----------------------------------------------------------------------
+# Feed and Bulk Upload Types
+# -----------------------------------------------------------------------
+
+"""A bulk feed upload job."""
+type BulkUpload {
+  feedId: ID!
+  feedType: String!
+  feedStatus: FeedStatus!
+  itemsReceived: Int
+  itemsSucceeded: Int
+  itemsFailed: Int
+  itemsProcessing: Int
+  offset: Int
+  limit: Int
+  createdDate: DateTime!
+  modifiedDate: DateTime
+  errors: [FeedError!]
+}
+
+"""An error recorded within a bulk feed upload."""
+type FeedError {
+  itemId: String
+  sku: String
+  errorCode: String!
+  errorDescription: String!
+  errorField: String
+}
+
+"""Status of a feed job."""
+type FeedStatus {
+  feedId: ID!
+  feedType: String!
+  status: FeedStatus!
+  ingestionStatus: String
+  itemDataErrorCount: Int
+  itemSystemErrorCount: Int
+  itemTimeoutCount: Int
+  ingestionErrors: [FeedError!]
+  createdDate: DateTime
+}
+
+# -----------------------------------------------------------------------
+# Inventory Types
+# -----------------------------------------------------------------------
+
+"""Inventory record for an item across fulfillment nodes."""
+type Inventory {
+  itemId: ID!
+  sku: String!
+  totalQuantity: Int!
+  availableQuantity: Int!
+  reservedQuantity: Int!
+  levels: [InventoryLevel!]
+  lastUpdated: DateTime
+}
+
+"""Inventory quantity at a specific fulfillment node."""
+type InventoryLevel {
+  shipNodeId: ID!
+  shipNodeType: String
+  quantity: Int!
+  availableQuantity: Int!
+  reservedQuantity: Int!
+  fulfillmentType: FulfillmentType
+}
+
+"""A request to update inventory for an item at one or more nodes."""
+type InventoryUpdate {
+  sku: String!
+  quantity: Int!
+  shipNodeId: String
+  fulfillmentType: FulfillmentType
+  requestDate: DateTime
+  processedDate: DateTime
+  status: String
+}
+
+"""Inventory at a specific geographic location or ship node."""
+type LocationInventory {
+  locationId: ID!
+  locationName: String
+  locationType: String
+  address: CustomerAddress
+  items: [Inventory!]
+  lastUpdated: DateTime
+}
+
+# -----------------------------------------------------------------------
+# Customer Types
+# -----------------------------------------------------------------------
+
+"""A customer who has placed orders on Walmart.com."""
+type Customer {
+  customerId: ID!
+  contact: CustomerContact
+  shippingAddresses: [CustomerAddress!]
+  orders: [CustomerOrder!]
+  walmartPlus: WalmartPlus
+}
+
+"""A customer's order history entry."""
+type CustomerOrder {
+  customerOrderId: ID!
+  orderId: ID!
+  orderDate: DateTime!
+  status: OrderStatus!
+  totalAmount: Decimal!
+  currency: String!
+  items: [Item!]
+}
+
+"""A shipping or billing address for a customer."""
+type CustomerAddress {
+  addressId: ID
+  name: String
+  addressLine1: String!
+  addressLine2: String
+  city: String!
+  state: String!
+  postalCode: String!
+  country: String!
+  addressType: String
+}
+
+"""Contact information for a customer."""
+type CustomerContact {
+  name: String!
+  email: String
+  phone: String
+  alternatePhone: String
+}
+
+"""Walmart+ membership details for a customer."""
+type WalmartPlus {
+  memberId: ID!
+  isActive: Boolean!
+  memberSince: DateTime
+  renewalDate: DateTime
+  membershipType: String
+  freeShippingEligible: Boolean
+  discountEligible: Boolean
+}
+
+# -----------------------------------------------------------------------
+# Authentication Types
+# -----------------------------------------------------------------------
+
+"""API key credentials for Walmart API access."""
+type APIKey {
+  consumerId: ID!
+  channelType: String
+  environment: String
+  createdDate: DateTime
+  expirationDate: DateTime
+  isActive: Boolean!
+}
+
+"""Authentication configuration for Walmart APIs."""
+type Authentication {
+  consumerId: ID!
+  authType: String!
+  tokenEndpoint: String!
+  scope: [String!]
+  grantType: String
+}
+
+"""An OAuth 2.0 access token for Walmart API calls."""
+type Token {
+  accessToken: String!
+  tokenType: String!
+  expiresIn: Int!
+  issuedAt: DateTime!
+  expiresAt: DateTime!
+  scope: String
+}
+
+# -----------------------------------------------------------------------
+# Webhook / Notification Types
+# -----------------------------------------------------------------------
+
+"""A webhook subscription for Walmart event notifications."""
+type Webhook {
+  webhookId: ID!
+  sellerId: ID!
+  eventType: WebhookEventType!
+  callbackUrl: String!
+  isActive: Boolean!
+  secretKey: String
+  createdDate: DateTime!
+  modifiedDate: DateTime
+  lastTriggered: DateTime
+  failureCount: Int
+}
+
+# -----------------------------------------------------------------------
+# Report Types
+# -----------------------------------------------------------------------
+
+"""A requested or pre-generated report."""
+type Report {
+  reportId: ID!
+  reportType: ReportType!
+  requestDate: DateTime
+  generatedDate: DateTime
+  status: String!
+  downloadUrl: String
+  urlExpiration: DateTime
+  fileFormat: String
+  fileSizeBytes: Int
+  reportParameters: JSON
+}
+
+# -----------------------------------------------------------------------
+# Root Query Type
+# -----------------------------------------------------------------------
+
+type Query {
+  """Retrieve a single item by ID or SKU."""
+  item(itemId: ID, sku: String): Item
+
+  """List items in the seller's catalog with optional filters."""
+  items(
+    status: ItemStatus
+    sku: String
+    offset: Int
+    limit: Int
+  ): [WalmartItem!]
+
+  """Get a product by product ID."""
+  product(productId: ID!): Product
+
+  """Get current price for an item by SKU."""
+  price(sku: String!): Price
+
+  """List promotional prices for a seller's items."""
+  promotionalPrices(sku: String, offset: Int, limit: Int): [PromotionalPrice!]
+
+  """Get an order by purchase order ID."""
+  order(purchaseOrderId: ID!): WalmartOrder
+
+  """List orders with optional filters."""
+  orders(
+    status: OrderStatus
+    createdStartDate: DateTime
+    createdEndDate: DateTime
+    offset: Int
+    limit: Int
+  ): [WalmartOrder!]
+
+  """Get a return order by return order ID."""
+  returnOrder(returnOrderId: ID!): ReturnOrder
+
+  """List return orders with optional filters."""
+  returnOrders(
+    status: RefundStatus
+    returnStartDate: DateTime
+    returnEndDate: DateTime
+    offset: Int
+    limit: Int
+  ): [ReturnOrder!]
+
+  """Get inventory for an item by SKU."""
+  inventory(sku: String!): Inventory
+
+  """Get inventory across all ship nodes for a seller."""
+  inventoryList(offset: Int, limit: Int): [Inventory!]
+
+  """Get the seller's marketplace profile."""
+  seller(sellerId: ID!): Seller
+
+  """Get a feed upload job by feed ID."""
+  feed(feedId: ID!): BulkUpload
+
+  """List feed upload jobs."""
+  feeds(feedType: String, status: FeedStatus, offset: Int, limit: Int): [BulkUpload!]
+
+  """Get a report by report ID."""
+  report(reportId: ID!): Report
+
+  """List available reports."""
+  reports(reportType: ReportType, offset: Int, limit: Int): [Report!]
+
+  """List item categories (taxonomy)."""
+  categories(departmentId: String): [ItemCategory!]
+
+  """List webhooks for the current seller."""
+  webhooks: [Webhook!]
+
+  """Get the current authentication token details."""
+  token: Token
+}
+
+# -----------------------------------------------------------------------
+# Root Mutation Type
+# -----------------------------------------------------------------------
+
+type Mutation {
+  """Create or update a single item."""
+  upsertItem(input: JSON!): WalmartItem
+
+  """Retire (delist) an item by SKU."""
+  retireItem(sku: String!): Boolean
+
+  """Update the price for an item."""
+  updatePrice(sku: String!, price: Decimal!, currency: String!): Price
+
+  """Set a promotional price for an item."""
+  setPromotionalPrice(sku: String!, price: Decimal!, startDate: DateTime!, endDate: DateTime!): PromotionalPrice
+
+  """Acknowledge receipt of an order."""
+  acknowledgeOrder(purchaseOrderId: ID!): WalmartOrder
+
+  """Ship an order line and provide tracking."""
+  shipOrderLine(
+    purchaseOrderId: ID!
+    lineNumber: String!
+    trackingNumber: String!
+    carrierCode: String!
+    shipDateTime: DateTime!
+  ): Shipment
+
+  """Cancel an order line."""
+  cancelOrderLine(purchaseOrderId: ID!, lineNumber: String!, cancelReason: String!): OrderLine
+
+  """Initiate a refund for a return order line."""
+  issueRefund(returnOrderId: ID!, returnLineId: ID!, refundAmount: Decimal!): ReturnLine
+
+  """Update inventory quantity for an item at a ship node."""
+  updateInventory(sku: String!, quantity: Int!, shipNodeId: String): InventoryUpdate
+
+  """Submit a bulk feed upload."""
+  submitFeed(feedType: String!, feedContent: String!): BulkUpload
+
+  """Create a webhook subscription."""
+  createWebhook(eventType: WebhookEventType!, callbackUrl: String!): Webhook
+
+  """Delete a webhook subscription."""
+  deleteWebhook(webhookId: ID!): Boolean
+
+  """Request a new on-demand report."""
+  requestReport(reportType: ReportType!, parameters: JSON): Report
+
+  """Obtain an OAuth access token."""
+  getToken(consumerId: String!, privateKey: String!, channelType: String): Token
+}
