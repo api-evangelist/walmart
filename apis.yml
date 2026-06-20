@@ -10,7 +10,7 @@ apis:
   - Reports
   - Status
   - Statuses
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/mp/feeds
   properties:
@@ -48,7 +48,7 @@ apis:
   - Status
   - Taxonomy
   - Walmart
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/mp/items
   properties:
@@ -81,7 +81,7 @@ apis:
   - Strategies
   - To/From
   - Up
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/mp/price
   properties:
@@ -103,7 +103,7 @@ apis:
   - Promo
   - Promotional
   - Sku
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/mp/promotion
   properties:
@@ -128,7 +128,7 @@ apis:
   - Released
   - Ship
   - Shipping
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/mp/orders
   properties:
@@ -151,7 +151,7 @@ apis:
   - Overrides
   - Refunds
   - Returns
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/mp/returns
   properties:
@@ -181,7 +181,7 @@ apis:
   - Single
   - Sku
   - WFS
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/mp/inventory
   properties:
@@ -200,7 +200,7 @@ apis:
   - Cost
   - Feeds
   - Items
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
   properties:
@@ -225,7 +225,7 @@ apis:
   - Ship
   - Single
   - Specific
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
   properties:
@@ -258,7 +258,7 @@ apis:
   - Sku
   - Taxonomy
   - Types
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
   properties:
@@ -283,7 +283,7 @@ apis:
   - Products
   - Single
   - Time
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
   properties:
@@ -306,7 +306,7 @@ apis:
   - Reports
   - Single
   - URL
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
   properties:
@@ -332,7 +332,7 @@ apis:
   - Ship
   - Shipping
   - Single
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
   properties:
@@ -350,7 +350,7 @@ apis:
   - Generate
   - Items
   - Reports
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
   properties:
@@ -365,7 +365,7 @@ apis:
   tags:
   - Detail
   - Tokens
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/api/us/supplier/auth
   properties:
@@ -418,7 +418,7 @@ apis:
   - Status
   - Tracking
   - Wfs
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
   properties:
@@ -453,7 +453,7 @@ apis:
   - Top
   - Trending
   - Unpublished
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-insights/
   properties:
@@ -476,7 +476,7 @@ apis:
   - Lag
   - Lagtime
   - Time
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
   properties:
@@ -498,7 +498,7 @@ apis:
   - Tests
   - Types
   - Webhooks
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   properties:
@@ -522,7 +522,7 @@ apis:
   - Reports
   - Status
   - URL
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
   properties:
@@ -545,7 +545,7 @@ apis:
   - Recommendations
   - Reject
   - Rejections
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
   properties:
@@ -572,7 +572,7 @@ apis:
   - Reports
   - Statements
   - Versions
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
   properties:
@@ -597,7 +597,7 @@ apis:
   - RAP
   - Reviews
   - Status
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
   properties:
@@ -632,7 +632,7 @@ apis:
   - Sub Categories
   - Subcategories
   - Types
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-rules/
   properties:
@@ -676,7 +676,7 @@ apis:
   - Shippingprofile
   - Status
   - Templates
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-settings/
   properties:
@@ -710,7 +710,7 @@ apis:
   - Tracking
   - Trackings
   - Types
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-sww/
   properties:
@@ -733,7 +733,7 @@ apis:
   - Status
   - Taxonomy
   - Utilities
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
   humanURL: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
   properties:
@@ -751,7 +751,7 @@ tags:
 - Commerce
 - Retail
 - Fortune 100
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 common:
 - type: GitHubOrganization
   url: https://github.com/walmartlabs
