@@ -18,9 +18,9 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-feeds-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-feeds-feeds.yaml
   - url: graphql/walmart-graphql.md
     type: GraphQL
@@ -56,7 +56,7 @@ apis:
     type: OpenAPI
   - url: https://developer.walmart.com/api/us/mp/items
     type: Documentation
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-items-items.yaml
   description: The Item Management APIs enable you to set up and manage items on Walmart.com.
     Once you have completed Registration and have access to your Consumer ID and Private
@@ -89,7 +89,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-prices-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-prices-prices.yaml
   description: The price is a fundamental building block for your listing on Walmart.com.
     You can use the price management APIs to set up and manage the price for a given
@@ -111,7 +111,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-promotions-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-promotions-promotions.yaml
   description: Sellers can set regular or promotional prices for their items. Setting
     the Promotional prices is an option to create unique pricing for events such as
@@ -136,7 +136,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-orders-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-orders-orders.yaml
   description: The Walmart Order Management APIs help Sellers to manage customer's
     Sales Orders and to stay up-to-date on orders fulfillment, which orders to fulfill,
@@ -159,7 +159,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-returns-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-returns-returns-refunds.yaml
   description: 'Buyers can now Initiate Returns from Walmart.com for Marketplace seller
     items (Except for HAZMAT, OTHER or FREIGHT items). For item in the exception categories:
@@ -189,7 +189,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-inventory-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-inventory-inventory.yaml
   description: Maintaining up-to-date inventory for your items on Walmart.com ensures
     a great experience for your customers and greater sales opportunities for you.
@@ -208,7 +208,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-dropship-vendor-costs-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   description: Drop ship vendor (DSV) suppliers can update the cost for a single item
     or multiple items in bulk with the Cost API.
@@ -233,7 +233,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-dropship-vendor-inventory-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/dropship-vendor-inventory-inventory.yaml
   description: Walmart's Inventory Management API provide drop ship vending (DSV)
     suppliers with mechanisms to update and view current item inventory levels at
@@ -266,7 +266,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-dropship-vendor-items-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/dropship-vendor-items-items.yaml
   description: The Walmart Order Management API help 1P suppliers stay up to date
     on order fulfillment.
@@ -291,7 +291,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-dropship-vendor-lag-time-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   description: Drop ship vending (DSV) suppliers are expected to ship items the day
     they receive the purchase order (PO). However, there may be times when drop ship
@@ -314,7 +314,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-dropship-vendor-on-request-reports-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
   description: The On Request Reports API lets users request item reports. Request
     a report at any time, subscribe to notifications when the report is ready, and
@@ -340,7 +340,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-dropship-vendor-orders-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   description: The Walmart Order Management API help 1P suppliers stay up to date
     on order fulfillment.
@@ -373,7 +373,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-authentication-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-authentication-authorization.yaml
   description: Authentication creates and manages access tokens to ensure users are
     verified. The Walmart 1P Supplier APIs use open authorization (OAuth 2.0) for
@@ -426,7 +426,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-fulfillment-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-fulfillment-fulfillment.yaml
   description: The Walmarts Multichannel Solution is an extension of Walmart Fulfillment
     Services (WFS), uniquely placed to ensure quality, scale, and efficiency for a
@@ -461,9 +461,9 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-insights-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-insights-insight.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-insights-listing-quality.yaml
   description: 'To grow your business, you can use Insights API to learn actionable
     information critical to building your business and catalog offerings. With the
@@ -484,7 +484,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-lag-time-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-lag-time-lag-time.yaml
   description: Lag Time is the number of days between the date an item is ordered
     and when it is shipped. During Item Setup, Lag Time can be set to 0 days or 1
@@ -508,7 +508,7 @@ apis:
     type: OpenAPI
   - url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
     type: AsyncAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-notifications-notifications.yaml
   description: Push notifications or Web Hooks trigger alerts to seller applications
     when specific events occur, such as an item is unpublished, a new purchase order
@@ -530,7 +530,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-on-request-reports-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   description: The On-request Reports API enables you to request item reports immediately
     about your items for faster retrieval. Now you can request a report at any time,
@@ -553,7 +553,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-recommendations-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
   description: Assortment recommendations empower sellers understand and identify
     the customer demand in Walmart & market by curating personalised seller recommendations
@@ -580,7 +580,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-reports-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-reports-reports.yaml
   description: The On-request Reports API enables you to request item reports immediately
     about your items for faster retrieval. Now you can request a report at any time,
@@ -605,7 +605,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-reviews-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-reviews-reviews.yaml
   description: Use the Review Accelerator Program (RAP) APIs to increase the number
     of reviews for items with less than fifteen reviews.
@@ -640,7 +640,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-rules-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-rules-rules.yaml
   description: Walmart is making program enhancements to the existing free 2-Day Shipping
     Program, to enable US marketplace sellers to add multiple fulfillment centers
@@ -684,7 +684,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-settings-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-settings-settings.yaml
   description: The Settings API allows you to configure shipping delivery and fulfillment
     settings. You can create shipping templates to specify the precise delivery speed
@@ -718,7 +718,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-shipping-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   description: The Ship With Walmart for US API enables walmart.com sellers to buy
     shipping at competitively discounted rates directly from Walmart to ship their
@@ -741,7 +741,7 @@ apis:
     type: Documentation
   - url: openapi/walmart-marketplace-utilities-openapi-original.yml
     type: OpenAPI
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/marketplace-utilities-utilities.yaml
   description: The Utility APIs allow you to search for all Walmart item departments,
     all categories within a department, or retrieve the taxonomy of categories per
@@ -808,7 +808,7 @@ artifacts:
 - url: rules/walmart-rules.yml
   type: SpectralRules
 - url: capabilities/marketplace-seller-operations.yaml
-  type: NaftikoCapabilities
+  type: X-NaftikoCapabilities
 - url: json-schema/walmart-order-schema.json
   type: JSONSchema
 - url: json-schema/walmart-inventory-schema.json
