@@ -1,0 +1,36 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: developer.walmart.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 21 07:41:22 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api-gateway.walmart.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 21 07:41:22 2026 GMT
+  hsts: null
+- host: sandbox.walmartapis.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Apr  7 07:15:00 2027 GMT
+  hsts: null
+domains:
+- domain: walmart.com
+  dnssec: false
+  caa:
+  - 0 issue "globalsign.com"
+  - 0 issue "digicert.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: walmartapis.com
+  dnssec: false
+  caa:
+  - 0 issue "globalsign.com"
+  spf: false
+  dmarc: true
+  dmarc_policy: none
