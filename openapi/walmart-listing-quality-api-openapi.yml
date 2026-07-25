@@ -1,0 +1,394 @@
+openapi: 3.0.1
+info:
+  title: Walmart Cost Management Assortment Recommendations Listing Quality API
+  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
+
+
+    **May 2024**<br>Built: 05/09/2024, 13:05:34
+
+    '
+  version: '1.0'
+servers:
+- url: https://api-gateway.walmart.com
+  description: Production URL
+- url: https://sandbox.walmartapis.com
+  description: Sandbox URL
+tags:
+- name: Listing Quality
+paths:
+  /v3/insights/prosellerbadge:
+    get:
+      tags:
+      - Listing Quality
+      summary: Walmart Pro Seller Badge Status
+      description: The Pro Seller badge status will provide you with information regarding your current badge status as well as the progress you've made in meeting the criteria.
+      externalDocs:
+        description: View Guide
+        url: /doc/us/mp/us-mp-insights/#3880
+      operationId: getProSellerBadgeInfo
+      parameters:
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hasBadge:
+                    type: boolean
+                    description: Specifies if the seller has the badge
+                  isEligible:
+                    type: boolean
+                    description: Specifies if the seller is eligible for the badge in the next refresh
+                  badgedSince:
+                    type: string
+                    description: Specifies when the seller received their badge
+                    format: date-time
+                  isProhibited:
+                    type: boolean
+                    description: Specifies whether the seller is prohibited from participating in the Pro Seller badge program.
+                  badgeStatus:
+                    type: string
+                    description: Specifies the seller's badge status in detail. The possible values are "Become a Pro Seller", "You are a Pro Seller", "Pro Seller Badge at risk", "Eligible starting from YYYY-MM-DD", and "Not eligible for the Pro Seller Badge"
+                  meetsCriteria:
+                    type: object
+                    properties:
+                      isOrdersCriteriaMet:
+                        type: boolean
+                        description: Indicates whether the seller has met the minimum number of orders required.
+                      isDeliveryDefectCriteriaMet:
+                        type: boolean
+                        description: Indicates whether the seller has a low delivery defect, meeting the threshold for the badge.
+                      isCancellationCriteriaMet:
+                        type: boolean
+                        description: Indicates whether the seller has a low cancellation rate, meeting the threshold for the badge.
+                      isListingQualityCatalogCriteriaMet:
+                        type: boolean
+                        description: Indicates whether the seller is meeting the trending catalog requirement.
+                      isActiveDaysCriteriaMet:
+                        type: boolean
+                        description: Indicates whether the seller has met the minimum number of active days required.
+                    description: Shows whether the seller has met the requirements for the badge.
+                  criteriaData:
+                    type: object
+                    properties:
+                      orders:
+                        type: integer
+                        description: Number of orders received during the last 90 days.
+                        format: int32
+                      deliveryDefectRate:
+                        type: string
+                        description: Delivery Defect rate in the given timeframe.
+                      cancellationRate:
+                        type: string
+                        description: Cancellation rate in the given timeframe.
+                      listingQualityCatalog:
+                        type: integer
+                        description: Trending Catalog Quality Score coverage.
+                        format: int32
+                      activeDays:
+                        type: integer
+                        description: Days active on the platform.
+                        format: int32
+                    description: Shows the criteria for the Pro Seller badge.
+                  recommendations:
+                    type: object
+                    properties:
+                      deliveryDefectRate:
+                        type: string
+                        description: Recommendations on reducing the delivery defect rate
+                      cancellationRate:
+                        type: string
+                        description: Recommendations on reducing the Cancellation rate
+                      listingQualityCatalog:
+                        type: string
+                        description: Recommendations on increasing the trending item catalog coverage
+                    description: Recommendations on how to increase chances of Pro Seller Badge eligibility
+              example:
+                hasBadge: true
+                isEligible: false
+                badgedSince: 2020-11-05T04:32:02.330+0000
+                isProhibited: false
+                badgeStatus: Pro Seller Badge at risk
+                meetsCriteria:
+                  activeDaysCriteriaMet: true
+                  ordersCriteriaMet: true
+                  deliveryDefectCriteriaMet: true
+                  cancellationCriteriaMet: true
+                  listingQualityCatalogCriteriaMet: false
+                criteriaData:
+                  orders: 2318
+                  deliveryDefectRate: '0.27'
+                  cancellationRate: '0.0'
+                  listingQualityCatalog: 56
+                  activeDays: 1213
+                recommendations:
+                  listingQualityCatalog: Improve 226 more trending items with a Listing Quality score below 60%.
+  /v3/insights/items/listingQuality/score:
+    get:
+      tags:
+      - Listing Quality
+      summary: Walmart Seller Listing Quality Score
+      description: Get the total Listing Quality Score for a seller's entire item catalog.
+      externalDocs:
+        description: View Guide
+        url: /doc/us/mp/us-mp-insights/#3880
+      operationId: getListingQualityScore
+      parameters:
+      - name: viewTrendingItems
+        in: query
+        description: Specify whether or not to include seller's items that are trending in the Listing Quality Score.
+        required: false
+        schema:
+          type: boolean
+      - name: wfsFlag
+        in: query
+        description: Specify whether or not to include WFS-eligible items in the overall Listing Quality Score.
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payload:
+                    type: object
+                    properties:
+                      overAllQuality:
+                        type: number
+                        description: 'Over All Quality '
+                        format: double
+                      score:
+                        type: object
+                        properties:
+                          offerScore:
+                            type: number
+                            description: Offer Score
+                            format: double
+                          contentScore:
+                            type: number
+                            description: Content Score
+                            format: double
+                          ratingReviewScore:
+                            type: number
+                            description: Rating Review Score
+                            format: double
+                        description: Score
+                      postPurchaseQuality:
+                        type: object
+                        properties:
+                          defectRatio:
+                            type: integer
+                            description: Defect Ratio
+                            format: int32
+                          itemDefectCnt:
+                            type: integer
+                            description: Item Defect Count
+                            format: int32
+                        description: Post Purchase Quality
+              example:
+                payload:
+                  score:
+                    offerScore: 50
+                    ratingReviewScore: 14.48
+                    contentScore: 64.24
+                  postPurchaseQuality:
+                    itemDefectCnt: 0
+                    defectRatio: 0
+                  overAllQuality: 44.7
+                status: OK
+  /v3/insights/items/listingQuality/count:
+    get:
+      tags:
+      - Listing Quality
+      summary: Walmart Item Count With Listing Quality Issues
+      description: Get a list of all item categories that have items with listing quality issues or brands for a seller.
+      externalDocs:
+        description: View Guide
+        url: /doc/us/mp/us-mp-insights/#3880
+      operationId: getCategoriesList
+      parameters:
+      - name: viewTrendingItems
+        in: query
+        description: Specify whether or not to include seller's items that are trending in the Listing Quality Score.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: wfsFlag
+        in: query
+        description: Specify whether or not to include WFS-eligible items in the overall Listing Quality Score.
+        required: false
+        schema:
+          type: boolean
+      - name: hasIssue
+        in: query
+        description: Specify whether or not to include items that have issues in the Listing Quality Score.
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: type
+        in: query
+        description: Specify whether to get item count by brand or category. Category is the default value when no type is specified.
+        required: false
+        schema:
+          type: string
+          enum:
+          - brand
+          - category
+      - name: limit
+        in: query
+        description: Specify number of items to return. The value is defaulted to 100 and the maximum value is 1000.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        description: Specify the offset of item list to be returned.
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - in: header
+        name: WM_SEC.ACCESS_TOKEN
+        description: The access token retrieved in the Token API call
+        required: true
+        schema:
+          type: string
+        example: eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM.....
+      - in: header
+        name: WM_CONSUMER.CHANNEL.TYPE
+        description: A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
+        required: false
+        schema:
+          type: string
+      - in: header
+        name: WM_QOS.CORRELATION_ID
+        description: A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
+        required: true
+        schema:
+          type: string
+        example: b3261d2d-028a-4ef7-8602-633c23200af6
+      - in: header
+        name: WM_SVC.NAME
+        description: Walmart Service Name
+        required: true
+        schema:
+          type: string
+        example: Walmart Service Name
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payload:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        count:
+                          type: integer
+                          format: int32
+                        productType:
+                          type: array
+                          description: productType is only applicable for categories
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              count:
+                                type: integer
+                                format: int32
+                            description: productType is only applicable for categories
+              examples:
+                Categories With Issues:
+                  value:
+                    status: OK
+                    payload:
+                    - category: Baby
+                      offerCount: 122000
+                      productType:
+                      - productTypeName: Baby Onesies
+                        offerCount: 9000
+                Brand List:
+                  value:
+                    status: OK
+                    totalCount: 12260
+                    payload:
+                    - name: Bali
+                      count: 1515
+                    - name: Unique Loom
+                      count: 1130
+x-tagGroups:
+- name: 1P Suppliers DSV Cost Reference
+  tags:
+  - DSV Cost
