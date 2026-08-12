@@ -14,112 +14,56 @@ apis:
     url: openapi/walmart-assortment-recommendations-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-authorization-api
   name: Walmart Authorization API
   description: The Authorization API from Walmart — 2 operation(s) for authorization.
@@ -132,112 +76,56 @@ apis:
     url: openapi/walmart-authorization-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-dsv-cost-api
   name: Walmart DSV Cost API
   description: The DSV Cost API from Walmart — 1 operation(s) for dsv cost.
@@ -250,112 +138,56 @@ apis:
     url: openapi/walmart-dsv-cost-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-dsv-orders-api
   name: Walmart DSV Orders API
   description: The DSV Orders API from Walmart — 6 operation(s) for dsv orders.
@@ -368,112 +200,56 @@ apis:
     url: openapi/walmart-dsv-orders-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-feeds-api
   name: Walmart Feeds API
   description: The Feeds API from Walmart — 3 operation(s) for feeds.
@@ -486,112 +262,56 @@ apis:
     url: openapi/walmart-feeds-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-fulfillment-api
   name: Walmart Fulfillment API
   description: The Fulfillment API from Walmart — 21 operation(s) for fulfillment.
@@ -604,112 +324,56 @@ apis:
     url: openapi/walmart-fulfillment-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-insight-api
   name: Walmart Insight API
   description: The Insight API from Walmart — 7 operation(s) for insight.
@@ -722,112 +386,56 @@ apis:
     url: openapi/walmart-insight-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-inventory-api
   name: Walmart Inventory API
   description: The Inventory API from Walmart — 6 operation(s) for inventory.
@@ -840,112 +448,56 @@ apis:
     url: openapi/walmart-inventory-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-items-api
   name: Walmart Items API
   description: The Items API from Walmart — 13 operation(s) for items.
@@ -958,112 +510,56 @@ apis:
     url: openapi/walmart-items-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-lag-time-api
   name: Walmart Lag Time API
   description: The Lag Time API from Walmart — 2 operation(s) for lag time.
@@ -1076,112 +572,56 @@ apis:
     url: openapi/walmart-lag-time-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-listing-quality-api
   name: Walmart Listing Quality API
   description: The Listing Quality API from Walmart — 3 operation(s) for listing quality.
@@ -1194,112 +634,56 @@ apis:
     url: openapi/walmart-listing-quality-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-notifications-api
   name: Walmart Notifications API
   description: The Notifications API from Walmart — 4 operation(s) for notifications.
@@ -1312,112 +696,56 @@ apis:
     url: openapi/walmart-notifications-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-on-request-report-api
   name: Walmart On-Request Report API
   description: The On-Request Report API from Walmart — 3 operation(s) for on-request report.
@@ -1430,112 +758,56 @@ apis:
     url: openapi/walmart-on-request-report-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-on-request-reports-api
   name: Walmart On Request Reports API
   description: The On Request Reports API from Walmart — 3 operation(s) for on request reports.
@@ -1548,112 +820,56 @@ apis:
     url: openapi/walmart-on-request-reports-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-orders-api
   name: Walmart Orders API
   description: The Orders API from Walmart — 7 operation(s) for orders.
@@ -1666,112 +882,56 @@ apis:
     url: openapi/walmart-orders-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-pre-generated-reports-api
   name: Walmart Pre-Generated Reports API
   description: The Pre-Generated Reports API from Walmart — 1 operation(s) for pre-generated reports.
@@ -1784,112 +944,56 @@ apis:
     url: openapi/walmart-pre-generated-reports-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-prices-api
   name: Walmart Prices API
   description: The Prices API from Walmart — 8 operation(s) for prices.
@@ -1902,112 +1006,56 @@ apis:
     url: openapi/walmart-prices-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-promotions-api
   name: Walmart Promotions API
   description: The Promotions API from Walmart — 3 operation(s) for promotions.
@@ -2020,112 +1068,56 @@ apis:
     url: openapi/walmart-promotions-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-reports-api
   name: Walmart Reports API
   description: The Reports API from Walmart — 7 operation(s) for reports.
@@ -2138,112 +1130,56 @@ apis:
     url: openapi/walmart-reports-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-returns-refunds-api
   name: Walmart Returns/Refunds API
   description: The Returns/Refunds API from Walmart — 3 operation(s) for returns/refunds.
@@ -2256,112 +1192,56 @@ apis:
     url: openapi/walmart-returns-refunds-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-reviews-api
   name: Walmart Reviews API
   description: The Reviews API from Walmart — 3 operation(s) for reviews.
@@ -2374,112 +1254,56 @@ apis:
     url: openapi/walmart-reviews-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-rules-api
   name: Walmart Rules API
   description: The Rules API from Walmart — 14 operation(s) for rules.
@@ -2492,112 +1316,56 @@ apis:
     url: openapi/walmart-rules-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-settings-api
   name: Walmart Settings API
   description: The Settings API from Walmart — 11 operation(s) for settings.
@@ -2610,112 +1378,56 @@ apis:
     url: openapi/walmart-settings-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-ship-with-walmart-api
   name: Walmart Ship with Walmart API
   description: The Ship with Walmart API from Walmart — 7 operation(s) for ship with walmart.
@@ -2728,112 +1440,56 @@ apis:
     url: openapi/walmart-ship-with-walmart-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 - aid: walmart:walmart-utilities-api
   name: Walmart Utilities API
   description: The Utilities API from Walmart — 4 operation(s) for utilities.
@@ -2846,112 +1502,56 @@ apis:
     url: openapi/walmart-utilities-api-openapi.yml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/feeds
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-pre-generated-reports-pre-generated-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-feeds-feeds.yaml
   - type: GraphQL
     url: graphql/walmart-graphql.md
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/items
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/price
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-prices-prices.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/promotion
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-promotions-promotions.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/orders
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-orders-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/returns
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-returns-returns-refunds.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/mp/inventory
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-costs-dsv-cost.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-inventory-inventory.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-items-items.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-on-request-reports-on-request-reports.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/dropship-vendor-orders-dsv-orders.yaml
   - type: Documentation
     url: https://developer.walmart.com/api/us/supplier/auth
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-authentication-authorization.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-fulfillment-fulfillment.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-insight.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-insights-listing-quality.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-lag-time-lag-time.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
   - type: AsyncAPI
     url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-notifications-notifications.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-on-request-reports-on-request-report.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-recommendations-assortment-recommendations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reports-reports.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-reviews-reviews.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-rules-rules.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-settings-settings.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-shipping-ship-with-walmart.yaml
   - type: Documentation
     url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
-  - type: X-NaftikoCapability
-    url: capabilities/marketplace-utilities-utilities.yaml
 name: Walmart
 tags:
 - Commerce
