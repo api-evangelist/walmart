@@ -1647,7 +1647,7 @@ artifacts:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 kind: contract
 position: Consuming
 access: 3rd-Party
