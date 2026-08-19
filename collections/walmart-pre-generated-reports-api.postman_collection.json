@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "b1703b24-352c-4da2-9bdc-767b88d38a04",
+      "name": "Pre-Generated Reports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1167f581-6be8-463e-8b3b-3f5bc6cdb3de",
+          "name": "Walmart Generate an Item Report",
+          "request": {
+            "name": "Walmart Generate an Item Report",
+            "description": {
+              "content": "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/getReport</p>\n\nThis request generates the item report for drop ship vendors (DSV). \n\nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "getReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Specifies the type of report. \n\nUse `type=vendor_item` to fetch the item report from drop ship vendors (DSV).\n\nExample(s):<br>\nvendor_item\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "(Required) Specifies the version used to get the latest version of the item report for drop ship vendors (DSV).\n\nUse `version=2` to access the latest version of the item report for drop ship vendors (DSV).\n\nExample(s):\n2\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40b90126-e16f-47dc-96c2-4e1b5d14d578",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "getReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "vendor_item"
+                    },
+                    {
+                      "key": "version",
+                      "value": "2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies the data type expected in a response sent from the server.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/xml | XML format for data returned in response. |\n| application/json | JSON format for data returned in response. |\n",
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "0f3e4dd4-0514-4346-b39d-…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "6474-a253"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the format of request and response body data. \n\nIt specifies if the payload is JSON, XML, form data, or other data type. \nSetting `Content-Type` appropriately is essential when exchanging formatted data with APIs.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/xml | XML format for request and response body data. |\n",
+                    "key": "Content-Type",
+                    "value": "application/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vendorId\": \"837252\",\n  \"sku\": \"1487132332472\",\n  \"productName\": \"Kenmore CF1\",\n  \"productCategory\": \"Grocery\",\n  \"shortDescription\": \"Frozen beans sourced locally and packed fresh\",\n  \"longDescription\": \"24oz bag of frozen pinto and brown beans with steam-in-bag option for quick freezer to table meals\",\n  \"cost\": \"5.99\",\n  \"price\": \"7.99\",\n  \"currency\": \"USD\",\n  \"buyBoxShippingPrice\": \"7.99\",\n  \"publishStatus\": \"true\",\n  \"lifecycleStatus\": \"ACTIVE\",\n  \"availabilityStatus\": \"In stock\",\n  \"shipMethods\": \"Standard\",\n  \"wpid\": \"434K5CFOY8G7ZZZ\",\n  \"itemId\": \"CBA-1357\",\n  \"wm\": \"string\",\n  \"gtin\": \"string\",\n  \"upc\": \"123456789012\",\n  \"primaryImageUrl\": \"www.genericproductimage.com\",\n  \"shelfName\": \"B1\",\n  \"primaryCatPath\": \"General Merchandise\",\n  \"offerStartDate\": \"2023-03-16 2023-03-16T10:30:15Z\",\n  \"offerEndDate\": \"2023-03-19 2023-03-19T10:30:15Z\",\n  \"itemCreationDate\": \"2023-02-16 2023-03-16T10:30:15Z\",\n  \"lastUpdationDate\": \"2023-02-19 2023-03-19T10:30:15Z\",\n  \"itemPageUrl\": \"www.genericitempage.com\",\n  \"reviewCount\": \"2400\",\n  \"averageRating\": \"7.9\",\n  \"productTaxCode\": \"4004000\",\n  \"shippingWeight\": \"20\",\n  \"shippingWeightUnit\": \"LB\",\n  \"statusChangeReason\": \"Incorrect information\",\n  \"availableInventoryUnits\": \"2401\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "48415fa4-f8e8-47e9-9aa9-c2e126a82faf",
+    "name": "Walmart Cost Management Assortment Recommendations Pre-Generated Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

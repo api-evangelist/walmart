@@ -1,0 +1,463 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Orders API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Ship Order Lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/orders/:purchaseOrderId/shipping",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "path",
+                "description": "purchaseOrderId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the status of order lines to Shipped and trigger the charge to the customer. The response to a successful call contains the order with the shipped line items."
+        },
+        {
+          "info": {
+            "name": "Walmart Refund Order Lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/orders/:purchaseOrderId/refund",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "path",
+                "description": "purchaseOrderId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refunds one or more order lines that have been shipped. The response to a successful call contains the order with the refunded line items"
+        },
+        {
+          "info": {
+            "name": "Walmart Cancel Order Lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/orders/:purchaseOrderId/cancel",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "path",
+                "description": "purchaseOrderId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can cancel one or more order lines. You must include a purchaseOrderId when cancelling an order line. The response to a successful call contains the order with the cancelled line items"
+        },
+        {
+          "info": {
+            "name": "Walmart Acknowledge Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/orders/:purchaseOrderId/acknowledge",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "path",
+                "description": "purchaseOrderId"
+              }
+            ]
+          },
+          "docs": "You can use this API to acknowledge an entire order, including all of its order lines. The response to a successful call contains the acknowledged order."
+        },
+        {
+          "info": {
+            "name": "Walmart All Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/orders",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "sku",
+                "value": "",
+                "type": "query",
+                "description": "A seller-provided Product ID"
+              },
+              {
+                "name": "customerOrderId",
+                "value": "",
+                "type": "query",
+                "description": "The customer order ID"
+              },
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "query",
+                "description": "The purchase order ID. One customer may have multiple purchase orders."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of purchase order line. Valid statuses are: Created, Acknowledged, Shipped, Delivered and Cancelled."
+              },
+              {
+                "name": "createdStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that were created after this date. Default is current date - 7 days. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+              },
+              {
+                "name": "createdEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that were created before this date. Default is current date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+              },
+              {
+                "name": "fromExpectedShipDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that have order lines with an expected ship date after this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+              },
+              {
+                "name": "toExpectedShipDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that have order lines with an expected ship date before this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+              },
+              {
+                "name": "lastModifiedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that were modified after this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+              },
+              {
+                "name": "lastModifiedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that were modified before this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of orders to be returned. Cannot be larger than 200."
+              },
+              {
+                "name": "productInfo",
+                "value": "",
+                "type": "query",
+                "description": "Provides the image URL and product weight in response, if available. Allowed values are true or false."
+              },
+              {
+                "name": "shipNodeType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the type of shipNode. Allowed values are SellerFulfilled(Default), WFSFulfilled and 3PLFulfilled."
+              },
+              {
+                "name": "shippingProgramType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the type of program. Allowed value is TWO_DAY, ONE_DAY."
+              },
+              {
+                "name": "replacementInfo",
+                "value": "",
+                "type": "query",
+                "description": "Provides additional attributes - originalCustomerOrderID, orderType - related to Replacement order, in response, if available. Allowed values are true or false."
+              },
+              {
+                "name": "orderType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies if the order is a regular order or replacement order. Possible values are REGULAR or REPLACEMENT. Provided in response only if query parameter replacementInfo=true."
+              }
+            ]
+          },
+          "docs": "Retrieves the details of all the orders for specified search criteria.\n\nOnly orders created in last 180 days and a maximum of 20000 orders can be fetched at a time. Attempting to download more than 20000 orders will return an error."
+        },
+        {
+          "info": {
+            "name": "Walmart an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/orders/:purchaseOrderId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "path",
+                "description": "purchaseOrderId"
+              },
+              {
+                "name": "productInfo",
+                "value": "",
+                "type": "query",
+                "description": "Provides the image URL and product weight in response, if available. Allowed values are true or false."
+              },
+              {
+                "name": "replacementInfo",
+                "value": "",
+                "type": "query",
+                "description": "Provides additional attributes - originalCustomerOrderID, orderType - related to Replacement order, in response, if available. Allowed values are true or false."
+              }
+            ]
+          },
+          "docs": "Retrieves an order detail for a specific purchaseOrderId"
+        },
+        {
+          "info": {
+            "name": "Walmart All Released Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/orders/released",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "createdStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that were created after this date. Default is current date - 7 days. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+              },
+              {
+                "name": "createdEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that were created before this date. Default is current date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of orders to be returned. Cannot be larger than 200."
+              },
+              {
+                "name": "productInfo",
+                "value": "",
+                "type": "query",
+                "description": "Provides the image URL and product weight in response, if available. Allowed values are true or false."
+              },
+              {
+                "name": "shipNodeType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the type of shipNode. Allowed values are SellerFulfilled(Default), WFSFulfilled and 3PLFulfilled."
+              },
+              {
+                "name": "sku",
+                "value": "",
+                "type": "query",
+                "description": "A seller-provided Product ID"
+              },
+              {
+                "name": "customerOrderId",
+                "value": "",
+                "type": "query",
+                "description": "The customer order ID"
+              },
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "query",
+                "description": "The purchase order ID. One customer may have multiple purchase orders."
+              },
+              {
+                "name": "fromExpectedShipDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that have order lines with an expected ship date after this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+              },
+              {
+                "name": "toExpectedShipDate",
+                "value": "",
+                "type": "query",
+                "description": "Fetches all purchase orders that have order lines with an expected ship date before this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+              },
+              {
+                "name": "shippingProgramType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the type of program. Allowed value is TWO_DAY, ONE_DAY."
+              },
+              {
+                "name": "replacementInfo",
+                "value": "",
+                "type": "query",
+                "description": "Provides additional attributes - originalCustomerOrderID, orderType - related to Replacement order, in response, if available. Allowed values are true or false."
+              },
+              {
+                "name": "orderType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies if the order is a regular order or replacement order. Possible values are REGULAR or REPLACEMENT. Provided in response only if query parameter replacementInfo=true."
+              }
+            ]
+          },
+          "docs": "Retrieves all the orders with line items that are in the \"created\" status, that is, these orders have been released from the Walmart Order Management System to the seller for processing. The released orders are the orders that are ready for a seller to fulfill.\n\nOnly orders created in last 180 days and a maximum of 20000 orders can be fetched at a time. Attempting to download more than 20000 orders will return an error."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

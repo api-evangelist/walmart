@@ -1,0 +1,1351 @@
+{
+  "item": [
+    {
+      "id": "4cbe52d0-4ccc-4a30-b05f-3f622863f957",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d9c190f-3fe1-4979-b2af-e2f9787daf27",
+          "name": "Walmart Ship Order Lines",
+          "request": {
+            "name": "Walmart Ship Order Lines",
+            "description": {
+              "content": "Updates the status of order lines to Shipped and trigger the charge to the customer. The response to a successful call contains the order with the shipped line items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                ":purchaseOrderId",
+                "shipping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "purchaseOrderId",
+                  "description": "(Required) purchaseOrderId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderShipment\": {\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"<string>\",\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                },\n                \"trackingInfo\": {\n                  \"carrierName\": {\n                    \"otherCarrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"carrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  \"methodCode\": \"<string>\",\n                  \"shipDateTime\": \"<long>\",\n                  \"trackingNumber\": \"<string>\",\n                  \"trackingURL\": \"<string>\"\n                },\n                \"asn\": {\n                  \"packageASN\": \"<string>\",\n                  \"palletASN\": \"<string>\"\n                },\n                \"returnCenterAddress\": {\n                  \"address1\": \"<string>\",\n                  \"city\": \"<string>\",\n                  \"country\": \"<string>\",\n                  \"postalCode\": \"<string>\",\n                  \"state\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"address2\": \"<string>\",\n                  \"dayPhone\": \"<string>\",\n                  \"emailId\": \"<string>\"\n                },\n                \"currentTrackingInfo\": {\n                  \"trackingNumber\": \"<string>\"\n                }\n              },\n              {\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                },\n                \"trackingInfo\": {\n                  \"carrierName\": {\n                    \"otherCarrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"carrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  \"methodCode\": \"<string>\",\n                  \"shipDateTime\": \"<long>\",\n                  \"trackingNumber\": \"<string>\",\n                  \"trackingURL\": \"<string>\"\n                },\n                \"asn\": {\n                  \"packageASN\": \"<string>\",\n                  \"palletASN\": \"<string>\"\n                },\n                \"returnCenterAddress\": {\n                  \"address1\": \"<string>\",\n                  \"city\": \"<string>\",\n                  \"country\": \"<string>\",\n                  \"postalCode\": \"<string>\",\n                  \"state\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"address2\": \"<string>\",\n                  \"dayPhone\": \"<string>\",\n                  \"emailId\": \"<string>\"\n                },\n                \"currentTrackingInfo\": {\n                  \"trackingNumber\": \"<string>\"\n                }\n              }\n            ]\n          },\n          \"sellerOrderId\": \"<string>\",\n          \"intentToCancelOverride\": false,\n          \"sellerOrderNo\": \"<string>\"\n        },\n        {\n          \"lineNumber\": \"<string>\",\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                },\n                \"trackingInfo\": {\n                  \"carrierName\": {\n                    \"otherCarrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"carrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  \"methodCode\": \"<string>\",\n                  \"shipDateTime\": \"<long>\",\n                  \"trackingNumber\": \"<string>\",\n                  \"trackingURL\": \"<string>\"\n                },\n                \"asn\": {\n                  \"packageASN\": \"<string>\",\n                  \"palletASN\": \"<string>\"\n                },\n                \"returnCenterAddress\": {\n                  \"address1\": \"<string>\",\n                  \"city\": \"<string>\",\n                  \"country\": \"<string>\",\n                  \"postalCode\": \"<string>\",\n                  \"state\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"address2\": \"<string>\",\n                  \"dayPhone\": \"<string>\",\n                  \"emailId\": \"<string>\"\n                },\n                \"currentTrackingInfo\": {\n                  \"trackingNumber\": \"<string>\"\n                }\n              },\n              {\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                },\n                \"trackingInfo\": {\n                  \"carrierName\": {\n                    \"otherCarrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"carrier\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  \"methodCode\": \"<string>\",\n                  \"shipDateTime\": \"<long>\",\n                  \"trackingNumber\": \"<string>\",\n                  \"trackingURL\": \"<string>\"\n                },\n                \"asn\": {\n                  \"packageASN\": \"<string>\",\n                  \"palletASN\": \"<string>\"\n                },\n                \"returnCenterAddress\": {\n                  \"address1\": \"<string>\",\n                  \"city\": \"<string>\",\n                  \"country\": \"<string>\",\n                  \"postalCode\": \"<string>\",\n                  \"state\": \"<string>\",\n                  \"name\": \"<string>\",\n                  \"address2\": \"<string>\",\n                  \"dayPhone\": \"<string>\",\n                  \"emailId\": \"<string>\"\n                },\n                \"currentTrackingInfo\": {\n                  \"trackingNumber\": \"<string>\"\n                }\n              }\n            ]\n          },\n          \"sellerOrderId\": \"<string>\",\n          \"intentToCancelOverride\": false,\n          \"sellerOrderNo\": \"<string>\"\n        }\n      ]\n    },\n    \"processMode\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e01b58b-c3c8-44f7-9d06-311f7962b857",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    ":purchaseOrderId",
+                    "shipping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseOrderId",
+                      "description": "(Required) purchaseOrderId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderShipment\": {\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"1\",\n          \"intentToCancelOverride\": false,\n          \"sellerOrderId\": \"92344\",\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Shipped\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"trackingInfo\": {\n                  \"shipDateTime\": 1580821866000,\n                  \"carrierName\": {\n                    \"carrier\": \"UPS\"\n                  },\n                  \"methodCode\": \"Standard\",\n                  \"trackingNumber\": \"22344\",\n                  \"trackingURL\": \"http://walmart/tracking/ups?&type=MP&seller_id=12345&promise_date=03/02/2020&dzip=92840&tracking_numbers=92345\"\n                },\n                \"returnCenterAddress\": {\n                  \"name\": \"walmart\",\n                  \"address1\": \"walmart store 2\",\n                  \"city\": \"Huntsville\",\n                  \"state\": \"AL\",\n                  \"postalCode\": \"35805\",\n                  \"country\": \"USA\",\n                  \"dayPhone\": \"12344\",\n                  \"emailId\": \"walmart@walmart.com\"\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"lineNumber\": \"2\",\n          \"sellerOrderId\": \"92344\",\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Shipped\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"trackingInfo\": {\n                  \"shipDateTime\": 1580821866000,\n                  \"carrierName\": {\n                    \"carrier\": \"FedEx\"\n                  },\n                  \"methodCode\": \"Express\",\n                  \"trackingNumber\": \"22344\",\n                  \"trackingURL\": \"http://walmart/tracking/fedEx?&type=MP&seller_id=12345&promise_date=03/02/2020&dzip=92840&tracking_numbers=92344\"\n                },\n                \"returnCenterAddress\": {\n                  \"name\": \"walmart\",\n                  \"address1\": \"walmart store 2\",\n                  \"city\": \"Huntsville\",\n                  \"state\": \"AL\",\n                  \"postalCode\": \"35805\",\n                  \"country\": \"USA\",\n                  \"dayPhone\": \"12344\",\n                  \"emailId\": \"walmart@walmart.com\"\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"purchaseOrderId\": \"1234567891234\",\n    \"customerOrderId\": \"9876543212345\",\n    \"sellerOrderId\": \"13233454564657\",\n    \"customerEmailId\": \"customer@walmartlabs.com\",\n    \"orderDate\": 1478284060000,\n    \"shippingInfo\": {\n      \"phone\": \"6501234567\",\n      \"estimatedDeliveryDate\": 1479798000000,\n      \"estimatedShipDate\": 1478674800000,\n      \"methodCode\": \"Value\",\n      \"postalAddress\": {\n        \"name\": \"Jane Doe\",\n        \"address1\": \"123 Main street\",\n        \"city\": \"Sunnyvale\",\n        \"state\": \"CA\",\n        \"postalCode\": \"94086\",\n        \"country\": \"USA\",\n        \"addressType\": \"OFFICE\"\n      }\n    },\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"1\",\n          \"item\": {\n            \"productName\": \"Kenmore CF-1 or 20-86883 Canister Secondary Filter Generic 2 Pack\",\n            \"sku\": \"wei-ASSET-675gku675\"\n          },\n          \"charges\": {\n            \"charge\": [\n              {\n                \"chargeType\": \"PRODUCT\",\n                \"chargeName\": \"ItemPrice\",\n                \"chargeAmount\": {\n                  \"currency\": \"USD\",\n                  \"amount\": 555\n                },\n                \"tax\": {\n                  \"taxName\": \"Tax1\",\n                  \"taxAmount\": {\n                    \"currency\": \"USD\",\n                    \"amount\": 48.56\n                  }\n                }\n              }\n            ]\n          },\n          \"orderLineQuantity\": {\n            \"unitOfMeasurement\": \"EACH\",\n            \"amount\": \"1\"\n          },\n          \"statusDate\": 1478297929000,\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Shipped\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"trackingInfo\": {\n                  \"shipDateTime\": 1438163400000,\n                  \"carrierName\": {\n                    \"carrier\": \"FedEx\"\n                  },\n                  \"methodCode\": \"Value\",\n                  \"trackingNumber\": \"911001572321619861\",\n                  \"trackingURL\": \"http://www.fedex.com/Tracking?action=track=english=us=x=911001572321619861\"\n                },\n                \"returnCenterAddress\": {\n                  \"name\": \"ABC\",\n                  \"address1\": \"123 Bridge street\",\n                  \"city\": \"Huntsville\",\n                  \"state\": \"AL\",\n                  \"postalCode\": \"35805\",\n                  \"country\": \"USA\",\n                  \"dayPhone\": \"6501234567\",\n                  \"emailId\": \"RCemailaddress@company.com\"\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53cce026-f612-463b-9368-50f718fc78b5",
+          "name": "Walmart Refund Order Lines",
+          "request": {
+            "name": "Walmart Refund Order Lines",
+            "description": {
+              "content": "Refunds one or more order lines that have been shipped. The response to a successful call contains the order with the refunded line items",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                ":purchaseOrderId",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "purchaseOrderId",
+                  "description": "(Required) purchaseOrderId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderRefund\": {\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"<string>\",\n          \"refunds\": {\n            \"refund\": [\n              {\n                \"refundCharges\": {\n                  \"refundCharge\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                \"refundId\": \"<string>\",\n                \"refundComments\": \"<string>\"\n              },\n              {\n                \"refundCharges\": {\n                  \"refundCharge\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                \"refundId\": \"<string>\",\n                \"refundComments\": \"<string>\"\n              }\n            ]\n          },\n          \"isFullRefund\": false\n        },\n        {\n          \"lineNumber\": \"<string>\",\n          \"refunds\": {\n            \"refund\": [\n              {\n                \"refundCharges\": {\n                  \"refundCharge\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                \"refundId\": \"<string>\",\n                \"refundComments\": \"<string>\"\n              },\n              {\n                \"refundCharges\": {\n                  \"refundCharge\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                \"refundId\": \"<string>\",\n                \"refundComments\": \"<string>\"\n              }\n            ]\n          },\n          \"isFullRefund\": false\n        }\n      ]\n    },\n    \"purchaseOrderId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa38fdb2-25c7-496c-935c-bf9181ba52e7",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    ":purchaseOrderId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseOrderId",
+                      "description": "(Required) purchaseOrderId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderRefund\": {\n    \"purchaseOrderId\": \"2577453162650\",\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"4\",\n          \"isFullRefund\": false,\n          \"refunds\": {\n            \"refund\": [\n              {\n                \"refundComments\": \"test test\",\n                \"refundCharges\": {\n                  \"refundCharge\": [\n                    {\n                      \"refundReason\": \"Merchandise not received\",\n                      \"charge\": {\n                        \"chargeType\": \"PRODUCT\",\n                        \"chargeName\": \"Item Price\",\n                        \"chargeAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": -0.1\n                        },\n                        \"tax\": {\n                          \"taxName\": \"Item Price Tax\",\n                          \"taxAmount\": {\n                            \"currency\": \"USD\",\n                            \"amount\": -0.1\n                          }\n                        }\n                      }\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"purchaseOrderId\": \"2577573191435\",\n    \"customerOrderId\": \"5571600820146\",\n    \"customerEmailId\": \"VBayana@walmartlabs.com\",\n    \"orderDate\": 1476392223000,\n    \"shippingInfo\": {\n      \"phone\": \"6502248603\",\n      \"estimatedDeliveryDate\": 1479798000000,\n      \"estimatedShipDate\": 1476424800000,\n      \"methodCode\": \"Standard\",\n      \"postalAddress\": {\n        \"name\": \"Madhukara  PGOMS\",\n        \"address1\": \"860 W Cal Ave\",\n        \"address2\": \"Seat # 860C.2.176\",\n        \"city\": \"Sunnyvale\",\n        \"state\": \"CA\",\n        \"postalCode\": \"94086\",\n        \"country\": \"USA\",\n        \"addressType\": \"RESIDENTIAL\"\n      }\n    },\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"1\",\n          \"item\": {\n            \"productName\": \"Ozark Trail 4-Person Dome Tent\",\n            \"sku\": \"NJ_WITHOUT_RCA_003\"\n          },\n          \"charges\": {\n            \"charge\": [\n              {\n                \"chargeType\": \"PRODUCT\",\n                \"chargeName\": \"ItemPrice\",\n                \"chargeAmount\": {\n                  \"currency\": \"USD\",\n                  \"amount\": 19.99\n                },\n                \"tax\": {\n                  \"taxName\": \"Tax1\",\n                  \"taxAmount\": {\n                    \"currency\": \"USD\",\n                    \"amount\": 0\n                  }\n                }\n              },\n              {\n                \"chargeType\": \"SHIPPING\",\n                \"chargeName\": \"Shipping\",\n                \"chargeAmount\": {\n                  \"currency\": \"USD\",\n                  \"amount\": 2\n                },\n                \"tax\": {\n                  \"taxName\": \"Tax2\",\n                  \"taxAmount\": {\n                    \"currency\": \"USD\",\n                    \"amount\": 0\n                  }\n                }\n              }\n            ]\n          },\n          \"orderLineQuantity\": {\n            \"unitOfMeasurement\": \"EACH\",\n            \"amount\": \"1\"\n          },\n          \"statusDate\": 1476470187000,\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Shipped\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"trackingInfo\": {\n                  \"shipDateTime\": 1475008215000,\n                  \"carrierName\": {\n                    \"carrier\": \"FedEx\"\n                  },\n                  \"methodCode\": \"Standard\",\n                  \"trackingNumber\": \"3445435443441221\",\n                  \"trackingURL\": \"http://www.fedex.com\"\n                }\n              }\n            ]\n          },\n          \"refund\": {\n            \"refundCharges\": {\n              \"refundCharge\": [\n                {\n                  \"refundReason\": \"BillingError\",\n                  \"charge\": {\n                    \"chargeType\": \"PRODUCT\",\n                    \"chargeName\": \"Billing Error\",\n                    \"chargeAmount\": {\n                      \"currency\": \"USD\",\n                      \"amount\": -19.99\n                    }\n                  }\n                },\n                {\n                  \"refundReason\": \"BillingError\",\n                  \"charge\": {\n                    \"chargeType\": \"SHIPPING\",\n                    \"chargeName\": \"Billing Error\",\n                    \"chargeAmount\": {\n                      \"currency\": \"USD\",\n                      \"amount\": -2\n                    }\n                  }\n                }\n              ]\n            }\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b5e15fa-1730-4d7b-8c39-6bde39e47ebb",
+          "name": "Walmart Cancel Order Lines",
+          "request": {
+            "name": "Walmart Cancel Order Lines",
+            "description": {
+              "content": "You can cancel one or more order lines. You must include a purchaseOrderId when cancelling an order line. The response to a successful call contains the order with the cancelled line items",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                ":purchaseOrderId",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "purchaseOrderId",
+                  "description": "(Required) purchaseOrderId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderCancellation\": {\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"<string>\",\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"cancellationReason\": \"<string>\",\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                }\n              },\n              {\n                \"cancellationReason\": \"<string>\",\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"lineNumber\": \"<string>\",\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"cancellationReason\": \"<string>\",\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                }\n              },\n              {\n                \"cancellationReason\": \"<string>\",\n                \"status\": \"<string>\",\n                \"statusQuantity\": {\n                  \"amount\": \"<string>\",\n                  \"unitOfMeasurement\": \"<string>\"\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "908c3c0b-3ccc-465c-8f3e-1c6de58cca9a",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    ":purchaseOrderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseOrderId",
+                      "description": "(Required) purchaseOrderId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderCancellation\": {\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"1\",\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Cancelled\",\n                \"cancellationReason\": \"CUSTOMER_REQUESTED_SELLER_TO_CANCEL\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EA\",\n                  \"amount\": \"1\"\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"purchaseOrderId\": \"1577914061094\",\n    \"customerOrderId\": \"5571600820432\",\n    \"customerEmailId\": \"VBayana@walmartlabs.com\",\n    \"orderDate\": 1476387173000,\n    \"shippingInfo\": {\n      \"phone\": \"6502248603\",\n      \"estimatedDeliveryDate\": 1479798000000,\n      \"estimatedShipDate\": 1476424800000,\n      \"methodCode\": \"Standard\",\n      \"postalAddress\": {\n        \"name\": \"Madhukara  PGOMS\",\n        \"address1\": \"860 W Cal Ave\",\n        \"address2\": \"Seat # 860C.2.176\",\n        \"city\": \"Sunnyvale\",\n        \"state\": \"CA\",\n        \"postalCode\": \"94086\",\n        \"country\": \"USA\",\n        \"addressType\": \"RESIDENTIAL\"\n      }\n    },\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"1\",\n          \"item\": {\n            \"productName\": \"Ozark Trail 4-Person Dome Tent\",\n            \"sku\": \"NJ_WITHOUT_RCA_003\"\n          },\n          \"charges\": {\n            \"charge\": [\n              {\n                \"chargeType\": \"PRODUCT\",\n                \"chargeName\": \"ItemPrice\",\n                \"chargeAmount\": {\n                  \"currency\": \"USD\",\n                  \"amount\": 0\n                },\n                \"tax\": {\n                  \"taxName\": \"Tax1\",\n                  \"taxAmount\": {\n                    \"currency\": \"USD\",\n                    \"amount\": 0\n                  }\n                }\n              },\n              {\n                \"chargeType\": \"SHIPPING\",\n                \"chargeName\": \"Shipping\",\n                \"chargeAmount\": {\n                  \"currency\": \"USD\",\n                  \"amount\": 0\n                },\n                \"tax\": {\n                  \"taxName\": \"Tax2\",\n                  \"taxAmount\": {\n                    \"currency\": \"USD\",\n                    \"amount\": 0\n                  }\n                }\n              }\n            ]\n          },\n          \"orderLineQuantity\": {\n            \"unitOfMeasurement\": \"EACH\",\n            \"amount\": \"1\"\n          },\n          \"statusDate\": 1481755720000,\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Cancelled\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7c820f6-4fe4-43cc-82e6-bf548fc34194",
+          "name": "Walmart Acknowledge Orders",
+          "request": {
+            "name": "Walmart Acknowledge Orders",
+            "description": {
+              "content": "You can use this API to acknowledge an entire order, including all of its order lines. The response to a successful call contains the acknowledged order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                ":purchaseOrderId",
+                "acknowledge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "purchaseOrderId",
+                  "description": "(Required) purchaseOrderId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6c9cc67-baad-409d-9fa6-6794fae0e2df",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    ":purchaseOrderId",
+                    "acknowledge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseOrderId",
+                      "description": "(Required) purchaseOrderId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"purchaseOrderId\": \"1796277083022\",\n    \"customerOrderId\": \"5281956426648\",\n    \"customerEmailId\": \"3A31739D8B0A45A1B23F7F8C81C8747F@relay.walmart.com\",\n    \"orderDate\": 1568466571000,\n    \"shippingInfo\": {\n      \"phone\": \"3155598681\",\n      \"estimatedDeliveryDate\": 1569438000000,\n      \"estimatedShipDate\": 1568700000000,\n      \"methodCode\": \"Value\",\n      \"postalAddress\": {\n        \"name\": \"Kathryn Cole\",\n        \"address1\": \"3258BWarners rd\",\n        \"address2\": \"Garage\",\n        \"city\": \"Warners\",\n        \"state\": \"NY\",\n        \"postalCode\": \"13164\",\n        \"country\": \"USA\",\n        \"addressType\": \"RESIDENTIAL\"\n      }\n    },\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"4\",\n          \"item\": {\n            \"productName\": \"Beba Bean Pee-pee Teepee Airplane - Blue - Laundry Bag\",\n            \"sku\": \"test1\"\n          },\n          \"charges\": {\n            \"charge\": [\n              {\n                \"chargeType\": \"PRODUCT\",\n                \"chargeName\": \"ItemPrice\",\n                \"chargeAmount\": {\n                  \"currency\": \"USD\",\n                  \"amount\": 10\n                },\n                \"tax\": {\n                  \"taxName\": \"Tax1\",\n                  \"taxAmount\": {\n                    \"currency\": \"USD\",\n                    \"amount\": 0.8\n                  }\n                }\n              }\n            ]\n          },\n          \"orderLineQuantity\": {\n            \"unitOfMeasurement\": \"EACH\",\n            \"amount\": \"1\"\n          },\n          \"statusDate\": 1568753156000,\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Acknowledged\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                }\n              }\n            ]\n          },\n          \"fulfillment\": {\n            \"fulfillmentOption\": \"S2H\",\n            \"shipMethod\": \"VALUE\",\n            \"pickUpDateTime\": 1568919600000\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1244f80e-214b-48fc-b67b-34f266361412",
+          "name": "Walmart All Orders",
+          "request": {
+            "name": "Walmart All Orders",
+            "description": {
+              "content": "Retrieves the details of all the orders for specified search criteria.\n\nOnly orders created in last 180 days and a maximum of 20000 orders can be fetched at a time. Attempting to download more than 20000 orders will return an error.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sku",
+                  "value": "<string>",
+                  "description": "A seller-provided Product ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerOrderId",
+                  "value": "<string>",
+                  "description": "The customer order ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "purchaseOrderId",
+                  "value": "<string>",
+                  "description": "The purchase order ID. One customer may have multiple purchase orders."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Status of purchase order line. Valid statuses are: Created, Acknowledged, Shipped, Delivered and Cancelled."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdStartDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that were created after this date. Default is current date - 7 days. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdEndDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that were created before this date. Default is current date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromExpectedShipDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that have order lines with an expected ship date after this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+                },
+                {
+                  "disabled": false,
+                  "key": "toExpectedShipDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that have order lines with an expected ship date before this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedStartDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that were modified after this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedEndDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that were modified before this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The number of orders to be returned. Cannot be larger than 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "productInfo",
+                  "value": "false",
+                  "description": "Provides the image URL and product weight in response, if available. Allowed values are true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipNodeType",
+                  "value": "SellerFulfilled",
+                  "description": "Specifies the type of shipNode. Allowed values are SellerFulfilled(Default), WFSFulfilled and 3PLFulfilled."
+                },
+                {
+                  "disabled": false,
+                  "key": "shippingProgramType",
+                  "value": "<string>",
+                  "description": "Specifies the type of program. Allowed value is TWO_DAY, ONE_DAY."
+                },
+                {
+                  "disabled": false,
+                  "key": "replacementInfo",
+                  "value": "false",
+                  "description": "Provides additional attributes - originalCustomerOrderID, orderType - related to Replacement order, in response, if available. Allowed values are true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderType",
+                  "value": "<string>",
+                  "description": "Specifies if the order is a regular order or replacement order. Possible values are REGULAR or REPLACEMENT. Provided in response only if query parameter replacementInfo=true."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d97a1b27-e2c7-4b2e-945b-ff023051331f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sku",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdEndDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromExpectedShipDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toExpectedShipDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastModifiedStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastModifiedEndDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "productInfo",
+                      "value": "false"
+                    },
+                    {
+                      "key": "shipNodeType",
+                      "value": "SellerFulfilled"
+                    },
+                    {
+                      "key": "shippingProgramType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replacementInfo",
+                      "value": "false"
+                    },
+                    {
+                      "key": "orderType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"list\": {\n    \"meta\": {\n      \"totalCount\": 31,\n      \"limit\": 10,\n      \"nextCursor\": \"?limit=10&hasMoreElements=true&soIndex=31&poIndex=10&partnerId=100009&sellerId=8&createdStartDate=2013-08-16&createdEndDate=2019-09-17T18:47:03.703Z\"\n    },\n    \"elements\": {\n      \"order\": [\n        {\n          \"purchaseOrderId\": \"1796277083022\",\n          \"customerOrderId\": \"5281956426648\",\n          \"customerEmailId\": \"3A31739D8B0A45A1B23F7F8C81C8747F@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891234\",\n          \"orderDate\": 1568466571000,\n          \"shippingInfo\": {\n            \"phone\": \"3155598681\",\n            \"estimatedDeliveryDate\": 1569438000000,\n            \"estimatedShipDate\": 1568700000000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Kathryn Cole\",\n              \"address1\": \"3258BWarners rd\",\n              \"address2\": \"Garage\",\n              \"city\": \"Warners\",\n              \"state\": \"NY\",\n              \"postalCode\": \"13164\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"4\",\n                \"item\": {\n                  \"productName\": \"Beba Bean Pee-pee Teepee Airplane - Blue - Laundry Bag\",\n                  \"sku\": \"test1\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 10\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0.8\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1568466647000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1568919600000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"3796235970012\",\n          \"customerOrderId\": \"5241952426446\",\n          \"customerEmailId\": \"630083BD274E4FB2968D3166C8336151@relay.walmart.com\",\n          \"orderType\": \"REGULAR\",\n          \"orderDate\": 1568145593000,\n          \"shippingInfo\": {\n            \"phone\": \"4088592715\",\n            \"estimatedDeliveryDate\": 1568919600000,\n            \"estimatedShipDate\": 1568181600000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Steffen Matt\",\n              \"address1\": \"1830 Mason St\",\n              \"city\": \"San Francisco\",\n              \"state\": \"CA\",\n              \"postalCode\": \"94133\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Qwik Time QT5 Quartz Metronome\",\n                  \"sku\": \"TEST-02\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 0\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1568527247000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Cancelled\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1568401200000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"1796235744850\",\n          \"customerOrderId\": \"5231951859044\",\n          \"customerEmailId\": \"04BB1243498A43E9ADC8F1C9EAB622DC@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891235\",\n          \"orderDate\": 1568075673000,\n          \"shippingInfo\": {\n            \"phone\": \"7732831392\",\n            \"estimatedDeliveryDate\": 1568919600000,\n            \"estimatedShipDate\": 1568181600000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Dorothy Kelly\",\n              \"address1\": \"5831 N Kilpatrick Ave\",\n              \"city\": \"Chicago\",\n              \"state\": \"IL\",\n              \"postalCode\": \"60646\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Qwik Time QT5 Quartz Metronome\",\n                  \"sku\": \"TEST-02\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 0\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1568527281000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Cancelled\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1568401200000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"2792525175246\",\n          \"customerOrderId\": \"5221950975717\",\n          \"customerEmailId\": \"9CE34D060D4E4A8F9504B70A564E32EB@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891236\",\n          \"orderDate\": 1567984818000,\n          \"shippingInfo\": {\n            \"phone\": \"2564575354\",\n            \"estimatedDeliveryDate\": 1568833200000,\n            \"estimatedShipDate\": 1568095200000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Donna Becker\",\n              \"address1\": \"6555 meandering way\",\n              \"city\": \"Lakewood ranch\",\n              \"state\": \"FL\",\n              \"postalCode\": \"34202\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Qwik Time QT5 Quartz Metronome\",\n                  \"sku\": \"TEST-02\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 0\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1568440830000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Cancelled\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1568314800000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"4792514745205\",\n          \"customerOrderId\": \"5211999883559\",\n          \"customerEmailId\": \"FD63F38FD4ED41C6ACAC5A5988888E2B@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891237\",\n          \"orderDate\": 1567863035000,\n          \"shippingInfo\": {\n            \"phone\": \"3053037923\",\n            \"estimatedDeliveryDate\": 1568833200000,\n            \"estimatedShipDate\": 1568095200000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Vivian Katzaroff\",\n              \"address1\": \"945 Bay Dr apt 5\",\n              \"city\": \"Miami Beach\",\n              \"state\": \"FL\",\n              \"postalCode\": \"33141\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"2\",\n                \"item\": {\n                  \"productName\": \"Beba Bean Pee-pee Teepee Airplane - Blue - Laundry Bag\",\n                  \"sku\": \"test1\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 0\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1568441164000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Cancelled\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1568314800000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"3796091528503\",\n          \"customerOrderId\": \"5101992777190\",\n          \"customerEmailId\": \"630083BD274E4FB2968D3166C8336151@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891238\",\n          \"orderDate\": 1566937111000,\n          \"shippingInfo\": {\n            \"phone\": \"4088592715\",\n            \"estimatedDeliveryDate\": 1567796400000,\n            \"estimatedShipDate\": 1566972000000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Steffen Matt\",\n              \"address1\": \"1830 Mason St\",\n              \"city\": \"San Francisco\",\n              \"state\": \"CA\",\n              \"postalCode\": \"94133\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Qwik Time QT5 Quartz Metronome\",\n                  \"sku\": \"TEST-02\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 0\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1567317665000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Cancelled\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1567191600000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"3796050123784\",\n          \"customerOrderId\": \"5061989889122\",\n          \"customerEmailId\": \"630083BD274E4FB2968D3166C8336151@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891239\",\n          \"orderDate\": 1566600846000,\n          \"shippingInfo\": {\n            \"phone\": \"4088592715\",\n            \"estimatedDeliveryDate\": 1567710000000,\n            \"estimatedShipDate\": 1566885600000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Steffen Matt\",\n              \"address1\": \"1830 Mason St\",\n              \"city\": \"San Francisco\",\n              \"state\": \"CA\",\n              \"postalCode\": \"94133\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Qwik Time QT5 Quartz Metronome\",\n                  \"sku\": \"TEST-02\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 9.99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0.85\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1566933889000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Shipped\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      },\n                      \"trackingInfo\": {\n                        \"shipDateTime\": 1566933169000,\n                        \"carrierName\": {\n                          \"otherCarrier\": \"USPS Marketplace\"\n                        },\n                        \"methodCode\": \"Value\",\n                        \"trackingNumber\": \"9400100000000000000000\",\n                        \"trackingURL\": \"http://walmart.narvar.com/walmart/tracking/usps?&type=MP&seller_id=8&promise_date=09/05/2019&dzip=94133&tracking_numbers=9400100000000000000000\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1567105200000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"2792360062965\",\n          \"customerOrderId\": \"5061989884505\",\n          \"customerEmailId\": \"630083BD274E4FB2968D3166C8336151@relay.walmart.com\",\n          \"orderType\": \"REGULAR\",\n          \"orderDate\": 1566600299000,\n          \"shippingInfo\": {\n            \"phone\": \"4088592715\",\n            \"estimatedDeliveryDate\": 1567710000000,\n            \"estimatedShipDate\": 1566885600000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Steffen Matt\",\n              \"address1\": \"1830 Mason St\",\n              \"city\": \"San Francisco\",\n              \"state\": \"CA\",\n              \"postalCode\": \"94133\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Qwik Time QT5 Quartz Metronome\",\n                  \"sku\": \"TEST-02\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 9.99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0.85\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1566601276000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Shipped\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      },\n                      \"trackingInfo\": {\n                        \"shipDateTime\": 1566600700000,\n                        \"carrierName\": {\n                          \"carrier\": \"USPS\"\n                        },\n                        \"methodCode\": \"Value\",\n                        \"trackingNumber\": \"9400100000000000000000\",\n                        \"trackingURL\": \"http://walmart.narvar.com/walmart/tracking/usps?&type=MP&seller_id=8&promise_date=09/05/2019&dzip=94133&tracking_numbers=9400100000000000000000\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1567105200000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"2792338900105\",\n          \"customerOrderId\": \"5021986553201\",\n          \"customerEmailId\": \"6941EFC46C6541D0B8FE5914873EF869@relay.walmart.com\",\n          \"orderType\": \"REGULAR\",\n          \"orderDate\": 1566261956000,\n          \"shippingInfo\": {\n            \"phone\": \"4089130712\",\n            \"estimatedDeliveryDate\": 1567105200000,\n            \"estimatedShipDate\": 1566367200000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Sunitha Murthy\",\n              \"address1\": \"9400 w parmer ln\",\n              \"address2\": \"Apt # 1027\",\n              \"city\": \"Austin\",\n              \"state\": \"TX\",\n              \"postalCode\": \"78717\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Qwik Time QT5 Quartz Metronome\",\n                  \"sku\": \"TEST-02\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 9.99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0.62\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1566331993000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Shipped\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      },\n                      \"trackingInfo\": {\n                        \"shipDateTime\": 1566331824000,\n                        \"carrierName\": {\n                          \"carrier\": \"UPS\"\n                        },\n                        \"methodCode\": \"Value\",\n                        \"trackingNumber\": \"123456789\",\n                        \"trackingURL\": \"http://walmart.narvar.com/walmart/tracking/ups?&type=MP&seller_id=8&promise_date=08/29/2019&dzip=78717&tracking_numbers=123456789\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1566586800000\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"purchaseOrderId\": \"2792163543930\",\n          \"customerOrderId\": \"4851974348317\",\n          \"customerEmailId\": \"8244CABDE158461D9BF57F92BDD147D6@relay.walmart.com\",\n          \"orderType\": \"REGULAR\",\n          \"orderDate\": 1564794937000,\n          \"shippingInfo\": {\n            \"phone\": \"5019411012\",\n            \"estimatedDeliveryDate\": 1565895600000,\n            \"estimatedShipDate\": 1565150400000,\n            \"methodCode\": \"Value\",\n            \"postalAddress\": {\n              \"name\": \"Debbie Chandler\",\n              \"address1\": \"1012 Campground Road\",\n              \"city\": \"Cabot\",\n              \"state\": \"AR\",\n              \"postalCode\": \"72023\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"3\",\n                \"item\": {\n                  \"productName\": \"Motorola TurboPower 15 USB-C / Type C car charger - Turbo Power for Moto Z, Z2, Z3, Z4, X4, G7, G6, G6 Plus [Not for G6 Play] (Retail Box)\",\n                  \"sku\": \"AC004\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 0\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 0\n                        }\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1565496044000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Cancelled\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"VALUE\",\n                  \"pickUpDateTime\": 1565377200000\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b702c217-b969-49f5-a360-92acf720d418",
+          "name": "Walmart an Order",
+          "request": {
+            "name": "Walmart an Order",
+            "description": {
+              "content": "Retrieves an order detail for a specific purchaseOrderId",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                ":purchaseOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "productInfo",
+                  "value": "false",
+                  "description": "Provides the image URL and product weight in response, if available. Allowed values are true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "replacementInfo",
+                  "value": "false",
+                  "description": "Provides additional attributes - originalCustomerOrderID, orderType - related to Replacement order, in response, if available. Allowed values are true or false."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "purchaseOrderId",
+                  "description": "(Required) purchaseOrderId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32a0f0be-e2cc-4658-9bd5-87a66b381db1",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    ":purchaseOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productInfo",
+                      "value": "false"
+                    },
+                    {
+                      "key": "replacementInfo",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "purchaseOrderId",
+                      "description": "(Required) purchaseOrderId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"purchaseOrderId\": \"1815367951431\",\n    \"customerOrderId\": \"4372135469400\",\n    \"customerEmailId\": \"7D9F02968955480499C84C5871AD1401@relay.walmart.com\",\n    \"orderDate\": 1623796407000,\n    \"shippingInfo\": {\n      \"phone\": \"3143450432\",\n      \"estimatedDeliveryDate\": 1624647600000,\n      \"estimatedShipDate\": 1623906000000,\n      \"methodCode\": \"Value\",\n      \"postalAddress\": {\n        \"name\": \"Donald Ashley\",\n        \"address1\": \"6600 gazebo drive\",\n        \"city\": \"Cedar hill\",\n        \"state\": \"MO\",\n        \"postalCode\": \"63016\",\n        \"country\": \"USA\",\n        \"addressType\": \"RESIDENTIAL\"\n      }\n    },\n    \"orderLines\": {\n      \"orderLine\": [\n        {\n          \"lineNumber\": \"1\",\n          \"item\": {\n            \"productName\": \"Mac Sports Heavy Duty Steel Double Decker Collapsible Yard Cart Wagon, Purple\",\n            \"sku\": \"YHY-FN25200B2\"\n          },\n          \"charges\": {\n            \"charge\": [\n              {\n                \"chargeType\": \"PRODUCT\",\n                \"chargeName\": \"ItemPrice\",\n                \"chargeAmount\": {\n                  \"currency\": \"USD\",\n                  \"amount\": 5\n                },\n                \"tax\": {\n                  \"taxName\": \"Tax1\",\n                  \"taxAmount\": {\n                    \"currency\": \"USD\",\n                    \"amount\": 0.34\n                  }\n                }\n              }\n            ]\n          },\n          \"orderLineQuantity\": {\n            \"unitOfMeasurement\": \"EACH\",\n            \"amount\": \"1\"\n          },\n          \"statusDate\": 1623835855623,\n          \"orderLineStatuses\": {\n            \"orderLineStatus\": [\n              {\n                \"status\": \"Shipped\",\n                \"statusQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"trackingInfo\": {\n                  \"shipDateTime\": 1623835855000,\n                  \"carrierName\": {\n                    \"carrier\": \"USPS\"\n                  },\n                  \"methodCode\": \"Value\",\n                  \"trackingNumber\": \"435678956435467\",\n                  \"trackingURL\": \"https://www.walmart.com/tracking?tracking_id=435678956435467&order_id=1815367951431\"\n                }\n              }\n            ]\n          },\n          \"fulfillment\": {\n            \"fulfillmentOption\": \"S2H\",\n            \"shipMethod\": \"VALUE\",\n            \"pickUpDateTime\": 1624647600000\n          }\n        }\n      ]\n    },\n    \"shipNode\": {\n      \"type\": \"SellerFulfilled\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb1811fd-7c71-44d3-a057-9eaf7307711f",
+          "name": "Walmart All Released Orders",
+          "request": {
+            "name": "Walmart All Released Orders",
+            "description": {
+              "content": "Retrieves all the orders with line items that are in the \"created\" status, that is, these orders have been released from the Walmart Order Management System to the seller for processing. The released orders are the orders that are ready for a seller to fulfill.\n\nOnly orders created in last 180 days and a maximum of 20000 orders can be fetched at a time. Attempting to download more than 20000 orders will return an error.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                "released"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "createdStartDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that were created after this date. Default is current date - 7 days. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdEndDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that were created before this date. Default is current date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The number of orders to be returned. Cannot be larger than 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "productInfo",
+                  "value": "false",
+                  "description": "Provides the image URL and product weight in response, if available. Allowed values are true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipNodeType",
+                  "value": "SellerFulfilled",
+                  "description": "Specifies the type of shipNode. Allowed values are SellerFulfilled(Default), WFSFulfilled and 3PLFulfilled."
+                },
+                {
+                  "disabled": false,
+                  "key": "sku",
+                  "value": "<string>",
+                  "description": "A seller-provided Product ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerOrderId",
+                  "value": "<string>",
+                  "description": "The customer order ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "purchaseOrderId",
+                  "value": "<string>",
+                  "description": "The purchase order ID. One customer may have multiple purchase orders."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromExpectedShipDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that have order lines with an expected ship date after this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+                },
+                {
+                  "disabled": false,
+                  "key": "toExpectedShipDate",
+                  "value": "<string>",
+                  "description": "Fetches all purchase orders that have order lines with an expected ship date before this date. Use either UTC or ISO 8601 formats. Date example: '2020-03-16'(yyyy-MM-dd). Date with Timestamp example: '2020-03-16T10:30:15Z'(yyyy-MM-dd'T'HH:mm:ssZ)"
+                },
+                {
+                  "disabled": false,
+                  "key": "shippingProgramType",
+                  "value": "<string>",
+                  "description": "Specifies the type of program. Allowed value is TWO_DAY, ONE_DAY."
+                },
+                {
+                  "disabled": false,
+                  "key": "replacementInfo",
+                  "value": "false",
+                  "description": "Provides additional attributes - originalCustomerOrderID, orderType - related to Replacement order, in response, if available. Allowed values are true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderType",
+                  "value": "<string>",
+                  "description": "Specifies if the order is a regular order or replacement order. Possible values are REGULAR or REPLACEMENT. Provided in response only if query parameter replacementInfo=true."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f8ace8b-c253-46b2-94a4-c755e5c3e8a3",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    "released"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdEndDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "productInfo",
+                      "value": "false"
+                    },
+                    {
+                      "key": "shipNodeType",
+                      "value": "SellerFulfilled"
+                    },
+                    {
+                      "key": "sku",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "purchaseOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromExpectedShipDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toExpectedShipDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shippingProgramType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replacementInfo",
+                      "value": "false"
+                    },
+                    {
+                      "key": "orderType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"list\": {\n    \"meta\": {\n      \"totalCount\": 78449,\n      \"limit\": 10,\n      \"nextCursor\": \"?limit=10&hasMoreElements=true&soIndex=78449&poIndex=10&partnerId=100009&sellerId=8&status=Created&createdStartDate=2013-08-16&createdEndDate=2019-10-24T17:41:15.701Z\"\n    },\n    \"elements\": {\n      \"order\": [\n        {\n          \"purchaseOrderId\": \"4792982839409\",\n          \"customerOrderId\": \"5681962097195\",\n          \"customerEmailId\": \"9336DEB95193429EA032F07770C3E48A@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891234\",\n          \"orderDate\": 1571903550000,\n          \"shippingInfo\": {\n            \"phone\": \"7992381678\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778269137n SLast1340778269137n\",\n              \"address1\": \"13227 City Square Dr\",\n              \"city\": \"Jacksonville\",\n              \"state\": \"CA\",\n              \"postalCode\": \"12901\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"3\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_29\",\n                  \"sku\": \"StressTestHome_29\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 7.92\n                        }\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903748000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"2792982839545\",\n          \"customerOrderId\": \"5681963507621\",\n          \"customerEmailId\": \"608603150B4049338B773566484C0591@relay.walmart.com\",\n          \"orderType\": \"REGULAR\",\n          \"orderDate\": 1571903539000,\n          \"shippingInfo\": {\n            \"phone\": \"7998673792\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778269137n SLast1340778269137n\",\n              \"address1\": \"2200 Wheatsheaf Ln\",\n              \"city\": \"Philadelphia\",\n              \"state\": \"CA\",\n              \"postalCode\": \"28078\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"11\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_55\",\n                  \"sku\": \"StressTestHome_55\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903763000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"2792982839414\",\n          \"customerOrderId\": \"5681962895313\",\n          \"customerEmailId\": \"BC058103AF6C400E99FDEC95795F16AF@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891235\",\n          \"orderDate\": 1571903538000,\n          \"shippingInfo\": {\n            \"phone\": \"7998211844\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778912575r SLast1340778912575r\",\n              \"address1\": \"444 Castro St\",\n              \"city\": \"Mountain View\",\n              \"state\": \"CA\",\n              \"postalCode\": \"94041\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"4\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_13\",\n                  \"sku\": \"StressTestHome_13\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 8.89\n                        }\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903747000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"4792982839305\",\n          \"customerOrderId\": \"5681962393943\",\n          \"customerEmailId\": \"B100013EF5B6415E97F13A1E2F76D33E@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891236\",\n          \"orderDate\": 1571903537000,\n          \"shippingInfo\": {\n            \"phone\": \"7997281822\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778914882k SLast1340778914882k\",\n              \"address1\": \"444 Castro St\",\n              \"city\": \"Mountain View\",\n              \"state\": \"CA\",\n              \"postalCode\": \"94041\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"4\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_31\",\n                  \"sku\": \"StressTestHome_31\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 8.9\n                        }\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903746000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"4792982839157\",\n          \"customerOrderId\": \"5681962094947\",\n          \"customerEmailId\": \"F26C0523EB674390ABD87D8148A9CF9A@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891237\",\n          \"orderDate\": 1571903536000,\n          \"shippingInfo\": {\n            \"phone\": \"7994363541\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778269137n SLast1340778269137nt\",\n              \"address1\": \"14507 Plank Rd\",\n              \"city\": \"Baker\",\n              \"state\": \"CA\",\n              \"postalCode\": \"70714\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"3\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_55\",\n                  \"sku\": \"StressTestHome_55\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903732000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"4792982839565\",\n          \"customerOrderId\": \"5681963200599\",\n          \"customerEmailId\": \"B442C0D25766479DA1D98D0BEE18AA4E@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891238\",\n          \"orderDate\": 1571903536000,\n          \"shippingInfo\": {\n            \"phone\": \"7997678284\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778269137n SLast1340778269137nt\",\n              \"address1\": \"925 Keyser Ave\",\n              \"city\": \"Natchitoches\",\n              \"state\": \"CA\",\n              \"postalCode\": \"43311\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"3\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_55\",\n                  \"sku\": \"StressTestHome_55\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 7.18\n                        }\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903765000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"4792982839536\",\n          \"customerOrderId\": \"5681963403079\",\n          \"customerEmailId\": \"C087D231D7F846C3BBE04B1AC869F3FB@relay.walmart.com\",\n          \"orderType\": \"REPLACEMENT\",\n          \"originalCustomerOrderID\": \"1234567891239\",\n          \"orderDate\": 1571903535000,\n          \"shippingInfo\": {\n            \"phone\": \"7998487320\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778269137n SLast1340778269137n\",\n              \"address1\": \"100 Mcginnis Dr\",\n              \"city\": \"Wayne\",\n              \"state\": \"CA\",\n              \"postalCode\": \"33323\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"4\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_32\",\n                  \"sku\": \"StressTestHome_32\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903762000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"3796673088300\",\n          \"customerOrderId\": \"5681962299170\",\n          \"customerEmailId\": \"A78E13850B234D4599FD6B42DB0EFB19@relay.walmart.com\",\n          \"orderType\": \"REGULAR\",\n          \"orderDate\": 1571903535000,\n          \"shippingInfo\": {\n            \"phone\": \"7999539847\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778269137n SLast1340778269137nt\",\n              \"address1\": \"4542 Kenowa Ave Sw\",\n              \"city\": \"Grandville\",\n              \"state\": \"CA\",\n              \"postalCode\": \"33155\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"3\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_55\",\n                  \"sku\": \"StressTestHome_55\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903716000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"1796673088779\",\n          \"customerOrderId\": \"5681963402652\",\n          \"customerEmailId\": \"B7F3DF65F7DB47CD9F4108B5C2BA89BF@relay.walmart.com\",\n          \"orderDate\": 1571903535000,\n          \"orderType\": \"REGULAR\",\n          \"shippingInfo\": {\n            \"phone\": \"7995572470\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778269137n SLast1340778269137n\",\n              \"address1\": \"1450 Johns Lake Rd\",\n              \"city\": \"Clermont\",\n              \"state\": \"CA\",\n              \"postalCode\": \"30529\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"3\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_13\",\n                  \"sku\": \"StressTestHome_13\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903748000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        },\n        {\n          \"purchaseOrderId\": \"4792982839704\",\n          \"customerOrderId\": \"5681962096403\",\n          \"customerEmailId\": \"B100013EF5B6415E97F13A1E2F76D33E@relay.walmart.com\",\n          \"orderType\": \"REGULAR\",\n          \"orderDate\": 1571903535000,\n          \"shippingInfo\": {\n            \"phone\": \"7997281822\",\n            \"estimatedDeliveryDate\": 1572375600000,\n            \"estimatedShipDate\": 1572069600000,\n            \"methodCode\": \"Express\",\n            \"postalAddress\": {\n              \"name\": \"SFirst1340778914882k SLast1340778914882k\",\n              \"address1\": \"444 Castro St\",\n              \"city\": \"Mountain View\",\n              \"state\": \"CA\",\n              \"postalCode\": \"94041\",\n              \"country\": \"USA\",\n              \"addressType\": \"RESIDENTIAL\"\n            }\n          },\n          \"orderLines\": {\n            \"orderLine\": [\n              {\n                \"lineNumber\": \"1\",\n                \"item\": {\n                  \"productName\": \"Dummystresstest_MP_Home_31\",\n                  \"sku\": \"StressTestHome_31\"\n                },\n                \"charges\": {\n                  \"charge\": [\n                    {\n                      \"chargeType\": \"PRODUCT\",\n                      \"chargeName\": \"ItemPrice\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 99\n                      },\n                      \"tax\": {\n                        \"taxName\": \"Tax1\",\n                        \"taxAmount\": {\n                          \"currency\": \"USD\",\n                          \"amount\": 8.91\n                        }\n                      }\n                    },\n                    {\n                      \"chargeType\": \"SHIPPING\",\n                      \"chargeName\": \"Shipping\",\n                      \"chargeAmount\": {\n                        \"currency\": \"USD\",\n                        \"amount\": 60\n                      }\n                    }\n                  ]\n                },\n                \"orderLineQuantity\": {\n                  \"unitOfMeasurement\": \"EACH\",\n                  \"amount\": \"1\"\n                },\n                \"statusDate\": 1571903807000,\n                \"orderLineStatuses\": {\n                  \"orderLineStatus\": [\n                    {\n                      \"status\": \"Created\",\n                      \"statusQuantity\": {\n                        \"unitOfMeasurement\": \"EACH\",\n                        \"amount\": \"1\"\n                      }\n                    }\n                  ]\n                },\n                \"fulfillment\": {\n                  \"fulfillmentOption\": \"S2H\",\n                  \"shipMethod\": \"EXPEDITED\",\n                  \"pickUpDateTime\": 1572289200000\n                }\n              }\n            ]\n          },\n          \"shipNode\": {}\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "72553605-d0e7-4bcb-8128-1ecc487c41d4",
+    "name": "Walmart Cost Management Assortment Recommendations Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

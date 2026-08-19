@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assortment Recommendations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Get Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/growth/assortment/recommendations",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can fetch the list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can get the list of ITEM recommendations. You can apply filters to fetch selective item recommendations. \n \n\n"
+        },
+        {
+          "info": {
+            "name": "Walmart Get Categorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/growth/assortment/recommendations/categorization/counts",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can get the list of brands or categories associated with the items recommendations that are recommended for you.\n \nUsing BRAND as a categorizationType\n*   You can get the list of brands sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of brand name. \n \n\nUsing CATEGORY as a categorizationType\n*   You can get the list of categories sorted by the number of item recommendations associated with it. This is then sorted in lexicographic ord"
+        },
+        {
+          "info": {
+            "name": "Walmart Reject Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/growth/assortment/recommendations/rejections",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can reject a list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can reject specific item recommendations using the filterCriteria or by providing the list of itemRecommendationUniqueIds. \n*   You will need to provide valid rejection code(s) while submitting the reject request. You are required to send the custom rejection message if the rejection code is OTHER_REASON \n\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

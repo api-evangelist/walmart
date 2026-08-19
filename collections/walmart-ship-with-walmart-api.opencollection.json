@@ -1,0 +1,348 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Ship with Walmart API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ship with Walmart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Create Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API generates shipping labels with the shipment info passed. The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.\nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type, \n'Accept'='application/json,image/png' as image png media type and 'Accept'='application/json' as json response. Refer request sample4 for India(IN) to United-States(US) shipping"
+        },
+        {
+          "info": {
+            "name": "Walmart Shipping Estimates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels/shipping-estimates",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API retrieves shipping cost estimates for available shipping services based on address and package (e.g., customer address, packaged weight.)"
+        },
+        {
+          "info": {
+            "name": "Walmart Labels Detail by Purchase Order Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels/purchase-orders/:purchaseOrderId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "purchaseOrderId",
+                "value": "",
+                "type": "path",
+                "description": "purchaseOrderId"
+              }
+            ]
+          },
+          "docs": "This API retrieves all label details generated for a purchase order id."
+        },
+        {
+          "info": {
+            "name": "Walmart Supported Carriers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels/carriers",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "This API retrieves all carriers supported by Ship With Walmart."
+        },
+        {
+          "info": {
+            "name": "Walmart Download Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels/carriers/:carrierShortName/trackings/:trackingNo",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "carrierShortName",
+                "value": "",
+                "type": "path",
+                "description": "carrierShortName"
+              },
+              {
+                "name": "trackingNo",
+                "value": "",
+                "type": "path",
+                "description": "trackingNo"
+              }
+            ]
+          },
+          "docs": "This API retrieves label for a carrier & tracking number combination.The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.\nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type and\n'Accept'='application/json,image/png' as image media type."
+        },
+        {
+          "info": {
+            "name": "Walmart Discard Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels/carriers/:carrierShortName/trackings/:trackingNo",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "carrierShortName",
+                "value": "",
+                "type": "path",
+                "description": "carrierShortName from getCarriers API"
+              },
+              {
+                "name": "trackingNo",
+                "value": "",
+                "type": "path",
+                "description": "trackingNo"
+              }
+            ]
+          },
+          "docs": "This API marks a generated label as discarded."
+        },
+        {
+          "info": {
+            "name": "Walmart Download Commercial Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels/carriers/:carrierShortName/trackings/:trackingNo/CI",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "carrierShortName",
+                "value": "",
+                "type": "path",
+                "description": "carrierShortName"
+              },
+              {
+                "name": "trackingNo",
+                "value": "",
+                "type": "path",
+                "description": "trackingNo"
+              }
+            ]
+          },
+          "docs": "This API retrieves commercialInvoice for a carrier & tracking number combination. This API is applicable only when shipping done from (India)IN to (United-States)US. The response to a successful call contains the commercial invoice in pdf format. \nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type. "
+        },
+        {
+          "info": {
+            "name": "Walmart Supported Carrier Package Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/shipping/labels/carriers/:carrierShortName/package-types",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "carrierShortName",
+                "value": "",
+                "type": "path",
+                "description": "carrierShortName fetched from carrier API response or pass 'ALL' to fetch all package types of supported carriers"
+              }
+            ]
+          },
+          "docs": "This API retrieves all supported package types for the selected carrier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

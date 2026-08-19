@@ -1,0 +1,490 @@
+{
+  "item": [
+    {
+      "id": "012f53f1-f908-4d42-a8dd-2a9fca74b8d3",
+      "name": "Listing Quality",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3a23d16f-cf45-4e2d-8e0c-2284bdbfb30e",
+          "name": "Walmart Pro Seller Badge Status",
+          "request": {
+            "name": "Walmart Pro Seller Badge Status",
+            "description": {
+              "content": "The Pro Seller badge status will provide you with information regarding your current badge status as well as the progress you've made in meeting the criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "insights",
+                "prosellerbadge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbb54c3c-7e17-4406-b16a-3cb79d517a01",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "insights",
+                    "prosellerbadge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasBadge\": true,\n  \"isEligible\": false,\n  \"badgedSince\": \"2020-11-05T04:32:02.330+0000\",\n  \"isProhibited\": false,\n  \"badgeStatus\": \"Pro Seller Badge at risk\",\n  \"meetsCriteria\": {\n    \"activeDaysCriteriaMet\": true,\n    \"ordersCriteriaMet\": true,\n    \"deliveryDefectCriteriaMet\": true,\n    \"cancellationCriteriaMet\": true,\n    \"listingQualityCatalogCriteriaMet\": false\n  },\n  \"criteriaData\": {\n    \"orders\": 2318,\n    \"deliveryDefectRate\": \"0.27\",\n    \"cancellationRate\": \"0.0\",\n    \"listingQualityCatalog\": 56,\n    \"activeDays\": 1213\n  },\n  \"recommendations\": {\n    \"listingQualityCatalog\": \"Improve 226 more trending items with a Listing Quality score below 60%.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a48d936-1ce2-4b31-b512-e452702da747",
+          "name": "Walmart Seller Listing Quality Score",
+          "request": {
+            "name": "Walmart Seller Listing Quality Score",
+            "description": {
+              "content": "Get the total Listing Quality Score for a seller's entire item catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "insights",
+                "items",
+                "listingQuality",
+                "score"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "viewTrendingItems",
+                  "value": "<boolean>",
+                  "description": "Specify whether or not to include seller's items that are trending in the Listing Quality Score."
+                },
+                {
+                  "disabled": false,
+                  "key": "wfsFlag",
+                  "value": "<string>",
+                  "description": "Specify whether or not to include WFS-eligible items in the overall Listing Quality Score."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22303b9d-f400-4637-bdcb-87ac68720a4c",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "insights",
+                    "items",
+                    "listingQuality",
+                    "score"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "viewTrendingItems",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "wfsFlag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": {\n    \"score\": {\n      \"offerScore\": 50,\n      \"ratingReviewScore\": 14.48,\n      \"contentScore\": 64.24\n    },\n    \"postPurchaseQuality\": {\n      \"itemDefectCnt\": 0,\n      \"defectRatio\": 0\n    },\n    \"overAllQuality\": 44.7\n  },\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e91aa71-58bf-4674-8915-7c28f8c248d8",
+          "name": "Walmart Item Count With Listing Quality Issues",
+          "request": {
+            "name": "Walmart Item Count With Listing Quality Issues",
+            "description": {
+              "content": "Get a list of all item categories that have items with listing quality issues or brands for a seller.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "insights",
+                "items",
+                "listingQuality",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "viewTrendingItems",
+                  "value": "true",
+                  "description": "Specify whether or not to include seller's items that are trending in the Listing Quality Score."
+                },
+                {
+                  "disabled": false,
+                  "key": "wfsFlag",
+                  "value": "<boolean>",
+                  "description": "Specify whether or not to include WFS-eligible items in the overall Listing Quality Score."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasIssue",
+                  "value": "0",
+                  "description": "Specify whether or not to include items that have issues in the Listing Quality Score."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Specify whether to get item count by brand or category. Category is the default value when no type is specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Specify number of items to return. The value is defaulted to 100 and the maximum value is 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Specify the offset of item list to be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7fb93b35-6be4-4118-979a-a6178d52db85",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "insights",
+                    "items",
+                    "listingQuality",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "viewTrendingItems",
+                      "value": "true"
+                    },
+                    {
+                      "key": "wfsFlag",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasIssue",
+                      "value": "0"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"payload\": [\n    {\n      \"category\": \"Baby\",\n      \"offerCount\": 122000,\n      \"productType\": [\n        {\n          \"productTypeName\": \"Baby Onesies\",\n          \"offerCount\": 9000\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e545055b-2a6a-4ec5-929e-a5f764c2b52a",
+    "name": "Walmart Cost Management Assortment Recommendations Listing Quality API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Reports API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Recon Report(legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/reconreport/reconFile",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "reportDate",
+                "value": "",
+                "type": "query",
+                "description": "The date for which the reconcilation file is available"
+              }
+            ]
+          },
+          "docs": "Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API."
+        },
+        {
+          "info": {
+            "name": "Walmart Recon Report Json",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/reconreport/reconFileJson",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "reportDate",
+                "value": "",
+                "type": "query",
+                "description": "Date of the settlement report"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "starting number of the bytes, initial value for the offset is zero"
+              },
+              {
+                "name": "noOfRecords",
+                "value": "",
+                "type": "query",
+                "description": "number of records in the report (max limit 1000)"
+              }
+            ]
+          },
+          "docs": "This API will get a partner’s transaction details in JSON format for a specific date range (available only for v1 reports). Dates for accessing the report can be found by using the ‘GET Available recon report dates’ API."
+        },
+        {
+          "info": {
+            "name": "Walmart Recon Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/reconreport/reconFile?reportVersion=v1",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "reportDate",
+                "value": "",
+                "type": "query",
+                "description": "The date for which the reconcilation file is available"
+              },
+              {
+                "name": "reportVersion",
+                "value": "",
+                "type": "query",
+                "description": "Report Version"
+              }
+            ]
+          },
+          "docs": "Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API."
+        },
+        {
+          "info": {
+            "name": "Walmart Available Recon Report Dates(legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/reconreport/availableReconFiles",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API will list all the available Marketplace reconciliation report dates for the Seller."
+        },
+        {
+          "info": {
+            "name": "Walmart Available Recon Report Dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/reconreport/availableReconFiles?reportVersion=v1",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API will list all the available Marketplace reconciliation report dates for the Seller."
+        },
+        {
+          "info": {
+            "name": "Walmart Payment Statement Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/payment/statement",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API will get a partner's current cycle statement"
+        },
+        {
+          "info": {
+            "name": "Walmart Performance Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/payment/performance",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API will get a partner's current cycle performance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

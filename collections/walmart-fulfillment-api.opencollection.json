@@ -1,0 +1,997 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Fulfillment API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fulfillment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Update Shipment Quantities",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/shipment-quantities",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Seller can modify the shipment quantity before the Shipment arrives at the WFS FCs. Seller cannot modify the shipment quantity when Shipment Status = Receiving in Progress, Closed, and Cancelled. \n Seller will need to provide new quantities for each SKU to update. Seller will only be able to add up to 6 units per SKU but can reduce to 0 units to remove any SKU from a shipment. Seller cannot change all SKUs’ quantity to 0 – they must cancel the entire Inbound Order. "
+        },
+        {
+          "info": {
+            "name": "Walmart Hazmat Items on Hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/items/onhold/search",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to see a list of items that are on hold for hazmat compliance review, including items with an In Review, Action Needed, and Prohibited status. Also use this API to review your Action Needed error descriptions and understand how to correct them for further assessment."
+        },
+        {
+          "info": {
+            "name": "Walmart Update Shipment Tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/shipment-tracking",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The purpose of this service is to capture tracking information from sellers.\nFor small parcel shipments, sellers must provide the tracking info including carrier name and tracking numbers. WFS will use the data to capture updated expected delivery date to adjust the fulfillment inbound capacity to avoid any receiving delays. \nSeller will also be able to view the updated expected delivery date through the Seller Center UI or calling the Get Inbound Shipment Items API."
+        },
+        {
+          "info": {
+            "name": "Walmart Create Inbound Shipment Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/shipment-label",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The purpose of this service is to generate WFS Receiving Labels in various formats for receiving purposes. Please note this is not a carrier label; these labels are required for the FC to identify the Inbound Order and Shipment ID they are receiving against.Receiving labels are customizable: \n1. 3 size and format options are available to choose from through the LabelSize and LabelFormat fields:\n\t - 4 in. x 6 in. (PDF).\n\t - 4 in. x 3 1/3 in. (PDF).\n\t - 4 in. x 6 in. (ZPL).\n2. Provide the type of "
+        },
+        {
+          "info": {
+            "name": "Walmart Create Customer Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/orders-fulfillments",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The API is used to create customer fulfilment orders by the seller for Walmart Multichannel Solutions flow."
+        },
+        {
+          "info": {
+            "name": "Walmart Fetch Delivery Promise Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/orders-fulfillments/fetchOrderPromiseOptions",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This request provides fulfillment and delivery promise information for all valid item/offer to seller."
+        },
+        {
+          "info": {
+            "name": "Walmart Cancel Customer Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/orders-fulfillments/cancel",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The API is used to cancel the customer fulfilment orders created in the previous flow."
+        },
+        {
+          "info": {
+            "name": "Walmart Get Shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/inbound-shipments",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "offset is the number of records you wish to skip before selecting records."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of Purchase Orders to be returned."
+              },
+              {
+                "name": "inboundOrderId",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID identifying inbound shipment request."
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID identifying each shipment."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Current shipment status"
+              },
+              {
+                "name": "fromCreateDate",
+                "value": "",
+                "type": "query",
+                "description": "Shipment create date starting range"
+              },
+              {
+                "name": "toCreateDate",
+                "value": "",
+                "type": "query",
+                "description": "Shipment create date starting  end range"
+              }
+            ]
+          },
+          "docs": "After Sellers create an Inbound Order successfully, the response from Create Inbound Shipments API will tell whether the order can be sent in a single shipment to one WFS fulfillment center or needs to be split into multiple shipments to different fulfillment centers. To retrieve the Shipment level info, please call the Get Inbound Shipments API"
+        },
+        {
+          "info": {
+            "name": "Walmart Create Inbound Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/inbound-shipments",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Once you’ve converted items to WFS, you are ready to start shipping items inbound to Walmart. To do this, you will submit an Inbound shipment request. The Inbound shipment details when you expect to ship product, as well as the items and quantities which will be shipped.\n\nEach shipment you send in to WFS should have a corresponding Inbound shipment . In this case, a shipment would be considered a direct truckload, LTL shipment, or set of items shipped via parcel on a given day."
+        },
+        {
+          "info": {
+            "name": "Walmart Fetch Inbound Preview",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/inbound-preview",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The purpose of this service is to give a preview of the estimated Inventory Transfer Service cost and shipment destinations between ITS and self-distribution. \nNote: This API is only available to sellers eligible for the Inventory Transfer Service."
+        },
+        {
+          "info": {
+            "name": "Walmart Get Carrier Rate Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/carrier-rate-quotes",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID identifying each shipment."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "path",
+                "description": "Shipment type."
+              }
+            ]
+          },
+          "docs": "The purpose of this service is to get the carrier rate quotes for WFS Preferred Carrier Program - FedEx parcel solution, when inbounding seller items from seller pickup point to Walmart fulfillment centers."
+        },
+        {
+          "info": {
+            "name": "Walmart Create Carrier Rate Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/carrier-rate-quotes",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The purpose of this service is to get the carrier rate quotes for WFS Preferred Carrier Program - FedEx parcel solution, when inbounding seller items from seller pickup point to Walmart fulfillment centers.\n\nFor the shipments sent by FedEx small parcel, you can ship packages up to 150 lb, up to 108\" in length, and 165\" in length plus girth. (Girth is 2x width + 2x height.). You can ship up to 200 packages per shipment."
+        },
+        {
+          "info": {
+            "name": "Walmart Confirm Carrier Rate Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/carrier-rate-quote/confirm",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The purpose of this service is for seller to confirm and accept the estimated carrier shipping charges, when choosing to use WFS Preferred Carrier Program - FedEx parcel to inbound inventory to Walmart fulfillment centers."
+        },
+        {
+          "info": {
+            "name": "Walmart Print Carrier Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/carrier-label/:shipmentId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID identifying each shipment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The purpose of this service is for sellers to print carrier shipping label. \n\nTo print carrier shipping label, please first specify a Ship Date. Note, carrier allows to select a ship date 10 days in advance."
+        },
+        {
+          "info": {
+            "name": "Walmart Convert Items for Wfs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/feeds",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedType",
+                "value": "",
+                "type": "query",
+                "description": "Includes details of each entity in the feed. Do not set this parameter to true."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API is used for converting existing Marketplace items to be WFS eligible. Once you’ve created a Marketplace item, each item must be converted to WFS by providing additional details that are not required during the item setup process. This item conversion process can be completed by uploading the Convert Spec excel file via Seller Center, or can be completed using the API documented here.\n\nDirections on how to convert your item to be eligible for Walmart Fulfillment Services can be found her"
+        },
+        {
+          "info": {
+            "name": "Walmart Get Wfs Inventory Health Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/report/wfs/getInventoryHealthReport",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "Returns all the information associated with Seller's items that are set up on Walmart Fulfillment Services (WFS) platform."
+        },
+        {
+          "info": {
+            "name": "Walmart Get Fulfillment Orders Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/orders-fulfillments/status",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limiting the number of records fetched. Valid range is from 1 to 50 inclusive."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Setting an offset to skip records. Valid range is from 0 to 50000 inclusive."
+              },
+              {
+                "name": "orderNumber",
+                "value": "",
+                "type": "query",
+                "description": "Search the order based on an order number."
+              },
+              {
+                "name": "trackingNumber",
+                "value": "",
+                "type": "query",
+                "description": "Search the order based on a tracking number."
+              },
+              {
+                "name": "shipmentNumber",
+                "value": "",
+                "type": "query",
+                "description": "Search the order based on a shipment number."
+              },
+              {
+                "name": "fromOrderDate",
+                "value": "",
+                "type": "query",
+                "description": "Search the order based on a start date (Date in YYYY-MM-DD format)."
+              },
+              {
+                "name": "toOrderDate",
+                "value": "",
+                "type": "query",
+                "description": "Search the order based on an endDate date (Date in YYYY-MM-DD format)."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Order of sorting (asc/desc)."
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Key on which sorting is done (Supported Attributes: orderDate)."
+              }
+            ]
+          },
+          "docs": "The API provides the list of customer fulfillment orders with corresponding details."
+        },
+        {
+          "info": {
+            "name": "Walmart Create Inbound Shipment Label (deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/label/:shipmentId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID identifying inbound shipment"
+              }
+            ]
+          },
+          "docs": "The purpose of this service is to generate WFS shipping labels in pdf format for receiving purpose. Please note this is not a carrier label; these labels are required for the FC to identify the Inbound Order and Shipment ID they are receiving against. After requesting the shipping label, sellers must work with warehouse/ supplier to follow these steps before sending any Shipments to WFS FCs: \n1. \tPrint the WFS shipping label.\n2. \tFill out the FILL OUT section based on seller’s packing situation."
+        },
+        {
+          "info": {
+            "name": "Walmart Get Inventory Log for a Wfs Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/inventory-log",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "gtin",
+                "value": "",
+                "type": "query",
+                "description": "GTIN."
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query",
+                "description": "Shipment Id."
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Transaction Type."
+              },
+              {
+                "name": "transactionLocation",
+                "value": "",
+                "type": "query",
+                "description": "Transaction Location."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Inventory log transaction time starting range (Date in YYYY-MM-DD format)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Inventory log transaction time ending range (Date in YYYY-MM-DD format)."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort By Attribute (Supported Attributes: gtin, changedUnits, transactionReasonCode, transactionType, shipmentId)."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Sort Order (ASC or DESC)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset is the number of records you wish to skip before selecting records."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limit is the number of records to be returned."
+              }
+            ]
+          },
+          "docs": "Returns activity log for any Seller's item that is stored in Walmart Fulfillment Centers (WFS) platform."
+        },
+        {
+          "info": {
+            "name": "Walmart Get Inbound Shipment Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/inbound-shipment-items",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "offset is the number of records you wish to skip before selecting records."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of Purchase Orders to be returned."
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID identifying each shipment."
+              }
+            ]
+          },
+          "docs": "After Sellers create an Inbound Order successfully, the response from Create Inbound Shipments API will tell whether the order can be sent in a single shipment to one WFS fulfillment center or needs to be split into multiple shipments to different fulfillment centers. \nTo retrieve the Shipment level info, please call the Get Inbound Shipments API and to get what needs to be in a specific shipment and SKU level receipt situation, please call the Get Inbound Shipment Items API"
+        },
+        {
+          "info": {
+            "name": "Walmart Get Inbound Shipment Errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/inbound-shipment-errors",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "offset is the number of records you wish to skip before selecting records."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of Purchase Orders to be returned."
+              },
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID identifying each shipment."
+              }
+            ]
+          },
+          "docs": "After Sellers request to create an Inbound Order, WFS may return error responses with error codes. Type of errors: \n- \tSKUs not in WFS catalog: Sellers need to make sure all SKUs have already been converted and added to the WFS catalog\n- \tMissing required information; \n- \tInvalid Product ID (incorrect number of digits); \n- \tDuplicated Inbound Order ID: Inbound Order ID has already been used before\n- \tDuplicated Product IDs\nMost of these errors can be prevented with a robust API integration that "
+        },
+        {
+          "info": {
+            "name": "Walmart Cancel Inbound Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/inbound-shipments/:inboundOrderId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "inboundOrderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID identifying inbound shipment request"
+              }
+            ]
+          },
+          "docs": "The purpose of this service is to cancel an inbound order.\nSeller can cancel an Inbound Order before any of its Shipment arrives at the WFS FCs. Seller cannot cancel an Inbound Order if any of its Shipment’s status = Receiving in Progress, Closed, or Cancelled \nSeller can only cancel at the Inbound Order level, not the Shipment level: if an Inbound Order is cancelled, all Shipments on that order will be cancelled."
+        },
+        {
+          "info": {
+            "name": "Walmart Cancel Carrier Rate Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-gateway.walmart.com/v3/fulfillment/carrier-rate-quote/:shipmentId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID identifying each shipment."
+              }
+            ]
+          },
+          "docs": "The purpose of this service is for seller to void the carrier shipping charges, within 24 hours after the estimated carrier charges have been accepted by the seller."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

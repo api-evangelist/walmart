@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Feeds API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feeds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart All Feed Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/feeds",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedId",
+                "value": "",
+                "type": "query",
+                "description": "A unique ID returned from the Bulk Upload API, used for tracking the Feed File. Special characters must be escaped. (e.g., feedId: '...3456@789...' must be entered in the URL as '...3456%40789)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of entities to be returned. It cannot be more than 50 entities. Use it only when the includeDetails is set to true."
+              }
+            ]
+          },
+          "docs": "Returns the feed statuses for all the specified Feed IDs."
+        },
+        {
+          "info": {
+            "name": "Walmart Feed Item Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/feeds/:feedId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedId",
+                "value": "",
+                "type": "path",
+                "description": "A unique ID returned from the Bulk Upload API, used for tracking the Feed File. Special characters must be escaped. (e.g., feedId: '...3456@789...' must be entered in the URL as '...3456%40789)"
+              },
+              {
+                "name": "includeDetails",
+                "value": "",
+                "type": "query",
+                "description": "Includes details of each entity in the feed."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of entities to be returned. It cannot be more than 50 entities. Use it only when the includeDetails is set to true."
+              }
+            ]
+          },
+          "docs": "Returns the feed and item status for a specified Feed ID."
+        },
+        {
+          "info": {
+            "name": "Walmart Get Feed Error Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/feeds/:feedId/errorReport",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedId",
+                "value": "",
+                "type": "path",
+                "description": "Feed Id of the feed"
+              },
+              {
+                "name": "feedType",
+                "value": "",
+                "type": "query",
+                "description": "Feed type for which Error Report needs to be downloaded"
+              }
+            ]
+          },
+          "docs": "Get Feed Error Report API allows you to download a detailed error report for a submitted feed. \n\nCurrently the API supports error report download for the following feeds: \n*   FITMENT_ACES \n*   FITMENT_PIES \n\n This API returns a zipped .csv file, which contains line item level detailed error messages. For details and a sample, please refer to the guide section link below. \n \n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

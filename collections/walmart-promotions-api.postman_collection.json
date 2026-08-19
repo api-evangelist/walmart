@@ -1,0 +1,484 @@
+{
+  "item": [
+    {
+      "id": "491c85cb-68a0-410f-9d5a-43ef1e54bdaf",
+      "name": "Promotions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8081e994-c555-4b87-92b7-c29ecb420986",
+          "name": "Walmart Update a Promotional Price",
+          "request": {
+            "name": "Walmart Update a Promotional Price",
+            "description": {
+              "content": "Updates the promotional price.\n\nSellers can update or delete an existing promotional price as well as set up a new promotional price.\n\nTo set a new promotional price or update an existing one, set the XML pricing attribute processMode to UPSERT.\nTo delete a promotional price, set the XML pricing attribute processMode to DELETE.\nTo delete all promotions for a SKU, set replaceAll to an empty payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "promo",
+                  "value": "true",
+                  "description": "(Required) The promotional price. Set to 'true' in order to retrieve promotional prices"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pricing\": [\n    {\n      \"currentPrice\": {\n        \"currency\": \"<string>\",\n        \"amount\": \"<double>\"\n      },\n      \"currentPriceType\": \"<string>\",\n      \"effectiveDate\": \"<dateTime>\",\n      \"expirationDate\": \"<dateTime>\",\n      \"promoId\": \"<string>\",\n      \"processMode\": \"<string>\",\n      \"comparisonPriceType\": \"<string>\",\n      \"comparisonPrice\": {\n        \"currency\": \"<string>\",\n        \"amount\": \"<double>\"\n      },\n      \"priceDisplayCodes\": \"<string>\"\n    },\n    {\n      \"currentPrice\": {\n        \"currency\": \"<string>\",\n        \"amount\": \"<double>\"\n      },\n      \"currentPriceType\": \"<string>\",\n      \"effectiveDate\": \"<dateTime>\",\n      \"expirationDate\": \"<dateTime>\",\n      \"promoId\": \"<string>\",\n      \"processMode\": \"<string>\",\n      \"comparisonPriceType\": \"<string>\",\n      \"comparisonPrice\": {\n        \"currency\": \"<string>\",\n        \"amount\": \"<double>\"\n      },\n      \"priceDisplayCodes\": \"<string>\"\n    }\n  ],\n  \"sku\": \"<string>\",\n  \"offerId\": \"<string>\",\n  \"replaceAll\": \"<string>\",\n  \"definitions\": {\n    \"type\": \"object\",\n    \"default\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6220064b-3fbf-4dd9-a5f4-63be3017af0d",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "promo",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sku\": \"97964_KFTest\",\n  \"pricing\": [\n    {\n      \"currentPrice\": {\n        \"currency\": \"USD\",\n        \"amount\": 4\n      },\n      \"currentPriceType\": \"REDUCED\",\n      \"comparisonPriceType\": \"BASE\",\n      \"comparisonPrice\": {\n        \"currency\": \"USD\",\n        \"amount\": 4\n      },\n      \"priceDisplayCodes\": \"CART\",\n      \"effectiveDate\": \"2019-11-03T09:49:57.943Z\",\n      \"expirationDate\": \"2019-12-03T09:49:57.943Z\",\n      \"processMode\": \"UPSERT\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ItemPriceResponse\": {\n    \"mart\": \"WALMART_US\",\n    \"message\": \"Thank you. Your price has been updated. Please allow up to five minutes for this change to be reflected on the site.\",\n    \"sku\": \"97964_KFTest\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c92da96-3e1c-4563-b07c-b5863252464b",
+          "name": "Walmart Updates Bulk Promotional Prices",
+          "request": {
+            "name": "Walmart Updates Bulk Promotional Prices",
+            "description": {
+              "content": "Updates or creates promotional prices for multiple specified SKUs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "feeds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "feedType",
+                  "value": "promo",
+                  "description": "(Required) Feed Type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Feed file to upload"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "601b17f1-d7f5-46b0-9401-7971764664e1",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "promo"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Feed file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"609B1E4C0B3E48989690263DEAC85C63@AVUBAQA\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8bad823-b354-48af-8eea-fc7d73451f1b",
+          "name": "Walmart Promotional Prices",
+          "request": {
+            "name": "Walmart Promotional Prices",
+            "description": {
+              "content": " Retrieves a list of promotional prices for a single SKU.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "promo",
+                "sku",
+                ":sku"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sku",
+                  "description": "(Required) An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will be used by the seller in the XSD file to refer to each item. Special characters in the sku needing encoding are: ':', '/', '?', '#', '[', ']', '@', '!', '$', '&', \"'\", '(', ')', '*', '+', ',', ';', '=', as well as '%' itself. Other characters don't need to be encoded."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "588a44a9-db7c-480e-b2ab-763d2084a688",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "promo",
+                    "sku",
+                    ":sku"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sku",
+                      "description": "(Required) An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will be used by the seller in the XSD file to refer to each item. Special characters in the sku needing encoding are: ':', '/', '?', '#', '[', ']', '@', '!', '$', '&', \"'\", '(', ')', '*', '+', ',', ';', '=', as well as '%' itself. Other characters don't need to be encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"payload\": {\n    \"itemIdentifier\": {\n      \"sku\": \"97964_KFTest\"\n    },\n    \"pricingList\": {\n      \"pricing\": [\n        {\n          \"currentPrice\": {\n            \"value\": {\n              \"currency\": \"USD\",\n              \"amount\": 4\n            }\n          },\n          \"currentPriceType\": \"REDUCED\",\n          \"comparisonPrice\": {\n            \"value\": {\n              \"currency\": \"USD\",\n              \"amount\": 4\n            }\n          },\n          \"comparisonPriceType\": \"BASE\",\n          \"savingsAmount\": 0,\n          \"savingsPercent\": 0,\n          \"priceDisplayCodes\": {\n            \"isRollback\": false,\n            \"isStrikethrough\": true,\n            \"isReducedPrice\": true,\n            \"isClearance\": false\n          },\n          \"effectiveDate\": 1572774597943,\n          \"expirationDate\": 1575366597943,\n          \"promoId\": \"ce9dfbce-4043-442c-8cb9-77d39d0f727f\"\n        }\n      ],\n      \"replaceAll\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4391866a-b86d-4ea3-b123-68d6ba348a40",
+    "name": "Walmart Cost Management Assortment Recommendations Promotions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

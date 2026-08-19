@@ -1,0 +1,264 @@
+{
+  "item": [
+    {
+      "id": "77b66580-be58-4c14-aace-5ec67c2b8674",
+      "name": "DSV Cost",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99bee47a-3006-4471-a92c-a355767cfb39",
+          "name": "Walmart Update Cost for Items in Bulk",
+          "request": {
+            "name": "Walmart Update Cost for Items in Bulk",
+            "description": {
+              "content": "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/feeds</p>\n\nThis request allows drop ship vendors (DSV) to update cost for items in bulk.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "feeds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "feedType",
+                  "value": "<string>",
+                  "description": "(Required) Specifies details of each entity in the feed.\n\nThe value defaults to `cost`.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted.\n",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"header\": {\n    \"version\": \"<string>\"\n  },\n  \"Cost\": [\n    {\n      \"sku\": \"<string>\",\n      \"shipNode\": \"<string>\",\n      \"unitCost\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"sku\": \"<string>\",\n      \"shipNode\": \"<string>\",\n      \"unitCost\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe1dab0b-01fa-4254-8687-135a5c5235ca",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies the data type expected in a response sent from the server.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/xml | XML format for data returned in response. |\n| application/json | JSON format for data returned in response. |\n",
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "0f3e4dd4-0514-4346-b39d-…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted.\n",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "6474-a253"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the format of request and response body data. \n\nIt specifies if the payload is JSON, XML, form data, or other data type. \nSetting `Content-Type` appropriately is essential when exchanging formatted data with APIs.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/json | JSON format for request and response body data. |\n| multipart/form-data | Multipart form data format for request and response body data. |\n",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"header\": {\n    \"version\": \"1\"\n  },\n  \"Cost\": [\n    {\n      \"sku\": \"RG-IRAE-79VD\",\n      \"shipNode\": \"DSV_Deliver\",\n      \"unitCost\": {\n        \"amount\": 9.99,\n        \"currency\": \"USD\"\n      }\n    },\n    {\n      \"sku\": \"RG-IRAE-79VD\",\n      \"shipNode\": \"DSV_Deliver\",\n      \"unitCost\": {\n        \"amount\": 9.99,\n        \"currency\": \"USD\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA\",\n  \"additionalAttributes\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d94d02b-463c-4ccc-96b0-c799aab54b0e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies the data type expected in a response sent from the server.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/xml | XML format for data returned in response. |\n| application/json | JSON format for data returned in response. |\n",
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "0f3e4dd4-0514-4346-b39d-…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted.\n",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "6474-a253"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the format of request and response body data. \n\nIt specifies if the payload is JSON, XML, form data, or other data type. \nSetting `Content-Type` appropriately is essential when exchanging formatted data with APIs.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/json | JSON format for request and response body data. |\n| multipart/form-data | Multipart form data format for request and response body data. |\n",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"header\": {\n    \"version\": \"1\"\n  },\n  \"Cost\": [\n    {\n      \"sku\": \"RG-IRAE-79VD\",\n      \"shipNode\": \"DSV_Deliver\",\n      \"unitCost\": {\n        \"amount\": 9.99,\n        \"currency\": \"USD\"\n      }\n    },\n    {\n      \"sku\": \"RG-IRAE-79VD\",\n      \"shipNode\": \"DSV_Deliver\",\n      \"unitCost\": {\n        \"amount\": 9.99,\n        \"currency\": \"USD\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA\",\n  \"additionalAttributes\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6aad2f88-8055-4a31-9f6d-508fc66c1ced",
+    "name": "Walmart Cost Management Assortment Recommendations DSV Cost API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

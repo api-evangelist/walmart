@@ -1,0 +1,606 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Rules API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Inactivate Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/rules/inactivate",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can use this API to inactivate one or more rules for a specific ruleId and ruleStatus."
+        },
+        {
+          "info": {
+            "name": "Walmart Gets All Exceptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/exceptions",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API retrieves all the items which has been defined as exceptions using \"Create Override Exception\" API."
+        },
+        {
+          "info": {
+            "name": "Walmart Create Override Exceptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/rules/exceptions",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API is used if any SKU is required to be removed from Two-day delivery settings"
+        },
+        {
+          "info": {
+            "name": "Walmart Delete Exceptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/rules/exceptions",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API is used to bring back any SKU to Two-day Delivery settings."
+        },
+        {
+          "info": {
+            "name": "Walmart Change Assortment Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/rules/assortment",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "enable",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API helps you enable or disable the two-day assortment type."
+        },
+        {
+          "info": {
+            "name": "Walmart Activate Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/rules/activate",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API is used to activate a rule for a specific ruleId and ruleStatus. Only Rules which are in submitted and inactive state can be activated."
+        },
+        {
+          "info": {
+            "name": "Walmart Update Shipping Area to Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/rules/actions",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API helps you define coverage areas for your items that are held outside of the fulfillment centers defined by your shipNode management API's."
+        },
+        {
+          "info": {
+            "name": "Walmart Get All Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API retrieves the details of all the rules defined using \"create an Item rule\" API."
+        },
+        {
+          "info": {
+            "name": "Walmart Update Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-gateway.walmart.com/v3/rules/",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API updates a rule defined using \"create an Item rule\". You can update priority, Description, conditions and name of a rule."
+        },
+        {
+          "info": {
+            "name": "Walmart Create a New Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/rules/create",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API is used to create a rule by selecting any combination of conditions for Sub-category, Price and Weight."
+        },
+        {
+          "info": {
+            "name": "Walmart Get a Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/:ruleId/status/:ruleStatus",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the rule created for custom rule assortment."
+              },
+              {
+                "name": "ruleStatus",
+                "value": "",
+                "type": "path",
+                "description": "Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+              }
+            ]
+          },
+          "docs": "Retrieves a rule detail for a specific ruleId and ruleStatus."
+        },
+        {
+          "info": {
+            "name": "Walmart Get Simulation Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/:ruleId/status/:ruleStatus/simulationcount",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the rule created for custom rule assortment."
+              },
+              {
+                "name": "ruleStatus",
+                "value": "",
+                "type": "path",
+                "description": "Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+              }
+            ]
+          },
+          "docs": "You can use this API to get the count of items shortlisted for two-day shipping for a specific rule defined by ruleId and ruleStatus"
+        },
+        {
+          "info": {
+            "name": "Walmart Download Simulation Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/:ruleId/status/:ruleStatus/simulation",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the rule created for custom rule assortment."
+              },
+              {
+                "name": "ruleStatus",
+                "value": "",
+                "type": "path",
+                "description": "Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+              }
+            ]
+          },
+          "docs": "You can use this API to download the count of items shortlisted for two-day shipping for a specific rule defined by ruleId and ruleStatus"
+        },
+        {
+          "info": {
+            "name": "Walmart Get All Sub-categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/subcategories",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API provides the complete list of sub-categories which can be used while defining the rule."
+        },
+        {
+          "info": {
+            "name": "Walmart Download Exceptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/downloadexceptions",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "You can use this API to get list of the items defined using \"Create Override Exceptions\"."
+        },
+        {
+          "info": {
+            "name": "Walmart Get All Areas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/rules/areas",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "This API provides you the list of states on which you can provide two-day shipping of an item."
+        },
+        {
+          "info": {
+            "name": "Walmart Delete Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-gateway.walmart.com/v3/rules/:ruleId/status/:ruleStatus/",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the rule created for custom rule assortment."
+              },
+              {
+                "name": "ruleStatus",
+                "value": "",
+                "type": "path",
+                "description": "Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+              }
+            ]
+          },
+          "docs": "This API is used to delete a rule for a specific ruleId and ruleStatus"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

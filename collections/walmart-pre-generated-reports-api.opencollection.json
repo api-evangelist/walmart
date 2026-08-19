@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Pre-Generated Reports API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pre-Generated Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Generate an Item Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/getReport",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/xml"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/xml"
+              }
+            ],
+            "params": [
+              {
+                "name": "type",
+                "value": "vendor_item",
+                "type": "query",
+                "description": "Specifies the type of report. \n\nUse `type=vendor_item` to fetch the item report from drop ship vendors (DSV).\n\nExample(s):<br>\nvendor_item\n"
+              },
+              {
+                "name": "version",
+                "value": "2",
+                "type": "query",
+                "description": "Specifies the version used to get the latest version of the item report for drop ship vendors (DSV).\n\nUse `version=2` to access the latest version of the item report for drop ship vendors (DSV).\n\nExample(s):\n2\n"
+              }
+            ]
+          },
+          "docs": "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/getReport</p>\n\nThis request generates the item report for drop ship vendors (DSV). \n\nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

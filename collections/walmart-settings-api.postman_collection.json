@@ -1,0 +1,2477 @@
+{
+  "item": [
+    {
+      "id": "32086877-3760-4b2c-bb2f-1fe18f902440",
+      "name": "Settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d618a687-31b7-4c50-b0cc-f14abb2e3474",
+          "name": "Walmart Get Shipping Template Details",
+          "request": {
+            "name": "Walmart Get Shipping Template Details",
+            "description": {
+              "content": "Get Shipping Template Details. Details of CUSTOM, DEFAULT and 3PL-specific (eg. DELIVERR) templates can be retrieved through this API. 3PL will be able to see details of only 3PL-specific templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "templates",
+                ":templateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templateId",
+                  "description": "(Required) templateId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c6eb7fd-d3f1-4c47-b19d-2cd8e214a2e3",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) templateId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"91235658274476033\",\n  \"name\": \"Next Day servc test\",\n  \"type\": \"CUSTOM\",\n  \"rateModelType\": \"TIERED_PRICING\",\n  \"status\": \"ACTIVE\",\n  \"shippingMethods\": [\n    {\n      \"shipMethod\": \"VALUE\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\"\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 6,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"shipMethod\": \"STANDARD\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"MW\",\n                  \"subRegionName\": \"MW\",\n                  \"states\": [\n                    {\n                      \"stateCode\": \"SD\",\n                      \"stateName\": \"South Dakota\",\n                      \"stateSubregions\": [\n                        {\n                          \"stateSubregionCode\": \"SD2\",\n                          \"stateSubregionName\": \"SD_WEST\"\n                        },\n                        {\n                          \"stateSubregionCode\": \"SD1\",\n                          \"stateSubregionName\": \"SD_EAST\"\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 3,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 10.06,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 2,\n                \"currency\": \"USD\"\n              }\n            },\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": 10.05,\n              \"shipCharge\": {\n                \"amount\": 1,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"createdDate\": 1599589180814,\n  \"modifiedDate\": 1599589209694\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "511e328e-afca-4e6a-8556-19fee5fd8fac",
+          "name": "Walmart Update Shipping Templates",
+          "request": {
+            "name": "Walmart Update Shipping Templates",
+            "description": {
+              "content": "Update existing Shipping Template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "templates",
+                ":templateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templateId",
+                  "description": "(Required) templateId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"rateModelType\": \"<string>\",\n  \"shippingMethods\": [\n    {\n      \"configurations\": [\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        },\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"shipMethod\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"configurations\": [\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        },\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"shipMethod\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f23795a-3670-4c62-9bf9-8951916e15ab",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) templateId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Next Day servc test\",\n  \"type\": \"CUSTOM\",\n  \"rateModelType\": \"TIERED_PRICING\",\n  \"status\": \"ACTIVE\",\n  \"shippingMethods\": [\n    {\n      \"shipMethod\": \"VALUE\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\"\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 6,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"shipMethod\": \"STANDARD\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"MW\",\n                  \"subRegionName\": \"MW\",\n                  \"states\": [\n                    {\n                      \"stateCode\": \"SD\",\n                      \"stateName\": \"South Dakota\",\n                      \"stateSubregions\": [\n                        {\n                          \"stateSubregionCode\": \"SD2\",\n                          \"stateSubregionName\": \"SD_WEST\"\n                        },\n                        {\n                          \"stateSubregionCode\": \"SD1\",\n                          \"stateSubregionName\": \"SD_EAST\"\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 3,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 10.06,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 2,\n                \"currency\": \"USD\"\n              }\n            },\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": 10.05,\n              \"shipCharge\": {\n                \"amount\": 1,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"91235658274476033\",\n  \"name\": \"Next Day servc test\",\n  \"type\": \"CUSTOM\",\n  \"rateModelType\": \"TIERED_PRICING\",\n  \"status\": \"ACTIVE\",\n  \"shippingMethods\": [\n    {\n      \"shipMethod\": \"VALUE\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\"\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 6,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        },\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"H\",\n              \"regionName\": \"AK and HI\"\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 6,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"shipMethod\": \"STANDARD\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"MW\",\n                  \"subRegionName\": \"MW\",\n                  \"states\": [\n                    {\n                      \"stateCode\": \"SD\",\n                      \"stateName\": \"South Dakota\",\n                      \"stateSubregions\": [\n                        {\n                          \"stateSubregionCode\": \"SD2\",\n                          \"stateSubregionName\": \"SD_WEST\"\n                        },\n                        {\n                          \"stateSubregionCode\": \"SD1\",\n                          \"stateSubregionName\": \"SD_EAST\"\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 3,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 10.06,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 2,\n                \"currency\": \"USD\"\n              }\n            },\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": 10.05,\n              \"shipCharge\": {\n                \"amount\": 1,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c551c434-84f8-4845-a944-769cb7a765b0",
+          "name": "Walmart Delete Shipping Template",
+          "request": {
+            "name": "Walmart Delete Shipping Template",
+            "description": {
+              "content": "Delete Existing Shipping Template. DEFAULT templates cannot be deleted. 3PL partners cannot delete templates created by Sellers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "templates",
+                ":templateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templateId",
+                  "description": "(Required) Shipping Template ID of the template to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ebe0441d-965c-4f07-b1ee-08a6e537d7bd",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) Shipping Template ID of the template to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"91233632243720193\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e68e480d-d3f2-49ab-9730-2258870f7558",
+          "name": "Walmart Get All Fulfillment Centers",
+          "request": {
+            "name": "Walmart Get All Fulfillment Centers",
+            "description": {
+              "content": "This API provides a list of all the fulfillment centers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "shipnodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeCalendarDayConfiguration",
+                  "value": "false",
+                  "description": "Flag to specify if calendarDayConfiguration block will be included in the response. Allowed values are true or false."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "147c3bd6-a214-4434-ad61-57d6ae1d4896",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "shipnodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeCalendarDayConfiguration",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shipNode\": \"99351656957153281\",\n    \"nodeType\": \"3PL\",\n    \"shipNodeName\": \"MP_Deliverr\",\n    \"status\": \"INACTIVE\",\n    \"timeZone\": \"EST\",\n    \"distributorSupportedServices\": [\n      \"TWO_DAY_DELIVERY\"\n    ],\n    \"postalAddress\": {\n      \"addressLine1\": \"110 Sutter St. Fl 9\",\n      \"city\": \"San Francisco\",\n      \"state\": \"CA\",\n      \"country\": \"USA\",\n      \"postalCode\": \"94104\"\n    },\n    \"shippingDetails\": [\n      {\n        \"twoDayShipping\": [\n          {\n            \"carrierMethodName\": \"3PL_CARRIER\",\n            \"carrierMethodType\": \"GROUND\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"shipNode\": \"84955660770217985\",\n    \"nodeType\": \"PHYSICAL\",\n    \"shipNodeName\": \"Seller test-distributor\",\n    \"status\": \"INACTIVE\",\n    \"timeZone\": \"PST\",\n    \"distributorSupportedServices\": [\n      \"TWO_DAY_DELIVERY\"\n    ],\n    \"customNodeId\": \"91ab1234\",\n    \"postalAddress\": {\n      \"addressLine1\": \"111 CALIFORNIA SA\",\n      \"city\": \"SC GABRIEL\",\n      \"state\": \"CA\",\n      \"country\": \"USA\",\n      \"postalCode\": \"90706\"\n    },\n    \"shippingDetails\": [\n      {\n        \"twoDayShipping\": [\n          {\n            \"carrierMethodName\": \"FEDEX\",\n            \"carrierMethodType\": \"GROUND\"\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ea2af1f-3f3e-46c0-8e6a-44e32ba21643",
+          "name": "Walmart Update Fulfillment Center",
+          "request": {
+            "name": "Walmart Update Fulfillment Center",
+            "description": {
+              "content": "This API enables or disables a fulfillment center.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "shipnodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipNodeHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"shipNode\": {\n    \"shipNode\": \"<string>\",\n    \"shipNodeName\": \"<string>\",\n    \"status\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"distributorSupportedServices\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"customNodeId\": \"<string>\",\n    \"postalAddress\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\"\n    },\n    \"shippingDetails\": [\n      {\n        \"twoDayShipping\": [\n          {\n            \"carrierMethodName\": \"<string>\",\n            \"carrierMethodType\": \"<string>\"\n          },\n          {\n            \"carrierMethodName\": \"<string>\",\n            \"carrierMethodType\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"twoDayShipping\": [\n          {\n            \"carrierMethodName\": \"<string>\",\n            \"carrierMethodType\": \"<string>\"\n          },\n          {\n            \"carrierMethodName\": \"<string>\",\n            \"carrierMethodType\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"calendarDayConfiguration\": {\n      \"additionalDaysOff\": [\n        \"<yyyy-MM-dd>\",\n        \"<yyyy-MM-dd>\"\n      ],\n      \"standardProcessingSchedule\": {\n        \"friday\": {\n          \"isWorkingDay\": \"<boolean>\",\n          \"cutOffTime\": \"14:00\"\n        },\n        \"monday\": {\n          \"isWorkingDay\": \"<boolean>\",\n          \"cutOffTime\": \"14:00\"\n        },\n        \"saturday\": {\n          \"isWorkingDay\": \"<boolean>\",\n          \"cutOffTime\": \"14:00\"\n        },\n        \"sunday\": {\n          \"isWorkingDay\": \"<boolean>\",\n          \"cutOffTime\": \"14:00\"\n        },\n        \"thursday\": {\n          \"isWorkingDay\": \"<boolean>\",\n          \"cutOffTime\": \"14:00\"\n        },\n        \"tuesday\": {\n          \"isWorkingDay\": \"<boolean>\",\n          \"cutOffTime\": \"14:00\"\n        },\n        \"wednesday\": {\n          \"isWorkingDay\": \"<boolean>\",\n          \"cutOffTime\": \"14:00\"\n        }\n      },\n      \"carrierWeekendCalendar\": {\n        \"sunday\": {\n          \"workingDay\": \"<boolean>\"\n        },\n        \"saturday\": {\n          \"workingDay\": \"<boolean>\"\n        }\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c14721e-2149-4375-b194-4bc4decbea32",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "shipnodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipNodeHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"shipNode\": {\n    \"shipNode\": \"84955660770217985\",\n    \"shipNodeName\": \"Seller test-distributor\",\n    \"status\": \"ACTIVE\",\n    \"timeZone\": \"PST\",\n    \"distributorSupportedServices\": [\n      \"TWO_DAY_DELIVERY\"\n    ],\n    \"customNodeId\": \"91ab1234\",\n    \"postalAddress\": {\n      \"addressLine1\": \"111 CALIFORNIA SA\",\n      \"city\": \"SC GABRIEL\",\n      \"state\": \"CA\",\n      \"country\": \"USA\",\n      \"postalCode\": \"90706\"\n    },\n    \"shippingDetails\": [\n      {\n        \"twoDayShipping\": [\n          {\n            \"carrierMethodName\": \"FEDEX\",\n            \"carrierMethodType\": \"GROUND\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipNode\": \"84955660770217985\",\n  \"nodeType\": \"PHYSICAL\",\n  \"shipNodeName\": \"Seller test-distributor\",\n  \"status\": \"ACTIVE\",\n  \"timeZone\": \"PST\",\n  \"distributorSupportedServices\": [\n    \"TWO_DAY_DELIVERY\"\n  ],\n  \"customNodeId\": \"91ab1234\",\n  \"postalAddress\": {\n    \"addressLine1\": \"111 CALIFORNIA SA\",\n    \"city\": \"SC GABRIEL\",\n    \"state\": \"CA\",\n    \"country\": \"USA\",\n    \"postalCode\": \"90706\"\n  },\n  \"shippingDetails\": [\n    {\n      \"twoDayShipping\": [\n        {\n          \"carrierMethodName\": \"FEDEX\",\n          \"carrierMethodType\": \"GROUND\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87f60be4-67d0-43a9-9241-c41dc50af218",
+          "name": "Walmart Create Fulfillment Center",
+          "request": {
+            "name": "Walmart Create Fulfillment Center",
+            "description": {
+              "content": "This API creates a fulfillment center.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "shipnodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipNodeHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"shipNode\": [\n    {\n      \"shipNodeName\": \"<string>\",\n      \"status\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"distributorSupportedServices\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customNodeId\": \"<string>\",\n      \"postalAddress\": {\n        \"addressLine1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"shippingDetails\": [\n        {\n          \"twoDayShipping\": [\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            },\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"twoDayShipping\": [\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            },\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"calendarDayConfiguration\": {\n        \"additionalDaysOff\": [\n          \"<yyyy-MM-dd>\",\n          \"<yyyy-MM-dd>\"\n        ],\n        \"standardProcessingSchedule\": {\n          \"friday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"monday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"saturday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"sunday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"thursday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"tuesday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"wednesday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          }\n        }\n      }\n    },\n    {\n      \"shipNodeName\": \"<string>\",\n      \"status\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"distributorSupportedServices\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customNodeId\": \"<string>\",\n      \"postalAddress\": {\n        \"addressLine1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"shippingDetails\": [\n        {\n          \"twoDayShipping\": [\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            },\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"twoDayShipping\": [\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            },\n            {\n              \"carrierMethodName\": \"<string>\",\n              \"carrierMethodType\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"calendarDayConfiguration\": {\n        \"additionalDaysOff\": [\n          \"<yyyy-MM-dd>\",\n          \"<yyyy-MM-dd>\"\n        ],\n        \"standardProcessingSchedule\": {\n          \"friday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"monday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"saturday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"sunday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"thursday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"tuesday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          },\n          \"wednesday\": {\n            \"isWorkingDay\": \"<boolean>\",\n            \"cutOffTime\": \"14:00\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8a58416-380a-4a0e-9a6f-9edb14490d23",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "shipnodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipNodeHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"shipNode\": [\n    {\n      \"shipNodeName\": \"my distrubutor786\",\n      \"status\": \"ACTIVE\",\n      \"timeZone\": \"PST\",\n      \"distributorSupportedServices\": [\n        \"TWO_DAY_DELIVERY\"\n      ],\n      \"customNodeId\": \"92hb1234\",\n      \"postalAddress\": {\n        \"addressLine1\": \"36 CALIFORNIA SAA233\",\n        \"city\": \"SC GABRIEL22\",\n        \"state\": \"CA\",\n        \"country\": \"USA\",\n        \"postalCode\": \"90100\"\n      },\n      \"shippingDetails\": [\n        {\n          \"twoDayShipping\": [\n            {\n              \"carrierMethodName\": \"FEDEX\",\n              \"carrierMethodType\": \"GROUND\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shipNode\": \"91539778610008065\",\n    \"nodeType\": \"PHYSICAL\",\n    \"shipNodeName\": \"my distrubutor786\",\n    \"status\": \"ACTIVE\",\n    \"timeZone\": \"PST\",\n    \"distributorSupportedServices\": [\n      \"TWO_DAY_DELIVERY\"\n    ],\n    \"customNodeId\": \"92hb1234\",\n    \"postalAddress\": {\n      \"addressLine1\": \"36 CALIFORNIA SAA233\",\n      \"city\": \"SC GABRIEL22\",\n      \"state\": \"CA\",\n      \"country\": \"USA\",\n      \"postalCode\": \"90100\"\n    },\n    \"shippingDetails\": [\n      {\n        \"twoDayShipping\": [\n          {\n            \"carrierMethodName\": \"FEDEX\",\n            \"carrierMethodType\": \"GROUND\"\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "278b1ea7-dd7a-49ab-9765-0c43ff7d0963",
+          "name": "Walmart Get Account Level Settings",
+          "request": {
+            "name": "Walmart Get Account Level Settings",
+            "description": {
+              "content": "This API gets all Account Level Settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfeb0b43-ba24-485d-8150-882e1210767f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"calendarDayConfiguration\": {\n    \"carrierWeekendCalendar\": {\n      \"saturday\": {\n        \"workingDay\": true\n      },\n      \"sunday\": {\n        \"workingDay\": false\n      }\n    },\n    \"additionalDaysOff\": [\n      \"2030-03-10\",\n      \"2030-04-10\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08e4bad1-e947-487e-9c9c-ba7c9817af1b",
+          "name": "Walmart Update Account Level Settings",
+          "request": {
+            "name": "Walmart Update Account Level Settings",
+            "description": {
+              "content": "This API updates Account Level Settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calendarDayOffOverrides\": {\n    \"actionType\": \"<string>\",\n    \"overrideDate\": \"<string>\"\n  },\n  \"carrierWeekendCalendar\": {\n    \"sunday\": {\n      \"workingDay\": \"<boolean>\"\n    },\n    \"saturday\": {\n      \"workingDay\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e6d338b-0b79-42e2-b40b-b5a25ac20000",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"calendarDayConfiguration\": {\n    \"carrierWeekendCalendar\": {\n      \"saturday\": {\n        \"workingDay\": true\n      },\n      \"sunday\": {\n        \"workingDay\": false\n      }\n    },\n    \"calendarDayOffOverrides\": [\n      {\n        \"overrideDate\": \"2030-03-10\",\n        \"actionType\": \"ADD\"\n      },\n      {\n        \"overrideDate\": \"2024-04-10\",\n        \"actionType\": \"REMOVE\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"calendarDayConfiguration\": {\n    \"carrierWeekendCalendar\": {\n      \"saturday\": {\n        \"workingDay\": true\n      },\n      \"sunday\": {\n        \"workingDay\": false\n      }\n    },\n    \"additionalDaysOff\": [\n      \"2030-03-10\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b788634-dcf9-4ed1-8513-c6108d5210c6",
+          "name": "Walmart Create Account Level Settings",
+          "request": {
+            "name": "Walmart Create Account Level Settings",
+            "description": {
+              "content": "This API creates Account Level Settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calendarDayOffOverrides\": {\n    \"actionType\": \"<string>\",\n    \"overrideDate\": \"<string>\"\n  },\n  \"carrierWeekendCalendar\": {\n    \"sunday\": {\n      \"workingDay\": \"<boolean>\"\n    },\n    \"saturday\": {\n      \"workingDay\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6602902-b85e-45b3-8c73-1cb5fc539311",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"calendarDayConfiguration\": {\n    \"carrierWeekendCalendar\": {\n      \"saturday\": {\n        \"workingDay\": true\n      },\n      \"sunday\": {\n        \"workingDay\": false\n      }\n    },\n    \"calendarDayOffOverrides\": [\n      {\n        \"overrideDate\": \"2030-03-10\",\n        \"actionType\": \"ADD\"\n      },\n      {\n        \"overrideDate\": \"2030-04-10\",\n        \"actionType\": \"ADD\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"calendarDayConfiguration\": {\n    \"carrierWeekendCalendar\": {\n      \"saturday\": {\n        \"workingDay\": true\n      },\n      \"sunday\": {\n        \"workingDay\": false\n      }\n    },\n    \"additionalDaysOff\": [\n      \"2030-03-10\",\n      \"2030-04-10\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6db6593d-5969-486a-9926-3be78508f1d5",
+          "name": "Walmart Get All Shipping Templates",
+          "request": {
+            "name": "Walmart Get All Shipping Templates",
+            "description": {
+              "content": "Get all the shipping templates for a Seller. All template types viz. CUSTOM, DEFAULT and 3PL-specific (eg. DELIVERR) can be retrieved through this API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f71b67a-33a8-4776-b4bf-071614e6168f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shippingTemplates\": [\n    {\n      \"id\": \"83822721754763265\",\n      \"name\": \"Default Template Create\",\n      \"type\": \"DEFAULT\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597821725911,\n      \"modifiedDate\": 1597821725911\n    },\n    {\n      \"id\": \"83163437035458561\",\n      \"name\": \"Next Day servc2\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597664533668,\n      \"modifiedDate\": 1597828307198\n    },\n    {\n      \"id\": \"83165439354245121\",\n      \"name\": \"Next Day servc3\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597665011078,\n      \"modifiedDate\": 1597665011078\n    },\n    {\n      \"id\": \"83166772199198721\",\n      \"name\": \"Next Day servc5\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597665328865,\n      \"modifiedDate\": 1597665328865\n    },\n    {\n      \"id\": \"83087074537021441\",\n      \"name\": \"Next Day\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597646304723,\n      \"modifiedDate\": 1597646304723\n    },\n    {\n      \"id\": \"83087948495757313\",\n      \"name\": \"Next Day 22\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597646513086,\n      \"modifiedDate\": 1599474456834\n    },\n    {\n      \"id\": \"83166113029201921\",\n      \"name\": \"Next Day servc4\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597665149044,\n      \"modifiedDate\": 1597665149044\n    },\n    {\n      \"id\": \"83167397568356353\",\n      \"name\": \"next day Servc1\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597665455301,\n      \"modifiedDate\": 1597665455301\n    },\n    {\n      \"id\": \"83168810683899905\",\n      \"name\": \"Next Day servc7\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597665792216,\n      \"modifiedDate\": 1597665792216\n    },\n    {\n      \"id\": \"83188562269609985\",\n      \"name\": \"Next Day servc8\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597670501380,\n      \"modifiedDate\": 1597670501380\n    },\n    {\n      \"id\": \"83822084810383361\",\n      \"name\": \"Next Day test2\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1597821545570,\n      \"modifiedDate\": 1597821545570\n    },\n    {\n      \"id\": \"91235658274476033\",\n      \"name\": \"Next Day servc test\",\n      \"type\": \"CUSTOM\",\n      \"status\": \"ACTIVE\",\n      \"rateModelType\": \"TIERED_PRICING\",\n      \"createdDate\": 1599589180814,\n      \"modifiedDate\": 1599589209694\n    }\n  ],\n  \"totalRecords\": 12\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed6d3e48-94cb-4c8b-ba07-c2cc1f422e38",
+          "name": "Walmart Create Shipping Templates",
+          "request": {
+            "name": "Walmart Create Shipping Templates",
+            "description": {
+              "content": "Create a new shipping template",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rateModelType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"shippingMethods\": [\n    {\n      \"configurations\": [\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        },\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"shipMethod\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"configurations\": [\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        },\n        {\n          \"addressTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"regions\": [\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            },\n            {\n              \"regionCode\": \"<string>\",\n              \"regionName\": \"<string>\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                },\n                {\n                  \"subRegionCode\": \"<string>\",\n                  \"subRegionName\": \"<string>\",\n                  \"states\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"transitTime\": \"<integer>\",\n          \"perShippingCharge\": {\n            \"unitOfMeasure\": \"<string>\",\n            \"shippingAndHandling\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerWeight\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            },\n            \"chargePerItem\": {\n              \"amount\": \"<number>\",\n              \"currency\": \"<string>\"\n            }\n          },\n          \"tieredShippingCharges\": [\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            },\n            {\n              \"maxLimit\": \"<number>\",\n              \"minLimit\": \"<number>\",\n              \"shipCharge\": {\n                \"amount\": \"<number>\",\n                \"currency\": \"<string>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"shipMethod\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a82fbd90-0ca9-4ccf-aba8-0b521e26c24e",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Next Day servc\",\n  \"type\": \"CUSTOM\",\n  \"rateModelType\": \"TIERED_PRICING\",\n  \"status\": \"ACTIVE\",\n  \"shippingMethods\": [\n    {\n      \"shipMethod\": \"VALUE\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\"\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 6,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"shipMethod\": \"STANDARD\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"MW\",\n                  \"subRegionName\": \"MW\",\n                  \"states\": [\n                    {\n                      \"stateCode\": \"SD\",\n                      \"stateName\": \"South Dakota\",\n                      \"stateSubregions\": [\n                        {\n                          \"stateSubregionCode\": \"SD2\",\n                          \"stateSubregionName\": \"SD_WEST\"\n                        },\n                        {\n                          \"stateSubregionCode\": \"SD1\",\n                          \"stateSubregionName\": \"SD_EAST\"\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 3,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 10.06,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 2,\n                \"currency\": \"USD\"\n              }\n            },\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": 10.05,\n              \"shipCharge\": {\n                \"amount\": 1,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"91233632243720193\",\n  \"name\": \"Next Day servc\",\n  \"type\": \"CUSTOM\",\n  \"rateModelType\": \"TIERED_PRICING\",\n  \"status\": \"ACTIVE\",\n  \"shippingMethods\": [\n    {\n      \"shipMethod\": \"VALUE\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\"\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 6,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        },\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"H\",\n              \"regionName\": \"AK and HI\"\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 6,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"shipMethod\": \"STANDARD\",\n      \"status\": \"ACTIVE\",\n      \"configurations\": [\n        {\n          \"regions\": [\n            {\n              \"regionCode\": \"C\",\n              \"regionName\": \"48 State\",\n              \"subRegions\": [\n                {\n                  \"subRegionCode\": \"MW\",\n                  \"subRegionName\": \"MW\",\n                  \"states\": [\n                    {\n                      \"stateCode\": \"SD\",\n                      \"stateName\": \"South Dakota\",\n                      \"stateSubregions\": [\n                        {\n                          \"stateSubregionCode\": \"SD2\",\n                          \"stateSubregionName\": \"SD_WEST\"\n                        },\n                        {\n                          \"stateSubregionCode\": \"SD1\",\n                          \"stateSubregionName\": \"SD_EAST\"\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"addressTypes\": [\n            \"STREET\"\n          ],\n          \"transitTime\": 3,\n          \"tieredShippingCharges\": [\n            {\n              \"minLimit\": 10.06,\n              \"maxLimit\": -1,\n              \"shipCharge\": {\n                \"amount\": 2,\n                \"currency\": \"USD\"\n              }\n            },\n            {\n              \"minLimit\": 0,\n              \"maxLimit\": 10.05,\n              \"shipCharge\": {\n                \"amount\": 1,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d24f3754-e859-4fd4-9343-6dad5e9d725f",
+          "name": "Walmart Third Party Fulfillment Center Association",
+          "request": {
+            "name": "Walmart Third Party Fulfillment Center Association",
+            "description": {
+              "content": "This API associate a third party fulfillment center with Seller.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "3plshipnodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipNodeHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"shipNode\": [\n    {\n      \"shipNode\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"shipNode\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c47a32a6-1bd6-4aee-86c4-836075182612",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "3plshipnodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipNodeHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"shipNode\": [\n    {\n      \"shipNode\": \"99351656957153281\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shipNode\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"shipNode\": \"string\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36f038a5-0bf8-4489-9c8d-963c8ea8cbe1",
+          "name": "Walmart Get Shipping Configurations",
+          "request": {
+            "name": "Walmart Get Shipping Configurations",
+            "description": {
+              "content": "<p>This API can be used to retrieve shipping configurations like Lag Time configured for seller.It returns lag time for exception categories that were configured for the Seller through <a href=\"https://sellerhelp.walmart.com/s/guide?article=000005986\">Request Lag Time Exceptions</a> process.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shippingprofile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ae48f32-aaec-413c-8ef6-cb4ce4788b60",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shippingprofile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partner\": {\n    \"partnerId\": \"100009\",\n    \"partnerName\": \"The seller's legal name\",\n    \"partnerDisplayName\": \"The seller name shown on walmart.com\",\n    \"partnerStoreId\": \"Partner/Seller ID for Walmart store URL\"\n  },\n  \"configurations\": [\n    {\n      \"configurationName\": \"LAG_TIME\",\n      \"configuration\": {\n        \"categories\": [\n          {\n            \"name\": \"Art & Craft\",\n            \"fulfillmentLagTime\": 2\n          },\n          {\n            \"name\": \"Garden & Patio\",\n            \"fulfillmentLagTime\": 3\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "751ce2ad-4d16-411b-b5a8-87935587f883",
+          "name": "Walmart Get Shipping Template Activation Status",
+          "request": {
+            "name": "Walmart Get Shipping Template Activation Status",
+            "description": {
+              "content": "This api can be used to get the Activation Status of the Shipping Templates, which can be set through Walmart Seller Center. This activation status is not the same as the \"status:ACTIVE/INACTIVE\" of each shipping template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "templates",
+                "activationStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8f1a4b5-c29e-41e8-91ba-d0bf3fcfdef5",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "templates",
+                    "activationStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activationStatus\": \"ACTIVATED\",\n  \"modifiedDate\": 1599490896997,\n  \"createdDate\": 1598546424640\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "175f4f49-7ad0-467d-becf-bd7e44891b1e",
+          "name": "Walmart Get Coverage for Fulfillment Centers",
+          "request": {
+            "name": "Walmart Get Coverage for Fulfillment Centers",
+            "description": {
+              "content": "This API provides the list of all fullfillment centers for the seller and their coverage areas defined by Walmart based on the address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "shipnodes",
+                "coverage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf7b9b9f-04dd-44b9-a257-a7b80db64460",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "shipnodes",
+                    "coverage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shipNode\": \"81087939095695361\",\n    \"shipNodeName\": \"Seller test-distributor1\",\n    \"coverageArea\": []\n  },\n  {\n    \"shipNode\": \"79112975786049537\",\n    \"shipNodeName\": \"Seller test-distributor2\",\n    \"coverageArea\": [\n      \"AR1\",\n      \"AR2\",\n      \"CA1\",\n      \"AR3\",\n      \"PA4\",\n      \"CA3\",\n      \"CA2\"\n    ]\n  },\n  {\n    \"shipNode\": \"79114105970622465\",\n    \"shipNodeName\": \"Seller test-distributor3\",\n    \"coverageArea\": [\n      \"PA2\",\n      \"PA1\",\n      \"NY1\"\n    ]\n  },\n  {\n    \"shipNode\": \"80359164518989825\",\n    \"shipNodeName\": \"Seller test-distributor4\",\n    \"coverageArea\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ada2123-962f-4bca-a661-8b77d6fa3b0c",
+          "name": "Walmart Get Carrier Methods",
+          "request": {
+            "name": "Walmart Get Carrier Methods",
+            "description": {
+              "content": "Gets the available carrier methods",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "carriers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "527024f8-6433-4cc7-b020-02eff6aaab9b",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "carriers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"carrierMethodId\": \"1000014\",\n    \"carrierMethodName\": \"USPS\",\n    \"carrierMethodType\": \"GROUND\",\n    \"carrierMethodDescription\": \"USPS for Marketplace\"\n  },\n  {\n    \"carrierMethodId\": \"1000013\",\n    \"carrierMethodName\": \"UPS\",\n    \"carrierMethodType\": \"GROUND\",\n    \"carrierMethodDescription\": \"UPS for Marketplace\"\n  },\n  {\n    \"carrierMethodId\": \"1000012\",\n    \"carrierMethodName\": \"FEDEX\",\n    \"carrierMethodType\": \"GROUND\",\n    \"carrierMethodDescription\": \"Fedex for Marketplace\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0768f6d6-a1c8-47c2-b70a-b68ad8fd8800",
+          "name": "Walmart Get All Third Party Fulfillment Providers",
+          "request": {
+            "name": "Walmart Get All Third Party Fulfillment Providers",
+            "description": {
+              "content": "Get a list of all third party fulfillment providers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "shipping",
+                "3plproviders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ef277c1-8c88-4708-a120-343e8eeddac9",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "shipping",
+                    "3plproviders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shipNode\": \"423734745612582913\",\n    \"shipNodeName\": \"MP_Shipbob\"\n  },\n  {\n    \"shipNode\": \"99351656957153281\",\n    \"shipNodeName\": \"MP_Deliverr\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a53214ec-67bb-439f-8176-df555fcadc93",
+          "name": "Walmart Get Partner Configurations",
+          "request": {
+            "name": "Walmart Get Partner Configurations",
+            "description": {
+              "content": "<p>This API can be used to retrieve partner configurations like Seller Account & feed throttling values configured for seller.</p><p>The Feed Configuration block in the response shows the seller specific throttling configuration based on the tier of seller. If a new Seller is not assigned any tier, the block will be empty.</p><p>Please note that the default throttling configuration across Walmart and the API Throttling Response Headers can be found <a href=\"/doc/us/mp/us-mp-throttling/\">here</a></p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "settings",
+                "partnerprofile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ff4ca23-374e-4d60-891e-e80d4c38f504",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "settings",
+                    "partnerprofile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partner\": {\n    \"partnerId\": \"100009\",\n    \"partnerName\": \"The seller's legal name\",\n    \"partnerDisplayName\": \"The seller name shown on walmart.com\",\n    \"partnerStoreId\": \"Partner/Seller ID for Walmart store URL \",\n    \"businessRegNumber\": \"A registered distinct identifier such as US Tax ID / Foreign Tax ID\",\n    \"countryOfIncorporation\": \"The country from where seller conducts their business | ISO 3166 Country code\"\n  },\n  \"configurations\": [\n    {\n      \"configurationName\": \"ACCOUNT\",\n      \"configuration\": {\n        \"status\": \"ACTIVE\"\n      }\n    },\n    {\n      \"configurationName\": \"FEED\",\n      \"configuration\": {\n        \"values\": [\n          {\n            \"feedType\": \"inventory\",\n            \"throttleConfigurations\": [\n              {\n                \"type\": \"SELLER\",\n                \"rate\": {\n                  \"count\": 6,\n                  \"replenishTimeWindow\": {\n                    \"value\": \"3600\",\n                    \"unitOfMeasurement\": \"SECOND\"\n                  }\n                },\n                \"fileSize\": {\n                  \"value\": 26214400,\n                  \"unitOfMeasurement\": \"BYTES\"\n                }\n              }\n            ]\n          },\n          {\n            \"feedType\": \"MP_ITEM\",\n            \"throttleConfigurations\": [\n              {\n                \"type\": \"SELLER\",\n                \"rate\": {\n                  \"count\": 6,\n                  \"replenishTimeWindow\": {\n                    \"value\": \"3600\",\n                    \"unitOfMeasurement\": \"SECOND\"\n                  }\n                },\n                \"fileSize\": {\n                  \"value\": 26214400,\n                  \"unitOfMeasurement\": \"BYTES\"\n                }\n              }\n            ]\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9929bc26-6e39-4124-8795-6496b6879ba1",
+    "name": "Walmart Cost Management Assortment Recommendations Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

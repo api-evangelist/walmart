@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Utilities API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Taxonomy by Spec",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/utilities/taxonomy",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the Feed Type"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the version for the Feed Type"
+              }
+            ]
+          },
+          "docs": "The Taxonomy by Item spec API exposes the category taxonomy that Walmart.com uses to categorize items for each Item spec version. It returns a list of all Categories and Sub-categories that are available on Walmart.com for the Item spec version you specify.\nYou can specify the feedType and version for these available Item specs. Make sure to specify the corresponding version that is available for that feed type:\n*   Item spec 3.2 feed type: item\n*   Item spec 4.0 feed types: MP_ITEM, MP_WFS_ITEM"
+        },
+        {
+          "info": {
+            "name": "Walmart All Departments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/utilities/taxonomy/departments",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "Get list of departments"
+        },
+        {
+          "info": {
+            "name": "Walmart All Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/utilities/taxonomy/departments/:departmentId",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "departmentId",
+                "value": "",
+                "type": "path",
+                "description": "departmentId"
+              }
+            ]
+          },
+          "docs": "Get list of categories for a specific department"
+        },
+        {
+          "info": {
+            "name": "Walmart Api Platform Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/utilities/apiStatus",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "Get all marketplace Apis status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

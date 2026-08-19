@@ -1,0 +1,3586 @@
+{
+  "item": [
+    {
+      "id": "2292909a-0f35-41a3-aaf4-202d315fda22",
+      "name": "Fulfillment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91511a73-2b70-4f55-9da8-20c1e097f49f",
+          "name": "Walmart Update Shipment Quantities",
+          "request": {
+            "name": "Walmart Update Shipment Quantities",
+            "description": {
+              "content": "Seller can modify the shipment quantity before the Shipment arrives at the WFS FCs. Seller cannot modify the shipment quantity when Shipment Status = Receiving in Progress, Closed, and Cancelled. \n Seller will need to provide new quantities for each SKU to update. Seller will only be able to add up to 6 units per SKU but can reduce to 0 units to remove any SKU from a shipment. Seller cannot change all SKUs’ quantity to 0 – they must cancel the entire Inbound Order. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "shipment-quantities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inboundOrderId\": \"<string>\",\n  \"shipmentId\": \"<string>\",\n  \"orderItems\": [\n    {\n      \"sku\": \"<string>\",\n      \"updatedShipmentQty\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0d61de1-1873-409d-9e74-01885c87d43c",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "shipment-quantities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inboundOrderId\": \"123543\",\n  \"shipmentId\": \"1234\",\n  \"orderItems\": [\n    {\n      \"sku\": \"WILL-SL969\",\n      \"updatedShipmentQty\": 11\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "834acdad-5454-41a3-8434-df175b153ed5",
+          "name": "Walmart Hazmat Items on Hold",
+          "request": {
+            "name": "Walmart Hazmat Items on Hold",
+            "description": {
+              "content": "Use this API to see a list of items that are on hold for hazmat compliance review, including items with an In Review, Action Needed, and Prohibited status. Also use this API to review your Action Needed error descriptions and understand how to correct them for further assessment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "items",
+                "onhold",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"field\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"op\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"op\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"sort\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17516ee1-d4cc-4941-9505-3d0692eefb30",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "items",
+                    "onhold",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"field\": \"gtin\",\n    \"value\": 6154035330299\n  },\n  \"filters\": [\n    {\n      \"field\": \"status\",\n      \"op\": \"equals\",\n      \"values\": [\n        \"PROHIBITED\",\n        \"IN_REVIEW\",\n        \"ACTION_NEEDED\"\n      ]\n    }\n  ],\n  \"sort\": {\n    \"field\": \"updatedAt\",\n    \"order\": \"DESC\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"header\": {},\n  \"payload\": {\n    \"nextCursor\": \"?limit=1&offset=1\",\n    \"totalItems\": 207,\n    \"actionNeeded\": 4,\n    \"inReview\": 203,\n    \"prohibited\": 0,\n    \"items\": [\n      {\n        \"gtin\": 51494401255,\n        \"productName\": \"INNATE Response Formulas, Men Over 40 One Daily Iron Free, Multivitamin, Vegetarian, Non-GMO, 60 tablets (60 Servings\",\n        \"category\": \"Medicine & Supplements\",\n        \"subCategory\": \"medicine_and_supplements\",\n        \"status\": \"ACTION_NEEDED\",\n        \"sku\": \"SD-IR-40125\",\n        \"createdAt\": 1611140177328,\n        \"updatedAt\": 1629992924901,\n        \"primaryImage\": \"http://images.salsify.com/image/upload/s--7e1VLU2_--/otf4q0dplsg9yjzkxkfe.jpg\",\n        \"errors\": [\n          {\n            \"code\": \"ERR_EXT_DATA_4001029\",\n            \"field\": \"batteryTechnologyType\",\n            \"description\": \"This item may contain a lithium or lead acid battery that requires additional compliance information, please check the 'Battery Type' field.\",\n            \"severity\": \"ERROR\",\n            \"category\": \"REQUEST\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9306a135-31e1-449f-8997-a85e9432ee23",
+          "name": "Walmart Update Shipment Tracking",
+          "request": {
+            "name": "Walmart Update Shipment Tracking",
+            "description": {
+              "content": "The purpose of this service is to capture tracking information from sellers.\nFor small parcel shipments, sellers must provide the tracking info including carrier name and tracking numbers. WFS will use the data to capture updated expected delivery date to adjust the fulfillment inbound capacity to avoid any receiving delays. \nSeller will also be able to view the updated expected delivery date through the Seller Center UI or calling the Get Inbound Shipment Items API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "shipment-tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"carrierName\": \"<string>\",\n  \"shipmentId\": \"<string>\",\n  \"trackingInfo\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0127c56a-dc6b-4601-b09f-62e8fee36f8f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "shipment-tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"12345\",\n  \"carrierName\": \"UPS\",\n  \"trackingInfo\": [\n    \"123\",\n    \"456-1\",\n    \"789-2\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee78beda-82cf-4756-9b15-0e889927c0af",
+          "name": "Walmart Create Inbound Shipment Label",
+          "request": {
+            "name": "Walmart Create Inbound Shipment Label",
+            "description": {
+              "content": "The purpose of this service is to generate WFS Receiving Labels in various formats for receiving purposes. Please note this is not a carrier label; these labels are required for the FC to identify the Inbound Order and Shipment ID they are receiving against.Receiving labels are customizable: \n1. 3 size and format options are available to choose from through the LabelSize and LabelFormat fields:\n\t - 4 in. x 6 in. (PDF).\n\t - 4 in. x 3 1/3 in. (PDF).\n\t - 4 in. x 6 in. (ZPL).\n2. Provide the type of the label (box or pallet) in the LoadType field and the number of the labels needed in the Count field.\n3. Print the WFS receiving label.\n4. Affix the WFS receiving labels to the boxes/ pallets.\n\nIf none of the above optional inputs are provided, a blank 4 in. x 6 in. PDF format label will be generated. Sellers must work with the warehouse/supplier to provide the required details before sending any Shipments to WFS FCs:\n1. Print the WFS receiving label.\n2. Fill out the FILL OUT section based on the seller’s packing situation. For example, if a seller plans to ship 3 boxes to the WFS fulfillment center, print out 3 labels and fill out BOX 1 of 3, 2 of 3, and 3 of 3 in the FILL OUT section.\n3. Circle one shipment type in the CIRCLE ONE section. For example, if there are different SKUs in the box, circle MIXED SKUS in the CIRCLE ONE section.\n4. Affix the WFS receiving labels to the boxes/ pallets.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "shipment-label"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"labelSize\": \"<string>\",\n  \"labelFormat\": \"<string>\",\n  \"loadTypes\": [\n    {\n      \"count\": \"<integer>\",\n      \"loadType\": \"<string>\"\n    },\n    {\n      \"count\": \"<integer>\",\n      \"loadType\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bbc56a9e-0bfa-4643-9773-4b932e302b46",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "shipment-label"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"labelSize\": \"<string>\",\n  \"labelFormat\": \"<string>\",\n  \"loadTypes\": [\n    {\n      \"count\": \"<integer>\",\n      \"loadType\": \"<string>\"\n    },\n    {\n      \"count\": \"<integer>\",\n      \"loadType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09e9e416-4fc0-4fcb-99d0-cb524a5f524e",
+          "name": "Walmart Create Customer Order",
+          "request": {
+            "name": "Walmart Create Customer Order",
+            "description": {
+              "content": "The API is used to create customer fulfilment orders by the seller for Walmart Multichannel Solutions flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "orders-fulfillments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"martId\": \"<string>\",\n      \"buId\": \"<string>\"\n    }\n  },\n  \"payload\": {\n    \"customer\": {\n      \"contact\": {\n        \"email\": \"<string>\",\n        \"name\": {\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\"\n        },\n        \"phone\": \"<string>\"\n      }\n    },\n    \"orderChannelId\": \"<string>\",\n    \"orderItems\": [\n      {\n        \"chargeDetails\": [\n          {\n            \"chargeCategory\": \"<string>\",\n            \"chargeName\": \"<string>\",\n            \"chargePerUnit\": {\n              \"currencyAmount\": \"<number>\",\n              \"unit\": \"<string>\"\n            },\n            \"taxDetails\": {\n              \"taxPerLine\": {\n                \"currencyAmount\": \"<number>\",\n                \"unit\": \"<string>\"\n              }\n            }\n          },\n          {\n            \"chargeCategory\": \"<string>\",\n            \"chargeName\": \"<string>\",\n            \"chargePerUnit\": {\n              \"currencyAmount\": \"<number>\",\n              \"unit\": \"<string>\"\n            },\n            \"taxDetails\": {\n              \"taxPerLine\": {\n                \"currencyAmount\": \"<number>\",\n                \"unit\": \"<string>\"\n              }\n            }\n          }\n        ],\n        \"itemDetail\": {\n          \"sku\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"qty\": {\n          \"measurementValue\": \"<number>\",\n          \"unitOfMeasure\": \"<string>\"\n        },\n        \"sellerLineId\": \"<string>\",\n        \"shippingTo\": {\n          \"contact\": {\n            \"email\": \"<string>\",\n            \"name\": {\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\"\n            },\n            \"phone\": \"<string>\"\n          },\n          \"address\": {\n            \"city\": \"<string>\",\n            \"country\": \"<string>\",\n            \"line1\": \"<string>\",\n            \"state\": \"<string>\",\n            \"zip\": \"<string>\",\n            \"line2\": \"<string>\",\n            \"addressType\": \"<string>\"\n          }\n        },\n        \"fulfillmentType\": \"<string>\",\n        \"shippingMethod\": \"<string>\"\n      },\n      {\n        \"chargeDetails\": [\n          {\n            \"chargeCategory\": \"<string>\",\n            \"chargeName\": \"<string>\",\n            \"chargePerUnit\": {\n              \"currencyAmount\": \"<number>\",\n              \"unit\": \"<string>\"\n            },\n            \"taxDetails\": {\n              \"taxPerLine\": {\n                \"currencyAmount\": \"<number>\",\n                \"unit\": \"<string>\"\n              }\n            }\n          },\n          {\n            \"chargeCategory\": \"<string>\",\n            \"chargeName\": \"<string>\",\n            \"chargePerUnit\": {\n              \"currencyAmount\": \"<number>\",\n              \"unit\": \"<string>\"\n            },\n            \"taxDetails\": {\n              \"taxPerLine\": {\n                \"currencyAmount\": \"<number>\",\n                \"unit\": \"<string>\"\n              }\n            }\n          }\n        ],\n        \"itemDetail\": {\n          \"sku\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"qty\": {\n          \"measurementValue\": \"<number>\",\n          \"unitOfMeasure\": \"<string>\"\n        },\n        \"sellerLineId\": \"<string>\",\n        \"shippingTo\": {\n          \"contact\": {\n            \"email\": \"<string>\",\n            \"name\": {\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\"\n            },\n            \"phone\": \"<string>\"\n          },\n          \"address\": {\n            \"city\": \"<string>\",\n            \"country\": \"<string>\",\n            \"line1\": \"<string>\",\n            \"state\": \"<string>\",\n            \"zip\": \"<string>\",\n            \"line2\": \"<string>\",\n            \"addressType\": \"<string>\"\n          }\n        },\n        \"fulfillmentType\": \"<string>\",\n        \"shippingMethod\": \"<string>\"\n      }\n    ],\n    \"orderPlacedTime\": \"<dateTime>\",\n    \"sellerOrderId\": \"<string>\",\n    \"needsConfirmation\": \"<boolean>\",\n    \"partialFulfillments\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "825f24e0-a22c-4a46-b7ff-65003ce32ea0",
+              "name": "Successful Request Creation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "orders-fulfillments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"0\",\n      \"martId\": \"202\"\n    }\n  },\n  \"payload\": {\n    \"orderChannelId\": \"Enter the orderChannelId\",\n    \"sellerOrderId\": \"Enter a unique orderId\",\n    \"orderPlacedTime\": \"Enter order placed time, format : 2022-03-25T21:58:30.143Z\",\n    \"needsConfirmation\": false,\n    \"partialFulfillments\": false,\n    \"customer\": {\n      \"contact\": {\n        \"name\": {\n          \"firstName\": \"Enter Customer firstName\",\n          \"lastName\": \"Enter Customer lastName\"\n        },\n        \"phone\": \"Enter Customer phone number\",\n        \"email\": \"Enter Customer email\"\n      }\n    },\n    \"orderItems\": [\n      {\n        \"sellerLineId\": \"1, increment for the next line\",\n        \"fulfillmentType\": \"DELIVERY\",\n        \"shippingMethod\": \"EXPEDITED\",\n        \"itemDetail\": {\n          \"sku\": \"Enter sku of the item\",\n          \"description\": \"Enter item description\"\n        },\n        \"qty\": {\n          \"unitOfMeasure\": \"EACH\",\n          \"measurementValue\": 2\n        },\n        \"shippingTo\": {\n          \"contact\": {\n            \"name\": {\n              \"firstName\": \"Enter delivery info : firstName\",\n              \"lastName\": \"Enter delivery info : lastName\"\n            },\n            \"phone\": \"Enter delivery info : phone number\"\n          },\n          \"address\": {\n            \"line1\": \"Enter delivery address line1\",\n            \"line2\": \"Enter delivery address line2\",\n            \"city\": \"Enter delivery city\",\n            \"state\": \"Enter delivery state\",\n            \"country\": \"USA\",\n            \"zip\": \"Enter delivery zip code\",\n            \"addressType\": \"RESIDENTIAL\"\n          }\n        },\n        \"chargeDetails\": [\n          {\n            \"chargeCategory\": \"PRODUCT\",\n            \"chargeName\": \"Sale Price\",\n            \"chargePerUnit\": {\n              \"currencyAmount\": 0,\n              \"currencyUnit\": \"USD\"\n            },\n            \"taxDetails\": {\n              \"taxPerLine\": {\n                \"currencyAmount\": 0,\n                \"currencyUnit\": \"USD\"\n              }\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ACCEPTED\",\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"0\",\n      \"martId\": \"202\"\n    }\n  },\n  \"payload\": {\n    \"requestId\": \"594ef12e-0d0f-402d-aab9-3f7ca06b0ed8\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dedf52d1-21be-4173-ac72-750dbaede7d7",
+          "name": "Walmart Fetch Delivery Promise Details",
+          "request": {
+            "name": "Walmart Fetch Delivery Promise Details",
+            "description": {
+              "content": "This request provides fulfillment and delivery promise information for all valid item/offer to seller.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "orders-fulfillments",
+                "fetchOrderPromiseOptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"martId\": \"<string>\",\n      \"buId\": \"<string>\"\n    }\n  },\n  \"payload\": {\n    \"destinations\": [\n      {\n        \"address\": {\n          \"postalCode\": \"<string>\",\n          \"stateCode\": \"<string>\",\n          \"city\": \"<string>\",\n          \"addressType\": \"<string>\",\n          \"addressLineOne\": \"<string>\",\n          \"addressLineTwo\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"isPOBox\": \"<boolean>\"\n        },\n        \"fulfillmentType\": \"<string>\"\n      },\n      {\n        \"address\": {\n          \"postalCode\": \"<string>\",\n          \"stateCode\": \"<string>\",\n          \"city\": \"<string>\",\n          \"addressType\": \"<string>\",\n          \"addressLineOne\": \"<string>\",\n          \"addressLineTwo\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"isPOBox\": \"<boolean>\"\n        },\n        \"fulfillmentType\": \"<string>\"\n      }\n    ],\n    \"offerSelections\": [\n      {\n        \"offers\": [\n          {\n            \"lineId\": \"<string>\",\n            \"requestedQuantity\": {\n              \"measurementValue\": \"<integer>\",\n              \"unitOfMeasure\": \"<string>\"\n            },\n            \"salesUnit\": \"<string>\",\n            \"sku\": \"<string>\"\n          },\n          {\n            \"lineId\": \"<string>\",\n            \"requestedQuantity\": {\n              \"measurementValue\": \"<integer>\",\n              \"unitOfMeasure\": \"<string>\"\n            },\n            \"salesUnit\": \"<string>\",\n            \"sku\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"offers\": [\n          {\n            \"lineId\": \"<string>\",\n            \"requestedQuantity\": {\n              \"measurementValue\": \"<integer>\",\n              \"unitOfMeasure\": \"<string>\"\n            },\n            \"salesUnit\": \"<string>\",\n            \"sku\": \"<string>\"\n          },\n          {\n            \"lineId\": \"<string>\",\n            \"requestedQuantity\": {\n              \"measurementValue\": \"<integer>\",\n              \"unitOfMeasure\": \"<string>\"\n            },\n            \"salesUnit\": \"<string>\",\n            \"sku\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "662865c4-35b4-4d1b-ae51-ed836d71eff5",
+              "name": "Successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "orders-fulfillments",
+                    "fetchOrderPromiseOptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"martId\": \"202\",\n      \"buId\": \"0\"\n    }\n  },\n  \"payload\": {\n    \"destinations\": [\n      {\n        \"address\": {\n          \"city\": \"Milpitas\",\n          \"addressType\": \"RESIDENTIAL\",\n          \"postalCode\": \"95035\",\n          \"addressLineOne\": \"261 Odyssey Ln\",\n          \"addressLineTwo\": \"222\",\n          \"isPOBox\": false,\n          \"countryCode\": \"US\",\n          \"stateCode\": \"CA\"\n        },\n        \"fulfillmentType\": \"DELIVERY\"\n      }\n    ],\n    \"offerSelections\": [\n      {\n        \"offers\": [\n          {\n            \"sku\": \"OMP-B01-L\",\n            \"lineId\": \"249ac8e1-e6c2-4806-81a5-54215eb16b00\",\n            \"salesUnit\": \"Each\",\n            \"requestedQuantity\": {\n              \"measurementValue\": 1,\n              \"unitOfMeasure\": \"EA\"\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ACCEPTED\",\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"0\",\n      \"martId\": \"202\"\n    }\n  },\n  \"payload\": {\n    \"offers\": [\n      {\n        \"availableQuantity\": {\n          \"measurementValue\": 52,\n          \"unitOfMeasure\": \"EA\"\n        },\n        \"requestedQuantity\": {\n          \"measurementValue\": 1,\n          \"unitOfMeasure\": \"EA\"\n        },\n        \"lineId\": \"249ac8e1-e6c2-4806-81a5-54215eb16b00\",\n        \"salesUnit\": \"Each\",\n        \"sku\": \"OMP-B01-L\"\n      }\n    ],\n    \"destinations\": [\n      {\n        \"address\": {\n          \"city\": \"Milpitas\",\n          \"addressType\": \"RESIDENTIAL\",\n          \"postalCode\": \"95035\",\n          \"addressLineOne\": \"261 Odyssey Ln\",\n          \"addressLineTwo\": \"222\",\n          \"isPOBox\": false,\n          \"countryCode\": \"US\",\n          \"stateCode\": \"CA\"\n        },\n        \"fulfillmentType\": \"DELIVERY\"\n      }\n    ],\n    \"fulfillmentPlans\": [\n      {\n        \"fulfillmentModules\": [\n          {\n            \"fulfillmentGroups\": [\n              {\n                \"fulfillmentOptions\": [\n                  {\n                    \"fulfillments\": [\n                      {\n                        \"lineItemAttributesList\": [\n                          {\n                            \"availableQuantity\": {\n                              \"measurementValue\": 52,\n                              \"unitOfMeasure\": \"EA\"\n                            },\n                            \"fulfillmentChannel\": [\n                              \"WFS_FULFILLED\"\n                            ],\n                            \"lineId\": \"249ac8e1-e6c2-4806-81a5-54215eb16b00\"\n                          }\n                        ],\n                        \"sla\": {\n                          \"tier\": \"TWO_DAY\",\n                          \"speed\": \"EXPEDITED\"\n                        },\n                        \"accessMode\": {\n                          \"mode\": \"NATIONAL_CARRIER\"\n                        },\n                        \"fulfillmentTime\": {\n                          \"date\": {\n                            \"minPromiseDate\": \"2023-02-27\",\n                            \"maxPromiseDate\": \"2023-02-27\"\n                          }\n                        },\n                        \"fulfillmentId\": \"a269374b-0c07-4008-8b5c-6831cbb2c112\",\n                        \"nodeType\": \"FC\"\n                      }\n                    ],\n                    \"fulfillmentMode\": \"UNSCHEDULED\",\n                    \"accessType\": \"DELIVERY_ADDRESS\",\n                    \"fulfillmentType\": \"DELIVERY\"\n                  }\n                ]\n              }\n            ],\n            \"name\": \"UNSCHEDULED_DELIVERY\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10eba11a-e8b2-43fa-b0fc-1614a2bf3794",
+          "name": "Walmart Cancel Customer Order",
+          "request": {
+            "name": "Walmart Cancel Customer Order",
+            "description": {
+              "content": "The API is used to cancel the customer fulfilment orders created in the previous flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "orders-fulfillments",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"martId\": \"<string>\",\n      \"buId\": \"<string>\"\n    }\n  },\n  \"payload\": {\n    \"orderItems\": [\n      {\n        \"qty\": {\n          \"measurementValue\": \"<number>\",\n          \"unitOfMeasure\": \"<string>\"\n        },\n        \"sellerLineId\": \"<string>\"\n      },\n      {\n        \"qty\": {\n          \"measurementValue\": \"<number>\",\n          \"unitOfMeasure\": \"<string>\"\n        },\n        \"sellerLineId\": \"<string>\"\n      }\n    ],\n    \"sellerOrderId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a27270f-a275-4b28-b877-3e81c81c9529",
+              "name": "Successful Request Creation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "orders-fulfillments",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"0\",\n      \"martId\": \"202\"\n    }\n  },\n  \"payload\": {\n    \"sellerOrderId\": \"301878911210253\",\n    \"orderItems\": [\n      {\n        \"sellerLineId\": \"1232456\",\n        \"qty\": {\n          \"unitOfMeasure\": \"EACH\",\n          \"measurementValue\": 2\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ACCEPTED\",\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"0\",\n      \"martId\": \"202\"\n    }\n  },\n  \"payload\": {\n    \"requestId\": \"594ef12e-0d0f-402d-aab9-3f7ca06b0ed7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "340a3972-f859-4a91-b230-85f522b365eb",
+          "name": "Walmart Get Shipments",
+          "request": {
+            "name": "Walmart Get Shipments",
+            "description": {
+              "content": "After Sellers create an Inbound Order successfully, the response from Create Inbound Shipments API will tell whether the order can be sent in a single shipment to one WFS fulfillment center or needs to be split into multiple shipments to different fulfillment centers. To retrieve the Shipment level info, please call the Get Inbound Shipments API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "inbound-shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "offset is the number of records you wish to skip before selecting records."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of Purchase Orders to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "inboundOrderId",
+                  "value": "<string>",
+                  "description": "Unique ID identifying inbound shipment request."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipmentId",
+                  "value": "<string>",
+                  "description": "Unique ID identifying each shipment."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Current shipment status"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromCreateDate",
+                  "value": "<string>",
+                  "description": "Shipment create date starting range"
+                },
+                {
+                  "disabled": false,
+                  "key": "toCreateDate",
+                  "value": "<string>",
+                  "description": "Shipment create date starting  end range"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d64780c2-da45-4ae1-b252-a7436af0b6bc",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "inbound-shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "inboundOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromCreateDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toCreateDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"headers\": {\n    \"limit\": 10,\n    \"offset\": 0,\n    \"totalCount\": 177\n  },\n  \"payload\": [\n    {\n      \"inboundOrderId\": \"may-5-test-2\",\n      \"shipmentId\": \"0066618GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"AWAITING_DELIVERY\",\n      \"createdDate\": \"2021-05-17T19:02:30.467Z\",\n      \"shipmentUnits\": 1,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-22T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-06-01T23:59:00.000Z\",\n      \"trackingNo\": [\n        \"787439195645\",\n        \"787439195174\"\n      ],\n      \"carrierName\": \"WFS-FEDEX\"\n    },\n    {\n      \"inboundOrderId\": \"may-21-test9\",\n      \"shipmentId\": \"0061782GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"CANCELLED\",\n      \"createdDate\": \"2021-05-06T17:49:54.743Z\",\n      \"shipmentUnits\": 0,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"may-21-test8\",\n      \"shipmentId\": \"0061779GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"CANCELLED\",\n      \"createdDate\": \"2021-05-06T17:42:42.577Z\",\n      \"shipmentUnits\": 0,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-06-01T23:59:00.000Z\",\n      \"trackingNo\": [\n        \"787450289224\"\n      ],\n      \"carrierName\": \"WFS-FEDEX\"\n    },\n    {\n      \"inboundOrderId\": \"may-21-test7\",\n      \"shipmentId\": \"0061763GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"CANCELLED\",\n      \"createdDate\": \"2021-05-06T16:54:47.310Z\",\n      \"shipmentUnits\": 0,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"may-21-test6\",\n      \"shipmentId\": \"0061752GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"CANCELLED\",\n      \"createdDate\": \"2021-05-06T16:31:22.383Z\",\n      \"shipmentUnits\": 0,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"may-21-test-3\",\n      \"shipmentId\": \"0061726GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"PENDING_SHIPMENT_DETAILS\",\n      \"createdDate\": \"2021-05-06T15:09:35.797Z\",\n      \"shipmentUnits\": 1,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"may-21-test-2\",\n      \"shipmentId\": \"0061712GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"PENDING_SHIPMENT_DETAILS\",\n      \"createdDate\": \"2021-05-06T14:31:32.280Z\",\n      \"shipmentUnits\": 3,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"may-21-test-1\",\n      \"shipmentId\": \"0061665GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"PENDING_SHIPMENT_DETAILS\",\n      \"createdDate\": \"2021-05-06T14:23:28.673Z\",\n      \"shipmentUnits\": 1,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-20T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"may-4-test-2\",\n      \"shipmentId\": \"0060645GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"NJ3\",\n        \"addressLine1\": \"3 Sorbello Way\",\n        \"city\": \"Pedricktown\",\n        \"stateCode\": \"NJ\",\n        \"countryCode\": \"US\",\n        \"postalCode\": 8067\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"PENDING_SHIPMENT_DETAILS\",\n      \"createdDate\": \"2021-05-05T01:24:25.840Z\",\n      \"shipmentUnits\": 1,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-22T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-22T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"may-4-test-1\",\n      \"shipmentId\": \"0060635GDM\",\n      \"movedShipmentId\": \"0060634GDM\",\n      \"shipToAddress\": {\n        \"fcName\": \"KY1\",\n        \"addressLine1\": \"120 Velocity Way.\",\n        \"city\": \"Shepherdsville\",\n        \"stateCode\": \"KY\",\n        \"countryCode\": \"US\",\n        \"postalCode\": \"40165\"\n      },\n      \"returnAddress\": {\n        \"addressLine1\": \"860 W California Ave\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"94086\",\n        \"countryCode\": \"CA\",\n        \"postalCode\": \"US\"\n      },\n      \"status\": \"AWAITING_DELIVERY\",\n      \"createdDate\": \"2021-05-04T23:46:18.530Z\",\n      \"shipmentUnits\": 1,\n      \"receivedUnits\": 0,\n      \"expectedDeliveryDate\": \"2021-05-23T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2021-05-19T23:59:00.000Z\",\n      \"trackingNo\": [\n        \"787095506139\"\n      ],\n      \"carrierName\": \"WFS-FEDEX\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "251a809b-8e6c-4c66-91c6-2bb30ab60c07",
+          "name": "Walmart Create Inbound Shipment",
+          "request": {
+            "name": "Walmart Create Inbound Shipment",
+            "description": {
+              "content": "Once you’ve converted items to WFS, you are ready to start shipping items inbound to Walmart. To do this, you will submit an Inbound shipment request. The Inbound shipment details when you expect to ship product, as well as the items and quantities which will be shipped.\n\nEach shipment you send in to WFS should have a corresponding Inbound shipment . In this case, a shipment would be considered a direct truckload, LTL shipment, or set of items shipped via parcel on a given day.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "inbound-shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inboundOrderId\": \"<string>\",\n  \"returnAddress\": {\n    \"addressLine1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"addressLine2\": \"<string>\"\n  },\n  \"inboundServices\": {\n    \"inventoryTransferService\": \"<string>\"\n  },\n  \"orderItems\": [\n    {\n      \"expectedDeliveryDate\": \"<dateTime>\",\n      \"innerPackQty\": \"<integer>\",\n      \"itemDesc\": \"<string>\",\n      \"itemQty\": \"<integer>\",\n      \"productId\": \"<string>\",\n      \"productType\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"vendorPackQty\": \"<integer>\",\n      \"addOnServices\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"itemNbr\": \"<integer>\",\n      \"dimensions\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"itemWeightQty\": \"<float>\",\n      \"nonSortItem\": \"<boolean>\",\n      \"shipNode\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18a2b355-8b1e-4cdf-b25d-7de1c9de12ab",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "inbound-shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inboundOrderId\": \"8778881015027\",\n  \"inboundServices\": {\n    \"inventoryTransferService\": \"Y\"\n  },\n  \"returnAddress\": {\n    \"addressLine1\": \"860 W California Ave\",\n    \"addressLine2\": \"\",\n    \"city\": \"Sunnyvale\",\n    \"stateCode\": \"CA\",\n    \"countryCode\": \"USA\",\n    \"postalCode\": \"94086\"\n  },\n  \"orderItems\": [\n    {\n      \"productId\": 894147009695,\n      \"productType\": \"GTIN\",\n      \"sku\": \"WILL-SL969\",\n      \"itemDesc\": \"Blue jeans\",\n      \"itemQty\": 10,\n      \"vendorPackQty\": 10,\n      \"innerPackQty\": 1,\n      \"expectedDeliveryDate\": \"2020-11-21T00:00:00.000Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"payload\": [\n    {\n      \"shipmentId\": \"0000966GDM\",\n      \"shipToAddress\": {\n        \"addressLine1\": \"120 Velocity Way.\",\n        \"city\": \"Shepherdsville\",\n        \"stateCode\": \"KY\",\n        \"countryCode\": \"US\",\n        \"postalCode\": \"40165\"\n      },\n      \"shipmentItems\": [\n        {\n          \"vendorSku\": \"WILL-SL969\",\n          \"itemQty\": 10\n        }\n      ],\n      \"expectedDeliveryDate\": \"2020-11-21T00:00:00.000Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c24fc799-618b-4a4a-8671-e3b3cf68c72c",
+          "name": "Walmart Fetch Inbound Preview",
+          "request": {
+            "name": "Walmart Fetch Inbound Preview",
+            "description": {
+              "content": "The purpose of this service is to give a preview of the estimated Inventory Transfer Service cost and shipment destinations between ITS and self-distribution. \nNote: This API is only available to sellers eligible for the Inventory Transfer Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "inbound-preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"<string>\",\n      \"martId\": \"<string>\"\n    }\n  },\n  \"payload\": {\n    \"inboundOrderId\": \"<string>\",\n    \"orderItems\": [\n      {\n        \"expectedDeliveryDate\": \"<dateTime>\",\n        \"innerPackQty\": \"<integer>\",\n        \"itemDesc\": \"<string>\",\n        \"itemQty\": \"<integer>\",\n        \"productId\": \"<string>\",\n        \"productType\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"vendorPackQty\": \"<integer>\",\n        \"addOnServices\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"itemNbr\": \"<integer>\",\n        \"dimensions\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"itemWeightQty\": \"<float>\",\n        \"nonSortItem\": \"<boolean>\",\n        \"shipNode\": \"<string>\"\n      }\n    ],\n    \"returnAddress\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"addressLine2\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "798ba740-cad3-4d9c-b5f7-94872defcf30",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "inbound-preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"0\",\n      \"martId\": \"0\"\n    }\n  },\n  \"payload\": {\n    \"inboundOrderId\": \"WFS_P132398111-ITS1011\",\n    \"returnAddress\": {\n      \"addressLine1\": \"860 W California Ave\",\n      \"addressLine2\": \"\",\n      \"city\": \"Sunnyvale\",\n      \"stateCode\": \"CA\",\n      \"countryCode\": \"US\",\n      \"postalCode\": \"94086\"\n    },\n    \"orderItems\": [\n      {\n        \"productId\": 6484856148873,\n        \"productType\": \"GTIN\",\n        \"sku\": \"SKU-06476211912694\",\n        \"itemDesc\": \"tennis ball\",\n        \"itemQty\": 5,\n        \"vendorPackQty\": 5,\n        \"innerPackQty\": 1,\n        \"expectedDeliveryDate\": \"2023-05-25T15:33:33-07:00\",\n        \"addOnServices\": [\n          {\n            \"serviceType\": \"LABEL\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"payload\": [\n    {\n      \"inboundOrderId\": \"WFS_P132398111-ITS1011\",\n      \"previews\": [\n        {\n          \"previewType\": \"inbound\",\n          \"preview\": [\n            {\n              \"shipNode\": \"4093\",\n              \"isSortable\": true,\n              \"isNonSortable\": false,\n              \"nodeType\": \"ICC\",\n              \"shipToAddress\": {\n                \"fcName\": \"LAX2T\",\n                \"addressLine1\": \"6720 Kimball Ave\",\n                \"city\": \"Chino\",\n                \"stateCode\": \"CA\",\n                \"countryCode\": \"US\",\n                \"postalCode\": \"91708\"\n              },\n              \"totalNetTransferCharge\": 1.25,\n              \"currencyUnit\": \"USD\",\n              \"shipmentItems\": [\n                {\n                  \"vendorSku\": \"SKU-06476211912694\",\n                  \"productType\": \"GTIN\",\n                  \"productId\": 6484856148873,\n                  \"itemQty\": 5,\n                  \"netTransferCharge\": 1.25,\n                  \"currencyUnit\": \"USD\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"previewType\": \"selfMirroring\",\n          \"preview\": [\n            {\n              \"shipNode\": \"7441\",\n              \"isSortable\": true,\n              \"isNonSortable\": false,\n              \"nodeType\": \"FC\",\n              \"shipToAddress\": {\n                \"fcName\": \"ORD1s\",\n                \"addressLine1\": \"3501 Brandon Road\",\n                \"city\": \"Joliet\",\n                \"stateCode\": \"IL\",\n                \"countryCode\": \"US\",\n                \"postalCode\": \"60436\"\n              },\n              \"shipmentItems\": [\n                {\n                  \"vendorSku\": \"SKU-06476211912694\",\n                  \"productType\": \"GTIN\",\n                  \"productId\": 6484856148873,\n                  \"itemQty\": 4\n                }\n              ]\n            },\n            {\n              \"shipNode\": \"8103\",\n              \"isSortable\": true,\n              \"isNonSortable\": false,\n              \"nodeType\": \"FC\",\n              \"shipToAddress\": {\n                \"fcName\": \"LAX1\",\n                \"addressLine1\": \"6750 Kimball Avenue\",\n                \"city\": \"Chino\",\n                \"stateCode\": \"CA\",\n                \"countryCode\": \"US\",\n                \"postalCode\": \"91708\"\n              },\n              \"shipmentItems\": [\n                {\n                  \"vendorSku\": \"SKU-06476211912694\",\n                  \"productType\": \"GTIN\",\n                  \"productId\": 6484856148873,\n                  \"itemQty\": 1\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21aae62d-46c3-4dac-9156-59bec8e44d4a",
+          "name": "Walmart Get Carrier Rate Quote",
+          "request": {
+            "name": "Walmart Get Carrier Rate Quote",
+            "description": {
+              "content": "The purpose of this service is to get the carrier rate quotes for WFS Preferred Carrier Program - FedEx parcel solution, when inbounding seller items from seller pickup point to Walmart fulfillment centers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "carrier-rate-quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) Unique ID identifying each shipment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mode",
+                  "description": "(Required) Shipment type."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11561013-ddc4-4ec9-bf92-3f2be1f7acfe",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "carrier-rate-quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) Unique ID identifying each shipment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mode",
+                      "description": "(Required) Shipment type."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"string\",\n  \"quoteId\": \"string\",\n  \"estimatedDeliveryDateTime\": \"2000-08-19T20:24:49.244Z\",\n  \"quoteCreationDate\": \"1971-12-12T14:00:01.346Z\",\n  \"carrier\": {\n    \"carrierId\": \"string\",\n    \"carrierName\": \"string\"\n  },\n  \"rateQuote\": {\n    \"quoteId\": \"string\",\n    \"estimatedDeliveryDateTime\": \"2019-06-15T14:07:53.540Z\",\n    \"carrier\": {\n      \"carrierId\": \"string\",\n      \"carrierName\": \"string\"\n    },\n    \"currency\": \"string\",\n    \"discountCharge\": 1571.1598099671853,\n    \"netCharge\": 1124.9238551661033,\n    \"surchargeType\": \"string\",\n    \"surchargeValue\": \"string\",\n    \"totalBillingWeight\": 1816.25025004034,\n    \"status\": \"string\",\n    \"transitDays\": \"string\",\n    \"effectiveDate\": \"1988-04-15T07:01:03.599Z\",\n    \"expiryDate\": \"1983-10-06T22:55:30.431Z\",\n    \"mode\": \"string\",\n    \"sellerFreightClassCode\": \"string\",\n    \"freightCharge\": 7669.588315391939,\n    \"fuelCharge\": 4004.6257018144784,\n    \"totalWeight\": 2405.2057322328446,\n    \"totalVolume\": 4093.4182428116437,\n    \"equipmentTypeCode\": \"string\",\n    \"serviceCode\": \"string\",\n    \"numberOfPallets\": 9631,\n    \"nominalCharge\": 1451.4541335730146,\n    \"assessorialCharge\": 9582.410073904113,\n    \"serviceCharge\": 9434.955831060062,\n    \"minimumCharge\": 6566.709317933665,\n    \"declaredValue\": \"string\",\n    \"mixedSKUs\": 4983,\n    \"singleSKUs\": 749,\n    \"freightReadyDate\": \"1966-01-15T12:31:32.407Z\"\n  },\n  \"shipmentPackages\": [\n    {\n      \"height\": 543.9076112289497,\n      \"length\": 4948.925252171381,\n      \"lengthUOM\": \"string\",\n      \"packageSequenceNumber\": 1819,\n      \"weight\": 6976.379425976464,\n      \"weightUOM\": \"string\",\n      \"width\": 5230.893495530386,\n      \"labelInformation\": {\n        \"labelData\": \"string\",\n        \"labelFormat\": \"string\",\n        \"trackingCode\": \"string\",\n        \"referenceTrackingCode\": \"string\",\n        \"epTrackerId\": \"string\",\n        \"shipmentId\": \"string\",\n        \"packageAsn\": \"string\",\n        \"masterTrackingCode\": \"string\",\n        \"master\": false\n      },\n      \"billingWeight\": 2415.1166062243947,\n      \"netCharge\": 3179.5761324599325,\n      \"nominalCharge\": 2290.566821910748,\n      \"assessorialCharge\": 3661.041118005551,\n      \"serviceCharge\": 9147.385327884243,\n      \"packageType\": \"string\",\n      \"noOfPackages\": 6987,\n      \"stackable\": true\n    },\n    {\n      \"height\": 4125.8408488694,\n      \"length\": 7826.251054401956,\n      \"lengthUOM\": \"string\",\n      \"packageSequenceNumber\": 2380,\n      \"weight\": 1142.394330669504,\n      \"weightUOM\": \"string\",\n      \"width\": 2297.580022953609,\n      \"labelInformation\": {\n        \"labelData\": \"string\",\n        \"labelFormat\": \"string\",\n        \"trackingCode\": \"string\",\n        \"referenceTrackingCode\": \"string\",\n        \"epTrackerId\": \"string\",\n        \"shipmentId\": \"string\",\n        \"packageAsn\": \"string\",\n        \"masterTrackingCode\": \"string\",\n        \"master\": true\n      },\n      \"billingWeight\": 3992.7261789488166,\n      \"netCharge\": 2704.591379003739,\n      \"nominalCharge\": 7612.523227881746,\n      \"assessorialCharge\": 3772.1167709160595,\n      \"serviceCharge\": 5289.504287784805,\n      \"packageType\": \"string\",\n      \"noOfPackages\": 9040,\n      \"stackable\": false\n    }\n  ],\n  \"originLocation\": {\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"postalCode\": \"string\",\n      \"stateCode\": \"string\",\n      \"addressLine2\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"locationName\": \"string\",\n    \"locationId\": \"string\"\n  },\n  \"destinationLocation\": {\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"postalCode\": \"string\",\n      \"stateCode\": \"string\",\n      \"addressLine2\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"locationName\": \"string\",\n    \"locationId\": \"string\"\n  },\n  \"returnLocation\": {\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"postalCode\": \"string\",\n      \"stateCode\": \"string\",\n      \"addressLine2\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"locationName\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20689a2-513f-46b6-9437-96bba5af06bd",
+          "name": "Walmart Create Carrier Rate Quote",
+          "request": {
+            "name": "Walmart Create Carrier Rate Quote",
+            "description": {
+              "content": "The purpose of this service is to get the carrier rate quotes for WFS Preferred Carrier Program - FedEx parcel solution, when inbounding seller items from seller pickup point to Walmart fulfillment centers.\n\nFor the shipments sent by FedEx small parcel, you can ship packages up to 150 lb, up to 108\" in length, and 165\" in length plus girth. (Girth is 2x width + 2x height.). You can ship up to 200 packages per shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "carrier-rate-quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer\": {\n    \"customerId\": \"<string>\",\n    \"customerName\": \"<string>\"\n  },\n  \"destinationLocation\": {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"locationName\": \"<string>\",\n    \"locationId\": \"<string>\"\n  },\n  \"mode\": \"PARCEL\",\n  \"originLocation\": {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"locationName\": \"<string>\",\n    \"locationId\": \"<string>\"\n  },\n  \"returnLocation\": {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"locationName\": \"<string>\"\n  },\n  \"shipmentId\": \"<string>\",\n  \"shipmentPackages\": [\n    {\n      \"height\": \"<float>\",\n      \"length\": \"<float>\",\n      \"lengthUOM\": \"<string>\",\n      \"packageSequenceNumber\": \"<integer>\",\n      \"weight\": \"<float>\",\n      \"weightUOM\": \"<string>\",\n      \"width\": \"<float>\",\n      \"labelInformation\": {\n        \"labelData\": \"<string>\",\n        \"labelFormat\": \"<string>\",\n        \"trackingCode\": \"<string>\",\n        \"referenceTrackingCode\": \"<string>\",\n        \"epTrackerId\": \"<string>\",\n        \"shipmentId\": \"<string>\",\n        \"packageAsn\": \"<string>\",\n        \"masterTrackingCode\": \"<string>\",\n        \"master\": \"<boolean>\"\n      },\n      \"billingWeight\": \"<float>\",\n      \"netCharge\": \"<float>\",\n      \"nominalCharge\": \"<float>\",\n      \"assessorialCharge\": \"<float>\",\n      \"serviceCharge\": \"<float>\",\n      \"packageType\": \"<string>\",\n      \"noOfPackages\": \"<integer>\",\n      \"stackable\": \"<boolean>\"\n    }\n  ],\n  \"shipmentSource\": \"<string>\",\n  \"pickupFromDateTime\": \"<dateTime>\",\n  \"pickupToDateTime\": \"<dateTime>\",\n  \"deliveryFromDateTime\": \"<dateTime>\",\n  \"deliveryToDateTime\": \"<dateTime>\",\n  \"freightClass\": \"<string>\",\n  \"declaredValue\": \"<integer>\",\n  \"loadTypes\": [\n    {\n      \"count\": \"<string>\",\n      \"loadType\": \"<string>\"\n    },\n    {\n      \"count\": \"<string>\",\n      \"loadType\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de9d8385-2e21-451e-8791-b99398b4f3fe",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "carrier-rate-quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer\": {\n    \"customerId\": \"<string>\",\n    \"customerName\": \"<string>\"\n  },\n  \"destinationLocation\": {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"locationName\": \"<string>\",\n    \"locationId\": \"<string>\"\n  },\n  \"mode\": \"PARCEL\",\n  \"originLocation\": {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"locationName\": \"<string>\",\n    \"locationId\": \"<string>\"\n  },\n  \"returnLocation\": {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"locationName\": \"<string>\"\n  },\n  \"shipmentId\": \"<string>\",\n  \"shipmentPackages\": [\n    {\n      \"height\": \"<float>\",\n      \"length\": \"<float>\",\n      \"lengthUOM\": \"<string>\",\n      \"packageSequenceNumber\": \"<integer>\",\n      \"weight\": \"<float>\",\n      \"weightUOM\": \"<string>\",\n      \"width\": \"<float>\",\n      \"labelInformation\": {\n        \"labelData\": \"<string>\",\n        \"labelFormat\": \"<string>\",\n        \"trackingCode\": \"<string>\",\n        \"referenceTrackingCode\": \"<string>\",\n        \"epTrackerId\": \"<string>\",\n        \"shipmentId\": \"<string>\",\n        \"packageAsn\": \"<string>\",\n        \"masterTrackingCode\": \"<string>\",\n        \"master\": \"<boolean>\"\n      },\n      \"billingWeight\": \"<float>\",\n      \"netCharge\": \"<float>\",\n      \"nominalCharge\": \"<float>\",\n      \"assessorialCharge\": \"<float>\",\n      \"serviceCharge\": \"<float>\",\n      \"packageType\": \"<string>\",\n      \"noOfPackages\": \"<integer>\",\n      \"stackable\": \"<boolean>\"\n    }\n  ],\n  \"shipmentSource\": \"<string>\",\n  \"pickupFromDateTime\": \"<dateTime>\",\n  \"pickupToDateTime\": \"<dateTime>\",\n  \"deliveryFromDateTime\": \"<dateTime>\",\n  \"deliveryToDateTime\": \"<dateTime>\",\n  \"freightClass\": \"<string>\",\n  \"declaredValue\": \"<integer>\",\n  \"loadTypes\": [\n    {\n      \"count\": \"<string>\",\n      \"loadType\": \"<string>\"\n    },\n    {\n      \"count\": \"<string>\",\n      \"loadType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"string\",\n  \"shipmentNumber\": \"string\",\n  \"rateQuotes\": [\n    {\n      \"quoteId\": \"string\",\n      \"estimatedDeliveryDateTime\": \"1995-03-28T18:30:26.963Z\",\n      \"carrier\": {\n        \"carrierId\": \"string\",\n        \"carrierName\": \"string\"\n      },\n      \"currency\": \"string\",\n      \"discountCharge\": 9624.774668404703,\n      \"netCharge\": 8464.992529524552,\n      \"surchargeType\": \"string\",\n      \"surchargeValue\": \"string\",\n      \"totalBillingWeight\": 2003.8545460636492,\n      \"status\": \"string\",\n      \"transitDays\": \"string\",\n      \"effectiveDate\": \"2016-09-27T02:27:14.290Z\",\n      \"expiryDate\": \"2021-09-15T20:33:29.774Z\",\n      \"mode\": \"string\",\n      \"sellerFreightClassCode\": \"string\",\n      \"freightCharge\": 5413.217984548741,\n      \"fuelCharge\": 4833.772563423837,\n      \"totalWeight\": 9065.577508089491,\n      \"totalVolume\": 5651.575135397527,\n      \"equipmentTypeCode\": \"string\",\n      \"serviceCode\": \"string\",\n      \"numberOfPallets\": 7996,\n      \"nominalCharge\": 5204.398377118974,\n      \"assessorialCharge\": 7339.980478159912,\n      \"serviceCharge\": 9230.893212271876,\n      \"minimumCharge\": 5489.007010447451,\n      \"declaredValue\": \"string\",\n      \"mixedSKUs\": 8859,\n      \"singleSKUs\": 3610,\n      \"freightReadyDate\": \"1956-06-14T16:39:50.649Z\"\n    },\n    {\n      \"quoteId\": \"string\",\n      \"estimatedDeliveryDateTime\": \"1973-12-18T12:04:36.090Z\",\n      \"carrier\": {\n        \"carrierId\": \"string\",\n        \"carrierName\": \"string\"\n      },\n      \"currency\": \"string\",\n      \"discountCharge\": 8902.791095492916,\n      \"netCharge\": 7076.743714974969,\n      \"surchargeType\": \"string\",\n      \"surchargeValue\": \"string\",\n      \"totalBillingWeight\": 3693.0718515580784,\n      \"status\": \"string\",\n      \"transitDays\": \"string\",\n      \"effectiveDate\": \"2020-02-13T09:23:46.258Z\",\n      \"expiryDate\": \"2020-01-11T00:28:13.078Z\",\n      \"mode\": \"string\",\n      \"sellerFreightClassCode\": \"string\",\n      \"freightCharge\": 7011.53294033089,\n      \"fuelCharge\": 5470.996067058675,\n      \"totalWeight\": 4498.2104842145645,\n      \"totalVolume\": 6356.700568104803,\n      \"equipmentTypeCode\": \"string\",\n      \"serviceCode\": \"string\",\n      \"numberOfPallets\": 2675,\n      \"nominalCharge\": 2667.8895369929123,\n      \"assessorialCharge\": 3051.524016701418,\n      \"serviceCharge\": 55.615967849549364,\n      \"minimumCharge\": 2099.6732368606617,\n      \"declaredValue\": \"string\",\n      \"mixedSKUs\": 1159,\n      \"singleSKUs\": 9660,\n      \"freightReadyDate\": \"2025-07-19T07:24:55.368Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "971f58a7-f30d-4f10-826b-c874a171f8d3",
+          "name": "Walmart Confirm Carrier Rate Quote",
+          "request": {
+            "name": "Walmart Confirm Carrier Rate Quote",
+            "description": {
+              "content": "The purpose of this service is for seller to confirm and accept the estimated carrier shipping charges, when choosing to use WFS Preferred Carrier Program - FedEx parcel to inbound inventory to Walmart fulfillment centers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "carrier-rate-quote",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ab5a982-5fd4-4181-9533-48042e625e3a",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "carrier-rate-quote",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"NOT_MODIFIED\",\n  \"header\": {\n    \"headerAttributes\": {\n      \"key_0\": {}\n    }\n  },\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"field\": \"string\",\n      \"description\": \"string\",\n      \"info\": \"string\",\n      \"severity\": \"ERROR\",\n      \"category\": \"REQUEST\",\n      \"causes\": [\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    },\n    {\n      \"code\": \"string\",\n      \"field\": \"string\",\n      \"description\": \"string\",\n      \"info\": \"string\",\n      \"severity\": \"WARN\",\n      \"category\": \"APPLICATION\",\n      \"causes\": [\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"payload\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de31bf9d-498c-4fa6-9547-4fcb9ace5e07",
+          "name": "Walmart Print Carrier Label",
+          "request": {
+            "name": "Walmart Print Carrier Label",
+            "description": {
+              "content": "The purpose of this service is for sellers to print carrier shipping label. \n\nTo print carrier shipping label, please first specify a Ship Date. Note, carrier allows to select a ship date 10 days in advance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "carrier-label",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) Unique ID identifying each shipment."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11ef54ab-0ed8-4b73-9621-d2c9a9d4ad27",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "carrier-label",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) Unique ID identifying each shipment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f415c5c1-c1a2-4572-af42-f93b8a036f76",
+          "name": "Walmart Convert Items for Wfs",
+          "request": {
+            "name": "Walmart Convert Items for Wfs",
+            "description": {
+              "content": "This API is used for converting existing Marketplace items to be WFS eligible. Once you’ve created a Marketplace item, each item must be converted to WFS by providing additional details that are not required during the item setup process. This item conversion process can be completed by uploading the Convert Spec excel file via Seller Center, or can be completed using the API documented here.\n\nDirections on how to convert your item to be eligible for Walmart Fulfillment Services can be found here: https://sellerhelp.walmart.com/s/guide?article=000009206\n\nAdditional details on hazmat item compliance requirements can be found here: https://sellerhelp.walmart.com/seller/s/guide?article=000009156\n\nTo download the schema, please refer to the Overview section",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "feeds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "feedType",
+                  "value": "OMNI_WFS",
+                  "description": "(Required) Includes details of each entity in the feed. Do not set this parameter to true."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Feed file to upload"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "09d0705b-66b2-4353-8966-2fad279312a1",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "OMNI_WFS"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "SupplierItemFeedHeader",
+                      "value": "{\"subCategory\":\"baby_clothing\",\"sellingChannel\":\"fbw\",\"processMode\":\"REPLACE\",\"locale\":\"en\",\"version\":\"1.4\",\"subset\":\"EXTERNAL\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "SupplierItem",
+                      "value": "[{\"Visible\":{\"Baby Clothing\":{\"clothingSize\":\"S\",\"color\":[\"Pink\"],\"countryOfOriginTextiles\":\"USA\",\"smallPartsWarnings\":[\"0 - No warning applicable\"],\"mainImageUrl\":\"https://i5-qa.walmartimages.com/asr/549ecbe9-c874-475b-87d8-5e4cb19934ec.8f5d70e62bd0bb8abc6772c9ef1694e0.jpeg\",\"prop65WarningText\":\"Warning\",\"seasonYear\":2020,\"manufacturer\":\"Generic\"}},\"Orderable\":{\"productIdentifiers\":{\"productId\":5923239836453,\"productIdType\":\"GTIN\"},\"batteryTechnologyType\":\"Does Not Contain a Battery\",\"electronicsIndicator\":\"No\",\"endDate\":\"2040-01-01T00:00:00.000Z\",\"price\":10,\"chemicalAerosolPesticide\":\"No\",\"sku\":5923239836453,\"stateRestrictions\":[{\"stateRestrictionsText\":\"None\"}],\"brand\":\"Goodlife\",\"productName\":\"Goodlife Corona_merge_split_19\",\"startDate\":\"2020-06-15T00:00:00.000Z\"},\"TradeItem\":{\"countryOfOriginAssembly\":[\"US - United States\"],\"innerPack\":{\"innerPackWidth\":2,\"innerPackHeight\":3,\"qtySellableItemsInnerPack\":1,\"innerPackGTIN\":5923239836453,\"innerPackWeight\":2,\"innerPackDepth\":1},\"sku\":5923239836453,\"orderableGTIN\":5923239836453}}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"FFE538D9B25A4000AD2A067ACEDCF4C4@AUoBAQA\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "460ed2ff-4733-4e53-bb80-e3fd68214640",
+          "name": "Walmart Get Wfs Inventory Health Report",
+          "request": {
+            "name": "Walmart Get Wfs Inventory Health Report",
+            "description": {
+              "content": "Returns all the information associated with Seller's items that are set up on Walmart Fulfillment Services (WFS) platform.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "wfs",
+                "getInventoryHealthReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fcfd453-7667-4dac-a090-a161bec23e7a",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "wfs",
+                    "getInventoryHealthReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56e6bd31-aa6a-4ff0-830c-3a6d84370810",
+          "name": "Walmart Get Fulfillment Orders Status",
+          "request": {
+            "name": "Walmart Get Fulfillment Orders Status",
+            "description": {
+              "content": "The API provides the list of customer fulfillment orders with corresponding details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "orders-fulfillments",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limiting the number of records fetched. Valid range is from 1 to 50 inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Setting an offset to skip records. Valid range is from 0 to 50000 inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderNumber",
+                  "value": "<string>",
+                  "description": "Search the order based on an order number."
+                },
+                {
+                  "disabled": false,
+                  "key": "trackingNumber",
+                  "value": "<string>",
+                  "description": "Search the order based on a tracking number."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipmentNumber",
+                  "value": "<string>",
+                  "description": "Search the order based on a shipment number."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromOrderDate",
+                  "value": "<string>",
+                  "description": "Search the order based on a start date (Date in YYYY-MM-DD format)."
+                },
+                {
+                  "disabled": false,
+                  "key": "toOrderDate",
+                  "value": "<string>",
+                  "description": "Search the order based on an endDate date (Date in YYYY-MM-DD format)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "desc",
+                  "description": "Order of sorting (asc/desc)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "Key on which sorting is done (Supported Attributes: orderDate)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37442e01-d363-4547-9f00-9daf927de163",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "orders-fulfillments",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trackingNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromOrderDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toOrderDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"header\": {\n    \"headerAttributes\": {\n      \"buId\": \"0\",\n      \"martId\": \"202\",\n      \"pageCount\": 1,\n      \"totalCount\": 1\n    }\n  },\n  \"payload\": [\n    {\n      \"sellerOrderId\": \"ptrn20802\",\n      \"orderType\": \"DOMESTIC\",\n      \"status\": \"DELIVERED\",\n      \"orderDate\": \"2023-01-01T03:27:51.176Z\",\n      \"buyerInfo\": {\n        \"primaryContact\": {\n          \"name\": {\n            \"firstName\": \"Sonja\",\n            \"lastName\": \"Richard Babineaux\"\n          }\n        }\n      },\n      \"shipments\": [\n        {\n          \"status\": \"DELIVERED\",\n          \"statusDescription\": \"Shipment Delivered\",\n          \"purchaseOrderId\": \"2873667778063\",\n          \"scac\": \"Fedex\",\n          \"trackingNo\": \"626969279882\",\n          \"externalTrackingURL\": \"https://www.walmart.com/orders/ptrn20802/track/626969279882\",\n          \"shipmentNo\": \"db1e8da5-fa38-4074-a4d4-9f5da430d4dd\",\n          \"actualShipmentDate\": \"2023-01-02T21:21:22.000Z\",\n          \"packageASN\": \"55558952333141953386\",\n          \"carrierDescription\": \"Fedex\",\n          \"carrierServiceCode\": \"7610\",\n          \"packageId\": \"55558952333141953386\",\n          \"lastModified\": \"2023-01-06T01:08:27.950Z\",\n          \"shipmentLines\": [\n            {\n              \"shipmentLineNo\": \"7101212\",\n              \"fulfillerLineId\": \"1\",\n              \"quantity\": {\n                \"unitOfMeasure\": \"EA\",\n                \"measurementValue\": 1\n              }\n            }\n          ],\n          \"shipmentDates\": [\n            {\n              \"actualDate\": \"2023-01-02T21:21:22.000Z\",\n              \"dateTypeId\": \"SHIPMENT\",\n              \"expectedDate\": \"2023-01-03T00:15:00.000Z\"\n            },\n            {\n              \"dateTypeId\": \"OPD\",\n              \"expectedDate\": \"2023-01-03T10:27:00.000Z\"\n            },\n            {\n              \"actualDate\": \"2023-01-06T00:59:00.000Z\",\n              \"dateTypeId\": \"DELIVERY\",\n              \"expectedDate\": \"2023-01-06T01:30:00.000Z\"\n            }\n          ]\n        }\n      ],\n      \"orderLines\": [\n        {\n          \"fulfillmentType\": \"DELIVERY\",\n          \"lastModified\": \"2023-01-01T03:27:52.529Z\",\n          \"shippingMethod\": \"STANDARD\",\n          \"shippingTier\": \"TWO_DAY\",\n          \"orderLineQuantityInfo\": [\n            {\n              \"status\": \"PROCESSING\",\n              \"statusDescription\": \"SUCCESSFULLY_SOURCED\",\n              \"statusQuantity\": {\n                \"unitOfMeasure\": \"EA\",\n                \"measurementValue\": 1\n              }\n            }\n          ],\n          \"orderProduct\": {\n            \"productName\": \"London Fog - Missy Sb Double Collar - Black - Large\"\n          },\n          \"orderedQty\": {\n            \"unitOfMeasure\": \"EA\",\n            \"measurementValue\": 1\n          },\n          \"shipToAddress\": {\n            \"address\": {\n              \"addressLineOne\": \"3657 Country Oaks Loop Unit D\",\n              \"addressLineTwo\": \"D\",\n              \"addressType\": \"RESIDENTIAL\",\n              \"city\": \"Ontario\",\n              \"countryCode\": \"US\",\n              \"postalCode\": \"91761\",\n              \"stateOrProvinceName\": \"CA\",\n              \"stateOrProvinceCode\": \"CA\"\n            },\n            \"name\": {\n              \"completeName\": \"Sonja Richard Babineaux\",\n              \"firstName\": \"Sonja\",\n              \"lastName\": \"Richard Babineaux\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7e62470-e2e1-4a3a-8c1b-f6be895e2c98",
+          "name": "Walmart Create Inbound Shipment Label (deprecated)",
+          "request": {
+            "name": "Walmart Create Inbound Shipment Label (deprecated)",
+            "description": {
+              "content": "The purpose of this service is to generate WFS shipping labels in pdf format for receiving purpose. Please note this is not a carrier label; these labels are required for the FC to identify the Inbound Order and Shipment ID they are receiving against. After requesting the shipping label, sellers must work with warehouse/ supplier to follow these steps before sending any Shipments to WFS FCs: \n1. \tPrint the WFS shipping label.\n2. \tFill out the FILL OUT section based on seller’s packing situation. For example, if a seller plans to ship 3 boxes to the WFS fulfillment center, print out 3 labels and fill out BOX 1 of 3, 2 of 3, and 3 of 3 in the FILL OUT section.\n3. \tCircle one shipment type in the CIRCLE ONE section. For example, if there are different SKUs in the box, circle MIXED SKUS in the CIRCLE ONE section.\n4. \tAffix the WFS shipping labels to the boxes/ pallets.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "label",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) Unique ID identifying inbound shipment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22c5e4e2-ba41-4c3b-b73c-949a4b24b0c2",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "label",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) Unique ID identifying inbound shipment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3899798e-1560-4d62-bddf-f8170cb39dd1",
+          "name": "Walmart Get Inventory Log for a Wfs Item",
+          "request": {
+            "name": "Walmart Get Inventory Log for a Wfs Item",
+            "description": {
+              "content": "Returns activity log for any Seller's item that is stored in Walmart Fulfillment Centers (WFS) platform.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "inventory-log"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "gtin",
+                  "value": "<string>",
+                  "description": "(Required) GTIN."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipmentId",
+                  "value": "<string>",
+                  "description": "Shipment Id."
+                },
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "<string>",
+                  "description": "Transaction Type."
+                },
+                {
+                  "disabled": false,
+                  "key": "transactionLocation",
+                  "value": "<string>",
+                  "description": "Transaction Location."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "Inventory log transaction time starting range (Date in YYYY-MM-DD format)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "Inventory log transaction time ending range (Date in YYYY-MM-DD format)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Sort By Attribute (Supported Attributes: gtin, changedUnits, transactionReasonCode, transactionType, shipmentId)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Sort Order (ASC or DESC)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset is the number of records you wish to skip before selecting records."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "limit is the number of records to be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "685e4e07-eb88-4b62-8153-e6f886cd7016",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "inventory-log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "gtin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transactionLocation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"headers\": {\n    \"limit\": 5245,\n    \"offset\": 7308,\n    \"totalCount\": 3457\n  },\n  \"payload\": {\n    \"gtin\": \"string\",\n    \"vendorSku\": \"string\",\n    \"productName\": \"string\",\n    \"inventoryLog\": [\n      {\n        \"id\": \"string\",\n        \"fcName\": \"string\",\n        \"changedUnits\": 3948,\n        \"transactionTime\": \"1951-07-12T09:51:21.613Z\",\n        \"transactionLocation\": \"string\",\n        \"transactionReasonCode\": \"string\",\n        \"transactionReasonDesc\": \"string\",\n        \"transactionType\": \"string\",\n        \"shipmentId\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"fcName\": \"string\",\n        \"changedUnits\": 2983,\n        \"transactionTime\": \"1991-04-26T20:50:54.273Z\",\n        \"transactionLocation\": \"string\",\n        \"transactionReasonCode\": \"string\",\n        \"transactionReasonDesc\": \"string\",\n        \"transactionType\": \"string\",\n        \"shipmentId\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21f5ffa1-d2eb-42c3-90b7-cae736e0f3b0",
+          "name": "Walmart Get Inbound Shipment Items",
+          "request": {
+            "name": "Walmart Get Inbound Shipment Items",
+            "description": {
+              "content": "After Sellers create an Inbound Order successfully, the response from Create Inbound Shipments API will tell whether the order can be sent in a single shipment to one WFS fulfillment center or needs to be split into multiple shipments to different fulfillment centers. \nTo retrieve the Shipment level info, please call the Get Inbound Shipments API and to get what needs to be in a specific shipment and SKU level receipt situation, please call the Get Inbound Shipment Items API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "inbound-shipment-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "offset is the number of records you wish to skip before selecting records."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of Purchase Orders to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipmentId",
+                  "value": "<string>",
+                  "description": "Unique ID identifying each shipment."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "994086e0-9b30-4180-b800-f06e246ab181",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "inbound-shipment-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "shipmentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"headers\": {\n    \"limit\": 10,\n    \"offset\": 0,\n    \"totalCount\": 4\n  },\n  \"payload\": [\n    {\n      \"inboundOrderId\": \"1235113\",\n      \"shipmentId\": \"4846GDM\",\n      \"gtin\": 634482736852,\n      \"sku\": \"ACDD-WZK73685\",\n      \"itemDesc\": \"Blue Jeans\",\n      \"itemQty\": 10,\n      \"vendorPackQty\": 0,\n      \"innerPackQty\": 0,\n      \"receivedQty\": 0,\n      \"damagedQty\": 0,\n      \"fillRate\": 0,\n      \"expectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"1235113\",\n      \"shipmentId\": \"4846GDM\",\n      \"gtin\": 812040019191,\n      \"sku\": \"KALA-WFS-KA-SWG-BL\",\n      \"itemDesc\": \"Google mini\",\n      \"itemQty\": 16,\n      \"vendorPackQty\": 0,\n      \"innerPackQty\": 0,\n      \"receivedQty\": 0,\n      \"damagedQty\": 0,\n      \"fillRate\": 0,\n      \"expectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"1235113\",\n      \"shipmentId\": \"4846GDM\",\n      \"gtin\": 77540052578,\n      \"sku\": \"NOTN-WFS-10480\",\n      \"itemDesc\": \"Blue Jeans\",\n      \"itemQty\": 12,\n      \"vendorPackQty\": 0,\n      \"innerPackQty\": 0,\n      \"receivedQty\": 0,\n      \"damagedQty\": 0,\n      \"fillRate\": 0,\n      \"expectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\"\n    },\n    {\n      \"inboundOrderId\": \"1235113\",\n      \"shipmentId\": \"4846GDM\",\n      \"gtin\": \"00636047311207\",\n      \"sku\": \"GLHF-GL1304WMST\",\n      \"itemDesc\": \"Blue Jeans\",\n      \"itemQty\": 14,\n      \"vendorPackQty\": 0,\n      \"innerPackQty\": 0,\n      \"receivedQty\": 0,\n      \"damagedQty\": 0,\n      \"fillRate\": 0,\n      \"expectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\",\n      \"updatedExpectedDeliveryDate\": \"2020-09-24T00:00:00.000Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57e88ba7-3247-4e2d-81c4-60edf9701353",
+          "name": "Walmart Get Inbound Shipment Errors",
+          "request": {
+            "name": "Walmart Get Inbound Shipment Errors",
+            "description": {
+              "content": "After Sellers request to create an Inbound Order, WFS may return error responses with error codes. Type of errors: \n- \tSKUs not in WFS catalog: Sellers need to make sure all SKUs have already been converted and added to the WFS catalog\n- \tMissing required information; \n- \tInvalid Product ID (incorrect number of digits); \n- \tDuplicated Inbound Order ID: Inbound Order ID has already been used before\n- \tDuplicated Product IDs\nMost of these errors can be prevented with a robust API integration that does not allow the mistakes to be made. Seller should update the request based on the error message and re-submit the request.\nPlease note, once the Inbound Order is created successfully after the re-submission, historical errors under the same Inbound Order ID will be removed and no longer accessible. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "inbound-shipment-errors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "offset is the number of records you wish to skip before selecting records."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of Purchase Orders to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "shipmentId",
+                  "value": "<string>",
+                  "description": "Unique ID identifying each shipment."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b091eb1-4ed0-49c7-9ef0-c2729ff9ff4e",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "inbound-shipment-errors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "shipmentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"headers\": {\n    \"limit\": 10,\n    \"offset\": 0,\n    \"totalCount\": 1\n  },\n  \"payload\": [\n    {\n      \"inboundOrderId\": \"test-shipment-1\",\n      \"createdDate\": \"2020-10-19T01:06:24.207Z\",\n      \"returnAddress\": {\n        \"addressLine1\": \"address line 1\",\n        \"city\": \"Sunnyvale\",\n        \"stateCode\": \"CA\",\n        \"countryCode\": \"US\",\n        \"postalCode\": \"94087\"\n      },\n      \"orderItems\": [\n        {\n          \"productId\": \"7036848676 \",\n          \"productType\": \"UPC\",\n          \"sku\": \"sku1\",\n          \"itemDesc\": \"product 1\",\n          \"itemQty\": 20,\n          \"vendorPackQty\": 2,\n          \"innerPackQty\": 10,\n          \"expectedDeliveryDate\": \"2020-10-27T16:00:00.000Z\"\n        },\n        {\n          \"productId\": \"703684867 \",\n          \"productType\": \"UPC\",\n          \"sku\": \"sku2\",\n          \"itemDesc\": \"product 2\",\n          \"itemQty\": 30,\n          \"vendorPackQty\": 3,\n          \"innerPackQty\": 30,\n          \"expectedDeliveryDate\": \"2020-10-27T16:00:00.000Z\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"code\": \"400.WSAAS.100\",\n          \"field\": \"orderItems[0].productId\",\n          \"description\": \"Product ID with Product Type UPC should be 12 digit\",\n          \"info\": \"Product ID with Product Type UPC should be 12 digit:703684867609 \",\n          \"severity\": \"ERROR\",\n          \"category\": \"REQUEST\"\n        },\n        {\n          \"code\": \"400.WSAAS.100\",\n          \"field\": \"orderItems[1].productId\",\n          \"description\": \"Product ID with Product Type UPC should be 12 digit\",\n          \"info\": \"Product ID with Product Type UPC should be 12 digit:703684867661 \",\n          \"severity\": \"ERROR\",\n          \"category\": \"REQUEST\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a3a9342-4881-4c07-aa23-53501ead913d",
+          "name": "Walmart Cancel Inbound Shipment",
+          "request": {
+            "name": "Walmart Cancel Inbound Shipment",
+            "description": {
+              "content": "The purpose of this service is to cancel an inbound order.\nSeller can cancel an Inbound Order before any of its Shipment arrives at the WFS FCs. Seller cannot cancel an Inbound Order if any of its Shipment’s status = Receiving in Progress, Closed, or Cancelled \nSeller can only cancel at the Inbound Order level, not the Shipment level: if an Inbound Order is cancelled, all Shipments on that order will be cancelled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "inbound-shipments",
+                ":inboundOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "inboundOrderId",
+                  "description": "(Required) Unique ID identifying inbound shipment request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64aea1c7-82df-4364-9192-90a0fd1a39f0",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "inbound-shipments",
+                    ":inboundOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "inboundOrderId",
+                      "description": "(Required) Unique ID identifying inbound shipment request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b0fd0f1-3469-45b0-86ab-b85e5c39d75c",
+          "name": "Walmart Cancel Carrier Rate Quote",
+          "request": {
+            "name": "Walmart Cancel Carrier Rate Quote",
+            "description": {
+              "content": "The purpose of this service is for seller to void the carrier shipping charges, within 24 hours after the estimated carrier charges have been accepted by the seller.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fulfillment",
+                "carrier-rate-quote",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) Unique ID identifying each shipment."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa7d494c-660f-4120-9bc8-f90dd6be9943",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fulfillment",
+                    "carrier-rate-quote",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) Unique ID identifying each shipment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"NOT_MODIFIED\",\n  \"header\": {\n    \"headerAttributes\": {\n      \"key_0\": {}\n    }\n  },\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"field\": \"string\",\n      \"description\": \"string\",\n      \"info\": \"string\",\n      \"severity\": \"ERROR\",\n      \"category\": \"REQUEST\",\n      \"causes\": [\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    },\n    {\n      \"code\": \"string\",\n      \"field\": \"string\",\n      \"description\": \"string\",\n      \"info\": \"string\",\n      \"severity\": \"WARN\",\n      \"category\": \"APPLICATION\",\n      \"causes\": [\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"field\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"payload\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7e15ee3e-5306-440e-9017-15909a3fc592",
+    "name": "Walmart Cost Management Assortment Recommendations Fulfillment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,675 @@
+{
+  "item": [
+    {
+      "id": "02874923-7e21-44af-b324-a33ba26318fd",
+      "name": "On-Request Report",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "663ddc35-f874-4924-b920-d9ed2775e993",
+          "name": "Walmart Get All Report Requests",
+          "request": {
+            "name": "Walmart Get All Report Requests",
+            "description": {
+              "content": "Fetches a list of all report requests for specified search criteria by using query parameters.\n\nYou can fetch details of report requests created in the last 30 days only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "reportRequests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reportType",
+                  "value": "<string>",
+                  "description": "(Required) Type of report for which the request is created. Example, ITEM for Item Report."
+                },
+                {
+                  "disabled": false,
+                  "key": "reportVersion",
+                  "value": "<string>",
+                  "description": "Version of report for which the request is created. Example, v1."
+                },
+                {
+                  "disabled": false,
+                  "key": "requestStatus",
+                  "value": "<string>",
+                  "description": "Status of report request. Possible values are RECEIVED, INPROGRESS, READY, ERROR."
+                },
+                {
+                  "disabled": false,
+                  "key": "requestSubmissionStartDate",
+                  "value": "<string>",
+                  "description": "Report request submittal start date for range of reports requested, in format: YYYY-MM-DDTHH:mm:ssZ"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestSubmissionEndDate",
+                  "value": "<string>",
+                  "description": "Report request submittal end date for range of reports requested, in format YYYY-MM-DDTHH:mm:ssZ"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84d11798-489c-4390-b442-493315a93fb4",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "reportRequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestSubmissionStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestSubmissionEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": 2815,\n  \"totalCount\": 7004,\n  \"limit\": 4363,\n  \"nextCursor\": \"string\",\n  \"requests\": [\n    {\n      \"requestId\": \"9e53e3fc-24dc-c643-de98-27d0abd46f60\",\n      \"requestStatus\": \"ERROR\",\n      \"requestSubmissionDate\": \"string\",\n      \"reportType\": \"RETURN_OVERRIDES\",\n      \"reportVersion\": \"string\",\n      \"payload\": {\n        \"rowFilters\": [\n          {\n            \"columnName\": \"string\",\n            \"type\": \"multiValueFilter\",\n            \"values\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          {\n            \"columnName\": \"string\",\n            \"type\": \"multiValueFilter\",\n            \"values\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        ],\n        \"excludeColumns\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"reportGenerationDate\": \"string\"\n    },\n    {\n      \"requestId\": \"029d8e04-1530-c0ed-a95b-130f5297a80b\",\n      \"requestStatus\": \"INPROGRESS\",\n      \"requestSubmissionDate\": \"string\",\n      \"reportType\": \"CANCELLATION\",\n      \"reportVersion\": \"string\",\n      \"payload\": {\n        \"rowFilters\": [\n          {\n            \"columnName\": \"string\",\n            \"type\": \"enumFilter\",\n            \"values\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          {\n            \"columnName\": \"string\",\n            \"type\": \"multiValueFilter\",\n            \"values\": [\n              \"string\",\n              \"string\"\n            ]\n          }\n        ],\n        \"excludeColumns\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"reportGenerationDate\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5bbb26a-0fb8-4d04-b52a-7b1661b3fafb",
+          "name": "Walmart Create Report Request",
+          "request": {
+            "name": "Walmart Create Report Request",
+            "description": {
+              "content": "Creates a new request for report by specifying the reportType and reportVersion.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "reportRequests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reportType",
+                  "value": "<string>",
+                  "description": "(Required) Specifies the report type for the request. For example, reportType=ITEM creates an Item Report."
+                },
+                {
+                  "disabled": false,
+                  "key": "reportVersion",
+                  "value": "<string>",
+                  "description": "(Required) Version of report for which the request is created. Supported versions for each report type are currently 'reportVersion=v1' for the following reportType(s): INVENTORY, CANCELLATION, DELIVERY_DEFECT, ITEM_PERFORMANCE, PROMO, RETURN_OVERRIDES, CPA, SHIPPING_CONFIGURATION, SHIPPING_PROGRAM, FITMENT_MISSING_ATTR, FITMENT_ACES_COVERAGE, BUYBOX, ASSORTMENT_RECOMMENDATIONS and 'reportVersion=v1', 'reportVersion=v2', 'reportVersion=v3', 'reportVersion=v4' for the following reportType(s): ITEM."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rowFilters\": [\n    {\n      \"columnName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"excludeColumns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99ae7f26-3801-49ba-b649-4d7e6adde808",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "reportRequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rowFilters\": [\n    {\n      \"type\": \"rangeFilter\",\n      \"columnName\": \"Offer Start Date\",\n      \"from\": \"2020-03-16\"\n    },\n    {\n      \"type\": \"rangeFilter\",\n      \"columnName\": \"Offer End Date\",\n      \"to\": \"2021-06-16\"\n    },\n    {\n      \"type\": \"rangeFilter\",\n      \"columnName\": \"Price\",\n      \"from\": \"10\",\n      \"to\": \"100\"\n    },\n    {\n      \"type\": \"enumFilter\",\n      \"columnName\": \"Publish Status\",\n      \"values\": [\n        \"PUBLISHED\"\n      ]\n    },\n    {\n      \"type\": \"multiValueFilter\",\n      \"columnName\": \"brand\",\n      \"values\": [\n        \"FELIX LECHEF\",\n        \"ANEZUS\"\n      ]\n    },\n    {\n      \"type\": \"multiValueFilter\",\n      \"columnName\": \"category\",\n      \"values\": [\n        \"JEWELRY MAKING AND STORAGE\"\n      ]\n    }\n  ],\n  \"excludeColumns\": [\n    \"Average Rating\",\n    \"Shelf Name\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"7e99545c-84c0-2867-ae07-b455379dbdce\",\n  \"requestStatus\": \"READY\",\n  \"requestSubmissionDate\": \"string\",\n  \"reportType\": \"DELIVERY_DEFECT\",\n  \"reportVersion\": \"string\",\n  \"payload\": {\n    \"rowFilters\": [\n      {\n        \"columnName\": \"string\",\n        \"type\": \"enumFilter\",\n        \"values\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"columnName\": \"string\",\n        \"type\": \"enumFilter\",\n        \"values\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"excludeColumns\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf0b2bd7-e7e0-4143-854f-eadd7c1309a4",
+          "name": "Walmart Report Request Status",
+          "request": {
+            "name": "Walmart Report Request Status",
+            "description": {
+              "content": "Fetches status and other details of a report request by providing a requestID.\n\nYou can fetch details of report request created in the last 30 days only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "reportRequests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) Automated ID generated by system that uniquely identifies the report request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f781053-3537-4b8c-9954-118f6a402146",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "reportRequests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) Automated ID generated by system that uniquely identifies the report request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"47786c0b-9ee4-6a6e-fd5f-b66df60ae6e4\",\n  \"requestStatus\": \"READY\",\n  \"requestSubmissionDate\": \"string\",\n  \"reportType\": \"RETURN_OVERRIDES\",\n  \"reportVersion\": \"string\",\n  \"payload\": {\n    \"rowFilters\": [\n      {\n        \"columnName\": \"string\",\n        \"type\": \"multiValueFilter\",\n        \"values\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"columnName\": \"string\",\n        \"type\": \"enumFilter\",\n        \"values\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"excludeColumns\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"reportGenerationDate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89238d28-1d59-47ac-aa66-8ce487dd954b",
+          "name": "Walmart Download Report Url",
+          "request": {
+            "name": "Walmart Download Report Url",
+            "description": {
+              "content": "Fetches URL to download a generated report.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "downloadReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "requestId",
+                  "value": "<string>",
+                  "description": "(Required) Automated ID generated by system that uniquely identifies the report request."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "811d9d80-d086-479b-9199-da09bc835359",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "downloadReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"downloadURL\": \"string\",\n  \"downloadURLExpirationTime\": \"string\",\n  \"requestId\": \"a4d929d7-18cc-8604-ff08-b4b2b7ef2596\",\n  \"requestStatus\": \"RECEIVED\",\n  \"requestSubmissionDate\": \"string\",\n  \"reportType\": \"BUYBOX\",\n  \"reportVersion\": \"string\",\n  \"reportGenerationDate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9218a9be-2efd-4e68-990b-f905955181da",
+    "name": "Walmart Cost Management Assortment Recommendations On-Request Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

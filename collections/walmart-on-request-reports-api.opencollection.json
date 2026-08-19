@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations On Request Reports API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "On Request Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Retrieve All Report Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/reports/reportRequests",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the report type for the request. \n\nFor example, `reportType=INVENTORY_DSV` creates an inventory report.\n\nValid values are: \n\n| Value | Meaning |\n| --- | --- |\n| INVENTORY_DSV | Creates an inventory report |\n| ITEM_CONFIGURATION_DATA | Creates an item configuration data report |\n\nExample(s):<br>\nINVENTORY_DSV<br>\nITEM_CONFIGURATION_DATA \n"
+              },
+              {
+                "name": "reportVersion",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the version of the created report. \n\nSupported versions for each report type include:\n\n| Report Type | Supported Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA | v1 |\n\nExample(s):<br>\nv1\n"
+              },
+              {
+                "name": "requestStatus",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the status of the report request. \n\nValid values include:\n\n| Value | Description |\n| --- | --- |\n| RECEIVED | Report request has been received |\n| INPROGRESS | Report request is in progress |\n| READY | Report request is ready |\n| ERROR | Report request is in an error state |\n\nExample(s):<br>\nRECEIVED\n"
+              },
+              {
+                "name": "requestSubmissionStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the report submittal start date-timestamp for the range of reports request, in ISO 8601 format.\n\nExample(s):<br>\n2023-08-28T13:34:54Z\n"
+              },
+              {
+                "name": "requestSubmissionEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the report submittal end date-timestamp for the range of reports request, in ISO 8601 format.\n\nExample(s):<br>\n2023-08-28T15:43:54Z\n"
+              }
+            ]
+          },
+          "docs": "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/reports/reportRequests</p>\n\nThis API request fetches a list of all report requests based on search criteria like `reportType`, `reportVersion`, and `requestStatus`.\n\nUse the query parameters to define the search and fetch details of report requests created in the last 30 days only.\n"
+        },
+        {
+          "info": {
+            "name": "Walmart Create Report Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/reports/reportRequests",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the report type for the request. \n\nFor example, `reportType=INVENTORY_DSV` creates an inventory report.\n\nValid values are: \n\n| Value | Meaning |\n| --- | --- |\n| INVENTORY_DSV | Creates an inventory report |\n| ITEM_CONFIGURATION_DATA | Creates an item configuration data report |\n\nExample(s):<br>\nINVENTORY_DSV<br>\nITEM_CONFIGURATION_DATA\n"
+              },
+              {
+                "name": "reportVersion",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the version of the created report. \n\nSupported versions for each report type include: \n\n| Report Type | Supported Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA | v1 |\n\nExample(s):<br>\nv1\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/reports/reportRequest</p>\n\nThis request creates a new request for a report by specifying the report type and version. \n\nIn the request body, define one or more attributes to include in the report. \nThe attribute must be a valid attribute for the report. \nReference the guide for a list of applicable attributes in each report and definitions.\nSee the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On Request Reports<"
+        },
+        {
+          "info": {
+            "name": "Walmart Retrieve Details on Single Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/reports/reportRequests/:requestId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path",
+                "description": "Specifies the system-generated identifier associated with the report request.\n\nExample(s):<br>\n4406b7c3-674e-41e4-a18a-5fd6f123479f\n"
+              }
+            ]
+          },
+          "docs": "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/reports/reportRequests/{requestId}</p>\n\nThis request fetches the status and other details of a single report request, as queried by the `requestId` path parameter.\n\nFetch details of a report request created in the last 30 days only.\n"
+        },
+        {
+          "info": {
+            "name": "Walmart Download Report Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/reports/downloadReport",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the system-generated identifier associated with the report request.\n\nExample(s):<br>\n4406b7c3-674e-41e4-a18a-5fd6f123479f\n"
+              }
+            ]
+          },
+          "docs": "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/reports/downloadReport</p>\n\nThis request fetches the URL to download the generated report.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

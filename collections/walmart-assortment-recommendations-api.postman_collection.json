@@ -1,0 +1,491 @@
+{
+  "item": [
+    {
+      "id": "1dc4c10f-fa62-4288-8a5f-6d7d03cf27ea",
+      "name": "Assortment Recommendations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "257c6e6d-524d-45ae-b7de-22371b6442d0",
+          "name": "Walmart Get Recommendations",
+          "request": {
+            "name": "Walmart Get Recommendations",
+            "description": {
+              "content": "You can fetch the list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can get the list of ITEM recommendations. You can apply filters to fetch selective item recommendations. \n \n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "growth",
+                "assortment",
+                "recommendations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recommendationType\": \"<string>\",\n  \"meta\": {\n    \"limit\": 200,\n    \"nextCursor\": \"<string>\"\n  },\n  \"filterCriteria\": {\n    \"searchText\": \"<string>\",\n    \"multiValueFilter\": [\n      {\n        \"parameter\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"parameter\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"enumFilter\": [\n      {\n        \"parameter\": \"<string>\",\n        \"values\": \"MOST_SEARCHED_FOR\"\n      },\n      {\n        \"parameter\": \"<string>\",\n        \"values\": \"DEAL_ITEMS\"\n      }\n    ],\n    \"rangeFilter\": [\n      {\n        \"parameter\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\"\n      },\n      {\n        \"parameter\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8541e2f-f35f-4b2f-b602-716c4925c244",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "growth",
+                    "assortment",
+                    "recommendations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recommendationType\": \"ITEM\",\n  \"meta\": {\n    \"limit\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": {\n    \"recommendationType\": \"ITEM\",\n    \"meta\": {\n      \"totalRecords\": 45747,\n      \"recordsFetched\": 2,\n      \"limit\": 2,\n      \"nextCursor\": \"AoRYPgVAkFauFHrhSAU/5cbOnJbgPT04MDZBTkQ4Mjk4MTIyMTMxQU5EQjAxTkNYSkJQOQ==\"\n    },\n    \"records\": [\n      {\n        \"itemRecommendationUniqueId\": \"806AND8707224727ANDB06XCG9QPJ\",\n        \"itemDetails\": {\n          \"title\": \"Allurez Heart and Diamond Initials Lariat Pendant Y-Necklace in 14k Rose Gold\",\n          \"brand\": \"Allurez\",\n          \"category\": \"DIAMOND JEWELRY ECOMM WOMENS\",\n          \"gtin\": 6651291438962,\n          \"upc\": 665129143896,\n          \"itemAvailabilityStatus\": \"EXISTING_IN_WALMART\",\n          \"potentialSales\": \"$100K+\",\n          \"shoppingTrends\": [\n            \"MOST_SEARCHED_FOR\",\n            \"BEST_SELLERS\"\n          ],\n          \"walmart\": {\n            \"itemId\": \"707224727\",\n            \"url\": \"www.walmart.com/ip/707224727\",\n            \"itemPrice\": {\n              \"amount\": 299.99,\n              \"currency\": \"USD\"\n            },\n            \"shippingPrice\": {\n              \"amount\": 0,\n              \"currency\": \"USD\"\n            }\n          },\n          \"competitors\": [\n            {\n              \"itemId\": \"B06XCG9QPJ\",\n              \"url\": \"www.amazon.com/dp/B06XCG9QPJ\",\n              \"itemPrice\": {\n                \"amount\": 1192,\n                \"currency\": \"USD\"\n              },\n              \"shippingPrice\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"itemRecommendationUniqueId\": \"806AND8298122131ANDB01NCXJBP9\",\n        \"itemDetails\": {\n          \"title\": \"Three-Stone Leverback Diamond Earrings 14k Yellow Gold (0.50ct)\",\n          \"brand\": \"Allurez\",\n          \"category\": \"DIAMOND JEWELRY ECOMM WOMENS\",\n          \"gtin\": 4692981221312,\n          \"upc\": 469298122131,\n          \"itemAvailabilityStatus\": \"EXISTING_IN_WALMART\",\n          \"potentialSales\": \"$50K-$100K\",\n          \"shoppingTrends\": [\n            \"BEST_SELLERS\"\n          ],\n          \"walmart\": {\n            \"itemId\": \"298122131\",\n            \"url\": \"www.walmart.com/ip/298122131\",\n            \"itemPrice\": {\n              \"amount\": 777,\n              \"currency\": \"USD\"\n            },\n            \"shippingPrice\": {\n              \"amount\": 0,\n              \"currency\": \"USD\"\n            }\n          },\n          \"competitors\": [\n            {\n              \"itemId\": \"B01NCXJBP9\",\n              \"url\": \"www.amazon.com/dp/B01NCXJBP9\",\n              \"itemPrice\": {\n                \"amount\": 670,\n                \"currency\": \"USD\"\n              },\n              \"shippingPrice\": {\n                \"amount\": 0,\n                \"currency\": \"USD\"\n              }\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be1ef1b2-d23e-418f-a185-b7887b771f36",
+          "name": "Walmart Get Categorization",
+          "request": {
+            "name": "Walmart Get Categorization",
+            "description": {
+              "content": "You can get the list of brands or categories associated with the items recommendations that are recommended for you.\n \nUsing BRAND as a categorizationType\n*   You can get the list of brands sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of brand name. \n \n\nUsing CATEGORY as a categorizationType\n*   You can get the list of categories sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of category name.  \n \n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "growth",
+                "assortment",
+                "recommendations",
+                "categorization",
+                "counts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categorizationType\": \"<string>\",\n  \"meta\": {\n    \"limit\": 200,\n    \"nextCursor\": \"<string>\"\n  },\n  \"filterCriteria\": {\n    \"searchText\": \"<string>\",\n    \"multiValueFilter\": [\n      {\n        \"parameter\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"parameter\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e156a811-a64c-4c8e-b150-40ce108cc98f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "growth",
+                    "assortment",
+                    "recommendations",
+                    "categorization",
+                    "counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"categorizationType\": \"BRAND\",\n  \"meta\": {\n    \"limit\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": {\n    \"categorizationType\": \"BRAND\",\n    \"meta\": {\n      \"totalRecords\": 4,\n      \"recordsFetched\": 2,\n      \"limit\": 2,\n      \"nextCursor\": \"categorizationType=BRAND&limit=2&offset=2\"\n    },\n    \"records\": [\n      {\n        \"name\": \"Swarovsk and Co.\",\n        \"numberOfItemRecommendations\": -1\n      },\n      {\n        \"name\": \"Kate Spade and Co.\",\n        \"numberOfItemRecommendations\": -1\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9375145c-bc4d-41b1-82a9-69560eb2c4ce",
+          "name": "Walmart Reject Recommendations",
+          "request": {
+            "name": "Walmart Reject Recommendations",
+            "description": {
+              "content": "You can reject a list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can reject specific item recommendations using the filterCriteria or by providing the list of itemRecommendationUniqueIds. \n*   You will need to provide valid rejection code(s) while submitting the reject request. You are required to send the custom rejection message if the rejection code is OTHER_REASON \n\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "growth",
+                "assortment",
+                "recommendations",
+                "rejections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recommendationType\": \"<string>\",\n  \"rejectionCodes\": \"LIMITED_TO_OTHER_MARKETPLACE\",\n  \"filterCriteria\": {\n    \"searchText\": \"<string>\",\n    \"multiValueFilter\": [\n      {\n        \"parameter\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"parameter\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"enumFilter\": [\n      {\n        \"parameter\": \"<string>\",\n        \"values\": \"MOST_SEARCHED_FOR\"\n      },\n      {\n        \"parameter\": \"<string>\",\n        \"values\": \"BEST_SELLERS\"\n      }\n    ],\n    \"rangeFilter\": [\n      {\n        \"parameter\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\"\n      },\n      {\n        \"parameter\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\"\n      }\n    ]\n  },\n  \"itemRecommendationUniqueIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customRejectionMessage\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90424bb3-2d41-46d3-8822-bc241a2f1393",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "growth",
+                    "assortment",
+                    "recommendations",
+                    "rejections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Only supported Media Type : application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recommendationType\": \"ITEM\",\n  \"filterCriteria\": {\n    \"searchText\": \"and\",\n    \"multiValueFilter\": [\n      {\n        \"parameter\": \"BRAND\",\n        \"values\": [\n          \"Florida Atlantic University\",\n          \"maximalpower\",\n          \"delsit\"\n        ]\n      },\n      {\n        \"parameter\": \"CATEGORY\",\n        \"values\": [\n          \"TOPS SPORTSWEAR ECOMM MENS\",\n          \"TODDLER FURNITURE\",\n          \"FLOORCARE\"\n        ]\n      }\n    ],\n    \"enumFilter\": [\n      {\n        \"parameter\": \"ITEM_AVAILABILITY_STATUS\",\n        \"values\": [\n          \"NEW_TO_WALMART\",\n          \"EXISTING_IN_WALMART\"\n        ]\n      },\n      {\n        \"parameter\": \"SHOPPING_TRENDS\",\n        \"values\": [\n          \"MOST_SEARCHED_FOR\",\n          \"BEST_SELLERS\",\n          \"DEAL_ITEMS\"\n        ]\n      }\n    ],\n    \"rangeFilter\": [\n      {\n        \"parameter\": \"PRICE\",\n        \"from\": \"10.0\",\n        \"to\": \"80.5\"\n      }\n    ]\n  },\n  \"rejectionCodes\": [\n    \"NOT_SELLING_THESE_ITEMS\",\n    \"OTHER_REASON\"\n  ],\n  \"customRejectionMessage\": \"Removal of this item from other marketplace is in progress\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": {\n    \"message\": \"The selected items will be removed shortly from the recommendations.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e0fc57b2-f1b9-4c1f-bfed-c89226b7d993",
+    "name": "Walmart Cost Management Assortment Recommendations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

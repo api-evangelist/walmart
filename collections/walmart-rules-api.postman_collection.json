@@ -1,0 +1,2428 @@
+{
+  "item": [
+    {
+      "id": "06b3c093-0014-48a8-b0bf-408fde00e01f",
+      "name": "Rules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f82d00d2-1ed4-45b7-957c-92339832c1f7",
+          "name": "Walmart Inactivate Rule",
+          "request": {
+            "name": "Walmart Inactivate Rule",
+            "description": {
+              "content": "You can use this API to inactivate one or more rules for a specific ruleId and ruleStatus.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "inactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"rules\": [\n    {\n      \"ruleId\": \"<string>\",\n      \"ruleStatus\": \"<string>\"\n    },\n    {\n      \"ruleId\": \"<string>\",\n      \"ruleStatus\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3006e8df-7336-421b-9ccd-74348bdffd7c",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "inactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"rules\": [\n    {\n      \"ruleId\": \"39\",\n      \"ruleStatus\": \"Submitted\"\n    },\n    {\n      \"ruleId\": \"44\",\n      \"ruleStatus\": \"Active\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rules are inactivated: [39, 44]\",\n  \"status\": \"SUCCESS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1fcfe5f5-de02-4840-9e95-1de493f4b334",
+          "name": "Walmart Gets All Exceptions",
+          "request": {
+            "name": "Walmart Gets All Exceptions",
+            "description": {
+              "content": "This API retrieves all the items which has been defined as exceptions using \"Create Override Exception\" API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "exceptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "735179fd-c15d-479b-be8d-32b0facdfbd2",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "exceptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"skuIds\": [\n    \"123456\",\n    \"789065\"\n  ],\n  \"status\": \"SUCCESS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c64add3b-cf34-420d-9a4c-38f532b8fb8b",
+          "name": "Walmart Delete Exceptions",
+          "request": {
+            "name": "Walmart Delete Exceptions",
+            "description": {
+              "content": "This API is used to bring back any SKU to Two-day Delivery settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "exceptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"rules\": {\n    \"skus\": [\n      {\n        \"sku\": \"<string>\"\n      },\n      {\n        \"sku\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff2caafe-bd8b-424f-b79c-a4cd4b7ef9f6",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "exceptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"rules\": {\n    \"skus\": [\n      {\n        \"sku\": \"sku-1234\"\n      },\n      {\n        \"sku\": \"sku-2323\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"5ED712C698FD43B999EC5EEFD5C63655@ATgBAQA\",\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e468e21f-0020-45a3-b536-f0594bb49fbb",
+          "name": "Walmart Create Override Exceptions",
+          "request": {
+            "name": "Walmart Create Override Exceptions",
+            "description": {
+              "content": "This API is used if any SKU is required to be removed from Two-day delivery settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "exceptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"rules\": {\n    \"skus\": [\n      {\n        \"sku\": \"<string>\"\n      },\n      {\n        \"sku\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77afbf55-2c1a-4311-96e1-d73136b42e8f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "exceptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"rules\": {\n    \"skus\": [\n      {\n        \"sku\": \"sku-1234\"\n      },\n      {\n        \"sku\": \"sku-2323\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"5ED712C698FD43B999EC5EEFD5C63655@ATgBAQA\",\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41a2f0a3-f15d-4e75-8789-a747c884f40b",
+          "name": "Walmart Change Assortment Type",
+          "request": {
+            "name": "Walmart Change Assortment Type",
+            "description": {
+              "content": "This API helps you enable or disable the two-day assortment type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "assortment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "enable",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b57ca2da-3c98-432d-953d-f83d852fd759",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "assortment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "enable",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"payload\": {\n    \"id\": \"366efe47-61cc-4493-978a-6bab0604f78e\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d087d1b-6452-4970-93d9-7e3af645af83",
+          "name": "Walmart Activate Rule",
+          "request": {
+            "name": "Walmart Activate Rule",
+            "description": {
+              "content": "This API is used to activate a rule for a specific ruleId and ruleStatus. Only Rules which are in submitted and inactive state can be activated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"rules\": [\n    {\n      \"ruleId\": \"<string>\",\n      \"ruleStatus\": \"<string>\"\n    },\n    {\n      \"ruleId\": \"<string>\",\n      \"ruleStatus\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bed37732-3ca9-4ee9-bb4f-a42f27895802",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"rules\": [\n    {\n      \"ruleId\": \"39\",\n      \"ruleStatus\": \"Submitted\"\n    },\n    {\n      \"ruleId\": \"44\",\n      \"ruleStatus\": \"Inactive\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rules are activated: [39, 44]\",\n  \"status\": \"Success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f774b8ff-f57f-4023-bace-97678b9ae651",
+          "name": "Walmart Update Shipping Area to Rules",
+          "request": {
+            "name": "Walmart Update Shipping Area to Rules",
+            "description": {
+              "content": "This API helps you define coverage areas for your items that are held outside of the fulfillment centers defined by your shipNode management API's.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"rules\": {\n    \"ruleId\": \"<string>\",\n    \"ruleStatus\": \"<string>\",\n    \"actions\": [\n      {\n        \"twoDayShippingRegions\": [\n          {\n            \"regionCode\": \"<string>\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"<string>\"\n              },\n              {\n                \"subRegionCode\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"regionCode\": \"<string>\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"<string>\"\n              },\n              {\n                \"subRegionCode\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"twoDayShippingRegions\": [\n          {\n            \"regionCode\": \"<string>\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"<string>\"\n              },\n              {\n                \"subRegionCode\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"regionCode\": \"<string>\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"<string>\"\n              },\n              {\n                \"subRegionCode\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f4ead8d-a149-46cd-9941-28ce5edaa4e1",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"rules\": {\n    \"ruleId\": \"612\",\n    \"ruleStatus\": \"Submitted\",\n    \"actions\": [\n      {\n        \"twoDayShippingRegions\": [\n          {\n            \"regionCode\": \"NE\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"NY1\"\n              },\n              {\n                \"subRegionCode\": \"NY2\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\n          \"name\": \"price\",\n          \"operator\": \"EQUALS\",\n          \"value\": \"20\"\n        },\n        {\n          \"name\": \"subCategories\",\n          \"operator\": \"IN\",\n          \"value\": \"571fdff7208f9a0cdb760a7f,56f2eb65208f9a0612c3adbd\"\n        }\n      ],\n      \"description\": \"testing-new-510\",\n      \"name\": \"testing-new-510\",\n      \"priority\": \"21\",\n      \"ruleAction\": {\n        \"twoDayShippingRegions\": [\n          {\n            \"regionCode\": \"NE\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"NY1\"\n              },\n              {\n                \"subRegionCode\": \"NY2\"\n              }\n            ]\n          }\n        ]\n      },\n      \"ruleId\": \"612\",\n      \"ruleStatus\": \"Submitted\"\n    }\n  ],\n  \"status\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6994302-0bab-4b46-a9cb-9b4fb0ca5761",
+          "name": "Walmart Get All Rules",
+          "request": {
+            "name": "Walmart Get All Rules",
+            "description": {
+              "content": "This API retrieves the details of all the rules defined using \"create an Item rule\" API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa78759f-0b54-4416-9df6-396b038767be",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\n          \"name\": \"weight\",\n          \"operator\": \"LESS_THAN\",\n          \"value\": \"10\"\n        },\n        {\n          \"name\": \"subCategories\",\n          \"operator\": \"IN\",\n          \"value\": \"559c5d924fff3d64de18bf45,559c5d8f4fff3d64de18bf3d\"\n        }\n      ],\n      \"name\": \"Test rule Issue2\",\n      \"priority\": \"6\",\n      \"ruleId\": \"565\",\n      \"ruleStatus\": \"Active\",\n      \"skuProcessingStatus\": \"Success\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"name\": \"subCategories\",\n          \"operator\": \"IN\",\n          \"value\": \"559c5d924fff3d64de18bf45\"\n        }\n      ],\n      \"name\": \"njnjn\",\n      \"priority\": \"10\",\n      \"ruleAction\": {\n        \"twoDayShippingRegions\": [\n          {\n            \"regionCode\": \"NE\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"RI\"\n              },\n              {\n                \"subRegionCode\": \"ME1\"\n              },\n              {\n                \"subRegionCode\": \"ME2\"\n              },\n              {\n                \"subRegionCode\": \"NH\"\n              },\n              {\n                \"subRegionCode\": \"NY3\"\n              },\n              {\n                \"subRegionCode\": \"NY1\"\n              },\n              {\n                \"subRegionCode\": \"NY5\"\n              },\n              {\n                \"subRegionCode\": \"NY2\"\n              },\n              {\n                \"subRegionCode\": \"NY4\"\n              },\n              {\n                \"subRegionCode\": \"NJ3\"\n              },\n              {\n                \"subRegionCode\": \"NJ4\"\n              },\n              {\n                \"subRegionCode\": \"NJ1\"\n              },\n              {\n                \"subRegionCode\": \"NJ2\"\n              },\n              {\n                \"subRegionCode\": \"VT\"\n              }\n            ]\n          }\n        ]\n      },\n      \"ruleId\": \"602\",\n      \"ruleStatus\": \"Active\",\n      \"skuProcessingStatus\": \"Processing\"\n    }\n  ],\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1b2324c-0850-4a0f-b428-cfdc76f9a09e",
+          "name": "Walmart Update Rule",
+          "request": {
+            "name": "Walmart Update Rule",
+            "description": {
+              "content": "This API updates a rule defined using \"create an Item rule\". You can update priority, Description, conditions and name of a rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"rules\": [\n    {\n      \"ruleId\": \"<string>\",\n      \"ruleStatus\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"conditions\": [\n        {\n          \"name\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"ruleId\": \"<string>\",\n      \"ruleStatus\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"conditions\": [\n        {\n          \"name\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc935a01-bb3b-4083-a245-67fb7314ac06",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"rules\": [\n    {\n      \"ruleId\": \"511\",\n      \"ruleStatus\": \"Submitted\",\n      \"name\": \"testing-new-501\",\n      \"description\": \"testing-new-501\",\n      \"priority\": \"832\",\n      \"conditions\": [\n        {\n          \"name\": \"subCategories\",\n          \"operator\": \"IN\",\n          \"value\": \"571fdff7208f9a0cdb760a7f,56f2eb65208f9a0612c3adbd\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\n          \"name\": \"subCategories\",\n          \"operator\": \"IN\",\n          \"value\": \"571fdff7208f9a0cdb760a7f,56f2eb65208f9a0612c3adbd\"\n        }\n      ],\n      \"description\": \"testing-new-501\",\n      \"name\": \"testing-new-501\",\n      \"priority\": \"832\",\n      \"ruleAction\": {\n        \"twoDayShippingRegions\": [\n          {\n            \"regionCode\": \"NE\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"CT2\"\n              },\n              {\n                \"subRegionCode\": \"CT1\"\n              },\n              {\n                \"subRegionCode\": \"PA1\"\n              }\n            ]\n          }\n        ]\n      },\n      \"ruleId\": \"511\",\n      \"ruleStatus\": \"Submitted\"\n    }\n  ],\n  \"status\": \"SUCCESS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8691912-0fb8-4a44-b80f-ff89e51cb225",
+          "name": "Walmart Create a New Rule",
+          "request": {
+            "name": "Walmart Create a New Rule",
+            "description": {
+              "content": "This API is used to create a rule by selecting any combination of conditions for Sub-category, Price and Weight.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"<string>\"\n  },\n  \"rules\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"description\": \"<string>\",\n    \"name\": \"<string>\",\n    \"priority\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c9546c9-920c-43ea-aef5-d2a4357553cd",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ruleHeader\": {\n    \"version\": \"1.2\"\n  },\n  \"rules\": {\n    \"name\": \"testing-new-501\",\n    \"description\": \"testing-new-501\",\n    \"priority\": \"832\",\n    \"conditions\": [\n      {\n        \"name\": \"price\",\n        \"operator\": \"EQUALS\",\n        \"value\": \"20\"\n      },\n      {\n        \"name\": \"subCategories\",\n        \"operator\": \"IN\",\n        \"value\": \"571fdff7208f9a0cdb760a7f,56f2eb65208f9a0612c3adbd\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\n          \"name\": \"price\",\n          \"operator\": \"EQUALS\",\n          \"value\": \"20\"\n        },\n        {\n          \"name\": \"subCategories\",\n          \"operator\": \"IN\",\n          \"value\": \"571fdff7208f9a0cdb760a7f,56f2eb65208f9a0612c3adbd\"\n        }\n      ],\n      \"description\": \"testing-new-501\",\n      \"name\": \"testing-new-501\",\n      \"priority\": \"832\",\n      \"ruleId\": \"511\",\n      \"ruleStatus\": \"Submitted\"\n    }\n  ],\n  \"status\": \"SUCCESS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89047494-d6c5-4f18-a6c5-244133233f96",
+          "name": "Walmart Get a Rule",
+          "request": {
+            "name": "Walmart Get a Rule",
+            "description": {
+              "content": "Retrieves a rule detail for a specific ruleId and ruleStatus.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                ":ruleId",
+                "status",
+                ":ruleStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleStatus",
+                  "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f97a6da-8dfc-4b1b-a32f-5e0682492dfa",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    ":ruleId",
+                    "status",
+                    ":ruleStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleStatus",
+                      "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"conditions\": [\n        {\n          \"name\": \"price\",\n          \"operator\": \"IN\",\n          \"value\": \"20\"\n        },\n        {\n          \"name\": \"subCategories\",\n          \"operator\": \"IN\",\n          \"value\": \"559c5d924fff3d64de18bf45\"\n        }\n      ],\n      \"description\": \"testing-new-501\",\n      \"name\": \"testing-new-501\",\n      \"priority\": \"832\",\n      \"ruleAction\": {\n        \"twoDayShippingRegions\": [\n          {\n            \"regionCode\": \"NE\",\n            \"subRegions\": [\n              {\n                \"subRegionCode\": \"CT2\"\n              },\n              {\n                \"subRegionCode\": \"CT1\"\n              },\n              {\n                \"subRegionCode\": \"PA1\"\n              }\n            ]\n          }\n        ]\n      },\n      \"ruleId\": \"511\",\n      \"ruleStatus\": \"Submitted\"\n    }\n  ],\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59392329-363d-4e8c-94b2-9940fc2689bd",
+          "name": "Walmart Get Simulation Result",
+          "request": {
+            "name": "Walmart Get Simulation Result",
+            "description": {
+              "content": "You can use this API to get the count of items shortlisted for two-day shipping for a specific rule defined by ruleId and ruleStatus",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                ":ruleId",
+                "status",
+                ":ruleStatus",
+                "simulationcount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleStatus",
+                  "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8760ec29-a1cd-4809-863d-15241a2cedab",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    ":ruleId",
+                    "status",
+                    ":ruleStatus",
+                    "simulationcount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleStatus",
+                      "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ruleId\": \"677\",\n  \"ruleStatus\": \"Active\",\n  \"simulationCount\": \"0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10850c95-5573-4e10-8fb5-591c6d1ded3e",
+          "name": "Walmart Download Simulation Result",
+          "request": {
+            "name": "Walmart Download Simulation Result",
+            "description": {
+              "content": "You can use this API to download the count of items shortlisted for two-day shipping for a specific rule defined by ruleId and ruleStatus",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                ":ruleId",
+                "status",
+                ":ruleStatus",
+                "simulation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleStatus",
+                  "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6862604-c892-4e3e-8996-ca6e9810bf2d",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    ":ruleId",
+                    "status",
+                    ":ruleStatus",
+                    "simulation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleStatus",
+                      "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa90995a-ffd3-440d-af52-7365ef1ce2e4",
+          "name": "Walmart Get All Sub-categories",
+          "request": {
+            "name": "Walmart Get All Sub-categories",
+            "description": {
+              "content": "This API provides the complete list of sub-categories which can be used while defining the rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "subcategories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5afbbb5-90c0-4ec6-9259-9f5df8075743",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "subcategories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"payload\": [\n    {\n      \"category\": \"Animal\",\n      \"subcategory\": [\n        {\n          \"subCategoryName\": \"Animal Accessories\",\n          \"subCategoryId\": \"559c5d924fff3d64de18bf45\"\n        },\n        {\n          \"subCategoryName\": \"Animal Food\",\n          \"subCategoryId\": \"559c5d8f4fff3d64de18bf3d\"\n        },\n        {\n          \"subCategoryName\": \"Animal Health & Grooming\",\n          \"subCategoryId\": \"559c5d90ed25b136f13a05df\"\n        },\n        {\n          \"subCategoryName\": \"Animal Other\",\n          \"subCategoryId\": \"56f2eb66208f9a06158f1748\"\n        }\n      ]\n    },\n    {\n      \"category\": \"Art & Craft\",\n      \"subcategory\": [\n        {\n          \"subCategoryName\": \"Art & Craft\",\n          \"subCategoryId\": \"571fdff7208f9a0cdb760a7f\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58538066-24f4-4300-9855-1ddc8c6843f2",
+          "name": "Walmart Download Exceptions",
+          "request": {
+            "name": "Walmart Download Exceptions",
+            "description": {
+              "content": "You can use this API to get list of the items defined using \"Create Override Exceptions\".",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "downloadexceptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "910f451e-3984-47d7-8894-c2baeecc6839",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "downloadexceptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d12856a7-8f42-4dab-887b-c9d67bca2976",
+          "name": "Walmart Get All Areas",
+          "request": {
+            "name": "Walmart Get All Areas",
+            "description": {
+              "content": "This API provides you the list of states on which you can provide two-day shipping of an item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                "areas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "683e7d0f-614b-4ff0-bacc-2c73615e9058",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    "areas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"payload\": {\n    \"entities\": [\n      {\n        \"states\": [\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"CT1\",\n                \"stateSubregionName\": \"CT_REST_ALL\"\n              },\n              {\n                \"stateSubregionCode\": \"CT2\",\n                \"stateSubregionName\": \"CT_SOUTH_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"PA3\",\n                \"stateSubregionName\": \"PA_NORTH_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"PA1\",\n                \"stateSubregionName\": \"PA_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"PA2\",\n                \"stateSubregionName\": \"PA_CENTRAL_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"PA5\",\n                \"stateSubregionName\": \"PA_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"PA4\",\n                \"stateSubregionName\": \"PA_SOUTH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"MA1\",\n                \"stateSubregionName\": \"MA_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"MA2\",\n                \"stateSubregionName\": \"MA_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"RI\",\n                \"stateSubregionName\": \"RI\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"ME1\",\n                \"stateSubregionName\": \"ME_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"ME2\",\n                \"stateSubregionName\": \"ME_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"NH\",\n                \"stateSubregionName\": \"NH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"NY3\",\n                \"stateSubregionName\": \"NY_NORTH_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"NY5\",\n                \"stateSubregionName\": \"NY_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"NY1\",\n                \"stateSubregionName\": \"NY_BROOKLYN\"\n              },\n              {\n                \"stateSubregionCode\": \"NY2\",\n                \"stateSubregionName\": \"NY_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"NY4\",\n                \"stateSubregionName\": \"NY_NORTH_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"NJ3\",\n                \"stateSubregionName\": \"NJ_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"NJ2\",\n                \"stateSubregionName\": \"NJ_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"NJ4\",\n                \"stateSubregionName\": \"NJ_KEARNY\"\n              },\n              {\n                \"stateSubregionCode\": \"NJ1\",\n                \"stateSubregionName\": \"NJ_CENTRAL\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"VT\",\n                \"stateSubregionName\": \"VT\"\n              }\n            ]\n          }\n        ],\n        \"regionCode\": \"NE\",\n        \"regionName\": \"Northeast\"\n      },\n      {\n        \"states\": [\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"SD2\",\n                \"stateSubregionName\": \"SD_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"SD1\",\n                \"stateSubregionName\": \"SD_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"MN2\",\n                \"stateSubregionName\": \"MN_REST_ALL\"\n              },\n              {\n                \"stateSubregionCode\": \"MN1\",\n                \"stateSubregionName\": \"MN_CENTRAL_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"MO3\",\n                \"stateSubregionName\": \"MO_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"MO1\",\n                \"stateSubregionName\": \"MO_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"MO2\",\n                \"stateSubregionName\": \"MO_SOUTH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"WI2\",\n                \"stateSubregionName\": \"WI_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"WI1\",\n                \"stateSubregionName\": \"WI_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"IL1\",\n                \"stateSubregionName\": \"IL_CHICAGO\"\n              },\n              {\n                \"stateSubregionCode\": \"IL3\",\n                \"stateSubregionName\": \"IL_NORTH_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"IL4\",\n                \"stateSubregionName\": \"IL_SOUTHEAST\"\n              },\n              {\n                \"stateSubregionCode\": \"IL5\",\n                \"stateSubregionName\": \"IL_SOUTHWEST\"\n              },\n              {\n                \"stateSubregionCode\": \"IL2\",\n                \"stateSubregionName\": \"IL_NORTH_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"IN1\",\n                \"stateSubregionName\": \"IN_CENTRAL_AND_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"IN3\",\n                \"stateSubregionName\": \"IN_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"IN2\",\n                \"stateSubregionName\": \"IN_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"IN4\",\n                \"stateSubregionName\": \"IN_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"ND\",\n                \"stateSubregionName\": \"ND\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"NE\",\n                \"stateSubregionName\": \"NE\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"IA1\",\n                \"stateSubregionName\": \"IA_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"IA2\",\n                \"stateSubregionName\": \"IA_REST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"KS1\",\n                \"stateSubregionName\": \"KS_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"KS2\",\n                \"stateSubregionName\": \"KS_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"OH3\",\n                \"stateSubregionName\": \"OH_SOUTH_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"OH1\",\n                \"stateSubregionName\": \"OH_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"OH2\",\n                \"stateSubregionName\": \"OH_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"OH4\",\n                \"stateSubregionName\": \"OH_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"MI2\",\n                \"stateSubregionName\": \"MI_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"MI3\",\n                \"stateSubregionName\": \"MI_SOUTH_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"MI1\",\n                \"stateSubregionName\": \"MI_CENTRAL\"\n              }\n            ]\n          }\n        ],\n        \"regionCode\": \"MW\",\n        \"regionName\": \"Midwest\"\n      },\n      {\n        \"states\": [\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"DE\",\n                \"stateSubregionName\": \"DE\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"TX2\",\n                \"stateSubregionName\": \"TX_CENTRAL_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"TX3\",\n                \"stateSubregionName\": \"TX_CENTRAL_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"TX6\",\n                \"stateSubregionName\": \"TX_NORTH_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"TX7\",\n                \"stateSubregionName\": \"TX_NORTH_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"TX4\",\n                \"stateSubregionName\": \"TX_DALLAS\"\n              },\n              {\n                \"stateSubregionCode\": \"TX5\",\n                \"stateSubregionName\": \"TX_HOUSTON\"\n              },\n              {\n                \"stateSubregionCode\": \"TX1\",\n                \"stateSubregionName\": \"TX_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"TX9\",\n                \"stateSubregionName\": \"TX_SOUTH_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"TX8\",\n                \"stateSubregionName\": \"TX_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"TX10\",\n                \"stateSubregionName\": \"TX_SOUTH_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"FL6\",\n                \"stateSubregionName\": \"FL_SOUTH_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"FL4\",\n                \"stateSubregionName\": \"FL_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"FL3\",\n                \"stateSubregionName\": \"FL_MIAMI\"\n              },\n              {\n                \"stateSubregionCode\": \"FL1\",\n                \"stateSubregionName\": \"FL_CENTRAL_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"FL5\",\n                \"stateSubregionName\": \"FL_SOUTH_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"FL2\",\n                \"stateSubregionName\": \"FL_CENTRAL_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"MS2\",\n                \"stateSubregionName\": \"MS_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"MS1\",\n                \"stateSubregionName\": \"MS_NORTH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"VA4\",\n                \"stateSubregionName\": \"VA_SOUTH_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"VA1\",\n                \"stateSubregionName\": \"VA_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"VA2\",\n                \"stateSubregionName\": \"VA_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"VA3\",\n                \"stateSubregionName\": \"VA_SOUTH_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"AL2\",\n                \"stateSubregionName\": \"AL_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"AL1\",\n                \"stateSubregionName\": \"AL_NORTH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"KY1\",\n                \"stateSubregionName\": \"KY_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"KY2\",\n                \"stateSubregionName\": \"KY_WEST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"SC1\",\n                \"stateSubregionName\": \"SC_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"SC2\",\n                \"stateSubregionName\": \"SC_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"SC3\",\n                \"stateSubregionName\": \"SC_SOUTH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"AR2\",\n                \"stateSubregionName\": \"AR_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"AR1\",\n                \"stateSubregionName\": \"AR_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"NC3\",\n                \"stateSubregionName\": \"NC_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"NC2\",\n                \"stateSubregionName\": \"NC_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"NC4\",\n                \"stateSubregionName\": \"NC_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"NC1\",\n                \"stateSubregionName\": \"NC_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"LA2\",\n                \"stateSubregionName\": \"LA_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"LA1\",\n                \"stateSubregionName\": \"LA_NORTH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"MD1\",\n                \"stateSubregionName\": \"MD_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"MD2\",\n                \"stateSubregionName\": \"MD_REST_ALL\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"TN3\",\n                \"stateSubregionName\": \"TN_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"TN2\",\n                \"stateSubregionName\": \"TN_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"TN1\",\n                \"stateSubregionName\": \"TN_CENTRAL\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"GA5\",\n                \"stateSubregionName\": \"GA_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"GA2\",\n                \"stateSubregionName\": \"GA_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"GA3\",\n                \"stateSubregionName\": \"GA_NORTH_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"GA4\",\n                \"stateSubregionName\": \"GA_NORTH_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"GA1\",\n                \"stateSubregionName\": \"GA_ATLANTA\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"OK2\",\n                \"stateSubregionName\": \"OK_REST_ALL\"\n              },\n              {\n                \"stateSubregionCode\": \"OK1\",\n                \"stateSubregionName\": \"OK_NORTH_EAST\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"DC\",\n                \"stateSubregionName\": \"DC\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"WV2\",\n                \"stateSubregionName\": \"WV_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"WV1\",\n                \"stateSubregionName\": \"WV_EAST\"\n              }\n            ]\n          }\n        ],\n        \"regionCode\": \"SO\",\n        \"regionName\": \"South\"\n      },\n      {\n        \"states\": [\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"WY\",\n                \"stateSubregionName\": \"WY\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"OR2\",\n                \"stateSubregionName\": \"OR_NORTH_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"OR1\",\n                \"stateSubregionName\": \"OR_CENTRAL\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"MT\",\n                \"stateSubregionName\": \"MT\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"NV2\",\n                \"stateSubregionName\": \"NV_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"NV3\",\n                \"stateSubregionName\": \"NV_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"NV1\",\n                \"stateSubregionName\": \"NV_LAS_VEGAS\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"AZ3\",\n                \"stateSubregionName\": \"AZ_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"AZ2\",\n                \"stateSubregionName\": \"AZ_PHOENIX\"\n              },\n              {\n                \"stateSubregionCode\": \"AZ1\",\n                \"stateSubregionName\": \"AZ_NORTH\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"WA\",\n                \"stateSubregionName\": \"WA\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"ID2\",\n                \"stateSubregionName\": \"ID_NORTH_AND_EAST\"\n              },\n              {\n                \"stateSubregionCode\": \"ID1\",\n                \"stateSubregionName\": \"ID_BOISE_AND_NAMPA\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"CO2\",\n                \"stateSubregionName\": \"CO_REST_ALL\"\n              },\n              {\n                \"stateSubregionCode\": \"CO1\",\n                \"stateSubregionName\": \"CO_CENTRAL\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"CA8\",\n                \"stateSubregionName\": \"CA_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"CA10\",\n                \"stateSubregionName\": \"CA_RIVERSIDE_IMPERIAL\\t\"\n              },\n              {\n                \"stateSubregionCode\": \"CA4\",\n                \"stateSubregionName\": \"CA_CENTRAL_WEST\"\n              },\n              {\n                \"stateSubregionCode\": \"CA5\",\n                \"stateSubregionName\": \"CA_LONG_BEACH\"\n              },\n              {\n                \"stateSubregionCode\": \"CA1\",\n                \"stateSubregionName\": \"CA_CENTRAL\"\n              },\n              {\n                \"stateSubregionCode\": \"CA9\",\n                \"stateSubregionName\": \"CA_ONTARIO\"\n              },\n              {\n                \"stateSubregionCode\": \"CA13\",\n                \"stateSubregionName\": \"CA_SAN_DIEGO_COUNTY\"\n              },\n              {\n                \"stateSubregionCode\": \"CA11\",\n                \"stateSubregionName\": \"CA_SAN_BERNARDINO\"\n              },\n              {\n                \"stateSubregionCode\": \"CA15\",\n                \"stateSubregionName\": \"CA_SANTA_ANA\"\n              },\n              {\n                \"stateSubregionCode\": \"CA14\",\n                \"stateSubregionName\": \"CA_SAN_FRANCISCO\"\n              },\n              {\n                \"stateSubregionCode\": \"CA3\",\n                \"stateSubregionName\": \"CA_CENTRAL_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"CA12\",\n                \"stateSubregionName\": \"CA_SAN_DIEGO\"\n              },\n              {\n                \"stateSubregionCode\": \"CA2\",\n                \"stateSubregionName\": \"CA_CENTRAL_NORTH\"\n              },\n              {\n                \"stateSubregionCode\": \"CA7\",\n                \"stateSubregionName\": \"CA_LOS_ANGELES_VENTURA_COUNTY\"\n              },\n              {\n                \"stateSubregionCode\": \"CA6\",\n                \"stateSubregionName\": \"CA_LOS_ANGELES\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"NM2\",\n                \"stateSubregionName\": \"NM_REST_ALL\"\n              },\n              {\n                \"stateSubregionCode\": \"NM1\",\n                \"stateSubregionName\": \"NM_CENTRAL\"\n              }\n            ]\n          },\n          {\n            \"stateSubregions\": [\n              {\n                \"stateSubregionCode\": \"UT2\",\n                \"stateSubregionName\": \"UT_SOUTH\"\n              },\n              {\n                \"stateSubregionCode\": \"UT1\",\n                \"stateSubregionName\": \"UT_NORTH\"\n              }\n            ]\n          }\n        ],\n        \"regionCode\": \"WE\",\n        \"regionName\": \"West\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d88acfeb-4aed-40d9-9931-b01356648e17",
+          "name": "Walmart Delete Rule",
+          "request": {
+            "name": "Walmart Delete Rule",
+            "description": {
+              "content": "This API is used to delete a rule for a specific ruleId and ruleStatus",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "rules",
+                ":ruleId",
+                "status",
+                ":ruleStatus",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleStatus",
+                  "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97117aee-2030-45b6-8d1c-d738a93feb8f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "rules",
+                    ":ruleId",
+                    "status",
+                    ":ruleStatus",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Unique identifier of the rule created for custom rule assortment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleStatus",
+                      "description": "(Required) Status of the rule post the rule creation. Allowed values are Active, Inactive, Submitted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Rule is deleted, ruleId: 327\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fbc839d1-cc56-4291-986e-8ba8089804e6",
+    "name": "Walmart Cost Management Assortment Recommendations Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

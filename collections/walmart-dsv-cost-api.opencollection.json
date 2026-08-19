@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations DSV Cost API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DSV Cost",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Update Cost for Items in Bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/feeds",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/xml"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies details of each entity in the feed.\n\nThe value defaults to `cost`.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/feeds</p>\n\nThis request allows drop ship vendors (DSV) to update cost for items in bulk.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

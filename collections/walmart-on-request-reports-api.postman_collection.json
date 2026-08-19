@@ -1,0 +1,611 @@
+{
+  "item": [
+    {
+      "id": "aac1a759-5bce-49df-b6ad-c42d0b08b03f",
+      "name": "On Request Reports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4913dbe3-b6a6-44b6-a35f-ce3c28a50110",
+          "name": "Walmart Create Report Request",
+          "request": {
+            "name": "Walmart Create Report Request",
+            "description": {
+              "content": "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/reports/reportRequest</p>\n\nThis request creates a new request for a report by specifying the report type and version. \n\nIn the request body, define one or more attributes to include in the report. \nThe attribute must be a valid attribute for the report. \nReference the guide for a list of applicable attributes in each report and definitions.\nSee the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On Request Reports</a> guide for more information. \n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "reportRequests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reportType",
+                  "value": "<string>",
+                  "description": "(Required) Specifies the report type for the request. \n\nFor example, `reportType=INVENTORY_DSV` creates an inventory report.\n\nValid values are: \n\n| Value | Meaning |\n| --- | --- |\n| INVENTORY_DSV | Creates an inventory report |\n| ITEM_CONFIGURATION_DATA | Creates an item configuration data report |\n\nExample(s):<br>\nINVENTORY_DSV<br>\nITEM_CONFIGURATION_DATA\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportVersion",
+                  "value": "<string>",
+                  "description": "(Required) Specifies the version of the created report. \n\nSupported versions for each report type include: \n\n| Report Type | Supported Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA | v1 |\n\nExample(s):<br>\nv1\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "applications/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rowFilters\": [\n    {\n      \"type\": \"<string>\",\n      \"columnName\": \"<string>\",\n      \"from\": \"<string>\",\n      \"to\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"columnName\": \"<string>\",\n      \"from\": \"<string>\",\n      \"to\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"includeColumns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "1ffa2506-6716-4129-bee7-e30c59963bca",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "reportRequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies the data type expected in a response sent from the server.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/json | JSON format for data returned in response. |\n",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "0f3e4dd4-0514-4346-b39d-…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "6474-a253"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rowFilters\": [\n    {\n      \"type\": \"enumFilter\",\n      \"columnName\": \"SUPPLY ITEM STATUS CODE\",\n      \"values\": [\n        \"A\",\n        \"D\"\n      ]\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"4406b7c3-674e-41e4-a18a-5fd6f123479f\",\n  \"requestStatus\": \"RECEIVED\",\n  \"requestSubmissionDate\": \"2023-08-28T13:34:54Z\",\n  \"reportType\": \"INVENTORY_DSV\",\n  \"reportVersion\": \"v1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db2f51d1-7078-40d2-8082-b44e78b80ae1",
+          "name": "Walmart Retrieve All Report Requests",
+          "request": {
+            "name": "Walmart Retrieve All Report Requests",
+            "description": {
+              "content": "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/reports/reportRequests</p>\n\nThis API request fetches a list of all report requests based on search criteria like `reportType`, `reportVersion`, and `requestStatus`.\n\nUse the query parameters to define the search and fetch details of report requests created in the last 30 days only.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "reportRequests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reportType",
+                  "value": "<string>",
+                  "description": "(Required) Specifies the report type for the request. \n\nFor example, `reportType=INVENTORY_DSV` creates an inventory report.\n\nValid values are: \n\n| Value | Meaning |\n| --- | --- |\n| INVENTORY_DSV | Creates an inventory report |\n| ITEM_CONFIGURATION_DATA | Creates an item configuration data report |\n\nExample(s):<br>\nINVENTORY_DSV<br>\nITEM_CONFIGURATION_DATA \n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportVersion",
+                  "value": "<string>",
+                  "description": "Specifies the version of the created report. \n\nSupported versions for each report type include:\n\n| Report Type | Supported Version |\n| --- | --- |\n| INVENTORY_DSV | v1 |\n| ITEM_CONFIGURATION_DATA | v1 |\n\nExample(s):<br>\nv1\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestStatus",
+                  "value": "<string>",
+                  "description": "Specifies the status of the report request. \n\nValid values include:\n\n| Value | Description |\n| --- | --- |\n| RECEIVED | Report request has been received |\n| INPROGRESS | Report request is in progress |\n| READY | Report request is ready |\n| ERROR | Report request is in an error state |\n\nExample(s):<br>\nRECEIVED\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestSubmissionStartDate",
+                  "value": "<string>",
+                  "description": "Specifies the report submittal start date-timestamp for the range of reports request, in ISO 8601 format.\n\nExample(s):<br>\n2023-08-28T13:34:54Z\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestSubmissionEndDate",
+                  "value": "<string>",
+                  "description": "Specifies the report submittal end date-timestamp for the range of reports request, in ISO 8601 format.\n\nExample(s):<br>\n2023-08-28T15:43:54Z\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06971c49-ff94-4b5b-925a-3aa2246378e8",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "reportRequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestSubmissionStartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestSubmissionEndDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies the data type expected in a response sent from the server.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/json | JSON format for data returned in response. |\n",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "0f3e4dd4-0514-4346-b39d-…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "6474-a253"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": 1,\n  \"totalCount\": 19,\n  \"limit\": 10,\n  \"nextCursor\": \"reportType=INVENTORY_DSV&page=2&limit=10\",\n  \"requests\": [\n    {\n      \"requestId\": \"4406b7c3-674e-41e4-a18a-5fd6f123479f\",\n      \"requestStatus\": \"RECEIVED\",\n      \"requestSubmissionDate\": \"2023-08-28T13:34:54Z\",\n      \"reportType\": \"INVENTORY_DSV\",\n      \"reportVersion\": \"“v1”\",\n      \"reportSummary\": \"reportSummary\",\n      \"reportGenerationDate\": \"2023-08-28T13:41:35Z\"\n    },\n    {\n      \"requestId\": \"4406b7c3-674e-41e4-a18a-5fd6f123479f\",\n      \"requestStatus\": \"RECEIVED\",\n      \"requestSubmissionDate\": \"2023-08-28T13:34:54Z\",\n      \"reportType\": \"INVENTORY_DSV\",\n      \"reportVersion\": \"“v1”\",\n      \"reportSummary\": \"reportSummary\",\n      \"reportGenerationDate\": \"2023-08-28T13:41:35Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc6640dd-83f2-4ed9-987c-c89c79a5b44f",
+          "name": "Walmart Retrieve Details on Single Report",
+          "request": {
+            "name": "Walmart Retrieve Details on Single Report",
+            "description": {
+              "content": "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/reports/reportRequests/{requestId}</p>\n\nThis request fetches the status and other details of a single report request, as queried by the `requestId` path parameter.\n\nFetch details of a report request created in the last 30 days only.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "reportRequests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "requestId",
+                  "description": "(Required) Specifies the system-generated identifier associated with the report request.\n\nExample(s):<br>\n4406b7c3-674e-41e4-a18a-5fd6f123479f\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9e89eea-f4e6-4bc5-967c-ed654c1eacf5",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "reportRequests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "requestId",
+                      "description": "(Required) Specifies the system-generated identifier associated with the report request.\n\nExample(s):<br>\n4406b7c3-674e-41e4-a18a-5fd6f123479f\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies the data type expected in a response sent from the server.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/json | JSON format for data returned in response. |\n",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "0f3e4dd4-0514-4346-b39d-…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "6474-a253"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"4406b7c3-674e-41e4-a18a-5fd6f123479f\",\n  \"requestStatus\": \"RECEIVED\",\n  \"requestSubmissionDate\": \"2023-08-28T13:34:54Z\",\n  \"reportType\": \"INVENTORY_DSV\",\n  \"reportVersion\": \"v1\",\n  \"reportSummary\": \"reportSummary\",\n  \"reportGenerationDate\": \"2023-08-28T13:41:35Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aec6e99b-79bd-43e7-8dc9-2c5e280d22e8",
+          "name": "Walmart Download Report Url",
+          "request": {
+            "name": "Walmart Download Report Url",
+            "description": {
+              "content": "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/reports/downloadReport</p>\n\nThis request fetches the URL to download the generated report.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reports",
+                "downloadReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "requestId",
+                  "value": "<uuid>",
+                  "description": "(Required) Specifies the system-generated identifier associated with the report request.\n\nExample(s):<br>\n4406b7c3-674e-41e4-a18a-5fd6f123479f\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c77e361-b148-4885-9bf0-286163d83c31",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reports",
+                    "downloadReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies the data type expected in a response sent from the server.\n\nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| application/json | JSON format for data returned in response. |\n",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies an identifier that tracks the consumer request by channel.\n\nUse the consumer channel type received during onboarding.\n\nSee the system administrator or developer management for the `WM_CONSUMER.CHANNEL.TYPE` value.\n",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "0f3e4dd4-0514-4346-b39d-…"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies an identifier for each API call and is used to track and debug issues.\n\n This may be any value, but cannot be null or omitted. \n",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "6474-a253"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the access token retrieved in the <a href=\"https://developer.walmart.com/api/us/supplier/auth#operation/dsvTokenAPI\">Create Access Token</a> request.\n\nThis value is required for token-based authentication.\n",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"16cfe1dd-8a28-4da7-1239-141a41f12bc1\",\n  \"requestStatus\": \"RECEIVED\",\n  \"requestSubmissionDate\": \"2023-08-29T06:58:28Z\",\n  \"reportType\": \"INVENTORY_DSV\",\n  \"reportVersion\": \"v1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4bb9c360-ce89-4a96-a51e-789feb2b88bb",
+    "name": "Walmart Cost Management Assortment Recommendations On Request Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

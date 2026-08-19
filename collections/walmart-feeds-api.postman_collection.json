@@ -1,0 +1,581 @@
+{
+  "item": [
+    {
+      "id": "36815751-8623-4af0-8112-c466c08a5296",
+      "name": "Feeds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ff1456d-d9d8-417c-8e2a-7612b8868844",
+          "name": "Walmart All Feed Statuses",
+          "request": {
+            "name": "Walmart All Feed Statuses",
+            "description": {
+              "content": "Returns the feed statuses for all the specified Feed IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "feeds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "feedId",
+                  "value": "<string>",
+                  "description": "A unique ID returned from the Bulk Upload API, used for tracking the Feed File. Special characters must be escaped. (e.g., feedId: '...3456@789...' must be entered in the URL as '...3456%40789)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "The number of entities to be returned. It cannot be more than 50 entities. Use it only when the includeDetails is set to true."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4ece218-291d-476f-9847-650e44f05ad3",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalResults\": 115,\n  \"offset\": 0,\n  \"limit\": 50,\n  \"results\": {\n    \"feed\": [\n      {\n        \"feedId\": \"882DAFBDCAA0480786D1E0435FBC86D7@AU8BAgA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568148230011,\n        \"modifiedDtm\": 1568148252067,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"9398AC344EC44070A5B336D1E6D4EF27@AQYBAgA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 0,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"ERROR\",\n        \"feedDate\": 1568138099492,\n        \"modifiedDtm\": 1568138099615,\n        \"fileName\": \"Affiliate Template v2.xlsx\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"BBC958324F0B448B91C427896DB3F51C@AVQBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"LAGTIME\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568049322924,\n        \"modifiedDtm\": 1568049331055,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"A1BB0371E89A4C6E805C5E03CD47455E@AVUBAQA\",\n        \"feedType\": \"PROMO_PRICE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568049265518,\n        \"modifiedDtm\": 1568052865739,\n        \"fileName\": \"A1BB0371E89A4C6E805C5E03CD47455E@AVUBAQA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 1,\n        \"itemTimeoutErrorCount\": 0,\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"211AE1C722C04422ADB87796FDCC4F57@AVMBAQA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568049233627,\n        \"modifiedDtm\": 1568148907027,\n        \"fileName\": \"211AE1C722C04422ADB87796FDCC4F57@AVMBAQA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"9A4EF01BA2114E70BFD0D6D12AAFEC15@AUoBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 2,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048973739,\n        \"modifiedDtm\": 1568049048863,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"8A50A5EE57F14E45B667C47992A3E0BD@AUoBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 2,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048965096,\n        \"modifiedDtm\": 1568049038080,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"ECA4070459B3493BB71BAE2749A6FB25@AU8BAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048856557,\n        \"modifiedDtm\": 1568048858586,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"8FE721DDBA9A4C3BA50E30E8DFDDF72B@AU8BAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048838447,\n        \"modifiedDtm\": 1568048840545,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"927689CBBEC74727BE96CDB6D0ACA77F@AUoBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048798609,\n        \"modifiedDtm\": 1568048818860,\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"F1A8232ECD414FE690E1F63982DAA19B@AVUBAQA\",\n        \"feedType\": \"PROMO_PRICE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048737206,\n        \"modifiedDtm\": 1568052337222,\n        \"fileName\": \"F1A8232ECD414FE690E1F63982DAA19B@AVUBAQA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 1,\n        \"itemTimeoutErrorCount\": 0,\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"D18E9A6E8611453E8B1C52EC2A303A75@AVMBAQA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048728005,\n        \"modifiedDtm\": 1568148913049,\n        \"fileName\": \"D18E9A6E8611453E8B1C52EC2A303A75@AVMBAQA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"7B587DAA557D4B5EBC502C8C02536D04@AVQBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"LAGTIME\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048628690,\n        \"modifiedDtm\": 1568048630058,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"58AF37E3E8A64F51A76CF9B360FC1A57@AVUBAgA\",\n        \"feedType\": \"PROMO_PRICE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048626676,\n        \"modifiedDtm\": 1568148916057,\n        \"fileName\": \"58AF37E3E8A64F51A76CF9B360FC1A57@AVUBAgA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 1,\n        \"itemTimeoutErrorCount\": 0,\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"4C08F5647ED84005A00030533D80930A@AVMBAgA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048625465,\n        \"modifiedDtm\": 1568148913051,\n        \"fileName\": \"4C08F5647ED84005A00030533D80930A@AVMBAgA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"10BB24BF387349A8A2BE0CF1502860B6@AU8BAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048622893,\n        \"modifiedDtm\": 1568048625392,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"9DAADC7B08684AF0A47928050FA7E2C6@AU8BAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048622426,\n        \"modifiedDtm\": 1568048625444,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"3A91E87A225244698047A47B3ED6FBBA@AUoBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568048620169,\n        \"modifiedDtm\": 1568048622815,\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"BC2F04E6B4AE4BD7AF6EF40D39BFB079@AQsBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568010439051,\n        \"modifiedDtm\": 1568010462577,\n        \"fileName\": \"Inventory (1) (1).xlsx\",\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"BF48EBC404E54A79B7ACE3035545701C@AQsBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1568008442377,\n        \"modifiedDtm\": 1568008450851,\n        \"fileName\": \"Inventory (1) (1).xlsx\",\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"B5B2FBFC67D34E7CB3E0F16FB378D50C@AQQBAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567812473064,\n        \"modifiedDtm\": 1567812477183,\n        \"fileName\": \"Test Feed Filled.xlsm\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"E55622058FFD4955A6B8EBC1E39CB132@AQQBAgA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567811755762,\n        \"modifiedDtm\": 1567811851669,\n        \"fileName\": \"Test Feed Filled.xlsm\",\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"29EB78E584084E3880FCA09CFF1BB636@AVQBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"LAGTIME\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567809120555,\n        \"modifiedDtm\": 1567809126695,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"48935E83B3D94948B3E23AECA09E144E@AU8BAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567808833366,\n        \"modifiedDtm\": 1567808835533,\n        \"fileName\": \"48935E83B3D94948B3E23AECA09E144E@AU8BAQA.json\",\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"384E9A0939C244B18CCD273BD21DDD3A@ARUBAgA\",\n        \"feedType\": \"CPT_SELLER_ELIGIBILITY\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 0,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"ERROR\",\n        \"feedDate\": 1567808525522,\n        \"modifiedDtm\": 1567808525661,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"E218B5E366084583A31262FF77794C93@AVMBAQA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567808418962,\n        \"modifiedDtm\": 1567812019011,\n        \"fileName\": \"E218B5E366084583A31262FF77794C93@AVMBAQA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"9B49E9A5740A49B58A9488CD9A87E60C@AVMBAQA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567808409685,\n        \"modifiedDtm\": 1567812009807,\n        \"fileName\": \"9B49E9A5740A49B58A9488CD9A87E60C@AVMBAQA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"F97B16172439448AB4219CF068802E31@AU8BAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567808288834,\n        \"modifiedDtm\": 1567808291795,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"E6990BEF62324C248CB0BA025E5FF7AB@AU8BAgA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567808280306,\n        \"modifiedDtm\": 1567808286814,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"04C137945DF844AFB439D7988C51495E@AUoBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 2,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567807052264,\n        \"modifiedDtm\": 1567807071997,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"36EF1EF88DF248B89C8AC7B6227D82DE@AUoBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567806830615,\n        \"modifiedDtm\": 1567806839395,\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"468B2B0B8E3A40DA8C8DAFCDD2441F00@AVUBAgA\",\n        \"feedType\": \"PROMO_PRICE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567715708242,\n        \"modifiedDtm\": 1567719308294,\n        \"fileName\": \"468B2B0B8E3A40DA8C8DAFCDD2441F00@AVUBAgA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 1,\n        \"itemTimeoutErrorCount\": 0,\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"59C269E2619D41C98457C97147859B14@AVUBAgA\",\n        \"feedType\": \"PROMO_PRICE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567712831420,\n        \"modifiedDtm\": 1567716431920,\n        \"fileName\": \"59C269E2619D41C98457C97147859B14@AVUBAgA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 1,\n        \"itemTimeoutErrorCount\": 0,\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"D18F108D10154C5FAB2D369FBE0770D1@AQQBAgA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 76,\n        \"itemsSucceeded\": 68,\n        \"itemsFailed\": 8,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567702357366,\n        \"modifiedDtm\": 1567708261313,\n        \"fileName\": \"Footwear.xlsm\",\n        \"itemDataErrorCount\": 6,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"691C6232562A47FCA0EB6E8F4DDDD506@AQQBAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567635469690,\n        \"modifiedDtm\": 1567635473279,\n        \"fileName\": \"Test Feed Filled Big Mouth.xlsm\",\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"5E881260A71E437E880D74F768DAB8C0@AQQBAgA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567635389082,\n        \"modifiedDtm\": 1567635391095,\n        \"fileName\": \"Test Feed Filled Big Mouth.xlsm\",\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"F9538116CBA74E91AF61DC89D50A1843@AQsBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567633333887,\n        \"modifiedDtm\": 1567633340744,\n        \"fileName\": \"Inventory-v2 (1).xlsx\",\n        \"shipNode\": \"85568170767413249\",\n        \"itemDataErrorCount\": 2,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"C98454542A1B40D1BBAE77DA7CED415F@AQsBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567633318924,\n        \"modifiedDtm\": 1567633319024,\n        \"fileName\": \"Inventory-v2 (1).xlsx\",\n        \"itemDataErrorCount\": 2,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"769C0955611244458A3A75D9AAE611F8@AQQBAgA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567633212681,\n        \"modifiedDtm\": 1567633218555,\n        \"fileName\": \"Test Feed Filled.xlsm\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"49A887488EC742F0994CDAA574617989@AVMBAgA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567533989692,\n        \"modifiedDtm\": 1567596489609,\n        \"fileName\": \"49A887488EC742F0994CDAA574617989@AVMBAgA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"DD5D20C056A84A2B98B53FD5BA9E79BB@AUoBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567532943766,\n        \"modifiedDtm\": 1567532985442,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"319D99309FD44729BA40423125AA9C4D@AUoBAQA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"inventory\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567532861649,\n        \"modifiedDtm\": 1567532868091,\n        \"itemDataErrorCount\": 1,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"1726CB4CDF5E4ED189FE72695CC5F8E5@AVQBAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"LAGTIME\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 0,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"RECEIVED\",\n        \"feedDate\": 1567532826470,\n        \"modifiedDtm\": 1567532826470,\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"4BA234E85334413C935D1CB401A68991@AVMBAgA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567532654796,\n        \"modifiedDtm\": 1568148913049,\n        \"fileName\": \"4BA234E85334413C935D1CB401A68991@AVMBAgA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"D84C4C7B977148999EED67F7896FDD3A@AVMBAgA\",\n        \"feedType\": \"MP_ITEM_PRICE_UPDATE\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567530282583,\n        \"modifiedDtm\": 1567592415533,\n        \"fileName\": \"D84C4C7B977148999EED67F7896FDD3A@AVMBAgA.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 2,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"A5F9DFF593F14C3CB87477B061C82909@AU8BAgA\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567530132228,\n        \"modifiedDtm\": 1567548132545,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 1,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"74B39338089E4F849A1CA3B413B47D9A@AU8BAQA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 1,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567529868700,\n        \"modifiedDtm\": 1567529874038,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"0960B3B82687490FA5E51CB0801478A4@AU8BAgA\",\n        \"feedSource\": \"MARKETPLACE_PARTNER\",\n        \"feedType\": \"item\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 1,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 1,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567529748547,\n        \"modifiedDtm\": 1567529752228,\n        \"fileName\": \"item.json\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 1,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"0f3e4dd4-0514-4346-b39d-af0e00ea066d\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"052792C367124285AA0D9937B589C41B@AR4BAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"LAGTIME\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 2,\n        \"itemsFailed\": 0,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567001976221,\n        \"modifiedDtm\": 1567001980596,\n        \"fileName\": \"new-lagtime-update.xlsx\",\n        \"itemDataErrorCount\": 0,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      },\n      {\n        \"feedId\": \"107BEBD418A045CDAAD7126C6C652468@AR4BAgA\",\n        \"feedSource\": \"SELLER\",\n        \"feedType\": \"LAGTIME\",\n        \"partnerId\": \"100009\",\n        \"itemsReceived\": 2,\n        \"itemsSucceeded\": 0,\n        \"itemsFailed\": 2,\n        \"itemsProcessing\": 0,\n        \"feedStatus\": \"PROCESSED\",\n        \"feedDate\": 1567001846041,\n        \"modifiedDtm\": 1567001852002,\n        \"fileName\": \"new-lagtime-update.xlsx\",\n        \"itemDataErrorCount\": 2,\n        \"itemSystemErrorCount\": 0,\n        \"itemTimeoutErrorCount\": 0,\n        \"channelType\": \"57c99571-b460-43e2-bcd6-7d12f3ddd5a9\",\n        \"orgId\": \"f5e3d40a-1267-46b9-a2f3-7811e4c0b2de\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f98f304c-e297-4813-ae43-baed4909ea96",
+          "name": "Walmart Feed Item Status",
+          "request": {
+            "name": "Walmart Feed Item Status",
+            "description": {
+              "content": "Returns the feed and item status for a specified Feed ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "feeds",
+                ":feedId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDetails",
+                  "value": "false",
+                  "description": "Includes details of each entity in the feed."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "The number of entities to be returned. It cannot be more than 50 entities. Use it only when the includeDetails is set to true."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedId",
+                  "description": "(Required) A unique ID returned from the Bulk Upload API, used for tracking the Feed File. Special characters must be escaped. (e.g., feedId: '...3456@789...' must be entered in the URL as '...3456%40789)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0ae9a57-7fe8-4f6e-a0b4-6ff2f1f4b3ec",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds",
+                    ":feedId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDetails",
+                      "value": "false"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedId",
+                      "description": "(Required) A unique ID returned from the Bulk Upload API, used for tracking the Feed File. Special characters must be escaped. (e.g., feedId: '...3456@789...' must be entered in the URL as '...3456%40789)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"F129C19240844B97A3C6AD8F1A2C4997@AU8BAQA\",\n  \"feedStatus\": \"PROCESSED\",\n  \"feedSubmissionDate\": 1568310803059,\n  \"itemsReceived\": 1,\n  \"itemsSucceeded\": 1,\n  \"itemsFailed\": 0,\n  \"itemsProcessing\": 0,\n  \"offset\": 0,\n  \"limit\": 20,\n  \"itemDetails\": {\n    \"itemIngestionStatus\": [\n      {\n        \"martId\": 0,\n        \"sku\": \"0960B3B82687490FA5E51CB0801478A4@AU8BAgA\",\n        \"wpid\": \"71ZLHHMKNS6G\",\n        \"index\": 0,\n        \"itemid\": \"51681142\",\n        \"productIdentifiers\": {\n          \"productIdentifier\": [\n            {\n              \"productIdType\": \"GTIN\",\n              \"productId\": 363824587165\n            },\n            {\n              \"productIdType\": \"UPC\",\n              \"productId\": \"363824587165\"\n            }\n          ]\n        },\n        \"ingestionStatus\": \"SUCCESS\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "308a0b8a-32e1-4aba-8f90-74b7a94914b0",
+          "name": "Walmart Get Feed Error Report",
+          "request": {
+            "name": "Walmart Get Feed Error Report",
+            "description": {
+              "content": "Get Feed Error Report API allows you to download a detailed error report for a submitted feed. \n\nCurrently the API supports error report download for the following feeds: \n*   FITMENT_ACES \n*   FITMENT_PIES \n\n This API returns a zipped .csv file, which contains line item level detailed error messages. For details and a sample, please refer to the guide section link below. \n \n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "feeds",
+                ":feedId",
+                "errorReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "feedType",
+                  "value": "<string>",
+                  "description": "(Required) Feed type for which Error Report needs to be downloaded"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedId",
+                  "description": "(Required) Feed Id of the feed"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0349bbd7-e68e-4509-a0e2-52359e5c1016",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds",
+                    ":feedId",
+                    "errorReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedId",
+                      "description": "(Required) Feed Id of the feed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e3b8b9f2-7789-4a89-9c5a-6f335bf5870d",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds",
+                    ":feedId",
+                    "errorReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedId",
+                      "description": "(Required) Feed Id of the feed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2f02f059-e827-4faf-8055-c5f056859c48",
+    "name": "Walmart Cost Management Assortment Recommendations Feeds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

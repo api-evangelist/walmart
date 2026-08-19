@@ -1,0 +1,905 @@
+{
+  "item": [
+    {
+      "id": "47cb47b6-dc66-4caf-940b-29320b96f11c",
+      "name": "Notifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2c55c353-386c-4ee5-ba75-ac527ed62193",
+          "name": "Walmart Test Notification",
+          "request": {
+            "name": "Walmart Test Notification",
+            "description": {
+              "content": "This API can be used to send a test notification to the destination URL with the sample payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "webhooks",
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"<string>\",\n  \"eventUrl\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"resourceName\": \"<string>\",\n  \"authDetails\": {\n    \"authMethod\": \"<string>\",\n    \"userName\": \"<string>\",\n    \"password\": \"<string>\",\n    \"authHeaderName\": \"<string>\",\n    \"authUrl\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"clientId\": \"<string>\"\n  },\n  \"headers\": {\n    \"content-type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "71421321-a9ef-4537-91b1-9db6c924e5fe",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "webhooks",
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventType\": \"OFFER_UNPUBLISHED\",\n  \"eventVersion\": \"V1\",\n  \"resourceName\": \"ITEM\",\n  \"eventUrl\": \"https://example.com/events\",\n  \"authDetails\": {\n    \"authMethod\": \"BASIC_AUTH\",\n    \"userName\": \"abc\",\n    \"password\": \"test\",\n    \"authHeaderName\": \"Authorization\"\n  },\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Eventurl successfully validated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5c4bbd0-29b3-4107-8045-7f10beb904d0",
+          "name": "Walmart All Subscriptions",
+          "request": {
+            "name": "Walmart All Subscriptions",
+            "description": {
+              "content": "This API is used to retrieve the details of all subscriptions created using \"create subscription\" API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "webhooks",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "subscriptionId",
+                  "value": "<string>",
+                  "description": "Use this to get details of a specific subscription"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>",
+                  "description": "Use this to get list of all subscriptions for a specific event type. Refer to Events section for list of available eventType."
+                },
+                {
+                  "disabled": false,
+                  "key": "resourceName",
+                  "value": "<string>",
+                  "description": "Use this to get list of all subscriptions for a specific resource. Refer to Events section for list of available resourceName."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Use this to get list of all subscriptions in ACTIVE or INACTIVE status"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b45b33aa-484b-4aea-849d-f822f72c39e6",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "webhooks",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "subscriptionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resourceName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"eventType\": \"OFFER_UNPUBLISHED\",\n      \"subscriptionId\": \"243ba4d0-b322-11ea-b385-0127e9b85538\",\n      \"partnerId\": \"10000000359\",\n      \"eventVersion\": \"V1\",\n      \"resourceName\": \"ITEM\",\n      \"eventUrl\": \"https://example.com/events\",\n      \"headers\": {\n        \"content-type\": \"application/json\"\n      },\n      \"authDetails\": {\n        \"authHeaderName\": \"Authorization\",\n        \"authMethod\": \"BASIC_AUTH\",\n        \"userName\": \"abc\",\n        \"password\": \"test\"\n      },\n      \"status\": \"INACTIVE\"\n    },\n    {\n      \"eventType\": \"PO_CREATED\",\n      \"subscriptionId\": \"343ba4d0-b322-11ea-b385-0127e9b85538\",\n      \"partnerId\": \"10000000359\",\n      \"eventVersion\": \"V1\",\n      \"resourceName\": \"ORDER\",\n      \"eventUrl\": \"https://example.com/orders\",\n      \"headers\": {\n        \"content-type\": \"application/json\"\n      },\n      \"authDetails\": {\n        \"authHeaderName\": \"Authorization\",\n        \"authMethod\": \"BASIC_AUTH\",\n        \"userName\": \"abc\",\n        \"password\": \"test\"\n      },\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2e39d9c-92e7-4b68-b473-7005ae8925e7",
+          "name": "Walmart Create Subscription",
+          "request": {
+            "name": "Walmart Create Subscription",
+            "description": {
+              "content": "This API is used to create subscription for notification of an event by selecting an event type, event version, resource name, and providing event URL. One or more than one events can be subscribed for notifications in one subscription request.\n\nUse Get Event Types API to get the list of event type, event version and resource name available for subscribing.\n\nConfigure an event URL to receive the notifications.\n\nURL Authentication Options\nIf authMethod is BASIC_AUTH, while making notification request to endpointUrl, Walmart system will pass authentication header with key as authHeaderName and value as BASE64 encoding of userName and password.\nIf authMethod is HMAC, while making notification request to endpointUrl, Walmart system will pass authentication header with key as authHeaderName and value as HMACSHA256 of complete response, using clientSecret as key.\nIf authMethod is OAUTH, Walmart system will make POST call to authUrl to generate token with request body as \"grant_type=client_credentials\" and headers as :\nAuthorization header with key as authHeaderName and value as BASE64 encoding of clientId and clientSecret\n\"Accept\" :\"application/json; charset=UTF-8\"\n\"Content-type\":\"application/x-www-form-urlencoded; charset=ISO-8859-1\"\nCustom headers provided in headers field , if provided\nauthURL should return HTTPS status 200 and response should have access_token and expires_in field. While making notification request to endpointUrl, Walmart system will pass access_token in headers with authHeaderName as key and value as Bearer <access_token> along with any other custom headers provided in headers field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "webhooks",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"eventType\": \"<string>\",\n      \"eventUrl\": \"<string>\",\n      \"eventVersion\": \"<string>\",\n      \"resourceName\": \"<string>\",\n      \"status\": \"<string>\",\n      \"authDetails\": {\n        \"authMethod\": \"<string>\",\n        \"userName\": \"<string>\",\n        \"password\": \"<string>\",\n        \"authHeaderName\": \"<string>\",\n        \"authUrl\": \"<string>\",\n        \"clientSecret\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"headers\": {\n        \"content-type\": \"<string>\"\n      }\n    },\n    {\n      \"eventType\": \"<string>\",\n      \"eventUrl\": \"<string>\",\n      \"eventVersion\": \"<string>\",\n      \"resourceName\": \"<string>\",\n      \"status\": \"<string>\",\n      \"authDetails\": {\n        \"authMethod\": \"<string>\",\n        \"userName\": \"<string>\",\n        \"password\": \"<string>\",\n        \"authHeaderName\": \"<string>\",\n        \"authUrl\": \"<string>\",\n        \"clientSecret\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"headers\": {\n        \"content-type\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea49f0b6-5584-4b37-a843-d46810238439",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "webhooks",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"eventType\": \"OFFER_UNPUBLISHED\",\n      \"eventVersion\": \"V1\",\n      \"resourceName\": \"ITEM\",\n      \"eventUrl\": \"https://example.com/events\",\n      \"status\": \"ACTIVE\"\n    },\n    {\n      \"eventType\": \"PO_CREATED\",\n      \"eventVersion\": \"V1\",\n      \"resourceName\": \"ORDER\",\n      \"eventUrl\": \"https://example.com/orders\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"eventType\": \"OFFER_UNPUBLISHED\",\n      \"subscriptionId\": \"620b45a0-b321-11ea-ac13-1f88d6025b7d\",\n      \"partnerId\": \"12300000359\",\n      \"eventVersion\": \"V1\",\n      \"resourceName\": \"ITEM\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c916f5d-ad5b-4ec0-9031-670fa3cc6eec",
+          "name": "Walmart Delete Subscription",
+          "request": {
+            "name": "Walmart Delete Subscription",
+            "description": {
+              "content": "This API is used to delete the subscription. Once deleted, the subscription cannot be retrieved.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "webhooks",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) Unique ID for the subscription"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86d638fd-7ff5-479d-bccd-a38aa60ad1bd",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "webhooks",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique ID for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subscriptionId\": \"subscriptionId\",\n  \"message\": \"Successfully deleted subscription\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "825468dc-cd20-46a0-b1c6-503c7f3897d4",
+          "name": "Walmart Update Subscription",
+          "request": {
+            "name": "Walmart Update Subscription",
+            "description": {
+              "content": "This API is used to update the details of subscriptions. You can update event version, event URL, headers, authentication details of a subscription using this API. You can also disable/enable the subscription by changing the status from ACTIVE to INACTIVE or vice versa .",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "webhooks",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) Unique ID for the subscription"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"resourceName\": \"<string>\",\n  \"eventUrl\": \"<string>\",\n  \"authDetails\": {\n    \"authMethod\": \"<string>\",\n    \"userName\": \"<string>\",\n    \"password\": \"<string>\",\n    \"authHeaderName\": \"<string>\",\n    \"authUrl\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"clientId\": \"<string>\"\n  },\n  \"headers\": {\n    \"content-type\": \"<string>\"\n  },\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "36610418-668c-49e5-a49c-82d2dfd80bf9",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "webhooks",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) Unique ID for the subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventUrl\": \"https://example.com/events\",\n  \"authDetails\": {\n    \"authMethod\": \"BASIC_AUTH\",\n    \"userName\": \"abc\",\n    \"password\": \"test\",\n    \"authHeaderName\": \"Authorization\"\n  },\n  \"status\": \"ACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"eventType\": \"OFFER_UNPUBLISHED\",\n  \"subscriptionId\": \"243ba4d0-b322-11ea-b385-0127e9b85538\",\n  \"partnerId\": \"12300000359\",\n  \"eventVersion\": \"V1\",\n  \"resourceName\": \"ITEM\",\n  \"eventUrl\": \"https://example.com/events\",\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  },\n  \"authDetails\": {\n    \"authHeaderName\": \"Authorization\",\n    \"authMethod\": \"BASIC_AUTH\",\n    \"userName\": \"abc\",\n    \"password\": \"test\"\n  },\n  \"status\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c7b8f1f-4264-4879-9f14-108b013ea120",
+          "name": "Walmart Event Types",
+          "request": {
+            "name": "Walmart Event Types",
+            "description": {
+              "content": "This API provides the list of event types and resource names that you can subscribe to. Notifications will be triggered only for the event types that you subscribe to using Create Subscription API .\n\nEvent Types are workflow events that are triggered when status or conditions change. Some examples are an offer moving from published to unpublished status, an order getting auto-cancelled by Walmart, a buy box price/winner change, etc.\n\nResource Names are functional API categories that group similar event types. Resource Names can be Item, Price, Orders, Inventory, etc. The permissions to subscribe to an Event Type is defined by Resource Name which is mapped to permissions in Delegated Access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "webhooks",
+                "eventTypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f13428c6-ada3-493c-a156-9cdd0ff93b7f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "webhooks",
+                    "eventTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"resourceName\": \"ITEM\",\n      \"eventType\": \"OFFER_UNPUBLISHED\",\n      \"eventVersion\": \"V1\",\n      \"description\": \"Notification for unpublished offers\"\n    },\n    {\n      \"resourceName\": \"PRICE\",\n      \"eventType\": \"BUY_BOX_CHANGED\",\n      \"eventVersion\": \"V1\",\n      \"description\": \"Notification for change in buy box\"\n    },\n    {\n      \"resourceName\": \"ORDER\",\n      \"eventType\": \"PO_CREATED\",\n      \"eventVersion\": \"V1\",\n      \"description\": \"Notification for new purchase order created\"\n    },\n    {\n      \"resourceName\": \"ORDER\",\n      \"eventType\": \"PO_LINE_AUTOCANCELLED\",\n      \"eventVersion\": \"V1\",\n      \"description\": \"Notification for purchase order line auto-cancelled\"\n    },\n    {\n      \"resourceName\": \"REPORTS\",\n      \"eventType\": \"REPORT_STATUS\",\n      \"eventVersion\": \"V1\",\n      \"description\": \"Notification for report status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c1c95254-f044-4999-bfc4-3acf717c7a36",
+    "name": "Walmart Cost Management Assortment Recommendations Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

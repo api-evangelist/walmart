@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Returns/Refunds API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Returns/Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Issue Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/returns/:returnOrderId/refund",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "returnOrderId",
+                "value": "",
+                "type": "path",
+                "description": "The return order ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API allows sellers to issue refund against a return order. Multiple return order lines can be refunded in one request.\n\nNote: Sellers can use the Refund Order Lines API for all non-exception category items, including adjustments that seller needs to determine a partial refund amount. Especially for exception category items: HAZMAT, OTHER and FREIGHT that are not eligible for the Marketplace Returns Program. "
+        },
+        {
+          "info": {
+            "name": "Walmart Return Item Overrides",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/feeds",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedType",
+                "value": "",
+                "type": "query",
+                "description": "Feed Type"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Sellers can specify global settings for returns in Seller Center, and they can override individual item level settings using this API.\n\nEmpty values for the settings will remove the existing overriden values and revert them to global settings.\n\nFor more details, see the announcement for [Bulk Return Rules](https://sellerhelp.walmart.com/s/guide?article=000008197)."
+        },
+        {
+          "info": {
+            "name": "Walmart Returns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/returns",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "returnOrderId",
+                "value": "",
+                "type": "query",
+                "description": "Return order identifier of the return order object as part of array. This is the same as RMA number."
+              },
+              {
+                "name": "customerOrderId",
+                "value": "",
+                "type": "query",
+                "description": "A unique ID associated with the sales order for specified customer"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status may be specified to query the returns with specific status.Valid statuses are: INITIATED, DELIVERED, COMPLETED"
+              },
+              {
+                "name": "replacementInfo",
+                "value": "",
+                "type": "query",
+                "description": "Provides additional attributes - replacementCustomerOrderID, returnType, rechargeReason, returnCancellationReason - related to Replacement return order, in response, if available. Allowed values are true or false."
+              },
+              {
+                "name": "returnType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies if the return order is a replacement return or a regular (refund) return. Possible values are REPLACEMENT or REFUND."
+              },
+              {
+                "name": "returnCreationStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Start Date for querying all return orders that were created after that date. Use one of the following formats, based on UTC, ISO 8601. Date example: '2013-08-16' Timestamp example: '2013-08-16T10:30:15Z'"
+              },
+              {
+                "name": "returnCreationEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits the query to the return orders that were created before this returnCreationEndDate. Use one of the following formats, based on ISO 8601, are allowed: UTC date or timestamp. Examples: '2016-08-16T10:30:30.155Z' or '2016-08-16'"
+              },
+              {
+                "name": "returnLastModifiedStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Start Date for querying all return orders that were modified after that date. Use one of the following formats, based on UTC, ISO 8601. Date example: '2013-08-16' Timestamp example: '2013-08-16T10:30:15Z'.In case of dates with timezone, use format '2020-04-17T10:42:41.000+0000' and follow encode '+' with %20"
+              },
+              {
+                "name": "returnLastModifiedEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits the query to the return orders that were modified before this date. Use one of the following formats, based on UTC, ISO 8601. Date example: '2013-08-16' Timestamp example: '2013-08-18T10:30:15Z'.In case of dates with timezone, use format '2020-04-18T10:42:41.000+0000' and follow encode '+' with %20"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of orders to be returned. Cannot be larger than 200"
+              }
+            ]
+          },
+          "docs": "Retrieves the details of return orders for the specified filter criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

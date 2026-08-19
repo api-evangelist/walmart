@@ -1,0 +1,1113 @@
+{
+  "item": [
+    {
+      "id": "f9233a8f-6ea8-4d9d-b910-c1b841f72e81",
+      "name": "Reports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12b5f9e9-6f9d-4a30-8c00-b2f649f1d156",
+          "name": "Walmart Recon Report(legacy)",
+          "request": {
+            "name": "Walmart Recon Report(legacy)",
+            "description": {
+              "content": "Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "reconreport",
+                "reconFile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reportDate",
+                  "value": "<string>",
+                  "description": "(Required) The date for which the reconcilation file is available"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db4f7234-a6cd-4357-9199-5baf912913c6",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "reconreport",
+                    "reconFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd012b10-c14e-4f61-afdb-407c3697f267",
+              "name": "Failure Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "reconreport",
+                    "reconFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<errors>\n  <error>\n    <code>(string)</code>\n    <description>(string)</description>\n    <severity>(string)</severity>\n    <category>(string)</category>\n    <errorIdentifiers>(string)</errorIdentifiers>\n  </error>\n  <error>\n    <code>(string)</code>\n    <description>(string)</description>\n    <severity>(string)</severity>\n    <category>(string)</category>\n    <errorIdentifiers>(string)</errorIdentifiers>\n  </error>\n</errors>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c78c6300-9d4e-4c31-9d07-f33a7fb5bf7b",
+          "name": "Walmart Recon Report Json",
+          "request": {
+            "name": "Walmart Recon Report Json",
+            "description": {
+              "content": "This API will get a partner’s transaction details in JSON format for a specific date range (available only for v1 reports). Dates for accessing the report can be found by using the ‘GET Available recon report dates’ API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "reconreport",
+                "reconFileJson"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reportDate",
+                  "value": "<string>",
+                  "description": "(Required) Date of the settlement report"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "(Required) starting number of the bytes, initial value for the offset is zero"
+                },
+                {
+                  "disabled": false,
+                  "key": "noOfRecords",
+                  "value": "<integer>",
+                  "description": "(Required) number of records in the report (max limit 1000)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b777de8-de08-4f2b-962f-c4f39d29fcbe",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "reconreport",
+                    "reconFileJson"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "noOfRecords",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportData\": [\n    {\n      \"Period Start Date\": \"12/11/2025\",\n      \"Period End Date\": \"12/19/2025\",\n      \"Currency\": \"USD\",\n      \"Transaction Type\": \"PaymentSummary\",\n      \"Total Payable\": \"0.74\",\n      \"Transaction Description\": \"Deposited in  account\",\n      \"Transaction Posted Timestamp\": \"01/02/2025\"\n    },\n    {\n      \"Shipping Method\": \"Marketplace value\",\n      \"Partner Item Name\": \"MTV Mens Kanji Throwback 90s Logo Short Sleeve Graphic T-shirt With Music Television up to Size 3XL\",\n      \"Customer Order line #\": \"1\",\n      \"Contract Category\": \"Apparel & Accessories\",\n      \"Transaction Description\": \"Purchase\",\n      \"Product Tax Code\": \"100\",\n      \"Period Start Date\": \"\\\"\\\"\",\n      \"Ship to Zipcode\": \"72712\",\n      \"Ship to City\": \"Bentonville\",\n      \"Transaction Key\": \"2020_12_19_317\",\n      \"Transaction Posted Timestamp\": \"12/18/2020\",\n      \"Ship Qty\": \"1\",\n      \"Amount\": \"14.98\",\n      \"Transaction Type\": \"Sale\",\n      \"Partner GTIN\": 5705584961234,\n      \"Ship to State\": \"AR\",\n      \"Amount Type\": \"Product Price\",\n      \"Fulfillment Type\": \"Seller Fulfilled\",\n      \"Customer Order #\": \"6222001976751\",\n      \"Purchase Order #\": \"1803550130406\",\n      \"Product Type\": \"Bag Clips\",\n      \"Partner Item Id\": \"sku-123\",\n      \"Purchase Order line #\": \"1\"\n    }\n  ],\n  \"nextOffset\": 973,\n  \"totalRecords\": 1,\n  \"description\": \"Number of Lines in file 479             \"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4b8c43a-235b-4040-b51e-cc22f295bbfc",
+          "name": "Walmart Recon Report",
+          "request": {
+            "name": "Walmart Recon Report",
+            "description": {
+              "content": "Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "reconreport",
+                "reconFile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "reportVersion",
+                  "value": "v1"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportDate",
+                  "value": "<string>",
+                  "description": "(Required) The date for which the reconcilation file is available"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportVersion",
+                  "value": "<string>",
+                  "description": "(Required) Report Version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "639b4d1d-16d9-4946-a33d-7b491a4e1518",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "reconreport",
+                    "reconFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6302b657-142b-40ef-9f1f-30746aa13eb6",
+              "name": "Failure Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "reconreport",
+                    "reconFile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reportDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<errors>\n  <error>\n    <code>(string)</code>\n    <description>(string)</description>\n    <severity>(string)</severity>\n    <category>(string)</category>\n    <errorIdentifiers>(string)</errorIdentifiers>\n  </error>\n  <error>\n    <code>(string)</code>\n    <description>(string)</description>\n    <severity>(string)</severity>\n    <category>(string)</category>\n    <errorIdentifiers>(string)</errorIdentifiers>\n  </error>\n</errors>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ccde8a7-1999-485b-a67e-6bb7c0df328d",
+          "name": "Walmart Available Recon Report Dates(legacy)",
+          "request": {
+            "name": "Walmart Available Recon Report Dates(legacy)",
+            "description": {
+              "content": "This API will list all the available Marketplace reconciliation report dates for the Seller.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "reconreport",
+                "availableReconFiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f545914f-9bba-40bd-9f16-151b67cecb79",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "reconreport",
+                    "availableReconFiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availableApReportDates\": [\n    7012018,\n    7032018,\n    7102018,\n    7172018,\n    7242018,\n    7312018,\n    8072018,\n    8142018,\n    8212018,\n    8282018\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dac6627-f690-4479-9d23-79108e8a403b",
+          "name": "Walmart Available Recon Report Dates",
+          "request": {
+            "name": "Walmart Available Recon Report Dates",
+            "description": {
+              "content": "This API will list all the available Marketplace reconciliation report dates for the Seller.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "reconreport",
+                "availableReconFiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "reportVersion",
+                  "value": "v1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64106426-945f-4027-95db-40b9afbb43bc",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "reconreport",
+                    "availableReconFiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availableApReportDates\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adff82ae-5c1a-42fa-bbb4-b3d52f2e6c94",
+          "name": "Walmart Payment Statement Report",
+          "request": {
+            "name": "Walmart Payment Statement Report",
+            "description": {
+              "content": "This API will get a partner's current cycle statement",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "payment",
+                "statement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5734256a-e280-4b30-840f-e1082213a806",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "payment",
+                    "statement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 200,\n  \"status\": \"OK\",\n  \"error\": \"\",\n  \"partnerId\": \"10000003437\",\n  \"payload\": {\n    \"outstandingMCABalance\": 0,\n    \"sellerInfo\": {\n      \"storeFrontUrl\": \"https%3A%2F%2Fwww.walmart.com%2Fseller%2F3346\",\n      \"sellerStatus\": \"ACTIVE\",\n      \"paymentStatus\": \"ACTIVE\",\n      \"tenure\": 1673\n    },\n    \"accountSummary\": {\n      \"openingBalance\": 0,\n      \"orderActivity\": 3220.67,\n      \"walmartFulfillmentServices\": -849.8,\n      \"otherActivities\": 0,\n      \"reserve\": 0,\n      \"paidToYou\": 0,\n      \"closingBalance\": 2370.87,\n      \"scheduledSettlementDate\": \"2022-10-11\",\n      \"paymentProcessor\": \"Payoneer\",\n      \"settleCycle\": \"Bi-weekly\",\n      \"reserveToDate\": 0,\n      \"lastUpdatedDate\": \"2022-10-04\",\n      \"holdAmt\": 0,\n      \"holdDates\": \" \"\n    },\n    \"transactionDetails\": {\n      \"saleAggregate\": {\n        \"productPrice\": 3866.61,\n        \"shipping\": 36.78,\n        \"netTaxCollected\": 262.51,\n        \"productTaxCollected\": 260.48,\n        \"shippingTaxCollected\": 2.03,\n        \"netTaxWithheld\": -260.48,\n        \"productTaxWithheld\": -260.48,\n        \"shippingTaxWithheld\": 0,\n        \"netComm\": -542.19,\n        \"netPayable\": 3324.42,\n        \"wfsShipping\": -36.78,\n        \"wfsShipppingTax\": -2.03,\n        \"totalBaseCommission\": -572.99,\n        \"commissionSavings\": 30.8\n      },\n      \"refundDetails\": {\n        \"productPrice\": -111.75,\n        \"shipping\": 0,\n        \"netTaxCollected\": -7.06,\n        \"productTaxCollected\": -7.06,\n        \"shippingTaxCollected\": 0,\n        \"netTaxWithheld\": 7.06,\n        \"productTaxWithheld\": 7.06,\n        \"shippingTaxWithheld\": 0,\n        \"netComm\": 11.65,\n        \"netPayable\": -100.1,\n        \"totalBaseCommission\": 0,\n        \"commissionSavings\": 0\n      },\n      \"adjustmentAggregate\": {\n        \"netPayable\": -3.65,\n        \"returnShipServCharge\": -3.65\n      },\n      \"wfs\": {\n        \"netPayable\": -849.8,\n        \"wfsInventoryRemovalFee\": -1.95,\n        \"wfsStorageFee\": -71.25,\n        \"wfsFullfillmentFee\": -750.05,\n        \"wfsReturnShippingFee\": -26.55\n      },\n      \"partnerTxns\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91fd8600-c066-40b8-9374-d44b9970ed82",
+          "name": "Walmart Performance Report",
+          "request": {
+            "name": "Walmart Performance Report",
+            "description": {
+              "content": "This API will get a partner's current cycle performance",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "report",
+                "payment",
+                "performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ae5585e-8a64-4e61-afe3-b97d3df3104e",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "report",
+                    "payment",
+                    "performance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 200,\n  \"status\": \"OK\",\n  \"error\": \"\",\n  \"partnerId\": \"10000003437\",\n  \"payload\": {\n    \"7DAY\": {\n      \"refundRateSellerFault\": 2.66,\n      \"refundRateCustomerFault\": 4.85,\n      \"ots\": 100,\n      \"otd\": 100,\n      \"vtr\": 93.3333333,\n      \"cancellationSellerFault\": 0,\n      \"cancellationCustomerFault\": 0.98\n    },\n    \"14DAY\": {\n      \"refundRateSellerFault\": 1.2,\n      \"refundRateCustomerFault\": 2.19,\n      \"ots\": 100,\n      \"otd\": 100,\n      \"vtr\": 96.0784314,\n      \"cancellationSellerFault\": 0,\n      \"cancellationCustomerFault\": 0.52\n    },\n    \"30DAY\": {\n      \"refundRateSellerFault\": 2.13,\n      \"refundRateCustomerFault\": 3.11,\n      \"ots\": 100,\n      \"otd\": 100,\n      \"vtr\": 98.2683983,\n      \"cancellationSellerFault\": 0.22,\n      \"cancellationCustomerFault\": 0.22\n    },\n    \"60DAY\": {\n      \"refundRateSellerFault\": 1.98,\n      \"refundRateCustomerFault\": 3.4,\n      \"ots\": 100,\n      \"otd\": 99.8231653,\n      \"vtr\": 99.2007105,\n      \"cancellationSellerFault\": 0.09,\n      \"cancellationCustomerFault\": 0.45\n    },\n    \"90DAY\": {\n      \"refundRateSellerFault\": 2.42,\n      \"refundRateCustomerFault\": 3.2,\n      \"ots\": 100,\n      \"otd\": 99.7278171,\n      \"vtr\": 99.4983278,\n      \"cancellationSellerFault\": 0.11,\n      \"cancellationCustomerFault\": 0.62\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b85e2317-a249-4fe5-81cb-090f257a1eac",
+    "name": "Walmart Cost Management Assortment Recommendations Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

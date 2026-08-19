@@ -1,0 +1,583 @@
+{
+  "item": [
+    {
+      "id": "e950b9e2-7298-48f2-8a1e-e65c12e8fb04",
+      "name": "Returns/Refunds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "baf422a4-b1f0-4dbf-8b40-a2178c28a62b",
+          "name": "Walmart Issue Refund",
+          "request": {
+            "name": "Walmart Issue Refund",
+            "description": {
+              "content": "This API allows sellers to issue refund against a return order. Multiple return order lines can be refunded in one request.\n\nNote: Sellers can use the Refund Order Lines API for all non-exception category items, including adjustments that seller needs to determine a partial refund amount. Especially for exception category items: HAZMAT, OTHER and FREIGHT that are not eligible for the Marketplace Returns Program. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "returns",
+                ":returnOrderId",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "returnOrderId",
+                  "description": "(Required) The return order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerOrderId\": \"<string>\",\n  \"refundLines\": [\n    {\n      \"returnOrderLineNumber\": \"<long>\",\n      \"quantity\": {\n        \"measurementValue\": \"<double>\",\n        \"unitOfMeasure\": \"<string>\"\n      }\n    },\n    {\n      \"returnOrderLineNumber\": \"<long>\",\n      \"quantity\": {\n        \"measurementValue\": \"<double>\",\n        \"unitOfMeasure\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef89c1c2-a11e-4ea0-9eaa-c4d72a08013f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "returns",
+                    ":returnOrderId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "returnOrderId",
+                      "description": "(Required) The return order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerOrderId\": \"1535274411287\",\n  \"refundLines\": [\n    {\n      \"returnOrderLineNumber\": 1,\n      \"quantity\": {\n        \"unitOfMeasure\": \"EA\",\n        \"measurementValue\": 2\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"returnOrderId\": \"106152711271982880\",\n  \"customerOrderId\": \"1535274411287\",\n  \"refundLines\": [\n    {\n      \"returnOrderLineNumber\": 1,\n      \"quantity\": {\n        \"unitOfMeasure\": \"EA\",\n        \"measurementValue\": 2\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03d3c611-7e04-4767-abb0-40e6e53d6015",
+          "name": "Walmart Return Item Overrides",
+          "request": {
+            "name": "Walmart Return Item Overrides",
+            "description": {
+              "content": "Sellers can specify global settings for returns in Seller Center, and they can override individual item level settings using this API.\n\nEmpty values for the settings will remove the existing overriden values and revert them to global settings.\n\nFor more details, see the announcement for [Bulk Return Rules](https://sellerhelp.walmart.com/s/guide?article=000008197).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "feeds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "feedType",
+                  "value": "RETURNS_OVERRIDES",
+                  "description": "(Required) Feed Type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Feed file to upload"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ab1a93b1-56fb-4a06-86d9-0493a347999f",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "feeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "RETURNS_OVERRIDES"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "header",
+                      "value": "{\"feedDate\":\"2018-08-31T20:59:14.000Z\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "overrideFeed",
+                      "value": "[{\"sku\":\"ABC001\",\"overrides\":{\"returnCenterAlias\":\"CAL1\"}}]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feedId\": \"C0771C26FF1A4282A73C6F3EB659D9BF@ATgBAQA\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "baf792cc-39aa-4301-a481-69a7cd4f1a69",
+          "name": "Walmart Returns",
+          "request": {
+            "name": "Walmart Returns",
+            "description": {
+              "content": "Retrieves the details of return orders for the specified filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "returns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "returnOrderId",
+                  "value": "<string>",
+                  "description": "Return order identifier of the return order object as part of array. This is the same as RMA number."
+                },
+                {
+                  "disabled": false,
+                  "key": "customerOrderId",
+                  "value": "<string>",
+                  "description": "A unique ID associated with the sales order for specified customer"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Status may be specified to query the returns with specific status.Valid statuses are: INITIATED, DELIVERED, COMPLETED"
+                },
+                {
+                  "disabled": false,
+                  "key": "replacementInfo",
+                  "value": "<string>",
+                  "description": "Provides additional attributes - replacementCustomerOrderID, returnType, rechargeReason, returnCancellationReason - related to Replacement return order, in response, if available. Allowed values are true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "returnType",
+                  "value": "<string>",
+                  "description": "Specifies if the return order is a replacement return or a regular (refund) return. Possible values are REPLACEMENT or REFUND."
+                },
+                {
+                  "disabled": false,
+                  "key": "returnCreationStartDate",
+                  "value": "<dateTime>",
+                  "description": "Start Date for querying all return orders that were created after that date. Use one of the following formats, based on UTC, ISO 8601. Date example: '2013-08-16' Timestamp example: '2013-08-16T10:30:15Z'"
+                },
+                {
+                  "disabled": false,
+                  "key": "returnCreationEndDate",
+                  "value": "<dateTime>",
+                  "description": "Limits the query to the return orders that were created before this returnCreationEndDate. Use one of the following formats, based on ISO 8601, are allowed: UTC date or timestamp. Examples: '2016-08-16T10:30:30.155Z' or '2016-08-16'"
+                },
+                {
+                  "disabled": false,
+                  "key": "returnLastModifiedStartDate",
+                  "value": "<dateTime>",
+                  "description": "Start Date for querying all return orders that were modified after that date. Use one of the following formats, based on UTC, ISO 8601. Date example: '2013-08-16' Timestamp example: '2013-08-16T10:30:15Z'.In case of dates with timezone, use format '2020-04-17T10:42:41.000+0000' and follow encode '+' with %20"
+                },
+                {
+                  "disabled": false,
+                  "key": "returnLastModifiedEndDate",
+                  "value": "<dateTime>",
+                  "description": "Limits the query to the return orders that were modified before this date. Use one of the following formats, based on UTC, ISO 8601. Date example: '2013-08-16' Timestamp example: '2013-08-18T10:30:15Z'.In case of dates with timezone, use format '2020-04-18T10:42:41.000+0000' and follow encode '+' with %20"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of orders to be returned. Cannot be larger than 200"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6d9658d-8b30-42bd-a515-a4911c5af6c5",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "returns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "returnOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replacementInfo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "returnType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "returnCreationStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "returnCreationEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "returnLastModifiedStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "returnLastModifiedEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"totalCount\": 40,\n    \"limit\": 10,\n    \"nextCursor\": \"?sellerId=151&limit=10&offset=10\"\n  },\n  \"returnOrders\": [\n    {\n      \"returnOrderId\": \"103738048909818825\",\n      \"customerEmailId\": \"emailID123456@relay.walmart.com\",\n      \"customerName\": {\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\"\n      },\n      \"customerOrderId\": \"1234567891234\",\n      \"refundMode\": \"POST_DELIVERY\",\n      \"returnOrderDate\": \"2019-02-21T01:01:08.000Z\",\n      \"returnType\": \"REPLACEMENT\",\n      \"replacementCustomerOrderId\": \"1234567891234\",\n      \"returnByDate\": \"2019-03-23T01:01:06.000Z\",\n      \"totalRefundAmount\": {\n        \"currencyAmount\": 127.45,\n        \"currencyUnit\": \"USD\"\n      },\n      \"returnLineGroups\": [\n        {\n          \"groupNo\": 1,\n          \"returnLines\": [\n            {\n              \"returnOrderLineNumber\": 1\n            }\n          ],\n          \"labels\": [\n            {\n              \"labelImageURL\": \"https://i5.walmartimages.com/asr/0a0c7462-7a85-4d3d-b7cf-91738b6883d4_1.c2c4f7b05e1cfe67910134779aa7c571.png\",\n              \"carrierInfoList\": [\n                {\n                  \"carrierId\": \"11\",\n                  \"carrierName\": \"FEDEX\",\n                  \"serviceType\": \"FedEx Ground\",\n                  \"trackingNo\": \"785611449666\"\n                }\n              ]\n            }\n          ],\n          \"returnExpectedFlag\": true\n        }\n      ],\n      \"returnOrderLines\": [\n        {\n          \"returnOrderLineNumber\": 1,\n          \"salesOrderLineNumber\": 1,\n          \"returnReason\": \"ARRIVED_LATE\",\n          \"purchaseOrderId\": \"4790210558890\",\n          \"sellerOrderId\": \"123\",\n          \"purchaseOrderLineNumber\": 1,\n          \"isReturnForException\": true,\n          \"exceptionItemType\": \"HAZMAT/OTHER/FREIGHT\",\n          \"rechargeReason\": \"Recharge Reason\",\n          \"returnCancellationReason\": \"Cancellation Reason\",\n          \"item\": {\n            \"sku\": \"ANTL_GDL-0700\",\n            \"condition\": \"Pre-Owned: Like New\",\n            \"productName\": \"Antlion Audio ModMic Wireless Attachable Boom Microphone\",\n            \"itemWeight\": {\n              \"unitOfMeasure\": \"POUND\",\n              \"measurementValue\": 5\n            }\n          },\n          \"charges\": [\n            {\n              \"chargeCategory\": \"PRODUCT\",\n              \"chargeName\": \"ItemPrice\",\n              \"chargePerUnit\": {\n                \"currencyAmount\": 119.95,\n                \"currencyUnit\": \"USD\"\n              },\n              \"isDiscount\": false,\n              \"isBillable\": true,\n              \"tax\": [\n                {\n                  \"taxName\": \"Tax1\",\n                  \"excessTax\": {\n                    \"currencyAmount\": 0,\n                    \"currencyUnit\": \"USD\"\n                  },\n                  \"taxPerUnit\": {\n                    \"currencyAmount\": 7.5,\n                    \"currencyUnit\": \"USD\"\n                  }\n                }\n              ],\n              \"excessCharge\": {\n                \"currencyAmount\": 0,\n                \"currencyUnit\": \"USD\"\n              },\n              \"references\": [\n                {\n                  \"name\": \"isAdjustment\",\n                  \"value\": \"false\"\n                }\n              ]\n            }\n          ],\n          \"unitPrice\": {\n            \"currencyAmount\": 119.95,\n            \"currencyUnit\": \"USD\"\n          },\n          \"chargeTotals\": [\n            {\n              \"name\": \"lineUnitPrice\",\n              \"value\": {\n                \"currencyAmount\": 119.95,\n                \"currencyUnit\": \"USD\"\n              }\n            },\n            {\n              \"name\": \"lineProductTaxes\",\n              \"value\": {\n                \"currencyAmount\": 7.5,\n                \"currencyUnit\": \"USD\"\n              }\n            },\n            {\n              \"name\": \"lineTotalTaxes\",\n              \"value\": {\n                \"currencyAmount\": 7.5,\n                \"currencyUnit\": \"USD\"\n              }\n            },\n            {\n              \"name\": \"lineSubTotal\",\n              \"value\": {\n                \"currencyAmount\": 119.95,\n                \"currencyUnit\": \"USD\"\n              }\n            },\n            {\n              \"name\": \"lineTotal\",\n              \"value\": {\n                \"currencyAmount\": 127.45,\n                \"currencyUnit\": \"USD\"\n              }\n            }\n          ],\n          \"currentDeliveryStatus\": \"NOT_SHIPPED\",\n          \"currentRefundStatus\": \"REFUND_INITIATED\",\n          \"currentTrackingStatuses\": [\n            {\n              \"status\": \"COMPLETED\",\n              \"statusTime\": \"2023-06-22T02:20:51.000Z\",\n              \"currentRefundStatus\": \"REFUND_INITIATED\",\n              \"quantity\": {\n                \"unitOfMeasure\": \"EACH\",\n                \"measurementValue\": 2\n              }\n            },\n            {\n              \"status\": \"COMPLETED\",\n              \"statusTime\": \"2023-06-22T02:20:51.000Z\",\n              \"currentRefundStatus\": \"REFUND_COMPLETED\",\n              \"quantity\": {\n                \"unitOfMeasure\": \"EACH\",\n                \"measurementValue\": 1\n              }\n            }\n          ],\n          \"refundChannels\": [\n            {\n              \"refundChannelName\": \"SELLER_MANUAL_REFUND\",\n              \"quantity\": {\n                \"measurementValue\": 2\n              }\n            },\n            {\n              \"refundChannelName\": \"InstantRefund\",\n              \"quantity\": {\n                \"measurementValue\": 1\n              }\n            }\n          ],\n          \"cancellableQty\": 0,\n          \"quantity\": {\n            \"unitOfMeasure\": \"EACH\",\n            \"measurementValue\": 3\n          },\n          \"returnExpectedFlag\": true,\n          \"isFastReplacement\": false,\n          \"isKeepIt\": false,\n          \"lastItem\": false,\n          \"refundedQty\": 1,\n          \"rechargeableQty\": 0,\n          \"refundChannel\": \"SELLER_AUTO_REFUND\",\n          \"returnTrackingDetail\": [\n            {\n              \"sequenceNo\": 1,\n              \"eventTag\": \"RETURN_IN_TRANSIT\",\n              \"eventDescription\": \"A MARKET_PLACE Return in Transit\",\n              \"eventTime\": \"2019-02-23T00:46:11.000Z\",\n              \"references\": [\n                {\n                  \"name\": \"ReturnDate\",\n                  \"value\": \"2019-02-21T01:01:08.000Z\"\n                },\n                {\n                  \"name\": \"SLA for Receiving Items\",\n                  \"value\": \"7 Days\"\n                }\n              ]\n            },\n            {\n              \"sequenceNo\": 0,\n              \"eventTag\": \"RETURN_INITIATED\",\n              \"eventDescription\": \"Return initiated for MARKET_PLACE\",\n              \"eventTime\": \"2019-02-21T01:01:08.000Z\",\n              \"references\": [\n                {\n                  \"name\": \"ReturnDate\",\n                  \"value\": \"2019-02-21T01:01:08.000Z\"\n                },\n                {\n                  \"name\": \"FedexTrackingLink\",\n                  \"value\": \"https://www.fedex.com/apps/fedextrack/?tracknumbers=785611449666\"\n                }\n              ]\n            }\n          ],\n          \"status\": \"COMPLETED\",\n          \"statusTime\": \"2019-03-02T05:45:45.000Z\"\n        }\n      ],\n      \"returnChannel\": {\n        \"channelName\": \"IN_STORE\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "63d165f0-8b54-4ac2-9968-bb9f96a4618c",
+    "name": "Walmart Cost Management Assortment Recommendations Returns/Refunds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Listing Quality API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listing Quality",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Pro Seller Badge Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/insights/prosellerbadge",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ]
+          },
+          "docs": "The Pro Seller badge status will provide you with information regarding your current badge status as well as the progress you've made in meeting the criteria."
+        },
+        {
+          "info": {
+            "name": "Walmart Seller Listing Quality Score",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/insights/items/listingQuality/score",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "viewTrendingItems",
+                "value": "",
+                "type": "query",
+                "description": "Specify whether or not to include seller's items that are trending in the Listing Quality Score."
+              },
+              {
+                "name": "wfsFlag",
+                "value": "",
+                "type": "query",
+                "description": "Specify whether or not to include WFS-eligible items in the overall Listing Quality Score."
+              }
+            ]
+          },
+          "docs": "Get the total Listing Quality Score for a seller's entire item catalog."
+        },
+        {
+          "info": {
+            "name": "Walmart Item Count With Listing Quality Issues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/insights/items/listingQuality/count",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "viewTrendingItems",
+                "value": "",
+                "type": "query",
+                "description": "Specify whether or not to include seller's items that are trending in the Listing Quality Score."
+              },
+              {
+                "name": "wfsFlag",
+                "value": "",
+                "type": "query",
+                "description": "Specify whether or not to include WFS-eligible items in the overall Listing Quality Score."
+              },
+              {
+                "name": "hasIssue",
+                "value": "",
+                "type": "query",
+                "description": "Specify whether or not to include items that have issues in the Listing Quality Score."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Specify whether to get item count by brand or category. Category is the default value when no type is specified."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specify number of items to return. The value is defaulted to 100 and the maximum value is 1000."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Specify the offset of item list to be returned."
+              }
+            ]
+          },
+          "docs": "Get a list of all item categories that have items with listing quality issues or brands for a seller."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

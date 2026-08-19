@@ -1,0 +1,564 @@
+{
+  "item": [
+    {
+      "id": "f80b7768-8460-43e3-8452-ca1fbb7eaacf",
+      "name": "Utilities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73be2d44-302f-4386-a5e6-8928ff662a0d",
+          "name": "Walmart Taxonomy by Spec",
+          "request": {
+            "name": "Walmart Taxonomy by Spec",
+            "description": {
+              "content": "The Taxonomy by Item spec API exposes the category taxonomy that Walmart.com uses to categorize items for each Item spec version. It returns a list of all Categories and Sub-categories that are available on Walmart.com for the Item spec version you specify.\nYou can specify the feedType and version for these available Item specs. Make sure to specify the corresponding version that is available for that feed type:\n*   Item spec 3.2 feed type: item\n*   Item spec 4.0 feed types: MP_ITEM, MP_WFS_ITEM, or MP_MAINTENANCE\n*   Item spec 4.1 feed types: MP_WFS_ITEM, or MP_MAINTENANCE\n*   Item spec 4.2 feed type: MP_ITEM or MP_WFS_ITEM\n*   Item spec 4.3 feed type: MP_ITEM or MP_MAINTENANCE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "utilities",
+                "taxonomy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "feedType",
+                  "value": "<string>",
+                  "description": "Specifies the Feed Type"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Specifies the version for the Feed Type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07f395c9-dd99-40b4-b62b-3824600bbf52",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "utilities",
+                    "taxonomy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "feedType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"payload\": [\n    {\n      \"category\": \"Animal\",\n      \"subcategory\": [\n        {\n          \"subCategoryName\": \"Animal Accessories\",\n          \"subCategoryId\": \"559c5d924fff3d64de18bf45\"\n        },\n        {\n          \"subCategoryName\": \"Animal Food\",\n          \"subCategoryId\": \"559c5d8f4fff3d64de18bf3d\"\n        },\n        {\n          \"subCategoryName\": \"Animal Health & Grooming\",\n          \"subCategoryId\": \"559c5d90ed25b136f13a05df\"\n        },\n        {\n          \"subCategoryName\": \"Animal Other\",\n          \"subCategoryId\": \"56f2eb66208f9a06158f1748\"\n        }\n      ]\n    },\n    {\n      \"category\": \"Art & Craft\",\n      \"subcategory\": [\n        {\n          \"subCategoryName\": \"Art & Craft\",\n          \"subCategoryId\": \"571fdff7208f9a0cdb760a7f\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1fb12c7-09c0-424a-8c08-6abb98b6e730",
+          "name": "Walmart All Departments",
+          "request": {
+            "name": "Walmart All Departments",
+            "description": {
+              "content": "Get list of departments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "utilities",
+                "taxonomy",
+                "departments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "118f3977-48cb-4cb0-8fc3-35f73efd543b",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "utilities",
+                    "taxonomy",
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"payload\": [\n    {\n      \"superDepartment\": \"13 HOUSEHOLD CHEMICALS\",\n      \"superDepartmentId\": \"44000\",\n      \"departments\": [\n        {\n          \"departmentName\": \"LAUNDRY AND HOUSEHOLD CHEMICALS\",\n          \"departmentId\": \"44003\"\n        },\n        {\n          \"departmentName\": \"HOUSEHOLD CHEMICALS MISC L2\",\n          \"departmentId\": \"44004\"\n        }\n      ]\n    },\n    {\n      \"superDepartment\": \"94 PRODUCE\",\n      \"superDepartmentId\": \"80100\",\n      \"departments\": [\n        {\n          \"departmentName\": \"PRODUCE L2\",\n          \"departmentId\": \"1080100\"\n        }\n      ]\n    },\n    {\n      \"superDepartment\": \"01 CANDY AND TOBACCO\",\n      \"superDepartmentId\": \"86000\",\n      \"departments\": [\n        {\n          \"departmentName\": \"CANDY AND TOBACCO L2\",\n          \"departmentId\": \"1086000\"\n        }\n      ]\n    },\n    {\n      \"superDepartment\": \"34 LADIES APPAREL\",\n      \"superDepartmentId\": \"56000\",\n      \"departments\": [\n        {\n          \"departmentName\": \"WOMENS SEASONAL\",\n          \"departmentId\": \"56007\"\n        },\n        {\n          \"departmentName\": \"WOMENS\",\n          \"departmentId\": \"56004\"\n        },\n        {\n          \"departmentName\": \"JUNIORS\",\n          \"departmentId\": \"56002\"\n        },\n        {\n          \"departmentName\": \"WOMENS PLUS\",\n          \"departmentId\": \"56006\"\n        },\n        {\n          \"departmentName\": \"OUTDOOR WOMENS HIKE AND ALPINE APPAREL\",\n          \"departmentId\": \"1056114\"\n        },\n        {\n          \"departmentName\": \"WOMENS ACTIVEWEAR\",\n          \"departmentId\": \"56146\"\n        },\n        {\n          \"departmentName\": \"MATERNITY\",\n          \"departmentId\": \"56003\"\n        },\n        {\n          \"departmentName\": \"LADIES APPAREL MISC L2\",\n          \"departmentId\": \"1056125\"\n        }\n      ]\n    },\n    {\n      \"superDepartment\": \"08 PETS AND SUPPLIES\",\n      \"superDepartmentId\": \"47000\",\n      \"departments\": [\n        {\n          \"departmentName\": \"PETS L2\",\n          \"departmentId\": \"1047022\"\n        },\n        {\n          \"departmentName\": \"CAT\",\n          \"departmentId\": \"47012\"\n        },\n        {\n          \"departmentName\": \"BIRD AQUATICS SMALL ANIMAL\",\n          \"departmentId\": \"47014\"\n        },\n        {\n          \"departmentName\": \"DOG\",\n          \"departmentId\": \"47010\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4baee5f-1c09-4b83-90ec-9a41dfd7e569",
+          "name": "Walmart All Categories",
+          "request": {
+            "name": "Walmart All Categories",
+            "description": {
+              "content": "Get list of categories for a specific department",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "utilities",
+                "taxonomy",
+                "departments",
+                ":departmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "departmentId",
+                  "description": "(Required) departmentId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d0be7fd-854d-428d-a91c-37059fb73abc",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "utilities",
+                    "taxonomy",
+                    "departments",
+                    ":departmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "departmentId",
+                      "description": "(Required) departmentId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"response\": {\n    \"departmentName\": \"LAUNDRY AND HOUSEHOLD CHEMICALS\",\n    \"departmentId\": \"44003\",\n    \"category\": [\n      {\n        \"categoryName\": \"CLEANING PRODUCTS\",\n        \"categoryId\": \"44106\"\n      },\n      {\n        \"categoryName\": \"LAUNDRY CARE\",\n        \"categoryId\": \"44108\"\n      },\n      {\n        \"categoryName\": \"HOUSEHOLD CHEMICALS L3\",\n        \"categoryId\": \"1044076\"\n      },\n      {\n        \"categoryName\": \"HOME FRAGRANCE\",\n        \"categoryId\": \"44107\"\n      },\n      {\n        \"categoryName\": \"CLEANING TOOLS\",\n        \"categoryId\": \"1044080\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f61dd1ba-3eb9-4b77-b03a-0d3d031f4ef7",
+          "name": "Walmart Api Platform Status",
+          "request": {
+            "name": "Walmart Api Platform Status",
+            "description": {
+              "content": "Get all marketplace Apis status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "utilities",
+                "apiStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The access token retrieved in the Token API call",
+                "key": "WM_SEC.ACCESS_TOKEN",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                "key": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                "key": "WM_QOS.CORRELATION_ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Walmart Service Name",
+                "key": "WM_SVC.NAME",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee78d627-6026-40dd-8416-82af2f93ce56",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "utilities",
+                    "apiStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The access token retrieved in the Token API call",
+                    "key": "WM_SEC.ACCESS_TOKEN",
+                    "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding",
+                    "key": "WM_CONSUMER.CHANNEL.TYPE",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID",
+                    "key": "WM_QOS.CORRELATION_ID",
+                    "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Walmart Service Name",
+                    "key": "WM_SVC.NAME",
+                    "value": "Walmart Service Name"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiStatuses\": [\n    {\n      \"apiGroup\": \"Returns\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Items\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Sandbox\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Lagtime\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Promos\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Orders\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Authentication\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Price\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Refunds\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Authorization\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    },\n    {\n      \"apiGroup\": \"Inventory\",\n      \"status\": \"OPERATIONAL\",\n      \"lastUpdatedTime\": \"2022-01-12T07:30:48.611Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gateway.walmart.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9222f94c-f162-4f60-9b6e-06440a754638",
+    "name": "Walmart Cost Management Assortment Recommendations Utilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API allows drop ship vendor (DSV) users to update cost for items in bulk.\n\n**May 2024**<br>Built: 05/09/2024, 13:05:34\n",
+      "type": "text/plain"
+    }
+  }
+}

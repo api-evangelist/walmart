@@ -1,0 +1,571 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Walmart Cost Management Assortment Recommendations Items API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Walmart Maintain Items in Bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/feeds",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/xml"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedType",
+                "value": "OMNI_ONLINE_ITEM",
+                "type": "query",
+                "description": "Specifies the feed file that will be used and the action the user is intending. \n\nValid values are:\n\n| Value | Meaning |\n| --- | ----------- |\n| OMNI_DSV_ITEM | Feed type for Drop Ship Vendor (DSV) item submission. |\n| OMNI_MAINTENANCE | Feed type to maintain any item. |\n| OMNI_ONLINE_ITEM | Feed type for Walmart-owned online (eCommerce) and Walmart-owned store or store and eCommerce item submission. |\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<a id=\"Post_Bulk_Item_Upload\" style=\"color:red; font-size:larger\">POST <baseUrl>/v3/feeds</a>\n\nThis feed request sets up and maintains items in bulk. \n\nUse the relevant feed file type and review the feed file structure overview provided in the <a href=\"https://developer.walmart.com/doc/us/us-supplier/us-supplier-items/\" target=\"_blank\">Items Guide</a>. \n\nOnce the feed file is built, pass the attached file using the **Supplier Feed** request. Select the relevant product type, category, or supply "
+        },
+        {
+          "info": {
+            "name": "Walmart Add Rich Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v2/feeds",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/xml"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/xml"
+              }
+            ],
+            "params": [
+              {
+                "name": "feedType",
+                "value": "item",
+                "type": "query",
+                "description": "Specifies the feed file that will be used and the action the user is intending. \n\nValid values are:\n\n| Value | Meaning |\n| --- | ----------- |\n| item | Legacy feed type |\n\nExample(s):<br>\nitem\n"
+              }
+            ]
+          },
+          "docs": "<a id=\"Post_Rich_Media\" style=\"color:red; font-size:larger\">POST <baseUrl>/v2/feeds</a>\n\nThis request adds rich media, or material such as videos, comparison tables, and item-specific view 360 media, to an item. \n\nExtract the XSDs for the Rich Media API at the following link:\n\n<a href=\"https://developer.walmart.com/image/asdp/us/cp/Rich_Media_XSDs.zip\">Rich Media API XSDs</a>\n\nRich media can be uploaded only as an update for an item which has already been ingested. \n\nNew item uploads containing "
+        },
+        {
+          "info": {
+            "name": "Walmart Retrieve All Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/items",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/xml"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "nextCursor",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the value used for paginated results when more than 200 items are retrieved.\n    \nUse the `nextCursor` response element from the prior API call. The value of the response includes a link to another GET call which retrieves the next page of results.\n\nExample:<br>\n*\n"
+              },
+              {
+                "name": "sku",
+                "value": "RG-IRAE-79VD",
+                "type": "query",
+                "description": "Specifies the stock keeping unit (SKU) item identifier. \n\nThis type of identifier is specified by the drop ship vendor (DSV) and used by the vendor in the specification file to refer to each item.\n\nExample:<br>\nRG-IRAE-79VD\n"
+              },
+              {
+                "name": "publishedStatus",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the published status of an item, describing where the item is in the submission process.\n    \nValid values are:\n\n| Value | Meaning |\n| --- | --- |\n| INPROGRESS | The item is still in the submission process and a publishing decision has not yet been made. |\n| PUBLISHED | The item has been accepted and is published. |\n| UNPUBLISHED | The item is not available on the site. It has either been rejected during the submission process or removed from the site. |\n\nExample(s):<br>\nPUBLISHED<br>\nINPROGRESS\n"
+              }
+            ]
+          },
+          "docs": "<a id=\"Get_All_Items\" style=\"color:red; font-size:larger\">GET <baseUrl>/v3/items</a>\n\nThis request displays a list of all items. \n\nIf the complete number of items exceeds the limit of items returned in a single request, the full list can be retrieved by subsequent requests using the `nextCursor` pagination mechanism.  \n\nIf a stock keeping unit (SKU) is included in the request as a query parameter, the response will only return the SKU in redefined format.\n"
+        },
+        {
+          "info": {
+            "name": "Walmart Retrieve a Single Item (v4)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v4/items/:productId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "productId",
+                "value": "12345678905",
+                "type": "path",
+                "description": "Specifies the product by `productId`.\n\nThe `productId` format by default is GTIN-14.\n\nOther formats, for example SKU or EAN, may be specified with the query parameter `productIdType`. \n\nFor more details, reference the query parameter `productIdType`.\n"
+              },
+              {
+                "name": "productIdType",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the product ID type.\n\nThe path parameter `productId` must also be specified.\n\nValid values are:\n\n| Value | Meaning |\n| --- | ----------- |\n| EAN | European article number. |\n| GTIN | Global trade item number. This is the default `productIdType`. This uses the GTIN-14 format. |\n| ISBN | International standard book number. |\n| ITEM_ID | Appears at the end of the Walmart.com item page URL. |\n| SKU | Stock keeping unit. |\n| UPC | Universal product code. This is the GTIN-12 which consists of twelve numeric characters that identifies a company's individual product. |\n| WIN | Walmart identification number. |\n\nExample(s):<br>\nUPC<br>\nEAN\n"
+              },
+              {
+                "name": "includeFullItemDetails",
+                "value": "YES",
+                "type": "query",
+                "description": "Specifies to return additional information fields.\n\nThe additional information fields are the following:\n\n*   walmartOrderableAttributes\n*   itemConfigurations\n*   attributeContentInsights\n*   variantGroupInfo\n*   additionalProductAttributes\n\nIf `YES`, all of the additional information fields are returned. It is not possible to specify only selected ones.\n\nIf `NO`, the additional information fields are not returned.\n"
+              }
+            ]
+          },
+          "docs": "<a id=\"Get_An_Item_v4\" style=\"color:red; font-size:larger\">GET <baseUrl>/v4/items/{productId}</a>\n\nThis request retrieves one item.\n\n## Example 1\nThis request retrieves one item with the product ID of GTIN-14 *00012345678905*. \nThe additional properties are not being requested, and the product ID is in the default GTIN-14 format.<br><br>\nGET `https://api-gateway.walmart.com/v4/items/00012345678905`<br>\n\n## Example 2\nThis request retrieves one item with the product ID of SKU *XYZ12348*. \nThe addi"
+        },
+        {
+          "info": {
+            "name": "Walmart Retrieve a Single Item (v3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/items/:sku",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/xml"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "sku",
+                "value": "RG-IRAE-79VD",
+                "type": "path",
+                "description": "Specifies the stock keeping unit (SKU) item identifier. \n\nThis type of identifier is specified by the drop ship vendor (DSV) and used by the vendor in the specification file to refer to each item.\n\nThe value will be used by the drop ship vendor (DSV) in the XSD file to refer to each item. \n\nExample:<br>\nRG-IRAE-79VD\n"
+              }
+            ]
+          },
+          "docs": "<a id=\"Get_An_Item_v3\" style=\"color:red; font-size:larger\">GET <baseUrl>/v3/items/{sku}</a>\n\nThis request retrieves an item and displays the item details.\n"
+        },
+        {
+          "info": {
+            "name": "Walmart Expose Product Type Taxonomy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/items/taxonomy",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": "0f3e4dd4-0514-4346-b39d-…"
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "6474-a253"
+              },
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM…"
+              }
+            ],
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the taxonomy version that has to be provided based on which hierarchy data is retrieved. \n\nThis is an enum value. The current supported version is 5.0.\n\nExample:<br>\n5.0 \n"
+              }
+            ]
+          },
+          "docs": "<a id=\"Get_Taxonomy\" style=\"color:red; font-size:larger\">GET <baseUrl>/v3/items/taxonomy</a>\n\nThis request exposes the product type (PT) taxonomy that Walmart uses to classify items. \n\nThe GET Taxonomy API call provides the user with all product types (PTs) in their respective product type groups (PTGs). \n\nThe product type groups (PTGs) are then organized into categories. \n\nJSON is the only format supported for the **Expose product type taxonomy** request (GET `/v3/items/taxonomy`).\n"
+        },
+        {
+          "info": {
+            "name": "Walmart Catalog Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/items/catalog/search",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "number of page"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "number of items"
+              },
+              {
+                "name": "nextCursor",
+                "value": "",
+                "type": "query",
+                "description": "nextCursor"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Catalog Search Result"
+        },
+        {
+          "info": {
+            "name": "Walmart Get Item Associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gateway.walmart.com/v3/items/associations",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Item Associations API allows you to retrieve shippingTemplate and shipNode associated with the provided items."
+        },
+        {
+          "info": {
+            "name": "Walmart an Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/items/:id",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Represents the seller-specified unique ID for each item. Takes SKU code by default. If you require more specific item codes, such as GTIN, UPC, ISBN, EAN, or ITEM_ID, you need to use the productIdType query parameter and specify the desired code e.g. productIdType=GTIN."
+              },
+              {
+                "name": "productIdType",
+                "value": "",
+                "type": "query",
+                "description": "Item code type specifier allows to filter by specific code type, (e.g. GTIN)."
+              },
+              {
+                "name": "condition",
+                "value": "",
+                "type": "query",
+                "description": "The value of product condition, (e.g. Restored)."
+              }
+            ]
+          },
+          "docs": "Retrieves an item and displays the item details."
+        },
+        {
+          "info": {
+            "name": "Walmart Item Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/items/walmart/search",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Specifies a keyword search as a String."
+              },
+              {
+                "name": "upc",
+                "value": "",
+                "type": "query",
+                "description": "Specifies a Universal Product Code (UPC) search. UPC must be 12 digits."
+              },
+              {
+                "name": "gtin",
+                "value": "",
+                "type": "query",
+                "description": "Specifies a Global Trade Item Number (GTIN) search. GTIN must be 14 digits."
+              }
+            ]
+          },
+          "docs": "The Item Search API allows you to query the Walmart.com global product catalog by item keyword, UPC or GTIN. You can review all item information provided in the response, so you can decide whether or not you want to sell this item.\n\nYou must specify at least one query parameter, either: 'query', 'gtin', or 'upc'. If there are more than one item in the catalog, the search returns the first 20 items in the response.\n\nAdditionally, you can use the information provided in the 'relatedQueries' respon"
+        },
+        {
+          "info": {
+            "name": "Walmart Get Item Count by Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/items/groups/count",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "variantGroupId",
+                "value": "",
+                "type": "query",
+                "description": "Variant Id to retrieve"
+              }
+            ]
+          },
+          "docs": "Get total count of items based on variant group information"
+        },
+        {
+          "info": {
+            "name": "Walmart Get Items Count by Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gateway.walmart.com/v3/items/count",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of Item"
+              }
+            ]
+          },
+          "docs": "Get total count of items based on status"
+        },
+        {
+          "info": {
+            "name": "Walmart Retire an Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-gateway.walmart.com/v3/items/:SKU",
+            "headers": [
+              {
+                "name": "WM_SEC.ACCESS_TOKEN",
+                "value": "eyJraWQiOiIzZjVhYTFmNS1hYWE5LTQzM....."
+              },
+              {
+                "name": "WM_CONSUMER.CHANNEL.TYPE",
+                "value": ""
+              },
+              {
+                "name": "WM_QOS.CORRELATION_ID",
+                "value": "b3261d2d-028a-4ef7-8602-633c23200af6"
+              },
+              {
+                "name": "WM_SVC.NAME",
+                "value": "Walmart Service Name"
+              }
+            ],
+            "params": [
+              {
+                "name": "SKU",
+                "value": "",
+                "type": "path",
+                "description": "An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item. This will be used by the seller in the XSD file to refer to each item. Special characters in the sku needing encoding are: ':', '/', '?', '#', '[', ']', '@', '!', '$', '&', \"'\", '(', ')', '*', '+', ',', ';', '=', as well as '%' itself. Other characters don't need to be encoded."
+              }
+            ]
+          },
+          "docs": "Completely deactivates and un-publishes an item from the site."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
