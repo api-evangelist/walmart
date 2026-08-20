@@ -504,6 +504,8 @@ apis:
   humanURL: https://developer.walmart.com/api/us/mp/feeds
   baseURL: https://api.example.com
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -690,6 +692,8 @@ apis:
   humanURL: https://developer.walmart.com/api/us/mp/feeds
   baseURL: https://api.example.com
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -876,6 +880,8 @@ apis:
   humanURL: https://developer.walmart.com/api/us/mp/feeds
   baseURL: https://api.example.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
