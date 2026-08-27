@@ -3,506 +3,127 @@ url: https://raw.githubusercontent.com/api-search/commerce/main/_apis/walmart/ap
 apis:
 - aid: walmart:walmart-assortment-recommendations-api
   name: Walmart Assortment Recommendations API
-  description: >-
-    The Assortment Recommendations API from Walmart — 3 operation(s) for assortment recommendations.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  description: The Assortment Recommendations API from Walmart — 3 operation(s) for assortment recommendations.
+  humanURL: https://developer.walmart.com/us-marketplace/docs/assortment-recommendations-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Assortment Recommendations
   properties:
   - type: OpenAPI
     url: openapi/walmart-assortment-recommendations-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/assortment-recommendations-overview
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/getassortmentrecommendations-1
+  - type: Overlay
+    url: overlays/walmart-assortment-recommendations-api-overlay.yaml
 - aid: walmart:walmart-authorization-api
   name: Walmart Authorization API
   description: The Authorization API from Walmart — 2 operation(s) for authorization.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/authentication-authorization
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Authorization
   properties:
   - type: OpenAPI
     url: openapi/walmart-authorization-api-openapi.yml
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/docs/oauth-authentication
+  - type: Overlay
+    url: overlays/walmart-authorization-api-overlay.yaml
 - aid: walmart:walmart-dsv-cost-api
   name: Walmart DSV Cost API
   description: The DSV Cost API from Walmart — 1 operation(s) for dsv cost.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/suppliers/docs/get-started
+  baseURL: https://api-gateway.walmart.com
   tags:
   - DSV Cost
   properties:
   - type: OpenAPI
     url: openapi/walmart-dsv-cost-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/suppliers/docs/get-started
+  - type: Overlay
+    url: overlays/walmart-dsv-cost-api-overlay.yaml
 - aid: walmart:walmart-dsv-orders-api
   name: Walmart DSV Orders API
   description: The DSV Orders API from Walmart — 6 operation(s) for dsv orders.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/suppliers/docs/get-started
+  baseURL: https://api-gateway.walmart.com
   tags:
   - DSV Orders
   properties:
   - type: OpenAPI
     url: openapi/walmart-dsv-orders-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/suppliers/docs/get-started
+  - type: Overlay
+    url: overlays/walmart-dsv-orders-api-overlay.yaml
 - aid: walmart:walmart-feeds-api
   name: Walmart Feeds API
   description: The Feeds API from Walmart — 3 operation(s) for feeds.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/getallfeedstatuses
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Feeds
   properties:
   - type: OpenAPI
     url: openapi/walmart-feeds-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/reference/getallfeedstatuses
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/getallfeedstatuses
+  - type: Overlay
+    url: overlays/walmart-feeds-api-overlay.yaml
 - aid: walmart:walmart-fulfillment-api
   name: Walmart Fulfillment API
   description: The Fulfillment API from Walmart — 21 operation(s) for fulfillment.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/create-customer-order-for-wfs-item
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Fulfillment
   properties:
   - type: OpenAPI
     url: openapi/walmart-fulfillment-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/create-customer-order-for-wfs-item
+  - type: Overlay
+    url: overlays/walmart-fulfillment-api-overlay.yaml
 - aid: walmart:walmart-insight-api
   name: Walmart Insight API
   description: The Insight API from Walmart — 7 operation(s) for insight.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/insights-api-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Insight
   properties:
   - type: OpenAPI
     url: openapi/walmart-insight-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/insights-api-overview
+  - type: Overlay
+    url: overlays/walmart-insight-api-overlay.yaml
 - aid: walmart:walmart-inventory-api
   name: Walmart Inventory API
   description: The Inventory API from Walmart — 6 operation(s) for inventory.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/getinventory
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Inventory
   properties:
   - type: OpenAPI
     url: openapi/walmart-inventory-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/reference/getinventory
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/getinventory
+  - type: Overlay
+    url: overlays/walmart-inventory-api-overlay.yaml
 - aid: walmart:walmart-items-api
   name: Walmart Items API
   description: The Items API from Walmart — 13 operation(s) for items.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/getspec
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Item
   tags_raw:
@@ -511,186 +132,44 @@ apis:
   - type: OpenAPI
     url: openapi/walmart-items-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/reference/getspec
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/getspec
+  - type: Overlay
+    url: overlays/walmart-items-api-overlay.yaml
 - aid: walmart:walmart-lag-time-api
   name: Walmart Lag Time API
   description: The Lag Time API from Walmart — 2 operation(s) for lag time.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/lag-time-api-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Lag Time
   properties:
   - type: OpenAPI
     url: openapi/walmart-lag-time-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/lag-time-api-overview
+  - type: Overlay
+    url: overlays/walmart-lag-time-api-overlay.yaml
 - aid: walmart:walmart-listing-quality-api
   name: Walmart Listing Quality API
   description: The Listing Quality API from Walmart — 3 operation(s) for listing quality.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/getlistingqualityscore
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Listing Quality
   properties:
   - type: OpenAPI
     url: openapi/walmart-listing-quality-api-openapi.yml
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/getlistingqualityscore
+  - type: Overlay
+    url: overlays/walmart-listing-quality-api-overlay.yaml
 - aid: walmart:walmart-notifications-api
   name: Walmart Notifications API
   description: The Notifications API from Walmart — 4 operation(s) for notifications.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/notifications-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Notification
   tags_raw:
@@ -699,186 +178,46 @@ apis:
   - type: OpenAPI
     url: openapi/walmart-notifications-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
+    url: https://developer.walmart.com/us-marketplace/docs/notifications-overview
   - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: asyncapi/walmart-marketplace-notifications-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/walmart-webhooks.yml
+  - type: Overlay
+    url: overlays/walmart-notifications-api-overlay.yaml
 - aid: walmart:walmart-on-request-report-api
   name: Walmart On-Request Report API
   description: The On-Request Report API from Walmart — 3 operation(s) for on-request report.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - On-Request Report
   properties:
   - type: OpenAPI
     url: openapi/walmart-on-request-report-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
+  - type: Overlay
+    url: overlays/walmart-on-request-report-api-overlay.yaml
 - aid: walmart:walmart-on-request-reports-api
   name: Walmart On Request Reports API
   description: The On Request Reports API from Walmart — 3 operation(s) for on request reports.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - On Request Reports
   properties:
   - type: OpenAPI
     url: openapi/walmart-on-request-reports-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
+  - type: Overlay
+    url: overlays/walmart-on-request-reports-api-overlay.yaml
 - aid: walmart:walmart-orders-api
   name: Walmart Orders API
   description: The Orders API from Walmart — 7 operation(s) for orders.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/getallorders
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Order
   tags_raw:
@@ -887,682 +226,171 @@ apis:
   - type: OpenAPI
     url: openapi/walmart-orders-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/reference/getallorders
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/getallorders
+  - type: Overlay
+    url: overlays/walmart-orders-api-overlay.yaml
 - aid: walmart:walmart-pre-generated-reports-api
   name: Walmart Pre-Generated Reports API
   description: The Pre-Generated Reports API from Walmart — 1 operation(s) for pre-generated reports.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/suppliers/docs/get-started
+  baseURL: https://api-gateway.walmart.com
   tags:
   - Pre-Generated Reports
   properties:
   - type: OpenAPI
     url: openapi/walmart-pre-generated-reports-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/suppliers/docs/get-started
+  - type: Overlay
+    url: overlays/walmart-pre-generated-reports-api-overlay.yaml
 - aid: walmart:walmart-prices-api
   name: Walmart Prices API
   description: The Prices API from Walmart — 8 operation(s) for prices.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/updateprice
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Prices
   properties:
   - type: OpenAPI
     url: openapi/walmart-prices-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/reference/updateprice
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/updateprice
+  - type: Overlay
+    url: overlays/walmart-prices-api-overlay.yaml
 - aid: walmart:walmart-promotions-api
   name: Walmart Promotions API
   description: The Promotions API from Walmart — 3 operation(s) for promotions.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/updatepromotionalprices
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Promotions
   properties:
   - type: OpenAPI
     url: openapi/walmart-promotions-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/reference/updatepromotionalprices
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/updatepromotionalprices
+  - type: Overlay
+    url: overlays/walmart-promotions-api-overlay.yaml
 - aid: walmart:walmart-reports-api
   name: Walmart Reports API
   description: The Reports API from Walmart — 7 operation(s) for reports.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Reports
   properties:
   - type: OpenAPI
     url: openapi/walmart-reports-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
+  - type: Overlay
+    url: overlays/walmart-reports-api-overlay.yaml
 - aid: walmart:walmart-returns-refunds-api
   name: Walmart Returns/Refunds API
   description: The Returns/Refunds API from Walmart — 3 operation(s) for returns/refunds.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/reference/issuerefund
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Returns/Refunds
   properties:
   - type: OpenAPI
     url: openapi/walmart-returns-refunds-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/reference/issuerefund
+  - type: APIReference
+    url: https://developer.walmart.com/us-marketplace/reference/issuerefund
+  - type: Overlay
+    url: overlays/walmart-returns-refunds-api-overlay.yaml
 - aid: walmart:walmart-reviews-api
   name: Walmart Reviews API
   description: The Reviews API from Walmart — 3 operation(s) for reviews.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/reviews-api-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Reviews
   properties:
   - type: OpenAPI
     url: openapi/walmart-reviews-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/reviews-api-overview
+  - type: Overlay
+    url: overlays/walmart-reviews-api-overlay.yaml
 - aid: walmart:walmart-rules-api
   name: Walmart Rules API
   description: The Rules API from Walmart — 14 operation(s) for rules.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/introduction-to-marketplace-apis
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Rules
   properties:
   - type: OpenAPI
     url: openapi/walmart-rules-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/introduction-to-marketplace-apis
+  - type: Overlay
+    url: overlays/walmart-rules-api-overlay.yaml
 - aid: walmart:walmart-settings-api
   name: Walmart Settings API
   description: The Settings API from Walmart — 11 operation(s) for settings.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/shipping-and-fulfillment-settings-api-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Settings
   properties:
   - type: OpenAPI
     url: openapi/walmart-settings-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/shipping-and-fulfillment-settings-api-overview
+  - type: Overlay
+    url: overlays/walmart-settings-api-overlay.yaml
 - aid: walmart:walmart-ship-with-walmart-api
   name: Walmart Ship with Walmart API
   description: The Ship with Walmart API from Walmart — 7 operation(s) for ship with walmart.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/buy-shipping
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Ship with Walmart
   properties:
   - type: OpenAPI
     url: openapi/walmart-ship-with-walmart-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/buy-shipping
+  - type: Overlay
+    url: overlays/walmart-ship-with-api-overlay.yaml
 - aid: walmart:walmart-utilities-api
   name: Walmart Utilities API
   description: The Utilities API from Walmart — 4 operation(s) for utilities.
-  humanURL: https://developer.walmart.com/api/us/mp/feeds
-  baseURL: https://api.example.com
+  humanURL: https://developer.walmart.com/us-marketplace/docs/utilities-overview
+  baseURL: https://marketplace.walmartapis.com
   tags:
   - Utilities
   properties:
   - type: OpenAPI
     url: openapi/walmart-utilities-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/feeds
-  - type: GraphQL
-    url: graphql/walmart-graphql.md
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/items
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/price
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/promotion
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/orders
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/returns
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/mp/inventory
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-cost/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-orders/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/us-supplier/us-supplier-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/api/us/supplier/auth
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-fulfillment/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-insights/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-lagtime/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-notifications/
-  - type: AsyncAPI
-    url: openapi/walmart-marketplace-notifications-asyncapi-original.yml
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-onrequestreports/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-assortmentrecommendations/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-reviews/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-rules/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-settings/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-sww/
-  - type: Documentation
-    url: https://developer.walmart.com/doc/us/mp/us-mp-utilities/
+    url: https://developer.walmart.com/us-marketplace/docs/utilities-overview
+  - type: Overlay
+    url: overlays/walmart-utilities-api-overlay.yaml
 name: Walmart
 tags:
 - Commerce
 - Retail
 - Fortune 100
+- Marketplace
+- E-Commerce
+- Orders
+- Inventory
+- Fulfillment
+- Supply Chain
+- Seller APIs
+- Webhooks
+- MCP
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -1592,19 +420,19 @@ common:
   url: https://www.linkedin.com/company/walmart
 - url: https://developer.walmart.com/
   type: Portal
-- url: https://developer.walmart.com/home/us-mp/
+- url: https://developer.walmart.com/us-marketplace/docs/introduction-to-marketplace-apis
   type: Documentation
-- url: https://developer.walmart.com/doc/sandbox/
+- url: https://developer.walmart.com/us-marketplace/docs/walmart-api-sandbox
   type: Sandbox
-- url: https://developer.walmart.com/category/us/whats-new/
+- url: https://developer.walmart.com/us-marketplace/page/whats-new
   type: Whats New
-- url: https://developer.walmart.com/home/help/
+- url: https://developer.walmart.com/us-marketplace/docs/troubleshooting-and-support
   type: Support
-- url: https://developer.walmart.com/faq/us/
+- url: https://developer.walmart.com/us-marketplace/docs/frequently-asked-questions-faqs
   type: FAQ
-- url: https://developer.walmart.com/apiStatus
+- url: https://developer.walmart.com/api-status
   type: StatusPage
-- url: https://developer.walmart.com/faq/terms-and-conditions
+- url: https://developer.walmart.com/us-marketplace/page/terms-and-conditions
   type: TermsOfService
 - type: Summary
   data:
@@ -1621,27 +449,95 @@ common:
     numberOfAPISchema: 0
 - type: Features
   data:
-  - 'Walmart: API access via partner / B2B contracts only'
-  - No public API pricing published — contact enterprise sales
-  - Walmart Marketplace APIs require Marketplace seller approval; commission rates
-    6-15% by category.
+  - Remote MCP server live at https://developer.walmart.com/mcp (OAuth 2.1 + PKCE, scopes openapi_read/offline_access)
+  - 202 per-operation rate limits published, token-bucket, allotted per seller; headers x-current-token-count
+    + X-Next-Replenishment-Time
+  - Formal four-state API deprecation guide (Active/Legacy/Deprecated/Sunset) with published sunset dates
+  - Dated changelog, 51 entries, roughly weekly, written at operation and property granularity
+  - No idempotency mechanism anywhere in the surface — writes are not replay-safe
+  - No maintained first-party SDK; both walmartlabs repos are archived (2019, 2020). Walmart directs developers
+    to OpenAPI Generator
+  - GS1 GTIN-14 is a first-class item identifier declared in the contract, with a GTIN Exemption API for
+    products without one
+  - 'No API metering: access follows an approved seller account; referral fees 6-15% by category, no setup
+    or monthly fee'
   sources:
-  - https://developer.walmart.com/
-  updated: '2026-05-04'
+  - https://developer.walmart.com/us-marketplace/docs/rate-limiting
+  - https://developer.walmart.com/us-marketplace/docs/walmart-marketplace-api-deprecation-guide
+  - https://developer.walmart.com/mcp
+  - https://marketplace.walmart.com/pricing/
+  updated: '2026-08-27'
+- type: DeveloperPortal
+  url: https://developer.walmart.com/
+- type: APIReference
+  url: https://developer.walmart.com/us-marketplace/reference/getallorders
+- type: GettingStarted
+  url: https://developer.walmart.com/us-marketplace/page/getting-started
+- type: Blog
+  url: https://tech.walmart.com/content/walmart-global-tech/en_us/blog.html
+- type: Postman
+  url: https://developer.walmart.com/us-marketplace/page/walmart-api-postman-collection
+- type: Pricing
+  url: https://marketplace.walmart.com/pricing/
+- type: SignUp
+  url: https://marketplace.walmart.com/apply/
+- type: Login
+  url: https://developer.walmart.com/account/generateKey
+- type: PrivacyPolicy
+  url: https://corporate.walmart.com/privacy-security
+- type: Deprecation
+  url: https://developer.walmart.com/us-marketplace/docs/walmart-marketplace-api-deprecation-guide
+- type: ChangeLog
+  url: changelog/walmart-changelog.yml
+- type: Security
+  url: https://corporate.walmart.com/article/responsible-disclosure-policy
+- type: Lifecycle
+  url: lifecycle/walmart-lifecycle.yml
+- type: RateLimits
+  url: rate-limits/walmart-rate-limits.yml
+- type: Plans
+  url: plans/walmart-plans-pricing.yml
+- type: ErrorCatalog
+  url: errors/walmart-problem-types.yml
+- type: Conventions
+  url: conventions/walmart-conventions.yml
+- type: Conformance
+  url: conformance/walmart-conformance.yml
+- type: MCPServer
+  url: mcp/walmart-mcp.yml
+- type: WellKnown
+  url: well-known/walmart-well-known.yml
+- type: SecurityTxt
+  url: well-known/walmart-security.txt
+- type: LLMsTxt
+  url: llms/walmart-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/walmart-data-model.yml
+- type: Packages
+  url: packages/walmart-packages.yml
+- type: AsyncAPI
+  url: asyncapi/walmart-marketplace-notifications-asyncapi.yml
+- type: Webhooks
+  url: asyncapi/walmart-webhooks.yml
+- type: GraphQL
+  url: graphql/walmart-graphql.md
+- type: Overlay
+  url: overlays/walmart-orders-api-overlay.yaml
+- type: Examples
+  url: examples/walmart-marketplace-orders-listOrders-example.json
 created: 2023/11/15
-modified: '2026-05-30'
-description: Walmart is a multinational retail corporation that operates a chain of
-  hypermarkets, discount department stores, and grocery stores. The company is known
-  for offering a wide range of products at competitive prices, attracting customers
-  from all walks of life. Walmart also provides various convenience services, such
-  as pharmacy, optical, and financial services, making it a one-stop shop for many
-  consumers. The Walmart Marketplace APIs enable third-party sellers to list and sell
-  products, manage orders, inventory, pricing, fulfillment, and reporting on Walmart.com.
+modified: '2026-08-27'
+description: Walmart is a multinational retail corporation that operates a chain of hypermarkets, discount
+  department stores, and grocery stores. The company is known for offering a wide range of products at
+  competitive prices, attracting customers from all walks of life. Walmart also provides various convenience
+  services, such as pharmacy, optical, and financial services, making it a one-stop shop for many consumers.
+  The Walmart Marketplace APIs enable third-party sellers to list and sell products, manage orders, inventory,
+  pricing, fulfillment, and reporting on Walmart.com.
 artifacts:
 - url: rules/walmart-rules.yml
   type: SpectralRules
-- url: capabilities/marketplace-seller-operations.yaml
-  type: X-NaftikoCapabilities
 - url: json-schema/walmart-order-schema.json
   type: JSONSchema
 - url: json-schema/walmart-inventory-schema.json
@@ -1657,3 +553,8 @@ specificationVersion: '0.23'
 kind: contract
 position: Consuming
 access: 3rd-Party
+x-enrichment:
+  date: '2026-08-27'
+  status: enriched
+  artifacts_added: 47
+  pass: local-v1
