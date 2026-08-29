@@ -418,6 +418,9 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/walmart.png
 common:
+- type: CapabilityMap
+  url: capabilities/walmart-capability-edges.yml
+  name: Walmart Business Capability Map
 - type: AgenticAccess
   url: agentic-access/walmart-agentic-access.yml
 - type: VulnerabilityDisclosure

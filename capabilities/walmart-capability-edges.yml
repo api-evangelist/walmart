@@ -1,0 +1,79 @@
+slug: walmart
+provider: Walmart
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Inventory
+  spec_file: walmart-inventory-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.88
+  evidence: GET /v3/inventory 'Retrieve Inventory Count for a Single Item at One Ship Node'; PUT /v3/inventories/{sku}
+    'Update Item Inventory Per Ship Node'
+  reason: Reading and updating on-hand stock counts per SKU and ship node is plainly inventory management;
+    ambiguous between stock-level and allocation sub-capabilities so only L1 asserted.
+- tag: Prices
+  spec_file: walmart-prices-api-openapi.yml
+  capability_id: BC-440
+  capability_id_l1: BC-440
+  capability_name: Pricing Management
+  confidence: 0.85
+  evidence: PUT /v3/price updatePrice 'Walmart Update a Price'; POST /v3/repricer/strategy createStrategy
+    'Create Repricer Strategy'; 'you can use the price management APIs to set up and manage the price
+    for a given item'
+  reason: Setting item prices, bulk price updates and repricer strategies/incentives is price setting
+    and management. Spans pricing strategy and price list maintenance, so only the L1 is asserted.
+- tag: Promotions
+  spec_file: walmart-promotions-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.85
+  evidence: '"Sellers can set regular or promotional prices for their items" — PUT /v3/price updatePromotionalPrices
+    "Walmart Update a Promotional Price"'
+  reason: Operations set and retrieve promotional prices for SKUs, which is discount/promotion pricing
+    management, not a transport capability.
+- tag: DSV Orders
+  spec_file: walmart-dsv-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.8
+  evidence: '"Drop ship vendors (DSV) use the DSV Order Management API to stay up to date on order fulfillment";
+    POST /v3/orders/{purchaseOrderId}/shipping postShipOrderLines; postAcknowledgeOrders; postCancelOrderLines'
+  reason: Retrieve, acknowledge, ship and cancel purchase-order lines is order fulfilment orchestration
+    for drop-ship vendors.
+- tag: Fulfillment
+  spec_file: walmart-fulfillment-api-openapi.yml
+  capability_id: BC-520
+  capability_id_l1: BC-520
+  capability_name: Supply Chain Management
+  confidence: 0.75
+  evidence: POST /v3/fulfillment/orders-fulfillments createFulfillment 'Walmart Create Customer Order';
+    POST /v3/fulfillment/inbound-shipments 'Walmart Create Inbound Shipment'; GET /v3/fulfillment/carrier-rate-quotes
+  reason: Walmart Fulfillment Services API lets sellers send inventory into fulfilment centres (inbound
+    shipments, labels, carrier rate quotes) and create/cancel customer order fulfilments. That is supply-chain
+    order fulfilment and logistics execution. Split between order fulfilment (.40) and logistics operations
+    (.50), so only the L1 is asserted.
+- tag: Orders
+  spec_file: walmart-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.7
+  evidence: POST /v3/orders/{purchaseOrderId}/shipping 'Ship Order Lines'; /acknowledge 'Acknowledge Orders';
+    'The Walmart Order Management APIs help Sellers to manage customer's Sales Orders and to stay up-to-date
+    on orders fulfillment'
+  reason: Acknowledge, ship, cancel and refund customer sales order lines is sales-order fulfilment orchestration.
+    Refund operation edges toward order-to-cash, so confidence is moderate.
