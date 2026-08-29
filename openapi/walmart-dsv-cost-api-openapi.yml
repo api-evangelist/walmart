@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations DSV Cost API
+  title: Walmart Cost Management DSV Cost API
   description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
 
 

@@ -1,18 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Returns/Refunds API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
-  version: '1.0'
+  title: Walmart Returns Management Returns/Refunds API
+  description: 'Buyers can now Initiate Returns from Walmart.com for Marketplace seller items (Except for HAZMAT, OTHER or FREIGHT items). For item in the exception categories: HAZMAT or OTHER, sellers need to generate the return shipping label, and upload the label. For detailed instructions, and to download the Returns API JSON schema, see Returns guide.'
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Returns/Refunds
 paths:
@@ -1030,7 +1026,3 @@ paths:
                     statusTime: '2019-03-02T05:45:45.000Z'
                   returnChannel:
                     channelName: IN_STORE
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost

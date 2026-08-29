@@ -1,18 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Authorization API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
-  version: '1.0'
+  title: Walmart Authentication & Management Authorization API
+  description: The Walmart Marketplace APIs use OAuth for token-based authentication and authorization.<Br /> We also introduced OAuth 2.0 for solution providers to enable new authorizations using authorization code grant type. Sellers can now connect with solution provider apps seamlessly through this new Walmart's OAuth 2.0 user experience. Refer to the [Guide section](/doc/us/mp/us-mp-auth2/#606) for comprehensive instructions. Existing seller connections using the previous authorization method will remain operational.
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Authorization
 paths:
@@ -353,7 +349,11 @@ paths:
                   orders: full_access
                   inventory: full_access
                   content: full_access
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost
+components:
+  securitySchemes:
+    basicScheme:
+      type: http
+      description: ''
+      name: Authorization
+      in: header
+      scheme: basic

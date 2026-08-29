@@ -1,18 +1,15 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Lag Time API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
+  title: Walmart Lag Time API
   version: '1.0'
+  description: 'Operations tagged Lag Time across 2 of this provider''s published API definitions: walmart-dropship-vendor-lag-time-openapi-original.yml, walmart-marketplace-lag-time-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api-gateway.walmart.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+- url: https://marketplace.walmartapis.com
+  description: Production URL
 tags:
 - name: Lag Time
 paths:
@@ -265,6 +262,11 @@ paths:
                     type: string
                     description: "Indicates the identifier returned from the <a href=\"https://developer.walmart.com/api/us/supplier/items#operation/itemBulkUploads\">POST Bulk Item Upload request</a>, used for tracking the feed file. \n\nExample(s):\nE7BB7DBAF3FF461AB63A2169F3BEAADE@AVQBAgA\n"
                     example: E7BB7DBAF3FF461AB63A2169F3BEAADE@AVQBAgA
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/lagtime:
     get:
       tags:
@@ -436,6 +438,14 @@ paths:
 
                       '
                     example: 1
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
+x-refined-from:
+- walmart-dropship-vendor-lag-time-openapi-original.yml
+- walmart-marketplace-lag-time-openapi-original.yml
 x-tagGroups:
 - name: 1P Suppliers DSV Cost Reference
   tags:

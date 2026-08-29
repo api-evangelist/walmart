@@ -1,12 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations On Request Reports API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
+  title: Walmart Management On Request Reports API
+  description: "The On Request Reports API provides functionality to request reports immediately about items, resulting in faster retrieval of reports. \n\nUsers can request the reports for inventory, item product data, and item configuration data. They can then check the status on the report availability, and download the report URL when the report is ready. Functionality also includes getting a list of all reports requested.\n\n**May 2024**<br>Built: 05/09/2024, 15:16:03\n"
   version: '1.0'
 servers:
 - url: https://api-gateway.walmart.com
@@ -721,6 +716,6 @@ paths:
                     reportType: INVENTORY_DSV
                     reportVersion: v1
 x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
+- name: 1P Suppliers On Request Reports Reference
   tags:
-  - DSV Cost
+  - On Request Reports

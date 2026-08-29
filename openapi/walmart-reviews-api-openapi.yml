@@ -1,18 +1,27 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Reviews API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
+  title: Walmart Acceleration Reviews API
+  description: 'The Reviews Acceleration API provides sellers with capability to view and enroll items into review accelerator programs:
 
 
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
+    *   Sellers can view their eligible product catalog that can be enrolled into Review Accelerator program(RAP) using Get RAP post-purchase items API
+
+    *   Sellers can view their currently enrolled products using Get RAP post-purchase items API
+
+    *   Sellers can leverage Get RAP post-purchase items API to get all products that have attained target reviews after enrolment into the program
+
+    *   Sellers can filter the products on the basis of category and price. They can also sort based on item priority and search using product name and SKU
+
+    *   Sellers can enroll a product/multiple products into the program using update item status API
 
     '
-  version: '1.0'
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Reviews
 paths:
@@ -770,7 +779,3 @@ paths:
                       - HARDLINES
                       - HOME
                       - APPAREL
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost

@@ -1,18 +1,15 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Inventory API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
+  title: Walmart Inventory API
   version: '1.0'
+  description: 'Operations tagged Inventory across 2 of this provider''s published API definitions: walmart-dropship-vendor-inventory-openapi-original.yml, walmart-marketplace-inventory-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api-gateway.walmart.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+- url: https://marketplace.walmartapis.com
+  description: Production URL
 tags:
 - name: Inventory
 paths:
@@ -414,6 +411,11 @@ paths:
 
                           '
                         example: 23
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/feeds:
     post:
       tags:
@@ -670,6 +672,11 @@ paths:
                     type: string
                     description: "Indicates the identifier returned from the <a href=\"https://developer.walmart.com/api/us/supplier/items#operation/itemBulkUploads\">POST Bulk Item Upload request</a>, used for tracking the feed file. \n\nExample(s):<br>\n991B8779687C4D5DBC06DF18DB167192@AQkBAQA\n"
                     example: 991B8779687C4D5DBC06DF18DB167192@AQkBAQA
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/inventories/{id}:
     get:
       tags:
@@ -914,6 +921,11 @@ paths:
 
                                 '
                               example: 24
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/inventories/{sku}:
     get:
       tags:
@@ -1089,6 +1101,8 @@ paths:
                   reservedQty:
                     unit: EACH
                     amount: 2
+      security:
+      - basicScheme: []
     put:
       tags:
       - Inventory
@@ -1262,6 +1276,13 @@ paths:
                   status: Success
                 - shipNode: '79897837271126017'
                   status: Success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/inventories:
     get:
       tags:
@@ -1433,6 +1454,13 @@ paths:
                       reservedQty:
                         unit: EACH
                         amount: 5
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/fulfillment/inventory:
     get:
       tags:
@@ -1559,6 +1587,16 @@ paths:
                                   shipNodeType:
                                     type: string
                                     description: Identifies fulfillment aspect of invetory. Walmart, seller or 3PL fulfilled. Possible value is 'WFSFulfilled'. In later phase we will also add seller fulfilled inventory.
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
+x-refined-from:
+- walmart-dropship-vendor-inventory-openapi-original.yml
+- walmart-marketplace-inventory-openapi-original.yml
 x-tagGroups:
 - name: 1P Suppliers DSV Cost Reference
   tags:

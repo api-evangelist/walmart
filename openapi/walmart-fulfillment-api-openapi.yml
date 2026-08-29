@@ -1,18 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Fulfillment API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
-  version: '1.0'
+  title: Walmart Management Fulfillment API
+  description: With Walmart Fulfillment Services, you can focus on sales while we expertly take care of fast shipping, seamless returns, and customer service. Simply send your inventory to Walmart fulfillment centers, where we will store your products securely and prepare them swiftly for shipping when an order is placed.
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Fulfillment
 paths:
@@ -876,7 +872,6 @@ paths:
                                 description: 'Sales unit measure. Currently supported type : ''EACH'''
                               measurementValue:
                                 minimum: 1
-                                exclusiveMinimum: false
                                 type: number
                                 description: Requested Quantity Information of an item
                             description: Item quantity details
@@ -2078,7 +2073,6 @@ paths:
                                 type: string
                               measurementValue:
                                 minimum: 1
-                                exclusiveMinimum: false
                                 type: number
                   description: request payload
             example:
@@ -4412,11 +4406,13 @@ paths:
                     type: string
                     description: A unique ID, returned from the Bulk Upload API, used for tracking the feed file
                   additionalAttributes:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                   errors:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 feedId: FFE538D9B25A4000AD2A067ACEDCF4C4@AUoBAQA
   /v3/report/wfs/getInventoryHealthReport:
@@ -5913,7 +5909,3 @@ paths:
                     type: object
                 xml:
                   name: ServiceResponse
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost

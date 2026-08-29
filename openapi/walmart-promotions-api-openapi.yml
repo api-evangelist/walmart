@@ -1,18 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Promotions API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
-  version: '1.0'
+  title: Walmart Promotion Management Promotions API
+  description: Sellers can set regular or promotional prices for their items. Setting the Promotional prices is an option to create unique pricing for events such as clearance sales or to call out a comparison price
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Promotions
 paths:
@@ -1270,7 +1266,3 @@ paths:
                   status:
                     type: string
               example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<ServiceResponse xmlns:ns2=\"http://walmart.com/\">\n    <status>OK</status>\n    <header/>\n    <payload>\n        <ns2:itemIdentifier>\n            <ns2:sku>97964_KFTest</ns2:sku>\n        </ns2:itemIdentifier>\n        <ns2:pricingList replaceAll=\"false\">\n            <ns2:pricing promoId=\"ce9dfbce-4043-442c-8cb9-77d39d0f727f\" expirationDate=\"2019-12-03T09:49:57.943Z\" effectiveDate=\"2019-11-03T09:49:57.943Z\">\n                <ns2:currentPrice>\n                    <ns2:value amount=\"4.00\" currency=\"USD\"/>\n                </ns2:currentPrice>\n                <ns2:currentPriceType>REDUCED</ns2:currentPriceType>\n                <ns2:comparisonPrice>\n                    <ns2:value amount=\"4.00\" currency=\"USD\"/>\n                </ns2:comparisonPrice>\n                <ns2:comparisonPriceType>BASE</ns2:comparisonPriceType>\n                <ns2:savingsAmount>0.00</ns2:savingsAmount>\n                <ns2:savingsPercent>0.00</ns2:savingsPercent>\n                <ns2:priceDisplayCodes isClearance=\"false\" isReducedPrice=\"true\" isStrikethrough=\"true\" isRollback=\"false\"/>\n            </ns2:pricing>\n        </ns2:pricingList>\n    </payload>\n</ServiceResponse>"
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost

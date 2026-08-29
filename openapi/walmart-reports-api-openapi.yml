@@ -1,18 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Reports API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
-  version: '1.0'
+  title: 'Walmart Pregenerated retiring on June 30, 2022 : Reports API'
+  description: "Please transition ASAP to using onRequest Reports (https://developer.walmart.com/doc/us/us-mp/us-mp-onrequestreports/). On July 29th, all PreGenerated reports other than recon report will be retired and only available onRequest. \nThe Pregenerated Reports API allows you to obtain any pregenerated report that you need, including: item, item performance, buy box, CAP, promotions, reconciliation, return item override, shipping program and shipping configuration."
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Reports
 paths:
@@ -927,7 +923,3 @@ paths:
                     vtr: 99.4983278
                     cancellationSellerFault: 0.11
                     cancellationCustomerFault: 0.62
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost

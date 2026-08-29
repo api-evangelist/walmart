@@ -1,18 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Prices API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
-  version: '1.0'
+  title: Walmart Price Management Prices API
+  description: The price is a fundamental building block for your listing on Walmart.com. You can use the price management APIs to set up and manage the price for a given item
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Prices
 paths:
@@ -1031,11 +1027,13 @@ paths:
                     type: string
                     description: A unique ID, returned from the Bulk Upload API, used for tracking the feed file
                   additionalAttributes:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                   errors:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 feedId: 14066B6642344B76A8B77AC094F8C63B@AVMBAgA
             application/xml:
@@ -1046,11 +1044,13 @@ paths:
                     type: string
                     description: A unique ID, returned from the Bulk Upload API, used for tracking the feed file
                   additionalAttributes:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                   errors:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<ns2:FeedAcknowledgement xmlns:ns2=\"http://walmart.com/\">\n    <ns2:feedId>55DE8A53B09F41BBBF261C1AB5FB2BC8@AVMBAgA</ns2:feedId>\n</ns2:FeedAcknowledgement>"
   /v3/cppreference:
     post:
@@ -1221,7 +1221,3 @@ paths:
                                 type: number
                                 format: double
                                 example: 1.2
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost

@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations DSV Orders API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
+  title: Walmart DSV Order Management DSV Orders API
+  description: 'Drop ship vendors (DSV) use the DSV Order Management API to stay up to date on order fulfillment.
 
 
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
+    **May 2024**<br>Built: 05/09/2024, 14:39:22
 
     '
   version: '1.0'
@@ -5868,6 +5868,6 @@ paths:
                             pickUpDateTime: 1514480400000
                             pickUpBy: null
 x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
+- name: 1P Suppliers DSV Orders Reference
   tags:
-  - DSV Cost
+  - DSV Orders

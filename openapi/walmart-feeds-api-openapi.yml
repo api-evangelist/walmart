@@ -1,18 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Feeds API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
-  version: '1.0'
+  title: Walmart Feed Management Feeds API
+  description: Feeds are constructed to handle bulk functions. A feed consists of an HTTP request with an attached file. Once you upload the Feeds, you can use the Feed ID to track the status of the feeds and the status of the item within those Feeds.
 servers:
-- url: https://api-gateway.walmart.com
+- url: https://marketplace.walmartapis.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+security:
+- basicScheme: []
 tags:
 - name: Feeds
 paths:
@@ -1713,7 +1709,3 @@ paths:
           description: Successful Operation
           content:
             application/octet-stream: {}
-x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
-  tags:
-  - DSV Cost

@@ -1,18 +1,15 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Items API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
+  title: Walmart Items API
   version: '1.0'
+  description: 'Operations tagged Items across 2 of this provider''s published API definitions: walmart-dropship-vendor-items-openapi-original.yml, walmart-marketplace-items-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api-gateway.walmart.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
+- url: https://marketplace.walmartapis.com
+  description: Production URL
 tags:
 - name: Items
 paths:
@@ -417,7 +414,10 @@ paths:
                         condition: New
                         studioProductionCompany:
                         - RLJ
-                        shortDescription: "In Season 2, Lt. Joe Leaphorn reunites with Jim Chee, his former deputy turned private eye when their separate cases bring them together in pursuit of the same suspect. They find themselves in the high desert of Navajo Country chasing a killer.\r\n\r\n"
+                        shortDescription: 'In Season 2, Lt. Joe Leaphorn reunites with Jim Chee, his former deputy turned private eye when their separate cases bring them together in pursuit of the same suspect. They find themselves in the high desert of Navajo Country chasing a killer.
+
+
+                          '
                         california_state_chemical_warning_text: None
                         has_written_warranty: 'No'
                         movie_and_tv_media_format:
@@ -427,7 +427,7 @@ paths:
                         actors:
                         - Zahn McClarnon
                         - Kiowa Gordon
-                        - "Jessica Matten\r\n. \r\nRainn Wilson\r\n​"
+                        - "Jessica Matten\n. \nRainn Wilson\n​"
                         - Noah Emmerich
                         isDubbed: 'No'
                         hasSubtitles: 'No'
@@ -892,7 +892,10 @@ paths:
                         condition: New
                         studioProductionCompany:
                         - RLJ
-                        shortDescription: "In Season 2, Lt. Joe Leaphorn reunites with Jim Chee, his former deputy turned private eye when their separate cases bring them together in pursuit of the same suspect. They find themselves in the high desert of Navajo Country chasing a killer.\r\n\r\n"
+                        shortDescription: 'In Season 2, Lt. Joe Leaphorn reunites with Jim Chee, his former deputy turned private eye when their separate cases bring them together in pursuit of the same suspect. They find themselves in the high desert of Navajo Country chasing a killer.
+
+
+                          '
                         california_state_chemical_warning_text: None
                         has_written_warranty: 'No'
                         movie_and_tv_media_format:
@@ -902,7 +905,7 @@ paths:
                         actors:
                         - Zahn McClarnon
                         - Kiowa Gordon
-                        - "Jessica Matten\r\n. \r\nRainn Wilson\r\n​"
+                        - "Jessica Matten\n. \nRainn Wilson\n​"
                         - Noah Emmerich
                         isDubbed: 'No'
                         hasSubtitles: 'No'
@@ -1084,6 +1087,11 @@ paths:
                       '
                     example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<FeedAcknowledgement xmlns:ns2=\"http://walmart.com/\">\n  <feedId>E9C04D1FFD99479FBC1341D56DD5F930@AQMB_wA</feedId>\n</FeedAcknowledgement>\n"
               example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<FeedAcknowledgement xmlns:ns2=\"http://walmart.com/\">\n    <feedId>E9C04D1FFD99479FBC1341D56DD5F930@AQMB_wA</feedId>\n</FeedAcknowledgement>\n"
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v2/feeds:
     post:
       tags:
@@ -1199,6 +1207,11 @@ paths:
 
                       '
                     example: 2D4DB32BC1174C7491720C9EBEB56163@AQMBAAA
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items:
     get:
       tags:
@@ -1742,6 +1755,11 @@ paths:
         sha: f9d432b94835e611f3d7c57f46812df54760e7b9
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/aurora-mocker-service/sandbox/src/main/java/mocker/recordMode/dev/customData/mappings/items/MetaData/getAllItems/success/get_all_items_LCstatus?token=AAAUDV646JWTYWZZG4EVSLLFCLZJI
         case: success
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v4/items/{productId}:
     get:
       tags:
@@ -4857,6 +4875,11 @@ paths:
                           description: 'Indicates the error identifiers associated with the error.
 
                             '
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/{sku}:
     get:
       tags:
@@ -5252,6 +5275,11 @@ paths:
         sha: fb6cb1d7a42f46cc2ed6f76d323c4fce4fcb955d
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/aurora-mocker-service/sandbox/src/main/java/mocker/recordMode/dev/customData/mappings/items/MetaData/getAnItem/success/get_item_by_upc?token=AAAUDV4I3PJCOHH4TAIYYK3FCLZJI
         case: success
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/taxonomy:
     get:
       tags:
@@ -25507,6 +25535,11 @@ paths:
                           description: 'Indicates an object for the error identifiers associated with the error.
 
                             '
+    servers:
+    - url: https://api-gateway.walmart.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/catalog/search:
     post:
       tags:
@@ -26202,6 +26235,13 @@ paths:
         sha: 5cfe78ccab76b501333f4a032f927f6d7e9ac709
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/items/MetaData/getCatalogSearch/success/catalog-search?token=AAAUDV3JNSZGECCAGFB7IB3GMMIEG
         case: success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/associations:
     post:
       tags:
@@ -26415,6 +26455,13 @@ paths:
         sha: cfb85630f878848ec0c4b8ad321bedf3834719b4
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/items/MetaData/getItemAssociations/success/get-item-associations?token=AAAUDVY5BHQILKEPSV4W4PTGMMIEI
         case: success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/{id}:
     get:
       tags:
@@ -27145,6 +27192,13 @@ paths:
         sha: fb6cb1d7a42f46cc2ed6f76d323c4fce4fcb955d
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/items/MetaData/getAnItem/success/get_item_by_upc?token=AAAUDVZC57ZPUGRGHRA5VBDGMMIEK
         case: success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/walmart/search:
     get:
       tags:
@@ -27393,6 +27447,13 @@ paths:
         sha: f9db5dc30d7293ceab8a0534ea5097bcd91ee9fb
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/items/MetaData/getSearchResult/success/item_search_by_upc?token=AAAUDVYNECUBLVSVTK3YVTTGMMIEK
         case: success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/groups/count:
     get:
       tags:
@@ -27482,6 +27543,13 @@ paths:
         sha: ad43e1b161ed7d6fef226b4b9fb42a52a0386538
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/items/MetaData/getVariantCount/success/get_item_count_by_varient?token=AAAUDV6LTKHOI3J3NHOQ2PLGMMIEM
         case: success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/count:
     get:
       tags:
@@ -27563,6 +27631,13 @@ paths:
         sha: cfbe476071751914d2a52388a03fb50d03834656
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/items/MetaData/getCountByStatus/success/get_item_count_by_status?token=AAAUDV3QSJMEQJG2RBUKI7LGMMIEO
         case: success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
   /v3/items/{SKU}:
     delete:
       tags:
@@ -27648,6 +27723,16 @@ paths:
         sha: ec451ac03b28637437e9ab914f9798f83d00b227
         download_url: https://gecgithub01.walmart.com/raw/RET-Marketplace/sandbox-mocker-service/main/src/main/java/mocker/recordMode/dev/customData/mappings/mp/items/MetaData/retireAnItem/success/retire-an-item?token=AAAUDV3M6WD3GVILLB22ZNDGMMIEO
         case: success
+      security:
+      - basicScheme: []
+    servers:
+    - url: https://marketplace.walmartapis.com
+      description: Production URL
+    - url: https://sandbox.walmartapis.com
+      description: Sandbox URL
+x-refined-from:
+- walmart-dropship-vendor-items-openapi-original.yml
+- walmart-marketplace-items-openapi-original.yml
 x-tagGroups:
 - name: 1P Suppliers DSV Cost Reference
   tags:

@@ -1,12 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Walmart Cost Management Assortment Recommendations Pre-Generated Reports API
-  description: 'This API allows drop ship vendor (DSV) users to update cost for items in bulk.
-
-
-    **May 2024**<br>Built: 05/09/2024, 13:05:34
-
-    '
+  title: Walmart Management Pre-Generated Reports API
+  description: "This API generates the item report for drop ship vendors (DSV). \nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n\n**May 2024**<br>Built: 05/09/2024, 16:00:37\n"
   version: '1.0'
 servers:
 - url: https://api-gateway.walmart.com
@@ -449,6 +444,6 @@ paths:
                       '
                     example: '2401'
 x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
+- name: 1P Suppliers Pre-Generated Reports Reference
   tags:
-  - DSV Cost
+  - Pre-Generated Reports
