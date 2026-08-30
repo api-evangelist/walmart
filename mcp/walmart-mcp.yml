@@ -1,0 +1,65 @@
+generated: '2026-08-27'
+method: probed
+source: https://developer.walmart.com/mcp (JSON-RPC tools/list probed 2026-08-27)
+provider: Walmart
+providerId: walmart
+name: Walmart Developer Portal MCP Server
+status: live
+description: 'Walmart runs a first-party remote MCP server on its developer portal at https://developer.walmart.com/mcp. It
+  answers JSON-RPC over HTTP and is guarded by OAuth 2.1 (authorization-code + PKCE S256, dynamic client registration), advertised
+  through RFC 8414 / RFC 9728 metadata at /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource.
+  The required scopes are openapi_read and offline_access, which indicates this server exposes the portal''s API documentation
+  and OpenAPI definitions to an agent rather than the Marketplace seller runtime (marketplace.walmartapis.com). The tool list
+  is auth-gated: an anonymous tools/list returns JSON-RPC error -32001 "Authentication required", so no tool names or inputSchemas
+  were captured and none are asserted here.'
+deployment:
+  mode: remote
+  endpoint: https://developer.walmart.com/mcp
+  auth: oauth
+  verified: probed
+oauth:
+  authorization_endpoint: https://developer.walmart.com/oauth/authorize
+  token_endpoint: https://developer.walmart.com/oauth/token
+  registration_endpoint: https://developer.walmart.com/oauth/register
+  grant_types_supported:
+  - authorization_code
+  - refresh_token
+  code_challenge_methods_supported:
+  - S256
+  pkce_required: true
+  scopes_required:
+  - openapi_read
+  - offline_access
+  token_endpoint_auth_methods_supported:
+  - none
+  - client_secret_basic
+  metadata: well-known/walmart-oauth-authorization-server.json
+  protected_resource_metadata: well-known/walmart-oauth-protected-resource.json
+tools: []
+tools_status: auth-gated
+tools_note: tools/list returned HTTP 401 with {"code":-32001,"message":"Authentication required"}. Walmart publishes no llms.txt
+  and no MCP tool reference page, so there is no anonymous fallback source for tool names. Input schemas require an authenticated
+  introspection with an openapi_read token.
+crosswalk:
+  emitted: false
+  reason: No tool crosswalk is emitted. The MCP tool list is auth-gated (no tool names captured) and the server's scope (openapi_read
+    on the documentation host) indicates it does not front the Marketplace REST operations in openapi/, so binding tools to
+    operationIds would be invented rather than derived.
+other_servers:
+  note: Multiple third-party Walmart MCP servers exist on npm/GitHub (community wrappers over the Marketplace, Affiliate and
+    Advertising APIs). None is published by Walmart and none is recorded here.
+evidence:
+- url: https://developer.walmart.com/mcp
+  method: POST tools/list
+  status: 401
+  body: '{"jsonrpc":"2.0","error":{"code":-32001,"message":"Authentication required","data":{"required_scopes":["openapi_read","offline_access"],"pkce_required":true}}}'
+- url: https://developer.walmart.com/.well-known/oauth-authorization-server
+  status: 200
+- url: https://developer.walmart.com/.well-known/oauth-protected-resource
+  status: 200
+- url: https://developer.walmart.com/api/mcp
+  method: POST
+  status: 404
+- url: https://developer.walmart.com/sse
+  method: POST
+  status: 404

@@ -1,0 +1,82 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for Walmart Cost Management Assortment Recommendations Returns/Refunds API
+  version: 1.0.0
+extends: walmart-returns-refunds-api-openapi.yml
+x-generated: '2026-08-27'
+x-method: generated
+x-source: rate-limits/walmart-rate-limits.yml, conventions/walmart-conventions.yml, errors/walmart-problem-types.yml
+x-operations-matched: 3
+actions:
+- target: $.info
+  description: Record API Evangelist provenance and the runtime facts Walmart documents outside the spec.
+  update:
+    x-apievangelist:
+      profile: https://apis.io/provider/walmart/
+      enriched: '2026-08-27'
+      artifacts:
+      - conventions/walmart-conventions.yml
+      - errors/walmart-problem-types.yml
+      - rate-limits/walmart-rate-limits.yml
+      - lifecycle/walmart-lifecycle.yml
+      - authentication/walmart-authentication.yml
+- target: $.servers
+  description: Correct the production host. Walmart publishes this API on marketplace.walmartapis.com in its own OpenAPI (openapi/_original/),
+    but the refined servers[] block carries api-gateway.walmart.com, which is the 1P Supplier / Dropship Vendor gateway. The
+    original document is left untouched; this overlay records the correction.
+  update:
+  - url: https://marketplace.walmartapis.com
+    description: Walmart Marketplace production
+  - url: https://sandbox.walmartapis.com
+    description: Walmart sandbox
+- target: $
+  description: Declare the cross-cutting runtime semantics Walmart documents on the portal but does not express in the contract.
+  update:
+    x-idempotency:
+      supported: false
+      note: No idempotency key mechanism is documented anywhere on developer.walmart.com.
+    x-rate-limit-headers:
+      remaining: x-current-token-count
+      reset: X-Next-Replenishment-Time
+      exhausted_status: 429
+      oversized_payload_status: 413
+    x-error-envelope:
+      format: proprietary
+      shape: '{"errors":[{"code","message","category","severity","field"}]}'
+      rfc9457: false
+    x-required-headers:
+    - WM_SEC.ACCESS_TOKEN
+    - WM_QOS.CORRELATION_ID
+    - WM_SVC.NAME
+    x-deprecation-policy: https://developer.walmart.com/us-marketplace/docs/walmart-marketplace-api-deprecation-guide
+- target: $.paths['/v3/returns/{returnOrderId}/refund'].post
+  description: Attach Walmart's published rate limit for this operation.
+  update:
+    x-rate-limit:
+      limit: 60
+      window: minute
+      published: 60/min
+      scope: per-seller
+      algorithm: token-bucket
+      source: https://developer.walmart.com/us-marketplace/docs/rate-limiting
+- target: $.paths['/v3/feeds'].post
+  description: Attach Walmart's published rate limit for this operation.
+  update:
+    x-rate-limit:
+      limit: 10
+      window: hour
+      published: 10/hour
+      scope: per-seller
+      algorithm: token-bucket
+      source: https://developer.walmart.com/us-marketplace/docs/rate-limiting
+- target: $.paths['/v3/returns'].get
+  description: Attach Walmart's published rate limit for this operation.
+  update:
+    x-rate-limit:
+      limit: 50
+      window: minute
+      published: 50/min
+      scope: per-seller
+      algorithm: token-bucket
+      source: https://developer.walmart.com/us-marketplace/docs/rate-limiting
+x-host-correction: true

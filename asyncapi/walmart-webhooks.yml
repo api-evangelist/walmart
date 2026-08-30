@@ -1,0 +1,87 @@
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/docs/rate-limiting (Notifications Management operations) + openapi/_original/walmart-marketplace-notifications-openapi-original.yml
+provider: Walmart
+providerId: walmart
+description: Walmart Marketplace ships a real webhook surface. Sellers register an HTTPS destination through the Notifications
+  control plane and Walmart POSTs a JSON envelope to it whenever a subscribed event fires. Thirteen event types are documented.
+  The control plane is six REST operations under /v3/webhooks, including a Test Notification endpoint that fires a synthetic
+  delivery at the registered URL. Walmart does NOT publish an AsyncAPI document for this surface; the AsyncAPI 2.6.0 description
+  in asyncapi/walmart-marketplace-notifications-asyncapi.yml was written by API Evangelist from Walmart's documented event
+  catalogue and example payloads, and per-event payload schemas are left as open objects rather than invented.
+transport: HTTPS POST to a seller-registered eventUrl
+content_type: application/json
+envelope_fields:
+- eventType
+- eventVersion
+- eventTime
+- eventId
+- payload
+event_count: 13
+events:
+- type: OFFER_PUBLISHED
+  description: An item offer has become published / buyable.
+- type: OFFER_UNPUBLISHED
+  description: An item offer is no longer published / buyable.
+- type: BUY_BOX_CHANGED
+  description: The Buy Box winner changed for an item the seller offers.
+- type: INVENTORY_OOS
+  description: An item hit out-of-stock.
+- type: PO_CREATED
+  description: A new purchase order was created for the seller.
+- type: PO_LINE_AUTOCANCELLED
+  description: A purchase order line was automatically cancelled by Walmart.
+- type: ORDER_INTENT_TO_CANCEL
+  description: The customer has signalled an intent to cancel an order.
+- type: ORDER_MANAGEMENT_EVENT
+  description: Order-management lifecycle event.
+- type: DRIVER_STATUS_NOTIFICATION
+  description: Delivery driver status update.
+- type: RETURN_NOTIFICATIONS
+  description: A customer return event.
+- type: REPORT_STATUS
+  description: An on-request report finished (or failed) generating.
+- type: ASSORTMENT_RECOMMENDATIONS
+  description: New assortment recommendations are available.
+- type: SELLER_PERFORMANCE_NOTIFICATIONS
+  description: Seller performance metric / report rollup.
+control_plane:
+- operation: Create Subscription
+  method: POST
+  path: /v3/webhooks/subscriptions
+  rate_limit: 200/min
+- operation: All Subscriptions
+  method: GET
+  path: /v3/webhooks/subscriptions
+  rate_limit: 50/min
+- operation: Update Subscription
+  method: PATCH
+  path: /v3/webhooks/subscriptions/{subscriptionId}
+  rate_limit: 5/min
+- operation: Delete Subscription
+  method: DELETE
+  path: /v3/webhooks/subscriptions/{subscriptionId}
+  rate_limit: 10/min
+- operation: Event Types
+  method: GET
+  path: /v3/webhooks/eventTypes
+  rate_limit: 5/min
+- operation: Test Notification
+  method: POST
+  path: /v3/webhooks/test
+  rate_limit: 10/min
+asyncapi:
+  provider_published: false
+  artifact: asyncapi/walmart-marketplace-notifications-asyncapi.yml
+  authored_by: API Evangelist
+  version: 2.6.0
+  note: Derived from Walmart documentation; NOT a Walmart-published specification. Per-event payload schemas beyond the common
+    envelope are open objects because Walmart gates them behind the seller portal.
+docs: https://developer.walmart.com/us-marketplace/docs/notifications-overview
+evidence:
+- url: https://developer.walmart.com/us-marketplace/docs/rate-limiting
+  status: 200
+  note: Notifications Management operations and limits
+- url: https://marketplace.walmartapis.com/v3/webhooks/eventTypes
+  status: 401
+  note: live event-type list is seller-gated
