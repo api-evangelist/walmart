@@ -431,6 +431,8 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/walmart.png
 common:
+- type: Website
+  url: https://www.walmart.com/
 - type: CapabilityMap
   url: capabilities/walmart-capability-edges.yml
   name: Walmart Business Capability Map
