@@ -3,7 +3,8 @@ url: https://raw.githubusercontent.com/api-search/commerce/main/_apis/walmart/ap
 apis:
 - aid: walmart:walmart-assortment-recommendations-api
   name: Walmart Assortment Recommendations API
-  description: The Assortment Recommendations API from Walmart — 3 operation(s) for assortment recommendations.
+  description: >-
+    The Assortment Recommendations API from Walmart — 3 operation(s) for assortment recommendations.
   humanURL: https://developer.walmart.com/us-marketplace/docs/assortment-recommendations-overview
   baseURL: https://marketplace.walmartapis.com
   tags:
@@ -31,34 +32,6 @@ apis:
     url: https://developer.walmart.com/us-marketplace/docs/oauth-authentication
   - type: Overlay
     url: overlays/walmart-authorization-api-overlay.yaml
-- aid: walmart:walmart-dsv-cost-api
-  name: Walmart DSV Cost API
-  description: The DSV Cost API from Walmart — 1 operation(s) for dsv cost.
-  humanURL: https://developer.walmart.com/suppliers/docs/get-started
-  baseURL: https://api-gateway.walmart.com
-  tags:
-  - DSV Cost
-  properties:
-  - type: OpenAPI
-    url: openapi/walmart-dsv-cost-api-openapi.yml
-  - type: Documentation
-    url: https://developer.walmart.com/suppliers/docs/get-started
-  - type: Overlay
-    url: overlays/walmart-dsv-cost-api-overlay.yaml
-- aid: walmart:walmart-dsv-orders-api
-  name: Walmart DSV Orders API
-  description: The DSV Orders API from Walmart — 6 operation(s) for dsv orders.
-  humanURL: https://developer.walmart.com/suppliers/docs/get-started
-  baseURL: https://api-gateway.walmart.com
-  tags:
-  - DSV Orders
-  properties:
-  - type: OpenAPI
-    url: openapi/walmart-dsv-orders-api-openapi.yml
-  - type: Documentation
-    url: https://developer.walmart.com/suppliers/docs/get-started
-  - type: Overlay
-    url: overlays/walmart-dsv-orders-api-overlay.yaml
 - aid: walmart:walmart-feeds-api
   name: Walmart Feeds API
   description: The Feeds API from Walmart — 3 operation(s) for feeds.
@@ -185,20 +158,6 @@ apis:
     url: asyncapi/walmart-webhooks.yml
   - type: Overlay
     url: overlays/walmart-notifications-api-overlay.yaml
-- aid: walmart:walmart-on-request-report-api
-  name: Walmart On-Request Report API
-  description: The On-Request Report API from Walmart — 3 operation(s) for on-request report.
-  humanURL: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
-  baseURL: https://marketplace.walmartapis.com
-  tags:
-  - On-Request Report
-  properties:
-  - type: OpenAPI
-    url: openapi/walmart-on-request-report-api-openapi.yml
-  - type: Documentation
-    url: https://developer.walmart.com/us-marketplace/docs/on-request-reports-api-overview
-  - type: Overlay
-    url: overlays/walmart-on-request-report-api-overlay.yaml
 - aid: walmart:walmart-on-request-reports-api
   name: Walmart On Request Reports API
   description: The On Request Reports API from Walmart — 3 operation(s) for on request reports.
@@ -338,7 +297,8 @@ apis:
 - aid: walmart:walmart-settings-api
   name: Walmart Settings API
   description: The Settings API from Walmart — 11 operation(s) for settings.
-  humanURL: https://developer.walmart.com/us-marketplace/docs/shipping-and-fulfillment-settings-api-overview
+  humanURL: >-
+    https://developer.walmart.com/us-marketplace/docs/shipping-and-fulfillment-settings-api-overview
   baseURL: https://marketplace.walmartapis.com
   tags:
   - Settings
@@ -346,7 +306,8 @@ apis:
   - type: OpenAPI
     url: openapi/walmart-settings-api-openapi.yml
   - type: Documentation
-    url: https://developer.walmart.com/us-marketplace/docs/shipping-and-fulfillment-settings-api-overview
+    url: >-
+      https://developer.walmart.com/us-marketplace/docs/shipping-and-fulfillment-settings-api-overview
   - type: Overlay
     url: overlays/walmart-settings-api-overlay.yaml
 - aid: walmart:walmart-ship-with-walmart-api
@@ -431,6 +392,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/walmart.png
 common:
+- type: Overlay
+  url: overlays/walmart-dsv-cost-api-overlay.yaml
+- type: Overlay
+  url: overlays/walmart-dsv-orders-api-overlay.yaml
+- type: Overlay
+  url: overlays/walmart-on-request-report-api-overlay.yaml
 - type: Website
   url: https://www.walmart.com/
 - type: CapabilityMap
