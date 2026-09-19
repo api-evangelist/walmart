@@ -2,15 +2,16 @@
 kin_checks:
   slug: walmart
   schema_version: 0.22.0
-  scored_at: '2026-09-15'
-  run_ts: 2026-09-15T230249
-  note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.22.0.yml; counts below let you verify that.
+  scored_at: '2026-09-18'
+  run_ts: 2026-09-18T205255
+  note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
+    apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
+    below let you verify that.
   counts:
     total: 136
     earned: 58
-    partial: 15
-    missed: 41
+    partial: 14
+    missed: 42
     na: 22
   checks:
   - id: well_known_published
@@ -21,19 +22,22 @@ kin_checks:
     status: missed
   - id: openapi_3_2
     status: missed
-    detail: 0 of 25 openapi documents pass
+    detail: 0 of 22 openapi documents pass
   - id: openapi_3_1
     status: missed
-    detail: 0 of 25 openapi documents pass
+    detail: 0 of 22 openapi documents pass
   - id: info_complete
     status: missed
-    detail: 0 of 25 openapi documents pass
+    detail: 0 of 22 openapi documents pass
+  - id: error_responses_documented
+    status: missed
+    detail: 0 of 22 openapi documents pass
   - id: components_reuse
     status: missed
-    detail: 0 of 25 openapi documents pass
+    detail: 0 of 22 openapi documents pass
   - id: webhooks_or_callbacks
     status: missed
-    detail: 0 of 25 openapi documents pass
+    detail: 0 of 22 openapi documents pass
   - id: inbound_contract_published
     status: missed
   - id: json_schema_present
@@ -108,20 +112,16 @@ kin_checks:
     status: missed
   - id: operations_operation_ids
     status: partial
-    earned: 3.84
-    detail: 24 of 25 openapi documents pass
-  - id: error_responses_documented
-    status: partial
-    earned: 0.16
-    detail: 1 of 25 openapi documents pass
+    earned: 3.82
+    detail: 21 of 22 openapi documents pass
   - id: security_schemes_defined
     status: partial
-    earned: 0.16
-    detail: 1 of 25 openapi documents pass
+    earned: 0.18
+    detail: 1 of 22 openapi documents pass
   - id: security_applied
     status: partial
-    earned: 2.4
-    detail: 20 of 25 openapi documents pass
+    earned: 2.59
+    detail: 19 of 22 openapi documents pass
   - id: lifecycle_documented
     status: partial
     earned: 0.89
@@ -161,3 +161,26 @@ kin_checks:
     status: partial
     earned: 1.25
     detail: 'authorship: derived'
+  na:
+  - asyncapi_3_x
+  - channels_defined
+  - contract_self_operated
+  - fhir_capability_statement
+  - fhir_resource_coverage
+  - messages_with_schema
+  - os_code_of_conduct
+  - os_contribution_guide
+  - os_releases
+  - os_security_policy
+  - reg_camara_conformance
+  - reg_certification_signal
+  - reg_consent_model
+  - reg_entitlement_terms
+  - reg_fapi_profile
+  - reg_mandate_verified
+  - reg_named_standard_conformance
+  - reg_pci_sca
+  - reg_smart_configuration
+  - reg_write_surface
+  - security_schemes
+  - server_bindings

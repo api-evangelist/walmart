@@ -38,6 +38,8 @@ apis:
   humanURL: https://developer.walmart.com/us-marketplace/reference/getallfeedstatuses
   baseURL: https://marketplace.walmartapis.com
   tags:
+  - Feed
+  tags_raw:
   - Feeds
   properties:
   - type: OpenAPI
@@ -340,6 +342,7 @@ apis:
     url: overlays/walmart-utilities-api-overlay.yaml
 name: Walmart
 tags:
+- Walmart
 - Commerce
 - Retail
 - Fortune 100
@@ -352,8 +355,8 @@ tags:
 - Seller APIs
 - Webhook
 - MCP
-- Walmart
 tags_raw:
+- Walmart
 - Commerce
 - Retail
 - Fortune 100
