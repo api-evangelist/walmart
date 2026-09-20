@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 6
+edge_count: 10
 edges:
 - tag: Inventory
   spec_file: walmart-inventory-api-openapi.yml
@@ -44,6 +44,29 @@ edges:
     "Walmart Update a Promotional Price"'
   reason: Operations set and retrieve promotional prices for SKUs, which is discount/promotion pricing
     management, not a transport capability.
+- tag: Ship with Walmart
+  spec_file: walmart-ship-with-walmart-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.85
+  evidence: '"enables walmart.com sellers to buy shipping at competitively discounted rates directly from
+    Walmart to ship their goods to US customers"; "Walmart Create Label", "Walmart Supported Carriers"'
+  reason: Operations buy carrier shipping, produce labels, estimate rates and track shipments — outbound
+    transport execution, i.e. logistics operations within the supply chain.
+  recovered_from: vertical-retail-consumer-goods-edges.json
+- tag: Items
+  spec_file: walmart-items-api-openapi.yml
+  capability_id: BC-2370.10
+  capability_id_l1: BC-2370
+  capability_name: Item Master Data Management
+  confidence: 0.82
+  evidence: GET /v3/items/taxonomy getTaxonomyResponse Expose Product Type Taxonomy; POST /v3/feeds itemBulkUploads
+    Maintain Items in Bulk; POST /v3/items/associations getItemAssociations
+  reason: Operations create and maintain item records in bulk, retrieve items by SKU/productId, expose
+    product-type taxonomy and item associations — canonical item master data. Rich-media upload nudges
+    toward content authoring, but item master maintenance dominates.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: DSV Orders
   spec_file: walmart-dsv-orders-api-openapi.yml
   capability_id: BC-520.40
@@ -54,6 +77,30 @@ edges:
     POST /v3/orders/{purchaseOrderId}/shipping postShipOrderLines; postAcknowledgeOrders; postCancelOrderLines'
   reason: Retrieve, acknowledge, ship and cancel purchase-order lines is order fulfilment orchestration
     for drop-ship vendors.
+- tag: Listing Quality
+  spec_file: walmart-listing-quality-api-openapi.yml
+  capability_id: BC-2370.50
+  capability_id_l1: BC-2370
+  capability_name: Product Content Quality Management
+  confidence: 0.8
+  evidence: '''Sellers can use Listing Quality APIs to gather listing quality metrics about their items'';
+    GET /v3/insights/items/listingQuality/score ''Seller Listing Quality Score'''
+  reason: Operations score listing/content quality and count items with listing quality issues — content
+    readiness and completeness scoring against channel standards, i.e. Product Content Quality Management.
+  recovered_from: vertical-retail-consumer-goods-edges.json
+- tag: Assortment Recommendations
+  spec_file: walmart-assortment-recommendations-api-openapi.yml
+  capability_id: BC-2300.10
+  capability_id_l1: BC-2300
+  capability_name: Assortment & Range Planning
+  confidence: 0.78
+  evidence: '"Assortment recommendations empower sellers understand customer demand ... curating personalised
+    seller recommendations by leveraging demand signals"; PUT /v3/growth/assortment/recommendations/rejections
+    rejectAssortmentRecommendations'
+  reason: Operations serve, categorise, shortlist and reject recommendations for which items a seller
+    should add to its range — assortment/range decision support. Maps to Merchandising Management, specifically
+    assortment and range planning; slight ambiguity because the signals are demand-driven analytics.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: Fulfillment
   spec_file: walmart-fulfillment-api-openapi.yml
   capability_id: BC-520
