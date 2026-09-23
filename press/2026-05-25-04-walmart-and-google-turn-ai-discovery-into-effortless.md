@@ -1,7 +1,9 @@
 ---
 title: Walmart and Google Turn AI Discovery Into Effortless ...
 url: https://corporate.walmart.com/news/2026/01/11/walmart-and-google-turn-ai-discovery-into-effortless-shopping-experiences
-date: '2026-05-25'
+published: '2026-01-11'
+date_basis: url-derived
+harvested: '2026-05-25'
 query: '"Walmart" press release artificial intelligence'
 position: 4
 source: serpapi-google

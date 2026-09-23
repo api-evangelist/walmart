@@ -1,12 +1,99 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/walmart-marketplace-authentication-openapi-original.yml
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/docs/oauth-authentication
+docs: https://developer.walmart.com/us-marketplace/docs/authentication-authorization
+provider: Walmart
+providerId: walmart
+description: 'Walmart Marketplace APIs authenticate with OAuth 2.0 client credentials. A seller (or an approved Solution Provider
+  acting for a seller) exchanges a Client ID / Client Secret for a short-lived access token at POST /v3/token — the token
+  request itself is HTTP Basic (base64 clientId:clientSecret in Authorization). Every subsequent call carries the token in
+  the WM_SEC.ACCESS_TOKEN header alongside three required Walmart service headers. This replaced an older signature scheme
+  (WM_CONSUMER.ID + WM_SEC.TIMESTAMP + WM_SEC.AUTH_SIGNATURE from a Consumer ID / Private Key pair), which is retired. Authorization
+  granularity is per object category (Items, Orders, ...) assigned to the credential, not OAuth scopes: seller credentials
+  carry full access, Solution Provider credentials start with none. Delegated Access keys are being retired — new issuance
+  stopped 2026-07-30 and existing keys stop working at the end of September 2026, replaced by OAuth 2.0 seller authorization
+  through the Walmart App Store.'
 summary:
   types:
+  - oauth2
   - http
+  primary: oauth2 client_credentials
 schemes:
+- name: walmartOAuth2
+  type: oauth2
+  flow: clientCredentials
+  token_endpoint: https://marketplace.walmartapis.com/v3/token
+  sandbox_token_endpoint: https://sandbox.walmartapis.com/v3/token
+  grant_type: client_credentials
+  client_authentication: 'HTTP Basic — Authorization: Basic base64(clientId:clientSecret)'
+  token_header: WM_SEC.ACCESS_TOKEN
+  token_introspection: GET /v3/token/detail (operationId getTokenDetail)
+  operationIds:
+  - tokenAPI
+  - getTokenDetail
+  scopes: null
+  scopes_note: No OAuth scope vocabulary is published for the Marketplace APIs. Access is granted per object category on the
+    credential itself.
+  sources:
+  - https://developer.walmart.com/us-marketplace/docs/oauth-authentication
+  - openapi/_original/walmart-marketplace-authentication-openapi-original.yml
 - name: basicScheme
   type: http
   scheme: basic
+  in: header
+  name_header: Authorization
+  applies_to: POST /v3/token only — the client-credential exchange
   sources:
-  - openapi/walmart-marketplace-authentication-openapi-original.yml
+  - openapi/_original/walmart-marketplace-authentication-openapi-original.yml
+required_headers:
+- name: WM_SEC.ACCESS_TOKEN
+  required: true
+  purpose: Bearer access token returned by /v3/token
+  applies: all endpoints except /v3/token
+- name: WM_QOS.CORRELATION_ID
+  required: true
+  purpose: Caller-generated unique id for request tracing/correlation
+- name: WM_SVC.NAME
+  required: true
+  purpose: Service name, e.g. "Walmart Marketplace"
+- name: WM_CONSUMER.CHANNEL.TYPE
+  required: false
+  purpose: Channel type id issued to the consumer
+- name: WM_PARTNER.ID
+  required: false
+  purpose: Partner/seller id; used on delegated and multi-seller calls
+retired_schemes:
+- name: Consumer ID + Private Key signature
+  headers:
+  - WM_CONSUMER.ID
+  - WM_SEC.TIMESTAMP
+  - WM_SEC.AUTH_SIGNATURE
+  status: retired
+  replacement: OAuth 2.0 Client ID / Client Secret
+- name: Delegated Access keys
+  status: deprecated
+  new_issuance_stopped: '2026-07-30'
+  stops_working: '2026-09-30'
+  replacement: OAuth 2.0 seller authorization via the Walmart App Store (https://seller.walmart.com/apps/app-listings)
+  source: https://developer.walmart.com/us-marketplace/docs/delegated-access-authorization
+key_management:
+  console: https://developer.walmart.com/generateKey
+  environments:
+  - production
+  - sandbox
+  note: The portal issues separate Production and Sandbox key pairs; the secret can be re-read from the portal at any time
+    rather than stored locally. Resetting requires admin access.
+portal_mcp_oauth:
+  note: 'Separate from the Marketplace APIs, developer.walmart.com itself runs an OAuth 2.1 authorization server for its remote
+    MCP server: authorization-code + PKCE (S256), dynamic client registration, scopes openapi_read and offline_access. See
+    mcp/walmart-mcp.yml and well-known/walmart-oauth-authorization-server.json.'
+evidence:
+- url: https://developer.walmart.com/us-marketplace/docs/oauth-authentication
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/authentication-authorization
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/delegated-access-authorization
+  status: 200
+- url: https://marketplace.walmartapis.com/v3/utilities/apiStatus
+  status: 401
+  note: gateway rejects unauthenticated calls

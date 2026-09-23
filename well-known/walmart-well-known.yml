@@ -1,0 +1,108 @@
+generated: '2026-08-27'
+method: probed
+source: live GET probes of /.well-known/* on every apis.yml + OpenAPI servers[] host, 2026-08-27
+provider: Walmart
+providerId: walmart
+description: Walmart serves two real /.well-known documents. The developer portal (developer.walmart.com,
+  a ReadMe-hosted site) publishes RFC 8414 OAuth authorization-server metadata and RFC 9728 OAuth protected-resource
+  metadata — these describe the OAuth guard in front of the portal's own remote MCP server (scopes openapi_read
+  + offline_access), not the Marketplace seller APIs. www.walmart.com serves an RFC 9116 security.txt
+  whose canonical is walmart.com. Every Marketplace API host (marketplace.walmartapis.com, sandbox.walmartapis.com,
+  api-gateway.walmart.com) answers 401 to every path because the gateway requires a seller token before
+  routing anything, including /.well-known.
+hosts:
+- host: developer.walmart.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: walmart-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: walmart-oauth-protected-resource.json
+  - path: /.well-known/security.txt
+    status: 401
+    note: portal edge returns 401 for this path
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+    note: no A2A agent card
+  - path: /.well-known/agent.json
+    status: 401
+    note: legacy A2A path; no agent card
+- host: www.walmart.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: walmart-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+    note: 404 body is the walmart.com SPA shell, not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: marketplace.walmartapis.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: sandbox.walmartapis.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: api-gateway.walmart.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+findings:
+  api_catalog: false
+  security_txt: true
+  oauth_metadata: true
+  agent_card: false
+  ai_plugin: false

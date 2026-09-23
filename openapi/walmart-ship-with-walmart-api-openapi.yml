@@ -17,7 +17,11 @@ paths:
       tags:
       - Ship with Walmart
       summary: Walmart Create Label
-      description: "This API generates shipping labels with the shipment info passed. The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.\nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type, \n'Accept'='application/json,image/png' as image png media type and 'Accept'='application/json' as json response. Refer request sample4 for India(IN) to United-States(US) shipping"
+      description: 'This API generates shipping labels with the shipment info passed. The response to a successful call contains the tracking number with the pdf or image type based on the media type passed in Accept header.
+
+        For eg. ''Accept''=''application/json,application/pdf'' will result in pdf media type,
+
+        ''Accept''=''application/json,image/png'' as image png media type and ''Accept''=''application/json'' as json response. Refer request sample4 for India(IN) to United-States(US) shipping'
       operationId: createLabel
       parameters:
       - in: header
@@ -3782,7 +3786,9 @@ paths:
       tags:
       - Ship with Walmart
       summary: Walmart Download Commercial Invoice
-      description: "This API retrieves commercialInvoice for a carrier & tracking number combination. This API is applicable only when shipping done from (India)IN to (United-States)US. The response to a successful call contains the commercial invoice in pdf format. \nFor eg. 'Accept'='application/json,application/pdf' will result in pdf media type. "
+      description: 'This API retrieves commercialInvoice for a carrier & tracking number combination. This API is applicable only when shipping done from (India)IN to (United-States)US. The response to a successful call contains the commercial invoice in pdf format.
+
+        For eg. ''Accept''=''application/json,application/pdf'' will result in pdf media type.'
       operationId: getCIForCarrierAndTrackingNumber
       parameters:
       - name: carrierShortName

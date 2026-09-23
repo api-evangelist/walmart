@@ -1,28 +1,1716 @@
 specification: API Commons Rate Limits
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/docs/rate-limiting
 provider: Walmart
 providerId: walmart
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-reconciled: true
+modified: '2026-08-27'
 tags:
-  - Rate Limiting
-  - Retail / Marketplace
-  - Enterprise
-description: Walmart API rate limits are negotiated per contract; no public defaults published.
+- Rate Limiting
+- Retail / Marketplace
+- Marketplace Seller APIs
+description: 'Walmart publishes per-operation rate limits for the US Marketplace APIs on its developer portal. Limits
+  are enforced with a token-bucket algorithm and are allotted at the SELLER level: a seller with a direct integration
+  and each approved Solution Provider application acting on that seller''s behalf receive separate allotments. Exceeding
+  a rate limit returns HTTP 429; exceeding a feed file-size limit returns HTTP 413. Every response carries the seller''s
+  current token count and the next replenishment time as headers.'
 sources:
-  - https://developer.walmart.com/
+- https://developer.walmart.com/us-marketplace/docs/rate-limiting
+- https://developer.walmart.com/us-marketplace/docs/sandbox-throttling-limits
+- https://developer.walmart.com/us-marketplace/docs/api-status-codes-and-errors
+docs: https://developer.walmart.com/us-marketplace/docs/rate-limiting
+algorithm: token-bucket
+allotment: per-seller; direct-integration and each approved Solution Provider application are metered separately
 headers:
-  retryAfter: Retry-After
+  remaining: x-current-token-count
+  reset: X-Next-Replenishment-Time
+  retryAfter: null
+header_notes: Walmart does not emit RFC-9331 style RateLimit-* or Retry-After headers; it publishes x-current-token-count
+  (tokens left for THIS API) and X-Next-Replenishment-Time (when the bucket refills).
 responseCodes:
   throttled: 429
+  payloadTooLarge: 413
+limit_count: 202
 limits:
-  - name: Per-contract
-    scope: account
-    metric: varies
-    limit: negotiated
-    notes: Contact provider sales for quota details.
+- name: Catalog item recommendation
+  category: Advertising
+  scope: per-seller
+  method: GET
+  endpoint: /v3/advertising/sem/items/recommendation
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Catalog item eligibility
+  category: Advertising
+  scope: per-seller
+  method: POST
+  endpoint: /v3/advertising/sem/items/eligibility
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Create campaign
+  category: Advertising
+  scope: per-seller
+  method: POST
+  endpoint: /v3/advertising/sem/campaigns
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Update campaign
+  category: Advertising
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/advertising/sem/campaigns/{campaignId}
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Stop campaign
+  category: Advertising
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/advertising/sem/campaigns/{campaignId}/st
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Delete campaign
+  category: Advertising
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/advertising/sem/campaigns/{campaignId}
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Get campaign details
+  category: Advertising
+  scope: per-seller
+  method: GET
+  endpoint: /v3/advertising/sem/campaigns/{campaignId}
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Search campaign recommendations
+  category: Advertising
+  scope: per-seller
+  method: POST
+  endpoint: /v3/advertising/sem/campaigns/recommendations/search
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Campaigns performance report
+  category: Advertising
+  scope: per-seller
+  method: POST
+  endpoint: /v3/advertising/sem/campaigns/performance-summary
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Items performance report
+  category: Advertising
+  scope: per-seller
+  method: POST
+  endpoint: /v3/advertising/sem/campaigns/{campaignId}/item-level-summary
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Billing history
+  category: Advertising
+  scope: per-seller
+  method: POST
+  endpoint: /v3/advertising/sem/billing-history
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Search item issues
+  category: Advertising
+  scope: per-seller
+  method: POST
+  endpoint: /v3/advertising/sem/item-issues/search
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get issue types
+  category: Advertising
+  scope: per-seller
+  method: GET
+  endpoint: /v3/advertising/sem/item-issues/issue-types
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get Recommendations
+  category: Assortment Recommendations
+  scope: per-seller
+  method: POST
+  endpoint: /v3/growth/assortment/recommendations
+  limit: 500
+  window: minute
+  published: 500/min
+- name: Get Variants
+  category: Assortment Recommendations
+  scope: per-seller
+  method: GET
+  endpoint: /v3/growth/assortment/recommendations/variants
+  limit: 500
+  window: hour
+  published: 500/hour
+- name: Get Recommendation Trends
+  category: Assortment Recommendations
+  scope: per-seller
+  method: GET
+  endpoint: /v3/growth/assortment/recommendations/trends
+  limit: 500
+  window: hour
+  published: 500/hour
+- name: Get Categorization
+  category: Assortment Recommendations
+  scope: per-seller
+  method: POST
+  endpoint: /v3/growth/assortment/recommendations/categorization/counts
+  limit: 200
+  window: hour
+  published: 200/hour
+- name: Reject Recommendations
+  category: Assortment Recommendations
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/growth/assortment/recommendations/rejections
+  limit: 20
+  window: hour
+  published: 20/hour
+- name: Dispute status
+  category: Disputes Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/items/dispute/duplicates/status
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Dispute submission
+  category: Disputes Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/items/dispute/duplicates/contest
+  limit: 10
+  window: minute
+  published: 10/min
+- name: All feed statuses
+  category: Feed Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/feeds
+  limit: 5000
+  window: minute
+  published: 5000/min (Shared with Feed item status)
+- name: Feed item status
+  category: Feed Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/feeds/{feedId}
+  limit: 5000
+  window: minute
+  published: 5000/min (Shared with All feed statuses)
+- name: Get feed error report
+  category: Feed Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/feeds/{feedId}/errorReport
+  limit: 60
+  window: hour
+  published: 60/hour
+- name: Hazmat Items On Hold
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/items/onhold/search
+  limit: 30
+  window: hour
+  published: 30/hour
+- name: Update Shipment Tracking
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/shipment-tracking
+  limit: 2
+  window: minute
+  published: 2/min
+- name: Create Inbound Shipment label
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/shipment-label
+  limit: 20
+  window: minute
+  published: 20/min
+- name: Get Customer Return Orders status
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/fulfillment/return-orders
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Create Customer Return Order
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/return-orders
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Cancel Customer Return Order
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/return-orders/{orderId}/cancel
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Create Customer Order
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/orders-fulfillments
+  limit: 600
+  window: minute
+  published: 600/min
+- name: Fetch Delivery Promise Details
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/orders-fulfillments/fetchOrderPromiseOptions
+  limit: 20
+  window: minute
+  published: 20/min
+- name: Cancel Customer Order
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/orders-fulfillments/cancel
+  limit: 600
+  window: minute
+  published: 600/min
+- name: Get Shipments
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/fulfillment/inbound-shipments
+  limit: 32
+  window: minute
+  published: 32/min
+- name: Create Inbound Shipment
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/inbound-shipments
+  limit: 500
+  window: minute
+  published: 500/min
+- name: Fetch Inbound Preview
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/inbound-preview
+  limit: 60
+  window: hour
+  published: 60/hour
+- name: Get Carrier Rate Quote
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/fulfillment/carrier-rate-quotes/{shipmentId}/{mode}
+  limit: 150
+  window: minute
+  published: 150/min
+- name: Create Carrier Rate Quote
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/carrier-rate-quotes
+  limit: 8
+  window: minute
+  published: 8/min
+- name: Confirm Carrier Rate Quote
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/carrier-rate-quote/confirm
+  limit: 8
+  window: minute
+  published: 8/min
+- name: Print Carrier Label
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v3/fulfillment/carrier-label/{shipmentId}
+  limit: 30
+  window: minute
+  published: 30/min
+- name: Get WFS Inventory Health Report
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/report/wfs/getInventoryHealthReport
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Get WFS Inventory Reconciliation Report
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/report/wfs/inventoryReconciliationReport
+  limit: 1
+  window: hour
+  published: 1/hour
+- name: Get fulfillment orders status
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/fulfillment/orders-fulfillments/status
+  limit: 20
+  window: minute
+  published: 20/min
+- name: Get Inventory Log for a WFS item
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/fulfillment/inventory-log
+  limit: 500
+  window: minute
+  published: 500/min
+- name: Get Inbound Shipment Items
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/fulfillment/inbound-shipment-items
+  limit: 300
+  window: minute
+  published: 300/min
+- name: Get Inbound Shipment errors
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v3/fulfillment/inbound-shipment-errors
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Cancel Inbound Shipment
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/fulfillment/inbound-shipments/{inboundOrderId}
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Create Carrier Rate Quote
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v4/fulfillment/inbound-shipments-quote
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get Carrier Rate Quote
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: v4/fulfillment/inbound-shipments-quote/{quoteType}/{shipmentId}
+  limit: 150
+  window: minute
+  published: 150/min
+- name: Create Booking
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v4/fulfillment/inbound-shipments-booking
+  limit: 8
+  window: minute
+  published: 8/min
+- name: Cancel Booking
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: DELETE
+  endpoint: v4/fulfillment/inbound-shipments-booking/{shipmentId}/{mode}
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Generate Label
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: POST
+  endpoint: /v4/fulfillment/generate-label
+  limit: 20
+  window: minute
+  published: 20/min
+- name: Download Label
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v4/fulfillment/download-label/{shipmentId}/{labelType}/{labelSize}
+  limit: 300
+  window: minute
+  published: 300/min
+- name: Print Bill of Lading (BOL)
+  category: Fulfillment Management (WFS)
+  scope: per-seller
+  method: GET
+  endpoint: /v4/fulfillment/inbound-shipments-bol/{shipmentId}/{mode}
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Item Listing Quality Details
+  category: Insights Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/insights/items/listingQuality/items
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Pro Seller Tier and Rewards Status
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/sellerIncentives
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Pro Seller Badge Status
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/prosellerbadge
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Valid Tracking Rate Performance Metrics
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/vtr/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get Valid tracking orders report in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/vtr/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Simplified Shipping Settings Metrics - Ship-from Location accuracies
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/sss/sfla/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get the report of Simplified Shipping Settings Metrics - Ship-from location accury in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/sss/sfla/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Simplified Shipping Settings Metrics - On-time Shipment rate
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/sss/ots/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get the report of Simplified Shipping Settings Metrics - On-time shipment rate in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/sss/ots/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Simplified Shipping Settings Metrics - Carrier Method Accuracy
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/sss/cma/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get the report of Simplified Shipping Settings Metrics - Carrier Method Accuracy in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/sss/cma/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Seller Response Rate Performance Metrics
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/srr/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get Seller Response Rate orders in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/srr/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Refund Performance Metrics
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/refunds/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get refunded orders report in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/refunds/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: On Time Delivery Performance Metrics
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/otd/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get On Time Delivery Orders Report in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/otd/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Cancellations Performance Metrics
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/cancellations/summary
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Get cancelled orders report in Microsoft xlsx format
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/performance/cancellations/report
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Unpublished Items
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/items/unpublished/items
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Unpublished Item Counts
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/items/unpublished/counts
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Seller Listing Quality Score
+  category: Insights Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/insights/items/listingQuality/score
+  limit: 10
+  window: hour
+  published: 10/hour
+- name: Inventory (legacy)
+  category: Inventory Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/inventory
+  limit: 200
+  window: minute
+  published: 200/min
+- name: Inventory (New)
+  category: Inventory Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/wfs/inventory
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Update Inventory
+  category: Inventory Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/inventory
+  limit: 200
+  window: minute
+  published: 200/min
+- name: Single Item Inventory by Ship Node
+  category: Inventory Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/inventories/{sku}
+  limit: 200
+  window: minute
+  published: 200/min
+- name: Update Item Inventory per Ship Node
+  category: Inventory Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/inventories/{sku}
+  limit: 200
+  window: minute
+  published: 200/min
+- name: Multiple Item Inventory for All Ship Nodes
+  category: Inventory Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/inventories
+  limit: 200
+  window: minute
+  published: 200/min
+- name: Get Spec
+  category: Item Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/items/spec
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Catalog Search
+  category: Item Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/items/catalog/search
+  limit: 200
+  window: minute
+  published: 200/min (Shared with Get Item Associations)
+- name: Get Item Associations
+  category: Item Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/items/associations
+  limit: 200
+  window: minute
+  published: 200/min (Shared with Catalog Search)
+- name: GTIN Exemption Status
+  category: Item Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/items/gtin-exemption/status
+  limit: 100
+  window: minute
+  published: 100/min
+- name: All items
+  category: Item Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/items
+  limit: 300
+  window: minute
+  published: 300/min (if used with query parameters 60/min)
+- name: An item
+  category: Item Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/items/{id}
+  limit: 900
+  window: minute
+  published: 900/min (if used with query parameters 60/min)
+- name: Item Search
+  category: Item Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/items/walmart/search
+  limit: 200
+  window: minute
+  published: 200/min 1000/day (if used with `responseFormat=SPEC`
+- name: Taxonomy
+  category: Item Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/items/taxonomy
+  limit: 200
+  window: minute
+  published: 200/min (Shared with Get items count by status)
+- name: Get item count by groups
+  category: Item Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/items/groups/count
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Get items count by status
+  category: Item Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/items/count
+  limit: 200
+  window: minute
+  published: 200/min (Shared with Taxonomy)
+- name: Retire an item
+  category: Item Management
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/items/{sku}
+  limit: 900
+  window: minute
+  published: 900/min
+- name: Lag Time
+  category: Lag Time
+  scope: per-seller
+  method: GET
+  endpoint: /v3/lagtime
+  limit: 20
+  window: hour
+  published: 20/hour
+- name: Test Notification
+  category: Notifications Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/webhooks/test
+  limit: 10
+  window: minute
+  published: 10/min
+- name: All Subscriptions
+  category: Notifications Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/webhooks/subscriptions
+  limit: 50
+  window: minute
+  published: 50/min
+- name: Create Subscription
+  category: Notifications Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/webhooks/subscriptions
+  limit: 200
+  window: minute
+  published: 200/min
+- name: Delete Subscription
+  category: Notifications Management
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/webhooks/subscriptions/{subscriptionId}
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Update Subscription
+  category: Notifications Management
+  scope: per-seller
+  method: PATCH
+  endpoint: /v3/webhooks/subscriptions/{subscriptionId}
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Event Types
+  category: Notifications Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/webhooks/eventTypes
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Get All Report Requests
+  category: On-Request Report Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/reports/reportRequests
+  limit: 200
+  window: minute
+  published: 200/min
+- name: Report Request Status
+  category: On-Request Report Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/reports/reportRequests/{requestId}
+  limit: 20
+  window: hour
+  published: 20/hour
+- name: Download Report URL
+  category: On-Request Report Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/reports/downloadReport
+  limit: 20
+  window: hour
+  published: 20/hour
+- name: Create Report Schedule
+  category: On-Request Report Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/reports/schedules
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Get All Report Schedules
+  category: On-Request Report Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/reports/schedules
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Get Single Report Schedules
+  category: On-Request Report Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/reports/schedules/{scheduleId}
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Update Report Schedule
+  category: On-Request Report Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/reports/schedules/{scheduleId}
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Delete Report Schedule
+  category: On-Request Report Management
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/reports/schedules/{scheduleId}
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Ship Order Lines
+  category: Order Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/orders/{purchaseOrderId}/shipping
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Refund Order Lines
+  category: Order Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/orders/{purchaseOrderId}/refund
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Cancel Order Lines
+  category: Order Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/orders/{purchaseOrderId}/cancel
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Acknowledge Orders
+  category: Order Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/orders/{purchaseOrderId}/acknowledge
+  limit: 60
+  window: minute
+  published: 60/min
+- name: All orders
+  category: Order Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/orders
+  limit: 5000
+  window: minute
+  published: 5000/min
+- name: An order
+  category: Order Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/orders/{purchaseOrderId}
+  limit: 5000
+  window: minute
+  published: 5000/min
+- name: All released orders
+  category: Order Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/orders/released
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Entity Match
+  category: Payments
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/entitymatchprofile
+  limit: 300
+  window: minute
+  published: 300/min
+- name: Recon Report (Legacy)
+  category: Payment Reports
+  scope: per-seller
+  method: GET
+  endpoint: /v3/report/reconreport/reconFile
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Payment Statement Report
+  category: Payment Reports
+  scope: per-seller
+  method: GET
+  endpoint: /v3/report/payment/statement
+  limit: 15
+  window: minute
+  published: 15/min
+- name: Performance Report
+  category: Payment Reports
+  scope: per-seller
+  method: GET
+  endpoint: /v3/report/payment/performance
+  limit: 15
+  window: minute
+  published: 15/min
+- name: Update pricing for multiple items in bulk (New)
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=PRICE_AND_PROMOTION
+  limit: 10
+  window: hour
+  published: 10/hour (Shared with Update pricing for multiple items in bulk, Legacy bulk price update, and Update
+    bulk promotional price)
+- name: Update pricing for a single item
+  category: Price Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/price
+  limit: 100
+  window: hour
+  published: 100/hour
+- name: Create Repricer Strategy
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/repricer/strategy
+  limit: 20
+  window: hour
+  published: 20/hour
+- name: Update Repricer Strategy
+  category: Price Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/repricer/strategy/{strategyCollectionId}
+  limit: 10
+  window: hour
+  published: 10/hour
+- name: Delete Repricer Strategy
+  category: Price Management
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/repricer/strategy/{strategyCollectionId}
+  limit: 10
+  window: hour
+  published: 10/hour
+- name: Assign/Unassign items to/from Repricer Strategy
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/repricerFeeds
+  limit: 6
+  window: hour
+  published: 6/hour
+- name: Update walmart-funded incentives enrollment for specific items
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=WALMART_FUNDED_INCENTIVES_ENROLLMENT
+  limit: 6
+  window: hour
+  published: 6/hour
+- name: Update Walmart-funded incentives enrollment for all items
+  category: Price Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/price/incentives/wfpreference
+  limit: 1
+  window: minute
+  published: 1/min
+- name: Update reduced referral fee incentives enrollment
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=INCENTIVE_ENROLLMENT
+  limit: 6
+  window: hour
+  published: 6/hour
+- name: Get Pricing Insights
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/price/getPricingInsights
+  limit: 2
+  window: minute
+  published: 2/min
+- name: Retrieve repricer strategy details
+  category: Price Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/repricer/strategies
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Update bulk prices (Legacy)
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds
+  limit: 10
+  window: hour
+  published: 10/hour (Shared with Update pricing for multiple items in bulk, Legacy bulk price update, and Update
+    bulk promotional price)
+- name: Retrieve price incentives data
+  category: Price Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/price/incentives
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Set up CAP SKU All
+  category: Price Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/cppreference
+  limit: 30
+  window: minute
+  published: 30/min
+- name: List of Repricer Strategies
+  category: Price Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/repricer/strategies
+  limit: 50
+  window: hour
+  published: 50/hour
+- name: List of Price Incentive Items
+  category: Price Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/price/incentives
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Update a promotional price
+  category: Promotion Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/price
+  limit: 100
+  window: hour
+  published: 100/hour
+- name: Promotional prices
+  category: Promotion Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/promo/sku/{sku}
+  limit: 1000
+  window: minute
+  published: 1000/min
+- name: Update bulk promotional price
+  category: Promotion Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=PRICE_AND_PROMOTION
+  limit: 10
+  window: hour
+  published: 10/hour (Shared with Update pricing for multiple items in bulk, Legacy bulk price update, and Update
+    bulk promotional price)
+- name: Issue refund
+  category: Returns Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/returns/{returnOrderId}/refund
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Returns
+  category: Returns Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/returns
+  limit: 50
+  window: minute
+  published: 50/min
+- name: Recommended Shipment Quantity
+  category: Recommendations
+  scope: per-seller
+  method: GET
+  endpoint: /v3/wfs/recommendation/shipment-quantity
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Bulk Update Item Status
+  category: Reviews Acceleration
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/growth/reviews-accelerator/items/status
+  limit: 100
+  window: hour
+  published: 100/hour
+- name: Get RAP Post-Purchase Items
+  category: Reviews Acceleration
+  scope: per-seller
+  method: POST
+  endpoint: /v3/growth/reviews-accelerator/items
+  limit: 20
+  window: minute
+  published: 20/min
+- name: Get Categories
+  category: Reviews Acceleration
+  scope: per-seller
+  method: POST
+  endpoint: /v3/growth/reviews-accelerator/categories
+  limit: 100
+  window: hour
+  published: 100/hour
+- name: Get Shipping Template Details
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/templates/{templateId}
+  limit: 750
+  window: minute
+  published: 750/min
+- name: Update Shipping Templates
+  category: Settings Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/settings/shipping/templates/{templateId}
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Delete Shipping Template
+  category: Settings Management
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/settings/shipping/templates/{templateId}
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Get all fulfillment centers
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/shipnodes
+  limit: 50
+  window: minute
+  published: 50/min
+- name: Update fulfillment center
+  category: Settings Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/settings/shipping/shipnodes
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Create fulfillment center
+  category: Settings Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/settings/shipping/shipnodes
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get account level settings
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/account
+  limit: 50
+  window: minute
+  published: 50/min
+- name: Update account level settings
+  category: Settings Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/settings/shipping/account
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Create account level settings
+  category: Settings Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/settings/shipping/account
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get All Shipping Templates
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/templates
+  limit: 300
+  window: minute
+  published: 300/min
+- name: Create Shipping Templates
+  category: Settings Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/settings/shipping/templates
+  limit: 60
+  window: minute
+  published: 60/min
+- name: Third party fulfillment center association
+  category: Settings Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/settings/shipping/3plshipnodes
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get Shipping Configurations
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shippingprofile
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Get Shipping Template Activation Status
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/templates/activationStatus
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get coverage for fulfillment centers
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/shipnodes/coverage
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Get carrier methods
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/carriers
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get all third party fulfillment providers
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/3plproviders
+  limit: 10
+  window: minute
+  published: 10/min
+- name: Get Partner Configurations
+  category: Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/partnerprofile
+  limit: 50
+  window: minute
+  published: 50/min
+- name: Create label
+  category: Ship With Walmart
+  scope: per-seller
+  method: POST
+  endpoint: /v3/shipping/labels
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Shipping estimates
+  category: Ship With Walmart
+  scope: per-seller
+  method: POST
+  endpoint: /v3/shipping/labels/shipping-estimates
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Labels detail by purchase order id
+  category: Ship With Walmart
+  scope: per-seller
+  method: GET
+  endpoint: /v3/shipping/labels/purchase-orders/{purchaseOrderId}
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Supported carriers
+  category: Ship With Walmart
+  scope: per-seller
+  method: GET
+  endpoint: /v3/shipping/labels/carriers
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Download label
+  category: Ship With Walmart
+  scope: per-seller
+  method: GET
+  endpoint: /v3/shipping/labels/carriers/{carrierShortName}/trackings/{trackingNo}
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Discard label
+  category: Ship With Walmart
+  scope: per-seller
+  method: DELETE
+  endpoint: /v3/shipping/labels/carriers/{carrierShortName}/trackings/{trackingNo}
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Supported carrier package types
+  category: Ship With Walmart
+  scope: per-seller
+  method: GET
+  endpoint: /v3/shipping/labels/carriers/{carrierShortName}/package-types
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Create scan form for labels
+  category: Ship With Walmart
+  scope: per-seller
+  method: POST
+  endpoint: /v3/shipping/scan-form
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Download scan form
+  category: Ship With Walmart
+  scope: per-seller
+  method: GET
+  endpoint: /v3/shipping/scan-form
+  limit: 100
+  window: minute
+  published: 100/min
+- name: Update FC Level Simplified Shipping Settings
+  category: Simplified Shipping Settings Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/settings/shipping/simplifiedshippingsettings/fulfillmentcenter
+  limit: 25
+  window: minute
+  published: 25/min
+- name: Update Simplified Shipping Settings
+  category: Simplified Shipping Settings Management
+  scope: per-seller
+  method: PUT
+  endpoint: /v3/settings/shipping/simplifiedshippingsettings/account
+  limit: 25
+  window: minute
+  published: 25/min
+- name: Create Simplified Shipping Settings
+  category: Simplified Shipping Settings Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/settings/shipping/simplifiedshippingsettings/account
+  limit: 5
+  window: minute
+  published: 5/min
+- name: Get Simplified Shipping Settings
+  category: Simplified Shipping Settings Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/settings/shipping/simplifiedshippingsettings
+  limit: 50
+  window: minute
+  published: 50/min
+- name: Taxonomy by Spec
+  category: Utilities Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/utilities/taxonomy
+  limit: 20
+  window: minute
+  published: 20/min
+- name: API Platform Status
+  category: Utilities Management
+  scope: per-seller
+  method: GET
+  endpoint: /v3/utilities/apiStatus
+  limit: 100
+  window: minute
+  published: 100/min
+- name: 'Feed upload: inventory'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=inventory
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 10 MB
+- name: 'Feed upload: mp_item_price_update'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=mp_item_price_update
+  limit: 20
+  window: hour
+  published: 20/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: SKU_TEMPLATE_MAP'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=SKU_TEMPLATE_MAP
+  limit: null
+  window: null
+  published: null
+  max_file_size: 10/hour
+- name: 'Feed upload: dsv_inventory'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=dsv_inventory
+  limit: 50
+  window: hour
+  published: 50/hour
+  max_file_size: 10 MB
+- name: 'Feed upload: mp_item'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=mp_item
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: mp_maintenance'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=mp_maintenance
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: mp_inventory'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=mp_inventory
+  limit: 50
+  window: hour
+  published: 50/hour
+  max_file_size: 1 MB
+- name: 'Feed upload: delete_item'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=delete_item
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 0.4 MB
+- name: 'Feed upload: lagtime'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=lagtime
+  limit: 6
+  window: day
+  published: 6/day
+  max_file_size: 10 MB
+- name: 'Feed upload: price (Legacy)*'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=price (Legacy)*
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 10 MB
+- name: 'Feed upload: promo*'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=promo*
+  limit: 6
+  window: day
+  published: 6/day
+  max_file_size: 10 MB
+- name: 'Feed upload: PRICE_AND_PROMOTION*'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=PRICE_AND_PROMOTION*
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: Not applicable
+- name: 'Feed upload: mp_item_match'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=mp_item_match
+  limit: 20
+  window: hour
+  published: 20/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: WALMART_FUNDED_INCENTIVES_ENROLLMENT'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=WALMART_FUNDED_INCENTIVES_ENROLLMENT
+  limit: 6
+  window: day
+  published: 6/day
+  max_file_size: Not applicable
+- name: 'Feed upload: INCENTIVE_ENROLLMENT'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=INCENTIVE_ENROLLMENT
+  limit: 6
+  window: day
+  published: 6/day
+  max_file_size: Not applicable
+- name: 'Feed upload: returns_overrides'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=returns_overrides
+  limit: 20
+  window: day
+  published: 20/day
+  max_file_size: 0.4 MB
+- name: 'Feed upload: omni_dsv_item'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=omni_dsv_item
+  limit: 20
+  window: hour
+  published: 20/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: omni_maintenance'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=omni_maintenance
+  limit: 20
+  window: hour
+  published: 20/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: cpt_seller_eligibility'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=cpt_seller_eligibility
+  limit: 7
+  window: day
+  published: 7/day
+  max_file_size: 10 MB
+- name: 'Feed upload: item'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=item
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: shipping_overrides'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=shipping_overrides
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: mp_wfs_item'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=mp_wfs_item
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: omni_wfs'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=omni_wfs
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: program_actions'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=program_actions
+  limit: 20
+  window: hour
+  published: 20/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: mp_wfs_maintenance'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=mp_wfs_maintenance
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+- name: 'Feed upload: split_and_merge'
+  category: Feed Management
+  scope: per-seller
+  method: POST
+  endpoint: /v3/feeds?feedType=split_and_merge
+  limit: 10
+  window: hour
+  published: 10/hour
+  max_file_size: 25 MB
+sandbox:
+  source: https://developer.walmart.com/us-marketplace/docs/sandbox-throttling-limits
+  note: Sandbox has its own, much tighter throttling limits; exceeding them also returns 429.
+  limits:
+  - feed_type: Items
+    limit: 30
+    window: hour
+    max_file_size: 100 KB
+    processing_time: 30 mins
+  - feed_type: Prices
+    limit: 30
+    window: hour
+    max_file_size: 5 KB
+    processing_time: 30 mins
+  - feed_type: Promotion
+    limit: 30
+    window: hour
+    max_file_size: 25 KB
+    processing_time: 30 mins
+  - feed_type: Inventory
+    limit: 30
+    window: hour
+    max_file_size: 2 KB
+    processing_time: 30 mins
+  - feed_type: Lag Time
+    limit: 30
+    window: hour
+    max_file_size: 2 KB
+    processing_time: 30 mins
+  - feed_type: Returns/Refunds
+    limit: 30
+    window: hour
+    max_file_size: 2 KB
+    processing_time: 30 mins

@@ -1,0 +1,253 @@
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/docs/error-codes
+provider: Walmart
+providerId: walmart
+format: proprietary
+format_note: 'Walmart does NOT use RFC 9457 application/problem+json. Marketplace APIs return an ARRAY error envelope in application/json:
+  {"errors":[{"code","message","category","severity","field"}]}. Older/gateway surfaces return the same shape under the singular
+  key "error" with fields code/field/description/info/severity/category, and the gateway can answer application/xml (<_InternalGMPErrorWrapper>)
+  when it rejects a call before routing. Clients must handle all three.'
+envelope:
+  json_current: '{"errors":[{"code":"INVALID_REQUEST_PARAM","message":"...","category":"DATA","severity":"ERROR","field":"sku"}]}'
+  json_gateway: '{"error":[{"code":"UNAUTHORIZED.GMP_GATEWAY_API","field":"UNAUTHORIZED","description":"Unauthorized","info":"..."}]}'
+  xml_gateway: <_InternalGMPErrorWrapper>...</_InternalGMPErrorWrapper>
+  fields:
+  - code
+  - message | description
+  - category
+  - severity
+  - field
+  - info
+  correlation: Send WM_QOS.CORRELATION_ID (a UUID) on every request; quote it in support tickets.
+description: Walmart publishes a consolidated Marketplace API error reference covering standard HTTP-mapped error codes, authentication
+  failures, rate-limit behaviour, per-scenario troubleshooting for orders/items/price/inventory, and feed validation error
+  codes. The OpenAPI definitions themselves document very few 4xx/5xx responses (7 across 171 operations), so the docs are
+  the authoritative error contract, not the spec.
+sources:
+- https://developer.walmart.com/us-marketplace/docs/error-codes
+- https://developer.walmart.com/us-marketplace/docs/errors-and-behaviors
+- https://developer.walmart.com/us-marketplace/docs/api-status-codes-and-errors
+error_count: 35
+errors:
+- code: SOME_CONTENT_NOT_FOUND
+  status: 206
+  title: Partial content
+  cause: Not all requested data was available
+  remediation: Handle partial results and request missing items if needed.
+  domain: marketplace-standard
+- code: INVALID_REQUEST
+  status: 400
+  title: Bad request
+  cause: Body shape does not match schema
+  remediation: Validate JSON or feed before sending.
+  domain: marketplace-standard
+- code: INVALID_REQUEST_HEADER
+  status: 400
+  title: Bad request
+  cause: Missing or malformed header, including correlation ID
+  remediation: Add required headers and use a valid WM_QOS.CORRELATION_ID.
+  domain: marketplace-standard
+- code: INVALID_REQUEST_PARAM
+  status: 400
+  title: Bad request
+  cause: Invalid query or path parameter
+  remediation: Check parameter names, types, and allowed values.
+  domain: marketplace-standard
+- code: INVALID_REQUEST_CONTENT
+  status: 400
+  title: Bad request
+  cause: Invalid body content
+  remediation: Verify request schema and field constraints.
+  domain: marketplace-standard
+- code: MISSING_REQUEST_HEADER
+  status: 400
+  title: Bad request
+  cause: Required header missing
+  remediation: Add required headers such as WM_SEC.ACCESS_TOKEN after OAuth.
+  domain: marketplace-standard
+- code: MISSING_REQUEST_PARAM
+  status: 400
+  title: Bad request
+  cause: Required parameter missing
+  remediation: Provide required parameters in path or query.
+  domain: marketplace-standard
+- code: MALFORMED_REQUEST_CONTENT
+  status: 400
+  title: Bad request
+  cause: JSON or XML not parseable
+  remediation: Fix formatting issues and resend.
+  domain: marketplace-standard
+- code: UNAUTHORIZED
+  status: 401
+  title: Unauthorized
+  cause: Missing or expired OAuth token, or wrong permissions
+  remediation: Obtain an access token, send it in WM_SEC.ACCESS_TOKEN, and ensure the credential is permitted for the call.
+  domain: marketplace-standard
+- code: FORBIDDEN.GMP_GATEWAY_API
+  status: 403
+  title: Forbidden
+  cause: Caller lacks permission to access the resource
+  remediation: Confirm the calling app has the right permissions and partner access.
+  domain: marketplace-standard
+- code: CONTENT_NOT_FOUND
+  status: 404
+  title: Not found
+  cause: Resource does not exist
+  remediation: Verify identifiers and ingestion state before updating.
+  domain: marketplace-standard
+- code: URI_NOT_FOUND
+  status: 404
+  title: Not found
+  cause: Wrong path or route
+  remediation: Verify base URL, path, and version.
+  domain: marketplace-standard
+- code: METHOD_NOT_ALLOWED
+  status: 405
+  title: Method not allowed
+  cause: Using the wrong HTTP verb on the route
+  remediation: Use the supported method for the endpoint.
+  domain: marketplace-standard
+- code: INVALID_ACCEPT_TYPE
+  status: 406
+  title: Not acceptable
+  cause: Unsupported Accept header
+  remediation: 'Send Accept: application/json unless documentation specifies another type.'
+  domain: marketplace-standard
+- code: UNSUPPORTED_MEDIA_TYPE
+  status: 415
+  title: Unsupported media type
+  cause: Wrong Content-Type
+  remediation: Use the content type expected by the endpoint or feed.
+  domain: marketplace-standard
+- code: RESOURCE_IS_LOCKED.GMP_RECEIVER_API
+  status: 423
+  title: Resource locked
+  cause: Backend processing volume or record lock
+  remediation: Retry after a short delay. If it persists, wait up to 1 hour, then retry.
+  domain: marketplace-standard
+- code: REQUEST_THRESHOLD_VIOLATED
+  status: 429
+  title: Too many requests
+  cause: Rate limit exceeded
+  remediation: Back off and respect the rate-limit headers. See rate-limits/walmart-rate-limits.yml.
+  domain: marketplace-standard
+- code: INVALID_SYSTEM_STATE
+  status: 500
+  title: Server error
+  cause: Inconsistent backend state
+  remediation: Retry with jitter. If repeated, open a support ticket with examples.
+  domain: marketplace-standard
+- code: SYSTEM_ERROR
+  status: 500
+  title: Server error
+  cause: Internal issue or payload vs content-type mismatch
+  remediation: Confirm Content-Type and payload format, then retry with jitter.
+  domain: marketplace-standard
+- code: DOWNSTREAM_SYSTEM_TIME_OUT
+  status: 504
+  title: Gateway timeout
+  cause: Dependent service did not respond
+  remediation: Retry with exponential backoff.
+  domain: marketplace-standard
+- code: UNAUTHORIZED.GMP_GATEWAY_API
+  status: 401
+  title: Unauthorized
+  cause: Gateway rejected the call before routing (observed on an anonymous probe of /v3/utilities/apiStatus, 2026-08-27)
+  remediation: Send a valid WM_SEC.ACCESS_TOKEN.
+  domain: marketplace-standard
+- code: ERR_PDI_0001
+  status: 400
+  title: Malformed data
+  cause: The entire feed file failed to parse due to malformed characters or structure.
+  remediation: Download the latest XSD, clean the file of special characters, revalidate, and resubmit.
+  domain: feed-validation
+- code: ERR_PDI_0034
+  status: 400
+  title: Invalid data
+  cause: Required fields missing or invalid values (for example, billable weight 0).
+  remediation: Validate against the latest XSD. Provide all mandatory fields with correct types and ranges.
+  domain: feed-validation
+- code: ERR_EXT_DATA_0101116
+  status: 400
+  title: Title or price mismatch
+  cause: Title or price is significantly different from existing listings for the same product ID.
+  remediation: Confirm the correct product ID, title and price, or contact Support to review the existing listing.
+  domain: feed-validation
+- code: INVALID_SELLER_ORDER_ID
+  status: 400
+  title: Missing or mismatched sellerOrderId or customerOrderNo on Create customer order
+  remediation: Both identifiers must match if provided; at least one is required.
+  domain: wfs-multichannel
+- code: SELLER_ORDER_ID_CUSTOMER_ORDER_NO_SAME
+  status: 400
+  title: sellerOrderId and customerOrderNo conflict on Create customer order
+  remediation: Both identifiers must match if provided.
+  domain: wfs-multichannel
+- code: INVALID_MCS_REQUEST
+  status: 400
+  title: Create customer order / fetch delivery promise request validation failure
+  remediation: Validation strategy CREATE-FULFILLMENT-MOCKER-REQUEST-VALIDATION.
+  domain: wfs-multichannel
+- code: INVALID_WFS_REQUEST
+  status: 400
+  title: Cancel customer order or return-order request failed validation, or martId missing
+  remediation: Provide at least one order identifier and a valid martId header.
+  domain: wfs-multichannel
+- code: OS_NOT_FOUND_ERROR
+  status: 400
+  title: Order not found on Get fulfillment order status
+  remediation: Verify the order identifier.
+  domain: wfs-multichannel
+- code: WFS_INTERNAL_SERVER_ERROR
+  status: 500
+  title: Unhandled WFS exception
+  remediation: Retry with backoff; contact support if persistent.
+  domain: wfs-multichannel
+- code: 400.WFS.100
+  status: 400
+  title: Invalid sku on Create return order — SKU does not exist in the original order
+  remediation: Use a SKU present on the original order.
+  domain: wfs-multichannel
+- code: 500.RETURN_ORDER_SERVICE.400
+  status: 400
+  title: itemDetail must not be null on Create return order
+  remediation: Include itemDetail in orderItems.
+  domain: wfs-multichannel
+- code: 500.OS_SERVICE.200
+  status: 400
+  title: Order does not exist — sellerOrderId or returnOrderId does not match
+  remediation: Verify the order/return identifier.
+  domain: wfs-multichannel
+- code: '500.509'
+  status: 400
+  title: Requested return quantity is not available (<= 0 or exceeds ordered quantity)
+  remediation: Request a quantity within the ordered quantity.
+  domain: wfs-multichannel
+- code: INVALID_REQUEST.SEM_API
+  status: 400
+  title: Search Engine Marketing (SEM) advertising request not valid
+  remediation: Correct the request; the info field names the specific problem (e.g. end date before start date).
+  domain: advertising-sem
+retry_guidance:
+  '429': Pause requests for that API, read x-current-token-count and x-next-replenish-time, sleep until replenishment, resume
+    at a lower rate. Use a client-side token bucket.
+  '423': Retry after a short delay; if it recurs for an hour, reduce concurrency.
+  '500': Retry with exponential backoff and jitter after confirming Content-Type matches the payload.
+  '503': Wait briefly and retry; contact Support with examples if the outage persists.
+  '504': Retry with exponential backoff.
+spec_coverage:
+  operations_total: 171
+  documented_4xx_5xx_responses: 7
+  note: 'A contract-quality gap worth raising with Walmart: the published OpenAPI documents almost no error responses even
+    though the docs carry a complete catalogue.'
+evidence:
+- url: https://developer.walmart.com/us-marketplace/docs/error-codes
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/errors-and-behaviors
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/api-status-codes-and-errors
+  status: 200
+- url: https://marketplace.walmartapis.com/v3/utilities/apiStatus
+  status: 401
+  note: observed gateway error envelope verbatim

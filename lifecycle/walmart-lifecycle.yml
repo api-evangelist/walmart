@@ -1,0 +1,134 @@
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/docs/walmart-marketplace-api-deprecation-guide
+provider: Walmart
+providerId: walmart
+description: Walmart publishes a formal Marketplace API deprecation guide defining four lifecycle states — Active, Legacy,
+  Deprecated and Sunset — with a support policy for each and a public timetable of every API currently in a non-Active state,
+  including its migration path, status date and sunset date. Deprecation status is also communicated through API response
+  headers. Versioning is by URI path segment (/v3/, /v4/) plus an item-specification version stream (Spec 4.x -> 5.0) with
+  its own dated updates.
+versioning:
+  scheme: uri-path
+  current: v3 (v4 for the newer WFS inbound-shipment surface)
+  note: Major version is the first path segment after the host, e.g. /v3/orders. A second version stream governs the Item
+    Spec (currently 5.0), published as dated spec-version pages.
+  docs: https://developer.walmart.com/us-marketplace/page/item-spec-50-version-update
+deprecation_policy:
+  published: true
+  url: https://developer.walmart.com/us-marketplace/docs/walmart-marketplace-api-deprecation-guide
+  states:
+  - state: Active
+    meaning: Fully supported and recommended; receives enhancements, updates and support.
+  - state: Legacy
+    meaning: Supported and functional but not recommended for new integrations; no new features. May receive critical security
+      and stability fixes.
+  - state: Deprecated
+    meaning: Scheduled for removal. Remains available for a limited time with a published deprecation date AND sunset date;
+      only critical security or stability fixes.
+  - state: Sunset
+    meaning: Permanently retired after the sunset date. May be disabled or removed; no support, fixes or patches.
+  signalling: Deprecation status is published in the documentation and communicated through API response headers.
+  rfc8594_sunset_header:
+    observed: false
+    note: Walmart states deprecation is signalled in response headers but does not name RFC 8594 Sunset/Deprecation headers
+      in the guide; not verified on an unauthenticated response because every Marketplace endpoint returns 401 without a seller
+      token.
+deprecated_operations:
+- api: Refunds Performance Metrics
+  endpoint: GET /v3/insights/performance/refunds/summary
+  state: deprecated
+  status_date: '2026-03-26'
+  sunset_date: '2027-03-27'
+  migration: Get Returns Performance Metrics + Item Not Received Performance Metrics
+- api: Refunds Performance Report
+  endpoint: GET /v3/insights/performance/refunds/report
+  state: deprecated
+  status_date: '2026-03-26'
+  sunset_date: '2027-03-27'
+  migration: Get Returns Performance Orders Report + Get Item Not Received Orders Report
+- api: Create carrier rate quote
+  endpoint: POST /v3/fulfillment/carrier-rate-quotes
+  state: legacy
+  status_date: '2026-02-06'
+  sunset_date: '2027-02-06'
+  migration: POST /v4/fulfillment/inbound-shipments-quote
+- api: Get carrier rate quote
+  endpoint: GET /v3/fulfillment/carrier-rate-quotes/{shipmentId}/{mode}
+  state: legacy
+  status_date: '2026-02-06'
+  sunset_date: '2027-02-06'
+  migration: GET /v4/fulfillment/inbound-shipments-quote/{quoteType}/{shipmentId}
+- api: Confirm carrier rate quote
+  endpoint: POST /v3/fulfillment/carrier-rate-quote/confirm
+  state: legacy
+  status_date: '2026-02-06'
+  sunset_date: '2027-02-06'
+  migration: POST /v4/fulfillment/inbound-shipments-booking (Create booking)
+- api: Print carrier label
+  endpoint: POST /v3/fulfillment/carrier-label/{shipmentId}
+  state: legacy
+  status_date: '2026-02-06'
+  sunset_date: '2027-02-06'
+  migration: POST /v4/fulfillment/generate-label + GET /v4/fulfillment/download-label/...
+- api: Cancel carrier rate quote
+  endpoint: DELETE /v3/fulfillment/carrier-rate-quote
+  state: legacy
+  status_date: '2026-02-06'
+  sunset_date: '2027-02-06'
+  migration: DELETE /v4/fulfillment/inbound-shipments-booking/{shipmentId}/{mode} (Cancel booking)
+- api: Price management
+  endpoint: legacy price surface
+  state: deprecated
+  status_date: '2025-10-24'
+  sunset_date: '2026'
+  migration: Pricing and promotions API (PRICE_AND_PROMOTION feed)
+- api: WFS inventory
+  endpoint: GET /v3/wfs/inventory (legacy)
+  state: legacy
+  status_date: '2025-09-03'
+  sunset_date: '2026'
+  migration: WFS inventory (New) — getwfsinventorydetails
+- api: Insights proseller badge
+  endpoint: GET /v3/insights/prosellerbadge
+  state: sunset
+  status_date: '2024-12-13'
+  sunset_date: '2025-08-13'
+  migration: Functionality discontinued
+- api: Trending items
+  endpoint: GET /v3/insights/items/trending
+  state: sunset
+  status_date: '2024-10-12'
+  sunset_date: '2025-03-31'
+  migration: Functionality discontinued
+- api: Delegated Access keys
+  endpoint: Developer Portal delegated-access key issuance
+  state: deprecated
+  status_date: '2026-07-30'
+  sunset_date: '2026-09-30'
+  migration: OAuth 2.0 seller authorization via the Walmart App Store
+  source: https://developer.walmart.com/us-marketplace/docs/delegated-access-authorization
+status_page:
+  published: true
+  url: https://developer.walmart.com/api-status
+  note: Walmart also exposes platform status programmatically as GET /v3/utilities/apiStatus (API Platform Status, 100/min);
+    that endpoint requires a seller access token (probed 2026-08-27, HTTP 401).
+  api_endpoint: GET /v3/utilities/apiStatus
+sla:
+  published: false
+  note: No public uptime SLA is published on the developer portal; SLAs are governed by the Marketplace Retailer Agreement.
+changelog:
+  published: true
+  url: https://developer.walmart.com/us-marketplace/changelog
+  cadence: roughly weekly release notes
+  entry_count: 51
+evidence:
+- url: https://developer.walmart.com/us-marketplace/docs/walmart-marketplace-api-deprecation-guide
+  status: 200
+- url: https://developer.walmart.com/apiStatus
+  status: 301
+  note: redirects to https://developer.walmart.com/api-status
+- url: https://marketplace.walmartapis.com/v3/utilities/apiStatus
+  status: 401
+- url: https://developer.walmart.com/us-marketplace/docs/delegated-access-authorization
+  status: 200

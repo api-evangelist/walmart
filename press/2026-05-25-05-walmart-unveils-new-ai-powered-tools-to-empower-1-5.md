@@ -1,7 +1,9 @@
 ---
 title: Walmart Unveils New AI-Powered Tools To Empower 1.5 ...
 url: https://corporate.walmart.com/news/2025/06/24/walmart-unveils-new-ai-powered-tools-to-empower-1-5-million-associates
-date: '2026-05-25'
+published: '2025-06-24'
+date_basis: url-derived
+harvested: '2026-05-25'
 query: '"Walmart" press release artificial intelligence'
 position: 5
 source: serpapi-google

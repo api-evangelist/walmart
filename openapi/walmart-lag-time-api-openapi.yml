@@ -1,15 +1,18 @@
 openapi: 3.2.0
 info:
-  title: Walmart Lag Time API
+  title: Walmart Management Lag Time API
+  description: 'This API manages lag time for items. Lag time is the number of days between when an item is ordered and when it is shipped.
+
+
+    **May 2024**
+
+    Built: 05/09/2024, 14:17:12'
   version: '1.0'
-  description: 'Operations tagged Lag Time across 2 of this provider''s published API definitions: walmart-dropship-vendor-lag-time-openapi-original.yml, walmart-marketplace-lag-time-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api-gateway.walmart.com
   description: Production URL
 - url: https://sandbox.walmartapis.com
   description: Sandbox URL
-- url: https://marketplace.walmartapis.com
-  description: Production URL
 tags:
 - name: Lag Time
 paths:
@@ -19,7 +22,22 @@ paths:
       - Lag Time
       operationId: postCreateAnAccessToken
       summary: Walmart Update Lag Time for Items in Bulk
-      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/feeds</p>\n\nThis request updates the lag time for items in bulk. Lag time is the number of days between when an item is ordered and when it is shipped. \nThis feature is only available for select drop ship vendor (DSV) suppliers. \nFor more on how to request permission, see the guide overview.\n\nTwo versions of this feed type exist:\n\n* v2.x: Uses global trade item number (GTIN) as the primary item identifier (JSON only). Suppliers can update lag time of multiple items across multiple nodes.\n* v1.0: Uses the stock keeping unit (SKU) as the primary item identifier (XML and JSON). v1.0 is in the process of being deprecated.\n"
+      description: 'POST /v3/feeds
+
+
+        This request updates the lag time for items in bulk. Lag time is the number of days between when an item is ordered and when it is shipped.
+
+        This feature is only available for select drop ship vendor (DSV) suppliers.
+
+        For more on how to request permission, see the guide overview.
+
+
+        Two versions of this feed type exist:
+
+
+        * v2.x: Uses global trade item number (GTIN) as the primary item identifier (JSON only). Suppliers can update lag time of multiple items across multiple nodes.
+
+        * v1.0: Uses the stock keeping unit (SKU) as the primary item identifier (XML and JSON). v1.0 is in the process of being deprecated.'
       parameters:
       - in: query
         name: feedType
@@ -262,18 +280,27 @@ paths:
                     type: string
                     description: "Indicates the identifier returned from the <a href=\"https://developer.walmart.com/api/us/supplier/items#operation/itemBulkUploads\">POST Bulk Item Upload request</a>, used for tracking the feed file. \n\nExample(s):\nE7BB7DBAF3FF461AB63A2169F3BEAADE@AVQBAgA\n"
                     example: E7BB7DBAF3FF461AB63A2169F3BEAADE@AVQBAgA
-    servers:
-    - url: https://api-gateway.walmart.com
-      description: Production URL
-    - url: https://sandbox.walmartapis.com
-      description: Sandbox URL
   /v3/lagtime:
     get:
       tags:
       - Lag Time
       operationId: getRetrieveLagTime
       summary: Walmart Retrieve Lag Time for a Single Item Based on Product Id
-      description: "<p style=\"color:red; font-size:larger\">GET <walmartAuthServerUrl>/v3/lagtime</p>\n\nThis request retrieves the lag time for an item with a given product identifier—such as a stock keeping unit (SKU) or global trade item number (GTIN)—and ship node. \nLag time is the number of days between when an item is ordered and when it is shipped.\n\nDrop ship vendor (DSV) suppliers are expected to ship items the day they receive the purchase order (PO). \nIn certain exceptions, those suppliers can have items with extended lag times. \nUse GET /v3/lagtim to see the lag time of an item at a node. \nFor more information about order processing and shipping channels, see <a href=\"https://supplierhelp.walmart.com/s/faq?articlenumber=000008139&article=DSV_Order_Processing_and_Shipping&channel=Drop%20Ship\">DSV Order Processing and Shipping Channel</a> reference material.\n"
+      description: 'GET /v3/lagtime
+
+
+        This request retrieves the lag time for an item with a given product identifier—such as a stock keeping unit (SKU) or global trade item number (GTIN)—and ship node.
+
+        Lag time is the number of days between when an item is ordered and when it is shipped.
+
+
+        Drop ship vendor (DSV) suppliers are expected to ship items the day they receive the purchase order (PO).
+
+        In certain exceptions, those suppliers can have items with extended lag times.
+
+        Use GET /v3/lagtim to see the lag time of an item at a node.
+
+        For more information about order processing and shipping channels, see DSV Order Processing and Shipping Channel reference material.'
       parameters:
       - in: query
         name: sku
@@ -438,15 +465,7 @@ paths:
 
                       '
                     example: 1
-    servers:
-    - url: https://api-gateway.walmart.com
-      description: Production URL
-    - url: https://sandbox.walmartapis.com
-      description: Sandbox URL
-x-refined-from:
-- walmart-dropship-vendor-lag-time-openapi-original.yml
-- walmart-marketplace-lag-time-openapi-original.yml
 x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
+- name: 1P Suppliers Lag Time Reference
   tags:
-  - DSV Cost
+  - Lag Time

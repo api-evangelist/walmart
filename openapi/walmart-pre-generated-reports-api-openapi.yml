@@ -1,7 +1,14 @@
 openapi: 3.2.0
 info:
   title: Walmart Management Pre-Generated Reports API
-  description: "This API generates the item report for drop ship vendors (DSV). \nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n\n**May 2024**<br>Built: 05/09/2024, 16:00:37\n"
+  description: 'This API generates the item report for drop ship vendors (DSV).
+
+    It returns all the information associated with vendor items that are set up on Walmart''s platform.
+
+
+    **May 2024**
+
+    Built: 05/09/2024, 16:00:37'
   version: '1.0'
 servers:
 - url: https://api-gateway.walmart.com
@@ -17,7 +24,13 @@ paths:
       - Pre-Generated Reports
       operationId: getGenerateItemReport
       summary: Walmart Generate an Item Report
-      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/getReport</p>\n\nThis request generates the item report for drop ship vendors (DSV). \n\nIt returns all the information associated with vendor items that are set up on Walmart's platform.\n"
+      description: 'POST /v3/getReport
+
+
+        This request generates the item report for drop ship vendors (DSV).
+
+
+        It returns all the information associated with vendor items that are set up on Walmart''s platform.'
       parameters:
       - in: query
         name: type

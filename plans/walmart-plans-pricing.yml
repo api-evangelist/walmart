@@ -1,42 +1,77 @@
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+generated: '2026-08-27'
+method: searched
+source: https://marketplace.walmart.com/
 provider: Walmart
 providerId: walmart
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-reconciled: true
+modified: '2026-08-27'
 tags:
-  - Retail / Marketplace
-  - Enterprise
-  - B2B
-description: Walmart does not publish public API pricing. Access is via partner/B2B contracts negotiated
-  through the provider's enterprise sales team. Walmart Marketplace APIs require Marketplace seller approval;
-  commission rates 6-15% by category.
+- Retail / Marketplace
+- Enterprise
+- B2B
+- Commission
+description: 'The Walmart Marketplace APIs are not sold as an API product and have no metered API pricing, no per-call charge,
+  and no developer tiers. Access is a consequence of a commercial relationship: an approved Marketplace seller account (or
+  an approved Solution Provider acting for one), or a 1P Supplier account through Retail Link. Walmart states plainly that
+  there are "no setup, monthly, or hidden fees for any sellers" — the seller instead pays a referral fee on each sale, which
+  varies by category and total sales price and ranges from 6% to 15%. Walmart Fulfillment Services (WFS) storage and fulfilment
+  fees and Walmart Connect advertising spend are separate commercial line items, also not API-metered. A developer therefore
+  cannot buy API access at any price without first being approved to sell.'
 sources:
-  - https://developer.walmart.com/
+- https://marketplace.walmart.com/
+- https://developer.walmart.com/
+- https://sellerhelp.walmart.com/
+pricing_url: https://marketplace.walmart.com/
+api_metered: false
+plan_count: 2
 plans:
-  - id: walmart-partner
-    name: Partner / B2B Contract
-    type: enterprise
-    description: Custom pricing through enterprise sales / partner program.
-    entries:
-      - label: Annual contract (custom)
-        name: annual
-        type: subscription
-        metric: year
-        limit: -1
-        timeFrame: year
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Negotiated contracts
-      - name: Volume discounts
-      - name: Service-level agreements
-      - name: Dedicated account team
-      - name: 'Partner program: https://developer.walmart.com/'
+- id: walmart-marketplace-seller
+  name: Marketplace Seller
+  type: commission
+  price: 0
+  currency: USD
+  billing_period: null
+  description: No setup, monthly or subscription fee. API access is included with an approved Marketplace seller account.
+  included_quota: Published per-operation rate limits, allotted per seller (see rate-limits/walmart-rate-limits.yml).
+  overage: None — limits throttle at 429 rather than billing.
+  commission:
+    name: Referral fee
+    model: percentage of total sales price
+    range_min_percent: 6
+    range_max_percent: 15
+    note: Varies by category and total sales price. Quoted verbatim from marketplace.walmart.com.
+  gate: Marketplace seller application and approval.
+- id: walmart-solution-provider
+  name: Approved Solution Provider
+  type: partner
+  price: null
+  currency: USD
+  billing_period: null
+  description: Software vendors integrate on behalf of sellers. Requires a signed contract with Walmart and listing in the
+    Walmart App Store. Each approved Solution Provider application receives its own rate-limit allotment, separate from the
+    seller's direct-integration allotment.
+  included_quota: Same published per-operation limits, metered separately per application.
+  gate: Channel-partner application (https://marketplace.walmart.com/channel-partner-prospect-form/) plus a signed contract.
+  note: Delegated Access keys retired 2026-07-30; providers now use OAuth 2.0 seller authorization via the Walmart App Store.
+not_priced:
+- item: API calls
+  note: No per-call price anywhere in the programme.
+- item: Sandbox
+  note: Free with an approved account; separate credential pair.
+- item: WFS fulfilment and storage
+  note: Separate fee schedule, not API-metered.
+- item: Walmart Connect advertising
+  note: Ad spend, billed through the advertising surface, not the API.
+evidence:
+- url: https://marketplace.walmart.com/
+  status: 200
+  note: '"There are no setup, monthly, or hidden fees for any sellers... referral fee rates vary by category and total sales
+    price and range from 6% to 15%."'
+- url: https://marketplace.walmart.com/fees-and-commissions/
+  status: 404
+- url: https://developer.walmart.com/
+  status: 200
+  note: No pricing page or plan table on the developer portal.

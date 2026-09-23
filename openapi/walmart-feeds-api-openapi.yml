@@ -1651,7 +1651,17 @@ paths:
       tags:
       - Feeds
       summary: Walmart Get Feed Error Report
-      description: "Get Feed Error Report API allows you to download a detailed error report for a submitted feed. \n\nCurrently the API supports error report download for the following feeds: \n*   FITMENT_ACES \n*   FITMENT_PIES \n\n This API returns a zipped .csv file, which contains line item level detailed error messages. For details and a sample, please refer to the guide section link below. \n \n"
+      description: 'Get Feed Error Report API allows you to download a detailed error report for a submitted feed.
+
+
+        Currently the API supports error report download for the following feeds:
+
+        * FITMENT_ACES
+
+        * FITMENT_PIES
+
+
+        This API returns a zipped .csv file, which contains line item level detailed error messages. For details and a sample, please refer to the guide section link below.'
       externalDocs:
         description: View Guide
         url: /doc/us/mp/us-mp-feeds/#503

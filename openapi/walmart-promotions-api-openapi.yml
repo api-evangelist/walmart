@@ -443,7 +443,7 @@ paths:
       tags:
       - Promotions
       summary: Walmart Promotional Prices
-      description: ' Retrieves a list of promotional prices for a single SKU.'
+      description: Retrieves a list of promotional prices for a single SKU.
       operationId: getPromotionalPrices
       parameters:
       - name: sku

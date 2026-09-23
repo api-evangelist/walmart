@@ -21,15 +21,15 @@ paths:
 
         You can specify the feedType and version for these available Item specs. Make sure to specify the corresponding version that is available for that feed type:
 
-        *   Item spec 3.2 feed type: item
+        * Item spec 3.2 feed type: item
 
-        *   Item spec 4.0 feed types: MP_ITEM, MP_WFS_ITEM, or MP_MAINTENANCE
+        * Item spec 4.0 feed types: MP_ITEM, MP_WFS_ITEM, or MP_MAINTENANCE
 
-        *   Item spec 4.1 feed types: MP_WFS_ITEM, or MP_MAINTENANCE
+        * Item spec 4.1 feed types: MP_WFS_ITEM, or MP_MAINTENANCE
 
-        *   Item spec 4.2 feed type: MP_ITEM or MP_WFS_ITEM
+        * Item spec 4.2 feed type: MP_ITEM or MP_WFS_ITEM
 
-        *   Item spec 4.3 feed type: MP_ITEM or MP_MAINTENANCE'
+        * Item spec 4.3 feed type: MP_ITEM or MP_MAINTENANCE'
       operationId: getTaxonomyResponse
       parameters:
       - name: feedType

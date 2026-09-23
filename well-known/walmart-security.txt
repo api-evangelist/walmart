@@ -1,0 +1,5 @@
+Contact: https://corporate.walmart.com/article/responsible-disclosure-policy
+Preferred-Languages: en
+Canonical: https://walmart.com/.well-known/security.txt
+Policy: https://corporate.walmart.com/privacy-security
+Hiring: https://careers.walmart.com

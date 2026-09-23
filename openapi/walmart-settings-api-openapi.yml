@@ -10351,7 +10351,7 @@ paths:
       tags:
       - Settings
       summary: Walmart Get Shipping Configurations
-      description: <p>This API can be used to retrieve shipping configurations like Lag Time configured for seller.It returns lag time for exception categories that were configured for the Seller through <a href="https://sellerhelp.walmart.com/s/guide?article=000005986">Request Lag Time Exceptions</a> process.</p>
+      description: This API can be used to retrieve shipping configurations like Lag Time configured for seller.It returns lag time for exception categories that were configured for the Seller through Request Lag Time Exceptions process.
       operationId: getShippingConfigurations
       parameters:
       - in: header
@@ -10723,7 +10723,13 @@ paths:
       tags:
       - Settings
       summary: Walmart Get Partner Configurations
-      description: <p>This API can be used to retrieve partner configurations like Seller Account & feed throttling values configured for seller.</p><p>The Feed Configuration block in the response shows the seller specific throttling configuration based on the tier of seller. If a new Seller is not assigned any tier, the block will be empty.</p><p>Please note that the default throttling configuration across Walmart and the API Throttling Response Headers can be found <a href="/doc/us/mp/us-mp-throttling/">here</a></p>
+      description: 'This API can be used to retrieve partner configurations like Seller Account & feed throttling values configured for seller.
+
+
+        The Feed Configuration block in the response shows the seller specific throttling configuration based on the tier of seller. If a new Seller is not assigned any tier, the block will be empty.
+
+
+        Please note that the default throttling configuration across Walmart and the API Throttling Response Headers can be found here'
       operationId: getPartnerConfigurations
       parameters:
       - in: header

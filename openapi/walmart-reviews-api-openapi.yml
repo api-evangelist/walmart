@@ -4,17 +4,11 @@ info:
   description: 'The Reviews Acceleration API provides sellers with capability to view and enroll items into review accelerator programs:
 
 
-    *   Sellers can view their eligible product catalog that can be enrolled into Review Accelerator program(RAP) using Get RAP post-purchase items API
+    * Sellers can view their eligible product catalog that can be enrolled into Review Accelerator program(RAP) using Get RAP post-purchase items API
 
-    *   Sellers can view their currently enrolled products using Get RAP post-purchase items API
+    * Sellers can view their currently enrolled products using Get RAP post-purchase items API
 
-    *   Sellers can leverage Get RAP post-purchase items API to get all products that have attained target reviews after enrolment into the program
-
-    *   Sellers can filter the products on the basis of category and price. They can also sort based on item priority and search using product name and SKU
-
-    *   Sellers can enroll a product/multiple products into the program using update item status API
-
-    '
+    * Sellers can leverage Get RAP post-purchase items API to get all products that have attained target reviews after enrolment into the…'
 servers:
 - url: https://marketplace.walmartapis.com
   description: Production URL
@@ -250,9 +244,7 @@ paths:
       tags:
       - Reviews
       summary: Walmart Get Rap Post-purchase Items
-      description: ' To get all eligible products that can be enrolled into the Reviews accelerator post-purchase program. To get all products that are currently enrolled into the program. To get all products that have attained target reviews after enrolment into the program. Products can be filtered by category and price. Products can be sorted by Walmart-recommended item priorities. Searched using wildcards matching the product name and SKU.
-
-        '
+      description: To get all eligible products that can be enrolled into the Reviews accelerator post-purchase program. To get all products that are currently enrolled into the program. To get all products that have attained target reviews after enrolment into the program. Products can be filtered by category and price. Products can be sorted by Walmart-recommended item priorities. Searched using wildcards matching the product name and SKU.
       externalDocs:
         description: View Guide
         url: /doc/us/mp/us-mp-reviews/#11533

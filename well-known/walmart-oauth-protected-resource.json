@@ -1,0 +1,1 @@
+{"authorization_servers":["https://developer.walmart.com"],"scopes_supported":["openapi_read","offline_access"],"bearer_methods_supported":["header"]}

@@ -1,7 +1,13 @@
 openapi: 3.2.0
 info:
   title: Walmart Overview Assortment Recommendations API
-  description: "Assortment recommendations empower sellers understand customer demand in Walmart & market by curating personalised seller recommendations by leveraging demand signals such as \n*   Internal and external search \n*   Best Sellers\n*   Trending items, and more.\n\nAssortment Recommendations API can be used to viewed, bulk download, filtered, rejected and shortlist the recommendations. These shortlisted items can be set up using the [Item Setup API](https://developer.walmart.com/api/us/mp/items).\nSellers need to provide API access key on [developer portal](https://developer.walmart.com/account/generateKey) for ‘Analytics & Growth’ to solution providers and channel partners to be able to access Assortment Growth APIs."
+  description: 'Assortment recommendations empower sellers understand customer demand in Walmart & market by curating personalised seller recommendations by leveraging demand signals such as
+
+    * Internal and external search
+
+    * Best Sellers
+
+    * Trending items, and more.'
 servers:
 - url: https://marketplace.walmartapis.com
   description: Production URL
@@ -17,7 +23,12 @@ paths:
       tags:
       - Assortment Recommendations
       summary: Walmart Get Recommendations
-      description: "You can fetch the list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can get the list of ITEM recommendations. You can apply filters to fetch selective item recommendations. \n \n\n"
+      description: 'You can fetch the list of recommendations that are recommended for you.
+
+
+        Using ITEM as a recommendationType,
+
+        * You can get the list of ITEM recommendations. You can apply filters to fetch selective item recommendations.'
       externalDocs:
         description: View Guide
         url: /doc/us/us-mp/us-mp-assortmentrecommendations/#12957
@@ -519,7 +530,17 @@ paths:
       tags:
       - Assortment Recommendations
       summary: Walmart Get Categorization
-      description: "You can get the list of brands or categories associated with the items recommendations that are recommended for you.\n \nUsing BRAND as a categorizationType\n*   You can get the list of brands sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of brand name. \n \n\nUsing CATEGORY as a categorizationType\n*   You can get the list of categories sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of category name.  \n \n\n"
+      description: 'You can get the list of brands or categories associated with the items recommendations that are recommended for you.
+
+
+        Using BRAND as a categorizationType
+
+        * You can get the list of brands sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of brand name.
+
+
+        Using CATEGORY as a categorizationType
+
+        * You can get the list of categories sorted by the number of item recommendations associated with it. This is then sorted in lexicographic order of category name.'
       externalDocs:
         description: View Guide
         url: /doc/us/us-mp/us-mp-assortmentrecommendations/#12960
@@ -789,7 +810,14 @@ paths:
       tags:
       - Assortment Recommendations
       summary: Walmart Reject Recommendations
-      description: "You can reject a list of recommendations that are recommended for you. \n \nUsing ITEM as a recommendationType,\n*   You can reject specific item recommendations using the filterCriteria or by providing the list of itemRecommendationUniqueIds. \n*   You will need to provide valid rejection code(s) while submitting the reject request. You are required to send the custom rejection message if the rejection code is OTHER_REASON \n\n\n"
+      description: 'You can reject a list of recommendations that are recommended for you.
+
+
+        Using ITEM as a recommendationType,
+
+        * You can reject specific item recommendations using the filterCriteria or by providing the list of itemRecommendationUniqueIds.
+
+        * You will need to provide valid rejection code(s) while submitting the reject request. You are required to send the custom rejection message if the rejection code is OTHER_REASON'
       externalDocs:
         description: View Guide
         url: /doc/us/us-mp/us-mp-assortmentrecommendations/#12965

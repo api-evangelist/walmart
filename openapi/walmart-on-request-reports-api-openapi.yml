@@ -1,7 +1,15 @@
 openapi: 3.2.0
 info:
   title: Walmart Management On Request Reports API
-  description: "The On Request Reports API provides functionality to request reports immediately about items, resulting in faster retrieval of reports. \n\nUsers can request the reports for inventory, item product data, and item configuration data. They can then check the status on the report availability, and download the report URL when the report is ready. Functionality also includes getting a list of all reports requested.\n\n**May 2024**<br>Built: 05/09/2024, 15:16:03\n"
+  description: 'The On Request Reports API provides functionality to request reports immediately about items, resulting in faster retrieval of reports.
+
+
+    Users can request the reports for inventory, item product data, and item configuration data. They can then check the status on the report availability, and download the report URL when the report is ready. Functionality also includes getting a list of all reports requested.
+
+
+    **May 2024**
+
+    Built: 05/09/2024, 15:16:03'
   version: '1.0'
 servers:
 - url: https://api-gateway.walmart.com
@@ -17,7 +25,19 @@ paths:
       - On Request Reports
       operationId: createReportRequest
       summary: Walmart Create Report Request
-      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/reports/reportRequest</p>\n\nThis request creates a new request for a report by specifying the report type and version. \n\nIn the request body, define one or more attributes to include in the report. \nThe attribute must be a valid attribute for the report. \nReference the guide for a list of applicable attributes in each report and definitions.\nSee the <a href=\"/doc/us/us-supplier/us-supplier-onrequestreports/\">On Request Reports</a> guide for more information. \n"
+      description: 'POST /v3/reports/reportRequest
+
+
+        This request creates a new request for a report by specifying the report type and version.
+
+
+        In the request body, define one or more attributes to include in the report.
+
+        The attribute must be a valid attribute for the report.
+
+        Reference the guide for a list of applicable attributes in each report and definitions.
+
+        See the On Request Reports guide for more information.'
       parameters:
       - in: query
         name: reportType
@@ -211,15 +231,13 @@ paths:
       - On Request Reports
       operationId: getAllReportRequests
       summary: Walmart Retrieve All Report Requests
-      description: '<p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/reportRequests</p>
+      description: 'GET /v3/reports/reportRequests
 
 
         This API request fetches a list of all report requests based on search criteria like `reportType`, `reportVersion`, and `requestStatus`.
 
 
-        Use the query parameters to define the search and fetch details of report requests created in the last 30 days only.
-
-        '
+        Use the query parameters to define the search and fetch details of report requests created in the last 30 days only.'
       parameters:
       - in: query
         name: reportType
@@ -417,15 +435,13 @@ paths:
       - On Request Reports
       operationId: retrieveReportRequestStatus
       summary: Walmart Retrieve Details on Single Report
-      description: '<p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/reportRequests/{requestId}</p>
+      description: 'GET /v3/reports/reportRequests/{requestId}
 
 
         This request fetches the status and other details of a single report request, as queried by the `requestId` path parameter.
 
 
-        Fetch details of a report request created in the last 30 days only.
-
-        '
+        Fetch details of a report request created in the last 30 days only.'
       parameters:
       - in: path
         name: requestId
@@ -556,12 +572,10 @@ paths:
       - On Request Reports
       operationId: downloadReportUrl
       summary: Walmart Download Report Url
-      description: '<p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/reports/downloadReport</p>
+      description: 'GET /v3/reports/downloadReport
 
 
-        This request fetches the URL to download the generated report.
-
-        '
+        This request fetches the URL to download the generated report.'
       parameters:
       - in: query
         name: requestId

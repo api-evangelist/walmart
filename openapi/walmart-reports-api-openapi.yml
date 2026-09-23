@@ -1,7 +1,9 @@
 openapi: 3.2.0
 info:
   title: 'Walmart Pregenerated retiring on June 30, 2022 : Reports API'
-  description: "Please transition ASAP to using onRequest Reports (https://developer.walmart.com/doc/us/us-mp/us-mp-onrequestreports/). On July 29th, all PreGenerated reports other than recon report will be retired and only available onRequest. \nThe Pregenerated Reports API allows you to obtain any pregenerated report that you need, including: item, item performance, buy box, CAP, promotions, reconciliation, return item override, shipping program and shipping configuration."
+  description: 'Please transition ASAP to using onRequest Reports (https://developer.walmart.com/doc/us/us-mp/us-mp-onrequestreports/). On July 29th, all PreGenerated reports other than recon report will be retired and only available onRequest.
+
+    The Pregenerated Reports API allows you to obtain any pregenerated report that you need, including: item, item performance, buy box, CAP, promotions, reconciliation, return item override, shipping program and shipping configuration.'
 servers:
 - url: https://marketplace.walmartapis.com
   description: Production URL
@@ -17,7 +19,7 @@ paths:
       tags:
       - Reports
       summary: Walmart Recon Report(legacy)
-      description: Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API.
+      description: Seller can download the reconciliation report for a specific date using this API. Dates available to be downloaded can be found by using the Get available reconciliation report dates API.
       externalDocs:
         description: View Guide
         url: /doc/us/mp/us-mp-reports/#3772

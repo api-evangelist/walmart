@@ -1,0 +1,141 @@
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/changelog
+provider: Walmart
+providerId: walmart
+description: Walmart publishes a dated changelog for the US Marketplace APIs on its developer portal, with 51 entries going
+  back to January 2025 and a cadence of roughly one release note per week. Each entry is a table of API / change type / release
+  date / description, and descriptions are written at operation and property granularity ("Added optional query parameter
+  ean in GET /v3/items/walmart/search"), which makes them diffable against the OpenAPI. Separate changelogs exist for the
+  Advertising Partners (13 entries) and Suppliers (11 entries) programs.
+scheme: dated release notes, roughly weekly
+current_version: v3 (v4 on newer WFS inbound-shipment endpoints)
+url: https://developer.walmart.com/us-marketplace/changelog
+entry_count_published: 51
+window: 2026-01-29 through 2026-08-20 (22 most recent entries recorded here)
+other_changelogs:
+- program: Advertising Partners
+  url: https://developer.walmart.com/advertising-partners/changelog
+  entry_count: 13
+- program: Suppliers (1P)
+  url: https://developer.walmart.com/suppliers/changelog
+  entry_count: 11
+- program: Advertising Partners Search
+  url: https://developer.walmart.com/advertising-partners-search/changelog
+  entry_count: 2
+announcement_pages:
+  note: Walmart also publishes long-form "What's new" announcement pages under /us-marketplace/page/, including dated Item
+    Spec version updates and deprecation notices.
+  url: https://developer.walmart.com/us-marketplace/page/introducing-walmart-marketplace-api-changelogs
+entries:
+- version: august-20-2026-release
+  date: '2026-08-20'
+  url: https://developer.walmart.com/us-marketplace/changelog/august-20-2026-release
+  apis:
+  - On-request Reports
+  - Items
+  change_types:
+  - Added
+  highlights:
+  - Added enum values CONTENT_QUALITY and LISTING_QUALITY to reportType across the eight /v3/reports operations
+  - Added optional query parameters ean and isbn to GET /v3/items/walmart/search
+  breaking: false
+- version: august-6-2026-release
+  date: '2026-08-06'
+  url: https://developer.walmart.com/us-marketplace/changelog/august-6-2026-release
+  apis:
+  - Insights
+  change_types:
+  - Added
+  highlights:
+  - Added optional query parameter conditionType to GET /v3/insights/performance/returns/report and /summary
+  - Added optional response property payload/conditionType on the returns summary 200
+  breaking: false
+- version: july-30-2026-release
+  date: '2026-07-30'
+  url: https://developer.walmart.com/us-marketplace/changelog/july-30-2026-release
+  apis:
+  - Items
+  - Bulk Item Setup
+  - Feeds
+  - On-request Reports
+  - Orders
+  - Insights
+  change_types:
+  - Added
+  - Changed
+  highlights:
+  - Virtual pack support added across POST /v3/items/spec, GET /v3/items, GET /v3/items/{id} and the MP_VIRTUAL_PACK_BUNDLE
+    feed type
+  - Orders miscAttributes changed from object to oneOf with a discriminator, and required properties details and name were
+    REMOVED — a response-shape change across all seven order operations
+  - Added optional query parameters inDemandIndicator and isCustomerFavorite on Insights
+  breaking: false
+  note: The Orders miscAttributes change removes previously-required properties and introduces a discriminator; strict client
+    deserializers may need updating even though Walmart classifies it as Added/Changed rather than breaking.
+- version: july-23-2026-release
+  date: '2026-07-23'
+  url: https://developer.walmart.com/us-marketplace/changelog/july-23-2026-release
+- version: july-16-2026-release
+  date: '2026-07-16'
+  url: https://developer.walmart.com/us-marketplace/changelog/july-16-2026-release
+- version: july-9-2026-release
+  date: '2026-07-09'
+  url: https://developer.walmart.com/us-marketplace/changelog/july-9-2026-release
+- version: june-30-2026-release
+  date: '2026-06-30'
+  url: https://developer.walmart.com/us-marketplace/changelog/june-30-2026-release
+- version: june-25-2026-release
+  date: '2026-06-25'
+  url: https://developer.walmart.com/us-marketplace/changelog/june-25-2026-release
+- version: june-11-2026-release
+  date: '2026-06-11'
+  url: https://developer.walmart.com/us-marketplace/changelog/june-11-2026-release
+- version: june-4-2026-release
+  date: '2026-06-04'
+  url: https://developer.walmart.com/us-marketplace/changelog/june-4-2026-release
+- version: may-14-2026-release
+  date: '2026-05-14'
+  url: https://developer.walmart.com/us-marketplace/changelog/may-14-2026-release
+- version: may-7-2026-release
+  date: '2026-05-07'
+  url: https://developer.walmart.com/us-marketplace/changelog/may-7-2026-release
+- version: april-23-2026-release
+  date: '2026-04-23'
+  url: https://developer.walmart.com/us-marketplace/changelog/april-23-2026-release
+- version: april-2-2026
+  date: '2026-04-02'
+  url: https://developer.walmart.com/us-marketplace/changelog/april-2-2026
+- version: march-26-2026
+  date: '2026-03-26'
+  url: https://developer.walmart.com/us-marketplace/changelog/march-26-2026
+- version: march-19-2026
+  date: '2026-03-19'
+  url: https://developer.walmart.com/us-marketplace/changelog/march-19-2026
+- version: march-5-2026
+  date: '2026-03-05'
+  url: https://developer.walmart.com/us-marketplace/changelog/march-5-2026
+- version: february-26-2026
+  date: '2026-02-26'
+  url: https://developer.walmart.com/us-marketplace/changelog/february-26-2026
+- version: february-18-2026
+  date: '2026-02-18'
+  url: https://developer.walmart.com/us-marketplace/changelog/february-18-2026
+- version: february-12-2026
+  date: '2026-02-12'
+  url: https://developer.walmart.com/us-marketplace/changelog/february-12-2026
+- version: february-5-2026
+  date: '2026-02-05'
+  url: https://developer.walmart.com/us-marketplace/changelog/february-5-2026
+- version: january-29-2026
+  date: '2026-01-29'
+  url: https://developer.walmart.com/us-marketplace/changelog/january-29-2026
+evidence:
+- url: https://developer.walmart.com/us-marketplace/changelog
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/changelog/august-20-2026-release.md
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/changelog/august-6-2026-release.md
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/changelog/july-30-2026-release.md
+  status: 200

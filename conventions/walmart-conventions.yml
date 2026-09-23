@@ -1,0 +1,204 @@
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/docs/error-codes
+provider: Walmart
+providerId: walmart
+description: 'Cross-cutting runtime semantics for the Walmart Marketplace APIs, read from Walmart''s own developer documentation
+  and derived from the 27 published OpenAPI definitions in openapi/_original/. Walmart is a token-bucket, header-driven, feed-oriented
+  API: authorization is an OAuth 2.0 client-credentials token carried in a Walmart-specific header rather than Authorization:
+  Bearer, tracing is a caller-supplied correlation UUID, bulk writes go through the Feeds API asynchronously and are polled
+  for status, and there is no idempotency-key mechanism anywhere in the surface.'
+auth:
+  style: oauth2 client_credentials
+  header: WM_SEC.ACCESS_TOKEN
+  note: 'Not Authorization: Bearer. See authentication/walmart-authentication.yml.'
+  artifact: authentication/walmart-authentication.yml
+required_headers:
+- WM_SEC.ACCESS_TOKEN
+- WM_QOS.CORRELATION_ID
+- WM_SVC.NAME
+request_id:
+  supported: true
+  direction: client-supplied
+  header: WM_QOS.CORRELATION_ID
+  format: UUID
+  note: Walmart instructs callers to send a unique correlation ID on every request for traceability and to quote it in support
+    tickets.
+  source: https://developer.walmart.com/us-marketplace/docs/error-codes
+idempotency:
+  supported: false
+  grade: absent
+  note: 'No idempotency key, no Idempotency-Key header, no request-replay semantics are documented anywhere on the developer
+    portal — a full-site path scan of all 2,446 published URLs returns zero pages matching "idempoten". Retry guidance is
+    explicitly "retry with backoff", with no protection against a double-fired write. For write operations this means an agent
+    must read back state (GET the order/item) to determine whether a retried POST took effect. Bulk writes via the Feeds API
+    are the nearest substitute: a feed submission returns a feedId whose processing status can be polled, so a duplicate submission
+    is detectable after the fact rather than prevented.'
+  source: https://developer.walmart.com/us-marketplace/docs/error-codes
+pagination:
+  styles:
+  - offset
+  - cursor
+  params:
+    limit: page size, default 100
+    page: 0-based page index (offset style)
+    nextCursor: opaque cursor; send * on the first request
+  response_fields:
+  - totalItems
+  - page
+  - limit
+  - nextCursor
+  cursor_ttl: nextCursor expires after 2 minutes
+  note: Documented for the Catalog Search API; other collection endpoints use limit/offset and nextCursor variants.
+  docs: https://developer.walmart.com/us-marketplace/docs/limit-and-pagination
+filtering_sorting:
+  supported: true
+  shape: POST body with query {field,value} (% wildcard), filters[] {field,op,values[]}, sort {field,order ASC|DESC}
+  docs: https://developer.walmart.com/us-marketplace/docs/limit-and-pagination
+field_expansion:
+  supported: false
+  note: No sparse-fieldset or expand parameter is documented.
+metadata:
+  supported: false
+  note: No generic customer-defined metadata bag; miscAttributes exists on Orders but is Walmart-defined.
+versioning:
+  scheme: uri-path
+  current: v3 (v4 on newer WFS inbound-shipment endpoints)
+  artifact: lifecycle/walmart-lifecycle.yml
+error_envelope:
+  format: proprietary array envelope, NOT RFC 9457
+  shape: '{"errors":[{"code","message","category","severity","field"}]}'
+  artifact: errors/walmart-problem-types.yml
+rate_limit_signaling:
+  algorithm: token-bucket
+  headers:
+  - x-current-token-count
+  - X-Next-Replenishment-Time (also documented as x-next-replenish-time)
+  exhaustion_status: 429
+  payload_too_large_status: 413
+  note: Walmart does not emit RateLimit-* (RFC 9331) or Retry-After. The two Walmart headers carry the same information in
+    a proprietary form; an agent must read them by name.
+  artifact: rate-limits/walmart-rate-limits.yml
+async_writes:
+  mechanism: Feeds API
+  note: Bulk item/price/inventory/promo writes are submitted as a feed (POST /v3/feeds?feedType=...) and return a feedId.
+    Status is polled with GET /v3/feeds and GET /v3/feeds/{feedId}; errors are downloaded from GET /v3/feeds/{feedId}/errorReport.
+    Walmart recommends polling intervals of 15 minutes, 1 hour, 2 hours, then every 4 hours.
+  source: https://developer.walmart.com/us-marketplace/docs/error-codes
+dry_run_mode:
+  supported: false
+  grade: absent
+  note: No dry-run/validate-only flag is documented. The dedicated sandbox environment (sandbox.walmartapis.com) is the rehearsal
+    surface instead — see sandbox/walmart-sandbox.yml.
+reversibility:
+  grade: verified
+  summary: 'Walmart''s write surface is broadly reversible and the boundaries are stated in the provider''s own docs, but
+    the boundaries are STATE conditions (order not yet shipped, return line still RETURN_INITIATED) more often than clock
+    windows. Two real clock windows are published: an order auto-cancels if not shipped within 30 days of creation, and a
+    shipment notification is only accepted for orders created in the last 30 days.'
+  surfaces:
+  - action: Place/acknowledge an order line
+    reversal: Cancel Order Lines
+    operationId: cancelOrderLines
+    endpoint: POST /v3/orders/{purchaseOrderId}/cancel
+    window: Only while the order is neither shipped nor already cancelled. Orders auto-cancel if not shipped within 30 days
+      of creation.
+    docs: https://developer.walmart.com/us-marketplace/docs/error-codes
+    grade: verified
+  - action: Charge an order line
+    reversal: Refund Order Lines
+    operationId: refundOrderLines
+    endpoint: POST /v3/orders/{purchaseOrderId}/refund
+    window: Refund amount must fall within the remaining allowable amount after prior partial refunds; exceeding it returns
+      400 Invalid request. No calendar window is stated in the docs — do not assume one.
+    docs: https://developer.walmart.com/us-marketplace/docs/error-codes
+    grade: verified
+  - action: Ship an order line
+    reversal: none
+    operationId: null
+    endpoint: POST /v3/orders/{purchaseOrderId}/shipping
+    window: Shipment notification is only accepted for orders created in the last 30 days and not already shipped or cancelled.
+      A shipment notification cannot be withdrawn; correct it by refunding.
+    docs: https://developer.walmart.com/us-marketplace/docs/error-codes
+    grade: verified
+  - action: Create a customer return order (WFS)
+    reversal: Cancel Customer Return Order
+    operationId: null
+    endpoint: POST /v3/fulfillment/return-orders/{orderId}/cancel
+    window: Only while at least one line is in RETURN_INITIATED status; otherwise 400 "Return order cannot be cancelled".
+    docs: https://developer.walmart.com/us-marketplace/docs/errors-and-behaviors
+    grade: verified
+  - action: Create a customer order (WFS/MCS)
+    reversal: Cancel Customer Order
+    operationId: cancelFulfillment
+    endpoint: POST /v3/fulfillment/orders-fulfillments/cancel
+    window: Requires sellerOrderId or customerOrderNo; cancellable while the fulfillment order has not shipped.
+    docs: https://developer.walmart.com/us-marketplace/docs/errors-and-behaviors
+    grade: documented
+  - action: Issue a return refund
+    reversal: none
+    operationId: issueRefund
+    endpoint: POST /v3/returns/{returnOrderId}/refund
+    window: A refund is itself the reversal; it is not reversible.
+    grade: na
+  - action: Create an inbound shipment (WFS)
+    reversal: Cancel Inbound Shipment
+    operationId: cancelShipment
+    endpoint: DELETE /v3/fulfillment/inbound-shipments/{inboundOrderId}
+    window: Not stated in the docs.
+    grade: documented
+  - action: Confirm a carrier rate quote / booking
+    reversal: Cancel booking
+    operationId: voidCarrierRateQuote
+    endpoint: DELETE /v3/fulfillment/carrier-rate-quote/{shipmentId} (legacy) / DELETE /v4/fulfillment/inbound-shipments-booking/{shipmentId}/{mode}
+    window: Not stated in the docs.
+    grade: documented
+  - action: Buy a shipping label (Ship With Walmart)
+    reversal: Discard Label
+    operationId: discardLabel
+    endpoint: DELETE /v3/shipping/labels/carriers/{carrierShortName}/trackings/{trackingNo}
+    window: Not stated in the docs.
+    grade: documented
+  - action: Publish an item
+    reversal: Retire an Item
+    operationId: retireAnItem
+    endpoint: DELETE /v3/items/{SKU}
+    window: Retirement is not undoable by API; a retired SKU must be re-ingested through the Feeds API.
+    grade: documented
+  - action: Create a webhook subscription
+    reversal: Delete Subscription
+    operationId: deleteSubscription
+    endpoint: DELETE /v3/webhooks/subscriptions/{subscriptionId}
+    window: Any time.
+    grade: verified
+  - action: Create a repricer strategy
+    reversal: Delete Repricer Strategy
+    operationId: deleteStrategy
+    endpoint: DELETE /v3/repricer/strategy/{strategyCollectionId}
+    window: Any time.
+    grade: verified
+  - action: Update price / inventory
+    reversal: re-submit the prior value
+    operationId: updatePrice / updateInventoryForAnItem
+    endpoint: PUT /v3/price, PUT /v3/inventory
+    window: Last-write-wins; there is no rollback operation, and the price-update rate limit (100/hour per item surface) constrains
+      how fast a mistake can be undone.
+    grade: documented
+  cautions:
+  - 'NEVER assume a refund calendar window: Walmart states an AMOUNT constraint (remaining allowable amount), not a number
+    of days.'
+cross_links:
+  errors: errors/walmart-problem-types.yml
+  lifecycle: lifecycle/walmart-lifecycle.yml
+  authentication: authentication/walmart-authentication.yml
+  rate_limits: rate-limits/walmart-rate-limits.yml
+  sandbox: sandbox/walmart-sandbox.yml
+evidence:
+- url: https://developer.walmart.com/us-marketplace/docs/error-codes
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/limit-and-pagination
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/rate-limiting
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/errors-and-behaviors
+  status: 200

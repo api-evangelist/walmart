@@ -1,0 +1,165 @@
+generated: '2026-08-27'
+method: searched
+source: Walmart developer portal documentation + the 27 harvested OpenAPI definitions in openapi/_original/ + live /.well-known
+  probes 2026-08-27
+provider: Walmart
+providerId: walmart
+description: Standards conformance for the Walmart Marketplace, Dropship Vendor and Walmart Fulfillment Services APIs. Walmart
+  conforms strongly on the identity and identifier axes — OAuth 2.0 client credentials, RFC 8414/9728 metadata, RFC 7591 dynamic
+  client registration and RFC 9116 security.txt, plus GS1 GTIN as a first-class item identifier declared in the contract itself
+  — and diverges deliberately on HTTP conventions, shipping proprietary header and error-envelope shapes where an RFC exists
+  (WM_SEC.ACCESS_TOKEN instead of Bearer, x-current-token-count instead of RateLimit-*, an errors[] envelope instead of RFC
+  9457). No published compliance certifications (SOC 2, ISO 27001, PCI DSS) were found on the developer portal for the API
+  programme, so no Compliance claim is made here.
+conformance:
+- id: oauth2
+  conforms: true
+  category: cross-cutting
+  evidence: 'authentication/walmart-authentication.yml — client_credentials grant at POST /v3/token; Basic client auth; token
+    carried in WM_SEC.ACCESS_TOKEN. Docs: https://developer.walmart.com/us-marketplace/docs/oauth-authentication'
+  note: 'Token transport deviates from RFC 6750: the access token goes in the proprietary WM_SEC.ACCESS_TOKEN header, not
+    Authorization: Bearer.'
+- id: oauth2-pkce
+  conforms: true
+  category: cross-cutting
+  evidence: 'well-known/walmart-oauth-authorization-server.json — code_challenge_methods_supported: [S256] on the developer-portal
+    authorization server that fronts the MCP endpoint.'
+- id: rfc8414
+  conforms: true
+  category: cross-cutting
+  evidence: HTTP 200 at https://developer.walmart.com/.well-known/oauth-authorization-server (saved verbatim in well-known/).
+- id: rfc9728
+  conforms: true
+  category: cross-cutting
+  evidence: HTTP 200 at https://developer.walmart.com/.well-known/oauth-protected-resource (saved verbatim in well-known/).
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  category: cross-cutting
+  evidence: registration_endpoint https://developer.walmart.com/oauth/register advertised in the authorization-server metadata.
+- id: oidc
+  conforms: false
+  category: cross-cutting
+  evidence: https://developer.walmart.com/.well-known/openid-configuration returns 401; www.walmart.com returns 404. No OpenID
+    Connect surface.
+- id: rfc9457
+  conforms: false
+  category: cross-cutting
+  evidence: errors/walmart-problem-types.yml — Walmart returns a proprietary {"errors":[{code,message,category,severity,field}]}
+    envelope in application/json, never application/problem+json.
+- id: rfc9116
+  conforms: true
+  category: cross-cutting
+  evidence: HTTP 200 at https://www.walmart.com/.well-known/security.txt with Contact, Policy, Canonical, Preferred-Languages
+    and Hiring fields (well-known/walmart-security.txt).
+- id: rfc9331-ratelimit-headers
+  conforms: false
+  category: cross-cutting
+  evidence: rate-limits/walmart-rate-limits.yml — Walmart signals limits with x-current-token-count and X-Next-Replenishment-Time,
+    not RateLimit-* or Retry-After.
+- id: rfc8594-sunset-header
+  conforms: false
+  category: cross-cutting
+  evidence: lifecycle/walmart-lifecycle.yml — Walmart states deprecation is signalled in response headers but does not name
+    the RFC 8594 Sunset/Deprecation headers, and the claim could not be verified anonymously (every endpoint 401s).
+- id: idempotency
+  conforms: false
+  category: cross-cutting
+  evidence: conventions/walmart-conventions.yml — zero of 2,446 published developer-portal URLs mention idempotency; no Idempotency-Key
+    mechanism exists.
+- id: pagination
+  conforms: true
+  category: cross-cutting
+  evidence: https://developer.walmart.com/us-marketplace/docs/limit-and-pagination — both offset (page/limit) and cursor (nextCursor,
+    2-minute TTL) styles documented with totalItems/page/limit response fields.
+- id: openapi
+  conforms: true
+  category: cross-cutting
+  evidence: 27 Walmart-published OpenAPI definitions harvested to openapi/_original/, 171 operations across Marketplace, DSV
+    and WFS.
+- id: mcp
+  conforms: true
+  category: cross-cutting
+  evidence: mcp/walmart-mcp.yml — remote MCP server live at https://developer.walmart.com/mcp, JSON-RPC, OAuth-gated (probed
+    2026-08-27).
+- id: a2a
+  conforms: false
+  category: cross-cutting
+  evidence: '/.well-known/agent-card.json and /.well-known/agent.json probed on all five hosts: 401 on the portal and API
+    gateways, 404 on www.walmart.com. No agent card.'
+- id: asyncapi
+  conforms: false
+  category: cross-cutting
+  evidence: Walmart documents a 13-event webhook surface but publishes no AsyncAPI document. asyncapi/walmart-marketplace-notifications-asyncapi.yml
+    is an API Evangelist derivation, not a Walmart artifact.
+- id: webhooks
+  conforms: true
+  category: cross-cutting
+  evidence: asyncapi/walmart-webhooks.yml — 13 documented event types and a six-operation /v3/webhooks control plane including
+    a test-delivery endpoint.
+- id: json-schema
+  conforms: true
+  category: cross-cutting
+  evidence: Walmart publishes JSON Schemas (XSDs and JSON specs) for every feed type; the Item Spec is versioned independently
+    (currently 5.0).
+- id: tls-1.2-minimum
+  conforms: true
+  category: cross-cutting
+  evidence: security/walmart-domain-security.yml — TLSv1.3 negotiated on developer.walmart.com, api-gateway.walmart.com and
+    sandbox.walmartapis.com. Walmart published a TLS version-upgrade notice at /us-marketplace/page/security-update-tls-version-upgrade.
+domain_standards:
+- id: gs1-gtin
+  standard: GS1 Global Trade Item Number (GTIN-14)
+  conforms: true
+  category: domain-standard
+  market: retail / commerce
+  evidence: 'Declared in the contract, not just in prose: `gtin` is a first-class item-identifier query parameter across 10
+    of the 27 published OpenAPI definitions, and the spec text states "The global trade item number (GTIN) is a 14-digit number,
+    including the check digit, that is used worldwide and identifies the Each. If the user''s number is less than 14 digits,
+    add zeros at the beginning." — e.g. GET /v3/lagtime, the Lag Time v2.x feed which uses GTIN as the PRIMARY item identifier,
+    and GET /v3/items/gtin-exemption/status.'
+  spec_locations:
+  - openapi/_original/walmart-dropship-vendor-lag-time-openapi-original.yml (parameter gtin)
+  - openapi/_original/walmart-marketplace-lag-time-openapi-original.yml (parameter gtin)
+  - openapi/_original/walmart-marketplace-items-openapi-original.yml (GTIN exemption status)
+  note: A buyer who already speaks GS1 can map their catalogue onto Walmart with no bespoke identifier connector. Walmart
+    also exposes a GTIN Exemption API (GET /v3/items/gtin-exemption/status, 100/min) for sellers whose products legitimately
+    have no GS1 identifier — an unusually explicit acknowledgement of the standard's boundary.
+- id: gs1-upc-ean-isbn
+  standard: GS1 product identifier family (UPC, EAN, ISBN)
+  conforms: true
+  category: domain-standard
+  market: retail / commerce
+  evidence: upc appears in 7 spec files, ean in 22, isbn in 4. The August 20 2026 release added optional `ean` and `isbn`
+    query parameters to GET /v3/items/walmart/search.
+  spec_locations:
+  - openapi/_original/walmart-marketplace-items-openapi-original.yml
+  note: productIdType enumerations across the item surface accept GTIN/UPC/EAN/ISBN, the GS1 identifier family.
+- id: x12-edi
+  standard: ANSI X12 EDI
+  conforms: false
+  category: domain-standard
+  market: retail / supply chain
+  evidence: No X12 message type, transaction set number or EDI envelope appears anywhere in the 27 published OpenAPI definitions.
+    Walmart operates EDI with 1P suppliers through Retail Link, outside this API surface.
+  note: Recorded as a checked absence, not a penalty — the Marketplace API programme is deliberately JSON/REST rather than
+    EDI.
+certifications:
+  found: false
+  note: No certification claims (SOC 2 / ISO 27001 / PCI DSS / HIPAA / FedRAMP) are published on developer.walmart.com for
+    the Marketplace API programme. Walmart corporate publishes a privacy-and-security page and a responsible-disclosure policy;
+    neither names a certification.
+evidence:
+- url: https://developer.walmart.com/.well-known/oauth-authorization-server
+  status: 200
+- url: https://developer.walmart.com/.well-known/oauth-protected-resource
+  status: 200
+- url: https://developer.walmart.com/.well-known/openid-configuration
+  status: 401
+- url: https://www.walmart.com/.well-known/security.txt
+  status: 200
+- url: https://developer.walmart.com/.well-known/agent-card.json
+  status: 401
+- url: https://www.walmart.com/.well-known/agent-card.json
+  status: 404
+- url: https://developer.walmart.com/us-marketplace/docs/limit-and-pagination
+  status: 200

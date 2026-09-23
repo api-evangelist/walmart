@@ -19,12 +19,10 @@ paths:
       - Inventory
       operationId: getInventory
       summary: Walmart Retrieve Inventory Count for a Single Item at One Ship Node
-      description: '<p style="color:red; font-size:larger">GET <walmartAuthServerUrl>/v3/inventory</p>
+      description: 'GET /v3/inventory
 
 
-        This request retrieves the inventory count for a single item for one specific ship node.
-
-        '
+        This request retrieves the inventory count for a single item for one specific ship node.'
       parameters:
       - in: query
         name: sku
@@ -193,7 +191,7 @@ paths:
       - Inventory
       operationId: putUpdateInventory
       summary: Walmart Update Inventory Count for a Single Item
-      description: '<p style="color:red; font-size:larger">PUT <walmartAuthServerUrl>/v3/inventory</p>
+      description: 'PUT /v3/inventory
 
 
         This request updates the inventory for an item, with the item global trade item number (GTIN) as the primary item identifier. Use an availability code to identify how inventory quantity is managed for an item.
@@ -211,9 +209,7 @@ paths:
         | AA | Use for an item with infinite or unlimited inventory. Quantity is not required when set to AA. |
 
 
-        Drop ship vendors (DSV) send the `onHand` quantity in the amount field as one whole quantity (unit and value).
-
-        '
+        Drop ship vendors (DSV) send the `onHand` quantity in the amount field as one whole quantity (unit and value).'
       parameters:
       - in: query
         name: shipNode
@@ -422,7 +418,7 @@ paths:
       - Inventory
       operationId: postBulkUpdateInventory
       summary: Walmart Update Inventory Count for Items in Bulk
-      description: '<p style="color:red; font-size:larger">POST <walmartAuthServerUrl>/v3/feeds</p>
+      description: 'POST /v3/feeds
 
 
         This request updates inventory for items in bulk for suppliers.
@@ -431,9 +427,7 @@ paths:
         `DSV_INVENTORY`: This feed type updates inventory across multiple ship nodes across multiple products. The `DSV_INVENTORY` feed type only supports JSON requests and responses.
 
 
-        For more information about feed types, see the <a href="https://developer.walmart.com/doc/us/us-supplier/us-supplier-inventory/">DSV Inventory Guide</a>.
-
-        '
+        For more information about feed types, see the DSV Inventory Guide.'
       parameters:
       - in: query
         name: feedType
@@ -683,7 +677,13 @@ paths:
       - Inventory
       operationId: getSingleItemInventory
       summary: Walmart Retrieve Inventory Count for a Single Item at Specific Ship Nodes
-      description: "<p style=\"color:red; font-size:larger\">POST <walmartAuthServerUrl>/v3/inventories/{id}</p>\n\nThis request retrieves the inventory count for an item across multiple ship nodes or for one specific ship node. \n\nUsers can specify the ship node(s) for which they want to fetch the inventory.\n"
+      description: 'POST /v3/inventories/{id}
+
+
+        This request retrieves the inventory count for an item across multiple ship nodes or for one specific ship node.
+
+
+        Users can specify the ship node(s) for which they want to fetch the inventory.'
       parameters:
       - in: path
         name: id
@@ -1598,6 +1598,6 @@ x-refined-from:
 - walmart-dropship-vendor-inventory-openapi-original.yml
 - walmart-marketplace-inventory-openapi-original.yml
 x-tagGroups:
-- name: 1P Suppliers DSV Cost Reference
+- name: 1P Suppliers Inventory Reference
   tags:
-  - DSV Cost
+  - Inventory

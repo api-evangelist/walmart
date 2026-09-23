@@ -20,7 +20,7 @@ paths:
       description: 'This API allows sellers to issue refund against a return order. Multiple return order lines can be refunded in one request.
 
 
-        Note: Sellers can use the Refund Order Lines API for all non-exception category items, including adjustments that seller needs to determine a partial refund amount. Especially for exception category items: HAZMAT, OTHER and FREIGHT that are not eligible for the Marketplace Returns Program. '
+        Note: Sellers can use the Refund Order Lines API for all non-exception category items, including adjustments that seller needs to determine a partial refund amount. Especially for exception category items: HAZMAT, OTHER and FREIGHT that are not eligible for the Marketplace Returns Program.'
       externalDocs:
         description: View Guide
         url: /doc/us/mp/us-mp-returns/#4438
@@ -167,7 +167,7 @@ paths:
         Empty values for the settings will remove the existing overriden values and revert them to global settings.
 
 
-        For more details, see the announcement for [Bulk Return Rules](https://sellerhelp.walmart.com/s/guide?article=000008197).'
+        For more details, see the announcement for Bulk Return Rules.'
       operationId: bulkItemOverrideFeed
       parameters:
       - name: feedType

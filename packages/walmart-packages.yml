@@ -1,0 +1,100 @@
+generated: '2026-08-27'
+method: searched
+source: npm registry, NuGet, Packagist, pkg.go.dev, PyPI, RubyGems and the walmartlabs GitHub organization, probed 2026-08-27
+provider: Walmart
+providerId: walmart
+description: 'Walmart publishes NO maintained first-party client library for the Marketplace, DSV or WFS APIs on any package
+  registry. The only first-party SDKs that ever existed live in the walmartlabs GitHub organization and are both ARCHIVED
+  and years stale: partnerapi_sdk_dotnet (last pushed 2020-08-14) and walmart-api (last pushed 2019-07-11). Neither was ever
+  published to NuGet or npm under a Walmart-owned account. Walmart''s current position is code generation: its own docs point
+  developers at OpenAPI Generator to build a typed client from the published spec, and the MCS Java OpenAPI Client Integration
+  Guide (February 2026) is a step-by-step generator recipe rather than a shipped library. Every installable Walmart client
+  on a registry today is third-party, and the most-used one has not shipped since 2022.'
+official_sdk_count: 0
+official_note: 'official_sdk_count is 0 deliberately: the two first-party repositories are archived and unpublished, so a
+  consumer cannot install a Walmart-authored client from any registry.'
+packages:
+- name: walmartlabs/partnerapi_sdk_dotnet
+  language: C#/.NET
+  registry: github
+  official: true
+  repository: https://github.com/walmartlabs/partnerapi_sdk_dotnet
+  version: null
+  published: null
+  last_commit: '2020-08-14'
+  archived: true
+  stars: 16
+  note: First-party Walmart Partner API SDK for .NET. ARCHIVED and read-only; never published to NuGet under a Walmart account,
+    so there is no registry metadata endpoint and version is null. Six years stale against a v3/v4 API that shipped a release
+    note as recently as 2026-08-20.
+- name: walmartlabs/walmart-api
+  language: JavaScript
+  registry: github
+  official: true
+  repository: https://github.com/walmartlabs/walmart-api
+  version: null
+  published: null
+  last_commit: '2019-07-11'
+  archived: true
+  stars: 65
+  note: First-party wrapper for the (retired) public Walmart Labs Open API. ARCHIVED; not on npm under a Walmart account,
+    so version is null. Wraps a product Walmart no longer operates.
+- name: '@whitebox-co/walmart-marketplace-api'
+  language: TypeScript/JavaScript
+  registry: npm
+  official: false
+  repository: https://github.com/whitebox-co/walmart-marketplace-api
+  url: https://www.npmjs.com/package/@whitebox-co/walmart-marketplace-api
+  version: 3.0.1
+  published: '2022-12-14'
+  note: Third-party. Types generated from Walmart's published OpenAPI. Last release 2022-12-14 — roughly four years behind
+    the current spec, which has had weekly changelog entries throughout 2025 and 2026.
+- name: highsidelabs/walmart-api-php
+  language: PHP
+  registry: packagist
+  official: false
+  repository: https://github.com/highsidelabs/walmart-api-php
+  version: null
+  published: null
+  note: Third-party PHP SDK covering Marketplace Partner, Content Provider and 1P Supplier APIs for US/CA/MX. Packagist metadata
+    endpoint returned 404 for both the v1 and p2 paths on 2026-08-27, so version and published are null — checked, nothing
+    recordable.
+code_generation:
+  position: Walmart directs developers to generate a client from its OpenAPI rather than shipping one.
+  guide: https://developer.walmart.com/us-marketplace/page/new-mcs-java-openapi-client-integration-guide
+  tool: OpenAPI Generator
+  languages_documented:
+  - Java
+  sample_languages_in_recipes:
+  - cURL
+  - Python
+  - Java
+registries_checked:
+- registry: npm
+  first_party_found: false
+- registry: PyPI
+  first_party_found: false
+- registry: NuGet
+  first_party_found: false
+  note: Query "walmart" returns nine third-party packages (SkuVault, Leanwork, APIMatic-generated); none authored by Walmart.
+- registry: Packagist
+  first_party_found: false
+- registry: Maven Central
+  first_party_found: false
+- registry: RubyGems
+  first_party_found: false
+- registry: crates.io
+  first_party_found: false
+- registry: pkg.go.dev
+  first_party_found: false
+evidence:
+- url: https://api.github.com/repos/walmartlabs/partnerapi_sdk_dotnet
+  status: 200
+- url: https://api.github.com/repos/walmartlabs/walmart-api
+  status: 200
+- url: https://registry.npmjs.org/@whitebox-co/walmart-marketplace-api
+  status: 200
+- url: https://repo.packagist.org/p2/highsidelabs/walmart-api-php.json
+  status: 404
+- url: https://azuresearch-usnc.nuget.org/query?q=walmart
+  status: 200

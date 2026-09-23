@@ -1,0 +1,76 @@
+generated: '2026-08-27'
+method: searched
+source: https://developer.walmart.com/us-marketplace/docs/sandbox
+provider: Walmart
+providerId: walmart
+description: Walmart runs a first-class sandbox for the Marketplace and 1P Supplier APIs on its own hostname, sandbox.walmartapis.com,
+  with its own credential pair issued from the same developer-portal key page as production. It has moved from a static mock
+  environment to a DYNAMIC sandbox with a Simulations API that drives state transitions, plus three published step-by-step
+  "Marketplace recipes" (order fulfillment, returns and refunds, inventory reservations/decrements/stockouts) with copy-ready
+  cURL, Python and Java samples and validation checkpoints. Sandbox has its own, much tighter throttling limits than production.
+  No test card numbers or magic identifiers are published — Walmart's sandbox is a mock seller account, not a payments test
+  harness, so there are no fixture values to record here.
+environments:
+- name: sandbox
+  base_url: https://sandbox.walmartapis.com
+  token_endpoint: https://sandbox.walmartapis.com/v3/token
+  credentials: Separate Sandbox Client ID / Client Secret, issued alongside the production pair at https://developer.walmart.com/generateKey
+- name: production
+  base_url: https://marketplace.walmartapis.com
+  token_endpoint: https://marketplace.walmartapis.com/v3/token
+  credentials: Production Client ID / Client Secret
+- name: production (1P Supplier / DSV)
+  base_url: https://api-gateway.walmart.com
+  credentials: Retail-Link derived portal credentials
+key_prefixes: null
+key_prefix_note: Walmart does not use a test/live key prefix convention. The environments are separated by hostname and by
+  which credential pair you use.
+test_data:
+  test_cards: null
+  magic_identifiers: null
+  note: No published test card numbers, magic SKUs or magic order IDs. The sandbox returns simulated responses from mock data
+    seeded against your sandbox seller account; you create your own sandbox items, orders and returns and then drive them
+    with the Simulations API.
+simulation:
+  supported: true
+  name: Simulations API
+  reference: https://developer.walmart.com/us-marketplace/reference/simulations
+  note: Drives end-to-end state transitions (order to shipment to return to refund) inside the dynamic sandbox so a flow can
+    be rehearsed before production.
+recipes:
+- name: Validate order fulfillment in sandbox
+  url: https://developer.walmart.com/us-marketplace/docs/marketplace-recipes
+- name: Validate returns and refunds in sandbox
+  url: https://developer.walmart.com/us-marketplace/docs/marketplace-recipes
+- name: Validate inventory reservations, decrements, and stockouts
+  url: https://developer.walmart.com/us-marketplace/docs/marketplace-recipes
+languages_in_samples:
+- cURL
+- Python
+- Java
+coverage_note: Only selected APIs, feed types and reports are supported in sandbox. WFS and Multichannel Solutions (MCS) have
+  their own sandbox guides.
+limits:
+  source: https://developer.walmart.com/us-marketplace/docs/sandbox-throttling-limits
+  note: Sandbox feed limits are 30 requests/hour per feed type with file-size caps between 2 KB and 100 KB and a 30-minute
+    processing time. See rate-limits/walmart-rate-limits.yml sandbox block.
+restrictions:
+- Sandbox is backend API testing only — nothing is visible or testable on Walmart.com.
+- Not suitable for production testing or live data.
+docs:
+- https://developer.walmart.com/us-marketplace/docs/sandbox
+- https://developer.walmart.com/us-marketplace/docs/walmart-api-sandbox
+- https://developer.walmart.com/us-marketplace/docs/multichannel-solutions-sandbox
+- https://developer.walmart.com/us-marketplace/docs/getting-started-wfs-sandbox
+evidence:
+- url: https://developer.walmart.com/us-marketplace/docs/sandbox
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/docs/sandbox-throttling-limits
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/page/new-walmart-marketplace-dynamic-sandbox-and-simulations-api
+  status: 200
+- url: https://developer.walmart.com/us-marketplace/page/new-marketplace-sandbox-recipes
+  status: 200
+- url: https://sandbox.walmartapis.com/.well-known/security.txt
+  status: 401
+  note: sandbox gateway rejects anonymous calls

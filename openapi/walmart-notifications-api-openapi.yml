@@ -381,7 +381,7 @@ paths:
 
         Custom headers provided in headers field , if provided
 
-        authURL should return HTTPS status 200 and response should have access_token and expires_in field. While making notification request to endpointUrl, Walmart system will pass access_token in headers with authHeaderName as key and value as Bearer <access_token> along with any other custom headers provided in headers field.'
+        authURL should return HTTPS status 200 and response should have access_token and expires_in field. While making notification request to endpointUrl, Walmart system will pass access_token in headers with authHeaderName as key and value as Bearer along with any other custom headers provided in headers field.'
       operationId: createSubscription
       parameters:
       - in: header

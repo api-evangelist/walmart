@@ -1,0 +1,76 @@
+generated: '2026-08-27'
+method: generated
+source: openapi/*.yml (verified operationIds) + conventions/walmart-conventions.yml + errors/walmart-problem-types.yml + rate-limits/walmart-rate-limits.yml
+provider: Walmart
+providerId: walmart
+description: Six packaged Agent Skills covering the marquee Walmart Marketplace seller flows. Every operationId named in these
+  skills was grepped out of the refined OpenAPI in openapi/ before being written; none is invented. Each skill carries the
+  published per-operation rate limit, the reversal boundary where one exists, and the standing warning that Walmart has no
+  idempotency mechanism. Walmart publishes no skills or AGENTS.md of its own — probed 2026-08-27.
+provider_published: false
+skill_count: 6
+skills:
+- file: walmart-inventory-sync.md
+  name: walmart-inventory-sync
+  description: Keep Walmart Marketplace inventory in step with your own — single-SKU updates for hot changes, bulk feeds for
+    the nightly reconcile.
+  api: Walmart Inventory API
+  operations:
+  - getInventory
+  - putUpdateInventory
+  - postBulkUpdateInventory
+  - getAllFeedStatuses
+  - getFeedItemStatus
+- file: walmart-item-onboarding.md
+  name: walmart-item-onboarding
+  description: Get items into the Walmart catalogue — submit the item feed, track ingestion, then confirm the listing is live
+    and searchable.
+  api: Walmart Items API
+  operations:
+  - getSpec
+  - itemBulkUploads
+  - getFeedItemStatus
+  - getAllItems
+  - getAnItem
+  - getCatalogSearch
+  - retireAnItem
+- file: walmart-order-cancel-refund.md
+  name: walmart-order-cancel-refund
+  description: Reverse a Walmart Marketplace order — cancel before shipment, refund after — and know exactly which window
+    each one lives in.
+  api: Walmart Orders API
+  operations:
+  - getAnOrder
+  - cancelOrderLines
+  - refundOrderLines
+- file: walmart-order-fulfillment.md
+  name: walmart-order-fulfillment
+  description: Poll Walmart Marketplace for new purchase orders, acknowledge them, and post shipment tracking — the core seller
+    order loop.
+  api: Walmart Orders API
+  operations:
+  - getAllOrders
+  - getAllReleasedOrders
+  - getAnOrder
+  - acknowledgeOrders
+  - shippingUpdates
+- file: walmart-returns-refunds.md
+  name: walmart-returns-refunds
+  description: Work the Walmart Marketplace returns queue — read return orders, issue the refund, and respect the state conditions
+    that gate each step.
+  api: Walmart Returns/Refunds API
+  operations:
+  - getReturns
+  - issueRefund
+- file: walmart-webhook-subscriptions.md
+  name: walmart-webhook-subscriptions
+  description: Subscribe to Walmart Marketplace events instead of polling — register a destination, verify delivery, and handle
+    the envelope.
+  api: Walmart Notifications API
+  operations:
+  - getEventTypes
+  - createSubscription
+  - getAllSubscriptions
+  - updateSubscription
+  - deleteSubscription
+  - testNotification
