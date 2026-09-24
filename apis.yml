@@ -355,6 +355,7 @@ tags:
 - Seller APIs
 - Webhook
 - MCP
+- Agentic Commerce
 tags_raw:
 - Walmart
 - Commerce
@@ -369,6 +370,7 @@ tags_raw:
 - Seller APIs
 - Webhooks
 - MCP
+- Agentic Commerce
 deliveryModel:
   model: saas
   open_source: false
@@ -522,8 +524,6 @@ common:
   url: asyncapi/walmart-marketplace-notifications-asyncapi.yml
 - type: Webhooks
   url: asyncapi/walmart-webhooks.yml
-- type: GraphQL
-  url: graphql/walmart-graphql.md
 - type: Overlay
   url: overlays/walmart-orders-api-overlay.yaml
 - type: Examples
