@@ -26540,7 +26540,7 @@ paths:
       externalDocs:
         description: View Guide
         url: /doc/us/mp/us-mp-items/#2535
-      operationId: getAnItem
+      operationId: getV3ItemsById
       parameters:
       - name: id
         in: path
@@ -27263,6 +27263,8 @@ paths:
         case: success
       security:
       - basicScheme: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getAnItem
     servers:
     - url: https://marketplace.walmartapis.com
       description: Production URL
