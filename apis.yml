@@ -398,6 +398,8 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/walmart.png
 common:
+- type: FinOps
+  url: finops/walmart-finops.yml
 - type: Overlay
   url: overlays/walmart-dsv-cost-api-overlay.yaml
 - type: Overlay
