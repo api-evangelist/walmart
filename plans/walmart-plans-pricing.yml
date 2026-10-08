@@ -75,3 +75,22 @@ evidence:
 - url: https://developer.walmart.com/
   status: 200
   note: No pricing page or plan table on the developer portal.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - revenue-share
+  units: []
+  plans:
+  - name: Marketplace Seller
+    access: partner
+    model: revenue-share
+    model_how: stated
+    units: []
+    periods: []
+  - name: Approved Solution Provider
+    access: partner
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
