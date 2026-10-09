@@ -1,53 +1,32 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/walmart-dropship-vendor-costs-openapi-original.yml, openapi/walmart-dropship-vendor-inventory-openapi-original.yml,
-  openapi/walmart-dropship-vendor-items-openapi-original.yml, openapi/walmart-dropship-vendor-lag-time-openapi-original.yml,
-  openapi/walmart-dropship-vendor-on-request-reports-openapi-original.yml, openapi/walmart-dropship-vendor-orders-openapi-original.yml,
-  openapi/walmart-dropship-vendor-pre-generated-reports-openapi-original.yml, openapi/walmart-marketplace-authentication-openapi-original.yml,
-  openapi/walmart-marketplace-feeds-openapi-original.yml, openapi/walmart-marketplace-fulfillment-openapi-original.yml,
-  openapi/walmart-marketplace-insights-openapi-original.yml, openapi/walmart-marketplace-inventory-openapi-original.yml,
-  openapi/walmart-marketplace-items-openapi-original.yml, openapi/walmart-marketplace-lag-time-openapi-original.yml,
-  openapi/walmart-marketplace-notifications-openapi-original.yml, openapi/walmart-marketplace-on-request-reports-openapi-original.yml,
-  openapi/walmart-marketplace-orders-openapi-original.yml, openapi/walmart-marketplace-prices-openapi-original.yml,
-  openapi/walmart-marketplace-promotions-openapi-original.yml, openapi/walmart-marketplace-recommendations-openapi-original.yml,
-  openapi/walmart-marketplace-reports-openapi-original.yml, openapi/walmart-marketplace-returns-openapi-original.yml,
-  openapi/walmart-marketplace-reviews-openapi-original.yml, openapi/walmart-marketplace-rules-openapi-original.yml,
-  openapi/walmart-marketplace-settings-openapi-original.yml, openapi/walmart-marketplace-shipping-openapi-original.yml,
-  openapi/walmart-marketplace-utilities-openapi-original.yml
+source: openapi/walmart-assortment-recommendations-api-openapi.yml, openapi/walmart-authorization-api-openapi.yml,
+  openapi/walmart-feeds-api-openapi.yml, openapi/walmart-fulfillment-api-openapi.yml, openapi/walmart-insight-api-openapi.yml,
+  openapi/walmart-inventory-api-openapi.yml, openapi/walmart-items-api-openapi.yml, openapi/walmart-lag-time-api-openapi.yml,
+  openapi/walmart-listing-quality-api-openapi.yml, openapi/walmart-notifications-api-openapi.yml,
+  openapi/walmart-on-request-reports-api-openapi.yml, openapi/walmart-orders-api-openapi.yml,
+  openapi/walmart-pre-generated-reports-api-openapi.yml, openapi/walmart-prices-api-openapi.yml,
+  openapi/walmart-promotions-api-openapi.yml, openapi/walmart-reports-api-openapi.yml, openapi/walmart-returns-refunds-api-openapi.yml,
+  openapi/walmart-reviews-api-openapi.yml, openapi/walmart-rules-api-openapi.yml, openapi/walmart-settings-api-openapi.yml,
+  openapi/walmart-ship-with-walmart-api-openapi.yml, openapi/walmart-utilities-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 171
+  operations: 155
   by_action_class:
-    acting: 82
-    connected: 89
+    connected: 90
+    acting: 65
   by_consequence:
-    write: 43
-    read: 89
-    physical: 37
+    read: 90
+    write: 31
+    physical: 32
     safety-critical: 2
   human_in_the_loop_required: 2
 operations:
-- path: /v3/feeds
+- path: /v3/growth/assortment/recommendations
   method: post
-  operationId: postCreateAnAccessToken
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/inventory
-  method: get
-  operationId: getInventory
+  operationId: getAssortmentRecommendations
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -55,9 +34,19 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v3/inventory
+- path: /v3/growth/assortment/recommendations/categorization/counts
+  method: post
+  operationId: getCategorizationDetailsOfAssortmentRecommendations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/growth/assortment/recommendations/rejections
   method: put
-  operationId: putUpdateInventory
+  operationId: rejectAssortmentRecommendations
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -71,270 +60,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v3/feeds
-  method: post
-  operationId: postBulkUpdateInventory
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/inventories/{id}
-  method: get
-  operationId: getSingleItemInventory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/feeds
-  method: post
-  operationId: itemBulkUploads
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/feeds
-  method: post
-  operationId: updateRichMediaOfItem
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/items
-  method: get
-  operationId: getAllItems
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v4/items/{productId}
-  method: get
-  operationId: getAnItemV4
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/items/{sku}
-  method: get
-  operationId: getAnItem
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/items/taxonomy
-  method: get
-  operationId: getTaxonomyResponse
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/feeds
-  method: post
-  operationId: postCreateAnAccessToken
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/lagtime
-  method: get
-  operationId: getRetrieveLagTime
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/reports/reportRequests
-  method: post
-  operationId: createReportRequest
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/reports/reportRequests
-  method: get
-  operationId: getAllReportRequests
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/reports/reportRequests/{requestId}
-  method: get
-  operationId: retrieveReportRequestStatus
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/reports/downloadReport
-  method: get
-  operationId: downloadReportUrl
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/orders/{purchaseOrderId}/shipping
-  method: post
-  operationId: postShipOrderLines
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/orders/{purchaseOrderId}/cancel
-  method: post
-  operationId: postCancelOrderLines
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/orders/{purchaseOrderId}/acknowledge
-  method: post
-  operationId: postAcknowledgeOrders
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/orders
-  method: get
-  operationId: getAllOrders
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/orders/{purchaseOrderId}
-  method: get
-  operationId: getAnOrder
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/orders/released
-  method: get
-  operationId: getAllReleasedOrders
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/getReport
-  method: get
-  operationId: getGenerateItemReport
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /v3/token
   method: post
   operationId: tokenAPI
@@ -829,7 +554,7 @@ operations:
     audit: none
 - path: /v3/inventory
   method: put
-  operationId: updateInventoryForAnItem
+  operationId: putUpdateInventory
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -843,6 +568,32 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /v3/feeds
+  method: post
+  operationId: postBulkUpdateInventory
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v3/inventories/{id}
+  method: get
+  operationId: getSingleItemInventory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v3/inventories/{sku}
   method: get
   operationId: getMultiNodeInventoryForSkuAndAllShipnodes
@@ -871,22 +622,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v3/feeds
-  method: post
-  operationId: updateBulkInventory
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v3/inventories
   method: get
   operationId: getMultiNodeInventoryForAllSkuAndAllShipNodes
@@ -907,41 +642,25 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v3/items/catalog/search
-  method: post
-  operationId: getCatalogSearch
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/items/associations
-  method: post
-  operationId: getItemAssociations
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v3/feeds
   method: post
   operationId: itemBulkUploads
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/feeds
+  method: post
+  operationId: updateRichMediaOfItem
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -965,6 +684,56 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /v4/items/{productId}
+  method: get
+  operationId: getAnItemV4
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/items/{sku}
+  method: get
+  operationId: getAnItem
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/items/taxonomy
+  method: get
+  operationId: getTaxonomyResponse
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/items/catalog/search
+  method: post
+  operationId: getCatalogSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/items/associations
+  method: post
+  operationId: getItemAssociations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v3/items/{id}
   method: get
   operationId: getAnItem
@@ -978,16 +747,6 @@ operations:
 - path: /v3/items/walmart/search
   method: get
   operationId: getSearchResult
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/items/taxonomy
-  method: get
-  operationId: getTaxonomyResponse
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1033,7 +792,7 @@ operations:
     audit: required
 - path: /v3/feeds
   method: post
-  operationId: updateLagTimeBulk
+  operationId: postCreateAnAccessToken
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1049,7 +808,37 @@ operations:
     audit: required
 - path: /v3/lagtime
   method: get
-  operationId: getLagTime
+  operationId: getRetrieveLagTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/insights/prosellerbadge
+  method: get
+  operationId: getProSellerBadgeInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/insights/items/listingQuality/score
+  method: get
+  operationId: getListingQualityScore
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/insights/items/listingQuality/count
+  method: get
+  operationId: getCategoriesList
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1142,18 +931,8 @@ operations:
       max-ttl: 3600
     audit: none
 - path: /v3/reports/reportRequests
-  method: get
-  operationId: getRequestsStatus
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v3/reports/reportRequests
   method: post
-  operationId: generateReport
+  operationId: createReportRequest
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1167,9 +946,19 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /v3/reports/reportRequests
+  method: get
+  operationId: getAllReportRequests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v3/reports/reportRequests/{requestId}
   method: get
-  operationId: getSingleRequestStatus
+  operationId: retrieveReportRequestStatus
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1179,7 +968,7 @@ operations:
     audit: none
 - path: /v3/reports/downloadReport
   method: get
-  operationId: downloadReport
+  operationId: downloadReportUrl
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1289,6 +1078,16 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /v3/getReport
+  method: get
+  operationId: getGenerateItemReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v3/repricer/strategy/{strategyCollectionId}
   method: put
   operationId: updateStrategy
@@ -1367,18 +1166,12 @@ operations:
   method: post
   operationId: getRepricerFeed
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /v3/repricer/strategy
   method: post
   operationId: createStrategy
@@ -1479,54 +1272,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v3/growth/assortment/recommendations
-  method: post
-  operationId: getAssortmentRecommendations
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/growth/assortment/recommendations/categorization/counts
-  method: post
-  operationId: getCategorizationDetailsOfAssortmentRecommendations
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v3/growth/assortment/recommendations/rejections
-  method: put
-  operationId: rejectAssortmentRecommendations
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v3/report/reconreport/reconFile
   method: get
   operationId: getReconReport
@@ -1661,36 +1406,22 @@ operations:
   method: post
   operationId: getIrpItems
   x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /v3/growth/reviews-accelerator/categories
   method: post
   operationId: getIrpCategories
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /v3/rules/inactivate
   method: put
   operationId: inactivateRule
@@ -2183,20 +1914,12 @@ operations:
   method: post
   operationId: getShippingEstimate
   x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /v3/shipping/labels/purchase-orders/{purchaseOrderId}
   method: get
   operationId: getLabel
