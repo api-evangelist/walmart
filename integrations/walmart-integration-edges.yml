@@ -14,5 +14,16 @@ marketplace_apps:
   app: walmart
   url: https://monid.ai/tools/walmart
   identity: slug
-edges: []
+edges:
+- partner_name: 17track
+  partner: 17track
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: contract
+  relationship: carrier-coverage
+  evidence: https://res.17track.net/asset/carrier/info/apicarrier.all.json
+  detected_by: detect-carrier-edges.py
+  first_seen: '2026-10-12'
+  matched_by: domain:walmart.com
 templates: []
