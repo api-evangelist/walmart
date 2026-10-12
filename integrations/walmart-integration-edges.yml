@@ -24,6 +24,6 @@ edges:
   relationship: carrier-coverage
   evidence: https://res.17track.net/asset/carrier/info/apicarrier.all.json
   detected_by: detect-carrier-edges.py
-  first_seen: '2026-10-12'
+  first_seen: '2026-10-13'
   matched_by: domain:walmart.com
 templates: []

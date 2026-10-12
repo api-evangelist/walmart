@@ -12,5 +12,5 @@
   evidence: https://res.17track.net/asset/carrier/info/apicarrier.all.json
   source: edge
   relationship: carrier-coverage
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
