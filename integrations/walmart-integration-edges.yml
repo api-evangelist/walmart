@@ -15,6 +15,16 @@ marketplace_apps:
   url: https://monid.ai/tools/walmart
   identity: slug
 edges:
+- partner_name: openchargemap
+  partner: openchargemap
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: claimed
+  relationship: endpoint-coverage
+  evidence: https://openchargemap.org/site/poi?operatorid=3969
+  detected_by: sweep-automotive.py
+  detected: '2026-10-13'
 - partner_name: 17track
   partner: 17track
   partner_match: aggregator
@@ -26,14 +36,4 @@ edges:
   detected_by: detect-carrier-edges.py
   first_seen: '2026-10-13'
   matched_by: domain:walmart.com
-- partner_name: openchargemap
-  partner: openchargemap
-  partner_match: aggregator
-  channel: partner-built
-  direction: partner-built
-  type: claimed
-  relationship: endpoint-coverage
-  evidence: https://openchargemap.org/site/poi?operatorid=3969
-  detected_by: sweep-automotive.py
-  detected: '2026-10-13'
 templates: []
