@@ -6,6 +6,7 @@ checked:
 - https://composio.dev/toolkits/walmart
 - https://monid.ai/tools/walmart
 - https://n8n.io/integrations/walmart/
+- https://storage.googleapis.com/tcfac/additional-consent-providers.csv
 - https://zapier.com/apps/walmart/integrations
 summary: null
 marketplace_apps:
@@ -36,4 +37,27 @@ edges:
   detected_by: detect-carrier-edges.py
   first_seen: '2026-10-13'
   matched_by: domain:walmart.com
+- partner_name: Google Ad Tech Providers
+  partner: null
+  partner_match: domain
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+  contract_reference:
+    register: Google Ad Tech Providers (Additional Consent)
+    spec_file: null
+    role: google-atp
+    registered_name: Walmart
+    register_id: '1092'
+    products:
+    - Walmart
+    matched_domain: walmart.com
+    api_families: null
+    api_families_basis: null
+    detected_by: sweep-adtech.py
+    detected: '2026-10-14'
+  detected_by: sweep-adtech.py
+  detected: '2026-10-14'
 templates: []

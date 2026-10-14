@@ -25,3 +25,26 @@
   relationship: carrier-coverage
   status: not-a-workflow
   arazzo: null
+- slug: walmart-google-ad-tech-providers
+  label: Google Ad Tech Providers
+  partner_name: Google Ad Tech Providers
+  type: contract
+  channel: standard-directory
+  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Google Ad Tech Providers (Additional Consent)
+    spec_file: null
+    role: google-atp
+    registered_name: Walmart
+    register_id: '1092'
+    products:
+    - Walmart
+    matched_domain: walmart.com
+    api_families: null
+    api_families_basis: null
+    detected_by: sweep-adtech.py
+    detected: '2026-10-14'
+  status: not-a-workflow
+  arazzo: null
