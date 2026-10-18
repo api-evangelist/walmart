@@ -72,5 +72,5 @@
     - connectors/applications/walmart-marketplace
     vendor_link: https://marketplace.walmart.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
