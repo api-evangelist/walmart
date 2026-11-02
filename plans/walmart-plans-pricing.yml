@@ -1,0 +1,139 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://marketplace.walmart.com/pricing/
+sources:
+- https://marketplace.walmart.com/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: ad-valorem
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: 'Walmart Marketplace seller fee schedule: category referral fee percentages plus WFS fulfillment
+  and storage fees. Page states zero setup or monthly fees.'
+plan_count: 8
+currency: USD
+plans:
+- name: Apparel & Accessories referral fee
+  price_text: 5% for items with a total sales price of $15 or less; 10% for items with a total sales price
+    between $15 – $20; 15% for items with a total sales price greater than $20
+  currency: USD
+  period: per-use
+  unit: per sale
+- name: Automotive & Powersports referral fee
+  price_text: 12%
+  price: 12
+  currency: USD
+  period: per-use
+  unit: per sale
+- name: Everything Else referral fee
+  price_text: 15%
+  price: 15
+  currency: USD
+  period: per-use
+  unit: per sale
+- name: WFS standard fulfillment fee (≤ 1 lb.)
+  price_text: $3.45
+  price: 3.45
+  currency: USD
+  period: per-use
+  unit: per unit shipped
+- name: WFS standard fulfillment fee (4–20 lb.)
+  price_text: $5.75 plus $0.40 for each lb. > 4 lb.
+  currency: USD
+  period: per-use
+  unit: per unit shipped
+- name: Big & bulky fulfillment fee (up to 500 lb.)
+  price_text: $155 + $0.80 per lb. > 90 lb.
+  currency: USD
+  period: per-use
+  unit: per unit shipped
+- name: Fixed monthly storage fee (January–September)
+  price_text: $0.75 per cubic foot per month
+  price: 0.75
+  currency: USD
+  period: month
+  unit: cubic foot
+- name: Storage fee >12 months
+  price_text: $2.25 per cubic foot per month
+  price: 2.25
+  currency: USD
+  period: month
+  unit: cubic foot
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Apparel & Accessories referral fee
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Automotive & Powersports referral fee
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Everything Else referral fee
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: WFS standard fulfillment fee (≤ 1 lb.)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: WFS standard fulfillment fee (4–20 lb.)
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Big & bulky fulfillment fee (up to 500 lb.)
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Fixed monthly storage fee (January–September)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Storage fee >12 months
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
